@@ -1,28 +1,39 @@
-# Getting Started With Schematics
+# MoH Common Styles
 
-This repository is a basic Schematic implementation that serves as a starting point to create and publish Schematics to NPM.
 
-### Testing
+## New Project Setup + Schematics
 
-To test locally, install `@angular-devkit/schematics-cli` globally and use the `schematics` command line tool. That tool acts the same as the `generate` command of the Angular CLI, but also has a debug mode.
+<!-- 
+In common lib:
 
-Check the documentation with
+`npm link`
+
+In new/target repo:
+
+`npm link <name>`  note - name will be the name in package.json from the common lib
+
+ng g <name>:moh-start -->
+
+
+----
+### Setting up npm link in common styles
+In common styles folder (that has package.json)
+`npm link`
+
+Note - the name in the package.json here will be used as a destination name when linking from other folders
+
+----
+### Linking New Project
+
+First, create the new project.
 ```bash
-schematics --help
+ng new example --style=scss
+cd example
+npm link moh-start // This name comes from the package.json above
+ng g moh-start:moh-start // Part before colon comes from the above package-json, part after colon is name of specific schematic.
 ```
 
-### Unit Testing
 
-`npm run test` will run the unit tests, using Jasmine as a runner and test framework.
+# TODO
 
-### Publishing
-
-To publish, simply do:
-
-```bash
-npm run build
-npm publish
-```
-
-That's it!
- 
+[ ] Making changes to schematic + re-compiling
