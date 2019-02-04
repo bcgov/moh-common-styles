@@ -5,6 +5,10 @@
       "description": "Adds MoH Common Styles to the application",
       "factory": "./ng-add/index#ngAdd",
       "aliases" : ["install"]
+    },
+    "moh-start": {
+      "description": "A blank schematic.",
+      "factory": "./moh-start/index#mohStart"
     }
   }
 }
