@@ -1,0 +1,10 @@
+{
+  "$schema": "../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "ng-add": {
+      "description": "Adds MoH Common Styles to the application",
+      "factory": "./ng-add/index#ngAdd",
+      "aliases" : ["install"]
+    }
+  }
+}
