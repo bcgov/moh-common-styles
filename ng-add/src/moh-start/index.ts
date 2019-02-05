@@ -1,10 +1,11 @@
 import { Rule, SchematicContext, Tree, move, apply, url } from '@angular-devkit/schematics';
+import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
 
 import {addPackageToPackageJson, sortObjectByKeys} from './package-config';
-import { template } from '@angular-devkit/core';
-import { readFile, readFileSync, readdirSync } from 'fs';
 import { stylesSCSS } from './files/styles';
-
+import { appComponentHtml } from './files/app_component_html';
+import { variableScss } from './files/variables_scss';
+import { overridesScss } from './files/overrides_scss';
 // You don't have to export the function as default. You can also have more than one rule factory
 // per file.
 export function mohStart(_options: any): Rule {
@@ -12,39 +13,78 @@ export function mohStart(_options: any): Rule {
 
     addPackageToPackageJson(tree, 'mygovbc-bootstrap-theme', '^0.4.0');
     addPackageToPackageJson(tree, 'font-awesome', '^4.6.3');
+    addPackageToPackageJson(tree, "bootstrap", "^4.0.0");
 
-    updateStyles(tree);
+    // Update files
+    overwriteFile(tree, 'src/styles.scss', stylesSCSS);
+    overwriteFile(tree, 'src/app/app.component.html', appComponentHtml);
 
+    createIfMissing(tree, 'src/app/styles/variables.scss', variableScss);
+    createIfMissing(tree, 'src/app/styles/overrides.scss', overridesScss);
 
-    // TODO - Setup styles.scss - create template file and use as basis (w/o interpolation)
+    // TODO - Add stylePreprocessorOptions>includePaths to angular.json for current project
+    updateAngularJson(tree);
+
+    // Copy over files
+
     // TODO - Basic homepage w/ styles (will be updated to use page framework/templates, but those aren't setup yet)
-    //TODO: Include font. Currently missing.
+    // TODO: Include font. Currently missing.
+    // TODO - package.json scripts (including version.js)
 
 
-
+    // TODO - Manually copy over openShift folder for PRIME
     // TODO (optional) trigger an `npm install`
+
+    // TODO - Get it to auto-load in moh-common-styles as a shared dependency
+
+    installPackageJsonDependencies();
 
     return tree;
   };
 }
 
-// TODO - Rename
-/** Adds a package to the package.json in the given host tree. */
-export function updateStyles(host: Tree): Tree {
-  const STYLES_PATH = 'src/styles.scss';
+/** Use a string to overwrite a file. Checks to make sure file does not have content. */
+export function overwriteFile(host: Tree, targetPath: string, content: string): Tree {
 
-
-  if (host.exists(STYLES_PATH)) {
-    const sourceText = host.read(STYLES_PATH)!.toString('utf-8');
-    const lines = sourceText.split('\n').length;
-    if (lines > 5 ) {
-      console.log('Styles.scss already has content, skipping overwrite.');
-      return host;
-    }
-    host.overwrite(STYLES_PATH, stylesSCSS);
+  if (host.exists(targetPath)) {
+    host.overwrite(targetPath, content);
   }
   else {
-    console.log('missing style.scss file, unable to run update styles');
+    console.log(`MISSING - ${targetPath}, unable to run update file`);
+  }
+
+  return host;
+}
+
+/* Trigger an npm install */
+function installPackageJsonDependencies(): Rule {
+  return (host: Tree, context: SchematicContext) => {
+    context.addTask(new NodePackageInstallTask());
+    context.logger.log('info', `Installing packages...`);
+
+    return host;
+  };
+}
+
+
+function createIfMissing(host: Tree, targetPath: string, content: string) {
+  if (!host.exists(targetPath)){
+    host.create(targetPath, content);
+  }
+}
+
+function updateAngularJson(host: Tree): Tree {
+  if (host.exists('angular.json')){
+    const sourceText = host.read('angular.json')!.toString('utf-8');
+    const json = JSON.parse(sourceText);
+    const projectName = Object.keys(json['projects'])[0];
+    
+    // json['projects'][projectName]['architect']
+    json['projects'][projectName]['architect']['build']['options']['stylePreprocessorOptions'] = {
+      includePaths : ["src/app/styles"]
+    };
+
+    host.overwrite('angular.json', JSON.stringify(json, null, 2));
   }
 
   return host;

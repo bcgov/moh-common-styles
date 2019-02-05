@@ -42,7 +42,6 @@ $fa-font-path: '~font-awesome/fonts';
 @import "~font-awesome/scss/screen-reader";
 
 @import "overrides";
-@import "additions";
 
 // Set a base font-size in px to ensure that we don't just use the browser's
 // default text size. We use rems for font-sizes everywhere else.
