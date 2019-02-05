@@ -14,6 +14,12 @@ In new/target repo:
 
 ng g <name>:moh-start -->
 
+### Creating a new project
+
+Create a new project with ng new and make sure to use these flags, otherwise it won't work.
+
+`ng new <name> --style=scss --routing=true`
+
 
 ----
 ### Setting up npm link in common styles

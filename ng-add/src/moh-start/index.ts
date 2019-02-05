@@ -18,7 +18,7 @@ export function mohStart(_options: any): Rule {
     addPackageToPackageJson(tree, 'font-awesome', '^4.6.3');
     addPackageToPackageJson(tree, "bootstrap", "^4.0.0");
     //currently there's a bug with rxjs@6.4.0, so we hardlock version. can be removed in future.
-    addPackageToPackageJson(tree, "rxjs", "6.2.1");
+    addPackageToPackageJson(tree, "rxjs", "6.2.1", true);
 
     // Update files
     overwriteFile(tree, 'src/styles.scss', stylesSCSS);
@@ -38,7 +38,6 @@ export function mohStart(_options: any): Rule {
     // Copy over files
 
     // TODO - Basic homepage w/ styles (will be updated to use page framework/templates, but those aren't setup yet)
-    // TODO: Include font. Currently missing.
     // TODO - package.json scripts (including version.js)
 
 
