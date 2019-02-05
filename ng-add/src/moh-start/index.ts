@@ -6,6 +6,9 @@ import { stylesSCSS } from './files/styles';
 import { appComponentHtml } from './files/app_component_html';
 import { variableScss } from './files/variables_scss';
 import { overridesScss } from './files/overrides_scss';
+
+import { MyriadWebProTTF_base64 } from './files/MyriadWebPro_ttf_base64';
+
 // You don't have to export the function as default. You can also have more than one rule factory
 // per file.
 export function mohStart(_options: any): Rule {
@@ -14,16 +17,23 @@ export function mohStart(_options: any): Rule {
     addPackageToPackageJson(tree, 'mygovbc-bootstrap-theme', '^0.4.0');
     addPackageToPackageJson(tree, 'font-awesome', '^4.6.3');
     addPackageToPackageJson(tree, "bootstrap", "^4.0.0");
+    //currently there's a bug with rxjs@6.4.0, so we hardlock version. can be removed in future.
+    addPackageToPackageJson(tree, "rxjs", "6.2.1");
 
     // Update files
     overwriteFile(tree, 'src/styles.scss', stylesSCSS);
     overwriteFile(tree, 'src/app/app.component.html', appComponentHtml);
 
+    // Add new files
     createIfMissing(tree, 'src/app/styles/variables.scss', variableScss);
     createIfMissing(tree, 'src/app/styles/overrides.scss', overridesScss);
+    const font = Buffer.from(MyriadWebProTTF_base64, 'base64');
+    createIfMissing(tree, 'src/app/fonts/MyriadWebPro.ttf', font);
 
-    // TODO - Add stylePreprocessorOptions>includePaths to angular.json for current project
+    // Update style imports in angular.json
     updateAngularJson(tree);
+
+    
 
     // Copy over files
 
@@ -67,7 +77,7 @@ function installPackageJsonDependencies(): Rule {
 }
 
 
-function createIfMissing(host: Tree, targetPath: string, content: string) {
+function createIfMissing(host: Tree, targetPath: string, content: any) {
   if (!host.exists(targetPath)){
     host.create(targetPath, content);
   }
