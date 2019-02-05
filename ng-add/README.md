@@ -43,3 +43,9 @@ ng g moh-start:moh-start // Part before colon comes from the above package-json,
 # TODO
 
 [ ] Making changes to schematic + re-compiling
+npm run build + watch command
+[ ] Include integration with upcoming moh-common-styles library
+[ ] Package.json scripts from fpc
+[ ] Trigger an npm install when done the schematic (currently not working)
+[ ] Document need for `openshift/` folder to still be manually setup
+[ ] Configurable project name, e.g. change page title.

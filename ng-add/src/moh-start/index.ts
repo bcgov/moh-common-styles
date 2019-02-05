@@ -3,17 +3,20 @@ import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
 
 import {addPackageToPackageJson, sortObjectByKeys} from './package-config';
 import { stylesSCSS } from './files/styles';
-import { appComponentHtml } from './files/app_component_html';
+import { appComponentHtml, appComponentCSS } from './files/app_component_html';
 import { variableScss } from './files/variables_scss';
 import { overridesScss } from './files/overrides_scss';
 
 import { MyriadWebProTTF_base64 } from './files/MyriadWebPro_ttf_base64';
+import { BCLogoBase64 } from './files/gov3_bc_logo_png_base64'
+import { favicon_base64 } from './files/favicon_ico'
 
 // You don't have to export the function as default. You can also have more than one rule factory
 // per file.
 export function mohStart(_options: any): Rule {
   return (tree: Tree, _context: SchematicContext) => {
 
+    // _context.logger.info('✓ moh-start beginning...');
     addPackageToPackageJson(tree, 'mygovbc-bootstrap-theme', '^0.4.0');
     addPackageToPackageJson(tree, 'font-awesome', '^4.6.3');
     addPackageToPackageJson(tree, "bootstrap", "^4.0.0");
@@ -23,6 +26,7 @@ export function mohStart(_options: any): Rule {
     // Update files
     overwriteFile(tree, 'src/styles.scss', stylesSCSS);
     overwriteFile(tree, 'src/app/app.component.html', appComponentHtml);
+    overwriteFile(tree, 'src/app/app.component.scss', appComponentCSS);
 
     // Add new files
     createIfMissing(tree, 'src/app/styles/variables.scss', variableScss);
@@ -30,30 +34,31 @@ export function mohStart(_options: any): Rule {
     const font = Buffer.from(MyriadWebProTTF_base64, 'base64');
     createIfMissing(tree, 'src/app/fonts/MyriadWebPro.ttf', font);
 
+    const logo = Buffer.from(BCLogoBase64, 'base64');
+    createIfMissing(tree, 'src/assets/gov3_bc_logo.png', logo);
+
+    const favicon = Buffer.from(favicon_base64, 'base64');
+    overwriteFile(tree, 'src/favicon.ico', favicon);
+
     // Update style imports in angular.json
     updateAngularJson(tree);
 
-    
+    // TODO - Trigger npm install. Not working.
 
-    // Copy over files
+    // TODO - Copy over favicon
 
-    // TODO - Basic homepage w/ styles (will be updated to use page framework/templates, but those aren't setup yet)
     // TODO - package.json scripts (including version.js)
-
-
     // TODO - Manually copy over openShift folder for PRIME
-    // TODO (optional) trigger an `npm install`
 
-    // TODO - Get it to auto-load in moh-common-styles as a shared dependency
+    _context.logger.info('✓ moh-start complete!');
 
-    installPackageJsonDependencies();
 
     return tree;
   };
 }
 
 /** Use a string to overwrite a file. Checks to make sure file does not have content. */
-export function overwriteFile(host: Tree, targetPath: string, content: string): Tree {
+export function overwriteFile(host: Tree, targetPath: string, content: string | Buffer): Tree {
 
   if (host.exists(targetPath)) {
     host.overwrite(targetPath, content);
