@@ -49,3 +49,8 @@ npm run build + watch command
 [ ] Trigger an npm install when done the schematic (currently not working)
 [ ] Document need for `openshift/` folder to still be manually setup
 [ ] Configurable project name, e.g. change page title.
+[ ] Split moh-start schematic into multiple schematics, de-compose them. Will make path to future 'update' calls simpler (update-scss, update-assets, update-dependencies). Moh-start should just call each of them.
+[ ] Base64 file conversion (add helper script?)
+    > const favi = fs.readFileSync('favicon.ico');
+    > const favi_b64 = favi.toString('base64')
+    > fs.writeFileSync('favicon_ico.ts', favi_b64)
