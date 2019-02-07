@@ -22,7 +22,7 @@
       ],
       "common/*": [
         "dist/common/*"
-      ]
+      ],
     }
   }
 }

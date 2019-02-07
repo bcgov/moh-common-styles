@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonComponent } from './common.component';
 import { PasswordComponent } from './components/password/password.component';
-import { FormsModule } from '@angular/forms';
-import { CommonModule as ngCommon } from '@angular/common';
+import { FormsModule, NgForm, ControlContainer } from '@angular/forms';
+import { CommonModule as ngCommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
     FormsModule,
-    ngCommon
+    ngCommonModule,
+    RouterModule,
   ],
   declarations: [
     CommonComponent,
@@ -15,7 +17,10 @@ import { CommonModule as ngCommon } from '@angular/common';
   ],
   exports: [
     CommonComponent,
-    PasswordComponent
+    PasswordComponent,
+  ],
+  providers: [
+    NgForm,
   ]
 })
 export class CommonModule { }

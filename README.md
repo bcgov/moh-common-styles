@@ -81,3 +81,6 @@ ng g moh-start:moh-start // Part before colon comes from the above package-json,
 - [ ] Add momentjs as dependency to package.json
 - [ ] Add NgForm and other modules to appropriate angular modules
 - [ ] Authoring changes to the library and re-building (`ng build moh-common-lib` from `projects/common`)
+- [ ] angular.json - add preserveSymlinks to new projects
+- [ ] uncomment pollyfills.ts
+- [ ] resolve issue with component viewProviders, ControlContainer + ngForms for "nested" components
