@@ -1,7 +1,7 @@
 {
-  "name": "moh-start",
-  "version": "0.0.0",
-  "description": "A blank schematics",
+  "name": "moh-common",
+  "version": "0.0.1",
+  "description": "A collection of schematics and components for MoH Angular apps.",
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "test": "npm run build && jasmine src/**/*_spec.js"
