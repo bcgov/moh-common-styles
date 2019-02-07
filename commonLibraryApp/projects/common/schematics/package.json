@@ -1,5 +1,5 @@
 {
-  "name": "moh-common",
+  "name": "moh-common-schematics",
   "version": "0.0.1",
   "description": "A collection of schematics and components for MoH Angular apps.",
   "scripts": {
