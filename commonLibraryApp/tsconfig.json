@@ -15,6 +15,14 @@
     "lib": [
       "es2017",
       "dom"
-    ]
+    ],
+    "paths": {
+      "common": [
+        "dist/common"
+      ],
+      "common/*": [
+        "dist/common/*"
+      ]
+    }
   }
 }
