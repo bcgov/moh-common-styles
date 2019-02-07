@@ -56,3 +56,4 @@ ng g moh-start:moh-start // Part before colon comes from the above package-json,
     > fs.writeFileSync('favicon_ico.ts', favi_b64)
 
 - [ ] Add momentjs as dependency to package.json
+- [ ] Add NgForm and other modules to appropriate angular modules
