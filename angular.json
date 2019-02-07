@@ -126,7 +126,7 @@
         }
       }
     },
-    "common": {
+    "moh-common-lib": {
       "root": "projects/common",
       "sourceRoot": "projects/common/src",
       "projectType": "library",
