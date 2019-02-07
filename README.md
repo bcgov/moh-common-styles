@@ -1,18 +1,28 @@
 # MoH Common Styles
 
+## Requirements
+
+* node (using 8.9.4, but older versions may be compatible)
+* npm (6.4.1, but older versions may be compatible)
+
+
+## Writing code & compiling changes
+
+Make sure to write all changes to .ts files, e.g. `index.ts`.  Then use npm to compile to us .d.ts, .js, and .map.js files.
+
+```bash
+
+npm run build # compiles one time
+npm run build -- -w # watches for changes and re-compiles
+```
+
+It's important to compile the files before running any schematics, publishing to npm, etc.
+
 
 ## New Project Setup + Schematics
 
-<!-- 
-In common lib:
+Setting up a new MoH Angular project
 
-`npm link`
-
-In new/target repo:
-
-`npm link <name>`  note - name will be the name in package.json from the common lib
-
-ng g <name>:moh-start -->
 
 ### Creating a new project
 
