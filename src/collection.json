@@ -1,13 +1,8 @@
 {
   "$schema": "../node_modules/@angular-devkit/schematics/collection-schema.json",
   "schematics": {
-    "ng-add": {
-      "description": "Adds MoH Common Styles to the application",
-      "factory": "./ng-add/index#ngAdd",
-      "aliases" : ["install"]
-    },
     "moh-start": {
-      "description": "A blank schematic.",
+      "description": "Schematic to be run on an `ng new` project to transform it to an MoH project (styles, assets, dependencies, etc).",
       "factory": "./moh-start/index#mohStart"
     }
   }
