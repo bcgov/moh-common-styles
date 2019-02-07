@@ -1,0 +1,29 @@
+@import 'variables.scss';
+
+.breadcrumb {
+
+  @include media-breakpoint-up(lg){
+    flex-wrap: nowrap;
+  }
+
+
+  display: flex;
+  justify-content: space-between;
+  background-color: transparent;
+}
+
+.horizontal-scroll {
+  overflow-x: scroll;
+  overflow-y: hidden;  
+}
+
+
+// Chrome + Safari (webkit) scrollbar styling - not IE / FF.
+.horizontal-scroll::-webkit-scrollbar {
+  background: transparent; 
+  height: 5px;
+}
+.horizontal-scroll::-webkit-scrollbar-thumb {
+  background: $color-secondary-nav;
+  border-radius: 10px;
+}

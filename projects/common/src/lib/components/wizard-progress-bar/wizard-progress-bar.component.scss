@@ -1,0 +1,63 @@
+@import 'variables.scss';
+
+:host {
+  flex: 1;
+
+  //Styling to handle .horizontal-overflow (in core-breadcrumb.component.scss)
+  padding: 0 2em;
+  min-height: 2em;
+  min-width: 650px;
+}
+
+.step-container {
+  display: flex;
+  // IE10 doesn't support space-evenly, so use space-between
+  justify-content: space-around;
+}
+
+progressbar {
+  background-color: $gray-500;
+  height: 0.5rem;
+}
+
+.step {
+  $markerSize: 1em;
+  position: relative;
+  transform: translateX(-$markerSize / 2);
+  margin-top: 0.25rem;
+
+  &:before {
+    content: " ";
+    position: absolute;
+    width: $markerSize;
+    height: $markerSize;
+    border-radius: 100%;
+    background: white;
+    border: 3px solid $color-primary;
+
+    // Center above
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    bottom: 100%;
+  }
+
+  &:not(.active) .step-text { opacity: 0.8;}
+  &:not(.active):before { background: $gray-400; }
+
+  // Take the text out of the CSS layout with position absolute so that the
+  // width of the text does not mess up the math of the positioning of the
+  // elements.
+  .step-text {
+    position: absolute;
+    transform: translateX(-33%);
+    white-space: nowrap;
+    font-size: small;
+  }
+}
+
+
+.progress-background {
+  width: 100%;
+  background-color: blue;
+}
