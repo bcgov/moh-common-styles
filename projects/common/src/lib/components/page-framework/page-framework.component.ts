@@ -12,8 +12,6 @@ import { Component, OnInit, ElementRef, Input, ViewEncapsulation } from '@angula
  * </common-page-framework>
  *
  * @export
- * @class PageFrameworkComponent
- * @implements {OnInit}
  */
 @Component({
   selector: 'common-page-framework',

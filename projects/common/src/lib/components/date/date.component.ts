@@ -2,7 +2,8 @@ import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef, 
 import { Base } from '../../models/base';
 import { SimpleDate } from '../../interfaces/simple-date.interface';
 import { ControlContainer, NgForm } from '@angular/forms';
-import * as moment from 'moment';
+import * as moment_ from 'moment';
+const moment = moment_;
 
 /**
  * Component NPM package dependencies:

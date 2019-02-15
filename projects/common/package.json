@@ -6,6 +6,8 @@
     "@angular/core": "^6.0.0-rc.0 || ^6.0.0"
   },
   "dependencies": {
+    "bootstrap": "^4.0.0",
+    "moment": "^2.24.0",
     "zxcvbn": "^4.4.2"
   }
 }

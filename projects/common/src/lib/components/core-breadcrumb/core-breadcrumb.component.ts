@@ -20,8 +20,6 @@ import { Component, OnInit } from '@angular/core';
  *   </common-core-breadcrumb>
  *
  *   @export
- *   @class CoreBreadcrumbComponent
- *   @implements {OnInit}
  */
 @Component({
   selector: 'common-core-breadcrumb',
