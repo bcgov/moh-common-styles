@@ -10,8 +10,6 @@ export class Container {
   /**
    * Converts a lower case string of a route in a user readable title.  e.g.
    * "personal-info" -> "Personal Info"
-   *
-   * @param {string} routePath
    */
   convertRouteToTitle(routePath: string): string {
     return routePath.split('-').map(x => x[0].toUpperCase() + x.slice(1)).join(' ');

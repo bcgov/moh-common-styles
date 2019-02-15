@@ -23,7 +23,6 @@ export class Address {
   /**
    * Address must have all fields filled out to be considered
    * complete
-   * @returns {boolean}
    */
   isComplete(): boolean {
     // All fields have data - not empty

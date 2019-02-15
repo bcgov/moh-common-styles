@@ -19,7 +19,6 @@ export abstract class AbstractForm {
 
   /**
    * Constructor
-   * @param {Router} router
    */
   constructor( protected router: Router ) {
     this.router = router;
@@ -27,7 +26,6 @@ export abstract class AbstractForm {
 
   /**
    * Determines if the Continue button is disabled on the form action bar
-   * @returns {boolean}
    */
   canContinue(): boolean {
     // Returns true if form is valid
