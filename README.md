@@ -31,24 +31,45 @@ Create a new project with ng new and make sure to use these flags, otherwise it 
 `ng new <name> --style=scss --routing=true`
 
 
+## The Library
+TODO - Contrast this section with "The Schematics"
+
+### Building the Library
+
+You must build the library before you begin local development using it.  
+
+`ng build moh-commmon-lib`
+
+This should crate build artifacts in the `dist/` folder. For local development we will `npm link` directly to those artifacts; and we will publish those artifacts when bundling for release.
+
 ----
 ### Setting up npm link for schematics
-In common styles folder (that has package.json)
+On the command line navigate to the dist folder for the "common" project, `moh-common-styles/dist/common`. Then run the following command:
+
 `npm link`
 
-Note - the name in the package.json here will be used as a destination name when linking from other folders
+Note - this folder MUST have a package.json in it. The name in the package.json will be used as a reference when linking to this folder from other folders (e.g. when configuring PRIME to use this common library). In our case the name is `moh-common-lib`. Assuming all goes well you should see output at the end like this (paths may differ):
+
+```
+.../example/path.../node/v8.9.4/lib/node_modules/moh-common-lib -> /space/workspace/moh-common-styles/projects/common
+```
+
+If the folder does not exist, or is empty, make sure to build the library.
+
 
 ### Setting up npm link for library
 
-Make sure to navigate to the `dist/common` folder and run `npm link` there.
+<!-- Make sure to navigate to the `dist/common` folder and run `npm link` there. -->
 
-Then navigate to the application which will consume the library, make sure you're in the same folder as that application's `package.json`.  From there, run `npm link moh-common-lib`.  That's it.  Now in the application you can write...
+Then navigate to the application which will consume the library, make sure you're in the same folder as that application's `package.json` (this should be the top level, e.g. `prime-web/`).  From there, run `npm link moh-common-lib`.  That's it, the build artifacts from the library will now appear in `node_modules/` and can be imported like any other library.  Now in the application you can write...
 
 ```TypeScript
 import { example } from 'moh-common-lib'
 ```
 
-If you've made any changes to the library make sure to re-build with `ng build moh-commmon-lib` from the `projects/common` folder.
+If you've made any changes to the library make sure to re-build with `ng build moh-commmon-lib` from the library folder.
+
+As for what specifically you can import from 'moh-common-lib', that is all defined in `projects/common/src/public_api.ts.`
 
 ----
 ### Linking New Project

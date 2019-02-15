@@ -1,9 +1,9 @@
 /*
- * Public API Surface of common
+ * Public API Surface of moh-common-styles
  */
 
 export * from './lib/common.service';
 export * from './lib/common.component';
-export * from './lib/common.module';
+export * from './lib/shared-core.module';
 
 export { PasswordComponent } from './lib/components/password/password.component';
