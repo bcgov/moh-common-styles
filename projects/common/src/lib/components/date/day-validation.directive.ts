@@ -1,6 +1,7 @@
 import { Directive, forwardRef } from '@angular/core';
 import { NG_VALIDATORS, Validator, FormControl } from '@angular/forms';
-import * as moment from 'moment';
+import * as moment_ from 'moment';
+const moment = moment_;
 
 @Directive({
   selector: '[commonDayValidation]',

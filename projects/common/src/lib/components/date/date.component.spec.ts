@@ -5,7 +5,8 @@ import { DateFieldFormatDirective } from './date-field-format.directive';
 import { YearValidateDirective } from './year-validate.directive';
 import { DayValidationDirective } from './day-validation.directive';
 import { FormsModule, NgForm } from '@angular/forms';
-import * as moment from 'moment';
+import * as moment_ from 'moment';
+const moment = moment_;
 
 fdescribe('DateComponent (not using current date)', () => {
   let component: DateComponent;

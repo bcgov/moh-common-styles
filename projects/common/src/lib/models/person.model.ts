@@ -1,5 +1,6 @@
 import { SimpleDate } from '../interfaces/simple-date.interface';
-import * as moment from 'moment';
+import * as moment_ from 'moment';
+const moment = moment_;
 
 /**
  * Person, each project can extend this person class
