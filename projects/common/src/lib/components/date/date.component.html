@@ -1,0 +1,86 @@
+<fieldset [disabled]="disabled">
+  <legend class="date--legend">{{label}}</legend>
+  <div class="form-group date-row">
+
+    <label class="visuallyhidden" for="month{{objectId}}">Month</label>
+    <select class="form-control monthSelect"
+            id="month{{objectId}}"
+            name="month"
+            [ngModel]="date?.month"
+            (ngModelChange)="setMonth($event)"
+            #monthRef="ngModel"
+            [required]="required">
+      <!-- We show the blank option so the user can clear out their data.-->
+      <option value="null" label="-- month --" selected [disabled]='required'></option>
+      <option *ngFor="let month of monthList; let i = index;" [value]="i + 1">{{month}}</option>
+    </select>
+
+    <label class="visuallyhidden" for="day{{objectId}}">Day</label>
+    <input type="number"
+           class="form-control dayInput"
+           id="day{{objectId}}"
+           name="day"
+           placeholder="day"
+           [ngModel]="date?.day"
+           (ngModelChange)="setDay($event)"
+           #dayRef="ngModel"
+           [required]="required"
+           commonDateFieldFormat
+           commonDayValidation
+           maxlength="2" />
+
+    <label class="visuallyhidden" for="year{{objectId}}">Year</label>
+    <input type="number"
+           class="form-control yearInput"
+           id="year{{objectId}}"
+           name="year"
+           placeholder="year"
+           [ngModel]="date?.year"
+           (ngModelChange)="setYear($event)"
+           #yearRef="ngModel"
+           [required]="required"
+           commonDateFieldFormat
+           [commonYearValidate]="restrictDate"
+           maxlength="4" />
+
+  </div>
+
+</fieldset>
+
+<!-- Error messages for component -->
+<div *ngIf="!disabled && monthRef.touched && dayRef.touched && yearRef.touched"
+    role="alert"
+    class='error-container'
+    aria-live="assertive">
+  <div class="text-danger"
+       *ngIf="(monthRef?.errors?.required || dayRef?.errors?.required || yearRef?.errors?.required ) && errorMessages?.required">
+       {{errorMessages.required}}
+  </div>
+  <div class="text-danger"
+      *ngIf="dayRef?.errors?.dayOutOfRange && errorMessages?.dayOutOfRange">
+       {{errorMessages.dayOutOfRange}}
+  </div>
+  <div class="text-danger"
+       *ngIf="yearRef?.errors?.yearDistantPast && errorMessages?.yearDistantPast">
+       {{errorMessages.yearDistantPast}}
+  </div>
+  <div class="text-danger"
+       *ngIf="yearRef?.errors?.yearDistantFuture && errorMessages?.yearDistantFuture">
+       {{errorMessages.yearDistantFuture}}
+  </div>
+  <div class="text-danger"
+        *ngIf="yearRef?.errors?.noPastDatesAllowed && errorMessages?.noPastDatesAllowed">
+        {{errorMessages.noPastDatesAllowed}}
+  </div>
+  <div class="text-danger"
+       *ngIf="yearRef?.errors?.noFutureDatesAllowed && errorMessages?.noFutureDatesAllowed">
+       {{errorMessages.noFutureDatesAllowed}}
+  </div>
+  <!-- Case should not happen until something is not formatted correctly-->
+  <div class="text-danger"
+       *ngIf="(dayRef?.errors?.invalidValue || yearRef?.errors?.invalidValue) && errorMessages?.invalidValue">
+       {{errorMessages.invalidValue}}
+  </div>
+</div>
+
+

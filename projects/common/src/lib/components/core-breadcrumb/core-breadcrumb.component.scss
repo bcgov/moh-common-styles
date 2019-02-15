@@ -1,5 +1,6 @@
 @import 'variables.scss';
 
+
 .breadcrumb {
 
   @include media-breakpoint-up(lg){
@@ -14,13 +15,13 @@
 
 .horizontal-scroll {
   overflow-x: scroll;
-  overflow-y: hidden;  
+  overflow-y: hidden;
 }
 
 
 // Chrome + Safari (webkit) scrollbar styling - not IE / FF.
 .horizontal-scroll::-webkit-scrollbar {
-  background: transparent; 
+  background: transparent;
   height: 5px;
 }
 .horizontal-scroll::-webkit-scrollbar-thumb {

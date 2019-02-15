@@ -2,11 +2,11 @@ import { SimpleDate } from '../interfaces/simple-date.interface';
 import * as moment from 'moment';
 
 /**
- * BasePerson, each project can extend this base person class
+ * Person, each project can extend this person class
  * NPM package dependencies:
  *  a) moment
  */
-export class BasePerson {
+export class Person {
 
   // Parts of a person's name
   public firstName: string;

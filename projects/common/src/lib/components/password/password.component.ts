@@ -1,8 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter, HostListener, OnChanges, Directive } from '@angular/core';
 import { Base } from '../../models/base';
 import { ControlContainer, NgForm } from '@angular/forms';
-// import * as zxcvbn from 'zxcvbn';
-import zxcvbn from 'zxcvbn';
+import * as zxcvbn from 'zxcvbn';
 
 /**
  * NPM package dependencies:
@@ -10,7 +9,15 @@ import zxcvbn from 'zxcvbn';
  *  b) FormsModule
  */
 
-/**  Interface for passing in error messages */
+/**
+ * Interface for passing in error messages
+ * Example:
+ *  errorMessages = {
+ *       required: this.componentLabel + ' is required.',
+ *       minLength: this.componentLabel + ' must be ' + this.minLen + ' characters.',
+ *       criteria: this.componentLabel + ' does not meet password criteria.'
+ *     }
+ */
 export interface PasswordErrorMsg {
   required: string;
   minLength?: string;
@@ -40,27 +47,18 @@ export class PasswordComponent extends Base implements OnInit, OnChanges {
 
 
   // Output from the component
-  @Output() passwordChange: EventEmitter<string> = new EventEmitter<string>();
+  @Output() onPasswordChange: EventEmitter<string> = new EventEmitter<string>();
 
   // Flag for the fa-eye to show or hide password
   public hideValue = true;
   public pswdStrength: number;
   public strengthPercentage = 0;
 
-  constructor() {
+  constructor( private form: NgForm ) {
     super();
   }
 
   ngOnInit() {
-
-    // Use default messages when no error messages are provided
-    if ( !this.errorMessages ) {
-      this.errorMessages = {
-        required: this.componentLabel + ' is required.',
-        minLength: this.componentLabel + ' must be ' + this.minLen + ' characters.',
-        criteria: this.componentLabel + ' does not meet password criteria.'
-      };
-    }
   }
 
   ngOnChanges(changes) {
@@ -77,7 +75,7 @@ export class PasswordComponent extends Base implements OnInit, OnChanges {
    * @param password value the was entered by
    */
   setPassword( password: string ) {
-    this.passwordChange.emit( password );
+    this.onPasswordChange.emit( password );
   }
 
   // Prevent user from pasting data into the text box

@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { PasswordComponent } from './password.component';
 import {FormsModule, NgForm} from '@angular/forms';
 
-fdescribe('PasswordComponent', () => {
+describe('PasswordComponent', () => {
   let component: PasswordComponent;
   let fixture: ComponentFixture<PasswordComponent>;
   let el;

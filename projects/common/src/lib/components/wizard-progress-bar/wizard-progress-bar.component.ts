@@ -2,7 +2,6 @@ import { Component, OnInit, Input, ViewChild, ElementRef,
          ViewChildren, QueryList, ChangeDetectionStrategy,
          ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
-import { Base } from '../../models/base';
 import { filter, map } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 
@@ -23,7 +22,7 @@ export interface WizardProgressItem {
   styleUrls: ['./wizard-progress-bar.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class WizardProgressBarComponent extends Base implements OnInit, OnDestroy {
+export class WizardProgressBarComponent implements OnInit, OnDestroy {
   @Input() progressSteps: WizardProgressItem[] = [];
   @ViewChild('stepContainer') stepContainer: ElementRef;
   @ViewChildren('steps') steps: QueryList<ElementRef<HTMLAnchorElement>>;
@@ -33,7 +32,6 @@ export class WizardProgressBarComponent extends Base implements OnInit, OnDestro
   private routerEvents$: Subscription;
 
   constructor(private router: Router, private cd: ChangeDetectorRef) {
-    super();
    }
 
   ngOnInit() {

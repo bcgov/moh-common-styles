@@ -1,4 +1,4 @@
-/** 
+/**
  * Interface used in the following components/models:
  *  a) person.model.ts
  *  b) date.component.ts
