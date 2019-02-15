@@ -21,7 +21,7 @@ import { Component, OnInit, ElementRef, Input, ViewEncapsulation } from '@angula
 })
 export class PageFrameworkComponent implements OnInit {
 
-  constructor(private elem: ElementRef) { }
+  // constructor(private elem: ElementRef) { }
 
   @Input() layout: 'single' | 'double' | 'blank' | 'default' = 'default';
 
