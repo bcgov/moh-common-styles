@@ -6,5 +6,7 @@
     "entryFile": "src/public_api.ts",
     "styleIncludePaths": ["./src/lib/styles"]
   },
-  "whitelistedNonPeerDependencies": ["."]
+  "whitelistedNonPeerDependencies": [
+    "zxcvbn"
+  ]
 }

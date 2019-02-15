@@ -1,7 +1,10 @@
 import { Component, OnInit, Input, Output, EventEmitter, HostListener, OnChanges, Directive } from '@angular/core';
 import { Base } from '../../models/base';
 import { ControlContainer, NgForm } from '@angular/forms';
-import * as zxcvbn from 'zxcvbn';
+import * as zxcvbn_ from 'zxcvbn';
+// Awkward necessary workaround due to bug in build tools
+// https://github.com/jvandemo/generator-angular2-library/issues/221#issuecomment-355945207
+const zxcvbn = zxcvbn_;
 
 /**
  * NPM package dependencies:
