@@ -2,7 +2,7 @@ import { Component, OnInit, Input, ViewChild, ElementRef,
          ViewChildren, QueryList, ChangeDetectionStrategy,
          ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
-import { Base } from '../models/base';
+import { Base } from '../../models/base';
 import { filter, map } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 
@@ -53,7 +53,7 @@ export class WizardProgressBarComponent extends Base implements OnInit, OnDestro
     this.activeIndex = this.getActiveIndex(this.router.url);
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.cd.detach();
     this.routerEvents$.unsubscribe();
   }
@@ -62,7 +62,7 @@ export class WizardProgressBarComponent extends Base implements OnInit, OnDestro
     const denominator = this.progressSteps.length;
     const numerator = this.activeIndex + 1;
 
-    if (denominator === 0 || numerator >= denominator){
+    if (denominator === 0 || numerator >= denominator) {
       return 100;
     }
 

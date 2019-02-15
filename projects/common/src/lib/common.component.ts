@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'lib-common',
+  selector: 'common-common',
   template: `
     <p>
       common works!
