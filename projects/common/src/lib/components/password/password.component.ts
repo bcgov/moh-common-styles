@@ -47,7 +47,7 @@ export class PasswordComponent extends Base implements OnInit, OnChanges {
 
 
   // Output from the component
-  @Output() onPasswordChange: EventEmitter<string> = new EventEmitter<string>();
+  @Output() passwordChange: EventEmitter<string> = new EventEmitter<string>();
 
   // Flag for the fa-eye to show or hide password
   public hideValue = true;
@@ -75,7 +75,7 @@ export class PasswordComponent extends Base implements OnInit, OnChanges {
    * @param password value the was entered by
    */
   setPassword( password: string ) {
-    this.onPasswordChange.emit( password );
+    this.passwordChange.emit( password );
   }
 
   // Prevent user from pasting data into the text box
