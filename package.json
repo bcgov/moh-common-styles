@@ -1,11 +1,13 @@
 {
-  "name": "common-library-app",
+  "name": "moh-common-styles",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "build:lib": "ng build moh-common-lib",
+    "pack:lib": "cd dist/common && npm pack",
+    "package": "npm run build:lib && npm run pack:lib",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
