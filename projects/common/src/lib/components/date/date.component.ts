@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef, ChangeDetectorRef, forwardRef } from '@angular/core';
 import { Base } from '../../models/base';
 import { SimpleDate } from '../../interfaces/simple-date.interface';
 import { ControlContainer, NgForm } from '@angular/forms';
@@ -27,7 +27,7 @@ export interface DateErrorMsg {
    /* Re-use the same ngForm that it's parent is using. The component will show
    * up in its parents `this.form`, and will auto-update `this.form.valid`
    */
-  viewProviders: [ { provide: ControlContainer, useExisting: NgForm } ]
+  viewProviders: [ { provide: ControlContainer, useExisting: forwardRef(() => NgForm ) } ]
 })
 export class DateComponent extends Base implements OnInit {
   // Exists for unit testing to validate errors set
@@ -51,7 +51,9 @@ export class DateComponent extends Base implements OnInit {
     'July', 'August', 'September', 'October', 'November', 'December'
   ];
 
-  constructor(private form: NgForm, private cd: ChangeDetectorRef) {
+  constructor( private form: NgForm,
+               private cntrlContainer: ControlContainer,
+               private cd: ChangeDetectorRef ) {
     super();
   }
 
@@ -107,7 +109,7 @@ export class DateComponent extends Base implements OnInit {
   private triggerDayValidation() {
     // We have to wrap this in a timeout, otherwise it runs before Angular has updated the values
     setTimeout( () => {
-      console.log( 'constrols: ', this.form.controls );
+      console.log( 'form is valid: ', this.cntrlContainer.valid );
       if ( this.form.controls['day'] ) {
         console.log( 'Trigger day validation' );
         this.form.controls['day'].updateValueAndValidity();

@@ -8,7 +8,7 @@ import { FormsModule, NgForm } from '@angular/forms';
 import * as moment_ from 'moment';
 const moment = moment_;
 
-fdescribe('DateComponent (not using current date)', () => {
+describe('DateComponent (not using current date)', () => {
   let component: DateComponent;
   let fixture: ComponentFixture<DateComponent>;
   const form = new NgForm( null, null);
@@ -81,7 +81,7 @@ fdescribe('DateComponent (not using current date)', () => {
   });
 });
 
-fdescribe('DateComponent (using current date)', () => {
+describe('DateComponent (using current date)', () => {
   let component: DateComponent;
   let fixture: ComponentFixture<DateComponent>;
   const form = new NgForm( null, null);

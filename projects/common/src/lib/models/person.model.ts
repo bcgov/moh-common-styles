@@ -85,4 +85,14 @@ export class Person {
     const dobDt = new Date( this.dateOfBirth.year, this.dateOfBirth.month, this.dateOfBirth.day );
     return Math.ceil( moment( ).diff( dobDt, 'year', true ) );
   }
+
+  /* Copy function */
+  copy( object: Person ) {
+    this.firstName = object.firstName;
+    this.middleName = object.middleName;
+    this.lastName = object.lastName;
+    this.dateOfBirth.month = object.dateOfBirth.month;
+    this.dateOfBirth.day = object.dateOfBirth.day;
+    this.dateOfBirth.year = object.dateOfBirth.year;
+  }
 }
