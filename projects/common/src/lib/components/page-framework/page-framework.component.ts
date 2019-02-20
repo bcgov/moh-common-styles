@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, Input, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
 
 /**
  * The "Page Framework" is a template to be used on FPCare pages to ensure
@@ -20,8 +20,6 @@ import { Component, OnInit, ElementRef, Input, ViewEncapsulation } from '@angula
   encapsulation: ViewEncapsulation.None,
 })
 export class PageFrameworkComponent implements OnInit {
-
-  // constructor(private elem: ElementRef) { }
 
   @Input() layout: 'single' | 'double' | 'blank' | 'default' = 'default';
 
