@@ -19,8 +19,8 @@
   </div>
   <div class="preview-zone">
     <div *ngFor="let mspImage of images" class="preview-item">
-      <msp-thumbnail [imageObject] ="mspImage" (delete) = "deleteImage($event)">
-      </msp-thumbnail>
+      <common-thumbnail [imageObject] ="mspImage" (delete) = "deleteImage($event)">
+      </common-thumbnail>
     </div>
   </div>
 

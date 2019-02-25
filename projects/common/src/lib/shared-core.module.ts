@@ -14,6 +14,8 @@ import { DateFieldFormatDirective } from './components/date/date-field-format.di
 import { YearValidateDirective } from './components/date/year-validate.directive';
 import { DatepickerComponent } from './components/datepicker/datepicker.component';
 import { NgxMyDatePickerModule } from 'ngx-mydatepicker';
+import { FileUploaderComponent } from './components/file-uploader/file-uploader.component';
+import { ThumbnailComponent } from './components/thumbnail/thumbnail.component';
 
 @NgModule({
   imports: [
@@ -33,7 +35,9 @@ import { NgxMyDatePickerModule } from 'ngx-mydatepicker';
     DayValidationDirective,
     DateFieldFormatDirective,
     YearValidateDirective,
-    DatepickerComponent
+    DatepickerComponent,
+    FileUploaderComponent,
+    ThumbnailComponent
   ],
   exports: [
     CoreBreadcrumbComponent,
@@ -45,7 +49,9 @@ import { NgxMyDatePickerModule } from 'ngx-mydatepicker';
     DayValidationDirective,
     DateFieldFormatDirective,
     YearValidateDirective,
-    DatepickerComponent
+    DatepickerComponent,
+    FileUploaderComponent,
+    ThumbnailComponent
   ],
   providers: [
     NgForm
