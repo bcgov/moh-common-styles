@@ -20,6 +20,9 @@ import { Base } from '../../models/base';
 const loadImage = require('blueimp-load-image');
 const sha1 = require('sha1');
 
+// TODO - Remove this and fix tslint issues
+/* tslint:disable:max-line-length*/
+
 @Component({
     selector: 'common-file-uploader',
     templateUrl: './file-uploader.component.html',
@@ -50,14 +53,35 @@ export class FileUploaderComponent extends Base
     @Output() addDocument: EventEmitter<MspImage> = new EventEmitter<MspImage>();
     @Output() errorDocument: EventEmitter<MspImage> = new EventEmitter<MspImage>();
     @Output() deleteDocument: EventEmitter<MspImage> = new EventEmitter<MspImage>();
-    application: ApplicationBase ;
+    // application: ApplicationBase ;
 
-    constructor(private dataService: MspDataService,
-                private logService: MspLogService,
+    constructor(
+                // private dataService: MspDataService,
+                // private logService: MspLogService,
                 private zone: NgZone,
                 private cd: ChangeDetectorRef , private router: Router) {
         super();
-        this.application = this.getApplicationType();
+        // this.application = this.getApplicationType();
+    }
+
+        /**
+     * Return true if file already exists in the list; false otherwise.
+     */
+    static checkImageExists(file: MspImage, imageList: Array<MspImage>) {
+        if (!imageList || imageList.length < 1) {
+            return false;
+        } else {
+
+            const sha1Sum = sha1(file.fileContent);
+            for (let i = imageList.length - 1; i >= 0; i--) {
+                // console.log(`compare  ${imageList[i].id} with ${sha1Sum}, result ${imageList[i].id === sha1Sum}`);
+                if (imageList[i].id === sha1Sum) {
+                    console.log(`This file ${file.name} has already been uploaded.`);
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 
     /**
@@ -90,7 +114,7 @@ export class FileUploaderComponent extends Base
      System processing steps
 
      1. User clicks browse or drag-n-drops an file
-     2. For browse case, the browser is told to only accept mime type image/*, .JPG, .GIF, .PNG, etc, 
+     2. For browse case, the browser is told to only accept mime type image/*, .JPG, .GIF, .PNG, etc,
      however user can override and for drag-n-drop we don't can't impose this filter
      4. Using the HTML5 File API, we open a handle on the file
      5. Read the filename for later display to the user
@@ -276,7 +300,9 @@ export class FileUploaderComponent extends Base
 
         // Init
         const self = this;
-       let  pageNumber = Math.max(...self.images.concat( self.application.getAllImages()).map(function(o) {return o.attachmentOrder; }), 0) + 1 ;
+    //    let  pageNumber = Math.max(...self.images.concat( self.application.getAllImages()).map(function(o) {return o.attachmentOrder; }), 0) + 1 ;
+       let pageNumber = Math.max(...self.images.map(function(o) {return o.attachmentOrder; }), 0) + 1 ;
+
         // Create our observer
         const fileObservable = Observable.create((observer: Observer<MspImage>) => {
             const mspImages = [];
@@ -294,8 +320,8 @@ export class FileUploaderComponent extends Base
                 // // Copy file properties
                 // mspImage.name = file.name;
                 if (file.type === 'application/pdf') {
-                    this.logService.log({name: file.name + ' Received in Upload',
-                        UUID: self.dataService.getMspUuid()}, 'File_Upload');
+                    // this.logService.log({name: file.name + ' Received in Upload',
+                    //     UUID: self.dataService.getMspUuid()}, 'File_Upload');
 
                     /**
                      *  Page number logic :
@@ -308,8 +334,8 @@ export class FileUploaderComponent extends Base
                     this.readPDF(file, pdfScaleFactor, (images: HTMLImageElement[] , pdfFile: File) => {
 
 
-                        this.logService.log({name: file.name + 'is successfully split into ' + images.length + ' images',
-                            UUID: self.dataService.getMspUuid()}, 'File_Upload');
+                        // this.logService.log({name: file.name + 'is successfully split into ' + images.length + ' images',
+                            // UUID: self.dataService.getMspUuid()}, 'File_Upload');
 
                         images.map((image, index) => {
                             image.name = pdfFile.name;
@@ -387,9 +413,7 @@ export class FileUploaderComponent extends Base
                         mspImage.size = blob.size;
 
                         // log image info (but only for the first time before any scaling)
-                        if (scaleFactors.widthFactor === self.appConstants.images.reductionScaleFactor) {
-                            self.logImageInfo('msp_file-uploader_before_resize_attributes', self.dataService.getMspUuid(), mspImage, '  mspImagefileName: ' + mspImage.name);
-                        }
+                        // if (s
 
                         const fileName = mspImage.name;
                         const nBytes = mspImage.size;
@@ -554,7 +578,8 @@ export class FileUploaderComponent extends Base
         reader.onload = function (progressEvt: ProgressEvent) {
 
             const docInitParams = {data: reader.result};
-            PDFJS.getDocument(docInitParams).then((pdfdoc) => {
+            // TODO - The 'as any' was added when porting to common library from MSP
+            PDFJS.getDocument((docInitParams as any)).then((pdfdoc) => {
                 const numPages = pdfdoc.numPages;
                 if (currentPage <= pdfdoc.numPages) { getPage(); }
 
@@ -627,8 +652,8 @@ export class FileUploaderComponent extends Base
         if (this.images.length >= this.appConstants.images.maxImagesPerPerson) {
 
             // log it
-            this.logImageInfo('msp_file-uploader_error', this.dataService.getMspUuid(),
-                mspImage, `Number of image files exceeds max of ${this.appConstants.images.maxImagesPerPerson}`);
+            // this.logImageInfo('msp_file-uploader_error', this.dataService.getMspUuid(),
+            //     mspImage, `Number of image files exceeds max of ${this.appConstants.images.maxImagesPerPerson}`);
 
             // log to console
             console.log(`Max number of image file you can upload is ${this.appConstants.images.maxImagesPerPerson}.
@@ -650,9 +675,9 @@ export class FileUploaderComponent extends Base
 
         // log the error
         if (error !== MspImageError.PDFnotSupported) {
-            this.logImageInfo('msp_file-uploader_error', this.dataService.getMspUuid(), mspImage,
-                '  mspImageFile: ' + mspImage.name + '  mspErrorNum: ' + error + '  mspError: ' +
-                error + '-' + errorDescription);
+            // this.logImageInfo('msp_file-uploader_error', this.dataService.getMspUuid(), mspImage,
+            //     '  mspImageFile: ' + mspImage.name + '  mspErrorNum: ' + error + '  mspError: ' +
+            //     error + '-' + errorDescription);
         }
 
         // console.log("error with image: ", mspImage);
@@ -712,25 +737,7 @@ export class FileUploaderComponent extends Base
         // );
     }
 
-    /**
-     * Return true if file already exists in the list; false otherwise.
-     */
-    static checkImageExists(file: MspImage, imageList: Array<MspImage>) {
-        if (!imageList || imageList.length < 1) {
-            return false;
-        } else {
 
-            const sha1Sum = sha1(file.fileContent);
-            for (let i = imageList.length - 1; i >= 0; i--) {
-                // console.log(`compare  ${imageList[i].id} with ${sha1Sum}, result ${imageList[i].id === sha1Sum}`);
-                if (imageList[i].id === sha1Sum) {
-                    console.log(`This file ${file.name} has already been uploaded.`);
-                    return true;
-                }
-            }
-            return false;
-        }
-    }
 
     /**
      * Return true if the image size is within range
@@ -750,17 +757,17 @@ export class FileUploaderComponent extends Base
         }
         return true;
     }
-    getApplicationType(): ApplicationBase  {
-        if (this.router.url.indexOf('/assistance/') !== -1) {
-            return this.dataService.finAssistApp;
-        }
-        if (this.router.url.indexOf('/application/') !== -1) {
-            return this.dataService.getMspApplication();
-        }
-        if (this.router.url.indexOf('/account/') !== -1) {
-            return this.dataService.getMspAccountApp();
-        }
-    }
+    // getApplicationType(): ApplicationBase  {
+    //     if (this.router.url.indexOf('/assistance/') !== -1) {
+    //         return this.dataService.finAssistApp;
+    //     }
+    //     if (this.router.url.indexOf('/application/') !== -1) {
+    //         return this.dataService.getMspApplication();
+    //     }
+    //     if (this.router.url.indexOf('/account/') !== -1) {
+    //         return this.dataService.getMspAccountApp();
+    //     }
+    // }
 
 
 }
