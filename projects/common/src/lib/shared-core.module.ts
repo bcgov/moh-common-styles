@@ -12,13 +12,16 @@ import { DateComponent } from './components/date/date.component';
 import { DayValidationDirective } from './components/date/day-validation.directive';
 import { DateFieldFormatDirective } from './components/date/date-field-format.directive';
 import { YearValidateDirective } from './components/date/year-validate.directive';
+import { DatepickerComponent } from './components/datepicker/datepicker.component';
+import { NgxMyDatePickerModule } from 'ngx-mydatepicker';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     ProgressbarModule.forRoot(),
-    RouterModule
+    RouterModule,
+    NgxMyDatePickerModule.forRoot()
   ],
   declarations: [
     CoreBreadcrumbComponent,
@@ -29,7 +32,8 @@ import { YearValidateDirective } from './components/date/year-validate.directive
     DateComponent,
     DayValidationDirective,
     DateFieldFormatDirective,
-    YearValidateDirective
+    YearValidateDirective,
+    DatepickerComponent
   ],
   exports: [
     CoreBreadcrumbComponent,
@@ -40,7 +44,8 @@ import { YearValidateDirective } from './components/date/year-validate.directive
     DateComponent,
     DayValidationDirective,
     DateFieldFormatDirective,
-    YearValidateDirective
+    YearValidateDirective,
+    DatepickerComponent
   ],
   providers: [
     NgForm
