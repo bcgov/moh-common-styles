@@ -53,7 +53,7 @@ export class DatepickerComponent implements OnInit, OnChanges {
 
 
   /** Format for how to display the date to the user. */
-  @Input() dateFormat: string = 'dd/mm/yyyy';
+  @Input() dateFormat: string = 'yyyy/mm/dd';
 
   /** Datetime model used to interface with ngx-datepicker. */
   // model: any;
