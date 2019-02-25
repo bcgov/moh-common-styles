@@ -27,12 +27,14 @@
     "@angular/platform-browser-dynamic": "^6.1.0",
     "@angular/router": "^6.1.0",
     "@types/pdfjs-dist": "^0.1.2",
+    "blueimp-load-image": "^2.20.1",
     "bootstrap": "^4.0.0",
     "core-js": "^2.5.4",
     "moment": "^2.24.0",
     "ngx-bootstrap": "^3.2.0",
     "pdfjs-dist": "^2.0.550",
     "rxjs": "6.3.1",
+    "sha1": "^1.1.1",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {

@@ -17,8 +17,18 @@ import {Router} from '@angular/router';
 import { Base } from '../../models/base';
 // import {ApplicationBase} from '../../model/application-base.model';
 
-const loadImage = require('blueimp-load-image');
-const sha1 = require('sha1');
+// const loadImage = require('blueimp-load-image');
+// const sha1 = require('sha1');
+
+import * as loadImage_ from 'blueimp-load-image';
+const loadImage = loadImage_;
+import * as sha1_ from 'sha1';
+const sha1 = sha1_;
+
+// const PDFJS: PDFJSStatic = require('pdfjs-dist');
+import * as PDFJS_ from 'pdfjs-dist';
+const PDFJS: PDFJSStatic = (PDFJS_ as any);
+
 
 // TODO - Remove this and fix tslint issues
 /* tslint:disable:max-line-length*/
@@ -772,4 +782,3 @@ export class FileUploaderComponent extends Base
 
 }
 
-const PDFJS: PDFJSStatic = require('pdfjs-dist');
