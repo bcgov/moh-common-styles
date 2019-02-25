@@ -1,6 +1,6 @@
 {
   "name": "moh-common-lib",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A library of Angular components, services, and styles for B.C. Government Ministry of Health (MoH).",
   "keywords": ["bcgov", "moh", "british columbia"],
   "license": "SEE LICENSE IN LICENSE",
