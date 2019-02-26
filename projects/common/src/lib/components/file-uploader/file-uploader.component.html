@@ -11,12 +11,12 @@
         <span class='d-block description'>{{ instructionText }}</span>
       </label>
       
-      <!-- TODO - STYLE/ENABLE/TEST THE BELOW FOR MOBILE ONLY! -->
-      <span class="mobileShow">or</span>
+      <!-- TODO - STYLE/ENABLE/TEST THE BELOW FOR MOBILE ONLY! Also need to test on a phone after deploying to OpenShift-->
+      <span class="d-block d-sm-none">or</span>
       <input type="file" id="fileUploadUseCamera-{{id}}" #captureFileRef accept="image/*,application/pdf" capture="camera"
              tabindex="0" multiple />
-      <span class="fa fa-camera mobileShow" aria-hidden="true"></span>
-      <label for="fileUploadUseCamera-{{id}}" class="file-upload-label mobileShow" tabindex="0">
+      <span class="fa fa-camera d-block d-sm-none fa-4x" aria-hidden="true"></span>
+      <label for="fileUploadUseCamera-{{id}}" class="file-upload-label description d-block d-sm-none" tabindex="0">
         take a photo
       </label>
 
