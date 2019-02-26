@@ -1,5 +1,16 @@
 @import 'variables.scss';
 
+.color-body {
+  color: $body-color;
+}
+
+.description {
+  font-weight: 400;
+}
+
+.upload-icon {
+  
+}
 .dropzone {
   border: 2px dashed lightgrey;
   margin-bottom: 10px;

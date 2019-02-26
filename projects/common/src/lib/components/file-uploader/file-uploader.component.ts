@@ -47,7 +47,7 @@ export class FileUploaderComponent extends Base
     @ViewChild('dropZone') dropZone: ElementRef;
     @ViewChild('browseFileRef') browseFileRef: ElementRef;
     @ViewChild('captureFileRef') captureFileRef: ElementRef;
-    // @ViewChild('imagePlaceholderRef') imagePlaceholderRef: ElementRef;
+    @ViewChild('imagePlaceholderRef') imagePlaceholderRef: ElementRef;
     @ViewChild('selectFileLabel') selectFileLabelRef: ElementRef;
 
     @ContentChild('uploadInstruction') uploadInstructionRef: ElementRef;
@@ -55,6 +55,7 @@ export class FileUploaderComponent extends Base
     @Input() id: string;
     @Input() showError: boolean;
     @Input() required: boolean = false;
+    @Input() instructionText: string = 'Please upload required ID documents.';
 
     @ViewChild('canvas') canvas: ElementRef;
 
@@ -62,7 +63,6 @@ export class FileUploaderComponent extends Base
     @Output() addDocument: EventEmitter<MspImage> = new EventEmitter<MspImage>();
     @Output() errorDocument: EventEmitter<MspImage> = new EventEmitter<MspImage>();
     @Output() deleteDocument: EventEmitter<MspImage> = new EventEmitter<MspImage>();
-    // application: ApplicationBase ;
 
     constructor(
                 // private dataService: MspDataService,
@@ -274,13 +274,13 @@ export class FileUploaderComponent extends Base
     ngAfterContentInit() {
 
         const imagePlaceholderEnterKeyStream = merge(
-            // fromEvent<Event>(this.imagePlaceholderRef.nativeElement, 'keyup'),
+            fromEvent<Event>(this.imagePlaceholderRef.nativeElement, 'keyup'),
             fromEvent<Event>(this.selectFileLabelRef.nativeElement, 'keyup'),
             fromEvent<Event>(this.uploadInstructionRef.nativeElement, 'keyup')
         ).pipe(filter((evt: KeyboardEvent) => evt.key === 'Enter'));
 
         merge(
-            // fromEvent<Event>(this.imagePlaceholderRef.nativeElement, 'click'),
+            fromEvent<Event>(this.imagePlaceholderRef.nativeElement, 'click'),
             fromEvent<Event>(this.uploadInstructionRef.nativeElement, 'click'),
             imagePlaceholderEnterKeyStream
         ).pipe(

@@ -1,23 +1,26 @@
 <form #formRef="ngForm">
   <div class="dropzone" #dropZone>
 
-    <div class="instruction-zone d-flex align-items-center">
-      <i class="fa fa-cloud-upload fa-4x d-inline-block" aria-hidden="true"></i>
+    <div class="instruction-zone d-flex align-items-center flex-wrap flex-sm-nowrap flex-column flex-sm-row">
+      <i class="fa fa-cloud-upload fa-4x d-inline-block upload-icon" aria-hidden="true" #imagePlaceholderRef tabindex="0"></i>
 
       <input type="file" id="fileUploadBrowse-{{id}}" #browseFileRef accept="image/*,application/pdf" style="display:none;"
              tabindex="0" multiple />
-      <label for="fileUploadBrowse-{{id}}" class="file-upload-label d-inline-block h3 ml-3" #selectFileLabel tabindex="0">
-
-        Select a file
+      <label for="fileUploadBrowse-{{id}}" class="file-upload-label d-inline-block ml-3" #selectFileLabel tabindex="0">
+        <span class='h2 color-body'>Select a file</span>
+        <span class='d-block description'>{{ instructionText }}</span>
       </label>
+      
+      <!-- TODO - STYLE/ENABLE/TEST THE BELOW FOR MOBILE ONLY! -->
       <span class="mobileShow">or</span>
       <input type="file" id="fileUploadUseCamera-{{id}}" #captureFileRef accept="image/*,application/pdf" capture="camera"
              tabindex="0" multiple />
-      <span class="glyphicon glyphicon-camera mobileShow" aria-hidden="true"></span>
+      <span class="fa fa-camera mobileShow" aria-hidden="true"></span>
       <label for="fileUploadUseCamera-{{id}}" class="file-upload-label mobileShow" tabindex="0">
         take a photo
       </label>
-      <br />
+
+      <!-- <br /> -->
     </div>
     <div class="preview-zone">
       <div *ngFor="let mspImage of images" class="preview-item">
@@ -30,13 +33,7 @@
           large size to display on screen.
        -->
     <div class="preview-zone">
-      <div class="preview-item" [ngClass]="{'error-style': noIdImage}">
-        <!-- <i class="fa fa-file-image-o fa-5x icon-upload" tabindex="0" #imagePlaceholderRef aria-hidden="true"></i> -->
-
-        <p class="text-upload" [ngClass]="{'error-style': showError}">
-          <ng-content></ng-content>
-        </p>
-
+      <div class="preview-item">
       </div>
     </div>
 
