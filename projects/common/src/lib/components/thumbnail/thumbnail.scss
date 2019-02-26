@@ -3,13 +3,10 @@
 .thumbnail-container {
   transition: 0.3s;
   transform: translateY(0);
-  &:hover {
-    transform: translateY(-10px);
-  }
 
   .image-thumbnail, .image-thumbnail-width-priority {
     padding: 2px 2px 0 2px;
-    border-radius: 5%;
+    border-radius: 5px 5px 0px 0px;
 
     &:hover {
       cursor: -webkit-zoom-in;
@@ -24,17 +21,26 @@
     width: 270px;
   }
 
+  &:hover {
+    box-shadow: 0px 15px 10px -10px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+
+    .action-strip {
+      background: darken($gray, 2.5%);
+    }
+  }
+
   .action-strip {
     height: 2em;
+    border-radius: 0px 0px 5px 5px;
+    background: $gray;
     text-align: right;
     font-size: small;
     margin: 0 2px 0 2px;
     color: $color-danger;
     padding: 0.3em;
-    
-    &:hover {
-      background: lightgrey;
-    }
+    transition: 0.3s;  
+  
     a {
       text-decoration: none;
     }
