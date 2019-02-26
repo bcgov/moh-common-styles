@@ -3,7 +3,7 @@
     [ngClass]="{'image-thumbnail': scaledWidth <= 300, 'image-thumbnail-width-priority': scaledWidth > 300}"
     (click)="showFullSizeView()">
   <div class="action-strip" *ngIf="!reviewMode">
-    <a href="javascript:void(0)" (click)="delete($event)" tabindex="0">Delete</a>
+    <a href="javascript:void(0)" (click)="delete($event)" class='text-danger' tabindex="0">Remove</a>
   </div>
 </div>
 
@@ -11,15 +11,15 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
+        <h4 class="modal-title">{{imageObject.name}}</h4>
         <button type="button" class="close" (click)="hideFullSizeView()" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h4 class="modal-title">{{imageObject.name}}</h4>
       </div>
       <div class="modal-body">
         <div class="row">
           <div class="col-md-12" >
-            <img [src]="imageObject.fileContent" alt="" class="center-block img-fluid">
+            <img [src]="imageObject.fileContent" alt="{{imageObject.name}}" class="center-block img-fluid">
           </div>
         </div>
       </div>

@@ -47,9 +47,8 @@ export class FileUploaderComponent extends Base
     @ViewChild('dropZone') dropZone: ElementRef;
     @ViewChild('browseFileRef') browseFileRef: ElementRef;
     @ViewChild('captureFileRef') captureFileRef: ElementRef;
-    @ViewChild('imagePlaceholderRef') imagePlaceholderRef: ElementRef;
+    // @ViewChild('imagePlaceholderRef') imagePlaceholderRef: ElementRef;
     @ViewChild('selectFileLabel') selectFileLabelRef: ElementRef;
-    @ViewChild('staticModal') staticModalRef: ModalDirective;
 
     @ContentChild('uploadInstruction') uploadInstructionRef: ElementRef;
     @Input() images: Array<MspImage>;
@@ -275,13 +274,13 @@ export class FileUploaderComponent extends Base
     ngAfterContentInit() {
 
         const imagePlaceholderEnterKeyStream = merge(
-            fromEvent<Event>(this.imagePlaceholderRef.nativeElement, 'keyup'),
+            // fromEvent<Event>(this.imagePlaceholderRef.nativeElement, 'keyup'),
             fromEvent<Event>(this.selectFileLabelRef.nativeElement, 'keyup'),
             fromEvent<Event>(this.uploadInstructionRef.nativeElement, 'keyup')
         ).pipe(filter((evt: KeyboardEvent) => evt.key === 'Enter'));
 
         merge(
-            fromEvent<Event>(this.imagePlaceholderRef.nativeElement, 'click'),
+            // fromEvent<Event>(this.imagePlaceholderRef.nativeElement, 'click'),
             fromEvent<Event>(this.uploadInstructionRef.nativeElement, 'click'),
             imagePlaceholderEnterKeyStream
         ).pipe(
@@ -309,6 +308,8 @@ export class FileUploaderComponent extends Base
      * @param scaleFactors
      */
     observableFromFiles(fileList: FileList, scaleFactors: MspImageScaleFactors) {
+        /** Previously this was set in appConstants, but that's removed from the common lib. */
+        const reductionScaleFactor = 0.8;
 
         console.log('obserablveFromFiles');
 
@@ -320,13 +321,14 @@ export class FileUploaderComponent extends Base
         // Create our observer
         const fileObservable = Observable.create((observer: Observer<MspImage>) => {
             const mspImages = [];
-            scaleFactors = scaleFactors.scaleDown(self.appConstants.images.reductionScaleFactor);
+            scaleFactors = scaleFactors.scaleDown(reductionScaleFactor);
             for (let fileIndex = 0; fileIndex < fileList.length; fileIndex++) {
                 const file = fileList[fileIndex];
                 console.log('Start processing file ' + fileIndex + ' of ' + fileList.length + ' %s of size %s bytes %s type', file.name, file.size, file.type);
 
 
-                const pdfScaleFactor = self.appConstants.images.pdfScaleFactor;
+                /* Previously set in appConstants */
+                const pdfScaleFactor = 2.0;
 
                 // let mspImage: MspImage = new MspImage();
                 // let reader: FileReader = new FileReader();
@@ -406,7 +408,7 @@ export class FileUploaderComponent extends Base
             ${mspImage.naturalHeight} x ${mspImage.naturalWidth}`);
 
         // Canvas will force the change to a JPEG
-        mspImage.contentType = self.appConstants.images.convertToMimeType;
+        mspImage.contentType = 'image/jpeg'; // previously in appConstants
 
         // Scale the image by loading into a canvas
 
@@ -456,15 +458,17 @@ export class FileUploaderComponent extends Base
                             // keep scaling down the image until the image size is
                             // under max image size
 
-                            if (mspImage.size > self.appConstants.images.maxSizeBytes) {
+                            /** previously in appConstants */
+                            const maxSizeBytes = 1048576;
+                            if (mspImage.size > maxSizeBytes) {
 
                                 console.log('File size after scaling down: %d, max file size allowed: %d',
-                                    mspImage.size, self.appConstants.images.maxSizeBytes);
+                                    mspImage.size, maxSizeBytes);
 
                                 const imageTooBigError: MspImageProcessingError =
                                     new MspImageProcessingError(MspImageError.TooBig);
 
-                                imageTooBigError.maxSizeAllowed = self.appConstants.images.maxSizeBytes;
+                                imageTooBigError.maxSizeAllowed = maxSizeBytes;
                                 imageTooBigError.mspImage = mspImage;
 
                                 observer.error(imageTooBigError);
@@ -478,11 +482,11 @@ export class FileUploaderComponent extends Base
                     },
 
                     // What mime type to make the blob as and jpeg quality
-                    self.appConstants.images.convertToMimeType, self.appConstants.images.jpegQuality);
+                    'image/jpeg', 0.5);
             },
             {
-                maxWidth: self.appConstants.images.maxWidth * scaleFactors.widthFactor,
-                maxHeight: self.appConstants.images.maxHeight * scaleFactors.heightFactor,
+                maxWidth: 2600 * scaleFactors.widthFactor,
+                maxHeight: 3300 * scaleFactors.heightFactor,
                 contain: true,
                 canvas: true,
                 meta: true,
@@ -664,14 +668,14 @@ export class FileUploaderComponent extends Base
 
     handleImageFile(mspImage: MspImage) {
         console.log('image size (bytes) after compression: ' + mspImage.size);
-        if (this.images.length >= this.appConstants.images.maxImagesPerPerson) {
+        if (this.images.length >= 50) {
 
             // log it
             // this.logImageInfo('msp_file-uploader_error', this.dataService.getMspUuid(),
-            //     mspImage, `Number of image files exceeds max of ${this.appConstants.images.maxImagesPerPerson}`);
+            //     mspImage, `Number of image files exceeds max of ${50}`);
 
             // log to console
-            console.log(`Max number of image file you can upload is ${this.appConstants.images.maxImagesPerPerson}.
+            console.log(`Max number of image file you can upload is ${50}.
       This file ${mspImage.name} was not uploaded.`);
         } else {
             this.addDocument.emit(mspImage);
@@ -711,7 +715,6 @@ export class FileUploaderComponent extends Base
     }
 
     deleteImage(mspImage: MspImage) {
-        // this.staticModalRef.show();
         this.resetInputFields();
         this.deleteDocument.emit(mspImage);
     }
@@ -759,8 +762,8 @@ export class FileUploaderComponent extends Base
      * @param file
      */
     checkImageDimensions(file: MspImage): boolean {
-        if (file.naturalHeight < this.appConstants.images.minHeight ||
-            file.naturalWidth < this.appConstants.images.minWidth) {
+        if (file.naturalHeight < 0 ||
+            file.naturalWidth < 0 ) {
             return false;
         }
         return true;

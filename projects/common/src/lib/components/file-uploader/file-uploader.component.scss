@@ -1,33 +1,23 @@
-// label.btn {
-//   input {
-//     display: none;
-//   }
-// }
-
-// form {
-//   input {
-//     display: none;
-//   }
-// }
-
+@import 'variables.scss';
 
 .dropzone {
   border: 2px dashed lightgrey;
   margin-bottom: 10px;
   border-radius: 8px;
-  height: 15%;
+  // height: 15%;
+  padding: 2em 4em;
+
   .instruction-zone {
     margin: 10px 5px 5px;
-    /*height: 300px;*/
-    text-align: center;
+    text-align: left;
     input {
       display: none;
     }
     .file-upload-label {
-      color: darkblue;
+      color: $body-color;
     }  
     .file-upload-label:hover {
-      text-decoration: underline;
+      text-decoration: none;
       cursor: pointer;
 
     }
@@ -37,20 +27,15 @@
     display:flex;
     flex-wrap: wrap;
     justify-content: left;
-    align-items: center;
+    align-items: left;
     
     .preview-item {
-      /*width: 200px; */
       position:relative;
       height: 120px; 
-      // border: 2px solid red;
+      text-align: left;
+      margin-left: 6rem;
 
-      /* top | horizontal | bottom */
-      /*margin: 5px;*/
 
-      /* vertical | horizontal */
-      margin: 5px auto;
-      text-align: center;
       /* Upload Icon CSS*/
       .icon-upload{
         opacity: 0.3;
@@ -62,7 +47,7 @@
       }
 
       .text-upload{
-        text-decoration: underline;
+        // text-decoration: underline;
         &:hover{
           cursor: pointer;
         }

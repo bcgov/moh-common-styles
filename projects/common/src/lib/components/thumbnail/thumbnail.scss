@@ -1,44 +1,36 @@
+@import 'variables.scss';
+
 .thumbnail-container {
-  /*border: 2px solid purple;*/
-  /*margin: 2px;*/
+  transition: 0.3s;
+  transform: translateY(0);
   &:hover {
-    border: 1px solid gray;
-    /*opacity: 0.5;*/
+    transform: translateY(-10px);
   }
-  .image-thumbnail {
-    /*border: 1px solid green;*/
-    /*margin-bottom: 15px;*/
-    /*height: 200px;*/
-    /*margin: 20px;*/
+
+  .image-thumbnail, .image-thumbnail-width-priority {
     padding: 2px 2px 0 2px;
-    height: 100px;
+    border-radius: 5%;
+
     &:hover {
-      /*background: green;*/
-      /*opacity: 0.7;*/
-      cursor: -webkit-zoom-in;
-      cursor: zoom-in;  
-    }
-  }
-  .image-thumbnail-width-priority {
-    /*border: 1px solid green;*/
-    /*margin-bottom: 15px;*/
-    /*height: 200px;*/
-    /*margin: 20px;*/
-    padding: 2px 2px 0 2px;
-    width: 270px;
-    &:hover {
-      /*background: green;*/
-      /*opacity: 0.7;*/
       cursor: -webkit-zoom-in;
       cursor: zoom-in;  
     }
   }
 
+  .image-thumbnail {
+    height: 100px;
+  }
+  .image-thumbnail-width-priority {
+    width: 270px;
+  }
+
   .action-strip {
-    height: 20px;
-    text-align: center;
+    height: 2em;
+    text-align: right;
     font-size: small;
     margin: 0 2px 0 2px;
+    color: $color-danger;
+    padding: 0.3em;
     
     &:hover {
       background: lightgrey;
