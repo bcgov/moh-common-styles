@@ -52,6 +52,7 @@ export class FileUploaderComponent extends Base
 
     @ContentChild('uploadInstruction') uploadInstructionRef: ElementRef;
     @Input() images: Array<MspImage>;
+    @Output() imagesChange: EventEmitter<Array<MspImage>> = new EventEmitter<Array<MspImage>>();
     @Input() id: string;
     @Input() showError: boolean;
     @Input() required: boolean = false;
@@ -60,9 +61,7 @@ export class FileUploaderComponent extends Base
     @ViewChild('canvas') canvas: ElementRef;
 
 
-    @Output() addDocument: EventEmitter<MspImage> = new EventEmitter<MspImage>();
     @Output() errorDocument: EventEmitter<MspImage> = new EventEmitter<MspImage>();
-    @Output() deleteDocument: EventEmitter<MspImage> = new EventEmitter<MspImage>();
 
     constructor(
                 // private dataService: MspDataService,
@@ -77,7 +76,6 @@ export class FileUploaderComponent extends Base
      * Return true if file already exists in the list; false otherwise.
      */
     static checkImageExists(file: MspImage, imageList: Array<MspImage>) {
-        console.log('checkImageExists');
         if (!imageList || imageList.length < 1) {
             return false;
         } else {
@@ -645,7 +643,6 @@ export class FileUploaderComponent extends Base
      * @param canvas
      */
     makeGrayScale(canvas: HTMLCanvasElement): void {
-        console.log('makeGrayScale')
         const context = canvas.getContext('2d');
 
         const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
@@ -678,7 +675,8 @@ export class FileUploaderComponent extends Base
             console.log(`Max number of image file you can upload is ${50}.
       This file ${mspImage.name} was not uploaded.`);
         } else {
-            this.addDocument.emit(mspImage);
+            this.images.push(mspImage);
+            this.imagesChange.emit(this.images);
             this.showError = false;
             this.noIdImage = false;
         }
@@ -716,7 +714,8 @@ export class FileUploaderComponent extends Base
 
     deleteImage(mspImage: MspImage) {
         this.resetInputFields();
-        this.deleteDocument.emit(mspImage);
+        this.images = this.images.filter(x => x.uuid !== mspImage.uuid);
+        this.imagesChange.emit(this.images);
     }
 
     /**
