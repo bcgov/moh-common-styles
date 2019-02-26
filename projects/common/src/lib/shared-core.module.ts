@@ -6,7 +6,7 @@ import { PageFrameworkComponent } from './components/page-framework/page-framewo
 import { PasswordComponent } from './components/password/password.component';
 import { WizardProgressBarComponent } from './components/wizard-progress-bar/wizard-progress-bar.component';
 import { NgForm, FormsModule } from '@angular/forms';
-import { ProgressbarModule } from 'ngx-bootstrap';
+import { ProgressbarModule, ModalModule } from 'ngx-bootstrap';
 import { RouterModule } from '@angular/router';
 import { DateComponent } from './components/date/date.component';
 import { DayValidationDirective } from './components/date/day-validation.directive';
@@ -23,7 +23,8 @@ import { ThumbnailComponent } from './components/thumbnail/thumbnail.component';
     FormsModule,
     ProgressbarModule.forRoot(),
     RouterModule,
-    NgxMyDatePickerModule.forRoot()
+    NgxMyDatePickerModule.forRoot(),
+    ModalModule.forRoot()
   ],
   declarations: [
     CoreBreadcrumbComponent,

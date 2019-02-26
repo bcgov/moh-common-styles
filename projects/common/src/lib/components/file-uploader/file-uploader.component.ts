@@ -40,7 +40,7 @@ const PDFJS: PDFJSStatic = (PDFJS_ as any);
 })
 export class FileUploaderComponent extends Base
     implements OnInit, OnChanges, AfterContentInit {
-    lang = require('./i18n');
+    // lang = require('./i18n');
     noIdImage: Boolean = false;
     private appConstants;
     @ViewChild('formRef') form: NgForm;
@@ -78,6 +78,7 @@ export class FileUploaderComponent extends Base
      * Return true if file already exists in the list; false otherwise.
      */
     static checkImageExists(file: MspImage, imageList: Array<MspImage>) {
+        console.log('checkImageExists');
         if (!imageList || imageList.length < 1) {
             return false;
         } else {
@@ -186,6 +187,7 @@ export class FileUploaderComponent extends Base
             )),
             filesArrayFromDrop).pipe(
                 filter(files => {
+                    console.log('files');
                     return !!files && files.length && files.length > 0;
                 }),
                 flatMap(
@@ -307,6 +309,8 @@ export class FileUploaderComponent extends Base
      * @param scaleFactors
      */
     observableFromFiles(fileList: FileList, scaleFactors: MspImageScaleFactors) {
+
+        console.log('obserablveFromFiles');
 
         // Init
         const self = this;
@@ -637,6 +641,7 @@ export class FileUploaderComponent extends Base
      * @param canvas
      */
     makeGrayScale(canvas: HTMLCanvasElement): void {
+        console.log('makeGrayScale')
         const context = canvas.getContext('2d');
 
         const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
@@ -762,6 +767,7 @@ export class FileUploaderComponent extends Base
     }
 
     isValid(): boolean {
+        console.log('isValid', this.images);
         if (this.required) {
             return this.images && this.images.length > 0;
         }
