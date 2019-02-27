@@ -7,7 +7,8 @@ import { ModalDirective} from 'ngx-bootstrap';
 import { PDFJSStatic } from 'pdfjs-dist';
 import { Observable ,  Observer, fromEvent, merge } from 'rxjs';
 import {map, filter, flatMap, scan, delay, retryWhen} from 'rxjs/operators';
-import { MspImage, MspImageError, MspImageProcessingError, MspImageScaleFactors, MspImageScaleFactorsImpl } from '../../models/images';
+import { CommonImage, CommonImageError, CommonImageProcessingError,
+    CommonImageScaleFactors, CommonImageScaleFactorsImpl } from '../../models/images';
 // import { MspLogService } from '../../service/log.service';
 // import { MspDataService } from '../../service/msp-data.service';
 // import { BaseComponent } from '../base.component';
@@ -51,8 +52,8 @@ export class FileUploaderComponent extends Base
     @ViewChild('selectFileLabel') selectFileLabelRef: ElementRef;
 
     @ContentChild('uploadInstruction') uploadInstructionRef: ElementRef;
-    @Input() images: Array<MspImage>;
-    @Output() imagesChange: EventEmitter<Array<MspImage>> = new EventEmitter<Array<MspImage>>();
+    @Input() images: Array<CommonImage>;
+    @Output() imagesChange: EventEmitter<Array<CommonImage>> = new EventEmitter<Array<CommonImage>>();
     @Input() id: string;
     @Input() showError: boolean;
     @Input() required: boolean = false;
@@ -61,7 +62,7 @@ export class FileUploaderComponent extends Base
     @ViewChild('canvas') canvas: ElementRef;
 
 
-    @Output() errorDocument: EventEmitter<MspImage> = new EventEmitter<MspImage>();
+    @Output() errorDocument: EventEmitter<CommonImage> = new EventEmitter<CommonImage>();
 
     constructor(
                 // private dataService: MspDataService,
@@ -75,7 +76,7 @@ export class FileUploaderComponent extends Base
         /**
      * Return true if file already exists in the list; false otherwise.
      */
-    static checkImageExists(file: MspImage, imageList: Array<MspImage>) {
+    static checkImageExists(file: CommonImage, imageList: Array<CommonImage>) {
         if (!imageList || imageList.length < 1) {
             return false;
         } else {
@@ -190,42 +191,42 @@ export class FileUploaderComponent extends Base
                 flatMap(
                     (fileList: FileList) => {
 
-                        return this.observableFromFiles(fileList, new MspImageScaleFactorsImpl(1, 1));
+                        return this.observableFromFiles(fileList, new CommonImageScaleFactorsImpl(1, 1));
                     }
                 ),
                 filter(
-                    (mspImage: MspImage) => {
+                    (mspImage: CommonImage) => {
 
                         const imageExists = FileUploaderComponent.checkImageExists(mspImage, this.images);
                         if (imageExists) {
-                            this.handleError(MspImageError.AlreadyExists, mspImage);
+                            this.handleError(CommonImageError.AlreadyExists, mspImage);
                             this.resetInputFields();
                         }
                         return !imageExists;
                     }
                 ),
-                filter((mspImage: MspImage) => {
+                filter((mspImage: CommonImage) => {
 
                     const imageExists = FileUploaderComponent.checkImageExists(mspImage, this.images);
                         if (imageExists) {
-                            this.handleError(MspImageError.AlreadyExists, mspImage);
+                            this.handleError(CommonImageError.AlreadyExists, mspImage);
                             this.resetInputFields();
                         }
                         return !imageExists;
                     }
                 ),
-                filter((mspImage: MspImage) => {
+                filter((mspImage: CommonImage) => {
 
                     const imageSizeOk = this.checkImageDimensions(mspImage);
                         if (!imageSizeOk) {
-                            this.handleError(MspImageError.TooSmall, mspImage);
+                            this.handleError(CommonImageError.TooSmall, mspImage);
                             this.resetInputFields();
                         }
                         return imageSizeOk;
                     }
                 )
             ).subscribe(
-            (file: MspImage) => {
+            (file: CommonImage) => {
 
                 this.handleImageFile(file);
                 this.resetInputFields();
@@ -240,18 +241,18 @@ export class FileUploaderComponent extends Base
                  * is still over 1 MB.
                  */
                 if (error.errorCode) {
-                    if (MspImageError.TooBig === error.errorCode) {
-                        this.handleError(MspImageError.TooBig, error.image);
-                    } else if (MspImageError.CannotOpen === error.errorCode) {
+                    if (CommonImageError.TooBig === error.errorCode) {
+                        this.handleError(CommonImageError.TooBig, error.image);
+                    } else if (CommonImageError.CannotOpen === error.errorCode) {
                         if (!error.image) {
-                            error.image = new MspImage();
+                            error.image = new CommonImage();
                             if (error.rawImageFile) {
                                 error.image.name = error.rawImageFile.name;
                             }
                         }
-                        this.handleError(MspImageError.CannotOpen, error.image);
-                    } else if (MspImageError.CannotOpenPDF === error.errorCode) {
-                        this.handleError(MspImageError.CannotOpenPDF, error.image, error.errorDescription);
+                        this.handleError(CommonImageError.CannotOpen, error.image);
+                    } else if (CommonImageError.CannotOpenPDF === error.errorCode) {
+                        this.handleError(CommonImageError.CannotOpenPDF, error.image, error.errorDescription);
                     } else {
                         throw error;
                     }
@@ -305,7 +306,7 @@ export class FileUploaderComponent extends Base
      * @param file
      * @param scaleFactors
      */
-    observableFromFiles(fileList: FileList, scaleFactors: MspImageScaleFactors) {
+    observableFromFiles(fileList: FileList, scaleFactors: CommonImageScaleFactors) {
         /** Previously this was set in appConstants, but that's removed from the common lib. */
         const reductionScaleFactor = 0.8;
 
@@ -317,7 +318,7 @@ export class FileUploaderComponent extends Base
        let pageNumber = Math.max(...self.images.map(function(o) {return o.attachmentOrder; }), 0) + 1 ;
 
         // Create our observer
-        const fileObservable = Observable.create((observer: Observer<MspImage>) => {
+        const fileObservable = Observable.create((observer: Observer<CommonImage>) => {
             const mspImages = [];
             scaleFactors = scaleFactors.scaleDown(reductionScaleFactor);
             for (let fileIndex = 0; fileIndex < fileList.length; fileIndex++) {
@@ -358,8 +359,8 @@ export class FileUploaderComponent extends Base
                         });
                     }, (error: string) => {
                         console.log('error' + JSON.stringify(error));
-                        const imageReadError: MspImageProcessingError =
-                            new MspImageProcessingError(MspImageError.CannotOpenPDF, error);
+                        const imageReadError: CommonImageProcessingError =
+                            new CommonImageProcessingError(CommonImageError.CannotOpenPDF, error);
                         observer.error(imageReadError);
                     });
                 } else {
@@ -370,7 +371,7 @@ export class FileUploaderComponent extends Base
                         },
 
                         // can be ignored for bug, the log line is never called
-                        (error: MspImageProcessingError) => {
+                        (error: CommonImageProcessingError) => {
                             console.log('error' + JSON.stringify(error));
                             observer.error(error);
                         });
@@ -384,9 +385,9 @@ export class FileUploaderComponent extends Base
     }
 
 
-    private resizeImage( image: HTMLImageElement, self: this, scaleFactors: MspImageScaleFactors, observer: Observer<MspImage>, pageNumber: number = 0 , isPdf: boolean = false) {
+    private resizeImage( image: HTMLImageElement, self: this, scaleFactors: CommonImageScaleFactors, observer: Observer<CommonImage>, pageNumber: number = 0 , isPdf: boolean = false) {
 // While it's still in an image, get it's height and width
-        const mspImage: MspImage = new MspImage();
+        const mspImage: CommonImage = new CommonImage();
         const reader: FileReader = new FileReader();
         console.log('image.name:' + image.id); // .name deprecated, changed image.name to image.id
         // Copy file properties
@@ -417,7 +418,7 @@ export class FileUploaderComponent extends Base
 
                 // Canvas may be an Event when errors happens
                 if (canvas instanceof Event) {
-                    self.handleError(MspImageError.WrongType, mspImage);
+                    self.handleError(CommonImageError.WrongType, mspImage);
                     self.resetInputFields();
                     return;
                 }
@@ -463,11 +464,11 @@ export class FileUploaderComponent extends Base
                                 console.log('File size after scaling down: %d, max file size allowed: %d',
                                     mspImage.size, maxSizeBytes);
 
-                                const imageTooBigError: MspImageProcessingError =
-                                    new MspImageProcessingError(MspImageError.TooBig);
+                                const imageTooBigError: CommonImageProcessingError =
+                                    new CommonImageProcessingError(CommonImageError.TooBig);
 
                                 imageTooBigError.maxSizeAllowed = maxSizeBytes;
-                                imageTooBigError.mspImage = mspImage;
+                                imageTooBigError.commonImage = mspImage;
 
                                 observer.error(imageTooBigError);
                             } else {
@@ -497,7 +498,7 @@ export class FileUploaderComponent extends Base
      * Max retry scaling down for maxRetry times.
      */
     retryStrategy(maxRetry: number) {
-        return function (errors: Observable<MspImageProcessingError>) {
+        return function (errors: Observable<CommonImageProcessingError>) {
 
             /**Done: COMPLETE THIS! For some reason can't get scan() to work, types always malformed.*/
 
@@ -522,7 +523,7 @@ export class FileUploaderComponent extends Base
                      * If the error is about file too big and we have not reach max retry
                      * yet, theyt keep going to scaling down.
                      */
-                    if (acc < maxRetry && error.errorCode === MspImageError.TooBig) {
+                    if (acc < maxRetry && error.errorCode === CommonImageError.TooBig) {
                         // console.log('Progressively scaling down the image, step %d.', index);
                         return acc + 1;
                     } else {
@@ -545,7 +546,7 @@ export class FileUploaderComponent extends Base
 
     private readImage(imageFile: File, nextPageNumber: number ,
                       callback: (image: HTMLImageElement, imageFile: File , nextPageNumber: number) => void,
-                      invalidImageHanlder: (error: MspImageProcessingError) => void) {
+                      invalidImageHanlder: (error: CommonImageProcessingError) => void) {
         const reader = new FileReader();
 
         reader.onload = function (progressEvt: ProgressEvent) {
@@ -568,8 +569,8 @@ export class FileUploaderComponent extends Base
                     console.log('This image cannot be opened/read, it is probably an invalid image. %o', args);
 
                     // throw new Error('This image cannot be opened/read');
-                    const imageReadError: MspImageProcessingError =
-                        new MspImageProcessingError(MspImageError.CannotOpen);
+                    const imageReadError: CommonImageProcessingError =
+                        new CommonImageProcessingError(CommonImageError.CannotOpen);
 
                     imageReadError.rawImageFile = imageFile;
 
@@ -663,7 +664,7 @@ export class FileUploaderComponent extends Base
     }
 
 
-    handleImageFile(mspImage: MspImage) {
+    handleImageFile(mspImage: CommonImage) {
         console.log('image size (bytes) after compression: ' + mspImage.size);
         if (this.images.length >= 50) {
 
@@ -682,16 +683,16 @@ export class FileUploaderComponent extends Base
         }
     }
 
-    handleError(error: MspImageError, mspImage: MspImage, errorDescription?: string) {
+    handleError(error: CommonImageError, mspImage: CommonImage, errorDescription?: string) {
 
         if (!mspImage) {
-            mspImage = new MspImage();
+            mspImage = new CommonImage();
         }
         // just add the error to mspImage
         mspImage.error = error;
 
         // log the error
-        if (error !== MspImageError.PDFnotSupported) {
+        if (error !== CommonImageError.PDFnotSupported) {
             // this.logImageInfo('msp_file-uploader_error', this.dataService.getMspUuid(), mspImage,
             //     '  mspImageFile: ' + mspImage.name + '  mspErrorNum: ' + error + '  mspError: ' +
             //     error + '-' + errorDescription);
@@ -712,7 +713,7 @@ export class FileUploaderComponent extends Base
         this.captureFileRef.nativeElement.value = '';
     }
 
-    deleteImage(mspImage: MspImage) {
+    deleteImage(mspImage: CommonImage) {
         this.resetInputFields();
         this.images = this.images.filter(x => x.uuid !== mspImage.uuid);
         this.imagesChange.emit(this.images);
@@ -722,7 +723,7 @@ export class FileUploaderComponent extends Base
      * Log image attributes
      * @param mspImage
      */
-    private logImageInfo(title: string, applicationId: string, mspImage: MspImage, additionalInfo?: string) {
+    private logImageInfo(title: string, applicationId: string, mspImage: CommonImage, additionalInfo?: string) {
 
         // TODO!
         // // create log entry
@@ -760,7 +761,7 @@ export class FileUploaderComponent extends Base
      * Return true if the image size is within range
      * @param file
      */
-    checkImageDimensions(file: MspImage): boolean {
+    checkImageDimensions(file: CommonImage): boolean {
         if (file.naturalHeight < 0 ||
             file.naturalWidth < 0 ) {
             return false;

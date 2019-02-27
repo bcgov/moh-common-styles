@@ -1,9 +1,7 @@
 import { UUID } from 'angular2-uuid';
 
-// TODO - These models/enums etc all need to be renamed, remove the 'Msp' part.
-
 // NOTE: If you change anything in this enum, check image-error-modal.component.html for tests and file-uploader.component.ts:
-export enum MspImageError {
+export enum CommonImageError {
     WrongType,
     TooSmall,
     TooBig,
@@ -14,19 +12,19 @@ export enum MspImageError {
     CannotOpenPDF,
 }
 
-export class MspImageProcessingError {
-    mspImage?: MspImage;
+export class CommonImageProcessingError {
+    commonImage?: CommonImage;
     rawImageFile?: File;
     maxSizeAllowed?: number;
     // added errorDescription.PDF.JS gives proper error messages as invalid pdf structure or password protected pdf.Good for splunk tracking
-    constructor(public errorCode: MspImageError, public errorDescription?: string) {
+    constructor(public errorCode: CommonImageError, public errorDescription?: string) {
 
     }
 }
 /**
  * Image as uploaded by user
  */
-export class MspImage {
+export class CommonImage {
 
     uuid: string;
 
@@ -47,18 +45,18 @@ export class MspImage {
     // file uniqness checksum
     id: string;
 
-    error?: MspImageError;
+    error?: CommonImageError;
     attachmentOrder: number = 0;
 }
 
-export interface MspImageScaleFactors {
+export interface CommonImageScaleFactors {
     widthFactor: number;
     heightFactor: number;
 
-    scaleDown(scale: number): MspImageScaleFactors;
+    scaleDown(scale: number): CommonImageScaleFactors;
 }
 
-export class MspImageScaleFactorsImpl implements MspImageScaleFactors {
+export class CommonImageScaleFactorsImpl implements CommonImageScaleFactors {
     widthFactor: number;
     heightFactor: number;
 
@@ -67,8 +65,8 @@ export class MspImageScaleFactorsImpl implements MspImageScaleFactors {
         this.heightFactor = hFactor;
     }
 
-    scaleDown(scale: number): MspImageScaleFactors {
-        return new MspImageScaleFactorsImpl(
+    scaleDown(scale: number): CommonImageScaleFactors {
+        return new CommonImageScaleFactorsImpl(
             this.widthFactor * scale,
             this.heightFactor * scale);
     }

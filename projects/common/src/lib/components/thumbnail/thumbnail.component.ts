@@ -1,7 +1,7 @@
 import { Component, ViewChild, OnInit, Input, Output, EventEmitter, ViewContainerRef } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap';
 
-import { MspImage } from '../../models/images';
+import { CommonImage } from '../../models/images';
 
 @Component({
   selector: 'common-thumbnail',
@@ -9,9 +9,9 @@ import { MspImage } from '../../models/images';
   styleUrls: ['./thumbnail.scss']
 })
 export class ThumbnailComponent implements OnInit {
-  @Input() imageObject: MspImage;
+  @Input() imageObject: CommonImage;
   @Input() reviewMode: boolean = false;
-  @Output() deleteImage: EventEmitter<MspImage> = new EventEmitter<MspImage>();
+  @Output() deleteImage: EventEmitter<CommonImage> = new EventEmitter<CommonImage>();
   @ViewChild('fullSizeViewModal') public fullSizeViewModal: ModalDirective;
 
   private viewContainerRef: ViewContainerRef;
