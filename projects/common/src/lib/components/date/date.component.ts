@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef, ChangeDetectorRef, forwardRef } from '@angular/core';
-import { Base } from '../../models/base';
+import { Base } from '../../models/src/base';
 import { SimpleDate } from '../../interfaces/simple-date.interface';
 import { ControlContainer, NgForm } from '@angular/forms';
 import * as moment_ from 'moment';

@@ -1,5 +1,5 @@
-import { SimpleDate } from '../interfaces/simple-date.interface';
 import * as moment_ from 'moment';
+import { SimpleDate } from 'common/lib/interfaces/simple-date.interface';
 const moment = moment_;
 
 /**

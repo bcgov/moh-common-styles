@@ -1,5 +1,5 @@
-import { WizardProgressItem } from '../components/wizard-progress-bar/wizard-progress-bar.component';
 import { Route } from '@angular/router';
+import { WizardProgressItem } from 'common/lib/components/wizard-progress-bar/wizard-progress-bar.component';
 
 /** Base functionality for container that is used to display bread crumbs */
 export class Container {
