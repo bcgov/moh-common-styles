@@ -103,8 +103,4 @@ export class PasswordComponent extends Base implements OnInit, OnChanges {
     const pswdFeedback = zxcvbn( password );
     return pswdFeedback.score;
   }
-
-  get minLenAsNumber(): number {
-    return Number(this.minLen);
-  }
 }

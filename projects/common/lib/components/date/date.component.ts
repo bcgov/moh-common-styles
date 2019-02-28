@@ -24,7 +24,7 @@ export interface DateErrorMsg {
   selector: 'common-date',
   templateUrl: './date.component.html',
   styleUrls: ['./date.component.scss'],
-   /* Re-use the same ngForm that it's parent is using. The component will show
+  /* Re-use the same ngForm that it's parent is using. The component will show
    * up in its parents `this.form`, and will auto-update `this.form.valid`
    */
   viewProviders: [ { provide: ControlContainer, useExisting: forwardRef(() => NgForm ) } ]
@@ -44,7 +44,7 @@ export class DateComponent extends Base implements OnInit {
   @Input() restrictDate: 'future' | 'past' | 'any' = 'any';
   @Input() errorMessages: DateErrorMsg;
 
-  @Output() onDateChange: EventEmitter<SimpleDate> = new EventEmitter<SimpleDate>();
+  @Output() dateChange: EventEmitter<SimpleDate> = new EventEmitter<SimpleDate>();
 
   public monthList: string[] = [
     'January', 'February', 'March', 'April', 'May', 'June',
@@ -52,7 +52,6 @@ export class DateComponent extends Base implements OnInit {
   ];
 
   constructor( private form: NgForm,
-               private cntrlContainer: ControlContainer,
                private cd: ChangeDetectorRef ) {
     super();
   }
@@ -74,7 +73,7 @@ export class DateComponent extends Base implements OnInit {
     if ( this.date ) {
       this.date.month = month;
       this.triggerDayValidation();
-      this.onDateChange.emit( this.date );
+      this.dateChange.emit( this.date );
     }
   }
 
@@ -85,7 +84,7 @@ export class DateComponent extends Base implements OnInit {
     // console.log(  'dayRef: ', this.dayRef );
     if ( this.date ) {
       this.date.day = day;
-      this.onDateChange.emit( this.date );
+      this.dateChange.emit( this.date );
     }
   }
 
@@ -97,7 +96,7 @@ export class DateComponent extends Base implements OnInit {
     if ( this.date ) {
       this.date.year = year;
       this.triggerDayValidation();
-      this.onDateChange.emit( this.date );
+      this.dateChange.emit( this.date );
     }
   }
 
@@ -109,9 +108,8 @@ export class DateComponent extends Base implements OnInit {
   private triggerDayValidation() {
     // We have to wrap this in a timeout, otherwise it runs before Angular has updated the values
     setTimeout( () => {
-      console.log( 'form is valid: ', this.cntrlContainer.valid );
       if ( this.form.controls['day'] ) {
-        console.log( 'Trigger day validation' );
+        // console.log( 'Trigger day validation' );
         this.form.controls['day'].updateValueAndValidity();
         this.cd.detectChanges();
       }
