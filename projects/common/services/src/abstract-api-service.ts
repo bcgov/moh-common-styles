@@ -1,19 +1,16 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import { Base } from '../models/src/base';
 
 
 /**
  * Abstract class for HTTP Service
  */
-export abstract class AbstractHttpService extends Base {
+export abstract class AbstractHttpService {
 
   protected logHTTPRequestsToConsole: boolean = false;
 
-  constructor(protected http: HttpClient) {
-    super();
-  }
+  constructor(protected http: HttpClient) {}
 
   /** The headers to send along with every GET and POST. */
   protected abstract _headers: HttpHeaders;

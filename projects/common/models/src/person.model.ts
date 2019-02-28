@@ -1,5 +1,6 @@
 import * as moment_ from 'moment';
 import { SimpleDate } from 'common/lib/interfaces/simple-date.interface';
+import { Base } from './base';
 const moment = moment_;
 
 /**
@@ -7,7 +8,7 @@ const moment = moment_;
  * NPM package dependencies:
  *  a) moment
  */
-export class Person {
+export class Person extends Base {
 
   // Parts of a person's name
   public firstName: string;

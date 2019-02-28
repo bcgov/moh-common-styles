@@ -1,4 +1,4 @@
-<fieldset [disabled]="disabled">
+<fieldset>
   <legend class="date--legend">{{label}}</legend>
   <div class="form-group date-row">
 
@@ -8,6 +8,7 @@
             name="month"
             [ngModel]="date?.month"
             (ngModelChange)="setMonth($event)"
+            [disabled]='disabled'
             #monthRef="ngModel"
             [required]="required">
       <!-- We show the blank option so the user can clear out their data.-->
@@ -27,6 +28,7 @@
            [required]="required"
            commonDateFieldFormat
            commonDayValidation
+           [disabled]='disabled'
            maxlength="2" />
 
     <label class="visuallyhidden" for="year{{objectId}}">Year</label>
@@ -41,6 +43,7 @@
            [required]="required"
            commonDateFieldFormat
            [commonYearValidate]="restrictDate"
+           [disabled]='disabled'
            maxlength="4" />
 
   </div>

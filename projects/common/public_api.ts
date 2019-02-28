@@ -1,12 +1,11 @@
 /*
  * Public API Surface of moh-common-styles
+ *
+ * - This is only for the main entry point, i.e. `moh-common-lib`
+ * - Does *NOT* cover secondary entry points like `moh-common-lib/models`
  */
 
 export * from './lib/shared-core.module';
-
-// Services
-export { GeocoderService } from './lib/services/geocoder.service';
-export { AbstractHttpService } from './lib/services/abstract-api-service';
 
 // Interfaces
 export { SimpleDate } from './lib/interfaces/simple-date.interface';

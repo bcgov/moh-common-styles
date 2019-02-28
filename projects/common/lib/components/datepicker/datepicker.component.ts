@@ -1,6 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges, ViewChild, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges, ViewChild, OnChanges, forwardRef } from '@angular/core';
 import { INgxMyDpOptions, IMyDate, NgxMyDatePickerDirective } from 'ngx-mydatepicker';
 import * as moment_ from 'moment';
+import { NgForm, ControlContainer } from '@angular/forms';
 const moment = moment_;
 
 
@@ -15,7 +16,11 @@ const moment = moment_;
 @Component({
   selector: 'common-datepicker',
   templateUrl: './datepicker.component.html',
-  styleUrls: ['./datepicker.component.scss']
+  styleUrls: ['./datepicker.component.scss'],
+  /* Re-use the same ngForm that it's parent is using. The component will show
+   * up in its parents `this.form`, and will auto-update `this.form.valid`
+   */
+  viewProviders: [ { provide: ControlContainer, useExisting: forwardRef(() => NgForm ) } ]
 })
 export class DatepickerComponent implements OnInit, OnChanges {
   /** Component size can be reduced, see Datepickersizes for options */
@@ -24,6 +29,8 @@ export class DatepickerComponent implements OnInit, OnChanges {
   @Output() dateChange = new EventEmitter<Date>();
   @Input() disabled: boolean;
   @Input() labelText: string;
+
+  @Input() required: boolean = false;
 
 
   /** Dates **before** disableUntil will not be valid selections.  Maps to a ngx-mydatepicker option, but we convert IMyDate to Date  */
@@ -117,37 +124,14 @@ export class DatepickerComponent implements OnInit, OnChanges {
       this.datepickerOptions.disableUntil = this.convertDateToSimpleDate(today);
     }
 
-    this.loadModel();
   }
 
-  private loadModel() {
-    // workaround added to handle both date formats
-    if (this.date instanceof Date) {
-      this.model = {
-        //  date: this.date
-        jsdate: this.date
-      };
-    } else {
-      this.model = {
-        date: this.date
-        //  jsdate: this.date
-      };
-    }
-    // Mini needs to have the formatted field set to display the initial text.
-    if (this.size === DatepickerSizes.MINI && this.date instanceof Date) {
-      this.model.formatted = moment(this.date).format(this.dateFormat.toUpperCase());
-    }
-  }
 
   ngOnChanges(changes: SimpleChanges) {
     // Parent component has passed in null, so we have to manually clear the input. This leads to 2 change detection cycles.
     // We could refactor it down to one, but the performance hit is minimal for such a simple component.
     if (this.date === null) {
       this.clearDate();
-    } else {
-      // If another datecomponent has editted the date, we need to re-load our
-      // model to reflect changes in this component
-      this.loadModel();
     }
   }
 
@@ -164,11 +148,6 @@ export class DatepickerComponent implements OnInit, OnChanges {
       this.date = null;
       this.ngxdp.clearDate();
     }
-  }
-
-  get hasValidDate(): boolean {
-    // Can be improved in the future, now we just check if we have a formatted date string.
-    return !!(this.date);
   }
 
 }

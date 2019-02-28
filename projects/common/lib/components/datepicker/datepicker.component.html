@@ -3,11 +3,12 @@
         <div class="input-group">
             
                 <input class="form-control" placeholder="YYYY/MM/DD"
-                ngx-mydatepicker name="mydate"
+                ngx-mydatepicker name="datepicker-{{labelText}}"
                 [(ngModel)]="model"
                 [options]="datepickerOptions"
                 #dp="ngx-mydatepicker"
                 (dateChanged)="onDateChanged($event)"
+                [required]='required'
                 [disabled]="disabled"/>
 
             <span class="input-group-append float-label-append">

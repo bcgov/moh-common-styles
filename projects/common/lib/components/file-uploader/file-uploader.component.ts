@@ -1,21 +1,21 @@
 import { AfterContentInit, ChangeDetectorRef, Component,
     ContentChild, ElementRef, EventEmitter, Input, NgZone, OnChanges,
-    OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+    OnInit, Output, SimpleChanges, ViewChild, forwardRef } from '@angular/core';
+import { NgForm, ControlContainer } from '@angular/forms';
 import * as moment from 'moment';
 import { ModalDirective} from 'ngx-bootstrap';
 import { PDFJSStatic } from 'pdfjs-dist';
 import { Observable ,  Observer, fromEvent, merge } from 'rxjs';
 import {map, filter, flatMap, scan, delay, retryWhen} from 'rxjs/operators';
 import { CommonImage, CommonImageError, CommonImageProcessingError,
-    CommonImageScaleFactors, CommonImageScaleFactorsImpl } from '../../models/src/images';
+CommonImageScaleFactors, CommonImageScaleFactorsImpl } from '../../../images/src/public_api';
 // import { MspLogService } from '../../service/log.service';
 // import { MspDataService } from '../../service/msp-data.service';
 // import { BaseComponent } from '../base.component';
 // import { LogEntry } from '../logging/log-entry.model';
 // import {Person} from '../../model/application.model';
 import {Router} from '@angular/router';
-import { Base } from '../../models/src/base';
+import { Base } from '../../../models/src/base';
 // import {ApplicationBase} from '../../model/application-base.model';
 
 // const loadImage = require('blueimp-load-image');
@@ -37,14 +37,14 @@ const PDFJS: PDFJSStatic = (PDFJS_ as any);
 @Component({
     selector: 'common-file-uploader',
     templateUrl: './file-uploader.component.html',
-    styleUrls: ['./file-uploader.component.scss']
+    styleUrls: ['./file-uploader.component.scss'],
+    viewProviders: [ { provide: ControlContainer, useExisting: forwardRef(() => NgForm ) } ]
 })
 export class FileUploaderComponent extends Base
     implements OnInit, OnChanges, AfterContentInit {
     // lang = require('./i18n');
     noIdImage: Boolean = false;
     private appConstants;
-    @ViewChild('formRef') form: NgForm;
     @ViewChild('dropZone') dropZone: ElementRef;
     @ViewChild('browseFileRef') browseFileRef: ElementRef;
     @ViewChild('captureFileRef') captureFileRef: ElementRef;

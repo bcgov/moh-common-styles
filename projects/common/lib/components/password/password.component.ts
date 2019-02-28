@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter, HostListener, OnChanges, Directive, forwardRef } from '@angular/core';
-import { Base } from '../../models/src/base';
+import { Base } from '../../../models/src/base';
 import { ControlContainer, NgForm } from '@angular/forms';
 import * as zxcvbn_ from 'zxcvbn';
 // Awkward necessary workaround due to bug in build tools
@@ -102,5 +102,9 @@ export class PasswordComponent extends Base implements OnInit, OnChanges {
     // Password strength feedback
     const pswdFeedback = zxcvbn( password );
     return pswdFeedback.score;
+  }
+
+  get minLenAsNumber(): number {
+    return Number(this.minLen);
   }
 }

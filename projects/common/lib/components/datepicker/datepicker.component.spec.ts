@@ -46,14 +46,15 @@ describe('DatepickerComponent', () => {
     expect(component.date).toBeNull('should be null after clearing');
   });
 
-  it('should propertly detect a valid date', () => {
-    component.date = today;
-    expect(component.hasValidDate).toBe(true, 'should be valid when date is set to today');
-  });
+  // Commented out because hasValidDate has been removed, it was just a stub anyways.
+  // it('should propertly detect a valid date', () => {
+  //   component.date = today;
+  //   expect(component.hasValidDate).toBe(true, 'should be valid when date is set to today');
+  // });
 
-  it('should not have a valid date when date is null', () => {
-    expect(component.hasValidDate).toBe(false, 'no date is set so valid date should be false.');
-  });
+  // it('should not have a valid date when date is null', () => {
+  //   expect(component.hasValidDate).toBe(false, 'no date is set so valid date should be false.');
+  // });
 
   xit('should format the date correctly', () => {
     const y2k = new Date('January 1 2000');
