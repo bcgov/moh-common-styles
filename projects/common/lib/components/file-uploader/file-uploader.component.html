@@ -1,10 +1,10 @@
-<div class="dropzone" #dropZone>
+<div class="dropzone" #dropZone [ngClass]='{"has-error": fileControl?.touched && fileControl?.errors?.required}'>
 
   <div class="instruction-zone d-flex align-items-center flex-wrap flex-sm-nowrap flex-column flex-sm-row">
     <i class="fa fa-cloud-upload fa-4x d-inline-block upload-icon" aria-hidden="true" #imagePlaceholderRef tabindex="0"></i>
 
-    <input type="file" id="fileUploadBrowse-{{id}}" #browseFileRef accept="image/*,application/pdf" style="display:none;"
-            tabindex="0" multiple name='fileUploadBrowse-{{id}}' required ngModel/>
+    <input type="file" id="fileUploadBrowse-{{id}}" #browseFileRef ngModel accept="image/*,application/pdf" style="display:none;"
+            tabindex="0" multiple name='fileUploadBrowse-{{id}}' required />
     <label for="fileUploadBrowse-{{id}}" class="file-upload-label d-inline-block ml-3" #selectFileLabel tabindex="0">
       <span class='h2 color-body'>Select a file</span>
       <span class='d-block description'>{{ instructionText }}</span>
@@ -18,9 +18,16 @@
     <label for="fileUploadUseCamera-{{id}}" class="file-upload-label description d-block d-sm-none" tabindex="0">
       take a photo
     </label>
-
+    
     <!-- <br /> -->
   </div>
+  
+  <div *ngIf="fileControl?.touched" role="alert" class='error-container' aria-live="assertive">
+    <div class="text-danger" *ngIf="fileControl?.errors?.required">
+      {{errorMessages.required}}
+    </div>
+  </div>
+
   <div class="preview-zone">
     <div *ngFor="let mspImage of images" class="preview-item">
       <common-thumbnail [imageObject]="mspImage" (deleteImage)="deleteImage($event)">

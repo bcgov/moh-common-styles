@@ -1,6 +1,6 @@
 import { AfterContentInit, ChangeDetectorRef, Component,
     ContentChild, ElementRef, EventEmitter, Input, NgZone, OnChanges,
-    OnInit, Output, SimpleChanges, ViewChild, forwardRef } from '@angular/core';
+    OnInit, Output, SimpleChanges, ViewChild, forwardRef, AfterViewInit } from '@angular/core';
 import { NgForm, ControlContainer } from '@angular/forms';
 import * as moment from 'moment';
 import { ModalDirective} from 'ngx-bootstrap';
@@ -30,6 +30,9 @@ const sha1 = sha1_;
 import * as PDFJS_ from 'pdfjs-dist';
 const PDFJS: PDFJSStatic = (PDFJS_ as any);
 
+export interface FileUploaderMsg {
+    required: string;
+}
 
 // TODO - Remove this and fix tslint issues
 /* tslint:disable:max-line-length*/
@@ -58,6 +61,7 @@ export class FileUploaderComponent extends Base
     @Input() showError: boolean;
     @Input() required: boolean = false;
     @Input() instructionText: string = 'Please upload required ID documents.';
+    @Input() errorMessages: FileUploaderMsg = {required: 'File is required.'}
 
     @ViewChild('canvas') canvas: ElementRef;
 
@@ -68,12 +72,26 @@ export class FileUploaderComponent extends Base
                 // private dataService: MspDataService,
                 // private logService: MspLogService,
                 private zone: NgZone,
-                private cd: ChangeDetectorRef , private router: Router) {
+                private cd: ChangeDetectorRef , private router: Router,
+                private controlContainer: ControlContainer) {
         super();
         // this.application = this.getApplicationType();
     }
 
-        /**
+    /**
+     * This is created as a workaround to access the form control that binds to
+     * the input[type='file']. We can't access it via the template name bindings
+     * as that isn't working, so instead we access the parent form and then find
+     * the input by name.
+     */
+    get fileControl() {
+        const INPUT_NAME = `fileUploadBrowse-${this.id}`;
+        // note - should be "this.controlContainer as NgForm" here, which works,
+        // but fails on compiliation due to secondary entries
+        return (this.controlContainer as any).controls[INPUT_NAME];
+    }
+
+    /**
      * Return true if file already exists in the list; false otherwise.
      */
     static checkImageExists(file: CommonImage, imageList: Array<CommonImage>) {
@@ -680,6 +698,7 @@ export class FileUploaderComponent extends Base
             this.imagesChange.emit(this.images);
             this.showError = false;
             this.noIdImage = false;
+            this.fileControl.markAsTouched();
         }
     }
 
@@ -717,6 +736,13 @@ export class FileUploaderComponent extends Base
         this.resetInputFields();
         this.images = this.images.filter(x => x.uuid !== mspImage.uuid);
         this.imagesChange.emit(this.images);
+
+        // If there are no images yet, we have to reset the input so it triggers 'required'.
+        if ( this.images.length <= 0 ) {
+            console.log('No images, resetting input');
+            // this.fileControl.value = '';
+            this.fileControl.setErrors({'required': true});
+        }
     }
 
     /**
