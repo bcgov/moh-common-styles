@@ -101,7 +101,6 @@ export class DatepickerComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    console.log('Datepicker  LabelText?', this.labelText);
     if (!this.errorMessages) {
       this.errorMessages = {
         required: this.labelText + ' is required.',
@@ -137,6 +136,11 @@ export class DatepickerComponent implements OnInit, OnChanges {
       const today = new Date();
       this.datepickerOptions.disableUntil = this.convertDateToSimpleDate(today);
     }
+
+
+    this.model = {
+      jsdate: this.date
+    };
 
   }
 
