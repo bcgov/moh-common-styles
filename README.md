@@ -114,10 +114,9 @@ ng g moh-common-schematics:moh-start # runs the schematic
 - [ ] Split moh-start schematic into multiple schematics, de-compose them. Will make path to future 'update' calls simpler (update-scss, update-assets, update-dependencies). Moh-start should just call each of them.
 - [ ] Base64 file conversion (add helper script?)
 
-
-    > const favi = fs.readFileSync('favicon.ico');
-    > const favi_b64 = favi.toString('base64')
-    > fs.writeFileSync('favicon_ico.ts', favi_b64)
+        > const favi = fs.readFileSync('favicon.ico');
+        > const favi_b64 = favi.toString('base64')
+        > fs.writeFileSync('favicon_ico.ts', favi_b64)
 
 - [ ] Add momentjs as dependency to package.json
 - [ ] Add NgForm and other modules to appropriate angular modules
