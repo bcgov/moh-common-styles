@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges, ViewChil
 import { INgxMyDpOptions, IMyDate, NgxMyDatePickerDirective } from 'ngx-mydatepicker';
 import * as moment_ from 'moment';
 import { NgForm, ControlContainer } from '@angular/forms';
+import { DateErrorMsg } from '../date/date.component';
 const moment = moment_;
 
 
@@ -62,6 +63,8 @@ export class DatepickerComponent implements OnInit, OnChanges {
   /** Format for how to display the date to the user. */
   @Input() dateFormat: string = 'yyyy/mm/dd';
 
+  @Input() errorMessages: DateErrorMsg;
+
   /** Datetime model used to interface with ngx-datepicker. */
   // model: any;
   model: any;
@@ -98,6 +101,17 @@ export class DatepickerComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
+    console.log('Datepicker  LabelText?', this.labelText);
+    if (!this.errorMessages) {
+      this.errorMessages = {
+        required: this.labelText + ' is required.',
+        dayOutOfRange: 'Invalid ' + this.labelText + '.',
+        yearDistantPast: 'Invalid ' + this.labelText + '.',
+        yearDistantFuture: 'Invalid ' + this.labelText + '.',
+        noFutureDatesAllowed: 'Invalid ' + this.labelText + '.',
+        invalidValue: 'Invalid ' + this.labelText + '.'
+      };
+    }
 
     this.datepickerOptions = {
       dateFormat: this.dateFormat,
