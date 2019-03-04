@@ -44,10 +44,6 @@ export class PasswordComponent extends Base implements OnInit, OnChanges {
   @Input() password: string;
   @Input() minLen: string  = '8';
   @Input() maxLen: string  = '32';
-
-  // TODO: Figure out why when RegExp passed into component and  ( or ) entered caused error to console
-  //       indicating no terminated
-  @Input() pswdCriteria: string | RegExp;
   @Input() errorMessages: PasswordErrorMsg;
   @Input() showPasswordStrength: boolean = false;
 

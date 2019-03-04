@@ -31,6 +31,8 @@ export class WizardProgressBarComponent implements OnInit, OnDestroy {
 
   private routerEvents$: Subscription;
 
+  private isEven: boolean;
+
   constructor(private router: Router, private cd: ChangeDetectorRef) {
    }
 
@@ -49,6 +51,10 @@ export class WizardProgressBarComponent implements OnInit, OnDestroy {
 
     // Must schedule first run manually, or bar won't be set.
     this.activeIndex = this.getActiveIndex(this.router.url);
+
+    this.isEven = (this.progressSteps.length % 2) ? false : true;
+
+    console.log( 'Stepper is ', ( this.isEven ? 'even' : 'odd') );
   }
 
   ngOnDestroy() {
@@ -60,7 +66,10 @@ export class WizardProgressBarComponent implements OnInit, OnDestroy {
     const denominator = this.progressSteps.length;
     const numerator = this.activeIndex + 1;
 
-    if (denominator === 0 || numerator >= denominator) {
+    console.log( 'calculateProgressPercentage: ',
+     {denominator: denominator, numerator: numerator} );
+
+    if (denominator === 0 || numerator > denominator) {
       return 100;
     }
 
