@@ -60,7 +60,7 @@ export class WizardProgressBarComponent implements OnInit, OnDestroy {
     const denominator = this.progressSteps.length;
     const numerator = this.activeIndex + 1;
 
-    if (denominator === 0 || numerator >= denominator) {
+    if (denominator === 0 || numerator > denominator) {
       return 100;
     }
 
