@@ -71,6 +71,17 @@ As for what specifically you can import from 'moh-common-lib', that is all defin
 
 Schematics folder is `projects/common/schematics`
 
+#### Building Schematics
+
+This has to be done at least once to use them.  Additionally, you must re-build schematics if you change them at all.
+
+```bash
+npm run build # compiles one time
+npm run build -- -w # watches for changes and re-compiles
+```
+
+You may need to run `npm install` prior to your first build.
+
 #### Linking Schematics
 
 Linking schematics only has to be done once. You'll only have to do it again if you move this folder.
@@ -83,15 +94,6 @@ cd moh-common-styles/projects/common/schematics
 npm link # creates moh-common-schematics link, name from package.json
 ```
 
-
-#### Building Schematics
-
-This has to be done at least once to use them.  Additionally, you must re-build schematics if you change them at all.
-
-```bash
-npm run build # compiles one time
-npm run build -- -w # watches for changes and re-compiles
-```
 
 
 #### Creating a new project and running schematics
