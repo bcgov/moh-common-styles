@@ -50,7 +50,7 @@ export class FileUploaderComponent extends Base
     private appConstants;
     @ViewChild('dropZone') dropZone: ElementRef;
     @ViewChild('browseFileRef') browseFileRef: ElementRef;
-    @ViewChild('captureFileRef') captureFileRef: ElementRef;
+    // @ViewChild('captureFileRef') captureFileRef: ElementRef;
     @ViewChild('imagePlaceholderRef') imagePlaceholderRef: ElementRef;
     @ViewChild('selectFileLabel') selectFileLabelRef: ElementRef;
 
@@ -191,9 +191,9 @@ export class FileUploaderComponent extends Base
             ));
 
         const browseFileStream = fromEvent<Event>(this.browseFileRef.nativeElement, 'change');
-        const captureFileStream = fromEvent<Event>(this.captureFileRef.nativeElement, 'change');
+        // const captureFileStream = fromEvent<Event>(this.captureFileRef.nativeElement, 'change');
 
-        merge(merge(browseFileStream, captureFileStream).pipe(
+        merge(merge(browseFileStream).pipe(
             map(
                 (event) => {
                     event.preventDefault();
@@ -729,7 +729,7 @@ export class FileUploaderComponent extends Base
         // let brosweFileInputElement = this.browseFileRef.nativeElement;
         // let captureFileInputElement = this.captureFileRef.nativeElement;
         this.browseFileRef.nativeElement.value = '';
-        this.captureFileRef.nativeElement.value = '';
+        // this.captureFileRef.nativeElement.value = '';
     }
 
     deleteImage(mspImage: CommonImage) {
