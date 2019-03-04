@@ -6,21 +6,21 @@ import { Router } from '@angular/router';
  *
  */
 export abstract class AbstractForm {
-    /** Access to the form elements for validation */
-    @ViewChild( 'formRef' ) form: NgForm;
+  /** Access to the form elements for validation */
+  @ViewChild('formRef') form: NgForm;
 
-    /** Disables all inputs (todo: not implemented) */
-    disabled: boolean;
-    /** Show or hide the loading spinner as required, should be passed to form action bar. */
-    loading: boolean = false;
-    /** What happens when the user clicks the continue button. Generally navigating to another page. */
-    abstract continue(): void;
+  /** Disables all inputs (todo: not implemented) */
+  disabled: boolean;
+  /** Show or hide the loading spinner as required, should be passed to form action bar. */
+  loading: boolean = false;
+  /** What happens when the user clicks the continue button. Generally navigating to another page. */
+  abstract continue(): void;
 
 
   /**
    * Constructor
    */
-  constructor( protected router: Router ) {
+  constructor(protected router: Router) {
     this.router = router;
   }
 
@@ -33,10 +33,18 @@ export abstract class AbstractForm {
   }
 
   /** Navigates to a route then automatically scrolls to the top of the page. */
-  protected navigate( url: string ) {
-    this.router.navigate( [url] )
-    .then( (data) => { window.scrollTo( { top: 0, behavior: 'smooth' } );
-   });
+  protected navigate(url: string) {
+    this.router.navigate([url])
+      .then((data) => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+  }
+
+  /** Runs the angular 'markAsTouched()' on all form inputs. */
+  protected markAllInputsTouched(): void {
+    Object.keys(this.form.form.controls).forEach(x => {
+      this.form.form.get(x).markAsTouched();
+    });
   }
 
 }
