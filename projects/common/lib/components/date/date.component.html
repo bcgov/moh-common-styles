@@ -51,7 +51,7 @@
 </fieldset>
 
 <!-- Error messages for component -->
-<div *ngIf="!disabled && monthRef.touched && dayRef.touched && yearRef.touched"
+<div *ngIf="!disabled && (monthRef.touched || monthRef.dirty) && (dayRef.touched || dayRef.dirty) && (yearRef.touched || yearRef.dirty)"
     role="alert"
     class='error-container'
     aria-live="assertive">

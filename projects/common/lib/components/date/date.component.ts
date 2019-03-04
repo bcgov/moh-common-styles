@@ -57,6 +57,18 @@ export class DateComponent extends Base implements OnInit {
   }
 
   ngOnInit() {
+    if ( !this.errorMessages ) {
+      // Use default messages
+      this.errorMessages = {
+        required: this.label + ' is required.',
+        dayOutOfRange: 'Invalid ' + this.label + '.',
+        yearDistantPast: 'Invalid ' + this.label + '.',
+        yearDistantFuture: 'Invalid ' + this.label + '.',
+        noFutureDatesAllowed: 'Invalid ' + this.label + '.',
+        invalidValue: 'Invalid ' + this.label + '.'
+      };
+    }
+
     if ( this.useCurrentDate ) {
       // Set date to current date
       this.date.month = moment().month();
