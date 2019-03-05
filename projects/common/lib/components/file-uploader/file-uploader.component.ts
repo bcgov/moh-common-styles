@@ -738,7 +738,7 @@ export class FileUploaderComponent extends Base
         this.imagesChange.emit(this.images);
 
         // If there are no images yet, we have to reset the input so it triggers 'required'.
-        if ( this.images.length <= 0 ) {
+        if ( this.required && this.images.length <= 0 ) {
             console.log('No images, resetting input');
             // this.fileControl.value = '';
             this.fileControl.setErrors({'required': true});
