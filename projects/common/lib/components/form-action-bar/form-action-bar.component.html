@@ -1,7 +1,8 @@
 <div class="form-action-bar" [ngClass]="{disabled: !canContinue}">
     <button class="btn btn-lg {{defaultColor ? 'btn-primary' : 'btn-secondary' }} submit"
-            (click)="onClick($event)"
-            [ngClass]="{disabled: !canContinue || isLoading}">
+            
+            [ngClass]="{disabled: !canContinue || isLoading}"
+            type='submit'>
       <ng-container *ngIf="!isLoading; else loadingSpinner"> {{submitLabel}} </ng-container>
       
     </button>

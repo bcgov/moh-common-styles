@@ -1,9 +1,11 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, forwardRef } from '@angular/core';
+import { ControlContainer, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'common-form-action-bar',
   templateUrl: './form-action-bar.component.html',
-  styleUrls: ['./form-action-bar.component.scss']
+  styleUrls: ['./form-action-bar.component.scss'],
+  viewProviders: [ { provide: ControlContainer, useExisting: forwardRef(() => NgForm ) } ]
 })
 export class FormActionBarComponent implements OnInit {
   @Input() submitLabel: string = 'Continue';
