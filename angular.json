@@ -149,7 +149,16 @@
           "options": {
             "main": "projects/common/test.ts",
             "tsConfig": "projects/common/tsconfig.spec.json",
-            "karmaConfig": "projects/common/karma.conf.js"
+            "karmaConfig": "projects/common/karma.conf.js",
+            "styles": [
+              "src/styles.scss"
+            ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "projects/common/lib/styles/",
+                "node_modules/"
+              ]
+            }
           }
         },
         "lint": {
