@@ -20,6 +20,16 @@ export class FormSubmitBarComponent implements OnInit {
   @Input() defaultColor: boolean = true;
   @Output() btnClick: EventEmitter<any> = new EventEmitter<any>();
 
+  /**
+   * Is the component nested inside a form, and not properly full-width in a
+   * page layout? We add negative margins to space out.
+   *
+   * Currently tihs only works for the 'blank' layout type for the page
+   * framework, but would be easy to extend by adding more negative classes as
+   * need be.
+   */
+  @Input() increaseWidth: boolean = false;
+
   constructor() { }
 
   ngOnInit() {
