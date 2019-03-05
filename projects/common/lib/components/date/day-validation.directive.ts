@@ -19,18 +19,18 @@ export class DayValidationDirective implements Validator {
     }
 
     const day: number = parseInt( control.value, 10 );
-    console.log( 'day: ', day );
+    // console.log( 'day: ', day );
 
     if ( !isNaN( day ) ) {
 
-      console.log( 'parent: ', date );
+      // console.log( 'parent: ', date );
       // Only process of value is numeric
       if ( !isNaN( date.month )  && !isNaN( date.year ) ) {
 
         // Determine days in month
         const str = `${date.year}-${date.month}`;
         let daysInMonth: number = moment(str, 'YYYY-MM').daysInMonth();
-        console.log( 'str: ', str + ', dayInMonth: ', daysInMonth );
+        // console.log( 'str: ', str + ', dayInMonth: ', daysInMonth );
 
         if ( isNaN( daysInMonth ) ) {
           daysInMonth = 31;

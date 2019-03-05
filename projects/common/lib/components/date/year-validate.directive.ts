@@ -18,7 +18,7 @@ export class YearValidateDirective implements Validator  {
   validate( control: FormControl ): {[key: string]: any} | null {
     const date = control.parent.value;
 
-    console.log( 'validate year: ', control.value );
+    // console.log( 'validate year: ', control.value );
 
     if ( !control.value ) {
       return null; // empty value
