@@ -16,6 +16,7 @@ import { DatepickerComponent } from './components/datepicker/datepicker.componen
 import { NgxMyDatePickerModule } from 'ngx-mydatepicker';
 import { FileUploaderComponent } from './components/file-uploader/file-uploader.component';
 import { ThumbnailComponent } from './components/thumbnail/thumbnail.component';
+import { FormSubmitBarComponent } from './components/form-submit-bar/form-submit-bar.component';
 
 @NgModule({
   imports: [
@@ -38,7 +39,8 @@ import { ThumbnailComponent } from './components/thumbnail/thumbnail.component';
     YearValidateDirective,
     DatepickerComponent,
     FileUploaderComponent,
-    ThumbnailComponent
+    ThumbnailComponent,
+    FormSubmitBarComponent
   ],
   exports: [
     CoreBreadcrumbComponent,
@@ -52,7 +54,8 @@ import { ThumbnailComponent } from './components/thumbnail/thumbnail.component';
     YearValidateDirective,
     DatepickerComponent,
     FileUploaderComponent,
-    ThumbnailComponent
+    ThumbnailComponent,
+    FormSubmitBarComponent
   ],
   providers: [
     NgForm
