@@ -61,7 +61,7 @@ export class FileUploaderComponent extends Base
     @Input() showError: boolean;
     @Input() required: boolean = false;
     @Input() instructionText: string = 'Please upload required ID documents.';
-    @Input() errorMessages: FileUploaderMsg = {required: 'File is required.'}
+    @Input() errorMessages: FileUploaderMsg = {required: 'File is required.'};
 
     @ViewChild('canvas') canvas: ElementRef;
 
