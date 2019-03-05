@@ -138,9 +138,15 @@ export class DatepickerComponent implements OnInit, OnChanges {
     }
 
 
-    this.model = {
-      jsdate: this.date
-    };
+    if (this.date) {
+      // Even if jsdate winds up being undefined, even defining this.model will
+      // set the input as non-empty and it'll satisfy the 'required' validation.
+      // So, we only add the model if there's actual data.
+      this.model = {
+        jsdate: this.date
+      };
+    }
+
 
   }
 
