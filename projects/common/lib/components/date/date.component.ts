@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef, ChangeDetectorRef, forwardRef } from '@angular/core';
 import { Base } from '../../../models/src/base';
 import { SimpleDate } from '../../interfaces/simple-date.interface';
-import { ControlContainer, NgForm } from '@angular/forms';
+import { ControlContainer, NgForm, NgModel } from '@angular/forms';
 import * as moment_ from 'moment';
 const moment = moment_;
 
@@ -31,9 +31,9 @@ export interface DateErrorMsg {
 })
 export class DateComponent extends Base implements OnInit {
   // Exists for unit testing to validate errors set
-  @ViewChild( 'monthRef' ) monthRef: ElementRef;
-  @ViewChild( 'dayRef' ) dayRef: ElementRef;
-  @ViewChild( 'yearRef') yearRef: ElementRef;
+  @ViewChild( 'monthRef' ) monthRef: NgModel;
+  @ViewChild( 'dayRef' ) dayRef: NgModel;
+  @ViewChild( 'yearRef') yearRef: NgModel;
 
   @Input() useCurrentDate: boolean = false;
   @Input() required: boolean = true;
