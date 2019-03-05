@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DatepickerComponent } from './datepicker.component';
 import {NgxMyDatePickerModule} from 'ngx-mydatepicker';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ControlContainer, NgForm} from '@angular/forms';
 
 describe('DatepickerComponent', () => {
   let component: DatepickerComponent;
@@ -12,7 +12,8 @@ describe('DatepickerComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ DatepickerComponent ],
-      imports: [NgxMyDatePickerModule.forRoot(), FormsModule]
+      imports: [NgxMyDatePickerModule.forRoot(), FormsModule ],
+      providers: [NgForm]
     })
     .compileComponents();
   }));
@@ -35,7 +36,7 @@ describe('DatepickerComponent', () => {
   it('should handle being created with a date', () => {
     component.date = today;
     expect(component.date).toBeDefined();
-    expect(component.date).toEqual(today); //Check strict identity, not just equivalence
+    expect(component.date).toEqual(today); // Check strict identity, not just equivalence
   });
 
   it('should be able to clear date', () => {

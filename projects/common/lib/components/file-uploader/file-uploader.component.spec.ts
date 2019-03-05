@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ControlContainer, NgForm } from '@angular/forms';
 import { FileUploaderComponent } from './file-uploader.component';
 import {ThumbnailComponent} from '../thumbnail/thumbnail.component';
 import {ModalModule} from 'ngx-bootstrap';
@@ -15,7 +15,7 @@ describe('FileUploaderComponent', () => {
     TestBed.configureTestingModule({
       declarations: [FileUploaderComponent, ThumbnailComponent],
       imports: [FormsModule, ModalModule.forRoot(), RouterTestingModule , HttpClientModule ],
-      providers: [ ]
+      providers: [ ControlContainer, NgForm  ]
     });
   });
   it ('should work', () => {
