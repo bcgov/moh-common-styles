@@ -128,7 +128,7 @@
     },
     "moh-common-lib": {
       "root": "projects/common",
-      "sourceRoot": "projects/common/src",
+      "sourceRoot": "projects/common",
       "projectType": "library",
       "prefix": "common",
       "architect": {
@@ -147,7 +147,7 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/common/src/test.ts",
+            "main": "projects/common/test.ts",
             "tsConfig": "projects/common/tsconfig.spec.json",
             "karmaConfig": "projects/common/karma.conf.js"
           }
@@ -167,5 +167,5 @@
       }
     }
   },
-  "defaultProject": "commonLibraryApp"
+  "defaultProject": "moh-common-lib"
 }
