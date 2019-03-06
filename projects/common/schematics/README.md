@@ -61,27 +61,20 @@ schematics blank  --name=schematic-name-example
 
 # TODO
 
-- [ ] *High Priority* Fix compilation errors when lodaing moh-common-lib (WizardProgressBar) in moh-start by adding to tsconfig:
+- [X] ~~**High Priority* Fix compilation errors when lodaing moh-common-lib (WizardProgressBar) in moh-start by adding to tsconfig:*~~ [2019-03-06]
 
         "typeRoots": [ "../node_modules/@types" ],
         "skipLibCheck": true
         
 - [x] Making changes to schematic + re-compiling (npm run build + watch command)
 - [x] Include integration with upcoming moh-common-styles library
-- [ ] Package.json scripts from fpc
-- [ ] Trigger an npm install when done the schematic (currently not working)
+- [x] resolve issue with component viewProviders, ControlContainer + ngForms for "nested" components
+- [ ] uncomment pollyfills.ts
+- [ ] Package.json scripts from fpc (e.g. version, preversion)
 - [ ] Document need for `openshift/` folder to still be manually setup
 - [ ] Configurable project name, e.g. change page title.
 - [ ] Split moh-start schematic into multiple schematics, de-compose them. Will make path to future 'update' calls simpler (update-scss, update-assets, update-dependencies). Moh-start should just call each of them.
-- [ ] Base64 file conversion (add helper script?)
-
-        > const favi = fs.readFileSync('favicon.ico');
-        > const favi_b64 = favi.toString('base64')
-        > fs.writeFileSync('favicon_ico.ts', favi_b64)
-
+- [ ] Convert moh-start to use templates instead of base64 encoding (like version-js does)
 - [ ] Add momentjs as dependency to package.json
 - [ ] Add NgForm and other modules to appropriate angular modules
-- [ ] Authoring changes to the library and re-building (`ng build moh-common-lib` from `projects/common`)
 - [ ] angular.json - add preserveSymlinks to new projects
-- [ ] uncomment pollyfills.ts
-- [x] resolve issue with component viewProviders, ControlContainer + ngForms for "nested" components
