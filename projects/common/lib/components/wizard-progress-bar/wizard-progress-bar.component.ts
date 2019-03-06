@@ -88,7 +88,7 @@ export class WizardProgressBarComponent implements OnInit, OnDestroy {
       // Since we're already breaking out of Angular, we try and be safe by using a try/catch.
       // Otherwise an error here could halt execution,
       try {
-        container[0].scrollLeft = target.nativeElement.offsetLeft - (window.outerWidth / 2);
+        container[0].scrollLeft = Math.abs(target.nativeElement.offsetLeft - (window.outerWidth / 2));
       } catch (error) {}
     }
   }
