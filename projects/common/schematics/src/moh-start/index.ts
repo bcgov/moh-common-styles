@@ -42,10 +42,7 @@ export function mohStart(_options: any): Rule {
 
     // Update style imports in angular.json
     updateAngularJson(tree);
-
-    // TODO - Trigger npm install. Not working.
-
-    // TODO - Copy over favicon
+    updateTsConfig(tree, _context);
 
     // TODO - package.json scripts (including version.js)
     // TODO - Manually copy over openShift folder for PRIME
@@ -108,30 +105,20 @@ function updateAngularJson(host: Tree): Tree {
  * Configures settings in tsconfig.json that are required to properly import
  * from moh-common-lib
  *
- * Specifically, skibLibCheck and typeRoots.
+ * Specifically, skibLibCheck
  */
-function updateTsConfig(host: Tree): Tree {
+function updateTsConfig(host: Tree, _context: SchematicContext): Tree {
+
   if (host.exists('tsconfig.json')) {
     // tslint:disable-next-line:no-non-null-assertion
     const sourceText = host.read('tsconfig.json')!.toString('utf-8');
     const json = JSON.parse(sourceText);
-    const typeRoots = json['compilerOptions']['typeRoots'];
-    const NODE_PATH = '../../node_modules';
 
     json['compilerOptions']['skipLibCheck'] = true;
 
-    // add node_modules to typeRoots if and only if it's missing
-    if ( typeRoots && typeRoots.length ) {
-      const nodeModulesExists = typeRoots.filter(x => x.includes('node_modules'));
-      if (nodeModulesExists) {
-        return host;
-      } else {
-        typeRoots.push('../../node_modules');
-      }
-      // if (typeRoots.filter(x => x.includes('node_modules')))
-    }
-
     host.overwrite('tsconfig.json', JSON.stringify(json, null, 2));
+    _context.logger.info('✓ updated tsconfig.json setting skipLibCheck=true');
+
   }
 
   return host;
