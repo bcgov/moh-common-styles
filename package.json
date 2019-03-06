@@ -9,6 +9,7 @@
     "copy": "npm run copy:readme && npm run copy:license",
     "build": "ng build",
     "build:lib": "ng build moh-common-lib",
+    "build:schematics": "cd projects/common/schematics && npm run build",
     "pack:lib": "cd dist/common && npm pack",
     "package": "npm run build:lib && npm run copy && npm run pack:lib",
     "test": "ng test",

@@ -1,4 +1,4 @@
-# MoH Common Styles
+# Schematics
 
 ## Requirements
 
@@ -8,35 +8,23 @@
 
 ## Writing code & compiling changes
 
-Make sure to write all changes to .ts files, e.g. `index.ts`.  Then use npm to compile to us .d.ts, .js, and .map.js files.
+Make sure to write all changes to .ts files, e.g. `index.ts`.   The schematics folder, and all schemtaics, must be in `projects/common/schematics`
+
 
 ```bash
 
-npm run build # compiles one time
-npm run build -- -w # watches for changes and re-compiles
+npm run build # compiles one time - must be run in schematics folder
+npm run build -- -w # watches for changes and re-compiles - in schematics folder
+npm run build:schematics # helper command - can be run anywhere in project, even top level
 ```
 
-It's important to compile the files before running any schematics, publishing to npm, etc.
+Then use the above to compile to .d.ts, .js, and .map.js files. It's important to compile the files before running any schematics either locally or before publishing to npm, etc. 
 
-### Schematics
-
-Schematics folder is `projects/common/schematics`
-
-#### Building Schematics
-
-This has to be done at least once to use them.  Additionally, you must re-build schematics if you change them at all.
-
-```bash
-npm run build # compiles one time
-npm run build -- -w # watches for changes and re-compiles
-```
-
-You may need to run `npm install` prior to your first build.
+Unsure: Potentially you may need to run `npm instal` prior to your first build.
 
 #### Linking Schematics
 
 Linking schematics only has to be done once. You'll only have to do it again if you move this folder.
-
 
 We have to link from the `projects/common/schematics` folder. You can tell it's the correct folder because it has `package.json` in it.
 
