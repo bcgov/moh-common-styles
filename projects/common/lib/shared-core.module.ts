@@ -17,6 +17,8 @@ import { NgxMyDatePickerModule } from 'ngx-mydatepicker';
 import { FileUploaderComponent } from './components/file-uploader/file-uploader.component';
 import { ThumbnailComponent } from './components/thumbnail/thumbnail.component';
 import { FormSubmitBarComponent } from './components/form-submit-bar/form-submit-bar.component';
+import { TextMaskModule } from 'angular2-text-mask';
+import { PostalCodeComponent } from './components/postal-code/postal-code.component';
 
 @NgModule({
   imports: [
@@ -25,7 +27,8 @@ import { FormSubmitBarComponent } from './components/form-submit-bar/form-submit
     ProgressbarModule.forRoot(),
     RouterModule,
     NgxMyDatePickerModule.forRoot(),
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    TextMaskModule
   ],
   declarations: [
     CoreBreadcrumbComponent,
@@ -40,7 +43,8 @@ import { FormSubmitBarComponent } from './components/form-submit-bar/form-submit
     DatepickerComponent,
     FileUploaderComponent,
     ThumbnailComponent,
-    FormSubmitBarComponent
+    FormSubmitBarComponent,
+    PostalCodeComponent
   ],
   exports: [
     CoreBreadcrumbComponent,
@@ -55,7 +59,8 @@ import { FormSubmitBarComponent } from './components/form-submit-bar/form-submit
     DatepickerComponent,
     FileUploaderComponent,
     ThumbnailComponent,
-    FormSubmitBarComponent
+    FormSubmitBarComponent,
+    PostalCodeComponent
   ],
   providers: [
     NgForm
