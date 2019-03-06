@@ -8,8 +8,8 @@ import { variableScss } from './files/variables_scss';
 import { overridesScss } from './files/overrides_scss';
 
 import { MyriadWebProTTF_base64 } from './files/MyriadWebPro_ttf_base64';
-import { BCLogoBase64 } from './files/gov3_bc_logo_png_base64'
-import { favicon_base64 } from './files/favicon_ico'
+import { BCLogoBase64 } from './files/gov3_bc_logo_png_base64';
+import { favicon_base64 } from './files/favicon_ico';
 
 // You don't have to export the function as default. You can also have more than one rule factory
 // per file.
@@ -19,9 +19,9 @@ export function mohStart(_options: any): Rule {
     // _context.logger.info('✓ moh-start beginning...');
     addPackageToPackageJson(tree, 'mygovbc-bootstrap-theme', '^0.4.0');
     addPackageToPackageJson(tree, 'font-awesome', '^4.6.3');
-    addPackageToPackageJson(tree, "bootstrap", "^4.0.0");
-    //currently there's a bug with rxjs@6.4.0, so we hardlock version. can be removed in future.
-    addPackageToPackageJson(tree, "rxjs", "6.2.1", true);
+    addPackageToPackageJson(tree, 'bootstrap', '^4.0.0');
+    // currently there's a bug with rxjs@6.4.0, so we hardlock version. can be removed in future.
+    addPackageToPackageJson(tree, 'rxjs', '6.2.1', true);
 
     // Update files
     overwriteFile(tree, 'src/styles.scss', stylesSCSS);
@@ -62,8 +62,7 @@ export function overwriteFile(host: Tree, targetPath: string, content: string | 
 
   if (host.exists(targetPath)) {
     host.overwrite(targetPath, content);
-  }
-  else {
+  } else {
     console.log(`MISSING - ${targetPath}, unable to run update file`);
   }
 
@@ -82,20 +81,21 @@ function installPackageJsonDependencies(): Rule {
 
 
 function createIfMissing(host: Tree, targetPath: string, content: any) {
-  if (!host.exists(targetPath)){
+  if (!host.exists(targetPath)) {
     host.create(targetPath, content);
   }
 }
 
 function updateAngularJson(host: Tree): Tree {
-  if (host.exists('angular.json')){
+  if (host.exists('angular.json')) {
+    // tslint:disable-next-line:no-non-null-assertion
     const sourceText = host.read('angular.json')!.toString('utf-8');
     const json = JSON.parse(sourceText);
     const projectName = Object.keys(json['projects'])[0];
-    
+
     // json['projects'][projectName]['architect']
     json['projects'][projectName]['architect']['build']['options']['stylePreprocessorOptions'] = {
-      includePaths : ["src/app/styles"]
+      includePaths : ['src/app/styles']
     };
 
     host.overwrite('angular.json', JSON.stringify(json, null, 2));

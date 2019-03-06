@@ -4,6 +4,10 @@
     "moh-start": {
       "description": "Schematic to be run on an `ng new` project to transform it to an MoH project (styles, assets, dependencies, etc).",
       "factory": "./moh-start/index#mohStart"
+    },
+    "copy-license": {
+      "description": "Copies over the Apache 2 LICENSE to the top directory.",
+      "factory": "./copy-license/index#copyLicense"
     }
   }
 }
