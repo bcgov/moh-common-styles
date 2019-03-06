@@ -56,6 +56,21 @@ ng g moh-common-schematics:moh-start # runs the schematic
 ```
 
 
+#### Creating a new schematic
+
+First, you must make sure the schematics-cli is installed on your machine.
+
+```bash
+npm install -g @angular-devkit/schematics-cli
+```
+
+To create a new schematic, make sure to run the command from the right folder.  It should be in the same folder as the `moh-common-schematics` package.json. `projects/common/schematics`
+
+```bash
+cd projects/common/schematics
+schematics blank  --name=schematic-name-example
+```
+
 # TODO
 
 - [ ] *High Priority* Fix compilation errors when lodaing moh-common-lib (WizardProgressBar) in moh-start by adding to tsconfig:
