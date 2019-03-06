@@ -8,6 +8,10 @@
     "copy-license": {
       "description": "Copies over the Apache 2 LICENSE to the top directory.",
       "factory": "./copy-license/index#copyLicense"
+    },
+    "version-js": {
+      "description": "Copies over version.js and sets it up to auto-add to new builds.",
+      "factory": "./version-js/index#versionJS"
     }
   }
 }

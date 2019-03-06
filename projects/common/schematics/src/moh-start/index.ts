@@ -93,7 +93,7 @@ function updateAngularJson(host: Tree): Tree {
     const json = JSON.parse(sourceText);
     const projectName = Object.keys(json['projects'])[0];
 
-    // json['projects'][projectName]['architect']
+    // Set stylePreprocessorOptions to auto-include styles.scss and variables.scss
     json['projects'][projectName]['architect']['build']['options']['stylePreprocessorOptions'] = {
       includePaths : ['src/app/styles']
     };
@@ -103,3 +103,37 @@ function updateAngularJson(host: Tree): Tree {
 
   return host;
 }
+
+/**
+ * Configures settings in tsconfig.json that are required to properly import
+ * from moh-common-lib
+ *
+ * Specifically, skibLibCheck and typeRoots.
+ */
+function updateTsConfig(host: Tree): Tree {
+  if (host.exists('tsconfig.json')) {
+    // tslint:disable-next-line:no-non-null-assertion
+    const sourceText = host.read('tsconfig.json')!.toString('utf-8');
+    const json = JSON.parse(sourceText);
+    const typeRoots = json['compilerOptions']['typeRoots'];
+    const NODE_PATH = '../../node_modules';
+
+    json['compilerOptions']['skipLibCheck'] = true;
+
+    // add node_modules to typeRoots if and only if it's missing
+    if ( typeRoots && typeRoots.length ) {
+      const nodeModulesExists = typeRoots.filter(x => x.includes('node_modules'));
+      if (nodeModulesExists) {
+        return host;
+      } else {
+        typeRoots.push('../../node_modules');
+      }
+      // if (typeRoots.filter(x => x.includes('node_modules')))
+    }
+
+    host.overwrite('tsconfig.json', JSON.stringify(json, null, 2));
+  }
+
+  return host;
+}
+
