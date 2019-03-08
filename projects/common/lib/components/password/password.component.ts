@@ -22,7 +22,7 @@ const zxcvbn = zxcvbn_;
  *     }
  */
 export interface PasswordErrorMsg {
-  required: string;
+  required?: string;
   minLength?: string;
   criteria?: string;
 }
@@ -42,6 +42,7 @@ export class PasswordComponent extends Base implements OnInit, OnChanges {
   @Input() isRequired: boolean = true;
   @Input() isDisabled: boolean = false;
   @Input() password: string;
+  @Input() pwdCriteria: string;
   @Input() minLen: string  = '8';
   @Input() maxLen: string  = '32';
   @Input() errorMessages: PasswordErrorMsg;
@@ -56,18 +57,42 @@ export class PasswordComponent extends Base implements OnInit, OnChanges {
   public pswdStrength: number;
   public strengthPercentage = 0;
 
+  public errMsg: PasswordErrorMsg;
+
+  // default messages
+  private requiredMsgSeg: string = ' is required.';
+  private minLenMsgSeg1: string = ' must be at least ';
+  private minLenMsgSeg2: string = ' characters in length.';
+  private criteriaMsg: string = ' does not match.';
+
+
   constructor() {
     super();
   }
 
   ngOnInit() {
 
-    if ( !this.errorMessages ) {
-      // Use default messages
-      this.errorMessages =    {
-        required: this.componentLabel + ' is required',
-        minLength: this.componentLabel + ' must be at least ' + this.minLen + ' characters in length.'
-      };
+    // Set default messages
+    this.errMsg =    {
+      required: this.componentLabel + this.requiredMsgSeg,
+      minLength: this.componentLabel + this.minLenMsgSeg1 + this.minLen + this.minLenMsgSeg2,
+      criteria: this.componentLabel + this.criteriaMsg
+    };
+
+    // Replace default message if provided
+    if ( this.errorMessages ) {
+
+      if ( this.errorMessages.required ) {
+        this.errMsg.required = this.errorMessages.required;
+      }
+
+      if ( this.errorMessages.minLength ) {
+        this.errMsg.minLength = this.errorMessages.minLength;
+      }
+
+      if ( this.errorMessages.criteria ) {
+        this.errMsg.criteria = this.errorMessages.criteria;
+      }
     }
   }
 
