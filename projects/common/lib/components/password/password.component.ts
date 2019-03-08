@@ -42,7 +42,7 @@ export class PasswordComponent extends Base implements OnInit, OnChanges {
   @Input() isRequired: boolean = true;
   @Input() isDisabled: boolean = false;
   @Input() password: string;
-  @Input() pwdCriteria: string;
+  @Input() pwdCriteria: string | RegExp;
   @Input() minLen: string  = '8';
   @Input() maxLen: string  = '32';
   @Input() errorMessages: PasswordErrorMsg;
@@ -63,7 +63,7 @@ export class PasswordComponent extends Base implements OnInit, OnChanges {
   private requiredMsgSeg: string = ' is required.';
   private minLenMsgSeg1: string = ' must be at least ';
   private minLenMsgSeg2: string = ' characters in length.';
-  private criteriaMsg: string = ' does not match.';
+  private criteriaMsg: string = ' contains invalid characters.';
 
 
   constructor() {
