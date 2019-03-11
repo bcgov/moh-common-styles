@@ -15,6 +15,7 @@ export class PostalCodeComponent extends MaskModel implements OnInit {
 
   @Input() label: string = 'Postal Code';
   @Input() displayMask: boolean = true;
+  @Input() disabled: boolean = false;
 
   constructor() {
     super();
