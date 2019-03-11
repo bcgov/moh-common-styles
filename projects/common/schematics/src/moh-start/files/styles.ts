@@ -41,6 +41,17 @@ $fa-font-path: '~font-awesome/fonts';
 @import "~font-awesome/scss/icons";
 @import "~font-awesome/scss/screen-reader";
 
+@import "~@ng-select/ng-select/themes/default.theme.css";
+.ng-select.ng-select-disabled {
+    &>.ng-select-container {
+        background-color: $gray-200;
+    }
+    .ng-arrow-wrapper { display: none; }
+}
+.ng-select {
+    min-width: 10rem;
+}
+
 @import "overrides";
 
 // Set a base font-size in px to ensure that we don't just use the browser's

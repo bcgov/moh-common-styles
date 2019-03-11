@@ -22,6 +22,8 @@ export function mohStart(_options: any): Rule {
     addPackageToPackageJson(tree, 'bootstrap', '^4.0.0');
     // currently there's a bug with rxjs@6.4.0, so we hardlock version. can be removed in future.
     addPackageToPackageJson(tree, 'rxjs', '6.2.1', true);
+    addPackageToPackageJson(tree, '@ng-select/ng-select', '^2.16.2');
+
 
     // Update files
     overwriteFile(tree, 'src/styles.scss', stylesSCSS);
