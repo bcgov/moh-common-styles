@@ -1,0 +1,1478 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>moh-common-lib</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">moh-common-lib</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>DateComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>projects/common/lib/components/date/date.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Extends</h3>
+    </p>
+    <p class="comment">
+                <code><a href="../classes/Base.html" target="_self" >Base</a></code>
+    </p>
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>common-date</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./date.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./date.component.html</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">viewProviders</td>
+                <td class="col-md-9">
+                    <code>
+                                <code><a href="../classes/Container.html" target="_self" >{ provide: ControlContainer, useExisting: forwardRef(() &#x3D;&gt; NgForm) }</a></code>
+                    </code>
+                </td>
+            </tr>
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#dayRef">dayRef</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#monthList">monthList</a>
+                            </li>
+                            <li>
+                                <a href="#monthRef">monthRef</a>
+                            </li>
+                            <li>
+                                <a href="#yearRef">yearRef</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#objectId">objectId</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#getNumericValue">getNumericValue</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#setDay">setDay</a>
+                            </li>
+                            <li>
+                                <a href="#setMonth">setMonth</a>
+                            </li>
+                            <li>
+                                <a href="#setYear">setYear</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#triggerDayValidation">triggerDayValidation</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#date">date</a>
+                            </li>
+                            <li>
+                                <a href="#disabled">disabled</a>
+                            </li>
+                            <li>
+                                <a href="#errorMessages">errorMessages</a>
+                            </li>
+                            <li>
+                                <a href="#label">label</a>
+                            </li>
+                            <li>
+                                <a href="#required">required</a>
+                            </li>
+                            <li>
+                                <a href="#restrictDate">restrictDate</a>
+                            </li>
+                            <li>
+                                <a href="#useCurrentDate">useCurrentDate</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#dateChange">dateChange</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(form: <a href="https://angular.io/api/forms/NgForm" target="_blank">NgForm</a>, cd: <a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank">ChangeDetectorRef</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">projects/common/lib/components/date/date.component.ts:52</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>form</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/forms/NgForm" target="_blank" >NgForm</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>cd</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank" >ChangeDetectorRef</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="date"></a>
+                        <b>date</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/SimpleDate.html" target="_self" >SimpleDate</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">projects/common/lib/components/date/date.component.ts:42</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="disabled"></a>
+                        <b>disabled</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">projects/common/lib/components/date/date.component.ts:40</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="errorMessages"></a>
+                        <b>errorMessages</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/DateErrorMsg.html" target="_self" >DateErrorMsg</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">projects/common/lib/components/date/date.component.ts:45</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="label"></a>
+                        <b>label</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;Date&#x27;</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">projects/common/lib/components/date/date.component.ts:41</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="required"></a>
+                        <b>required</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">projects/common/lib/components/date/date.component.ts:39</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="restrictDate"></a>
+                        <b>restrictDate</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>&quot;future&quot; | &quot;past&quot; | &quot;any&quot;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;any&#x27;</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">projects/common/lib/components/date/date.component.ts:44</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Can be one of: &quot;future&quot;, &quot;past&quot;. &quot;future&quot; includes today, &quot;past&quot; does not. </p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="useCurrentDate"></a>
+                        <b>useCurrentDate</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">projects/common/lib/components/date/date.component.ts:38</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+    <section>
+    <h3 id="outputs">Outputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="dateChange"></a>
+                        <b>dateChange</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/SimpleDate.html" target="_self" >EventEmitter&lt;SimpleDate&gt;</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">projects/common/lib/components/date/date.component.ts:47</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getNumericValue"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            getNumericValue
+                        </b>
+                        <a href="#getNumericValue"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getNumericValue(value: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="132"
+                            class="link-to-prism">projects/common/lib/components/date/date.component.ts:132</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Convert string to numeric value or null if not </p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>value</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>number | null</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <b>
+                            ngOnInit
+                        </b>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="59"
+                            class="link-to-prism">projects/common/lib/components/date/date.component.ts:59</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setDay"></a>
+                    <span class="name">
+                        <b>
+                            setDay
+                        </b>
+                        <a href="#setDay"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setDay(value: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="93"
+                            class="link-to-prism">projects/common/lib/components/date/date.component.ts:93</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Set the day and notify caller of change </p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>value</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setMonth"></a>
+                    <span class="name">
+                        <b>
+                            setMonth
+                        </b>
+                        <a href="#setMonth"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setMonth(value: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="81"
+                            class="link-to-prism">projects/common/lib/components/date/date.component.ts:81</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Set the month and notify caller of change </p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>value</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setYear"></a>
+                    <span class="name">
+                        <b>
+                            setYear
+                        </b>
+                        <a href="#setYear"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setYear(value: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="104"
+                            class="link-to-prism">projects/common/lib/components/date/date.component.ts:104</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Set the yera and notify caller of change </p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>value</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="triggerDayValidation"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            triggerDayValidation
+                        </b>
+                        <a href="#triggerDayValidation"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>triggerDayValidation()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="120"
+                            class="link-to-prism">projects/common/lib/components/date/date.component.ts:120</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Force the <code>day</code> input to run it&#39;s directives again. Important in cases
+where user fills fields out of order, e.g. sets days to 31 then month to
+Februrary.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="dayRef"></a>
+                        <span class="name">
+                            <b>
+                            dayRef</b>
+                            <a href="#dayRef"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://angular.io/api/forms/NgModel" target="_blank" >NgModel</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ViewChild(&#x27;dayRef&#x27;)<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">projects/common/lib/components/date/date.component.ts:35</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="monthList"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            monthList</b>
+                            <a href="#monthList"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>string[]</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[
+    &#x27;January&#x27;, &#x27;February&#x27;, &#x27;March&#x27;, &#x27;April&#x27;, &#x27;May&#x27;, &#x27;June&#x27;,
+    &#x27;July&#x27;, &#x27;August&#x27;, &#x27;September&#x27;, &#x27;October&#x27;, &#x27;November&#x27;, &#x27;December&#x27;
+  ]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">projects/common/lib/components/date/date.component.ts:49</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="monthRef"></a>
+                        <span class="name">
+                            <b>
+                            monthRef</b>
+                            <a href="#monthRef"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://angular.io/api/forms/NgModel" target="_blank" >NgModel</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ViewChild(&#x27;monthRef&#x27;)<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">projects/common/lib/components/date/date.component.ts:34</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="yearRef"></a>
+                        <span class="name">
+                            <b>
+                            yearRef</b>
+                            <a href="#yearRef"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://angular.io/api/forms/NgModel" target="_blank" >NgModel</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ViewChild(&#x27;yearRef&#x27;)<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">projects/common/lib/components/date/date.component.ts:36</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="objectId"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            objectId</b>
+                            <a href="#objectId"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>UUID.UUID().toString()</code>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Inherited from         <code><a href="../classes/Base.html" target="_self" >Base</a></code>
+</div>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in         <code><a href="../classes/Base.html#source" target="_self" >Base:11</a></code>
+</div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>An identifier for parents to keep track of components </p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef, ChangeDetectorRef, forwardRef } from &#x27;@angular/core&#x27;;
+import { Base } from &#x27;../../../models/src/base&#x27;;
+import { SimpleDate } from &#x27;../../interfaces/simple-date.interface&#x27;;
+import { ControlContainer, NgForm, NgModel } from &#x27;@angular/forms&#x27;;
+import * as moment_ from &#x27;moment&#x27;;
+const moment &#x3D; moment_;
+
+/**
+ * Component NPM package dependencies:
+ * a) moment
+ */
+
+export interface DateErrorMsg {
+  required: string;
+  dayOutOfRange?: string;
+  yearDistantPast?: string;
+  yearDistantFuture?: string;
+  noPastDatesAllowed?: string;
+  noFutureDatesAllowed?: string;
+  invalidValue?: string;
+}
+
+@Component({
+  selector: &#x27;common-date&#x27;,
+  templateUrl: &#x27;./date.component.html&#x27;,
+  styleUrls: [&#x27;./date.component.scss&#x27;],
+  /* Re-use the same ngForm that it&#x27;s parent is using. The component will show
+   * up in its parents &#x60;this.form&#x60;, and will auto-update &#x60;this.form.valid&#x60;
+   */
+  viewProviders: [ { provide: ControlContainer, useExisting: forwardRef(() &#x3D;&gt; NgForm ) } ]
+})
+export class DateComponent extends Base implements OnInit {
+  // Exists for unit testing to validate errors set
+  @ViewChild( &#x27;monthRef&#x27; ) monthRef: NgModel;
+  @ViewChild( &#x27;dayRef&#x27; ) dayRef: NgModel;
+  @ViewChild( &#x27;yearRef&#x27;) yearRef: NgModel;
+
+  @Input() useCurrentDate: boolean &#x3D; false;
+  @Input() required: boolean &#x3D; true;
+  @Input() disabled: boolean &#x3D; false;
+  @Input() label: string &#x3D; &#x27;Date&#x27;;
+  @Input() date: SimpleDate;
+  /** Can be one of: &quot;future&quot;, &quot;past&quot;. &quot;future&quot; includes today, &quot;past&quot; does not. */
+  @Input() restrictDate: &#x27;future&#x27; | &#x27;past&#x27; | &#x27;any&#x27; &#x3D; &#x27;any&#x27;;
+  @Input() errorMessages: DateErrorMsg;
+
+  @Output() dateChange: EventEmitter&lt;SimpleDate&gt; &#x3D; new EventEmitter&lt;SimpleDate&gt;();
+
+  public monthList: string[] &#x3D; [
+    &#x27;January&#x27;, &#x27;February&#x27;, &#x27;March&#x27;, &#x27;April&#x27;, &#x27;May&#x27;, &#x27;June&#x27;,
+    &#x27;July&#x27;, &#x27;August&#x27;, &#x27;September&#x27;, &#x27;October&#x27;, &#x27;November&#x27;, &#x27;December&#x27;
+  ];
+
+  constructor( private form: NgForm,
+               private cd: ChangeDetectorRef ) {
+    super();
+  }
+
+  ngOnInit() {
+    if ( !this.errorMessages ) {
+      // Use default messages
+      this.errorMessages &#x3D; {
+        required: this.label + &#x27; is required.&#x27;,
+        dayOutOfRange: &#x27;Invalid &#x27; + this.label + &#x27;.&#x27;,
+        yearDistantPast: &#x27;Invalid &#x27; + this.label + &#x27;.&#x27;,
+        yearDistantFuture: &#x27;Invalid &#x27; + this.label + &#x27;.&#x27;,
+        noFutureDatesAllowed: &#x27;Invalid &#x27; + this.label + &#x27;.&#x27;,
+        invalidValue: &#x27;Invalid &#x27; + this.label + &#x27;.&#x27;
+      };
+    }
+
+    if ( this.useCurrentDate ) {
+      // Set date to current date
+      this.date.month &#x3D; moment().month();
+      this.date.day &#x3D; moment().date();
+      this.date.year &#x3D; moment().year();
+    }
+  }
+
+  /** Set the month and notify caller of change */
+  setMonth( value: string ): void {
+    const month &#x3D; this.getNumericValue( value );
+
+    // console.log( &#x27;monthRef: &#x27;, this.monthRef );
+    if ( this.date ) {
+      this.date.month &#x3D; month;
+      this.triggerDayValidation();
+      this.dateChange.emit( this.date );
+    }
+  }
+
+  /** Set the day and notify caller of change */
+  setDay( value: string ): void {
+    const day &#x3D; this.getNumericValue( value );
+
+    // console.log(  &#x27;dayRef: &#x27;, this.dayRef );
+    if ( this.date ) {
+      this.date.day &#x3D; day;
+      this.dateChange.emit( this.date );
+    }
+  }
+
+  /** Set the yera and notify caller of change */
+  setYear( value: string ): void {
+    const year &#x3D; this.getNumericValue( value );
+
+    // console.log( &#x27;yearRef: &#x27;, this.yearRef );
+    if ( this.date ) {
+      this.date.year &#x3D; year;
+      this.triggerDayValidation();
+      this.dateChange.emit( this.date );
+    }
+  }
+
+  /**
+   * Force the &#x60;day&#x60; input to run it&#x27;s directives again. Important in cases
+   * where user fills fields out of order, e.g. sets days to 31 then month to
+   * Februrary.
+   */
+  private triggerDayValidation() {
+    // We have to wrap this in a timeout, otherwise it runs before Angular has updated the values
+    setTimeout( () &#x3D;&gt; {
+      if ( this.form.controls[&#x27;day&#x27;] ) {
+        // console.log( &#x27;Trigger day validation&#x27; );
+        this.form.controls[&#x27;day&#x27;].updateValueAndValidity();
+        this.cd.detectChanges();
+      }
+    }, 0);
+  }
+
+  /** Convert string to numeric value or null if not */
+  private getNumericValue( value: string ): number | null {
+    const parsed &#x3D; parseInt( value, 10 );
+    return ( isNaN( parsed ) ? null : parsed );
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;fieldset&gt;
+  &lt;legend class&#x3D;&quot;date--legend&quot;&gt;{{label}}&lt;/legend&gt;
+  &lt;div class&#x3D;&quot;form-group date-row&quot;&gt;
+
+    &lt;label class&#x3D;&quot;visuallyhidden&quot; for&#x3D;&quot;month{{objectId}}&quot;&gt;Month&lt;/label&gt;
+    &lt;select class&#x3D;&quot;form-control monthSelect&quot;
+            id&#x3D;&quot;month{{objectId}}&quot;
+            name&#x3D;&quot;month&quot;
+            [ngModel]&#x3D;&quot;date?.month&quot;
+            (ngModelChange)&#x3D;&quot;setMonth($event)&quot;
+            [disabled]&#x3D;&#x27;disabled&#x27;
+            #monthRef&#x3D;&quot;ngModel&quot;
+            [required]&#x3D;&quot;required&quot;&gt;
+      &lt;!-- We show the blank option so the user can clear out their data.--&gt;
+      &lt;option value&#x3D;&quot;null&quot; label&#x3D;&quot;-- month --&quot; selected [disabled]&#x3D;&#x27;required&#x27;&gt;&lt;/option&gt;
+      &lt;option *ngFor&#x3D;&quot;let month of monthList; let i &#x3D; index;&quot; [value]&#x3D;&quot;i + 1&quot;&gt;{{month}}&lt;/option&gt;
+    &lt;/select&gt;
+
+    &lt;label class&#x3D;&quot;visuallyhidden&quot; for&#x3D;&quot;day{{objectId}}&quot;&gt;Day&lt;/label&gt;
+    &lt;input type&#x3D;&quot;number&quot;
+           class&#x3D;&quot;form-control dayInput&quot;
+           id&#x3D;&quot;day{{objectId}}&quot;
+           name&#x3D;&quot;day&quot;
+           placeholder&#x3D;&quot;day&quot;
+           [ngModel]&#x3D;&quot;date?.day&quot;
+           (ngModelChange)&#x3D;&quot;setDay($event)&quot;
+           #dayRef&#x3D;&quot;ngModel&quot;
+           [required]&#x3D;&quot;required&quot;
+           commonDateFieldFormat
+           commonDayValidation
+           [disabled]&#x3D;&#x27;disabled&#x27;
+           maxlength&#x3D;&quot;2&quot; /&gt;
+
+    &lt;label class&#x3D;&quot;visuallyhidden&quot; for&#x3D;&quot;year{{objectId}}&quot;&gt;Year&lt;/label&gt;
+    &lt;input type&#x3D;&quot;number&quot;
+           class&#x3D;&quot;form-control yearInput&quot;
+           id&#x3D;&quot;year{{objectId}}&quot;
+           name&#x3D;&quot;year&quot;
+           placeholder&#x3D;&quot;year&quot;
+           [ngModel]&#x3D;&quot;date?.year&quot;
+           (ngModelChange)&#x3D;&quot;setYear($event)&quot;
+           #yearRef&#x3D;&quot;ngModel&quot;
+           [required]&#x3D;&quot;required&quot;
+           commonDateFieldFormat
+           [commonYearValidate]&#x3D;&quot;restrictDate&quot;
+           [disabled]&#x3D;&#x27;disabled&#x27;
+           maxlength&#x3D;&quot;4&quot; /&gt;
+
+  &lt;/div&gt;
+
+&lt;/fieldset&gt;
+
+&lt;!-- Error messages for component --&gt;
+&lt;div *ngIf&#x3D;&quot;!disabled &amp;&amp; (monthRef.touched || monthRef.dirty) &amp;&amp; (dayRef.touched || dayRef.dirty) &amp;&amp; (yearRef.touched || yearRef.dirty)&quot;
+    role&#x3D;&quot;alert&quot;
+    class&#x3D;&#x27;error-container&#x27;
+    aria-live&#x3D;&quot;assertive&quot;&gt;
+  &lt;div class&#x3D;&quot;text-danger&quot;
+       *ngIf&#x3D;&quot;(monthRef?.errors?.required || dayRef?.errors?.required || yearRef?.errors?.required ) &amp;&amp; errorMessages?.required&quot;&gt;
+       {{errorMessages.required}}
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;text-danger&quot;
+      *ngIf&#x3D;&quot;dayRef?.errors?.dayOutOfRange &amp;&amp; errorMessages?.dayOutOfRange&quot;&gt;
+       {{errorMessages.dayOutOfRange}}
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;text-danger&quot;
+       *ngIf&#x3D;&quot;yearRef?.errors?.yearDistantPast &amp;&amp; errorMessages?.yearDistantPast&quot;&gt;
+       {{errorMessages.yearDistantPast}}
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;text-danger&quot;
+       *ngIf&#x3D;&quot;yearRef?.errors?.yearDistantFuture &amp;&amp; errorMessages?.yearDistantFuture&quot;&gt;
+       {{errorMessages.yearDistantFuture}}
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;text-danger&quot;
+        *ngIf&#x3D;&quot;yearRef?.errors?.noPastDatesAllowed &amp;&amp; errorMessages?.noPastDatesAllowed&quot;&gt;
+        {{errorMessages.noPastDatesAllowed}}
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;text-danger&quot;
+       *ngIf&#x3D;&quot;yearRef?.errors?.noFutureDatesAllowed &amp;&amp; errorMessages?.noFutureDatesAllowed&quot;&gt;
+       {{errorMessages.noFutureDatesAllowed}}
+  &lt;/div&gt;
+  &lt;!-- Case should not happen until something is not formatted correctly--&gt;
+  &lt;div class&#x3D;&quot;text-danger&quot;
+       *ngIf&#x3D;&quot;(dayRef?.errors?.invalidValue || yearRef?.errors?.invalidValue) &amp;&amp; errorMessages?.invalidValue&quot;&gt;
+       {{errorMessages.invalidValue}}
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./date.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">@import &#x27;variables.scss&#x27;;
+
+.date--legend {
+  font-size: inherit;
+  font-weight: bold;
+}
+
+.date-row {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+
+.monthSelect {
+  max-width: 50%;
+  height: 35px;
+  margin-right: 1em;
+}
+.dayInput {
+  max-width: 25%;
+  height: 35px;
+  margin-right: 1em;
+}
+.yearInput {
+  max-width: 25%;
+  height: 35px;
+}
+.error-container {
+  flex-basis: 100% !important;
+}
+
+/* Remove spinners */
+input[type&#x3D;number]::-webkit-inner-spin-button,
+input[type&#x3D;number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+select option[selected] {
+  color: gray !important;
+}
+
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><fieldset>  <legend class="date--legend">{{label}}</legend>  <div class="form-group date-row">    <label class="visuallyhidden" for="month{{objectId}}">Month</label>    <select class="form-control monthSelect"            id="month{{objectId}}"            name="month"            [ngModel]="date?.month"            (ngModelChange)="setMonth($event)"            [disabled]=\'disabled\'            #monthRef="ngModel"            [required]="required">      <!-- We show the blank option so the user can clear out their data.-->      <option value="null" label="-- month --" selected [disabled]=\'required\'></option>      <option *ngFor="let month of monthList; let i = index;" [value]="i + 1">{{month}}</option>    </select>    <label class="visuallyhidden" for="day{{objectId}}">Day</label>    <input type="number"           class="form-control dayInput"           id="day{{objectId}}"           name="day"           placeholder="day"           [ngModel]="date?.day"           (ngModelChange)="setDay($event)"           #dayRef="ngModel"           [required]="required"           commonDateFieldFormat           commonDayValidation           [disabled]=\'disabled\'           maxlength="2" />    <label class="visuallyhidden" for="year{{objectId}}">Year</label>    <input type="number"           class="form-control yearInput"           id="year{{objectId}}"           name="year"           placeholder="year"           [ngModel]="date?.year"           (ngModelChange)="setYear($event)"           #yearRef="ngModel"           [required]="required"           commonDateFieldFormat           [commonYearValidate]="restrictDate"           [disabled]=\'disabled\'           maxlength="4" />  </div></fieldset><!-- Error messages for component --><div *ngIf="!disabled && (monthRef.touched || monthRef.dirty) && (dayRef.touched || dayRef.dirty) && (yearRef.touched || yearRef.dirty)"    role="alert"    class=\'error-container\'    aria-live="assertive">  <div class="text-danger"       *ngIf="(monthRef?.errors?.required || dayRef?.errors?.required || yearRef?.errors?.required ) && errorMessages?.required">       {{errorMessages.required}}  </div>  <div class="text-danger"      *ngIf="dayRef?.errors?.dayOutOfRange && errorMessages?.dayOutOfRange">       {{errorMessages.dayOutOfRange}}  </div>  <div class="text-danger"       *ngIf="yearRef?.errors?.yearDistantPast && errorMessages?.yearDistantPast">       {{errorMessages.yearDistantPast}}  </div>  <div class="text-danger"       *ngIf="yearRef?.errors?.yearDistantFuture && errorMessages?.yearDistantFuture">       {{errorMessages.yearDistantFuture}}  </div>  <div class="text-danger"        *ngIf="yearRef?.errors?.noPastDatesAllowed && errorMessages?.noPastDatesAllowed">        {{errorMessages.noPastDatesAllowed}}  </div>  <div class="text-danger"       *ngIf="yearRef?.errors?.noFutureDatesAllowed && errorMessages?.noFutureDatesAllowed">       {{errorMessages.noFutureDatesAllowed}}  </div>  <!-- Case should not happen until something is not formatted correctly-->  <div class="text-danger"       *ngIf="(dayRef?.errors?.invalidValue || yearRef?.errors?.invalidValue) && errorMessages?.invalidValue">       {{errorMessages.invalidValue}}  </div></div></div>'
+    var COMPONENTS = [{'name': 'CaptchaComponent', 'selector': 'common-captcha'},{'name': 'CoreBreadcrumbComponent', 'selector': 'common-core-breadcrumb'},{'name': 'DateComponent', 'selector': 'common-date'},{'name': 'DatepickerComponent', 'selector': 'common-datepicker'},{'name': 'FileUploaderComponent', 'selector': 'common-file-uploader'},{'name': 'FormActionBarComponent', 'selector': 'common-form-action-bar'},{'name': 'FormSubmitBarComponent', 'selector': 'common-form-submit-bar'},{'name': 'PageFrameworkComponent', 'selector': 'common-page-framework'},{'name': 'PasswordComponent', 'selector': 'common-password'},{'name': 'PostalCodeComponent', 'selector': 'common-postal-code'},{'name': 'ThumbnailComponent', 'selector': 'common-thumbnail'},{'name': 'WizardProgressBarComponent', 'selector': 'common-wizard-progress-bar'}];
+    var DIRECTIVES = [{'name': 'DateFieldFormatDirective', 'selector': '[commonDateFieldFormat]'},{'name': 'DayValidationDirective', 'selector': '[commonDayValidation]'},{'name': 'YearValidateDirective', 'selector': '[commonYearValidate]'}];
+    var ACTUAL_COMPONENT = {'name': 'DateComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'DateComponent.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

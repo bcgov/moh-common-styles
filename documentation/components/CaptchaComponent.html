@@ -1,0 +1,2491 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>moh-common-lib</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">moh-common-lib</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>CaptchaComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>projects/common/captcha/src/captcha.component.ts</code>
+</p>
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/AfterViewInit" target="_blank" >AfterViewInit</a></code>
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+                    <code><a href="https://angular.io/api/core/OnChanges" target="_blank" >OnChanges</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>common-captcha</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./captcha.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./captcha.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#answer">answer</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#audio">audio</a>
+                            </li>
+                            <li>
+                                <a href="#audioElement">audioElement</a>
+                            </li>
+                            <li>
+                                <a href="#errorFetchingImg">errorFetchingImg</a>
+                            </li>
+                            <li>
+                                <a href="#errorVerifyAnswer">errorVerifyAnswer</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#fetchingAudioInProgress">fetchingAudioInProgress</a>
+                            </li>
+                            <li>
+                                <a href="#imageContainer">imageContainer</a>
+                            </li>
+                            <li>
+                                <a href="#incorrectAnswer">incorrectAnswer</a>
+                            </li>
+                            <li>
+                                <a href="#state">state</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#translatedMessages">translatedMessages</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#validation">validation</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#answerChanged">answerChanged</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#createErrorTextLine">createErrorTextLine</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#fetchAudio">fetchAudio</a>
+                            </li>
+                            <li>
+                                <a href="#forceRefresh">forceRefresh</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#getNewCaptcha">getNewCaptcha</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#handleVerify">handleVerify</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#isValidPayload">isValidPayload</a>
+                            </li>
+                            <li>
+                                <a href="#ngAfterViewInit">ngAfterViewInit</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnChanges">ngOnChanges</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#playAudio">playAudio</a>
+                            </li>
+                            <li>
+                                <a href="#publicForceRefresh">publicForceRefresh</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#retryFetchCaptcha">retryFetchCaptcha</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#apiBaseUrl">apiBaseUrl</a>
+                            </li>
+                            <li>
+                                <a href="#eagerFetchAudio">eagerFetchAudio</a>
+                            </li>
+                            <li>
+                                <a href="#language">language</a>
+                            </li>
+                            <li>
+                                <a href="#nonce">nonce</a>
+                            </li>
+                            <li>
+                                <a href="#successMessage">successMessage</a>
+                            </li>
+                            <li>
+                                <a href="#userPromptMessage">userPromptMessage</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#onValidToken">onValidToken</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(dataService: <a href="../injectables/CaptchaDataService.html">CaptchaDataService</a>, cd: <a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank">ChangeDetectorRef</a>, ngZone: <a href="https://angular.io/api/core/NgZone" target="_blank">NgZone</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">projects/common/captcha/src/captcha.component.ts:45</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>dataService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/CaptchaDataService.html" target="_self" >CaptchaDataService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>cd</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank" >ChangeDetectorRef</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>ngZone</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/core/NgZone" target="_blank" >NgZone</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="apiBaseUrl"></a>
+                        <b>apiBaseUrl</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">projects/common/captcha/src/captcha.component.ts:19</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="eagerFetchAudio"></a>
+                        <b>eagerFetchAudio</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">projects/common/captcha/src/captcha.component.ts:24</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="language"></a>
+                        <b>language</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;en&#x27;</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">projects/common/captcha/src/captcha.component.ts:25</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="nonce"></a>
+                        <b>nonce</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">projects/common/captcha/src/captcha.component.ts:20</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="successMessage"></a>
+                        <b>successMessage</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">projects/common/captcha/src/captcha.component.ts:23</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="userPromptMessage"></a>
+                        <b>userPromptMessage</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">projects/common/captcha/src/captcha.component.ts:26</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+    <section>
+    <h3 id="outputs">Outputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="onValidToken"></a>
+                        <b>onValidToken</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">projects/common/captcha/src/captcha.component.ts:22</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="answerChanged"></a>
+                    <span class="name">
+                        <b>
+                            answerChanged
+                        </b>
+                        <a href="#answerChanged"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>answerChanged(event: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="84"
+                            class="link-to-prism">projects/common/captcha/src/captcha.component.ts:84</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>event</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="createErrorTextLine"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            createErrorTextLine
+                        </b>
+                        <a href="#createErrorTextLine"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>createErrorTextLine(error)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="222"
+                            class="link-to-prism">projects/common/captcha/src/captcha.component.ts:222</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>error</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="fetchAudio"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            fetchAudio
+                        </b>
+                        <a href="#fetchAudio"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>fetchAudio(playImmediately: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="165"
+                            class="link-to-prism">projects/common/captcha/src/captcha.component.ts:165</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Default value</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>playImmediately</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                        <code>false</code>
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="forceRefresh"></a>
+                    <span class="name">
+                        <b>
+                            forceRefresh
+                        </b>
+                        <a href="#forceRefresh"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>forceRefresh()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="75"
+                            class="link-to-prism">projects/common/captcha/src/captcha.component.ts:75</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getNewCaptcha"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            getNewCaptcha
+                        </b>
+                        <a href="#getNewCaptcha"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getNewCaptcha(errorCase: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="185"
+                            class="link-to-prism">projects/common/captcha/src/captcha.component.ts:185</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>errorCase</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleVerify"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            handleVerify
+                        </b>
+                        <a href="#handleVerify"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>handleVerify(payload: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="110"
+                            class="link-to-prism">projects/common/captcha/src/captcha.component.ts:110</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>payload</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isValidPayload"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            isValidPayload
+                        </b>
+                        <a href="#isValidPayload"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>isValidPayload(payload)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="129"
+                            class="link-to-prism">projects/common/captcha/src/captcha.component.ts:129</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Case where HTTP 200 response code is received by the payload is incorrect or corrupt.
+The occurance of this type of case should be rare.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>payload</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngAfterViewInit"></a>
+                    <span class="name">
+                        <b>
+                            ngAfterViewInit
+                        </b>
+                        <a href="#ngAfterViewInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngAfterViewInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="60"
+                            class="link-to-prism">projects/common/captcha/src/captcha.component.ts:60</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnChanges"></a>
+                    <span class="name">
+                        <b>
+                            ngOnChanges
+                        </b>
+                        <a href="#ngOnChanges"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnChanges(changes: <a href="https://angular.io/api/core/SimpleChanges" target="_blank">SimpleChanges</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="63"
+                            class="link-to-prism">projects/common/captcha/src/captcha.component.ts:63</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>changes</td>
+                                    <td>
+                                                <code><a href="https://angular.io/api/core/SimpleChanges" target="_blank" >SimpleChanges</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <b>
+                            ngOnInit
+                        </b>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="52"
+                            class="link-to-prism">projects/common/captcha/src/captcha.component.ts:52</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="playAudio"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            playAudio
+                        </b>
+                        <a href="#playAudio"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>playAudio()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="157"
+                            class="link-to-prism">projects/common/captcha/src/captcha.component.ts:157</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="publicForceRefresh"></a>
+                    <span class="name">
+                        <b>
+                            publicForceRefresh
+                        </b>
+                        <a href="#publicForceRefresh"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>publicForceRefresh()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="80"
+                            class="link-to-prism">projects/common/captcha/src/captcha.component.ts:80</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="retryFetchCaptcha"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            retryFetchCaptcha
+                        </b>
+                        <a href="#retryFetchCaptcha"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>retryFetchCaptcha()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="145"
+                            class="link-to-prism">projects/common/captcha/src/captcha.component.ts:145</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="answer"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            answer</b>
+                            <a href="#answer"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>&#x27;&#x27;</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">projects/common/captcha/src/captcha.component.ts:40</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="audio"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            audio</b>
+                            <a href="#audio"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>&#x27;&#x27;</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">projects/common/captcha/src/captcha.component.ts:39</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="audioElement"></a>
+                        <span class="name">
+                            <b>
+                            audioElement</b>
+                            <a href="#audioElement"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://angular.io/api/core/ElementRef" target="_blank" >ElementRef</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ViewChild(&#x27;audioElement&#x27;)<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">projects/common/captcha/src/captcha.component.ts:17</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="errorFetchingImg"></a>
+                        <span class="name">
+                            <b>
+                            errorFetchingImg</b>
+                            <a href="#errorFetchingImg"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>null</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>null</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">projects/common/captcha/src/captcha.component.ts:31</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Http error response for fetching a CAPTCHA image.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="errorVerifyAnswer"></a>
+                        <span class="name">
+                            <b>
+                            errorVerifyAnswer</b>
+                            <a href="#errorVerifyAnswer"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>null</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>null</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">projects/common/captcha/src/captcha.component.ts:36</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Http error response for verifying user&#39;s answer.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="fetchingAudioInProgress"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            fetchingAudioInProgress</b>
+                            <a href="#fetchingAudioInProgress"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>false</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">projects/common/captcha/src/captcha.component.ts:45</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="imageContainer"></a>
+                        <span class="name">
+                            <b>
+                            imageContainer</b>
+                            <a href="#imageContainer"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://angular.io/api/core/ElementRef" target="_blank" >ElementRef</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ViewChild(&#x27;image&#x27;)<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">projects/common/captcha/src/captcha.component.ts:16</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="incorrectAnswer"></a>
+                        <span class="name">
+                            <b>
+                            incorrectAnswer</b>
+                            <a href="#incorrectAnswer"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">projects/common/captcha/src/captcha.component.ts:43</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="state"></a>
+                        <span class="name">
+                            <b>
+                            state</b>
+                            <a href="#state"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../miscellaneous/enumerations.html#CAPTCHA_STATE" target="_self" >CAPTCHA_STATE</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">projects/common/captcha/src/captcha.component.ts:42</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="translatedMessages"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            translatedMessages</b>
+                            <a href="#translatedMessages"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>{
+    playAudio: {
+      en: &#x27;Play Audio&#x27;,
+      zh: &#x27;播放声音&#x27;,
+      fr: &#x27;Lecture audio&#x27;,
+      pa: &#x27;ਆਡੀਓ ਚਲਾਓ&#x27;,
+    },
+    tryAnotherImg: {
+      en: &#x27;Try another image&#x27;,
+      zh: &#x27;换个图像&#x27;,
+      fr: &#x27;Essayez une autre image&#x27;,
+      pa: &#x27;ਕੋਈ ਹੋਰ ਚਿੱਤਰ ਅਜ਼ਮਾਓ&#x27;,
+    },
+    userPromptMessage: {
+      en: &#x27;Enter the text you either see in the box or you hear in the audio&#x27;,
+      zh: &#x27;请输入看到或听到的文字&#x27;,
+      fr: &#x27;Entrez le texte que vous voyez dans la case ou que vous entendez dans le son&#x27;,
+      pa: &#x27;ਉਹ ਟੈਕਸਟ ਦਾਖਲ ਕਰੋ ਜੋ ਤੁਸੀਂ ਬਕਸੇ ਵਿੱਚ ਦੇਖਦੇ ਹੋ ਜਾਂ ਤੁਸੀਂ ਆਡੀਓ ਵਿੱਚ ਸੁਣਦੇ ਹੋ&#x27;,
+    },
+    incorrectAnswer: {
+      en: &#x27;Incorrect answer, please try again.&#x27;,
+      zh: &#x27;答案不对。请重试。&#x27;,
+      fr: &#x27;Mauvaise réponse, veuillez réessayer.&#x27;,
+      pa: &#x27;ਗਲਤ ਜਵਾਬ, ਕਿਰਪਾ ਕਰਕੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ.&#x27;,
+    },
+    successMessage: {
+      en: &#x27;You can submit your application now.&#x27;,
+      zh: &#x27;你现在可以提交申请了。&#x27;,
+      fr: &#x27;Vous pouvez soumettre votre candidature maintenant.&#x27;,
+      pa: &#x27;ਤੁਸੀਂ ਆਪਣੀ ਅਰਜ਼ੀ ਹੁਣੇ ਪੇਸ਼ ਕਰ ਸਕਦੇ ਹੋ&#x27;,
+    },
+    correct: {
+      en: &#x27;Correct.&#x27;,
+      zh: &#x27;正确。&#x27;,
+      fr: &#x27;Correct.&#x27;,
+      pa: &#x27;ਸਹੀ ਕਰੋ&#x27;,
+    },
+    loadingImage: {
+      en: &#x27;Loading CAPTCHA image&#x27;,
+      zh: &#x27;正在下载验证码&#x27;,
+      fr: &#x27;Chargement de l\&#x27;image CAPTCHA&#x27;,
+      pa: &#x27;ਕੈਪਟਚਾ ਚਿੱਤਰ ਲੋਡ ਕਰ ਰਿਹਾ ਹੈ&#x27;,
+    },
+    browserNotSupportAudio: {
+      en: &#x27;Your browser does not support the audio element.&#x27;,
+      zh: &#x27;你的浏览器不支持播音&#x27;,
+      fr: &#x27;Votre navigateur ne supporte pas l\&#x27;élément audio.&#x27;,
+      pa: &#x27;ਤੁਹਾਡਾ ਬ੍ਰਾਉਜ਼ਰ ਆਡੀਓ ਐਲੀਮੈਂਟ ਦਾ ਸਮਰਥਨ ਨਹੀਂ ਕਰਦਾ.&#x27;,
+    },
+    verifyingAnswer: {
+      en: &#x27;Verifying your answer...&#x27;,
+      zh: &#x27;正在验证答案...&#x27;,
+      fr: &#x27;Vérification de votre réponse ...&#x27;,
+      pa: &#x27;ਤੁਹਾਡਾ ਜਵਾਬ ਤਸਦੀਕ ਕਰ ਰਿਹਾ ਹੈ ...&#x27;,
+    },
+    errorRetrievingImg: {
+      en: &#x27;Error happened while retrieving CAPTCHA image. please {{click here}} to try again&#x27;,
+      zh: &#x27;验证码下载错误。请{{点击这里}}重试&#x27;,
+      fr: &#x27;Une erreur s\&#x27;est produite lors de la récupération de l\&#x27;image CAPTCHA. s\&#x27;il vous plaît {{cliquez ici}} pour réessayer&#x27;,
+      pa: &#x27;ਕੈਪਟਚਾ ਚਿੱਤਰ ਨੂੰ ਪ੍ਰਾਪਤ ਕਰਦੇ ਸਮੇਂ ਤਰੁੱਟੀ ਉਤਪੰਨ ਹੋਈ. ਕਿਰਪਾ ਕਰਕੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰਨ ਲਈ {{ਇੱਥੇ ਕਲਿਕ ਕਰੋ}}&#x27;,
+    },
+    errorVerifyingAnswer: {
+      en: &#x27;Error happened while verifying your answer. please {{click here}} to try again&#x27;,
+      zh: &#x27;验证答案过程发生错误。请{{点击这里}}重试&#x27;,
+      fr: &#x27;Une erreur s\&#x27;est produite lors de la vérification de votre réponse. s\&#x27;il vous plaît {{cliquez ici}} pour réessayer&#x27;,
+      pa: &#x27;ਤੁਹਾਡਾ ਜਵਾਬ ਤਸਦੀਕ ਕਰਨ ਵੇਲੇ ਗਲਤੀ ਆਈ ਕਿਰਪਾ ਕਰਕੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰਨ ਲਈ {{ਇੱਥੇ ਕਲਿਕ ਕਰੋ}}&#x27;,
+    },
+  }</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="232" class="link-to-prism">projects/common/captcha/src/captcha.component.ts:232</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="validation"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            validation</b>
+                            <a href="#validation"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>&#x27;&#x27;</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">projects/common/captcha/src/captcha.component.ts:38</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  Component, ElementRef, ViewChild, SimpleChanges, NgZone,
+  ChangeDetectorRef, Output, Input, AfterViewInit, OnInit, OnChanges, EventEmitter
+} from &#x27;@angular/core&#x27;;
+// import { Http, Response } from &#x27;@angular/http&#x27;;
+import { HttpClient, HttpResponse } from &#x27;@angular/common/http&#x27;;
+import { CaptchaDataService, ServerPayload } from &#x27;./captcha-data.service&#x27;;
+
+@Component({
+  selector: &#x27;common-captcha&#x27;,
+  templateUrl: &#x27;./captcha.component.html&#x27;,
+  styleUrls: [&#x27;./captcha.component.scss&#x27;]
+})
+export class CaptchaComponent implements AfterViewInit, OnInit, OnChanges {
+
+  @ViewChild(&#x27;image&#x27;) imageContainer: ElementRef;
+  @ViewChild(&#x27;audioElement&#x27;) audioElement: ElementRef;
+  // tslint:disable:no-input-rename
+  @Input(&#x27;apiBaseUrl&#x27;) apiBaseUrl: string;
+  @Input(&#x27;nonce&#x27;) nonce: string;
+  // tslint:disable-next-line:no-output-on-prefix
+  @Output() onValidToken &#x3D; new EventEmitter&lt;string&gt;();
+  @Input(&#x27;successMessage&#x27;) successMessage: string;
+  @Input(&#x27;eagerFetchAudio&#x27;) eagerFetchAudio: string;
+  @Input(&#x27;language&#x27;) language: string &#x3D; &#x27;en&#x27;;
+  @Input(&#x27;userPromptMessage&#x27;) userPromptMessage: string;
+
+  /**
+   * Http error response for fetching a CAPTCHA image.
+   */
+  errorFetchingImg &#x3D; null;
+
+  /**
+   * Http error response for verifying user&#x27;s answer.
+   */
+  errorVerifyAnswer &#x3D; null;
+
+  private validation &#x3D; &#x27;&#x27;;
+  public audio &#x3D; &#x27;&#x27;;
+  public answer &#x3D; &#x27;&#x27;;
+
+  state: CAPTCHA_STATE;
+  incorrectAnswer: boolean;
+
+  public fetchingAudioInProgress &#x3D; false;
+
+  constructor(private dataService: CaptchaDataService,
+    private cd: ChangeDetectorRef,
+    private ngZone: NgZone) {
+  }
+
+  ngOnInit() {
+    this.forceRefresh.bind(this);
+    window[&#x27;ca.bcgov.captchaRefresh&#x27;] &#x3D; this.publicForceRefresh.bind(this);
+
+    // if(!this.userPromptMessage){
+    //   this.userPromptMessage &#x3D; &quot;Enter the text you either see in the box or you hear in the audio&quot;;
+    // }
+  }
+  ngAfterViewInit() {
+    this.forceRefresh();
+  }
+  ngOnChanges(changes: SimpleChanges) {
+    // when changing language, if audio is empty then no need to refetch
+    if (!changes.language || !this.audio || this.audio.length &#x3D;&#x3D;&#x3D; 0) {
+      if (!(changes.reloadCaptcha &amp;&amp; (true &#x3D;&#x3D;&#x3D; changes.reloadCaptcha.previousValue
+        || false &#x3D;&#x3D;&#x3D; changes.reloadCaptcha.previousValue)
+        &amp;&amp; (changes.reloadCaptcha.currentValue !&#x3D;&#x3D; changes.reloadCaptcha.previousValue))) {
+        return;
+      }
+    }
+    this.getNewCaptcha(false);
+  }
+
+  forceRefresh() {
+    this.getNewCaptcha(false);
+    this.cd.detectChanges();
+  }
+
+  publicForceRefresh() {
+    this.ngZone.run(() &#x3D;&gt; this.forceRefresh());
+  }
+
+  answerChanged(event: any) {
+    if (this.answer.length &lt; 6) {
+      this.incorrectAnswer &#x3D; null;
+    }
+    if (this.answer.length &#x3D;&#x3D;&#x3D; 6) {
+      this.state &#x3D; CAPTCHA_STATE.VERIFYING_ANSWER;
+      this.incorrectAnswer &#x3D; null;
+      this.dataService.verifyCaptcha(this.apiBaseUrl, this.nonce, this.answer, this.validation).subscribe(response &#x3D;&gt; {
+        const payload &#x3D; response.body;
+        if (this.isValidPayload(payload)) {
+          this.handleVerify(payload);
+        } else {
+          this.state &#x3D; CAPTCHA_STATE.ERROR_VERIFY;
+          this.errorVerifyAnswer &#x3D; this.createErrorTextLine(response);
+        }
+      },
+        (error) &#x3D;&gt; {
+          this.state &#x3D; CAPTCHA_STATE.ERROR_VERIFY;
+          this.errorVerifyAnswer &#x3D; this.createErrorTextLine(error);
+          console.log(&#x27;Error response from verifying user answer: %o&#x27;, error);
+        }
+      );
+    }
+  }
+
+  // Call the backend to see if our answer is correct
+  private handleVerify(payload: any) {
+    // There could be the rare change where an invalid payload response is received.
+    if (payload.valid &#x3D;&#x3D;&#x3D; true) {
+      this.state &#x3D; CAPTCHA_STATE.SUCCESS_VERIFY_ANSWER_CORRECT;
+      this.onValidToken.emit(payload.jwt);
+    } else {
+      this.incorrectAnswer &#x3D; true;
+      this.answer &#x3D; &#x27;&#x27;;
+      this.audio &#x3D; &#x27;&#x27;;
+      // They failed - try a new one.
+      this.getNewCaptcha(true);
+    }
+  }
+
+  /**
+   * Case where HTTP 200 response code is received by the payload is incorrect or corrupt.
+   * The occurance of this type of case should be rare.
+   * @param payload
+   */
+  private isValidPayload(payload) {
+    // console.debug(&#x27;Response payload: %o&#x27;, payload);
+    if (!payload) {
+      console.error(&#x27;payload cannot be null or undefined or 0&#x27;);
+      return false;
+    } else {
+      const hasValueProp &#x3D; payload.hasOwnProperty(&#x27;valid&#x27;);
+      if (!hasValueProp) {
+        console.error(&#x27;payload must have its own property named \&#x27;valid\&#x27;&#x27;);
+        return false;
+      } else {
+        return true;
+      }
+    }
+  }
+
+  public retryFetchCaptcha() {
+    console.log(&#x27;Retry captcha&#x27;);
+    this.state &#x3D; undefined;
+
+    /**
+     * wait for 0.5 seond before resubmitting
+     */
+    setTimeout(() &#x3D;&gt; {
+      this.getNewCaptcha(false);
+    }, 100);
+  }
+
+  public playAudio() {
+    if (this.audio &amp;&amp; this.audio.length &gt; 0) {
+      this.audioElement.nativeElement.play();
+    } else {
+      this.fetchAudio(true);
+    }
+  }
+
+  private fetchAudio(playImmediately: boolean &#x3D; false) {
+    if (!this.fetchingAudioInProgress) {
+      this.fetchingAudioInProgress &#x3D; true;
+      this.dataService.fetchAudio(this.apiBaseUrl, this.validation, this.language).subscribe((response: HttpResponse&lt;any&gt;) &#x3D;&gt; {
+        this.fetchingAudioInProgress &#x3D; false;
+        this.audio &#x3D; response.body.audio;
+        this.cd.detectChanges();
+        if (playImmediately) {
+          this.audioElement.nativeElement.play();
+        }
+      },
+        (error) &#x3D;&gt; {
+          this.fetchingAudioInProgress &#x3D; false;
+          console.log(&#x27;Error response from fetching audio CAPTCHA: %o&#x27;, error);
+          this.cd.detectChanges();
+        }
+      );
+    }
+  }
+
+  public getNewCaptcha(errorCase: any) {
+    this.state &#x3D; CAPTCHA_STATE.FETCHING_CAPTCHA_IMG;
+    this.audio &#x3D; &#x27;&#x27;;
+
+    // Reset things
+    if (!errorCase) {
+      // Let them know they failed instead of wiping out the answer area
+      // Contructing this form on page load/reload will have errorCase &#x3D; false
+      this.incorrectAnswer &#x3D; null;
+    }
+
+
+    this.dataService.fetchData(this.apiBaseUrl, this.nonce).subscribe(response &#x3D;&gt; {
+      this.state &#x3D; CAPTCHA_STATE.SUCCESS_FETCH_IMG;
+
+      const payload &#x3D; response.body;
+      this.imageContainer.nativeElement.innerHTML &#x3D; payload.captcha;
+      this.validation &#x3D; payload.validation;
+      this.cd.detectChanges();
+
+      if (this.eagerFetchAudio &#x3D;&#x3D;&#x3D; &#x27;true&#x27;) {
+        // console.log(&#x27;Fetch audio eagerly&#x27;);
+        this.fetchAudio();
+      } else {
+        // console.log(&#x27;Not to fetch audio eagerly&#x27;);
+      }
+    },
+
+      (error) &#x3D;&gt; {
+        this.state &#x3D; CAPTCHA_STATE.ERROR_FETCH_IMG;
+        this.errorFetchingImg &#x3D; this.createErrorTextLine(error);
+        console.log(&#x27;Error esponse from fetching CAPTCHA text: %o&#x27;, error);
+        this.cd.detectChanges();
+      }
+    );
+  }
+
+  private createErrorTextLine(error) {
+
+    let line &#x3D; &#x27;Error status: &#x27; + error.status;
+    if (error.statusText) {
+      line &#x3D; line + &#x27;, status text: &#x27; + error.statusText;
+    }
+    return line;
+  }
+
+  // tslint:disable-next-line:member-ordering
+  private translatedMessages &#x3D; {
+    playAudio: {
+      en: &#x27;Play Audio&#x27;,
+      zh: &#x27;播放声音&#x27;,
+      fr: &#x27;Lecture audio&#x27;,
+      pa: &#x27;ਆਡੀਓ ਚਲਾਓ&#x27;,
+    },
+    tryAnotherImg: {
+      en: &#x27;Try another image&#x27;,
+      zh: &#x27;换个图像&#x27;,
+      fr: &#x27;Essayez une autre image&#x27;,
+      pa: &#x27;ਕੋਈ ਹੋਰ ਚਿੱਤਰ ਅਜ਼ਮਾਓ&#x27;,
+    },
+    userPromptMessage: {
+      en: &#x27;Enter the text you either see in the box or you hear in the audio&#x27;,
+      zh: &#x27;请输入看到或听到的文字&#x27;,
+      fr: &#x27;Entrez le texte que vous voyez dans la case ou que vous entendez dans le son&#x27;,
+      pa: &#x27;ਉਹ ਟੈਕਸਟ ਦਾਖਲ ਕਰੋ ਜੋ ਤੁਸੀਂ ਬਕਸੇ ਵਿੱਚ ਦੇਖਦੇ ਹੋ ਜਾਂ ਤੁਸੀਂ ਆਡੀਓ ਵਿੱਚ ਸੁਣਦੇ ਹੋ&#x27;,
+    },
+    incorrectAnswer: {
+      en: &#x27;Incorrect answer, please try again.&#x27;,
+      zh: &#x27;答案不对。请重试。&#x27;,
+      fr: &#x27;Mauvaise réponse, veuillez réessayer.&#x27;,
+      pa: &#x27;ਗਲਤ ਜਵਾਬ, ਕਿਰਪਾ ਕਰਕੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ.&#x27;,
+    },
+    successMessage: {
+      en: &#x27;You can submit your application now.&#x27;,
+      zh: &#x27;你现在可以提交申请了。&#x27;,
+      fr: &#x27;Vous pouvez soumettre votre candidature maintenant.&#x27;,
+      pa: &#x27;ਤੁਸੀਂ ਆਪਣੀ ਅਰਜ਼ੀ ਹੁਣੇ ਪੇਸ਼ ਕਰ ਸਕਦੇ ਹੋ&#x27;,
+    },
+    correct: {
+      en: &#x27;Correct.&#x27;,
+      zh: &#x27;正确。&#x27;,
+      fr: &#x27;Correct.&#x27;,
+      pa: &#x27;ਸਹੀ ਕਰੋ&#x27;,
+    },
+    loadingImage: {
+      en: &#x27;Loading CAPTCHA image&#x27;,
+      zh: &#x27;正在下载验证码&#x27;,
+      fr: &#x27;Chargement de l\&#x27;image CAPTCHA&#x27;,
+      pa: &#x27;ਕੈਪਟਚਾ ਚਿੱਤਰ ਲੋਡ ਕਰ ਰਿਹਾ ਹੈ&#x27;,
+    },
+    browserNotSupportAudio: {
+      en: &#x27;Your browser does not support the audio element.&#x27;,
+      zh: &#x27;你的浏览器不支持播音&#x27;,
+      fr: &#x27;Votre navigateur ne supporte pas l\&#x27;élément audio.&#x27;,
+      pa: &#x27;ਤੁਹਾਡਾ ਬ੍ਰਾਉਜ਼ਰ ਆਡੀਓ ਐਲੀਮੈਂਟ ਦਾ ਸਮਰਥਨ ਨਹੀਂ ਕਰਦਾ.&#x27;,
+    },
+    verifyingAnswer: {
+      en: &#x27;Verifying your answer...&#x27;,
+      zh: &#x27;正在验证答案...&#x27;,
+      fr: &#x27;Vérification de votre réponse ...&#x27;,
+      pa: &#x27;ਤੁਹਾਡਾ ਜਵਾਬ ਤਸਦੀਕ ਕਰ ਰਿਹਾ ਹੈ ...&#x27;,
+    },
+    errorRetrievingImg: {
+      en: &#x27;Error happened while retrieving CAPTCHA image. please {{click here}} to try again&#x27;,
+      zh: &#x27;验证码下载错误。请{{点击这里}}重试&#x27;,
+      fr: &#x27;Une erreur s\&#x27;est produite lors de la récupération de l\&#x27;image CAPTCHA. s\&#x27;il vous plaît {{cliquez ici}} pour réessayer&#x27;,
+      pa: &#x27;ਕੈਪਟਚਾ ਚਿੱਤਰ ਨੂੰ ਪ੍ਰਾਪਤ ਕਰਦੇ ਸਮੇਂ ਤਰੁੱਟੀ ਉਤਪੰਨ ਹੋਈ. ਕਿਰਪਾ ਕਰਕੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰਨ ਲਈ {{ਇੱਥੇ ਕਲਿਕ ਕਰੋ}}&#x27;,
+    },
+    errorVerifyingAnswer: {
+      en: &#x27;Error happened while verifying your answer. please {{click here}} to try again&#x27;,
+      zh: &#x27;验证答案过程发生错误。请{{点击这里}}重试&#x27;,
+      fr: &#x27;Une erreur s\&#x27;est produite lors de la vérification de votre réponse. s\&#x27;il vous plaît {{cliquez ici}} pour réessayer&#x27;,
+      pa: &#x27;ਤੁਹਾਡਾ ਜਵਾਬ ਤਸਦੀਕ ਕਰਨ ਵੇਲੇ ਗਲਤੀ ਆਈ ਕਿਰਪਾ ਕਰਕੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰਨ ਲਈ {{ਇੱਥੇ ਕਲਿਕ ਕਰੋ}}&#x27;,
+    },
+  };
+}
+
+/**
+ * 7 mutually exclusive states, the program can only be in one of these state
+ * at any given point..
+ */
+enum CAPTCHA_STATE {
+  FETCHING_CAPTCHA_IMG &#x3D; 1,
+  SUCCESS_FETCH_IMG &#x3D; 2,
+  ERROR_FETCH_IMG &#x3D; 3,
+  VERIFYING_ANSWER &#x3D; 4,
+  SUCCESS_VERIFY_ANSWER_CORRECT &#x3D; 5,
+  // http error during verification call.
+  ERROR_VERIFY &#x3D; 6,
+  // SUCCESS_VERIFY_ANSWER_INCORRECT &#x3D; 6,
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;bcgov-captcha&quot;&gt;
+
+
+  &lt;svg style&#x3D;&quot;position: absolute; width: 0; height: 0; overflow: hidden&quot; version&#x3D;&quot;1.1&quot; xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; xmlns:xlink&#x3D;&quot;http://www.w3.org/1999/xlink&quot;&gt;
+    &lt;defs&gt;
+        &lt;symbol id&#x3D;&quot;icon-play-def&quot; viewBox&#x3D;&quot;0 0 32 32&quot;&gt;
+            &lt;path d&#x3D;&quot;M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM16 29c-7.18 0-13-5.82-13-13s5.82-13 13-13 13 5.82 13 13-5.82 13-13 13zM12 9l12 7-12 7z&quot;&gt;&lt;/path&gt;
+        &lt;/symbol&gt;  
+
+        &lt;symbol id&#x3D;&quot;icon-loop-def&quot; viewBox&#x3D;&quot;0 0 32 32&quot;&gt;
+          &lt;path d&#x3D;&quot;M27.802 5.197c-2.925-3.194-7.13-5.197-11.803-5.197-8.837 0-16 7.163-16 16h3c0-7.18 5.82-13 13-13 3.844 0 7.298 1.669 9.678 4.322l-4.678 4.678h11v-11l-4.198 4.197z&quot;&gt;&lt;/path&gt;
+          &lt;path d&#x3D;&quot;M29 16c0 7.18-5.82 13-13 13-3.844 0-7.298-1.669-9.678-4.322l4.678-4.678h-11v11l4.197-4.197c2.925 3.194 7.13 5.197 11.803 5.197 8.837 0 16-7.163 16-16h-3z&quot;&gt;&lt;/path&gt;
+        &lt;/symbol&gt;  
+        
+        &lt;symbol id&#x3D;&quot;icon-check-def&quot; viewBox&#x3D;&quot;0 0 24 24&quot;&gt;
+          &lt;path d&#x3D;&quot;M9 16.172l10.594-10.594 1.406 1.406-12 12-5.578-5.578 1.406-1.406z&quot;&gt;&lt;/path&gt;
+        &lt;/symbol&gt;    
+        
+        &lt;symbol id&#x3D;&quot;icon-exclamation-triangle-def&quot; viewBox&#x3D;&quot;0 0 28 28&quot;&gt;
+            &lt;path d&#x3D;&quot;M16 21.484v-2.969c0-0.281-0.219-0.516-0.5-0.516h-3c-0.281 0-0.5 0.234-0.5 0.516v2.969c0 0.281 0.219 0.516 0.5 0.516h3c0.281 0 0.5-0.234 0.5-0.516zM15.969 15.641l0.281-7.172c0-0.094-0.047-0.219-0.156-0.297-0.094-0.078-0.234-0.172-0.375-0.172h-3.437c-0.141 0-0.281 0.094-0.375 0.172-0.109 0.078-0.156 0.234-0.156 0.328l0.266 7.141c0 0.203 0.234 0.359 0.531 0.359h2.891c0.281 0 0.516-0.156 0.531-0.359zM15.75 1.047l12 22c0.344 0.609 0.328 1.359-0.031 1.969s-1.016 0.984-1.719 0.984h-24c-0.703 0-1.359-0.375-1.719-0.984s-0.375-1.359-0.031-1.969l12-22c0.344-0.641 1.016-1.047 1.75-1.047s1.406 0.406 1.75 1.047z&quot;&gt;&lt;/path&gt;
+        &lt;/symbol&gt;
+        
+    &lt;/defs&gt;
+  &lt;/svg&gt;
+
+
+
+  &lt;form style&#x3D;&quot;clear:both&quot; #formRef&#x3D;&quot;ngForm&quot;&gt;
+    &lt;div [ngClass]&#x3D;&quot;{&#x27;has-error&#x27;: !!incorrectAnswer}&quot;&gt;
+      &lt;div&gt;
+        
+        &lt;div class&#x3D;&quot;spinner-box&quot; *ngIf&#x3D;&quot;!state || state &#x3D;&#x3D;&#x3D; 1&quot;&gt;
+         &lt;div style&#x3D;&quot;float:left; margin: 2px 0 1px 8px&quot;&gt;
+            &lt;svg class&#x3D;&quot;lds-spinner&quot; width&#x3D;&quot;45px&quot;  height&#x3D;&quot;45px&quot;  xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; xmlns:xlink&#x3D;&quot;http://www.w3.org/1999/xlink&quot; viewBox&#x3D;&quot;0 0 100 100&quot; preserveAspectRatio&#x3D;&quot;xMidYMid&quot; style&#x3D;&quot;background: none;&quot;&gt;&lt;g transform&#x3D;&quot;rotate(0 50 50)&quot;&gt;
+                &lt;rect x&#x3D;&quot;47&quot; y&#x3D;&quot;22&quot; rx&#x3D;&quot;9.4&quot; ry&#x3D;&quot;4.4&quot; width&#x3D;&quot;6&quot; height&#x3D;&quot;16&quot; fill&#x3D;&quot;#1d3f72&quot;&gt;
+                  &lt;animate attributeName&#x3D;&quot;opacity&quot; values&#x3D;&quot;1;0&quot; times&#x3D;&quot;0;1&quot; dur&#x3D;&quot;1s&quot; begin&#x3D;&quot;-0.8888888888888888s&quot; repeatCount&#x3D;&quot;indefinite&quot;&gt;&lt;/animate&gt;
+                &lt;/rect&gt;
+              &lt;/g&gt;&lt;g transform&#x3D;&quot;rotate(40 50 50)&quot;&gt;
+                &lt;rect x&#x3D;&quot;47&quot; y&#x3D;&quot;22&quot; rx&#x3D;&quot;9.4&quot; ry&#x3D;&quot;4.4&quot; width&#x3D;&quot;6&quot; height&#x3D;&quot;16&quot; fill&#x3D;&quot;#1d3f72&quot;&gt;
+                  &lt;animate attributeName&#x3D;&quot;opacity&quot; values&#x3D;&quot;1;0&quot; times&#x3D;&quot;0;1&quot; dur&#x3D;&quot;1s&quot; begin&#x3D;&quot;-0.7777777777777778s&quot; repeatCount&#x3D;&quot;indefinite&quot;&gt;&lt;/animate&gt;
+                &lt;/rect&gt;
+              &lt;/g&gt;&lt;g transform&#x3D;&quot;rotate(80 50 50)&quot;&gt;
+                &lt;rect x&#x3D;&quot;47&quot; y&#x3D;&quot;22&quot; rx&#x3D;&quot;9.4&quot; ry&#x3D;&quot;4.4&quot; width&#x3D;&quot;6&quot; height&#x3D;&quot;16&quot; fill&#x3D;&quot;#1d3f72&quot;&gt;
+                  &lt;animate attributeName&#x3D;&quot;opacity&quot; values&#x3D;&quot;1;0&quot; times&#x3D;&quot;0;1&quot; dur&#x3D;&quot;1s&quot; begin&#x3D;&quot;-0.6666666666666666s&quot; repeatCount&#x3D;&quot;indefinite&quot;&gt;&lt;/animate&gt;
+                &lt;/rect&gt;
+              &lt;/g&gt;&lt;g transform&#x3D;&quot;rotate(120 50 50)&quot;&gt;
+                &lt;rect x&#x3D;&quot;47&quot; y&#x3D;&quot;22&quot; rx&#x3D;&quot;9.4&quot; ry&#x3D;&quot;4.4&quot; width&#x3D;&quot;6&quot; height&#x3D;&quot;16&quot; fill&#x3D;&quot;#1d3f72&quot;&gt;
+                  &lt;animate attributeName&#x3D;&quot;opacity&quot; values&#x3D;&quot;1;0&quot; times&#x3D;&quot;0;1&quot; dur&#x3D;&quot;1s&quot; begin&#x3D;&quot;-0.5555555555555556s&quot; repeatCount&#x3D;&quot;indefinite&quot;&gt;&lt;/animate&gt;
+                &lt;/rect&gt;
+              &lt;/g&gt;&lt;g transform&#x3D;&quot;rotate(160 50 50)&quot;&gt;
+                &lt;rect x&#x3D;&quot;47&quot; y&#x3D;&quot;22&quot; rx&#x3D;&quot;9.4&quot; ry&#x3D;&quot;4.4&quot; width&#x3D;&quot;6&quot; height&#x3D;&quot;16&quot; fill&#x3D;&quot;#1d3f72&quot;&gt;
+                  &lt;animate attributeName&#x3D;&quot;opacity&quot; values&#x3D;&quot;1;0&quot; times&#x3D;&quot;0;1&quot; dur&#x3D;&quot;1s&quot; begin&#x3D;&quot;-0.4444444444444444s&quot; repeatCount&#x3D;&quot;indefinite&quot;&gt;&lt;/animate&gt;
+                &lt;/rect&gt;
+              &lt;/g&gt;&lt;g transform&#x3D;&quot;rotate(200 50 50)&quot;&gt;
+                &lt;rect x&#x3D;&quot;47&quot; y&#x3D;&quot;22&quot; rx&#x3D;&quot;9.4&quot; ry&#x3D;&quot;4.4&quot; width&#x3D;&quot;6&quot; height&#x3D;&quot;16&quot; fill&#x3D;&quot;#1d3f72&quot;&gt;
+                  &lt;animate attributeName&#x3D;&quot;opacity&quot; values&#x3D;&quot;1;0&quot; times&#x3D;&quot;0;1&quot; dur&#x3D;&quot;1s&quot; begin&#x3D;&quot;-0.3333333333333333s&quot; repeatCount&#x3D;&quot;indefinite&quot;&gt;&lt;/animate&gt;
+                &lt;/rect&gt;
+              &lt;/g&gt;&lt;g transform&#x3D;&quot;rotate(240 50 50)&quot;&gt;
+                &lt;rect x&#x3D;&quot;47&quot; y&#x3D;&quot;22&quot; rx&#x3D;&quot;9.4&quot; ry&#x3D;&quot;4.4&quot; width&#x3D;&quot;6&quot; height&#x3D;&quot;16&quot; fill&#x3D;&quot;#1d3f72&quot;&gt;
+                  &lt;animate attributeName&#x3D;&quot;opacity&quot; values&#x3D;&quot;1;0&quot; times&#x3D;&quot;0;1&quot; dur&#x3D;&quot;1s&quot; begin&#x3D;&quot;-0.2222222222222222s&quot; repeatCount&#x3D;&quot;indefinite&quot;&gt;&lt;/animate&gt;
+                &lt;/rect&gt;
+              &lt;/g&gt;&lt;g transform&#x3D;&quot;rotate(280 50 50)&quot;&gt;
+                &lt;rect x&#x3D;&quot;47&quot; y&#x3D;&quot;22&quot; rx&#x3D;&quot;9.4&quot; ry&#x3D;&quot;4.4&quot; width&#x3D;&quot;6&quot; height&#x3D;&quot;16&quot; fill&#x3D;&quot;#1d3f72&quot;&gt;
+                  &lt;animate attributeName&#x3D;&quot;opacity&quot; values&#x3D;&quot;1;0&quot; times&#x3D;&quot;0;1&quot; dur&#x3D;&quot;1s&quot; begin&#x3D;&quot;-0.1111111111111111s&quot; repeatCount&#x3D;&quot;indefinite&quot;&gt;&lt;/animate&gt;
+                &lt;/rect&gt;
+              &lt;/g&gt;&lt;g transform&#x3D;&quot;rotate(320 50 50)&quot;&gt;
+                &lt;rect x&#x3D;&quot;47&quot; y&#x3D;&quot;22&quot; rx&#x3D;&quot;9.4&quot; ry&#x3D;&quot;4.4&quot; width&#x3D;&quot;6&quot; height&#x3D;&quot;16&quot; fill&#x3D;&quot;#1d3f72&quot;&gt;
+                  &lt;animate attributeName&#x3D;&quot;opacity&quot; values&#x3D;&quot;1;0&quot; times&#x3D;&quot;0;1&quot; dur&#x3D;&quot;1s&quot; begin&#x3D;&quot;0s&quot; repeatCount&#x3D;&quot;indefinite&quot;&gt;&lt;/animate&gt;
+                &lt;/rect&gt;
+              &lt;/g&gt;&lt;/svg&gt;
+         &lt;/div&gt;
+         &lt;div style&#x3D;&quot;float:left; margin: 16px 0 1px 3px&quot;&gt;
+            {{translatedMessages.loadingImage[language]}}
+         &lt;/div&gt;
+         &lt;div style&#x3D;&quot;clear:both&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+        
+        &lt;div [ngClass]&#x3D;&quot;{&#x27;captcha-box-visible&#x27;: state &#x3D;&#x3D;&#x3D; 2, &#x27;captcha-box-invisible&#x27;: state !&#x3D;&#x3D; 2}&quot;&gt;
+          &lt;div&gt;
+            &lt;div style&#x3D;&quot;float: left;&quot; #image class&#x3D;&quot;captcha-image&quot;&gt;&lt;/div&gt;
+            &lt;audio #audioElement *ngIf&#x3D;&quot;audio &amp;&amp; audio.length &gt; 0&quot; id&#x3D;&quot;audioElement&quot; [src]&#x3D;&quot;audio&quot;&gt;
+                {{translatedMessages.browserNotSupportAudio[language]}}
+            &lt;/audio&gt;
+            &lt;div style&#x3D;&quot;float: left; margin-top: 8px&quot;&gt;
+              &lt;a class&#x3D;&quot;play-audio&quot; href&#x3D;&quot;javascript:void(0)&quot; (click)&#x3D;&quot;playAudio()&quot; role&#x3D;&quot;button&quot;&gt;
+                &lt;svg *ngIf&#x3D;&quot;!fetchingAudioInProgress&quot; class&#x3D;&quot;icon-play&quot;&gt;&lt;use xlink:href&#x3D;&quot;#icon-play-def&quot;&gt;&lt;/use&gt;&lt;/svg&gt;
+                
+                &lt;svg *ngIf&#x3D;&quot;fetchingAudioInProgress&quot; class&#x3D;&quot;lds-spinner&quot; width&#x3D;&quot;15px&quot;  height&#x3D;&quot;15px&quot;  xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; xmlns:xlink&#x3D;&quot;http://www.w3.org/1999/xlink&quot; viewBox&#x3D;&quot;0 0 100 100&quot; preserveAspectRatio&#x3D;&quot;xMidYMid&quot; style&#x3D;&quot;background: none;&quot;&gt;&lt;g transform&#x3D;&quot;rotate(0 50 50)&quot;&gt;
+                  &lt;rect x&#x3D;&quot;45&quot; y&#x3D;&quot;9&quot; rx&#x3D;&quot;2.7&quot; ry&#x3D;&quot;0.54&quot; width&#x3D;&quot;10&quot; height&#x3D;&quot;22&quot; fill&#x3D;&quot;#1d3f72&quot;&gt;
+                    &lt;animate attributeName&#x3D;&quot;opacity&quot; values&#x3D;&quot;1;0&quot; times&#x3D;&quot;0;1&quot; dur&#x3D;&quot;1s&quot; begin&#x3D;&quot;-0.8888888888888888s&quot; repeatCount&#x3D;&quot;indefinite&quot;&gt;&lt;/animate&gt;
+                  &lt;/rect&gt;
+                &lt;/g&gt;&lt;g transform&#x3D;&quot;rotate(40 50 50)&quot;&gt;
+                  &lt;rect x&#x3D;&quot;45&quot; y&#x3D;&quot;9&quot; rx&#x3D;&quot;2.7&quot; ry&#x3D;&quot;0.54&quot; width&#x3D;&quot;10&quot; height&#x3D;&quot;22&quot; fill&#x3D;&quot;#1d3f72&quot;&gt;
+                    &lt;animate attributeName&#x3D;&quot;opacity&quot; values&#x3D;&quot;1;0&quot; times&#x3D;&quot;0;1&quot; dur&#x3D;&quot;1s&quot; begin&#x3D;&quot;-0.7777777777777778s&quot; repeatCount&#x3D;&quot;indefinite&quot;&gt;&lt;/animate&gt;
+                  &lt;/rect&gt;
+                &lt;/g&gt;&lt;g transform&#x3D;&quot;rotate(80 50 50)&quot;&gt;
+                  &lt;rect x&#x3D;&quot;45&quot; y&#x3D;&quot;9&quot; rx&#x3D;&quot;2.7&quot; ry&#x3D;&quot;0.54&quot; width&#x3D;&quot;10&quot; height&#x3D;&quot;22&quot; fill&#x3D;&quot;#1d3f72&quot;&gt;
+                    &lt;animate attributeName&#x3D;&quot;opacity&quot; values&#x3D;&quot;1;0&quot; times&#x3D;&quot;0;1&quot; dur&#x3D;&quot;1s&quot; begin&#x3D;&quot;-0.6666666666666666s&quot; repeatCount&#x3D;&quot;indefinite&quot;&gt;&lt;/animate&gt;
+                  &lt;/rect&gt;
+                &lt;/g&gt;&lt;g transform&#x3D;&quot;rotate(120 50 50)&quot;&gt;
+                  &lt;rect x&#x3D;&quot;45&quot; y&#x3D;&quot;9&quot; rx&#x3D;&quot;2.7&quot; ry&#x3D;&quot;0.54&quot; width&#x3D;&quot;10&quot; height&#x3D;&quot;22&quot; fill&#x3D;&quot;#1d3f72&quot;&gt;
+                    &lt;animate attributeName&#x3D;&quot;opacity&quot; values&#x3D;&quot;1;0&quot; times&#x3D;&quot;0;1&quot; dur&#x3D;&quot;1s&quot; begin&#x3D;&quot;-0.5555555555555556s&quot; repeatCount&#x3D;&quot;indefinite&quot;&gt;&lt;/animate&gt;
+                  &lt;/rect&gt;
+                &lt;/g&gt;&lt;g transform&#x3D;&quot;rotate(160 50 50)&quot;&gt;
+                  &lt;rect x&#x3D;&quot;45&quot; y&#x3D;&quot;9&quot; rx&#x3D;&quot;2.7&quot; ry&#x3D;&quot;0.54&quot; width&#x3D;&quot;10&quot; height&#x3D;&quot;22&quot; fill&#x3D;&quot;#1d3f72&quot;&gt;
+                    &lt;animate attributeName&#x3D;&quot;opacity&quot; values&#x3D;&quot;1;0&quot; times&#x3D;&quot;0;1&quot; dur&#x3D;&quot;1s&quot; begin&#x3D;&quot;-0.4444444444444444s&quot; repeatCount&#x3D;&quot;indefinite&quot;&gt;&lt;/animate&gt;
+                  &lt;/rect&gt;
+                &lt;/g&gt;&lt;g transform&#x3D;&quot;rotate(200 50 50)&quot;&gt;
+                  &lt;rect x&#x3D;&quot;45&quot; y&#x3D;&quot;9&quot; rx&#x3D;&quot;2.7&quot; ry&#x3D;&quot;0.54&quot; width&#x3D;&quot;10&quot; height&#x3D;&quot;22&quot; fill&#x3D;&quot;#1d3f72&quot;&gt;
+                    &lt;animate attributeName&#x3D;&quot;opacity&quot; values&#x3D;&quot;1;0&quot; times&#x3D;&quot;0;1&quot; dur&#x3D;&quot;1s&quot; begin&#x3D;&quot;-0.3333333333333333s&quot; repeatCount&#x3D;&quot;indefinite&quot;&gt;&lt;/animate&gt;
+                  &lt;/rect&gt;
+                &lt;/g&gt;&lt;g transform&#x3D;&quot;rotate(240 50 50)&quot;&gt;
+                  &lt;rect x&#x3D;&quot;45&quot; y&#x3D;&quot;9&quot; rx&#x3D;&quot;2.7&quot; ry&#x3D;&quot;0.54&quot; width&#x3D;&quot;10&quot; height&#x3D;&quot;22&quot; fill&#x3D;&quot;#1d3f72&quot;&gt;
+                    &lt;animate attributeName&#x3D;&quot;opacity&quot; values&#x3D;&quot;1;0&quot; times&#x3D;&quot;0;1&quot; dur&#x3D;&quot;1s&quot; begin&#x3D;&quot;-0.2222222222222222s&quot; repeatCount&#x3D;&quot;indefinite&quot;&gt;&lt;/animate&gt;
+                  &lt;/rect&gt;
+                &lt;/g&gt;&lt;g transform&#x3D;&quot;rotate(280 50 50)&quot;&gt;
+                  &lt;rect x&#x3D;&quot;45&quot; y&#x3D;&quot;9&quot; rx&#x3D;&quot;2.7&quot; ry&#x3D;&quot;0.54&quot; width&#x3D;&quot;10&quot; height&#x3D;&quot;22&quot; fill&#x3D;&quot;#1d3f72&quot;&gt;
+                    &lt;animate attributeName&#x3D;&quot;opacity&quot; values&#x3D;&quot;1;0&quot; times&#x3D;&quot;0;1&quot; dur&#x3D;&quot;1s&quot; begin&#x3D;&quot;-0.1111111111111111s&quot; repeatCount&#x3D;&quot;indefinite&quot;&gt;&lt;/animate&gt;
+                  &lt;/rect&gt;
+                &lt;/g&gt;&lt;g transform&#x3D;&quot;rotate(320 50 50)&quot;&gt;
+                  &lt;rect x&#x3D;&quot;45&quot; y&#x3D;&quot;9&quot; rx&#x3D;&quot;2.7&quot; ry&#x3D;&quot;0.54&quot; width&#x3D;&quot;10&quot; height&#x3D;&quot;22&quot; fill&#x3D;&quot;#1d3f72&quot;&gt;
+                    &lt;animate attributeName&#x3D;&quot;opacity&quot; values&#x3D;&quot;1;0&quot; times&#x3D;&quot;0;1&quot; dur&#x3D;&quot;1s&quot; begin&#x3D;&quot;0s&quot; repeatCount&#x3D;&quot;indefinite&quot;&gt;&lt;/animate&gt;
+                  &lt;/rect&gt;
+                &lt;/g&gt;&lt;/svg&gt;
+
+                {{translatedMessages.playAudio[language]}}
+              &lt;/a&gt;
+              &lt;div style&#x3D;&quot;clear:both;&quot;&gt;&lt;/div&gt;
+              
+              &lt;a class&#x3D;&quot;try-another-image&quot; href&#x3D;&quot;javascript:void(0)&quot; (click)&#x3D;&quot;retryFetchCaptcha()&quot; role&#x3D;&quot;button&quot;&gt;
+                  &lt;svg class&#x3D;&quot;icon-loop icon-loop-def&quot;&gt;&lt;use xlink:href&#x3D;&quot;#icon-loop-def&quot;&gt;&lt;/use&gt;&lt;/svg&gt;                
+                  {{translatedMessages.tryAnotherImg[language]}}
+              &lt;/a&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div style&#x3D;&quot;clear:both; margin-bottom: 8px;&quot;&gt;&lt;/div&gt;
+          &lt;div style&#x3D;&quot;float:left;&quot;&gt;
+            &lt;label for&#x3D;&quot;answer&quot;&gt;
+                {{userPromptMessage || translatedMessages.userPromptMessage[language]}}
+              &lt;input id&#x3D;&quot;answer&quot; type&#x3D;&quot;text&quot;
+                #userAnswerRef &#x3D; &quot;ngModel&quot;
+                [(ngModel)]&#x3D;&quot;answer&quot;
+                (input)&#x3D;&quot;answerChanged($event)&quot;
+                [ngClass]&#x3D;&quot;{&#x27;captcha-wrong-answer&#x27;: userAnswerRef.dirty &amp;&amp; incorrectAnswer}&quot;
+                name&#x3D;&quot;answer&quot;
+                maxlength&#x3D;&quot;6&quot;
+                required
+                autocorrect&#x3D;&quot;off&quot; 
+                autocapitalize&#x3D;&quot;none&quot;&gt;
+            &lt;/label&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div style&#x3D;&quot;clear:both;&quot;&gt;&lt;/div&gt;
+        &lt;div style&#x3D;&quot;float:left;&quot;&gt;
+
+        &lt;div class&#x3D;&quot;error-captcha&quot; *ngIf&#x3D;&quot;state &#x3D;&#x3D;&#x3D; 3&quot; role&#x3D;&quot;alert&quot; aria-live&#x3D;&quot;assertive&quot;&gt;
+          &lt;div style&#x3D;&quot;float:left; margin-left: 5px;&quot;&gt;
+            &lt;svg class&#x3D;&quot;icon-exclamation-triangle&quot;&gt;&lt;use xlink:href&#x3D;&quot;#icon-exclamation-triangle-def&quot;&gt;&lt;/use&gt;&lt;/svg&gt;
+  
+            &lt;span&gt; {{translatedMessages.errorRetrievingImg[language].substring(0,translatedMessages.errorRetrievingImg[language].indexOf(&#x27;{&#x27;))}} 
+              &lt;a href&#x3D;&quot;javascript:void(0)&quot; (click)&#x3D;&quot;retryFetchCaptcha()&quot;&gt;{{translatedMessages.errorRetrievingImg[language].substring(translatedMessages.errorRetrievingImg[language].lastIndexOf(&#x27;{&#x27;)+1,translatedMessages.errorRetrievingImg[language].indexOf(&#x27;}&#x27;))}}&lt;/a&gt; 
+              {{translatedMessages.errorRetrievingImg[language].substring(translatedMessages.errorRetrievingImg[language].lastIndexOf(&#x27;}&#x27;)+1)}} 
+            &lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div style&#x3D;&quot;clear:both&quot;&gt;&lt;/div&gt;
+          
+          &lt;div style&#x3D;&quot;float:left; margin-left: 25px;&quot;&gt;
+              {{errorFetchingImg}}
+          &lt;/div&gt;
+          &lt;div style&#x3D;&quot;clear:both&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+        
+        &lt;div class&#x3D;&quot;spinner-box&quot; *ngIf&#x3D;&quot;state &#x3D;&#x3D; 4&quot; role&#x3D;&quot;alert&quot; aria-live&#x3D;&quot;assertive&quot;&gt;
+          &lt;span&gt;{{translatedMessages.verifyingAnswer[language]}}&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;error-captcha&quot; *ngIf&#x3D;&quot;state &#x3D;&#x3D;&#x3D; 6&quot;  role&#x3D;&quot;alert&quot; aria-live&#x3D;&quot;assertive&quot;&gt;
+          &lt;svg class&#x3D;&quot;icon-exclamation-triangle&quot;&gt;&lt;use xlink:href&#x3D;&quot;#icon-exclamation-triangle-def&quot;&gt;&lt;/use&gt;&lt;/svg&gt;
+          &lt;span&gt;{{translatedMessages.errorVerifyingAnswer[language].substring(0,translatedMessages.errorVerifyingAnswer[language].indexOf(&#x27;{&#x27;))}} 
+              &lt;a href&#x3D;&quot;javascript:void(0)&quot; (click)&#x3D;&quot;retryFetchCaptcha()&quot;&gt;{{translatedMessages.errorVerifyingAnswer[language].substring(translatedMessages.errorVerifyingAnswer[language].lastIndexOf(&#x27;{&#x27;)+1,translatedMessages.errorVerifyingAnswer[language].indexOf(&#x27;}&#x27;))}}&lt;/a&gt; 
+              {{translatedMessages.errorVerifyingAnswer[language].substring(translatedMessages.errorVerifyingAnswer[language].lastIndexOf(&#x27;}&#x27;)+1)}} 
+          &lt;/span&gt;
+          &lt;p&gt;
+          &lt;/p&gt;
+        &lt;/div&gt;
+        
+        &lt;div class&#x3D;&quot;captcha-error&quot; style&#x3D;&quot;margin-top: 2px&quot; *ngIf&#x3D;&quot;incorrectAnswer &#x3D;&#x3D;&#x3D; true&quot; role&#x3D;&quot;alert&quot; aria-live&#x3D;&quot;assertive&quot;&gt;
+          {{translatedMessages.incorrectAnswer[language]}}
+        &lt;/div&gt;
+      &lt;/div&gt;
+      
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/form&gt;
+
+  &lt;div class&#x3D;&quot;confirm-correct-answer&quot; style&#x3D;&quot;float:left&quot; *ngIf&#x3D;&quot;state &#x3D;&#x3D;&#x3D; 5&quot; role&#x3D;&quot;alert&quot; aria-live&#x3D;&quot;assertive&quot;&gt;
+    &lt;svg class&#x3D;&quot;icon-check&quot;&gt;&lt;use xlink:href&#x3D;&quot;#icon-check-def&quot;&gt;&lt;/use&gt;&lt;/svg&gt;
+    {{translatedMessages.correct[language]}} &lt;span&gt;{{successMessage || translatedMessages.successMessage[language]}}&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div style&#x3D;&quot;clear:both;&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./captcha.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.bcgov-captcha{
+
+  .confirm-correct-answer {
+    display:block;
+    color: green;
+  }
+  .confirm-correct-answer i {
+    color: green;
+  }
+  .spinner-box {
+    height: 60px;
+    margin: 2px 10px 6px 10px;
+    padding: 5px 10px 5px 18px;
+    // border: 1px solid red;
+  }
+
+  .error-captcha {
+    margin-left: 10px;
+  }
+  .error-captcha svg {
+    color: darkorange;
+  }
+  .error-captcha p{
+    margin-left: 32px;
+  }
+
+  .captcha-box-visible {
+    display: block
+  }
+
+  .captcha-box-invisible{
+    display: none
+  }  
+
+
+  .captcha-image {
+    display: inline-block;
+    border: 1px solid gray;
+  }
+
+  .play-audio {
+    // vertical-align: text-top;
+    float:left;
+    display: block;
+    margin-left: 5px;
+    margin-bottom: 3px;
+  }
+
+  .try-another-image {
+    display: inline-block;
+    margin-left: 5px;
+  }
+
+
+
+  .has-error {
+    border-color: #dc3545;
+    &amp;:focus {
+      box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);    
+    }
+  }
+
+  input[type&#x3D;&quot;text&quot;] {
+    display: block;
+    margin: 0;
+    width: 100%;
+    font-size: 20px;
+    box-shadow: none;
+    border-radius: none;
+
+    padding: 6px;
+    border: solid 1px #ccc;
+    transition: box-shadow 0.3s, border 0.3s;
+    
+    &amp;:focus {
+      border: solid 1px white;
+      box-shadow: 0 0 1px 1px #2196F3;      
+    }
+
+    &amp;.captcha-wrong-answer {
+      border: solid 1px #a94442;
+    }
+
+  }
+
+  input[type&#x3D;&quot;text&quot;]:focus {
+    outline: none;
+  }
+
+  .captcha-error {
+    color: #a94442;
+  }
+
+  .icon-play {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    stroke-width: 0;
+    stroke: currentColor;
+    fill: currentColor;
+  }
+
+  .icon-check {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    stroke-width: 0;
+    stroke: currentColor;
+    fill: currentColor;
+  }
+
+  .icon-loop {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    stroke-width: 0;
+    stroke: currentColor;
+    fill: currentColor;
+  }
+
+  .icon-exclamation-triangle {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    stroke-width: 0;
+    stroke: currentColor;
+    fill: currentColor;
+  }
+
+  $duration: 1.4s;
+  $offset: 187;
+  .spinner {
+    animation: rotator $duration linear infinite;
+  }
+
+  @keyframes rotator {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(270deg); }
+  }
+
+  .path {
+    stroke-dasharray: $offset;
+    stroke-dashoffset: 0;
+    transform-origin: center;
+    animation:
+      dash $duration ease-in-out infinite, 
+      colors ($duration*4) ease-in-out infinite;
+  }
+
+  @keyframes colors {
+    0% { stroke: #9E9E9E; }
+    25% { stroke: #757575; }
+    50% { stroke: #616161; }
+    75% { stroke: #424242; }
+    100% { stroke: #212121; }
+  }
+
+  @keyframes dash {
+    0% { stroke-dashoffset: $offset; }
+    50% {
+      stroke-dashoffset: $offset/4;
+      transform:rotate(135deg);
+    }
+    100% {
+      stroke-dashoffset: $offset;
+      transform:rotate(450deg);
+    }
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="bcgov-captcha">  <svg style="position: absolute; width: 0; height: 0; overflow: hidden" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">    <defs>        <symbol id="icon-play-def" viewBox="0 0 32 32">            <path d="M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM16 29c-7.18 0-13-5.82-13-13s5.82-13 13-13 13 5.82 13 13-5.82 13-13 13zM12 9l12 7-12 7z"></path>        </symbol>          <symbol id="icon-loop-def" viewBox="0 0 32 32">          <path d="M27.802 5.197c-2.925-3.194-7.13-5.197-11.803-5.197-8.837 0-16 7.163-16 16h3c0-7.18 5.82-13 13-13 3.844 0 7.298 1.669 9.678 4.322l-4.678 4.678h11v-11l-4.198 4.197z"></path>          <path d="M29 16c0 7.18-5.82 13-13 13-3.844 0-7.298-1.669-9.678-4.322l4.678-4.678h-11v11l4.197-4.197c2.925 3.194 7.13 5.197 11.803 5.197 8.837 0 16-7.163 16-16h-3z"></path>        </symbol>                  <symbol id="icon-check-def" viewBox="0 0 24 24">          <path d="M9 16.172l10.594-10.594 1.406 1.406-12 12-5.578-5.578 1.406-1.406z"></path>        </symbol>                    <symbol id="icon-exclamation-triangle-def" viewBox="0 0 28 28">            <path d="M16 21.484v-2.969c0-0.281-0.219-0.516-0.5-0.516h-3c-0.281 0-0.5 0.234-0.5 0.516v2.969c0 0.281 0.219 0.516 0.5 0.516h3c0.281 0 0.5-0.234 0.5-0.516zM15.969 15.641l0.281-7.172c0-0.094-0.047-0.219-0.156-0.297-0.094-0.078-0.234-0.172-0.375-0.172h-3.437c-0.141 0-0.281 0.094-0.375 0.172-0.109 0.078-0.156 0.234-0.156 0.328l0.266 7.141c0 0.203 0.234 0.359 0.531 0.359h2.891c0.281 0 0.516-0.156 0.531-0.359zM15.75 1.047l12 22c0.344 0.609 0.328 1.359-0.031 1.969s-1.016 0.984-1.719 0.984h-24c-0.703 0-1.359-0.375-1.719-0.984s-0.375-1.359-0.031-1.969l12-22c0.344-0.641 1.016-1.047 1.75-1.047s1.406 0.406 1.75 1.047z"></path>        </symbol>            </defs>  </svg>  <form style="clear:both" #formRef="ngForm">    <div [ngClass]="{\'has-error\': !!incorrectAnswer}">      <div>                <div class="spinner-box" *ngIf="!state || state === 1">         <div style="float:left; margin: 2px 0 1px 8px">            <svg class="lds-spinner" width="45px"  height="45px"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" style="background: none;"><g transform="rotate(0 50 50)">                <rect x="47" y="22" rx="9.4" ry="4.4" width="6" height="16" fill="#1d3f72">                  <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="-0.8888888888888888s" repeatCount="indefinite"></animate>                </rect>              </g><g transform="rotate(40 50 50)">                <rect x="47" y="22" rx="9.4" ry="4.4" width="6" height="16" fill="#1d3f72">                  <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="-0.7777777777777778s" repeatCount="indefinite"></animate>                </rect>              </g><g transform="rotate(80 50 50)">                <rect x="47" y="22" rx="9.4" ry="4.4" width="6" height="16" fill="#1d3f72">                  <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="-0.6666666666666666s" repeatCount="indefinite"></animate>                </rect>              </g><g transform="rotate(120 50 50)">                <rect x="47" y="22" rx="9.4" ry="4.4" width="6" height="16" fill="#1d3f72">                  <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="-0.5555555555555556s" repeatCount="indefinite"></animate>                </rect>              </g><g transform="rotate(160 50 50)">                <rect x="47" y="22" rx="9.4" ry="4.4" width="6" height="16" fill="#1d3f72">                  <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="-0.4444444444444444s" repeatCount="indefinite"></animate>                </rect>              </g><g transform="rotate(200 50 50)">                <rect x="47" y="22" rx="9.4" ry="4.4" width="6" height="16" fill="#1d3f72">                  <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="-0.3333333333333333s" repeatCount="indefinite"></animate>                </rect>              </g><g transform="rotate(240 50 50)">                <rect x="47" y="22" rx="9.4" ry="4.4" width="6" height="16" fill="#1d3f72">                  <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="-0.2222222222222222s" repeatCount="indefinite"></animate>                </rect>              </g><g transform="rotate(280 50 50)">                <rect x="47" y="22" rx="9.4" ry="4.4" width="6" height="16" fill="#1d3f72">                  <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="-0.1111111111111111s" repeatCount="indefinite"></animate>                </rect>              </g><g transform="rotate(320 50 50)">                <rect x="47" y="22" rx="9.4" ry="4.4" width="6" height="16" fill="#1d3f72">                  <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animate>                </rect>              </g></svg>         </div>         <div style="float:left; margin: 16px 0 1px 3px">            {{translatedMessages.loadingImage[language]}}         </div>         <div style="clear:both"></div>        </div>                <div [ngClass]="{\'captcha-box-visible\': state === 2, \'captcha-box-invisible\': state !== 2}">          <div>            <div style="float: left;" #image class="captcha-image"></div>            <audio #audioElement *ngIf="audio && audio.length > 0" id="audioElement" [src]="audio">                {{translatedMessages.browserNotSupportAudio[language]}}            </audio>            <div style="float: left; margin-top: 8px">              <a class="play-audio" href="javascript:void(0)" (click)="playAudio()" role="button">                <svg *ngIf="!fetchingAudioInProgress" class="icon-play"><use xlink:href="#icon-play-def"></use></svg>                                <svg *ngIf="fetchingAudioInProgress" class="lds-spinner" width="15px"  height="15px"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" style="background: none;"><g transform="rotate(0 50 50)">                  <rect x="45" y="9" rx="2.7" ry="0.54" width="10" height="22" fill="#1d3f72">                    <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="-0.8888888888888888s" repeatCount="indefinite"></animate>                  </rect>                </g><g transform="rotate(40 50 50)">                  <rect x="45" y="9" rx="2.7" ry="0.54" width="10" height="22" fill="#1d3f72">                    <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="-0.7777777777777778s" repeatCount="indefinite"></animate>                  </rect>                </g><g transform="rotate(80 50 50)">                  <rect x="45" y="9" rx="2.7" ry="0.54" width="10" height="22" fill="#1d3f72">                    <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="-0.6666666666666666s" repeatCount="indefinite"></animate>                  </rect>                </g><g transform="rotate(120 50 50)">                  <rect x="45" y="9" rx="2.7" ry="0.54" width="10" height="22" fill="#1d3f72">                    <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="-0.5555555555555556s" repeatCount="indefinite"></animate>                  </rect>                </g><g transform="rotate(160 50 50)">                  <rect x="45" y="9" rx="2.7" ry="0.54" width="10" height="22" fill="#1d3f72">                    <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="-0.4444444444444444s" repeatCount="indefinite"></animate>                  </rect>                </g><g transform="rotate(200 50 50)">                  <rect x="45" y="9" rx="2.7" ry="0.54" width="10" height="22" fill="#1d3f72">                    <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="-0.3333333333333333s" repeatCount="indefinite"></animate>                  </rect>                </g><g transform="rotate(240 50 50)">                  <rect x="45" y="9" rx="2.7" ry="0.54" width="10" height="22" fill="#1d3f72">                    <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="-0.2222222222222222s" repeatCount="indefinite"></animate>                  </rect>                </g><g transform="rotate(280 50 50)">                  <rect x="45" y="9" rx="2.7" ry="0.54" width="10" height="22" fill="#1d3f72">                    <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="-0.1111111111111111s" repeatCount="indefinite"></animate>                  </rect>                </g><g transform="rotate(320 50 50)">                  <rect x="45" y="9" rx="2.7" ry="0.54" width="10" height="22" fill="#1d3f72">                    <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animate>                  </rect>                </g></svg>                {{translatedMessages.playAudio[language]}}              </a>              <div style="clear:both;"></div>                            <a class="try-another-image" href="javascript:void(0)" (click)="retryFetchCaptcha()" role="button">                  <svg class="icon-loop icon-loop-def"><use xlink:href="#icon-loop-def"></use></svg>                                  {{translatedMessages.tryAnotherImg[language]}}              </a>            </div>          </div>          <div style="clear:both; margin-bottom: 8px;"></div>          <div style="float:left;">            <label for="answer">                {{userPromptMessage || translatedMessages.userPromptMessage[language]}}              <input id="answer" type="text"                #userAnswerRef = "ngModel"                [(ngModel)]="answer"                (input)="answerChanged($event)"                [ngClass]="{\'captcha-wrong-answer\': userAnswerRef.dirty && incorrectAnswer}"                name="answer"                maxlength="6"                required                autocorrect="off"                 autocapitalize="none">            </label>          </div>        </div>        <div style="clear:both;"></div>        <div style="float:left;">        <div class="error-captcha" *ngIf="state === 3" role="alert" aria-live="assertive">          <div style="float:left; margin-left: 5px;">            <svg class="icon-exclamation-triangle"><use xlink:href="#icon-exclamation-triangle-def"></use></svg>              <span> {{translatedMessages.errorRetrievingImg[language].substring(0,translatedMessages.errorRetrievingImg[language].indexOf(\'{\'))}}               <a href="javascript:void(0)" (click)="retryFetchCaptcha()">{{translatedMessages.errorRetrievingImg[language].substring(translatedMessages.errorRetrievingImg[language].lastIndexOf(\'{\')+1,translatedMessages.errorRetrievingImg[language].indexOf(\'}\'))}}</a>               {{translatedMessages.errorRetrievingImg[language].substring(translatedMessages.errorRetrievingImg[language].lastIndexOf(\'}\')+1)}}             </span>          </div>          <div style="clear:both"></div>                    <div style="float:left; margin-left: 25px;">              {{errorFetchingImg}}          </div>          <div style="clear:both"></div>        </div>                <div class="spinner-box" *ngIf="state == 4" role="alert" aria-live="assertive">          <span>{{translatedMessages.verifyingAnswer[language]}}</span>        </div>        <div class="error-captcha" *ngIf="state === 6"  role="alert" aria-live="assertive">          <svg class="icon-exclamation-triangle"><use xlink:href="#icon-exclamation-triangle-def"></use></svg>          <span>{{translatedMessages.errorVerifyingAnswer[language].substring(0,translatedMessages.errorVerifyingAnswer[language].indexOf(\'{\'))}}               <a href="javascript:void(0)" (click)="retryFetchCaptcha()">{{translatedMessages.errorVerifyingAnswer[language].substring(translatedMessages.errorVerifyingAnswer[language].lastIndexOf(\'{\')+1,translatedMessages.errorVerifyingAnswer[language].indexOf(\'}\'))}}</a>               {{translatedMessages.errorVerifyingAnswer[language].substring(translatedMessages.errorVerifyingAnswer[language].lastIndexOf(\'}\')+1)}}           </span>          <p>          </p>        </div>                <div class="captcha-error" style="margin-top: 2px" *ngIf="incorrectAnswer === true" role="alert" aria-live="assertive">          {{translatedMessages.incorrectAnswer[language]}}        </div>      </div>            </div>    </div>  </form>  <div class="confirm-correct-answer" style="float:left" *ngIf="state === 5" role="alert" aria-live="assertive">    <svg class="icon-check"><use xlink:href="#icon-check-def"></use></svg>    {{translatedMessages.correct[language]}} <span>{{successMessage || translatedMessages.successMessage[language]}}</span>  </div>  <div style="clear:both;"></div></div></div>'
+    var COMPONENTS = [{'name': 'CaptchaComponent', 'selector': 'common-captcha'},{'name': 'CoreBreadcrumbComponent', 'selector': 'common-core-breadcrumb'},{'name': 'DateComponent', 'selector': 'common-date'},{'name': 'DatepickerComponent', 'selector': 'common-datepicker'},{'name': 'FileUploaderComponent', 'selector': 'common-file-uploader'},{'name': 'FormActionBarComponent', 'selector': 'common-form-action-bar'},{'name': 'FormSubmitBarComponent', 'selector': 'common-form-submit-bar'},{'name': 'PageFrameworkComponent', 'selector': 'common-page-framework'},{'name': 'PasswordComponent', 'selector': 'common-password'},{'name': 'PostalCodeComponent', 'selector': 'common-postal-code'},{'name': 'ThumbnailComponent', 'selector': 'common-thumbnail'},{'name': 'WizardProgressBarComponent', 'selector': 'common-wizard-progress-bar'}];
+    var DIRECTIVES = [{'name': 'DateFieldFormatDirective', 'selector': '[commonDateFieldFormat]'},{'name': 'DayValidationDirective', 'selector': '[commonDayValidation]'},{'name': 'YearValidateDirective', 'selector': '[commonYearValidate]'}];
+    var ACTUAL_COMPONENT = {'name': 'CaptchaComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'CaptchaComponent.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

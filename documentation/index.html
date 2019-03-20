@@ -1,0 +1,137 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>moh-common-lib</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+	      <link rel="stylesheet" href="./styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="./" class="navbar-brand">moh-common-lib</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content getting-started">
+                   <div class="content-data">
+
+<h1 id="moh-common-styles">MoH Common Styles</h1>
+<h2 id="requirements">Requirements</h2>
+<ul>
+<li>node (using 8.9.4, but older versions may be compatible)</li>
+<li>npm (6.4.1, but older versions may be compatible)</li>
+</ul>
+<h2 id="new-project-setup--schematics">New Project Setup + Schematics</h2>
+<p>This project has 2 main parts to it, and this readme is broken in 2 to reflect that.</p>
+<ol>
+<li>The Library - <strong>moh-common-lib</strong> - relates to this project as a component library for an Angular application, to appear in the <code>node_modules/</code> folder of an Angular application</li>
+<li>The Schematics - <strong>moh-common-schematics</strong> - relates to this project as a collection of Angular schematics and scripts to setup a whole project or files within a project. These schematics live in this project, but operate on an Angular application.</li>
+</ol>
+<p>There are two different <code>npm links</code> for each of these facets.  Each one corresponds to a different package.json:</p>
+<ol>
+<li>moh-common-lib (library) &gt; projects/common/package.json</li>
+<li>moh-common-schematics (schematics) &gt; projects/common/schematics/package.json</li>
+</ol>
+<h3 id="the-library">The Library</h3>
+<h4 id="building-the-library">Building the Library</h4>
+<p>First make sure to run <code>npm install</code> prior to building, to install necessary dependencies.  You must build the library prior to using and linking in local development.</p>
+<div><pre class="line-numbers"><code class="language-none">&gt; ng build moh-commmon-lib</code></pre></div><p>If it runs well, the end of the output should show the following:</p>
+<div><pre class="line-numbers"><code class="language-none">Built moh-common-lib
+Built Angular Package!
+- from: /space/workspace/moh-common-styles/projects/common
+- to:   /space/workspace/moh-common-styles/dist/common</code></pre></div><p>We can see build artifacts are created in the &quot;to&quot; folder. For local development, we will <code>npm link</code> directly to that folder; when publishing to npm we will publish tohse artifacts.</p>
+<h4 id="setting-up-npm-link-for-library">Setting up npm link for library</h4>
+<p>Oh the command line navigate to the &quot;to&quot; folder from above, the dist folder for the common project: <code>moh-common-styles/dist/common</code>. Then run the following command:</p>
+<div><pre class="line-numbers"><code class="language-none">&gt; npm link</code></pre></div><p>Note - the <code>dist/common</code> folder MUST have a package.json in it. The name in the package.json will be used as a reference when linking to this folder from other folders (e.g. when configuring PRIME to use this common library). In our case the name is <code>moh-common-lib</code>. Assuming all goes well you should see output at the end like this (paths may differ):</p>
+<p><code>.../example/path.../node/v8.9.4/lib/node_modules/moh-common-lib -&gt; /space/workspace/moh-common-styles/projects/common</code></p>
+<p>If the folder does not exist, or is empty, make sure to build the library.</p>
+<h4 id="setting-up-npm-link-for-library-1">Setting up npm link for library</h4>
+<p>Then navigate to the application which will consume the library, make sure you&#39;re in the same folder as that application&#39;s <code>package.json</code> (this should be the top level, e.g. <code>prime-web/</code>).  From there, run <code>npm link moh-common-lib</code>.  That&#39;s it, the build artifacts from the library will now appear in <code>node_modules/</code> and can be imported like any other library.  Now in the application you can write...</p>
+<p><code>TypeScript
+import { example } from &#39;moh-common-lib&#39;</code></p>
+<p>If you&#39;ve made any changes to the library make sure to re-build with <code>ng build moh-commmon-lib</code> from the library folder.</p>
+<p>As for what specifically you can import from &#39;moh-common-lib&#39;, that is all defined in <code>projects/common/src/public_api.ts.</code></p>
+<h3 id="schematics">Schematics</h3>
+<p>For more information on schematics, read <a href="projects/common/schematics/README.md">projects/common/schematics/README.md</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 0;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'getting-started';
+            var COMPODOC_CURRENT_PAGE_URL = 'index.html';
+       </script>
+
+       <script src="./js/libs/custom-elements.min.js"></script>
+       <script src="./js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="./js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="./js/menu-wc.js" defer></script>
+
+       <script src="./js/libs/bootstrap-native.js"></script>
+
+       <script src="./js/libs/es6-shim.min.js"></script>
+       <script src="./js/libs/EventDispatcher.js"></script>
+       <script src="./js/libs/promise.min.js"></script>
+       <script src="./js/libs/zepto.min.js"></script>
+
+       <script src="./js/compodoc.js"></script>
+
+       <script src="./js/tabs.js"></script>
+       <script src="./js/menu.js"></script>
+       <script src="./js/libs/clipboard.min.js"></script>
+       <script src="./js/libs/prism.js"></script>
+       <script src="./js/sourceCode.js"></script>
+          <script src="./js/search/search.js"></script>
+          <script src="./js/search/lunr.min.js"></script>
+          <script src="./js/search/search-lunr.js"></script>
+          <script src="./js/search/search_index.js"></script>
+       <script src="./js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
