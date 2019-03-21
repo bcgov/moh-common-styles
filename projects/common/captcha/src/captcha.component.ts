@@ -229,7 +229,7 @@ export class CaptchaComponent implements AfterViewInit, OnInit, OnChanges {
   }
 
   // tslint:disable-next-line:member-ordering
-  private translatedMessages = {
+  public translatedMessages = {
     playAudio: {
       en: 'Play Audio',
       zh: '播放声音',
