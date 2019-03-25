@@ -4,5 +4,8 @@
     "hideGenerator": true,
     "theme": "gitbook",
     "output": "docs",
-    "includes": "./additional-doc/"
+    "includes": "./additional-doc/",
+    "toggleMenuItems": [
+        "components"
+    ]
 }
