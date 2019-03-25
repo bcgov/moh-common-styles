@@ -39,5 +39,5 @@ You can read more at the [Getting Started Guide](https://bcgov.github.io/moh-com
 
 This library and the documentation are still very young and there are bound to be growing pains. The only way I can fix them is if you let 
 
-If you find any mistakes with either this documentation or the underlying library please submit a [Pull Request on GitHub](https://github.com/bcgov/moh-common-styles/pulls). If, you can come ask me, Adam Coard, in person or drop me an email.
+If you find any mistakes with either this documentation or the underlying library please submit an [Issue on GitHub](https://github.com/bcgov/moh-common-styles/issues). If, you can come ask me, Adam Coard, in person or drop me an email.
 
