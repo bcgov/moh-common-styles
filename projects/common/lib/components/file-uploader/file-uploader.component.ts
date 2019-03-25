@@ -223,6 +223,7 @@ export class FileUploaderComponent extends Base
                         return !imageExists;
                     }
                 ),
+                // TODO - Is this necessary? Can likely be removed as it's exactly identical to the preceding.
                 filter((mspImage: CommonImage) => {
 
                     const imageExists = FileUploaderComponent.checkImageExists(mspImage, this.images);
@@ -698,7 +699,6 @@ export class FileUploaderComponent extends Base
             this.imagesChange.emit(this.images);
             this.showError = false;
             this.noIdImage = false;
-            this.fileControl.markAsTouched();
         }
     }
 

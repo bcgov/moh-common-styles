@@ -11,7 +11,7 @@ import { modifyJSON, sortObjectByKeys } from '../helpers/json';
  */
 export function versionJS(options: any): Rule {
   return (tree: Tree, _context: SchematicContext) => {
-    addPackageJsonScript(tree, _context);
+    updatePackageJson(tree, _context);
     updateAppComponentTs(tree, _context);
     return copyVersionFile(options, _context);
   };
@@ -35,20 +35,24 @@ function copyVersionFile(options: any, _context: SchematicContext) {
   return branchAndMerge(mergeWith(templateSource));
 }
 
-function addPackageJsonScript(tree: Tree, _context: SchematicContext) {
-  modifyJSON(tree, 'package.json', (packageJson) => {
-    if (packageJson['scripts']['prebuild']) {
-      throw new SchematicsException('Unable to setup pre-build script in package.json as one already exists.');
-    }
-    packageJson['scripts']['prebuild'] = 'node src/version.js';
-    sortObjectByKeys(packageJson['scripts']);
-
-    return packageJson;
-  });
+function updatePackageJson(tree: Tree, _context: SchematicContext) {
+  addPackageJsonScript(tree, 'prebuild', 'node src/version.js');
+  addPackageJsonScript(tree, 'test-version', 'npm version minor -m \'TEST build: %s\'');
+  addPackageJsonScript(tree, 'prod-version', 'npm version major -m \'PROD build: %s\'');
+  addPackageJsonScript(tree, 'push-version', 'git push --follow-tags');
   _context.logger.info('✓ added pre-build script in package.json for version.js!');
 }
 
-
+function addPackageJsonScript(tree: Tree, scriptName: string, script: string) {
+  modifyJSON(tree, 'package.json', (packageJson) => {
+    if (packageJson['scripts'][scriptName]) {
+      throw new SchematicsException(`Unable to setup ${scriptName} script in package.json as one already exists.`);
+    }
+    packageJson['scripts'][scriptName] = script;
+    sortObjectByKeys(packageJson['scripts']);
+    return packageJson;
+  });
+}
 
 /** Updates app.component.ts to console.log out the generated version file */
 function updateAppComponentTs(tree: Tree, _context: SchematicContext) {

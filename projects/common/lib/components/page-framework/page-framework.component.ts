@@ -5,10 +5,11 @@ import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
  * consistent layout.  It applies to most pages, but should NOT be used on
  * Dashboards, or full-width table components.
  *
+ * @example
  * <common-page-framework>
- *  <div>This will go in the middle column</div>
- *  <p>So will this</p>
- *  <div right> This will go in the right column</div>
+ *        <div>This will go in the middle column</div>
+ *        <p>So will this</p>
+ *        <div aside> This will go in the side column, or tips.</div>
  * </common-page-framework>
  *
  * @export

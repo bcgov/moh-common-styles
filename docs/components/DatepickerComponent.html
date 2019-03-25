@@ -1,0 +1,1551 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>moh-common-lib</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">moh-common-lib</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>DatepickerComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>projects/common/lib/components/datepicker/datepicker.component.ts</code>
+</p>
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>PRIME datepicker component. Largely a wrapper for ngx-mydatepicker
+https://github.com/kekeh/ngx-mydatepicker</p>
+<p>NOTE - YOU MUST INCLUDE NGX-MYDATEPICKER IN YOUR PARENT APPLICATION TO USE
+THIS COMPONENT!  This is due to some poor implementation in ngx-mydatepicker.
+Make sure to use the same version that this library uses.</p>
+
+    </p>
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+                    <code><a href="https://angular.io/api/core/OnChanges" target="_blank" >OnChanges</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>common-datepicker</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./datepicker.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./datepicker.component.html</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">viewProviders</td>
+                <td class="col-md-9">
+                    <code>
+                                <code><a href="../classes/Container.html" target="_self" >{ provide: ControlContainer, useExisting: forwardRef(() &#x3D;&gt; NgForm) }</a></code>
+                    </code>
+                </td>
+            </tr>
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#datepickerOptions">datepickerOptions</a>
+                            </li>
+                            <li>
+                                <a href="#DatepickerSizes">DatepickerSizes</a>
+                            </li>
+                            <li>
+                                <a href="#model">model</a>
+                            </li>
+                            <li>
+                                <a href="#ngxdp">ngxdp</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#clearDate">clearDate</a>
+                            </li>
+                            <li>
+                                <a href="#convertDateToSimpleDate">convertDateToSimpleDate</a>
+                            </li>
+                            <li>
+                                <a href="#convertSimpleDateToDate">convertSimpleDateToDate</a>
+                            </li>
+                            <li>
+                                <a href="#isDate">isDate</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnChanges">ngOnChanges</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onDateChanged">onDateChanged</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#clearButton">clearButton</a>
+                            </li>
+                            <li>
+                                <a href="#date">date</a>
+                            </li>
+                            <li>
+                                <a href="#dateFormat">dateFormat</a>
+                            </li>
+                            <li>
+                                <a href="#disabled">disabled</a>
+                            </li>
+                            <li>
+                                <a href="#disableSince">disableSince</a>
+                            </li>
+                            <li>
+                                <a href="#disableUntil">disableUntil</a>
+                            </li>
+                            <li>
+                                <a href="#errorMessages">errorMessages</a>
+                            </li>
+                            <li>
+                                <a href="#labelText">labelText</a>
+                            </li>
+                            <li>
+                                <a href="#onlyFutureDates">onlyFutureDates</a>
+                            </li>
+                            <li>
+                                <a href="#required">required</a>
+                            </li>
+                            <li>
+                                <a href="#size">size</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#dateChange">dateChange</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor()</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:78</a></div>
+                            </td>
+                        </tr>
+
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="clearButton"></a>
+                        <b>clearButton</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>&quot;visible&quot; | &quot;invisible&quot; | &quot;none&quot;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;visible&#x27;</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:59</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Control visibility of the clear &#39;x&#39; button on the mini datepicker.</p>
+<p><strong>&#39;visible&#39;</strong> is default, button exists</p>
+<p><strong>&#39;none&#39;</strong> means the element does not exist</p>
+<p><strong>&#39;invisible&#39;</strong> means the element takes up space but is not visible / cannot be
+used.</p>
+<p>Invisible is useful when you want to make sure a datepicker is the same
+size as a visible one.</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="date"></a>
+                        <b>date</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank" >Date</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:29</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="dateFormat"></a>
+                        <b>dateFormat</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;yyyy/mm/dd&#x27;</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:64</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Format for how to display the date to the user. </p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="disabled"></a>
+                        <b>disabled</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:31</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="disableSince"></a>
+                        <b>disableSince</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank" >Date</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:41</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Dates <strong>after</strong> disableSince will not be valid selections.  Maps to a ngx-mydatepicker option, but we convert IMyDate to Date </p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="disableUntil"></a>
+                        <b>disableUntil</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank" >Date</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:38</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Dates <strong>before</strong> disableUntil will not be valid selections.  Maps to a ngx-mydatepicker option, but we convert IMyDate to Date  </p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="errorMessages"></a>
+                        <b>errorMessages</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/DateErrorMsg.html" target="_self" >DateErrorMsg</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:66</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="labelText"></a>
+                        <b>labelText</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:32</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="onlyFutureDates"></a>
+                        <b>onlyFutureDates</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:44</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Equivalent to setting disableBefore to tomorrow. </p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="required"></a>
+                        <b>required</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:34</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="size"></a>
+                        <b>size</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/enumerations.html#DatepickerSizes" target="_self" >DatepickerSizes</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>DatepickerSizes.DEFAULT</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:28</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Component size can be reduced, see Datepickersizes for options </p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+    <section>
+    <h3 id="outputs">Outputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="dateChange"></a>
+                        <b>dateChange</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:30</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="clearDate"></a>
+                    <span class="name">
+                        <b>
+                            clearDate
+                        </b>
+                        <a href="#clearDate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>clearDate()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="169"
+                            class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:169</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="convertDateToSimpleDate"></a>
+                    <span class="name">
+                        <b>
+                            convertDateToSimpleDate
+                        </b>
+                        <a href="#convertDateToSimpleDate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>convertDateToSimpleDate(date: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank">Date</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="82"
+                            class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:82</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>date</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank" >Date</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>IMyDate</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="convertSimpleDateToDate"></a>
+                    <span class="name">
+                        <b>
+                            convertSimpleDateToDate
+                        </b>
+                        <a href="#convertSimpleDateToDate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>convertSimpleDateToDate(date: IMyDate)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="90"
+                            class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:90</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>date</td>
+                                    <td>
+                                            <code>IMyDate</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank" >Date</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isDate"></a>
+                    <span class="name">
+                        <b>
+                            isDate
+                        </b>
+                        <a href="#isDate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>isDate(x: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="98"
+                            class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:98</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>x</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank" >Date</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnChanges"></a>
+                    <span class="name">
+                        <b>
+                            ngOnChanges
+                        </b>
+                        <a href="#ngOnChanges"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnChanges(changes: <a href="https://angular.io/api/core/SimpleChanges" target="_blank">SimpleChanges</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="154"
+                            class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:154</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>changes</td>
+                                    <td>
+                                                <code><a href="https://angular.io/api/core/SimpleChanges" target="_blank" >SimpleChanges</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <b>
+                            ngOnInit
+                        </b>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="103"
+                            class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:103</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onDateChanged"></a>
+                    <span class="name">
+                        <b>
+                            onDateChanged
+                        </b>
+                        <a href="#onDateChanged"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onDateChanged(event)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="162"
+                            class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:162</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>event</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="datepickerOptions"></a>
+                        <span class="name">
+                            <b>
+                            datepickerOptions</b>
+                            <a href="#datepickerOptions"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>INgxMyDpOptions</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:78</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Default options for wrapped ngx-datepicker. </p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="DatepickerSizes"></a>
+                        <span class="name">
+                            <b>
+                            DatepickerSizes</b>
+                            <a href="#DatepickerSizes"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>DatepickerSizes</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:73</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="model"></a>
+                        <span class="name">
+                            <b>
+                            model</b>
+                            <a href="#model"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:70</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Datetime model used to interface with ngx-datepicker. </p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="ngxdp"></a>
+                        <span class="name">
+                            <b>
+                            ngxdp</b>
+                            <a href="#ngxdp"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>NgxMyDatePickerDirective</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ViewChild(&#x27;dp&#x27;)<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:75</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges, ViewChild, OnChanges, forwardRef } from &#x27;@angular/core&#x27;;
+import { INgxMyDpOptions, IMyDate, NgxMyDatePickerDirective } from &#x27;ngx-mydatepicker&#x27;;
+import * as moment_ from &#x27;moment&#x27;;
+import { NgForm, ControlContainer } from &#x27;@angular/forms&#x27;;
+import { DateErrorMsg } from &#x27;../date/date.component&#x27;;
+const moment &#x3D; moment_;
+
+
+/**
+ * PRIME datepicker component. Largely a wrapper for ngx-mydatepicker
+ * https://github.com/kekeh/ngx-mydatepicker
+ *
+ * NOTE - YOU MUST INCLUDE NGX-MYDATEPICKER IN YOUR PARENT APPLICATION TO USE
+ * THIS COMPONENT!  This is due to some poor implementation in ngx-mydatepicker.
+ * Make sure to use the same version that this library uses.
+ */
+@Component({
+  selector: &#x27;common-datepicker&#x27;,
+  templateUrl: &#x27;./datepicker.component.html&#x27;,
+  styleUrls: [&#x27;./datepicker.component.scss&#x27;],
+  /* Re-use the same ngForm that it&#x27;s parent is using. The component will show
+   * up in its parents &#x60;this.form&#x60;, and will auto-update &#x60;this.form.valid&#x60;
+   */
+  viewProviders: [ { provide: ControlContainer, useExisting: forwardRef(() &#x3D;&gt; NgForm ) } ]
+})
+export class DatepickerComponent implements OnInit, OnChanges {
+  /** Component size can be reduced, see Datepickersizes for options */
+  @Input() size: DatepickerSizes &#x3D; DatepickerSizes.DEFAULT;
+  @Input() date: Date;
+  @Output() dateChange &#x3D; new EventEmitter&lt;Date&gt;();
+  @Input() disabled: boolean;
+  @Input() labelText: string;
+
+  @Input() required: boolean &#x3D; false;
+
+
+  /** Dates **before** disableUntil will not be valid selections.  Maps to a ngx-mydatepicker option, but we convert IMyDate to Date  */
+  @Input() disableUntil: Date;
+
+  /** Dates **after** disableSince will not be valid selections.  Maps to a ngx-mydatepicker option, but we convert IMyDate to Date */
+  @Input() disableSince: Date;
+
+  /** Equivalent to setting disableBefore to tomorrow. */
+  @Input() onlyFutureDates: boolean;
+
+  /**
+   * Control visibility of the clear &#x27;x&#x27; button on the mini datepicker.
+   *
+   * **&#x27;visible&#x27;** is default, button exists
+   *
+   * **&#x27;none&#x27;** means the element does not exist
+   *
+   * **&#x27;invisible&#x27;** means the element takes up space but is not visible / cannot be
+   * used.
+   *
+   * Invisible is useful when you want to make sure a datepicker is the same
+   * size as a visible one.
+   */
+  @Input() clearButton: &#x27;visible&#x27; | &#x27;invisible&#x27; | &#x27;none&#x27; &#x3D; &#x27;visible&#x27;;
+
+
+
+  /** Format for how to display the date to the user. */
+  @Input() dateFormat: string &#x3D; &#x27;yyyy/mm/dd&#x27;;
+
+  @Input() errorMessages: DateErrorMsg;
+
+  /** Datetime model used to interface with ngx-datepicker. */
+  // model: any;
+  model: any;
+
+  // Make enum accessible in HTML
+  DatepickerSizes: typeof DatepickerSizes &#x3D; DatepickerSizes;
+
+  @ViewChild(&#x27;dp&#x27;) ngxdp: NgxMyDatePickerDirective;
+
+  /** Default options for wrapped ngx-datepicker. */
+  datepickerOptions: INgxMyDpOptions;
+
+  constructor() { }
+
+  convertDateToSimpleDate(date: Date): IMyDate {
+    if (date &#x3D;&#x3D;&#x3D; null || date &#x3D;&#x3D;&#x3D; undefined) { return null; }
+    return {
+      year: date.getFullYear(),
+      month: date.getMonth() + 1,
+      day: date.getDate(),
+    };
+  }
+  convertSimpleDateToDate(date: IMyDate): Date {
+    // When ngx-mydatepicker is cleared, it returns {year: 0, month: 0, day: 0}
+    if (date.year &#x3D;&#x3D;&#x3D; 0) {
+      return null;
+    }
+    return new Date(date.year, date.month - 1, date.day);
+  }
+
+  isDate(x: any): x is Date {
+    if (!x) { return false; }
+    return x.getDate !&#x3D;&#x3D; undefined;
+  }
+
+  ngOnInit() {
+    if (!this.errorMessages) {
+      this.errorMessages &#x3D; {
+        required: this.labelText + &#x27; is required.&#x27;,
+        dayOutOfRange: &#x27;Invalid &#x27; + this.labelText + &#x27;.&#x27;,
+        yearDistantPast: &#x27;Invalid &#x27; + this.labelText + &#x27;.&#x27;,
+        yearDistantFuture: &#x27;Invalid &#x27; + this.labelText + &#x27;.&#x27;,
+        noFutureDatesAllowed: &#x27;Invalid &#x27; + this.labelText + &#x27;.&#x27;,
+        invalidValue: &#x27;Invalid &#x27; + this.labelText + &#x27;.&#x27;
+      };
+    }
+
+    this.datepickerOptions &#x3D; {
+      dateFormat: this.dateFormat,
+      sunHighlight: false,
+      appendSelectorToBody: true,
+    };
+
+    if (this.size &#x3D;&#x3D;&#x3D; DatepickerSizes.MINI) {
+      // Set width/height to 4/5 of default
+      this.datepickerOptions.selectorHeight &#x3D; &#x27;185px&#x27;;
+      this.datepickerOptions.selectorWidth &#x3D; &#x27;201px&#x27;;
+    }
+
+    if (this.isDate(this.disableSince)) {
+      this.datepickerOptions.disableSince &#x3D; this.convertDateToSimpleDate(this.disableSince);
+    }
+
+    if (this.isDate(this.disableUntil)) {
+      this.datepickerOptions.disableUntil &#x3D; this.convertDateToSimpleDate(this.disableSince);
+    }
+
+    if (this.onlyFutureDates) {
+      const today &#x3D; new Date();
+      this.datepickerOptions.disableUntil &#x3D; this.convertDateToSimpleDate(today);
+    }
+
+
+    if (this.date) {
+      // Even if jsdate winds up being undefined, even defining this.model will
+      // set the input as non-empty and it&#x27;ll satisfy the &#x27;required&#x27; validation.
+      // So, we only add the model if there&#x27;s actual data.
+      this.model &#x3D; {
+        jsdate: this.date
+      };
+    }
+
+
+  }
+
+
+  ngOnChanges(changes: SimpleChanges) {
+    // Parent component has passed in null, so we have to manually clear the input. This leads to 2 change detection cycles.
+    // We could refactor it down to one, but the performance hit is minimal for such a simple component.
+    if (this.date &#x3D;&#x3D;&#x3D; null) {
+      this.clearDate();
+    }
+  }
+
+  onDateChanged(event): void {
+    if (event.jsdate || event.jsdate &#x3D;&#x3D;&#x3D; null) {
+      // Always emit a Date (or null)
+      this.dateChange.emit(event.jsdate);
+    }
+  }
+
+  clearDate() {
+    if (this.ngxdp) {
+      // We don&#x27;t need to emit here, because by changing date we&#x27;ll trigger onDateChanged automatically.
+      this.date &#x3D; null;
+      this.ngxdp.clearDate();
+    }
+  }
+
+}
+
+export enum DatepickerSizes {
+  MINI &#x3D; &#x27;mini&#x27;,
+  DEFAULT &#x3D; &#x27;default&#x27;
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div&gt;
+    &lt;label&gt;&lt;span&gt;{{labelText}}&lt;/span&gt;
+        &lt;div class&#x3D;&quot;input-group&quot;&gt;
+            
+                &lt;input class&#x3D;&quot;form-control&quot; placeholder&#x3D;&quot;YYYY/MM/DD&quot;
+                ngx-mydatepicker name&#x3D;&quot;datepicker-{{labelText}}&quot;
+                [(ngModel)]&#x3D;&quot;model&quot;
+                [options]&#x3D;&quot;datepickerOptions&quot;
+                #dp&#x3D;&quot;ngx-mydatepicker&quot;
+                #dateEl&#x3D;&#x27;ngModel&#x27;
+                (dateChanged)&#x3D;&quot;onDateChanged($event)&quot;
+                [required]&#x3D;&#x27;required&#x27;
+                [disabled]&#x3D;&quot;disabled&quot;/&gt;
+
+            &lt;span class&#x3D;&quot;input-group-append float-label-append&quot;&gt;
+                &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-default&quot; (click)&#x3D;&quot;dp.toggleCalendar()&quot;&gt;
+                    &lt;i class&#x3D;&quot;fa fa-calendar&quot;&gt;&lt;/i&gt;
+                &lt;/button&gt;
+            &lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/label&gt;
+&lt;/div&gt;
+
+&lt;!-- InvalidDateFormat comes from ngxmydatepicker, so we have a little less control over it. --&gt;
+&lt;div *ngIf&#x3D;&quot;!disabled &amp;&amp; dateEl.touched&quot;
+    role&#x3D;&quot;alert&quot;
+    class&#x3D;&#x27;error-container&#x27;
+    aria-live&#x3D;&quot;assertive&quot;&gt;
+  &lt;div class&#x3D;&quot;text-danger&quot;
+       *ngIf&#x3D;&quot;(dateEl?.errors?.required) &amp;&amp; errorMessages?.required &amp;&amp; !dateEl?.errors?.invalidDateFormat&quot;&gt;
+       {{errorMessages.required}}
+  &lt;/div&gt;
+  &lt;!-- ngx-mydatepicker has it&#x27;s own errors and we can&#x27;t easily add our own, so we have reduced error messages. --&gt;
+  &lt;!-- &lt;div class&#x3D;&quot;text-danger&quot;
+      *ngIf&#x3D;&quot;dateEl?.errors?.dayOutOfRange &amp;&amp; errorMessages?.dayOutOfRange&quot;&gt;
+       {{errorMessages.dayOutOfRange}}
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;text-danger&quot;
+       *ngIf&#x3D;&quot;dateEl?.errors?.yearDistantPast &amp;&amp; errorMessages?.yearDistantPast&quot;&gt;
+       {{errorMessages.yearDistantPast}}
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;text-danger&quot;
+       *ngIf&#x3D;&quot;dateEl?.errors?.yearDistantFuture &amp;&amp; errorMessages?.yearDistantFuture&quot;&gt;
+       {{errorMessages.yearDistantFuture}}
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;text-danger&quot;
+        *ngIf&#x3D;&quot;dateEl?.errors?.noPastDatesAllowed &amp;&amp; errorMessages?.noPastDatesAllowed&quot;&gt;
+        {{errorMessages.noPastDatesAllowed}}
+  &lt;/div&gt;
+  
+  &lt;div class&#x3D;&quot;text-danger&quot;
+       *ngIf&#x3D;&quot;dateEl?.errors?.noFutureDatesAllowed &amp;&amp; errorMessages?.noFutureDatesAllowed&quot;&gt;
+       {{errorMessages.noFutureDatesAllowed}}
+  &lt;/div&gt; --&gt;
+  &lt;div class&#x3D;&quot;text-danger&quot;
+       *ngIf&#x3D;&quot;(dateEl?.errors?.invalidValue || dateEl?.errors?.invalidDateFormat) &amp;&amp; errorMessages?.invalidValue&quot;&gt;
+       {{errorMessages.invalidValue}}
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./datepicker.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.datepicker--mini {
+  display: flex;
+  flex-wrap: nowrap; // Never break line with the &#x27;x&#x27; btn
+  &amp;:not(.hide-clear) &gt; .btn {
+    // Make button and .input-group-append play nice.
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .input-group-append .btn {
+    padding: 0 0.5rem;
+  }
+}
+
+.input-group-append {
+  // Bug fix, stops the appended groups from flashing above the datepicker
+  // itself, seems to mostly happen in tight row layouts like the info modal.
+  z-index: 0;
+}
+
+.float-label-append {
+  margin-bottom: calc(0.5rem + 2px);
+}
+
+.has-float-label {
+  flex-basis: calc(100% - 36px);
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div>    <label><span>{{labelText}}</span>        <div class="input-group">                            <input class="form-control" placeholder="YYYY/MM/DD"                ngx-mydatepicker name="datepicker-{{labelText}}"                [(ngModel)]="model"                [options]="datepickerOptions"                #dp="ngx-mydatepicker"                #dateEl=\'ngModel\'                (dateChanged)="onDateChanged($event)"                [required]=\'required\'                [disabled]="disabled"/>            <span class="input-group-append float-label-append">                <button type="button" class="btn btn-default" (click)="dp.toggleCalendar()">                    <i class="fa fa-calendar"></i>                </button>            </span>        </div>    </label></div><!-- InvalidDateFormat comes from ngxmydatepicker, so we have a little less control over it. --><div *ngIf="!disabled && dateEl.touched"    role="alert"    class=\'error-container\'    aria-live="assertive">  <div class="text-danger"       *ngIf="(dateEl?.errors?.required) && errorMessages?.required && !dateEl?.errors?.invalidDateFormat">       {{errorMessages.required}}  </div>  <!-- ngx-mydatepicker has it\'s own errors and we can\'t easily add our own, so we have reduced error messages. -->  <!-- <div class="text-danger"      *ngIf="dateEl?.errors?.dayOutOfRange && errorMessages?.dayOutOfRange">       {{errorMessages.dayOutOfRange}}  </div>  <div class="text-danger"       *ngIf="dateEl?.errors?.yearDistantPast && errorMessages?.yearDistantPast">       {{errorMessages.yearDistantPast}}  </div>  <div class="text-danger"       *ngIf="dateEl?.errors?.yearDistantFuture && errorMessages?.yearDistantFuture">       {{errorMessages.yearDistantFuture}}  </div>  <div class="text-danger"        *ngIf="dateEl?.errors?.noPastDatesAllowed && errorMessages?.noPastDatesAllowed">        {{errorMessages.noPastDatesAllowed}}  </div>    <div class="text-danger"       *ngIf="dateEl?.errors?.noFutureDatesAllowed && errorMessages?.noFutureDatesAllowed">       {{errorMessages.noFutureDatesAllowed}}  </div> -->  <div class="text-danger"       *ngIf="(dateEl?.errors?.invalidValue || dateEl?.errors?.invalidDateFormat) && errorMessages?.invalidValue">       {{errorMessages.invalidValue}}  </div></div></div>'
+    var COMPONENTS = [{'name': 'CaptchaComponent', 'selector': 'common-captcha'},{'name': 'CoreBreadcrumbComponent', 'selector': 'common-core-breadcrumb'},{'name': 'DateComponent', 'selector': 'common-date'},{'name': 'DatepickerComponent', 'selector': 'common-datepicker'},{'name': 'FileUploaderComponent', 'selector': 'common-file-uploader'},{'name': 'FormActionBarComponent', 'selector': 'common-form-action-bar'},{'name': 'FormSubmitBarComponent', 'selector': 'common-form-submit-bar'},{'name': 'PageFrameworkComponent', 'selector': 'common-page-framework'},{'name': 'PasswordComponent', 'selector': 'common-password'},{'name': 'PostalCodeComponent', 'selector': 'common-postal-code'},{'name': 'ThumbnailComponent', 'selector': 'common-thumbnail'},{'name': 'WizardProgressBarComponent', 'selector': 'common-wizard-progress-bar'}];
+    var DIRECTIVES = [{'name': 'DateFieldFormatDirective', 'selector': '[commonDateFieldFormat]'},{'name': 'DayValidationDirective', 'selector': '[commonDayValidation]'},{'name': 'YearValidateDirective', 'selector': '[commonYearValidate]'}];
+    var ACTUAL_COMPONENT = {'name': 'DatepickerComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'DatepickerComponent.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
