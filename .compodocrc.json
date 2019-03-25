@@ -2,6 +2,7 @@
     "$schema": "./node_modules/@compodoc/compodoc/src/config/schema.json",
     "name": "moh-common-lib",
     "hideGenerator": true,
-    "theme": "stripe",
-    "output": "docs"
+    "theme": "gitbook",
+    "output": "docs",
+    "includes": "./additional-doc/"
 }
