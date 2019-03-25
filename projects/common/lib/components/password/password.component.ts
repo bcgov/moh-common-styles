@@ -38,7 +38,6 @@ export interface PasswordErrorMsg {
  *                      (passwordChange)="setNewPassword($event)"></common-password>
  *
  * @export
- * @extends {Base}
  */
 @Component({
   selector: 'common-password',
