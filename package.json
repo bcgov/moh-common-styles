@@ -17,7 +17,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "docs": "npx compodoc -p src/tsconfig.app.json",
-    "docs:lib": "npx compodoc -p projects/common/tsconfig.lib.json --hideGenerator -n \"moh-common-lib\" "
+    "docs:lib": "npx compodoc -p projects/common/tsconfig.lib.json"
   },
   "private": true,
   "dependencies": {

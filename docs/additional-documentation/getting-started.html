@@ -1,0 +1,152 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>moh-common-lib</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">moh-common-lib</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content additional-page">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h1 id="getting-started">Getting Started</h1>
+<p>Assumption: you&#39;ve already installed moh-common-lib.</p>
+<h2 id="importing-the-library-moh-common-lib">Importing the Library (moh-common-lib)</h2>
+<p>Import components via the <code>SharedCoreModule</code>.</p>
+<div><pre class="line-numbers"><code class="language-none">import { SharedCoreModule } from &#39;moh-common-lib&#39;;
+
+
+&#64;NgModule({
+    declarations: [ ... ],
+    providers: [ ... ],
+    imports: [
+        ...
+        SharedCoreModule
+    ]
+})</code></pre></div><p>By adding this module you will automatically get access to core components, each starting with  &quot;common-*&quot;. <a href="../modules/SharedCoreModule.html">View all components</a></p>
+<p>This does <em>not</em> import Services, Models, and some specific components like FileUploader and Captcha. Those will be detailed below.</p>
+<h2 id="importing-dos-and-donts">Importing Dos and Don&#39;ts</h2>
+<p>All imports from moh-common-lib should go to one of the secondary entry points listed above (e.g. <code>/models</code> or <code>/captcha</code>). You should never import from a deeper level. When auto-importing make sure to double-check the import paths because VS Code often likes to setup incorrect imports.</p>
+<div><pre class="line-numbers"><code class="language-none">// GOOD
+import { GeocoderService } from &#39;moh-common-lib/services&#39;;
+
+// BAD
+import { GeoAddressResult } from &#39;moh-common-lib/services/geocoder.service&#39;;</code></pre></div><p>If you need access to an export and can only get it this way, let us know and we can export it properly.</p>
+<h2 id="importing-a-service-moh-common-libservices">Importing a Service (moh-common-lib/services)</h2>
+<p>If a service is usable as-is, you can find them in the <code>Injectables</code> section of the documentation in the menu.</p>
+<div><pre class="line-numbers"><code class="language-none">import { GeocoderService } from &#39;moh-common-lib/services&#39;;</code></pre></div><h3 id="setting-up-an-api-service-moh-common-libservices">Setting up an API Service (moh-common-lib/services)</h3>
+<p>In some cases, we provide abstract classes that provide the foundation of services you will create.   </p>
+<p>For example, the <a href="../classes/AbstractHttpService.html">AbstractHTTPService</a>:</p>
+<div><pre class="line-numbers"><code class="language-none">import { AbstractHttpService } from &#39;moh-common-lib/services&#39;;
+
+&#64;Injectable()
+export class APIService extends AbstractHTTPService {}
+// You will have to setup _headers, and handleError(), 
+// and create your own methods for each API Request using this.get() and this.post()</code></pre></div><p>These Abstract classes are not injectables and as such are found under <code>Classes</code>.  The <code>Classes</code> folder section also includes other non-service classes, like models.</p>
+<h2 id="importing-a-model-moh-common-libmodels">Importing a Model (moh-common-lib/models)</h2>
+<p>Models are all found under <code>Classes</code>.</p>
+<div><pre class="line-numbers"><code class="language-none">import { Address } from &#39;moh-common-lib/models&#39;;
+const addr = new Address();</code></pre></div><p>The address, and others like it, is a pure TypeScript model with no specific Angular integration. However, other components may expect an Address as an @Input.</p>
+<h2 id="file-uploader-classes-interfaces-etc-moh-common-libimages">File Uploader classes, interfaces, etc. (moh-common-lib/images)</h2>
+<p>All classes, interfaces, and enums related to the FileUploader are all in <code>moh-common-lib/images</code></p>
+<div><pre class="line-numbers"><code class="language-none">import { CommonImage, CommonImageError, CommonImageScaleFactorsImpl } from &#39;moh-common-lib/images&#39;;</code></pre></div><p>This does NOT include the actual FileUploader, which is currently in the <code>SharedCoreModule</code>.</p>
+<h2 id="captcha">CAPTCHA</h2>
+<p><strong>Note: This is still in development and may not be working</strong></p>
+<div><pre class="line-numbers"><code class="language-none">import { CaptchaModule } from &#39;moh-common-lib/captcha&#39;;
+
+&#64;NgModule({
+    declarations: [ ... ],
+    providers: [ ... ],
+    imports: [
+        ...
+        CaptchaModule
+    ]
+})</code></pre></div><p>Then register your application module and use <code>&lt;common-captcha&gt;</code></p>
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'additional-page';
+            var COMPODOC_CURRENT_PAGE_URL = 'getting-started.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

@@ -46,6 +46,36 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                         </li>
                     </ul>
                 </li>
+                    <li class="chapter additional">
+                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ? 'data-target="#additional-pages"'
+                            : 'data-target="#xs-additional-pages"' }>
+                            <span class="icon ion-ios-book"></span>
+                            <span>Additional documentation</span>
+                            <span class="icon ion-ios-arrow-down"></span>
+                        </div>
+                        <ul class="links collapse" ${ isNormalMode ? 'id="additional-pages"' : 'id="xs-additional-pages"' }>
+                                    <li class="link ">
+                                        <a href="additional-documentation/getting-started.html" data-type="entity-link" data-context-id="additional">Getting Started</a>
+                                    </li>
+                                    <li class="chapter inner">
+                                        <a data-type="chapter-link" href="additional-documentation/local-development.html" data-context-id="additional">
+                                            <div class="menu-toggler linked" data-toggle="collapse" ${ isNormalMode ?
+                                            'data-target="#additional-page-72c2cbf9739dad90f02e23b1c853f008"' : 'data-target="#xs-additional-page-72c2cbf9739dad90f02e23b1c853f008"' }>
+                                                <span class="link-name">Local Development</span>
+                                                <span class="icon ion-ios-arrow-down"></span>
+                                            </div>
+                                        </a>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="additional-page-72c2cbf9739dad90f02e23b1c853f008"' : 'id="xs-additional-page-72c2cbf9739dad90f02e23b1c853f008"' }>
+                                            <li class="link for-chapter2">
+                                                <a href="additional-documentation/local-development/schematics.html" data-type="entity-link" data-context="sub-entity" data-context-id="additional">Schematics</a>
+                                            </li>
+                                            <li class="link for-chapter2">
+                                                <a href="additional-documentation/local-development/components.html" data-type="entity-link" data-context="sub-entity" data-context-id="additional">Components</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                        </ul>
+                    </li>
                     <li class="chapter modules">
                         <a data-type="chapter-link" href="modules.html">
                             <div class="menu-toggler linked" data-toggle="collapse" ${ isNormalMode ?
@@ -223,6 +253,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <li class="link">
                                     <a href="injectables/GeocoderService.html" data-type="entity-link">GeocoderService</a>
                                 </li>
+                                <li class="link">
+                                    <a href="injectables/Logger.html" data-type="entity-link">Logger</a>
+                                </li>
                             </ul>
                         </li>
                     <li class="chapter">
@@ -244,6 +277,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="interfaces/GeoAddressResult.html" data-type="entity-link">GeoAddressResult</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/LogMessage.html" data-type="entity-link">LogMessage</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/PasswordErrorMsg.html" data-type="entity-link">PasswordErrorMsg</a>

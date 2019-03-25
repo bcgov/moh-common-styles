@@ -7,12 +7,6 @@ import * as zxcvbn_ from 'zxcvbn';
 const zxcvbn = zxcvbn_;
 
 /**
- * NPM package dependencies:
- *  a) zxcvbn
- *  b) FormsModule
- */
-
-/**
  * Interface for passing in error messages
  * Example:
  *  errorMessages = {
@@ -26,6 +20,26 @@ export interface PasswordErrorMsg {
   minLength?: string;
   criteria?: string;
 }
+/**
+ * PasswordComponent is a text input for a user's password. It includes:
+ *
+ * - A password strength bar
+ * - Minimum length validations
+ *
+ * Note - if your application has requirements to check things like username is not
+ * present in password, we recommend doing this in the (passwordChange) callback.
+ *
+ * @example
+ *       <common-password componentLabel="{{newPwdLabel}}"
+ *                      [showPasswordStrength]="true"
+ *                      [minLen]="pwdMinLen"
+ *                      [pwdCriteria]="pwdValidChars"
+ *                      [password]="data.password"
+ *                      (passwordChange)="setNewPassword($event)"></common-password>
+ *
+ * @export
+ * @extends {Base}
+ */
 @Component({
   selector: 'common-password',
   templateUrl: './password.component.html',
