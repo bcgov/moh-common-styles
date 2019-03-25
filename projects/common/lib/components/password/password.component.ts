@@ -51,7 +51,7 @@ export interface PasswordErrorMsg {
 export class PasswordComponent extends Base implements OnInit, OnChanges {
 
   // Inputs for the component
-  @Input() componentLabel: string;
+  @Input() label: string = 'Password';
   @Input() isRequired: boolean = true;
   @Input() isDisabled: boolean = false;
   @Input() password: string;
@@ -60,6 +60,7 @@ export class PasswordComponent extends Base implements OnInit, OnChanges {
   @Input() maxLen: string  = '32';
   @Input() errorMessages: PasswordErrorMsg;
   @Input() showPasswordStrength: boolean = false;
+  @Input() objectID: string = 'password_' + this.objectId;
 
 
   // Output from the component
@@ -87,9 +88,9 @@ export class PasswordComponent extends Base implements OnInit, OnChanges {
 
     // Set default messages
     this.errMsg =    {
-      required: this.componentLabel + this.requiredMsgSeg,
-      minLength: this.componentLabel + this.minLenMsgSeg1 + this.minLen + this.minLenMsgSeg2,
-      criteria: this.componentLabel + this.criteriaMsg
+      required: this.label + this.requiredMsgSeg,
+      minLength: this.label + this.minLenMsgSeg1 + this.minLen + this.minLenMsgSeg2,
+      criteria: this.label + this.criteriaMsg
     };
 
     // Replace default message if provided
