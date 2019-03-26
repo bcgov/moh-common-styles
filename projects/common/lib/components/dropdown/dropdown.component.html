@@ -1,0 +1,13 @@
+<ng-select name='{{label}}'
+           labelForId='{{label}}'
+           [ngModel]='model'
+           (ngModelChange)='model=$event;'
+           [items]='items'
+           placeholder='{{ placeholder }}'
+           autoCorrect='{{ autocorrect }}'
+           addTag={{addTag}}
+           addTagText='Add question'
+           [required]='required'
+           (change)='_onChange($event)'
+           (blur)='_onTouched()'
+           (close)='_onTouched()'></ng-select>

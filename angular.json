@@ -131,6 +131,11 @@
       "sourceRoot": "projects/common",
       "projectType": "library",
       "prefix": "common",
+      "schematics": {
+        "@schematics/angular:component": {
+          "styleext": "scss"
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",

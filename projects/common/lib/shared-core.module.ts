@@ -19,6 +19,8 @@ import { ThumbnailComponent } from './components/thumbnail/thumbnail.component';
 import { FormSubmitBarComponent } from './components/form-submit-bar/form-submit-bar.component';
 import { TextMaskModule } from 'angular2-text-mask';
 import { PostalCodeComponent } from './components/postal-code/postal-code.component';
+import { DropdownComponent } from './components/dropdown/dropdown.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   imports: [
@@ -28,7 +30,8 @@ import { PostalCodeComponent } from './components/postal-code/postal-code.compon
     RouterModule,
     NgxMyDatePickerModule.forRoot(),
     ModalModule.forRoot(),
-    TextMaskModule
+    TextMaskModule,
+    NgSelectModule
   ],
   declarations: [
     CoreBreadcrumbComponent,
@@ -44,7 +47,8 @@ import { PostalCodeComponent } from './components/postal-code/postal-code.compon
     FileUploaderComponent,
     ThumbnailComponent,
     FormSubmitBarComponent,
-    PostalCodeComponent
+    PostalCodeComponent,
+    DropdownComponent
   ],
   exports: [
     CoreBreadcrumbComponent,
@@ -60,7 +64,8 @@ import { PostalCodeComponent } from './components/postal-code/postal-code.compon
     FileUploaderComponent,
     ThumbnailComponent,
     FormSubmitBarComponent,
-    PostalCodeComponent
+    PostalCodeComponent,
+    DropdownComponent
   ],
   providers: [
     NgForm
