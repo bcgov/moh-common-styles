@@ -2,6 +2,7 @@
 
 # Git Commit Format
 
+
 For changelog generation, all git commits must follow this format:
 
     <type>(<scope>): <subject>
