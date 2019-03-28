@@ -18,7 +18,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "docs:lib": "npx compodoc -p projects/common/tsconfig.lib.json",
-    "changelog": "npx standard-changelog",
+    "changelog": "npx standard-changelog --context build_utils/changelog-config.json",
     "version": "node build_utils/update-lib-version.js && git add \"*/package.json\"",
     "setup:git-hooks": "cp node_modules/angular-precommit/index.js .git/hooks/commit-msg"
   },
