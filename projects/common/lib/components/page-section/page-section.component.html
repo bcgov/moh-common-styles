@@ -1,0 +1,36 @@
+<div class="row" [ngSwitch]="layout">
+
+  <ng-container *ngSwitchCase="'tips'">
+    <div class="col-md-8">
+      <ng-container *ngTemplateOutlet="content"></ng-container>
+    </div>
+    <div class="col-md-4 aside-col">
+      <ng-container *ngTemplateOutlet="aside"></ng-container>
+    </div>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="'double'">
+    <div class="col-md-6">
+      <ng-container *ngTemplateOutlet="content"></ng-container>
+    </div>
+    <div class="col-md-6">
+      <ng-container *ngTemplateOutlet="aside"></ng-container>
+    </div>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="'noTips'">
+      <div class="col-md-12">
+      <ng-container *ngTemplateOutlet="content"></ng-container>
+    </div>
+  </ng-container>
+
+</div>
+
+<!-- We use ng-template here to get around a bug with having multiple ng-contents in one template. By default, if there are duplicate ng-contents in a template Angular will select the very first one - even if latter ones are 'removed' by ngSwitch or ngIf.-->
+<ng-template #content>
+  <ng-content></ng-content>
+</ng-template>
+
+<ng-template #aside>
+  <ng-content select='aside'></ng-content>
+</ng-template>

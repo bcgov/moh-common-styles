@@ -1,0 +1,34 @@
+@import 'variables.scss';
+
+common-page-section {
+  display: block;
+}
+
+// for use as titles in asides / info boxes
+h5, .h5 {
+  font-size: $h5-font-size; // 1rem;
+  font-weight: bold;
+  margin-bottom: 0;
+
+  p + & {
+    margin-top: 1.5rem;
+  }
+}
+
+.aside-col aside {
+  background: $gray;
+  padding: 1em;
+  border-radius: 5px;
+  @include media-breakpoint-up(md){
+    margin-top: 1rem; // Align with the top of the title (for desktop)
+  }
+
+  ul {
+    padding-left: 0em;
+    list-style-type: none;
+    > li:before {
+      content: " - ";
+      text-indent: -5px;
+    }
+  }
+}

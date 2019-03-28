@@ -19,6 +19,7 @@ import { ThumbnailComponent } from './components/thumbnail/thumbnail.component';
 import { FormSubmitBarComponent } from './components/form-submit-bar/form-submit-bar.component';
 import { TextMaskModule } from 'angular2-text-mask';
 import { PostalCodeComponent } from './components/postal-code/postal-code.component';
+import { PageSectionComponent } from './components/page-section/page-section.component';
 import { DropdownComponent } from './components/dropdown/dropdown.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 
@@ -48,6 +49,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
     ThumbnailComponent,
     FormSubmitBarComponent,
     PostalCodeComponent,
+    PageSectionComponent,
     DropdownComponent
   ],
   exports: [
@@ -65,6 +67,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
     ThumbnailComponent,
     FormSubmitBarComponent,
     PostalCodeComponent,
+    PageSectionComponent,
     DropdownComponent
   ],
   providers: [

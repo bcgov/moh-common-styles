@@ -65,6 +65,7 @@ export class PasswordComponent extends Base implements OnInit, OnChanges {
 
   // Output from the component
   @Output() passwordChange: EventEmitter<string> = new EventEmitter<string>();
+  @Output() blurEvent = new EventEmitter();
 
   // Flag for the fa-eye to show or hide password
   public hideValue = true;
@@ -125,6 +126,11 @@ export class PasswordComponent extends Base implements OnInit, OnChanges {
    */
   setPassword( password: string ) {
     this.passwordChange.emit( password );
+  }
+
+  onInputBlur($event) {
+    console.log( 'onBlur: ', event );
+    this.blurEvent.emit( event );
   }
 
   // Prevent user from pasting data into the text box
