@@ -183,7 +183,7 @@ export class FileUploaderComponent extends Base
     @ViewChild(&#x27;selectFileLabel&#x27;) selectFileLabelRef: ElementRef;
 
     @ContentChild(&#x27;uploadInstruction&#x27;) uploadInstructionRef: ElementRef;
-    @Input() images: Array&lt;CommonImage&gt;;
+    @Input() images: Array&lt;CommonImage&gt; &#x3D; new Array&lt;CommonImage&gt;(0);
     @Output() imagesChange: EventEmitter&lt;Array&lt;CommonImage&gt;&gt; &#x3D; new EventEmitter&lt;Array&lt;CommonImage&gt;&gt;();
     @Input() id: string;
     @Input() showError: boolean;
