@@ -33,6 +33,7 @@
     "@angular/platform-browser": "^7.2.7",
     "@angular/platform-browser-dynamic": "^7.2.7",
     "@angular/router": "^7.2.7",
+    "@ng-select/ng-select": "^2.16.2",
     "@types/pdfjs-dist": "^0.1.2",
     "angular2-text-mask": "^9.0.0",
     "blueimp-load-image": "^2.20.1",
