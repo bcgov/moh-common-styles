@@ -190,7 +190,53 @@
             </div>
         </div>
 
+        <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="forRoot"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Static</span>
+                            forRoot
+                        </b>
+                        <a href="#forRoot"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>forRoot()</code>
+                </td>
+            </tr>
 
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="27"
+                            class="link-to-prism">projects/common/captcha/src/captcha.module.ts:27</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>ModuleWithProviders&lt;CaptchaModule&gt;</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
     </div>
 
     <div class="tab-pane fade " id="c-readme">
@@ -204,34 +250,38 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { BrowserModule } from &#x27;@angular/platform-browser&#x27;;
-import { NgModule } from &#x27;@angular/core&#x27;;
+import { NgModule, ModuleWithProviders } from &#x27;@angular/core&#x27;;
 import { HttpClientModule } from &#x27;@angular/common/http&#x27;;
 import { FormsModule } from &#x27;@angular/forms&#x27;;
 
-// import { AppComponent } from &#x27;./app.component&#x27;;
 import { CaptchaComponent } from &#x27;./captcha.component&#x27;;
 import { CaptchaDataService } from &#x27;./captcha-data.service&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
 
 @NgModule({
   declarations: [
-    // AppComponent,
     CaptchaComponent
   ],
   imports: [
-    BrowserModule,
     HttpClientModule,
+    CommonModule,
     FormsModule
   ],
   providers: [
     CaptchaDataService
   ],
-
   exports: [
     CaptchaComponent
   ],
-  // bootstrap: [AppComponent]
 })
-export class CaptchaModule { }
+export class CaptchaModule { 
+  static forRoot(): ModuleWithProviders&lt;CaptchaModule&gt; {
+    return {
+      ngModule: CaptchaModule,
+      providers: [CaptchaDataService]
+    }
+  }
+}
 </code></pre>
     </div>
 </div>

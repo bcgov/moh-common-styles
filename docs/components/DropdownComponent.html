@@ -35,7 +35,7 @@
 
 <ol class="breadcrumb">
   <li>Components</li>
-  <li>PostalCodeComponent</li>
+  <li>DropdownComponent</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -61,22 +61,17 @@
     <h3>File</h3>
 </p>
 <p class="comment">
-    <code>projects/common/lib/components/postal-code/postal-code.component.ts</code>
+    <code>projects/common/lib/components/dropdown/dropdown.component.ts</code>
 </p>
 
 
-    <p class="comment">
-        <h3>Extends</h3>
-    </p>
-    <p class="comment">
-                <code><a href="../classes/MaskModel.html" target="_self" >MaskModel</a></code>
-    </p>
 
     <p class="comment">
         <h3>Implements</h3>
     </p>
     <p class="comment">
                     <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+                    <code><a href="https://angular.io/api/forms/ControlValueAccessor" target="_blank" >ControlValueAccessor</a></code>
     </p>
 
 
@@ -93,33 +88,33 @@
 
 
 
+            <tr>
+                <td class="col-md-3">providers</td>
+                <td class="col-md-9">
+                                <code><a href="../components/DropdownComponent.html" target="_self" >{
+    provide: NG_VALUE_ACCESSOR, multi: true, useExisting: forwardRef(() &#x3D;&gt; DropdownComponent)
+}</a></code>
+                </td>
+            </tr>
 
 
             <tr>
                 <td class="col-md-3">selector</td>
-                <td class="col-md-9"><code>common-postal-code</code></td>
+                <td class="col-md-9"><code>common-dropdown</code></td>
             </tr>
 
             <tr>
                 <td class="col-md-3">styleUrls</td>
-                <td class="col-md-9"><code>./postal-code.component.scss</code></td>
+                <td class="col-md-9"><code>./dropdown.component.scss</code></td>
             </tr>
 
 
 
             <tr>
                 <td class="col-md-3">templateUrl</td>
-                <td class="col-md-9"><code>./postal-code.component.html</code></td>
+                <td class="col-md-9"><code>./dropdown.component.html</code></td>
             </tr>
 
-            <tr>
-                <td class="col-md-3">viewProviders</td>
-                <td class="col-md-9">
-                    <code>
-                                <code><a href="../classes/Container.html" target="_self" >{ provide: ControlContainer, useExisting: NgForm }</a></code>
-                    </code>
-                </td>
-            </tr>
 
 
 
@@ -145,15 +140,15 @@
                         <ul class="index-list">
                             <li>
                                     <span class="modifier">Public</span>
-                                <a href="#mask">mask</a>
+                                <a href="#_onChange">_onChange</a>
                             </li>
                             <li>
                                     <span class="modifier">Public</span>
-                                <a href="#placeholder">placeholder</a>
+                                <a href="#_onTouched">_onTouched</a>
                             </li>
                             <li>
                                     <span class="modifier">Public</span>
-                                <a href="#objectId">objectId</a>
+                                <a href="#model">model</a>
                             </li>
                         </ul>
                     </td>
@@ -171,10 +166,13 @@
                                 <a href="#ngOnInit">ngOnInit</a>
                             </li>
                             <li>
-                                <a href="#onUpdate">onUpdate</a>
+                                <a href="#registerOnChange">registerOnChange</a>
                             </li>
                             <li>
-                                <a href="#upperCasePipe">upperCasePipe</a>
+                                <a href="#registerOnTouched">registerOnTouched</a>
+                            </li>
+                            <li>
+                                <a href="#writeValue">writeValue</a>
                             </li>
                         </ul>
                     </td>
@@ -189,38 +187,30 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#displayMask">displayMask</a>
+                                <a href="#addTag">addTag</a>
+                            </li>
+                            <li>
+                                <a href="#addTagText">addTagText</a>
+                            </li>
+                            <li>
+                                <a href="#autocorrect">autocorrect</a>
+                            </li>
+                            <li>
+                                <a href="#items">items</a>
                             </li>
                             <li>
                                 <a href="#label">label</a>
                             </li>
                             <li>
-                                <a href="#disabled">disabled</a>
+                                <a href="#placeholder">placeholder</a>
                             </li>
                             <li>
                                 <a href="#required">required</a>
-                            </li>
-                            <li>
-                                <a href="#value">value</a>
                             </li>
                         </ul>
                     </td>
                 </tr>
 
-                <tr>
-                    <td class="col-md-4">
-                        <h6><b>Outputs</b></h6>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <ul class="index-list">
-                            <li>
-                                <a href="#valueChange">valueChange</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
 
 
 
@@ -239,7 +229,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">projects/common/lib/components/postal-code/postal-code.component.ts:17</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">projects/common/lib/components/dropdown/dropdown.component.ts:28</a></div>
                             </td>
                         </tr>
 
@@ -253,8 +243,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="displayMask"></a>
-                        <b>displayMask</b>
+                        <a name="addTag"></a>
+                        <b>addTag</b>
                     </td>
                 </tr>
                 <tr>
@@ -265,12 +255,79 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>true</code>
+                        <i>Default value : </i><code>false</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">projects/common/lib/components/postal-code/postal-code.component.ts:17</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">projects/common/lib/components/dropdown/dropdown.component.ts:23</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="addTagText"></a>
+                        <b>addTagText</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;Add&#x27;</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">projects/common/lib/components/dropdown/dropdown.component.ts:24</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="autocorrect"></a>
+                        <b>autocorrect</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">projects/common/lib/components/dropdown/dropdown.component.ts:22</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="items"></a>
+                        <b>items</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">projects/common/lib/components/dropdown/dropdown.component.ts:19</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -291,12 +348,12 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>&#x27;Postal Code&#x27;</code>
+                        <i>Default value : </i><code>&#x27;Default label&#x27;</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">projects/common/lib/components/postal-code/postal-code.component.ts:16</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">projects/common/lib/components/dropdown/dropdown.component.ts:20</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -305,31 +362,19 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="disabled"></a>
-                        <b>disabled</b>
+                        <a name="placeholder"></a>
+                        <b>placeholder</b>
                     </td>
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 
                     </td>
                 </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>false</code>
-                    </td>
-                </tr>
-                            <tr>
-                                <td class="col-md-4" colspan="2">
-                                    <div class="io-line">Inherited from         <code><a href="../classes/MaskModel.html" target="_self" >MaskModel</a></code>
-</div>
-                                </td>
-                            </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in         <code><a href="../classes/MaskModel.html#source" target="_self" >MaskModel:14</a></code>
-</div>
+                                    <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">projects/common/lib/components/dropdown/dropdown.component.ts:21</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -348,85 +393,15 @@
 
                     </td>
                 </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>true</code>
-                    </td>
-                </tr>
-                            <tr>
-                                <td class="col-md-4" colspan="2">
-                                    <div class="io-line">Inherited from         <code><a href="../classes/MaskModel.html" target="_self" >MaskModel</a></code>
-</div>
-                                </td>
-                            </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in         <code><a href="../classes/MaskModel.html#source" target="_self" >MaskModel:15</a></code>
-</div>
-                            </td>
-                        </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="value"></a>
-                        <b>value</b>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
-                    </td>
-                </tr>
-                            <tr>
-                                <td class="col-md-4" colspan="2">
-                                    <div class="io-line">Inherited from         <code><a href="../classes/MaskModel.html" target="_self" >MaskModel</a></code>
-</div>
-                                </td>
-                            </tr>
-                        <tr>
-                            <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in         <code><a href="../classes/MaskModel.html#source" target="_self" >MaskModel:11</a></code>
-</div>
+                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">projects/common/lib/components/dropdown/dropdown.component.ts:25</a></div>
                             </td>
                         </tr>
             </tbody>
         </table>
 </section>
-    <section>
-    <h3 id="outputs">Outputs</h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="valueChange"></a>
-                        <b>valueChange</b>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>    <code>EventEmitter&lt;string&gt;</code>
 
-                    </td>
-                </tr>
-                            <tr>
-                                <td class="col-md-4" colspan="2">
-                                    <div class="io-line">Inherited from         <code><a href="../classes/MaskModel.html" target="_self" >MaskModel</a></code>
-</div>
-                                </td>
-                            </tr>
-                        <tr>
-                            <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in         <code><a href="../classes/MaskModel.html#source" target="_self" >MaskModel:12</a></code>
-</div>
-                            </td>
-                        </tr>
-            </tbody>
-        </table>
-</section>
 
 
     <section>
@@ -456,8 +431,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="25"
-                            class="link-to-prism">projects/common/lib/components/postal-code/postal-code.component.ts:25</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="34"
+                            class="link-to-prism">projects/common/lib/components/dropdown/dropdown.component.ts:34</a></div>
                 </td>
             </tr>
 
@@ -477,40 +452,32 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="onUpdate"></a>
+                    <a name="registerOnChange"></a>
                     <span class="name">
                         <b>
-                            onUpdate
+                            registerOnChange
                         </b>
-                        <a href="#onUpdate"><span class="icon ion-ios-link"></span></a>
+                        <a href="#registerOnChange"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>onUpdate(value: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+<code>registerOnChange(fn: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Inherited from         <code><a href="../classes/MaskModel.html" target="_self" >MaskModel</a></code>
-</div>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../classes/MaskModel.html#source" target="_self" >MaskModel:34</a></code>
-</div>
+                    <div class="io-line">Defined in <a href="" data-line="42"
+                            class="link-to-prism">projects/common/lib/components/dropdown/dropdown.component.ts:42</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Updates the value</p>
-</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -524,9 +491,9 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>value</td>
+                                    <td>fn</td>
                                     <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
                                     </td>
 
                                     <td>
@@ -555,40 +522,32 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="upperCasePipe"></a>
+                    <a name="registerOnTouched"></a>
                     <span class="name">
                         <b>
-                            upperCasePipe
+                            registerOnTouched
                         </b>
-                        <a href="#upperCasePipe"><span class="icon ion-ios-link"></span></a>
+                        <a href="#registerOnTouched"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>upperCasePipe(text: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+<code>registerOnTouched(fn: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Inherited from         <code><a href="../classes/MaskModel.html" target="_self" >MaskModel</a></code>
-</div>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../classes/MaskModel.html#source" target="_self" >MaskModel:27</a></code>
-</div>
+                    <div class="io-line">Defined in <a href="" data-line="46"
+                            class="link-to-prism">projects/common/lib/components/dropdown/dropdown.component.ts:46</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Upper cases letters in string</p>
-</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -602,9 +561,9 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>text</td>
+                                    <td>fn</td>
                                     <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
                                     </td>
 
                                     <td>
@@ -619,7 +578,77 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="writeValue"></a>
+                    <span class="name">
+                        <b>
+                            writeValue
+                        </b>
+                        <a href="#writeValue"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>writeValue(value: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="37"
+                            class="link-to-prism">projects/common/lib/components/dropdown/dropdown.component.ts:37</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>value</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
                     </div>
                     <div class="io-description">
@@ -639,12 +668,66 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="mask"></a>
+                        <a name="_onChange"></a>
                         <span class="name">
                             <b>
                                 <span class="modifier">Public</span>
-                            mask</b>
-                            <a href="#mask"><span class="icon ion-ios-link"></span></a>
+                            _onChange</b>
+                            <a href="#_onChange"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>() &#x3D;&gt; {...}</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">projects/common/lib/components/dropdown/dropdown.component.ts:27</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_onTouched"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            _onTouched</b>
+                            <a href="#_onTouched"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>() &#x3D;&gt; {...}</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">projects/common/lib/components/dropdown/dropdown.component.ts:28</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="model"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            model</b>
+                            <a href="#model"><span class="icon ion-ios-link"></span></a>
                         </span>
                     </td>
                 </tr>
@@ -654,100 +737,12 @@
 
                         </td>
                     </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Inherited from         <code><a href="../classes/MaskModel.html" target="_self" >MaskModel</a></code>
-</div>
-                                </td>
-                            </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in         <code><a href="../classes/MaskModel.html#source" target="_self" >MaskModel:17</a></code>
-</div>
+                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">projects/common/lib/components/dropdown/dropdown.component.ts:17</a></div>
                             </td>
                         </tr>
 
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="placeholder"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Public</span>
-                            placeholder</b>
-                            <a href="#placeholder"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
-                        </td>
-                    </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Inherited from         <code><a href="../classes/MaskModel.html" target="_self" >MaskModel</a></code>
-</div>
-                                </td>
-                            </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in         <code><a href="../classes/MaskModel.html#source" target="_self" >MaskModel:18</a></code>
-</div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="objectId"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Public</span>
-                            objectId</b>
-                            <a href="#objectId"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Default value : </i><code>UUID.UUID().toString()</code>
-                        </td>
-                    </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Inherited from         <code><a href="../classes/Base.html" target="_self" >Base</a></code>
-</div>
-                                </td>
-                            </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in         <code><a href="../classes/Base.html#source" target="_self" >Base:11</a></code>
-</div>
-                            </td>
-                        </tr>
-
-                <tr>
-                    <td class="col-md-4">
-                        <div class="io-description"><p>An identifier for parents to keep track of components </p>
-</div>
-                    </td>
-                </tr>
 
             </tbody>
         </table>
@@ -757,91 +752,78 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, Input } from &#x27;@angular/core&#x27;;
-import { ControlContainer, NgForm } from &#x27;@angular/forms&#x27;;
-import { MaskModel, LETTER, NUMBER, SPACE } from &#x27;../../../models/src/mask.model&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, Input, forwardRef } from &#x27;@angular/core&#x27;;
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from &#x27;@angular/forms&#x27;;
 
 @Component({
-  selector: &#x27;common-postal-code&#x27;,
-  templateUrl: &#x27;./postal-code.component.html&#x27;,
-  styleUrls: [&#x27;./postal-code.component.scss&#x27;],
-
-  // Re-use the same ngForm that it&#x27;s parent is using. The component will show
-  // up in its parents &#x60;this.form&#x60;, and will auto-update &#x60;this.form.valid&#x60;
-  viewProviders: [ { provide: ControlContainer, useExisting: NgForm }]
+  selector: &#x27;common-dropdown&#x27;,
+  templateUrl: &#x27;./dropdown.component.html&#x27;,
+  styleUrls: [&#x27;./dropdown.component.scss&#x27;],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      multi: true,
+      useExisting: forwardRef(() &#x3D;&gt; DropdownComponent)
+    }
+  ]
 })
-export class PostalCodeComponent extends MaskModel implements OnInit {
+export class DropdownComponent implements OnInit, ControlValueAccessor {
+  public model: any;
 
-  @Input() label: string &#x3D; &#x27;Postal Code&#x27;;
-  @Input() displayMask: boolean &#x3D; true;
+  @Input() items &#x3D; [];
+  @Input() label: string &#x3D; &#x27;Default label&#x27;;
+  @Input() placeholder: string;
+  @Input() autocorrect: string;
+  @Input() addTag: boolean &#x3D; false;
+  @Input() addTagText: string &#x3D; &#x27;Add&#x27;;
+  @Input() required: boolean;
 
-  constructor() {
-    super();
-    this.mask &#x3D; [LETTER, NUMBER, LETTER, SPACE, NUMBER, LETTER, NUMBER];
-    this.placeholder &#x3D; &#x27;V1V V1V&#x27;;
-   }
+  public _onChange &#x3D; (_: any) &#x3D;&gt; {};
+  public _onTouched &#x3D; () &#x3D;&gt; {};
+
+
+
+  constructor() { }
 
   ngOnInit() {
   }
+
+  writeValue(value: any): void {
+    this.model &#x3D; value;
+    // TODO - is markForCheck() necessary?
+  }
+
+  registerOnChange(fn: any): void {
+    this._onChange &#x3D; fn;
+  }
+
+  registerOnTouched(fn: any): void {
+    this._onTouched &#x3D; fn;
+  }
+
 }
 </code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;label class&#x3D;&quot;control-label&quot;&gt;{{label}}&lt;/label&gt;
-&lt;div *ngIf&#x3D;&quot;displayMask; else NoMask&quot;&gt;
-&lt;input #postalRef&#x3D;&quot;ngModel&quot;
-       class&#x3D;&quot;form-control&quot;
-       spellcheck&#x3D;&quot;false&quot;
-       type&#x3D;&quot;text&quot;
-       id&#x3D;&quot;postalCode_{{objectId}}&quot;
-       name&#x3D;&quot;postalCode_{{objectId}}&quot;
-       [placeholder]&#x3D;&quot;placeholder&quot;
-       [ngModel]&#x3D;&quot;value&quot;
-       (ngModelChange)&#x3D;&quot;onUpdate($event)&quot;
-       [textMask]&#x3D;&quot;{mask: mask, pipe: upperCasePipe}&quot;
-       [required]&#x3D;&quot;required&quot;
-       [disabled]&#x3D;&quot;disabled&quot; /&gt;
-
-  &lt;!-- Error messages for input --&gt;
-  &lt;div *ngIf&#x3D;&quot;!disabled &amp;&amp; postalRef.touched&quot;
-        role&#x3D;&quot;alert&quot;
-        class&#x3D;&quot;error-container&quot;
-        aria-live&#x3D;&quot;assertive&quot;&gt;
-    &lt;div class&#x3D;&quot;text-danger&quot; *ngIf&#x3D;&quot;postalRef?.errors?.required&quot;&gt;
-      {{label}}is required.
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;ng-template #NoMask&gt;
-  &lt;input class&#x3D;&quot;form-control&quot;
-         #postalRef&#x3D;&quot;ngModel&quot;
-         spellcheck&#x3D;&quot;false&quot;
-         type&#x3D;&quot;text&quot;
-         id&#x3D;&quot;postalCode_{{objectId}}&quot;
-         name&#x3D;&quot;postalCode_{{objectId}}&quot;
-         [ngModel]&#x3D;&quot;value&quot;
-         (ngModelChange)&#x3D;&quot;onUpdate($event)&quot;
-         [required]&#x3D;&quot;required&quot;
-         [disabled]&#x3D;&quot;disabled&quot;/&gt;
-
-  &lt;!-- Error messages for input --&gt;
-  &lt;div *ngIf&#x3D;&quot;!disabled &amp;&amp; postalRef.touched&quot;
-        role&#x3D;&quot;alert&quot;
-        class&#x3D;&quot;error-container&quot;
-        aria-live&#x3D;&quot;assertive&quot;&gt;
-    &lt;div class&#x3D;&quot;text-danger&quot; *ngIf&#x3D;&quot;postalRef?.errors?.required&quot;&gt;
-      Postal Code is required.
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/ng-template&gt;
-</code></pre>
+        <pre class="line-numbers"><code class="language-html">&lt;ng-select name&#x3D;&#x27;{{label}}&#x27;
+           labelForId&#x3D;&#x27;{{label}}&#x27;
+           [ngModel]&#x3D;&#x27;model&#x27;
+           (ngModelChange)&#x3D;&#x27;model&#x3D;$event;&#x27;
+           [items]&#x3D;&#x27;items&#x27;
+           placeholder&#x3D;&#x27;{{ placeholder }}&#x27;
+           autoCorrect&#x3D;&#x27;{{ autocorrect }}&#x27;
+           addTag&#x3D;{{addTag}}
+           addTagText&#x3D;&#x27;Add question&#x27;
+           [required]&#x3D;&#x27;required&#x27;
+           (change)&#x3D;&#x27;_onChange($event)&#x27;
+           (blur)&#x3D;&#x27;_onTouched()&#x27;
+           (close)&#x3D;&#x27;_onTouched()&#x27;&gt;&lt;/ng-select&gt;</code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-styleData">
                 <p class="comment">
-                    <code>./postal-code.component.scss</code>
+                    <code>./dropdown.component.scss</code>
                 </p>
                 <pre class="line-numbers"><code class="language-scss"></code></pre>
     </div>
@@ -871,10 +853,10 @@ export class PostalCodeComponent extends MaskModel implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><label class="control-label">{{label}}</label><div *ngIf="displayMask; else NoMask"><input #postalRef="ngModel"       class="form-control"       spellcheck="false"       type="text"       id="postalCode_{{objectId}}"       name="postalCode_{{objectId}}"       [placeholder]="placeholder"       [ngModel]="value"       (ngModelChange)="onUpdate($event)"       [textMask]="{mask: mask, pipe: upperCasePipe}"       [required]="required"       [disabled]="disabled" />  <!-- Error messages for input -->  <div *ngIf="!disabled && postalRef.touched"        role="alert"        class="error-container"        aria-live="assertive">    <div class="text-danger" *ngIf="postalRef?.errors?.required">      {{label}}is required.    </div>  </div></div><ng-template #NoMask>  <input class="form-control"         #postalRef="ngModel"         spellcheck="false"         type="text"         id="postalCode_{{objectId}}"         name="postalCode_{{objectId}}"         [ngModel]="value"         (ngModelChange)="onUpdate($event)"         [required]="required"         [disabled]="disabled"/>  <!-- Error messages for input -->  <div *ngIf="!disabled && postalRef.touched"        role="alert"        class="error-container"        aria-live="assertive">    <div class="text-danger" *ngIf="postalRef?.errors?.required">      Postal Code is required.    </div>  </div></ng-template></div>'
+        var COMPONENT_TEMPLATE = '<div><ng-select name=\'{{label}}\'           labelForId=\'{{label}}\'           [ngModel]=\'model\'           (ngModelChange)=\'model=$event;\'           [items]=\'items\'           placeholder=\'{{ placeholder }}\'           autoCorrect=\'{{ autocorrect }}\'           addTag={{addTag}}           addTagText=\'Add question\'           [required]=\'required\'           (change)=\'_onChange($event)\'           (blur)=\'_onTouched()\'           (close)=\'_onTouched()\'></ng-select></div>'
     var COMPONENTS = [{'name': 'CaptchaComponent', 'selector': 'common-captcha'},{'name': 'CoreBreadcrumbComponent', 'selector': 'common-core-breadcrumb'},{'name': 'DateComponent', 'selector': 'common-date'},{'name': 'DatepickerComponent', 'selector': 'common-datepicker'},{'name': 'DropdownComponent', 'selector': 'common-dropdown'},{'name': 'FileUploaderComponent', 'selector': 'common-file-uploader'},{'name': 'FormActionBarComponent', 'selector': 'common-form-action-bar'},{'name': 'FormSubmitBarComponent', 'selector': 'common-form-submit-bar'},{'name': 'PageFrameworkComponent', 'selector': 'common-page-framework'},{'name': 'PasswordComponent', 'selector': 'common-password'},{'name': 'PostalCodeComponent', 'selector': 'common-postal-code'},{'name': 'ThumbnailComponent', 'selector': 'common-thumbnail'},{'name': 'WizardProgressBarComponent', 'selector': 'common-wizard-progress-bar'}];
     var DIRECTIVES = [{'name': 'DateFieldFormatDirective', 'selector': '[commonDateFieldFormat]'},{'name': 'DayValidationDirective', 'selector': '[commonDayValidation]'},{'name': 'YearValidateDirective', 'selector': '[commonYearValidate]'}];
-    var ACTUAL_COMPONENT = {'name': 'PostalCodeComponent'};
+    var ACTUAL_COMPONENT = {'name': 'DropdownComponent'};
 </script>
 <script src="../js/tree.js"></script>
 
@@ -908,7 +890,7 @@ export class PostalCodeComponent extends MaskModel implements OnInit {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
-            var COMPODOC_CURRENT_PAGE_URL = 'PostalCodeComponent.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'DropdownComponent.html';
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>
