@@ -1,6 +1,6 @@
 {
   "name": "moh-common-styles",
-  "version": "0.0.0",
+  "version": "0.0.16",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -17,7 +17,10 @@
     "test:lib": "ng test --project=moh-common-lib",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "docs:lib": "npx compodoc -p projects/common/tsconfig.lib.json"
+    "docs:lib": "npx compodoc -p projects/common/tsconfig.lib.json",
+    "changelog": "npx standard-changelog",
+    "version": "node scripts/update-lib-version.js && git add \"*/package.json\"",
+    "setup:commit-hooks": "mkdir .git/hooks && ln -s node_modules/angular-precommit/index.js .git/hooks/commit-msg"
   },
   "private": true,
   "dependencies": {
@@ -43,7 +46,7 @@
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.6.8",
+    "@angular-devkit/build-angular": "^0.13.7",
     "@angular-devkit/build-ng-packagr": "~0.6.8",
     "@angular/cli": "~7.3.4",
     "@angular/compiler-cli": "^7.2.7",
@@ -53,6 +56,7 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
     "@types/zxcvbn": "^4.4.0",
+    "angular-precommit": "^1.0.3",
     "angular2-uuid": "^1.1.1",
     "codelyzer": "~4.5.0",
     "jasmine-core": "~2.99.1",
@@ -66,6 +70,7 @@
     "ng-packagr": "^4.7.1",
     "ngx-mydatepicker": "2.4.5",
     "protractor": "^5.4.2",
+    "standard-changelog": "^2.0.7",
     "ts-node": "~5.0.1",
     "tsickle": ">=0.25.5",
     "tslib": "^1.7.1",
