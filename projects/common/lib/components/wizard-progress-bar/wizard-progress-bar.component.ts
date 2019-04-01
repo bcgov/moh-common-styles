@@ -4,17 +4,13 @@ import { Component, OnInit, Input, ViewChild, ElementRef,
 import { Router, NavigationEnd } from '@angular/router';
 import { filter, map } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
+import { WizardProgressItem } from '../../../models/src/container';
 
 /**
  * NPM Dependencies:
  *  a) rxjs
  *  b) ngx-bootstrap
  */
-
-export interface WizardProgressItem {
-  title: string;
-  route: string;
-}
 
 @Component({
   selector: 'common-wizard-progress-bar',
