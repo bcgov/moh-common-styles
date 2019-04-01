@@ -1,9 +1,10 @@
-# [Unreleased](https://github.com/bcgov/moh-common-styles/compare/v0.0.20...ca8bd7c) "moh-common-lib" (2019-04-01)
+# [Unreleased](https://github.com/bcgov/moh-common-styles/compare/v0.0.20...d5bf00b) "moh-common-lib" (2019-04-01)
 
 
 ### Build
 
 * Update build scripts and commit hooks. ([ca8bd7c](https://github.com/bcgov/moh-common-styles/commit/ca8bd7c))
+* **changelog:** Improve changelog generation, adding new categories ([d5bf00b](https://github.com/bcgov/moh-common-styles/commit/d5bf00b))
 
 
 
