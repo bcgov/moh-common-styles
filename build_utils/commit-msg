@@ -18,7 +18,7 @@ var TYPES = {
   test: true,
   chore: true,
   revert: true,
-  build: true, // TODO ARC - VERIFY
+  build: true,
 }
 
 

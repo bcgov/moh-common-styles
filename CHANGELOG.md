@@ -1,4 +1,13 @@
-## [0.0.20](https://github.com/bcgov/moh-common-styles/compare/v0.0.19...v0.0.20) (2019-04-01)
+# [Unreleased](https://github.com/bcgov/moh-common-styles/compare/v0.0.20...ca8bd7c) "moh-common-lib" (2019-04-01)
+
+
+### Build
+
+* Update build scripts and commit hooks. ([ca8bd7c](https://github.com/bcgov/moh-common-styles/commit/ca8bd7c))
+
+
+
+## [0.0.20](https://github.com/bcgov/moh-common-styles/compare/v0.0.19...v0.0.20) "moh-common-lib" (2019-04-01)
 
 
 ### Bug Fixes
@@ -15,7 +24,7 @@
 
 
 
-## [0.0.19](https://github.com/bcgov/moh-common-styles/compare/v0.0.18...v0.0.19) (2019-03-28)
+## [0.0.19](https://github.com/bcgov/moh-common-styles/compare/v0.0.18...v0.0.19) "moh-common-lib" (2019-03-28)
 
 
 ### Bug Fixes
@@ -30,7 +39,7 @@
 
 
 
-## [0.0.18](https://github.com/bcgov/moh-common-styles/compare/v0.0.17...v0.0.18) (2019-03-28)
+## [0.0.18](https://github.com/bcgov/moh-common-styles/compare/v0.0.17...v0.0.18) "moh-common-lib" (2019-03-28)
 
 
 ### Features
@@ -39,7 +48,7 @@
 
 
 
-## [0.0.17](https://github.com/bcgov/moh-common-styles/compare/48dfa9d...v0.0.17) (2019-03-28)
+## [0.0.17](https://github.com/bcgov/moh-common-styles/compare/48dfa9d...v0.0.17) "moh-common-lib" (2019-03-28)
 
 
 ### Bug Fixes
@@ -52,6 +61,23 @@
 * **security:** Fixed issues from npm audit. ([479804f](https://github.com/bcgov/moh-common-styles/commit/479804f))
 
 
+### Build
+
+* **packaging:** Release tagging, auto-version increment, and changelog. ([8a22405](https://github.com/bcgov/moh-common-styles/commit/8a22405))
+* **packaging:** Update build scripts for changelog and commit hooks ([aee4761](https://github.com/bcgov/moh-common-styles/commit/aee4761))
+* Change changelog generation and commit ([48966c0](https://github.com/bcgov/moh-common-styles/commit/48966c0))
+
+
+### Documentation
+
+* **lib:** Generate first docs, update pageframework jsdocs ([bf3cf23](https://github.com/bcgov/moh-common-styles/commit/bf3cf23))
+* Add Getting Started and update main readme ([2c5c994](https://github.com/bcgov/moh-common-styles/commit/2c5c994))
+* Create local-development subfolder of markdown files ([2625608](https://github.com/bcgov/moh-common-styles/commit/2625608))
+* Re-generate docs after updating PasswordComponent ([017bd5f](https://github.com/bcgov/moh-common-styles/commit/017bd5f))
+* Update link to issues instead of PR ([4b884a6](https://github.com/bcgov/moh-common-styles/commit/4b884a6))
+* Update readme to absolute paths to GitHub pages ([8004583](https://github.com/bcgov/moh-common-styles/commit/8004583))
+
+
 ### Features
 
 * **build:** Create "setup:git-hooks" npm script ([1a288cd](https://github.com/bcgov/moh-common-styles/commit/1a288cd))
@@ -59,5 +85,6 @@
 * **component:** Create common-dropdown component ([01d17d3](https://github.com/bcgov/moh-common-styles/commit/01d17d3))
 * **components:** Add 'form-bar' CSS class to both form bars ([6d5649d](https://github.com/bcgov/moh-common-styles/commit/6d5649d))
 * **docs:** Create docs config file, .compodoccrc.json ([c8cd6f4](https://github.com/bcgov/moh-common-styles/commit/c8cd6f4))
+
 
 

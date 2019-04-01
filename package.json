@@ -19,7 +19,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "docs:lib": "npx compodoc -p projects/common/tsconfig.lib.json",
-    "changelog": "npx standard-changelog --context build_utils/changelog-config.json",
+    "changelog": "rm CHANGELOG.md && npx conventional-changelog --context build_utils/changelog.config.json -o CHANGELOG.md --config build_utils/changelog.writer.js -p angular -u",
     "version": "node build_utils/update-lib-version.js && git add \"*/package.json\"",
     "setup:git-hooks": "cp build_utils/commit-msg .git/hooks/commit-msg",
     "postinstall": "npm run setup:git-hooks"
@@ -62,6 +62,8 @@
     "angular-precommit": "^1.0.3",
     "angular2-uuid": "^1.1.1",
     "codelyzer": "~4.5.0",
+    "conventional-changelog-cli": "^2.0.12",
+    "github-url-from-git": "^1.5.0",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "^4.0.1",
