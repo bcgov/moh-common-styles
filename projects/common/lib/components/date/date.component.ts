@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef, ChangeDetectorRef, forwardRef } from '@angular/core';
 import { Base } from '../../../models/src/base';
-import { SimpleDate } from '../../interfaces/simple-date.interface';
+import { SimpleDate } from '../../../models/src/simple-date.interface';
 import { ControlContainer, NgForm, NgModel } from '@angular/forms';
 import * as moment_ from 'moment';
 const moment = moment_;

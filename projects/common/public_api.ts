@@ -8,5 +8,5 @@
 export * from './lib/shared-core.module';
 
 // Interfaces
-export { SimpleDate } from './lib/interfaces/simple-date.interface';
+export { SimpleDate } from './models/src/simple-date.interface';
 
