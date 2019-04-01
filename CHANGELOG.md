@@ -1,3 +1,20 @@
+## [0.0.20](https://github.com/bcgov/moh-common-styles/compare/v0.0.19...v0.0.20) (2019-04-01)
+
+
+### Bug Fixes
+
+* Move WizardProgressItem to moh-common-lib/models and export ([7fd6537](https://github.com/bcgov/moh-common-styles/commit/7fd6537))
+* **build:** Refactor SimpleDate location but keep same public export API ([7eaf326](https://github.com/bcgov/moh-common-styles/commit/7eaf326))
+* **build:** Refactor SimpleDate location but keep same public export API ([d5f44c4](https://github.com/bcgov/moh-common-styles/commit/d5f44c4))
+
+
+### Features
+
+* **build:** Add `npm run clean` command to rimraf dist folders ([65b8144](https://github.com/bcgov/moh-common-styles/commit/65b8144))
+* **build:** Auto-add githooks after running npm install. ([3b90e60](https://github.com/bcgov/moh-common-styles/commit/3b90e60))
+
+
+
 ## [0.0.19](https://github.com/bcgov/moh-common-styles/compare/v0.0.18...v0.0.19) (2019-03-28)
 
 
@@ -42,7 +59,5 @@
 * **component:** Create common-dropdown component ([01d17d3](https://github.com/bcgov/moh-common-styles/commit/01d17d3))
 * **components:** Add 'form-bar' CSS class to both form bars ([6d5649d](https://github.com/bcgov/moh-common-styles/commit/6d5649d))
 * **docs:** Create docs config file, .compodoccrc.json ([c8cd6f4](https://github.com/bcgov/moh-common-styles/commit/c8cd6f4))
-
-
 
 

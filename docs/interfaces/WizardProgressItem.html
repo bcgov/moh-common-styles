@@ -61,18 +61,9 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>projects/common/lib/components/wizard-progress-bar/wizard-progress-bar.component.ts</code>
+            <code>projects/common/models/src/container.ts</code>
         </p>
 
-            <p class="comment">
-                <h3>Description</h3>
-            </p>
-            <p class="comment">
-                <p>NPM Dependencies:
-  a) rxjs
-  b) ngx-bootstrap</p>
-
-            </p>
 
 
         <section>
@@ -167,101 +158,38 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, Input, ViewChild, ElementRef,
-         ViewChildren, QueryList, ChangeDetectionStrategy,
-         ChangeDetectorRef, OnDestroy } from &#x27;@angular/core&#x27;;
-import { Router, NavigationEnd } from &#x27;@angular/router&#x27;;
-import { filter, map } from &#x27;rxjs/operators&#x27;;
-import { Subscription } from &#x27;rxjs&#x27;;
-
-/**
- * NPM Dependencies:
- *  a) rxjs
- *  b) ngx-bootstrap
- */
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Route } from &#x27;@angular/router&#x27;;
 
 export interface WizardProgressItem {
   title: string;
   route: string;
 }
 
-@Component({
-  selector: &#x27;common-wizard-progress-bar&#x27;,
-  templateUrl: &#x27;./wizard-progress-bar.component.html&#x27;,
-  styleUrls: [&#x27;./wizard-progress-bar.component.scss&#x27;],
-  changeDetection: ChangeDetectionStrategy.OnPush
-})
-export class WizardProgressBarComponent implements OnInit, OnDestroy {
-  @Input() progressSteps: WizardProgressItem[] &#x3D; [];
-  @ViewChild(&#x27;stepContainer&#x27;) stepContainer: ElementRef;
-  @ViewChildren(&#x27;steps&#x27;) steps: QueryList&lt;ElementRef&lt;HTMLAnchorElement&gt;&gt;;
+/** Base functionality for container that is used to display bread crumbs */
+export class Container {
 
-  public activeIndex: number;
+  /** Route items for the stepper */
+  progressSteps: WizardProgressItem[];
 
-  private routerEvents$: Subscription;
-
-  constructor(private router: Router, private cd: ChangeDetectorRef) {
-   }
-
-  ngOnInit() {
-
-    // Update the progress bar view on route change and _only_ route chaange.
-    // Skip most of Angular&#x27;s ChangeDetection in favour of manually optimizing.
-    this.routerEvents$ &#x3D; this.router.events.pipe(
-      filter(ev &#x3D;&gt; ev instanceof NavigationEnd),
-      map((ev: NavigationEnd) &#x3D;&gt; ev.url)
-    ).subscribe(url &#x3D;&gt; {
-      this.activeIndex &#x3D; this.getActiveIndex(url);
-      this.cd.detectChanges();
-      this.scrollStepIntoView();
-    });
-
-    // Must schedule first run manually, or bar won&#x27;t be set.
-    this.activeIndex &#x3D; this.getActiveIndex(this.router.url);
-  }
-
-  ngOnDestroy() {
-    this.cd.detach();
-    this.routerEvents$.unsubscribe();
-  }
-
-  calculateProgressPercentage(): Number {
-    const denominator &#x3D; this.progressSteps.length;
-    const numerator &#x3D; this.activeIndex + 1;
-
-    if (denominator &#x3D;&#x3D;&#x3D; 0 || numerator &gt; denominator) {
-      return 100;
-    }
-
-    // Because we&#x27;ve switched from space-evenly to space-around (for IE), we
-    // have to handle the half-space that space-around adds to the start/end of
-    // the container
-    const halfSpace &#x3D; 1 / (denominator * 2);
-    return Math.round(((numerator / denominator) - halfSpace) * 100);
-  }
-
-  getActiveIndex(url): number {
-    return this.progressSteps.findIndex(x &#x3D;&gt; url.includes(x.route));
-  }
-
-   /**
-   * Primarily for mobile, this horizontally scrolls the step into view.
-   *
-   * Note - be very careful with any changes to this function because it steps
-   * outside of Angular to call native browser functions.
+  /**
+   * Converts a lower case string of a route in a user readable title.  e.g.
+   * &quot;personal-info&quot; -&gt; &quot;Personal Info&quot;
    */
-  private scrollStepIntoView() {
-    const target &#x3D; this.steps.toArray()[this.activeIndex];
-    const container &#x3D; document.getElementsByClassName(&#x27;horizontal-scroll&#x27;);
-    if (container.length &#x3D;&#x3D;&#x3D; 1) {
-      // Since we&#x27;re already breaking out of Angular, we try and be safe by using a try/catch.
-      // Otherwise an error here could halt execution,
-      try {
-        container[0].scrollLeft &#x3D; Math.abs(target.nativeElement.offsetLeft - (window.outerWidth / 2));
-      } catch (error) {}
-    }
+  convertRouteToTitle(routePath: string): string {
+    return routePath.split(&#x27;-&#x27;).map(x &#x3D;&gt; x[0].toUpperCase() + x.slice(1)).join(&#x27; &#x27;);
   }
 
+  protected setProgressSteps( pageRoutes: Route[] ): void {
+        // Interface for wizard progress items
+        this.progressSteps &#x3D; pageRoutes.map(page &#x3D;&gt; {
+          if (page.path !&#x3D;&#x3D; &#x27;&#x27;) {
+            return {
+              title: this.convertRouteToTitle(page.path),
+              route: page.path
+            };
+          }
+        }).filter(x &#x3D;&gt; x);
+  }
 }
 </code></pre>
     </div>
