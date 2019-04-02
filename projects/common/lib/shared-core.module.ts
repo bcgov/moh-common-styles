@@ -22,6 +22,7 @@ import { PostalCodeComponent } from './components/postal-code/postal-code.compon
 import { PageSectionComponent } from './components/page-section/page-section.component';
 import { DropdownComponent } from './components/dropdown/dropdown.component';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { ToggleComponent } from './components/toggle/toggle.component';
 
 @NgModule({
   imports: [
@@ -50,7 +51,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
     FormSubmitBarComponent,
     PostalCodeComponent,
     PageSectionComponent,
-    DropdownComponent
+    DropdownComponent,
+    ToggleComponent
   ],
   exports: [
     CoreBreadcrumbComponent,
@@ -68,7 +70,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
     FormSubmitBarComponent,
     PostalCodeComponent,
     PageSectionComponent,
-    DropdownComponent
+    DropdownComponent,
+    ToggleComponent
   ],
   providers: [
     NgForm

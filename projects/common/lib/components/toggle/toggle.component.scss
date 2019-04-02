@@ -1,0 +1,56 @@
+@import 'variables.scss';
+
+$toggle--top: 0rem;
+$toggle--width: 1.3rem;
+$toggle--height: 1.3rem;
+$toggle--left-distance: 1.75rem;
+
+.toggle--legend {
+  font-size: inherit;
+  font-weight: bold;
+}
+
+.custom-control {
+  padding-right: 1.5rem;
+  padding-left: 0rem;
+}
+.custom-control-label {
+  cursor: pointer;
+}
+
+.custom-radio .custom-control-label::before {
+  border-color: black;
+  border-style: solid;
+  border-width: 1.5px;
+}
+
+.custom-control-label::before {
+  top: $toggle--top;
+  width: $toggle--width;
+  height: $toggle--height;
+  background-color: $color-white;
+  left: $toggle--left-distance;
+}
+
+.custom-control-label::after {
+  top: $toggle--top;
+  width: $toggle--width;
+  height: $toggle--height;
+  left: $toggle--left-distance;
+}
+
+.custom-radio .custom-control-input:checked ~ .custom-control-label::before {
+  background-color: $color-white;
+  border-color: $color-primary;
+}
+
+.custom-control-input:checked ~ .custom-control-label::before {
+  color: $white;
+  background-color: $color-white;
+  border-color: $color-primary;
+}
+
+// hex 000099 - blue - appears 000036 is darker using this url.
+.custom-radio .custom-control-input:checked ~ .custom-control-label::after {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-3.75 -3.75 8.25 8.25'%3E%3Ccircle r='3.5' fill='%23000099'/%3E%3C/svg%3E") !important;
+}
