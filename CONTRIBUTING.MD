@@ -24,7 +24,17 @@ List of valid types:
 * **test**: Adding missing or correcting existing tests
 * **chore**: Changes to the build process or auxiliary tools and libraries such as documentation
   generation
+* **build**: Changes to the build process
 
 Scopes may arbitrarily be created.
 
 [Refer to Angular's contributing guide for more details.](https://github.com/angular/angular.js/blob/master/DEVELOPERS.md)
+
+
+## Git commit hooks
+
+Commits can be automatically validated that they conform to the format, you just need to enable the pre-commit hook.
+
+    npm run setup:git-hooks
+
+The commit hook itself can be found at `build_utils/commit-msg`.
