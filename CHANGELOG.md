@@ -1,10 +1,21 @@
-# [Unreleased](https://github.com/bcgov/moh-common-styles/compare/v0.0.20...d5bf00b) "moh-common-lib" (2019-04-01)
+# [Unreleased](https://github.com/bcgov/moh-common-styles/compare/v0.0.20...3ac6d4d) "moh-common-lib" (2019-04-02)
 
 
 ### Build
 
 * Update build scripts and commit hooks. ([ca8bd7c](https://github.com/bcgov/moh-common-styles/commit/ca8bd7c))
 * **changelog:** Improve changelog generation, adding new categories ([d5bf00b](https://github.com/bcgov/moh-common-styles/commit/d5bf00b))
+* **package.json:** npm scripts for version should now build and package docs. ([3ac6d4d](https://github.com/bcgov/moh-common-styles/commit/3ac6d4d))
+
+
+### Documentation
+
+* **contributing:** CONTRIBUTING.MD includes instructions on git hooks ([c6befdf](https://github.com/bcgov/moh-common-styles/commit/c6befdf))
+
+
+### Features
+
+* **ToggleComponent:** Import ToggleComponent from FPC ([df26aa1](https://github.com/bcgov/moh-common-styles/commit/df26aa1))
 
 
 
