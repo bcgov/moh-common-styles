@@ -1,4 +1,13 @@
-# Unreleased "moh-common-lib" (2019-04-02)
+# Unreleased "moh-common-lib" (2019-04-08)
+
+
+
+## [0.0.22](https://github.com/bcgov/moh-common-styles/compare/v0.0.21...v0.0.22) "moh-common-lib" (2019-04-08)
+
+
+### Bug Fixes
+
+* **postal-code-component:** Postal Code Component Validation made to match FPC. ([3d0a6bc](https://github.com/bcgov/moh-common-styles/commit/3d0a6bc))
 
 
 
