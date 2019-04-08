@@ -125,7 +125,7 @@ h1, h2, h3,
   font-size: $h3-font-size;
   min-height: 4rem;
   display: flex;
-  align-items: start;
+  align-items: flex-start;
 }
 
 .card {
