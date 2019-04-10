@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { AbstractHttpService } from './abstract-api-service';
 import { throwError } from 'rxjs';
 import * as moment_ from 'moment';
-import {UUID} from 'angular2-uuid';
 const moment = moment_;
 
 @Injectable({
@@ -33,8 +32,32 @@ export class CommonLogger extends AbstractHttpService {
     super(http);
   }
 
+  set applicationId( id: string ) {
+    this._headers = this._headers.set( 'applicationId', id );
+  }
+
+  get applicationId() {
+    return this._headers.get( 'applicationId' );
+  }
+
+  set programName( name: string ) {
+    this._headers = this._headers.set( 'program', name );
+  }
+
+  get programName() {
+    return this._headers.get( 'name' );
+  }
+
   setURL(newURL: string) {
     this.url = newURL;
+  }
+
+  public log( message: any ) {
+    this._log( message as CommonLogMessage );
+  }
+
+  public logError( errorMessage: any ) {
+    this._logError( errorMessage as CommonLogMessage );
   }
 
   /**
@@ -53,12 +76,12 @@ export class CommonLogger extends AbstractHttpService {
    * @param message A JavaScript object, nesting is fine, with `event` property
    * set.
    */
-  public log(message: LogMessage) {
+  protected _log(message: CommonLogMessage) {
     this.setSeverity(SeverityLevels.INFO);
     return this._sendLog(message);
   }
 
-  public logError(errorMessage: LogMessage) {
+  protected _logError(errorMessage: CommonLogMessage) {
     this.setSeverity(SeverityLevels.ERROR);
     return this._sendLog(errorMessage);
   }
@@ -68,7 +91,7 @@ export class CommonLogger extends AbstractHttpService {
    * error response code.
    */
   public logHttpError(error: HttpErrorResponse) {
-    return this.logError({
+    return this._logError({
       event: 'error',
       message: error.message,
       errorName: error.name,
@@ -84,10 +107,10 @@ export class CommonLogger extends AbstractHttpService {
    * @param message A JavaScript object or anything that can be toString()'d,
    * like Date
    */
-  private _sendLog(message: LogMessage) {
+  private _sendLog(message: CommonLogMessage) {
     // Update headers
     this.setTimestamp();
-    this.setTags(message);
+    this.setTags(message.event);
 
     if (this.url === null) {
         const msg = 'Unable to send logs as URL as not been set via setURL()';
@@ -140,21 +163,20 @@ export class CommonLogger extends AbstractHttpService {
    * The headers are easier to search in splunk, and we aren't using tags, so
    * repurpose it to event type.
    */
-  private setTags(message: LogMessage) {
-    this._headers = this._headers.set('tags', message.event);
+  private setTags(message: string ) {
+    this._headers = this._headers.set('tags', message);
   }
 
 }
-
 
 enum SeverityLevels {
   INFO = 'info',
   ERROR = 'error',
 }
 
-interface LogMessage {
-  /** The type of event being logged. `eligibilityCheck` is standalone because it is neither a submission nor error. */
-  event: 'navigation' | 'error' | 'submission' | 'eligibilityCheck';
+export interface CommonLogMessage {
+  /** The type of event being logged. */
+  event: string; // Should be subclasses into multiple string literals
   // We allow any other properties/values in the interface
   [key: string]: any;
 }
