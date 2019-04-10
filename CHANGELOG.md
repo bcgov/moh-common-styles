@@ -1,4 +1,13 @@
-# Unreleased "moh-common-lib" (2019-04-08)
+# Unreleased "moh-common-lib" (2019-04-10)
+
+
+
+## [0.0.23](https://github.com/bcgov/moh-common-styles/compare/v0.0.22...v0.0.23) "moh-common-lib" (2019-04-10)
+
+
+### Features
+
+* **CommonLogger:** CommonLogger is exported from moh-common-lib/services ([85eab15](https://github.com/bcgov/moh-common-styles/commit/85eab15))
 
 
 
