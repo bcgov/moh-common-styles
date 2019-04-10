@@ -2,6 +2,15 @@
 
 
 
+## [0.0.24](https://github.com/bcgov/moh-common-styles/compare/v0.0.23...v0.0.24) "moh-common-lib" (2019-04-10)
+
+
+### Bug Fixes
+
+* **CommonLogger:** Commmon Logger now can be used with application-defined interfaces. ([4766a2b](https://github.com/bcgov/moh-common-styles/commit/4766a2b))
+
+
+
 ## [0.0.23](https://github.com/bcgov/moh-common-styles/compare/v0.0.22...v0.0.23) "moh-common-lib" (2019-04-10)
 
 
