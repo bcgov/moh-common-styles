@@ -110,6 +110,14 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                    <span class="modifier">Protected</span>
+                                <a href="#_log">_log</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Protected</span>
+                                <a href="#_logError">_logError</a>
+                            </li>
+                            <li>
                                     <span class="modifier">Private</span>
                                 <a href="#_sendLog">_sendLog</a>
                             </li>
@@ -178,6 +186,12 @@
                         <td class="col-md-4">
                             <ul class="index-list">
                                 <li>
+                                    <a href="#applicationId">applicationId</a>
+                                </li>
+                                <li>
+                                    <a href="#programName">programName</a>
+                                </li>
+                                <li>
                                     <a href="#httpOptions">httpOptions</a>
                                 </li>
                             </ul>
@@ -198,7 +212,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">projects/common/services/src/logger.service.ts:30</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">projects/common/services/src/logger.service.ts:29</a></div>
                             </td>
                         </tr>
 
@@ -245,6 +259,166 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="_log"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Protected</span>
+                            _log
+                        </b>
+                        <a href="#_log"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_log(message: <a href="../interfaces/CommonLogMessage.html">CommonLogMessage</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="79"
+                            class="link-to-prism">projects/common/services/src/logger.service.ts:79</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Log a message to Splunk. This is the main way to send logs and
+automatically includes meta-data. You do <strong>not</strong> need to subscribe to the
+response, as the service already does that. The input object must have an
+&#39;event&#39; property set, everything else is optional.</p>
+<p>Example:
+<code>this.logService.log({
+       event: &#39;submission&#39;,
+       dateObj: new Date()
+    });</code></p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>message</td>
+                                    <td>
+                                                <code><a href="../interfaces/CommonLogMessage.html" target="_self" >CommonLogMessage</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>A JavaScript object, nesting is fine, with <code>event</code> property
+set.</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_logError"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Protected</span>
+                            _logError
+                        </b>
+                        <a href="#_logError"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_logError(errorMessage: <a href="../interfaces/CommonLogMessage.html">CommonLogMessage</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="84"
+                            class="link-to-prism">projects/common/services/src/logger.service.ts:84</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>errorMessage</td>
+                                    <td>
+                                                <code><a href="../interfaces/CommonLogMessage.html" target="_self" >CommonLogMessage</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="_sendLog"></a>
                     <span class="name">
                         <b>
@@ -258,15 +432,15 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>_sendLog(message: <a href="../interfaces/LogMessage.html">LogMessage</a>)</code>
+                    <code>_sendLog(message: <a href="../interfaces/CommonLogMessage.html">CommonLogMessage</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="87"
-                            class="link-to-prism">projects/common/services/src/logger.service.ts:87</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="110"
+                            class="link-to-prism">projects/common/services/src/logger.service.ts:110</a></div>
                 </td>
             </tr>
 
@@ -293,7 +467,7 @@ level.</p>
                                 <tr>
                                     <td>message</td>
                                     <td>
-                                                <code><a href="../interfaces/LogMessage.html" target="_self" >LogMessage</a></code>
+                                                <code><a href="../interfaces/CommonLogMessage.html" target="_self" >CommonLogMessage</a></code>
                                     </td>
 
                                     <td>
@@ -347,8 +521,8 @@ like Date</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="106"
-                            class="link-to-prism">projects/common/services/src/logger.service.ts:106</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="129"
+                            class="link-to-prism">projects/common/services/src/logger.service.ts:129</a></div>
                 </td>
             </tr>
 
@@ -412,31 +586,21 @@ like Date</p>
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>log(message: <a href="../interfaces/LogMessage.html">LogMessage</a>)</code>
+                    <code>log(message: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="56"
-                            class="link-to-prism">projects/common/services/src/logger.service.ts:56</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="55"
+                            class="link-to-prism">projects/common/services/src/logger.service.ts:55</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Log a message to Splunk. This is the main way to send logs and
-automatically includes meta-data. You do <strong>not</strong> need to subscribe to the
-response, as the service already does that. The input object must have an
-&#39;event&#39; property set, everything else is optional.</p>
-<p>Example:
-<code>this.logService.log({
-       event: &#39;submission&#39;,
-       dateObj: new Date()
-    });</code></p>
-</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -446,14 +610,13 @@ response, as the service already does that. The input object must have an
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
-                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>message</td>
                                     <td>
-                                                <code><a href="../interfaces/LogMessage.html" target="_self" >LogMessage</a></code>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
                                     </td>
 
                                     <td>
@@ -461,11 +624,6 @@ response, as the service already does that. The input object must have an
                                     </td>
 
 
-                                    <td>
-                                        <p>A JavaScript object, nesting is fine, with <code>event</code> property
-set.</p>
-
-                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -473,7 +631,7 @@ set.</p>
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
                     </div>
                     <div class="io-description">
@@ -500,15 +658,15 @@ set.</p>
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>logError(errorMessage: <a href="../interfaces/LogMessage.html">LogMessage</a>)</code>
+                    <code>logError(errorMessage: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="61"
-                            class="link-to-prism">projects/common/services/src/logger.service.ts:61</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="59"
+                            class="link-to-prism">projects/common/services/src/logger.service.ts:59</a></div>
                 </td>
             </tr>
 
@@ -530,7 +688,7 @@ set.</p>
                                 <tr>
                                     <td>errorMessage</td>
                                     <td>
-                                                <code><a href="../interfaces/LogMessage.html" target="_self" >LogMessage</a></code>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
                                     </td>
 
                                     <td>
@@ -545,7 +703,7 @@ set.</p>
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
                     </div>
                     <div class="io-description">
@@ -579,8 +737,8 @@ set.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="70"
-                            class="link-to-prism">projects/common/services/src/logger.service.ts:70</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="93"
+                            class="link-to-prism">projects/common/services/src/logger.service.ts:93</a></div>
                 </td>
             </tr>
 
@@ -654,8 +812,8 @@ error response code.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="135"
-                            class="link-to-prism">projects/common/services/src/logger.service.ts:135</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="158"
+                            class="link-to-prism">projects/common/services/src/logger.service.ts:158</a></div>
                 </td>
             </tr>
 
@@ -719,15 +877,15 @@ error response code.</p>
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>setTags(message: <a href="../interfaces/LogMessage.html">LogMessage</a>)</code>
+                    <code>setTags(message: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="143"
-                            class="link-to-prism">projects/common/services/src/logger.service.ts:143</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="166"
+                            class="link-to-prism">projects/common/services/src/logger.service.ts:166</a></div>
                 </td>
             </tr>
 
@@ -752,7 +910,7 @@ repurpose it to event type.</p>
                                 <tr>
                                     <td>message</td>
                                     <td>
-                                                <code><a href="../interfaces/LogMessage.html" target="_self" >LogMessage</a></code>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                     </td>
 
                                     <td>
@@ -801,8 +959,8 @@ repurpose it to event type.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="131"
-                            class="link-to-prism">projects/common/services/src/logger.service.ts:131</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="154"
+                            class="link-to-prism">projects/common/services/src/logger.service.ts:154</a></div>
                 </td>
             </tr>
 
@@ -840,8 +998,8 @@ repurpose it to event type.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="36"
-                            class="link-to-prism">projects/common/services/src/logger.service.ts:36</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="51"
+                            class="link-to-prism">projects/common/services/src/logger.service.ts:51</a></div>
                 </td>
             </tr>
 
@@ -1288,7 +1446,7 @@ repurpose it to event type.</p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">projects/common/services/src/logger.service.ts:24</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">projects/common/services/src/logger.service.ts:23</a></div>
                             </td>
                         </tr>
 
@@ -1335,7 +1493,7 @@ using the logger.  Fields include:</p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">projects/common/services/src/logger.service.ts:30</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">projects/common/services/src/logger.service.ts:29</a></div>
                             </td>
                         </tr>
 
@@ -1434,6 +1592,144 @@ using the logger.  Fields include:</p>
             <tbody>
                 <tr>
                     <td class="col-md-4">
+                        <a name="applicationId"></a>
+                        <span class="name"><b>applicationId</b><a href="#applicationId"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>applicationId()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">projects/common/services/src/logger.service.ts:39</a></div>
+                                </td>
+                            </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>set</b><code>applicationId(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">projects/common/services/src/logger.service.ts:35</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                        <td>Type</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                            <td>id</td>
+                                                    
+                                                            <td>
+                                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                            </td>
+                                                    
+                                                        <td>
+                                                                No
+                                                        </td>
+                                                        
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="programName"></a>
+                        <span class="name"><b>programName</b><a href="#programName"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>programName()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">projects/common/services/src/logger.service.ts:47</a></div>
+                                </td>
+                            </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>set</b><code>programName(name: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">projects/common/services/src/logger.service.ts:43</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                        <td>Type</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                            <td>name</td>
+                                                    
+                                                            <td>
+                                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                            </td>
+                                                    
+                                                        <td>
+                                                                No
+                                                        </td>
+                                                        
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
                         <a name="httpOptions"></a>
                         <span class="name"><b>httpOptions</b><a href="#httpOptions"><span class="icon ion-ios-link"></span></a></span>
                     </td>
@@ -1446,7 +1742,7 @@ using the logger.  Fields include:</p>
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="124" class="link-to-prism">projects/common/services/src/logger.service.ts:124</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="147" class="link-to-prism">projects/common/services/src/logger.service.ts:147</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -1471,11 +1767,10 @@ not responding with JSON.</p>
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
-import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from &#x27;@angular/common/http&#x27;;
+import { HttpClient, HttpErrorResponse, HttpHeaders } from &#x27;@angular/common/http&#x27;;
 import { AbstractHttpService } from &#x27;./abstract-api-service&#x27;;
 import { throwError } from &#x27;rxjs&#x27;;
 import * as moment_ from &#x27;moment&#x27;;
-import {UUID} from &#x27;angular2-uuid&#x27;;
 const moment &#x3D; moment_;
 
 @Injectable({
@@ -1505,8 +1800,32 @@ export class CommonLogger extends AbstractHttpService {
     super(http);
   }
 
+  set applicationId( id: string ) {
+    this._headers &#x3D; this._headers.set( &#x27;applicationId&#x27;, id );
+  }
+
+  get applicationId() {
+    return this._headers.get( &#x27;applicationId&#x27; );
+  }
+
+  set programName( name: string ) {
+    this._headers &#x3D; this._headers.set( &#x27;program&#x27;, name );
+  }
+
+  get programName() {
+    return this._headers.get( &#x27;name&#x27; );
+  }
+
   setURL(newURL: string) {
     this.url &#x3D; newURL;
+  }
+
+  public log( message: any ) {
+    this._log( message as CommonLogMessage );
+  }
+
+  public logError( errorMessage: any ) {
+    this._logError( errorMessage as CommonLogMessage );
   }
 
   /**
@@ -1525,12 +1844,12 @@ export class CommonLogger extends AbstractHttpService {
    * @param message A JavaScript object, nesting is fine, with &#x60;event&#x60; property
    * set.
    */
-  public log(message: LogMessage) {
+  protected _log(message: CommonLogMessage) {
     this.setSeverity(SeverityLevels.INFO);
     return this._sendLog(message);
   }
 
-  public logError(errorMessage: LogMessage) {
+  protected _logError(errorMessage: CommonLogMessage) {
     this.setSeverity(SeverityLevels.ERROR);
     return this._sendLog(errorMessage);
   }
@@ -1540,7 +1859,7 @@ export class CommonLogger extends AbstractHttpService {
    * error response code.
    */
   public logHttpError(error: HttpErrorResponse) {
-    return this.logError({
+    return this._logError({
       event: &#x27;error&#x27;,
       message: error.message,
       errorName: error.name,
@@ -1556,10 +1875,10 @@ export class CommonLogger extends AbstractHttpService {
    * @param message A JavaScript object or anything that can be toString()&#x27;d,
    * like Date
    */
-  private _sendLog(message: LogMessage) {
+  private _sendLog(message: CommonLogMessage) {
     // Update headers
     this.setTimestamp();
-    this.setTags(message);
+    this.setTags(message.event);
 
     if (this.url &#x3D;&#x3D;&#x3D; null) {
         const msg &#x3D; &#x27;Unable to send logs as URL as not been set via setURL()&#x27;;
@@ -1612,21 +1931,20 @@ export class CommonLogger extends AbstractHttpService {
    * The headers are easier to search in splunk, and we aren&#x27;t using tags, so
    * repurpose it to event type.
    */
-  private setTags(message: LogMessage) {
-    this._headers &#x3D; this._headers.set(&#x27;tags&#x27;, message.event);
+  private setTags(message: string ) {
+    this._headers &#x3D; this._headers.set(&#x27;tags&#x27;, message);
   }
 
 }
-
 
 enum SeverityLevels {
   INFO &#x3D; &#x27;info&#x27;,
   ERROR &#x3D; &#x27;error&#x27;,
 }
 
-interface LogMessage {
-  /** The type of event being logged. &#x60;eligibilityCheck&#x60; is standalone because it is neither a submission nor error. */
-  event: &#x27;navigation&#x27; | &#x27;error&#x27; | &#x27;submission&#x27; | &#x27;eligibilityCheck&#x27;;
+export interface CommonLogMessage {
+  /** The type of event being logged. */
+  event: string; // Should be subclasses into multiple string literals
   // We allow any other properties/values in the interface
   [key: string]: any;
 }

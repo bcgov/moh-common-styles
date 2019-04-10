@@ -287,6 +287,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="interfaces/CommonImageScaleFactors.html" data-type="entity-link">CommonImageScaleFactors</a>
                             </li>
                             <li class="link">
+                                <a href="interfaces/CommonLogMessage.html" data-type="entity-link">CommonLogMessage</a>
+                            </li>
+                            <li class="link">
                                 <a href="interfaces/DateErrorMsg.html" data-type="entity-link">DateErrorMsg</a>
                             </li>
                             <li class="link">
@@ -294,9 +297,6 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="interfaces/GeoAddressResult.html" data-type="entity-link">GeoAddressResult</a>
-                            </li>
-                            <li class="link">
-                                <a href="interfaces/LogMessage.html" data-type="entity-link">LogMessage</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/PasswordErrorMsg.html" data-type="entity-link">PasswordErrorMsg</a>
