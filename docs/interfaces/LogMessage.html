@@ -101,7 +101,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="159" class="link-to-prism">projects/common/services/src/logger.service.ts:159</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="157" class="link-to-prism">projects/common/services/src/logger.service.ts:157</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -154,28 +154,29 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from &#x27;@angular/common/http&#x27;;
 import { AbstractHttpService } from &#x27;./abstract-api-service&#x27;;
 import { throwError } from &#x27;rxjs&#x27;;
-import * as moment from &#x27;moment&#x27;;
+import * as moment_ from &#x27;moment&#x27;;
 import {UUID} from &#x27;angular2-uuid&#x27;;
+const moment &#x3D; moment_;
 
 @Injectable({
   providedIn: &#x27;root&#x27;
 })
-export class Logger extends AbstractHttpService {
+export class CommonLogger extends AbstractHttpService {
   /**
-   * The headers that are consistent across all requests (i.e. they do not
-   * change between log() and logError()). These values are set once at session
-   * start.
+   * The HTTP Headers which go with each request.  These MUST be set if you are
+   * using the logger.  Fields include:
    *
-   * @protected
-   * @type {HttpHeaders}
-   * @memberof LogService
+   * - program (REQUIRED, the application wide code)
+   * - applicationId (REQUIRED, like sessionId)
+   * - request_method (REQUIRED, &#x27;POST&#x27;)
+   * - logsource: (REQUIRED, window.location.hostname)
+   * - http_x_forwarded_host (REQUIRED, window.location.hostname)
+   *
    */
   protected _headers: HttpHeaders &#x3D; new HttpHeaders({
-    applicationId: UUID.UUID().toString(),
-    logsource: window.location.hostname,
-    http_x_forwarded_host: window.location.hostname,
-    program: &#x27;fpc&#x27;,
     request_method: &#x27;POST&#x27;,
+    logsource: window.location.hostname,
+    http_x_forwarded_host: window.location.hostname
   });
 
   private url: string &#x3D; null;
@@ -295,9 +296,6 @@ export class Logger extends AbstractHttpService {
     this._headers &#x3D; this._headers.set(&#x27;tags&#x27;, message.event);
   }
 
-  public getApplicationID(): string {
-    return this._headers.get(&#x27;applicationId&#x27;);
-  }
 }
 
 

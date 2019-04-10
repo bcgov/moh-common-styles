@@ -268,10 +268,10 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </div>
                             <ul class="links collapse" ${ isNormalMode ? 'id="injectables-links"' : 'id="xs-injectables-links"' }>
                                 <li class="link">
-                                    <a href="injectables/GeocoderService.html" data-type="entity-link">GeocoderService</a>
+                                    <a href="injectables/CommonLogger.html" data-type="entity-link">CommonLogger</a>
                                 </li>
                                 <li class="link">
-                                    <a href="injectables/Logger.html" data-type="entity-link">Logger</a>
+                                    <a href="injectables/GeocoderService.html" data-type="entity-link">GeocoderService</a>
                                 </li>
                             </ul>
                         </li>
