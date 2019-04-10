@@ -2,28 +2,29 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { AbstractHttpService } from './abstract-api-service';
 import { throwError } from 'rxjs';
-import * as moment from 'moment';
+import * as moment_ from 'moment';
 import {UUID} from 'angular2-uuid';
+const moment = moment_;
 
 @Injectable({
   providedIn: 'root'
 })
-export class Logger extends AbstractHttpService {
+export class CommonLogger extends AbstractHttpService {
   /**
-   * The headers that are consistent across all requests (i.e. they do not
-   * change between log() and logError()). These values are set once at session
-   * start.
+   * The HTTP Headers which go with each request.  These MUST be set if you are
+   * using the logger.  Fields include:
    *
-   * @protected
-   * @type {HttpHeaders}
-   * @memberof LogService
+   * - program (REQUIRED, the application wide code)
+   * - applicationId (REQUIRED, like sessionId)
+   * - request_method (REQUIRED, 'POST')
+   * - logsource: (REQUIRED, window.location.hostname)
+   * - http_x_forwarded_host (REQUIRED, window.location.hostname)
+   *
    */
   protected _headers: HttpHeaders = new HttpHeaders({
-    applicationId: UUID.UUID().toString(),
-    logsource: window.location.hostname,
-    http_x_forwarded_host: window.location.hostname,
-    program: 'fpc',
     request_method: 'POST',
+    logsource: window.location.hostname,
+    http_x_forwarded_host: window.location.hostname
   });
 
   private url: string = null;
@@ -143,9 +144,6 @@ export class Logger extends AbstractHttpService {
     this._headers = this._headers.set('tags', message.event);
   }
 
-  public getApplicationID(): string {
-    return this._headers.get('applicationId');
-  }
 }
 
 
