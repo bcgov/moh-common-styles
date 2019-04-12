@@ -182,7 +182,7 @@ export class FileUploaderComponent extends Base
     @ViewChild(&#x27;imagePlaceholderRef&#x27;) imagePlaceholderRef: ElementRef;
     @ViewChild(&#x27;selectFileLabel&#x27;) selectFileLabelRef: ElementRef;
 
-    @ContentChild(&#x27;uploadInstruction&#x27;) uploadInstructionRef: ElementRef;
+    // @ContentChild(&#x27;uploadInstruction&#x27;) uploadInstructionRef: ElementRef;
     @Input() images: Array&lt;CommonImage&gt; &#x3D; new Array&lt;CommonImage&gt;(0);
     @Output() imagesChange: EventEmitter&lt;Array&lt;CommonImage&gt;&gt; &#x3D; new EventEmitter&lt;Array&lt;CommonImage&gt;&gt;();
     @Input() id: string;
@@ -422,12 +422,12 @@ export class FileUploaderComponent extends Base
         const imagePlaceholderEnterKeyStream &#x3D; merge(
             fromEvent&lt;Event&gt;(this.imagePlaceholderRef.nativeElement, &#x27;keyup&#x27;),
             fromEvent&lt;Event&gt;(this.selectFileLabelRef.nativeElement, &#x27;keyup&#x27;),
-            fromEvent&lt;Event&gt;(this.uploadInstructionRef.nativeElement, &#x27;keyup&#x27;)
+            // fromEvent&lt;Event&gt;(this.uploadInstructionRef.nativeElement, &#x27;keyup&#x27;)
         ).pipe(filter((evt: KeyboardEvent) &#x3D;&gt; evt.key &#x3D;&#x3D;&#x3D; &#x27;Enter&#x27;));
 
         merge(
             fromEvent&lt;Event&gt;(this.imagePlaceholderRef.nativeElement, &#x27;click&#x27;),
-            fromEvent&lt;Event&gt;(this.uploadInstructionRef.nativeElement, &#x27;click&#x27;),
+            // fromEvent&lt;Event&gt;(this.uploadInstructionRef.nativeElement, &#x27;click&#x27;),
             imagePlaceholderEnterKeyStream
         ).pipe(
             map((event) &#x3D;&gt; {
