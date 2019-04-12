@@ -1,4 +1,13 @@
-# Unreleased "moh-common-lib" (2019-04-10)
+# Unreleased "moh-common-lib" (2019-04-12)
+
+
+
+## [0.0.25](https://github.com/bcgov/moh-common-styles/compare/v0.0.24...v0.0.25) "moh-common-lib" (2019-04-12)
+
+
+### Bug Fixes
+
+* **FileUploaderComponent:** Fix runtime issue with missing reference ([a9cafca](https://github.com/bcgov/moh-common-styles/commit/a9cafca))
 
 
 
