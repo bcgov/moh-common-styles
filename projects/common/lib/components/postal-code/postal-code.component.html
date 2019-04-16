@@ -38,7 +38,8 @@
          [ngModel]="value"
          (ngModelChange)="onUpdate($event)"
          [required]="required"
-         [disabled]="disabled"/>
+         [disabled]="disabled"
+         maxlength="{{maxlen}}"/>
 
   <!-- Error messages for input -->
   <div *ngIf="!disabled && postalRef.touched"

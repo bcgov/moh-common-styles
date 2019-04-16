@@ -15,6 +15,7 @@ export class PostalCodeComponent extends MaskModel implements OnInit {
 
   @Input() label: string = 'Postal Code';
   @Input() displayMask: boolean = true;
+  @Input() maxlen: string = '250';
 
   public pcFormat: RegExp = /^[A-Za-z][0-9][A-Za-z]\s?[0-9][A-Za-z][0-9]$/;
 
