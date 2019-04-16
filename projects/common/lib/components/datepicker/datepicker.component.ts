@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges, ViewChild, OnChanges, forwardRef } from '@angular/core';
 import { INgxMyDpOptions, IMyDate, NgxMyDatePickerDirective } from 'ngx-mydatepicker';
 import * as moment_ from 'moment';
-import { NgForm, ControlContainer } from '@angular/forms';
+import { NgForm, ControlContainer, FormControl, NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { DateErrorMsg } from '../date/date.component';
 const moment = moment_;
 
@@ -21,9 +21,16 @@ const moment = moment_;
   /* Re-use the same ngForm that it's parent is using. The component will show
    * up in its parents `this.form`, and will auto-update `this.form.valid`
    */
-  viewProviders: [ { provide: ControlContainer, useExisting: forwardRef(() => NgForm ) } ]
+  viewProviders: [ { provide: ControlContainer, useExisting: forwardRef(() => NgForm ) } ],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      multi: true,
+      useExisting: forwardRef(() => DatepickerComponent)
+    }
+  ]
 })
-export class DatepickerComponent implements OnInit, OnChanges {
+export class DatepickerComponent implements OnInit, OnChanges, ControlValueAccessor {
   /** Component size can be reduced, see Datepickersizes for options */
   @Input() size: DatepickerSizes = DatepickerSizes.DEFAULT;
   @Input() date: Date;
@@ -76,6 +83,9 @@ export class DatepickerComponent implements OnInit, OnChanges {
 
   /** Default options for wrapped ngx-datepicker. */
   datepickerOptions: INgxMyDpOptions;
+
+  public _onChange = (_: any) => {};
+  public _onTouched = () => {};
 
   constructor() { }
 
@@ -137,6 +147,8 @@ export class DatepickerComponent implements OnInit, OnChanges {
       this.datepickerOptions.disableUntil = this.convertDateToSimpleDate(today);
     }
 
+    console.log('Datepicker ngOnInit', this.date);
+
 
     if (this.date) {
       // Even if jsdate winds up being undefined, even defining this.model will
@@ -172,6 +184,20 @@ export class DatepickerComponent implements OnInit, OnChanges {
       this.date = null;
       this.ngxdp.clearDate();
     }
+  }
+
+  registerOnChange(fn: any): void {
+    console.log('registerOnChanged');
+    this._onChange = fn;
+  }
+
+  registerOnTouched(fn: any): void {
+    console.log('registerOnTouched');
+    this._onTouched = fn;
+  }
+
+  writeValue(obj: any): void {
+    console.log('writeValue', obj);
   }
 
 }
