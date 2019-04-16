@@ -1,4 +1,13 @@
-# Unreleased "moh-common-lib" (2019-04-12)
+# Unreleased "moh-common-lib" (2019-04-16)
+
+
+
+## [0.0.26](https://github.com/bcgov/moh-common-styles/compare/v0.0.25...v0.0.26) "moh-common-lib" (2019-04-16)
+
+
+### Features
+
+* **Datepicker:** *experimental* Add NG_VALUE_ACCESSOR into DatePicker ([f603e99](https://github.com/bcgov/moh-common-styles/commit/f603e99))
 
 
 
