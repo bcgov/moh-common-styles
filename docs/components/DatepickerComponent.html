@@ -83,6 +83,7 @@ Make sure to use the same version that this library uses.</p>
     <p class="comment">
                     <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
                     <code><a href="https://angular.io/api/core/OnChanges" target="_blank" >OnChanges</a></code>
+                    <code><a href="https://angular.io/api/forms/ControlValueAccessor" target="_blank" >ControlValueAccessor</a></code>
     </p>
 
 
@@ -99,6 +100,14 @@ Make sure to use the same version that this library uses.</p>
 
 
 
+            <tr>
+                <td class="col-md-3">providers</td>
+                <td class="col-md-9">
+                                <code><a href="../components/DatepickerComponent.html" target="_self" >{
+    provide: NG_VALUE_ACCESSOR, multi: true, useExisting: forwardRef(() &#x3D;&gt; DatepickerComponent)
+}</a></code>
+                </td>
+            </tr>
 
 
             <tr>
@@ -150,6 +159,14 @@ Make sure to use the same version that this library uses.</p>
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#_onChange">_onChange</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#_onTouched">_onTouched</a>
+                            </li>
+                            <li>
                                 <a href="#datepickerOptions">datepickerOptions</a>
                             </li>
                             <li>
@@ -193,6 +210,15 @@ Make sure to use the same version that this library uses.</p>
                             </li>
                             <li>
                                 <a href="#onDateChanged">onDateChanged</a>
+                            </li>
+                            <li>
+                                <a href="#registerOnChange">registerOnChange</a>
+                            </li>
+                            <li>
+                                <a href="#registerOnTouched">registerOnTouched</a>
+                            </li>
+                            <li>
+                                <a href="#writeValue">writeValue</a>
                             </li>
                         </ul>
                     </td>
@@ -275,7 +301,7 @@ Make sure to use the same version that this library uses.</p>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:78</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:88</a></div>
                             </td>
                         </tr>
 
@@ -306,7 +332,7 @@ Make sure to use the same version that this library uses.</p>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:59</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:66</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -339,7 +365,7 @@ size as a visible one.</p>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:29</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:36</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -365,7 +391,7 @@ size as a visible one.</p>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:64</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:71</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -392,7 +418,7 @@ size as a visible one.</p>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:31</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:38</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -413,7 +439,7 @@ size as a visible one.</p>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:41</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:48</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -440,7 +466,7 @@ size as a visible one.</p>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:38</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:45</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -467,7 +493,7 @@ size as a visible one.</p>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:66</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:73</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -488,7 +514,7 @@ size as a visible one.</p>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:32</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:39</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -509,7 +535,7 @@ size as a visible one.</p>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:44</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:51</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -541,7 +567,7 @@ size as a visible one.</p>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:34</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:41</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -567,7 +593,7 @@ size as a visible one.</p>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:28</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:35</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -597,7 +623,7 @@ size as a visible one.</p>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:30</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:37</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -632,8 +658,8 @@ size as a visible one.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="169"
-                            class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:169</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="181"
+                            class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:181</a></div>
                 </td>
             </tr>
 
@@ -671,8 +697,8 @@ size as a visible one.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="82"
-                            class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:82</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="92"
+                            class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:92</a></div>
                 </td>
             </tr>
 
@@ -741,8 +767,8 @@ size as a visible one.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="90"
-                            class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:90</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="100"
+                            class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:100</a></div>
                 </td>
             </tr>
 
@@ -811,8 +837,8 @@ size as a visible one.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="98"
-                            class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:98</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="108"
+                            class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:108</a></div>
                 </td>
             </tr>
 
@@ -881,8 +907,8 @@ size as a visible one.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="154"
-                            class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:154</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="166"
+                            class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:166</a></div>
                 </td>
             </tr>
 
@@ -951,8 +977,8 @@ size as a visible one.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="103"
-                            class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:103</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="113"
+                            class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:113</a></div>
                 </td>
             </tr>
 
@@ -990,8 +1016,8 @@ size as a visible one.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="162"
-                            class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:162</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="174"
+                            class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:174</a></div>
                 </td>
             </tr>
 
@@ -1034,12 +1060,276 @@ size as a visible one.</p>
             </tr>
         </tbody>
     </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="registerOnChange"></a>
+                    <span class="name">
+                        <b>
+                            registerOnChange
+                        </b>
+                        <a href="#registerOnChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>registerOnChange(fn: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="189"
+                            class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:189</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>fn</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="registerOnTouched"></a>
+                    <span class="name">
+                        <b>
+                            registerOnTouched
+                        </b>
+                        <a href="#registerOnTouched"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>registerOnTouched(fn: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="194"
+                            class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:194</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>fn</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="writeValue"></a>
+                    <span class="name">
+                        <b>
+                            writeValue
+                        </b>
+                        <a href="#writeValue"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>writeValue(obj: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="199"
+                            class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:199</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>obj</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </section>
     <section>
     
         <h3 id="inputs">
             Properties
         </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_onChange"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            _onChange</b>
+                            <a href="#_onChange"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>() &#x3D;&gt; {...}</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="87" class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:87</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_onTouched"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            _onTouched</b>
+                            <a href="#_onTouched"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>() &#x3D;&gt; {...}</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:88</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
@@ -1060,7 +1350,7 @@ size as a visible one.</p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:78</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:85</a></div>
                             </td>
                         </tr>
 
@@ -1092,7 +1382,7 @@ size as a visible one.</p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:73</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:80</a></div>
                             </td>
                         </tr>
 
@@ -1119,7 +1409,7 @@ size as a visible one.</p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:70</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:77</a></div>
                             </td>
                         </tr>
 
@@ -1161,7 +1451,7 @@ size as a visible one.</p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:75</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:82</a></div>
                             </td>
                         </tr>
 
@@ -1177,7 +1467,7 @@ size as a visible one.</p>
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges, ViewChild, OnChanges, forwardRef } from &#x27;@angular/core&#x27;;
 import { INgxMyDpOptions, IMyDate, NgxMyDatePickerDirective } from &#x27;ngx-mydatepicker&#x27;;
 import * as moment_ from &#x27;moment&#x27;;
-import { NgForm, ControlContainer } from &#x27;@angular/forms&#x27;;
+import { NgForm, ControlContainer, FormControl, NG_VALUE_ACCESSOR, ControlValueAccessor } from &#x27;@angular/forms&#x27;;
 import { DateErrorMsg } from &#x27;../date/date.component&#x27;;
 const moment &#x3D; moment_;
 
@@ -1197,9 +1487,16 @@ const moment &#x3D; moment_;
   /* Re-use the same ngForm that it&#x27;s parent is using. The component will show
    * up in its parents &#x60;this.form&#x60;, and will auto-update &#x60;this.form.valid&#x60;
    */
-  viewProviders: [ { provide: ControlContainer, useExisting: forwardRef(() &#x3D;&gt; NgForm ) } ]
+  viewProviders: [ { provide: ControlContainer, useExisting: forwardRef(() &#x3D;&gt; NgForm ) } ],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      multi: true,
+      useExisting: forwardRef(() &#x3D;&gt; DatepickerComponent)
+    }
+  ]
 })
-export class DatepickerComponent implements OnInit, OnChanges {
+export class DatepickerComponent implements OnInit, OnChanges, ControlValueAccessor {
   /** Component size can be reduced, see Datepickersizes for options */
   @Input() size: DatepickerSizes &#x3D; DatepickerSizes.DEFAULT;
   @Input() date: Date;
@@ -1252,6 +1549,9 @@ export class DatepickerComponent implements OnInit, OnChanges {
 
   /** Default options for wrapped ngx-datepicker. */
   datepickerOptions: INgxMyDpOptions;
+
+  public _onChange &#x3D; (_: any) &#x3D;&gt; {};
+  public _onTouched &#x3D; () &#x3D;&gt; {};
 
   constructor() { }
 
@@ -1313,6 +1613,8 @@ export class DatepickerComponent implements OnInit, OnChanges {
       this.datepickerOptions.disableUntil &#x3D; this.convertDateToSimpleDate(today);
     }
 
+    console.log(&#x27;Datepicker ngOnInit&#x27;, this.date);
+
 
     if (this.date) {
       // Even if jsdate winds up being undefined, even defining this.model will
@@ -1348,6 +1650,20 @@ export class DatepickerComponent implements OnInit, OnChanges {
       this.date &#x3D; null;
       this.ngxdp.clearDate();
     }
+  }
+
+  registerOnChange(fn: any): void {
+    console.log(&#x27;registerOnChanged&#x27;);
+    this._onChange &#x3D; fn;
+  }
+
+  registerOnTouched(fn: any): void {
+    console.log(&#x27;registerOnTouched&#x27;);
+    this._onTouched &#x3D; fn;
+  }
+
+  writeValue(obj: any): void {
+    console.log(&#x27;writeValue&#x27;, obj);
   }
 
 }
