@@ -2,6 +2,15 @@
 
 
 
+## [0.0.28](https://github.com/bcgov/moh-common-styles/compare/v0.0.27...v0.0.28) "moh-common-lib" (2019-04-16)
+
+
+### Features
+
+* **PostalCode:** Add 'maxlen' attribute when not using mask ([532a3ec](https://github.com/bcgov/moh-common-styles/commit/532a3ec))
+
+
+
 ## [0.0.27](https://github.com/bcgov/moh-common-styles/compare/v0.0.26...v0.0.27) "moh-common-lib" (2019-04-16)
 
 
