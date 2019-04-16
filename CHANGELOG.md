@@ -2,6 +2,15 @@
 
 
 
+## [0.0.27](https://github.com/bcgov/moh-common-styles/compare/v0.0.26...v0.0.27) "moh-common-lib" (2019-04-16)
+
+
+### Features
+
+* **Datepicker:** Implement NG_VALUE_ACCESSOR handlers and remove logs ([cb65dc6](https://github.com/bcgov/moh-common-styles/commit/cb65dc6))
+
+
+
 ## [0.0.26](https://github.com/bcgov/moh-common-styles/compare/v0.0.25...v0.0.26) "moh-common-lib" (2019-04-16)
 
 
