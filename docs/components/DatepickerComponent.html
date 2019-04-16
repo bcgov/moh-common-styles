@@ -658,8 +658,8 @@ size as a visible one.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="181"
-                            class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:181</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="185"
+                            class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:185</a></div>
                 </td>
             </tr>
 
@@ -1016,8 +1016,8 @@ size as a visible one.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="174"
-                            class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:174</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="176"
+                            class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:176</a></div>
                 </td>
             </tr>
 
@@ -1082,8 +1082,8 @@ size as a visible one.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="189"
-                            class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:189</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="193"
+                            class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:193</a></div>
                 </td>
             </tr>
 
@@ -1152,8 +1152,8 @@ size as a visible one.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="194"
-                            class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:194</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="197"
+                            class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:197</a></div>
                 </td>
             </tr>
 
@@ -1222,8 +1222,8 @@ size as a visible one.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="199"
-                            class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:199</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="201"
+                            class="link-to-prism">projects/common/lib/components/datepicker/datepicker.component.ts:201</a></div>
                 </td>
             </tr>
 
@@ -1634,6 +1634,8 @@ export class DatepickerComponent implements OnInit, OnChanges, ControlValueAcces
     // We could refactor it down to one, but the performance hit is minimal for such a simple component.
     if (this.date &#x3D;&#x3D;&#x3D; null) {
       this.clearDate();
+      this._onChange(null);
+      this._onTouched();
     }
   }
 
@@ -1641,6 +1643,8 @@ export class DatepickerComponent implements OnInit, OnChanges, ControlValueAcces
     if (event.jsdate || event.jsdate &#x3D;&#x3D;&#x3D; null) {
       // Always emit a Date (or null)
       this.dateChange.emit(event.jsdate);
+      this._onChange(event.jsdate);
+      this._onTouched();
     }
   }
 
@@ -1653,17 +1657,17 @@ export class DatepickerComponent implements OnInit, OnChanges, ControlValueAcces
   }
 
   registerOnChange(fn: any): void {
-    console.log(&#x27;registerOnChanged&#x27;);
     this._onChange &#x3D; fn;
   }
 
   registerOnTouched(fn: any): void {
-    console.log(&#x27;registerOnTouched&#x27;);
     this._onTouched &#x3D; fn;
   }
 
   writeValue(obj: any): void {
-    console.log(&#x27;writeValue&#x27;, obj);
+    this.model &#x3D; {
+      jsdate: obj
+    };
   }
 
 }
