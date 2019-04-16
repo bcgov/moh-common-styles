@@ -168,6 +168,8 @@ export class DatepickerComponent implements OnInit, OnChanges, ControlValueAcces
     // We could refactor it down to one, but the performance hit is minimal for such a simple component.
     if (this.date === null) {
       this.clearDate();
+      this._onChange(null);
+      this._onTouched();
     }
   }
 
@@ -175,6 +177,8 @@ export class DatepickerComponent implements OnInit, OnChanges, ControlValueAcces
     if (event.jsdate || event.jsdate === null) {
       // Always emit a Date (or null)
       this.dateChange.emit(event.jsdate);
+      this._onChange(event.jsdate);
+      this._onTouched();
     }
   }
 
@@ -187,17 +191,17 @@ export class DatepickerComponent implements OnInit, OnChanges, ControlValueAcces
   }
 
   registerOnChange(fn: any): void {
-    console.log('registerOnChanged');
     this._onChange = fn;
   }
 
   registerOnTouched(fn: any): void {
-    console.log('registerOnTouched');
     this._onTouched = fn;
   }
 
   writeValue(obj: any): void {
-    console.log('writeValue', obj);
+    this.model = {
+      jsdate: obj
+    };
   }
 
 }
