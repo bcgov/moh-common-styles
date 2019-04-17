@@ -1,4 +1,13 @@
-# Unreleased "moh-common-lib" (2019-04-16)
+# Unreleased "moh-common-lib" (2019-04-17)
+
+
+
+## [0.0.29](https://github.com/bcgov/moh-common-styles/compare/v0.0.28...v0.0.29) "moh-common-lib" (2019-04-17)
+
+
+### Bug Fixes
+
+* **PostalCodeComponent:** Placeholder default fixed, changed to [@Input](https://github.com/Input)() ([67c4797](https://github.com/bcgov/moh-common-styles/commit/67c4797))
 
 
 
