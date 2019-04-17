@@ -16,6 +16,7 @@ export class PostalCodeComponent extends MaskModel implements OnInit {
   @Input() label: string = 'Postal Code';
   @Input() displayMask: boolean = true;
   @Input() maxlen: string = '250';
+  @Input() placeholder: string = 'A1A 1A1';
 
   public pcFormat: RegExp = /^[A-Za-z][0-9][A-Za-z]\s?[0-9][A-Za-z][0-9]$/;
 
@@ -23,7 +24,6 @@ export class PostalCodeComponent extends MaskModel implements OnInit {
   constructor() {
     super();
     this.mask = [LETTER, NUMBER, LETTER, SPACE, NUMBER, LETTER, NUMBER];
-    this.placeholder = 'A1A A1A';
    }
 
   ngOnInit() {
