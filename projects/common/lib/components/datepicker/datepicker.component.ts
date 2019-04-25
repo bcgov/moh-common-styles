@@ -3,6 +3,7 @@ import { INgxMyDpOptions, IMyDate, NgxMyDatePickerDirective } from 'ngx-mydatepi
 import * as moment_ from 'moment';
 import { NgForm, ControlContainer, FormControl, NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { DateErrorMsg } from '../date/date.component';
+import { Base } from '../../../models/src/base';
 const moment = moment_;
 
 
@@ -30,7 +31,7 @@ const moment = moment_;
     }
   ]
 })
-export class DatepickerComponent implements OnInit, OnChanges, ControlValueAccessor {
+export class DatepickerComponent extends Base implements OnInit, OnChanges, ControlValueAccessor {
   /** Component size can be reduced, see Datepickersizes for options */
   @Input() size: DatepickerSizes = DatepickerSizes.DEFAULT;
   @Input() date: Date;
@@ -87,7 +88,9 @@ export class DatepickerComponent implements OnInit, OnChanges, ControlValueAcces
   public _onChange = (_: any) => {};
   public _onTouched = () => {};
 
-  constructor() { }
+  constructor() {
+    super();
+   }
 
   convertDateToSimpleDate(date: Date): IMyDate {
     if (date === null || date === undefined) { return null; }
@@ -146,8 +149,6 @@ export class DatepickerComponent implements OnInit, OnChanges, ControlValueAcces
       const today = new Date();
       this.datepickerOptions.disableUntil = this.convertDateToSimpleDate(today);
     }
-
-    console.log('Datepicker ngOnInit', this.date);
 
 
     if (this.date) {
