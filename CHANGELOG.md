@@ -1,4 +1,13 @@
-# Unreleased "moh-common-lib" (2019-04-17)
+# Unreleased "moh-common-lib" (2019-04-25)
+
+
+
+## [0.0.30](https://github.com/bcgov/moh-common-styles/compare/v0.0.29...v0.0.30) "moh-common-lib" (2019-04-25)
+
+
+### Bug Fixes
+
+* **Datepicker:** Name attr is always unique thanks to UUID ([1ea543d](https://github.com/bcgov/moh-common-styles/commit/1ea543d))
 
 
 
