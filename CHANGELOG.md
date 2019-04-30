@@ -1,4 +1,15 @@
-# Unreleased "moh-common-lib" (2019-04-25)
+# [Unreleased](https://github.com/bcgov/moh-common-styles/compare/v0.0.30...7d2e7cd) "moh-common-lib" (2019-04-30)
+
+
+### Bug Fixes
+
+* **AddressComponent:** Include Typeahead module necessary to compile. ([7d2e7cd](https://github.com/bcgov/moh-common-styles/commit/7d2e7cd))
+
+
+### Features
+
+* **AddressComponent:** Create AddressComponent copied from prime-web. ([238c01d](https://github.com/bcgov/moh-common-styles/commit/238c01d))
+* **AddressComponent:** Implement NG_VALUE_ACCESSOR for reactive forms. ([8d79d30](https://github.com/bcgov/moh-common-styles/commit/8d79d30))
 
 
 
