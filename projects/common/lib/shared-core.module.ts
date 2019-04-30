@@ -23,6 +23,7 @@ import { PageSectionComponent } from './components/page-section/page-section.com
 import { DropdownComponent } from './components/dropdown/dropdown.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { ToggleComponent } from './components/toggle/toggle.component';
+import { AddressComponent } from './components/address/address.component';
 
 @NgModule({
   imports: [
@@ -52,7 +53,8 @@ import { ToggleComponent } from './components/toggle/toggle.component';
     PostalCodeComponent,
     PageSectionComponent,
     DropdownComponent,
-    ToggleComponent
+    ToggleComponent,
+    AddressComponent
   ],
   exports: [
     CoreBreadcrumbComponent,
@@ -71,7 +73,8 @@ import { ToggleComponent } from './components/toggle/toggle.component';
     PostalCodeComponent,
     PageSectionComponent,
     DropdownComponent,
-    ToggleComponent
+    ToggleComponent,
+    AddressComponent
   ],
   providers: [
     NgForm

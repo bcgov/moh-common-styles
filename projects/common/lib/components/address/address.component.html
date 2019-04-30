@@ -1,0 +1,156 @@
+<div class="form-group col-sm-8 p-sm-0">
+  <label for="country_{{objectId}}">Country</label>
+
+  <ng-select [items]='countryList'
+             [ngModel]='address?.country'
+             (ngModelChange)='setCountry($event)'
+             [required]='isRequired'
+             [disabled]='disabled'
+             name='country_{{objectId}}'
+             labelForId='country_{{objectId}}'
+             bindValue='countryCode'
+             [clearable]='false'
+             bindLabel='description'></ng-select>
+
+</div>
+
+<div class="form-group col-sm-8 p-sm-0">
+  <label for="province_{{objectId}}">Province/State</label>
+  <div *ngIf="isCanadaUSA(); else NotCanadaUSA">
+
+    <ng-select #provRef='ngModel'
+               name='province_{{objectId}}'
+               labelForId='province_{{objectId}}'
+               [ngModel]="address?.province"
+               (ngModelChange)="setProvince($event)"
+               [items]='provList'
+               [required]='isRequired'
+               [disabled]='disabled'
+               bindValue='provinceCode'
+               placeholder='Select a state'
+               [clearable]='false'
+               bindLabel='description'></ng-select>
+
+
+    <!-- Error messages for select -->
+    <div *ngIf="!disabled && provRef.touched"
+        role="alert"
+        class="error-container"
+        aria-live="assertive">
+      <div class="text-danger" *ngIf="provRef?.errors?.required">
+          {{isCanada() ? 'Province' : 'State' }} is required.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="form-group col-sm-8 p-sm-0">
+  <label for="street_{{objectId}}">Full street address or rural route</label>
+  <div *ngIf="useGeoCoder() && !disabled; else noGeoCoder;">
+    <input class="form-control"
+           #streetRef="ngModel"
+           spellcheck="false"
+           type="text"
+           id="street_{{objectId}}"
+           name="street_{{objectId}}"
+           [(ngModel)]="search"
+           (keyup)='onKeyUp($event)'
+           [typeahead]='typeaheadList$'
+           (typeaheadOnSelect)="onSelect($event)"
+           typeaheadOptionField='fullAddress'
+           typeaheadMinLength='3'
+           autocomplete="nope"
+           [required]="isRequired"
+           maxlength="{{STREET_RURAL_MAXLEN}}">
+
+    <!-- Error messages for input -->
+    <div *ngIf="!disabled && streetRef.touched"
+         role="alert"
+         class="error-container"
+         aria-live="assertive">
+      <div class="text-danger" *ngIf="streetRef?.errors?.required">
+        Full street address or rural route is required.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="form-group col-sm-8 p-sm-0">
+  <label for="city_{{objectId}}">City</label>
+  <input class="form-control"
+          #cityRef="ngModel"
+          spellcheck="false"
+          type="text"
+          id="city_{{objectId}}"
+          name="city_{{objectId}}"
+          [ngModel]="address?.city"
+          (ngModelChange)="setCity($event)"
+          [required]="isRequired"
+          [disabled]="disabled"
+          maxlength="{{CITY_MAXLEN}}"/>
+
+   <!-- Error messages for input -->
+  <div *ngIf="!disabled && cityRef.touched"
+       role="alert"
+       class="error-container"
+       aria-live="assertive">
+    <div class="text-danger" *ngIf="cityRef?.errors?.required">
+      City is required.
+    </div>
+  </div>
+</div>
+
+<div class="form-group col-sm-4 p-sm-0">
+  <common-postal-code [label]="'Postal Code'"
+                      [displayMask]="isCanada()"
+                      [disabled]="disabled"
+                      [(value)]="postalCode"></common-postal-code>
+</div>
+
+<ng-template #NotCanadaUSA>
+  <input #provRef="ngModel"
+         class="form-control"
+         spellcheck="false"
+         type="text"
+         id="province_{{objectId}}"
+         name="province_{{objectId}}"
+         [ngModel]="address?.province"
+         (ngModelChange)="setProvince($event)"
+         [required]="isRequired"
+         [disabled]="disabled"
+         maxlength="{{PROV_MAXLEN}}"/>
+
+  <!-- Error messages for select -->
+  <div *ngIf="!disabled && provRef.touched"
+      role="alert"
+      class="error-container"
+      aria-live="assertive">
+    <div class="text-danger" *ngIf="provRef?.errors?.required">
+      Province is required.
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #noGeoCoder>
+  <input class="form-control"
+         #streetRef="ngModel"
+         spellcheck="false"
+         type="text"
+         id="street_{{objectId}}"
+         name="street_{{objectId}}"
+         [ngModel]="address?.street"
+         (ngModelChange)="setStreetAddress($event)"
+         [required]="isRequired"
+         [disabled]="disabled"
+         maxlength="{{STREET_RURAL_MAXLEN}}"/>
+
+  <!-- Error messages for input -->
+  <div *ngIf="!disabled && streetRef.touched"
+       role="alert"
+       class="error-container"
+       aria-live="assertive">
+    <div class="text-danger" *ngIf="streetRef?.errors?.required">
+      Full street address or rural route is required.
+    </div>
+  </div>
+</ng-template>
