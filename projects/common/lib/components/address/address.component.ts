@@ -9,7 +9,7 @@ import {
   ElementRef,
   OnChanges
 } from '@angular/core';
-import { ControlContainer, NgForm } from '@angular/forms';
+import { ControlContainer, NgForm, ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Address } from '../../../models/src/address.model';
 import { Observable, Subject, of } from 'rxjs';
 import {
@@ -43,9 +43,16 @@ export interface ProvinceList {
    */
   viewProviders: [
     { provide: ControlContainer, useExisting: forwardRef(() => NgForm) }
-  ]
+  ],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => AddressComponent),
+      multi: true
+    }
+  ],
 })
-export class AddressComponent extends Base implements OnInit, OnChanges {
+export class AddressComponent extends Base implements OnInit, OnChanges, ControlValueAccessor {
     // Field lengths
     public CITY_MAXLEN = '100';
     public PROV_MAXLEN = '250';
@@ -68,6 +75,9 @@ export class AddressComponent extends Base implements OnInit, OnChanges {
   @Input() defaultProvince: string;
 
   @Output() addressChange: EventEmitter<Address> = new EventEmitter<Address>();
+
+  public onModelChange: any;
+  public onTouch: any;
 
   /** Search string to store result from GeoCoder request */
   public search: string;
@@ -108,21 +118,29 @@ export class AddressComponent extends Base implements OnInit, OnChanges {
     this.address.country = value;
     this.updateProvList();
     this.addressChange.emit(this.address);
+    this.onModelChange(this.address);
+    this.onTouch();
   }
 
   setProvince(value: string) {
     this.address.province = value;
     this.addressChange.emit(this.address);
+    this.onModelChange(this.address);
+    this.onTouch();
   }
 
   setStreetAddress(value: string) {
     this.address.street = value;
     this.addressChange.emit(this.address);
+    this.onModelChange(this.address);
+    this.onTouch();
   }
 
   setCity(value: string) {
     this.address.city = value;
     this.addressChange.emit(this.address);
+    this.onModelChange(this.address);
+    this.onTouch();
   }
 
   get postalCode() {
@@ -136,6 +154,8 @@ export class AddressComponent extends Base implements OnInit, OnChanges {
   set postalCode(value: string) {
     this.address.postal = value.toUpperCase();
     this.addressChange.emit(this.address);
+    this.onModelChange(this.address);
+    this.onTouch();
   }
 
   isCanada(): boolean {
@@ -248,5 +268,17 @@ export class AddressComponent extends Base implements OnInit, OnChanges {
     this.address.province = 'BC';
     this.address.country = 'CAN';
     this.addressChange.emit(this.address);
+    this.onModelChange(this.address);
+    this.onTouch();
+  }
+
+  writeValue(addr: Address) {
+    this.address = addr;
+  }
+  registerOnChange(fn: any): void {
+    this.onModelChange = fn;
+  }
+  registerOnTouched(fn: any): void {
+    this.onTouch = fn;
   }
 }
