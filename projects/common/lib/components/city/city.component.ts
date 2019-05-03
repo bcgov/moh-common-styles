@@ -1,42 +1,32 @@
-import { Component, Input, Output, EventEmitter, Optional, Self } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, Optional, Self } from '@angular/core';
 import { Base } from '../../../models/src/base';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 
-
-export interface ProvinceList {
-  country: string;
-  provinceCode: string;
-  description: string;
-}
-
 @Component({
-  selector: 'common-province',
-  templateUrl: './province.component.html',
-  styleUrls: ['./province.component.scss']
+  selector: 'common-city',
+  templateUrl: './city.component.html',
+  styleUrls: ['./city.component.scss']
 })
-export class ProvinceComponent extends Base implements ControlValueAccessor {
+export class CityComponent extends Base implements ControlValueAccessor  {
 
-  @Input() label: string = 'Province';
-  @Input() provinceList: ProvinceList[];
-  @Input() labelforId: string = 'province' + this.objectId;
+  @Input() label: string = 'City';
+  @Input() maxlen: string = '100';
+  @Input() labelforId: string = 'city' + this.objectId;
   @Input() disabled: boolean = false;
-  @Input() required: boolean = false;
-  @Input() placeholder: string = 'Please select a province';
-  @Input() maxlen: string = '250';
-  @Input() useDropDownList: boolean = true;
 
   @Input()
   set value( val: string ) {
-    this.province = val;
+    this.city = val;
   }
   get value() {
-    return this.province;
+    return this.city;
   }
 
   @Output() valueChange: EventEmitter<string> = new EventEmitter<string>();
   @Output() blurEvent: EventEmitter<any> = new EventEmitter<any>();
 
-  province: string = null;
+  city: string = null;
+
 
   _onChange = (_: any) => {};
   _onTouched = (_: any) => {};
@@ -60,7 +50,7 @@ export class ProvinceComponent extends Base implements ControlValueAccessor {
 
   writeValue( value: any ): void {
     if ( value !== undefined ) {
-      this.province = value;
+      this.city = value;
     }
   }
 
