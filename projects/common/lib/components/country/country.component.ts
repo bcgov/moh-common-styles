@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, Optional, Self } from '@angular/core';
+import { Component, Input, Output, EventEmitter, Optional, Self } from '@angular/core';
 import { Base } from '../../../models/src/base';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 

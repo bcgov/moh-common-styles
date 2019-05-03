@@ -33,5 +33,5 @@
          [value]="postalCode"
          (change)="onValueChange($event.target.value)"
          [disabled]="disabled"
-         attr.maxlength="{{maxlen}}"/>
+         [attr.maxlength]="maxlen"/>
 </ng-template>

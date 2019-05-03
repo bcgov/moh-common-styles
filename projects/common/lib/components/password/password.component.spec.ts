@@ -29,7 +29,7 @@ describe('PasswordComponent', () => {
   });
 
   it ('Input label is displayed', () => {
-    component.componentLabel = 'Password';
+    component.label = 'Password';
     fixture.detectChanges();
     fixture.whenStable().then(() => {
       expect(el.querySelector('label').textContent).toEqual('Password');

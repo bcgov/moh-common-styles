@@ -5,7 +5,7 @@ import { HttpClientTestingModule} from '@angular/common/http/testing';
 import { FormsModule } from '@angular/forms';
 
 import { CaptchaComponent } from './captcha.component';
-import { CaptchaDataService } from '../captcha-data.service';
+import { CaptchaDataService } from './captcha-data.service';
 
 describe('CaptchaComponent', () => {
   let component: CaptchaComponent;
