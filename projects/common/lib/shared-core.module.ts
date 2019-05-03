@@ -24,6 +24,7 @@ import { DropdownComponent } from './components/dropdown/dropdown.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { ToggleComponent } from './components/toggle/toggle.component';
 import { AddressComponent } from './components/address/address.component';
+import { CountryComponent } from './components/country/country.component';
 
 @NgModule({
   imports: [
@@ -55,7 +56,8 @@ import { AddressComponent } from './components/address/address.component';
     PageSectionComponent,
     DropdownComponent,
     ToggleComponent,
-    AddressComponent
+    AddressComponent,
+    CountryComponent
   ],
   exports: [
     CoreBreadcrumbComponent,
@@ -75,7 +77,8 @@ import { AddressComponent } from './components/address/address.component';
     PageSectionComponent,
     DropdownComponent,
     ToggleComponent,
-    AddressComponent
+    AddressComponent,
+    CountryComponent
   ],
   providers: [
     NgForm
