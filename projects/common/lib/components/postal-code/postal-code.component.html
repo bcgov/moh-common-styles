@@ -1,53 +1,37 @@
-<label class="control-label">{{label}}</label>
+<label for="{{labelforId}}" class="control-label">{{label}}</label>
 <div *ngIf="displayMask; else NoMask">
-<input #postalRef="ngModel"
-       class="form-control"
+<input class="form-control"
        spellcheck="false"
-       type="text"
-       id="postalCode_{{objectId}}"
-       name="postalCode_{{objectId}}"
+       id="{{labelforId}}"
+       [value]="postalCode"
+       (change)="onValueChange($event.target.value)"
+       [(ngModel)]="postalCode"
+       (blur)="onBlurEvent($event)"
        [placeholder]="placeholder"
-       [ngModel]="value"
-       (ngModelChange)="onUpdate($event)"
        [textMask]="{mask: mask, pipe: upperCasePipe}"
-       [pattern]='pcFormat'
-       [required]="required"
-       [disabled]="disabled" />
+       [disabled]="disabled"/>
+  </div>
 
   <!-- Error messages for input -->
-  <div *ngIf="!disabled && postalRef.touched"
+  <div *ngIf="controlDir && !disabled && controlDir.touched"
         role="alert"
         class="error-container"
         aria-live="assertive">
-    <div class="text-danger" *ngIf="postalRef?.errors?.required">
+    <div class="text-danger" *ngIf="controlDir.errors?.required">
       {{label}} is required.
     </div>
-    <div class="text-danger" *ngIf="postalRef?.errors?.pattern">
+    <div class="text-danger" *ngIf="controlDir.errors?.pattern">
       Must be in the format {{placeholder}}.
     </div>
   </div>
-</div>
 
 <ng-template #NoMask>
   <input class="form-control"
-         #postalRef="ngModel"
          spellcheck="false"
          type="text"
-         id="postalCode_{{objectId}}"
-         name="postalCode_{{objectId}}"
-         [ngModel]="value"
-         (ngModelChange)="onUpdate($event)"
-         [required]="required"
+         id="{{labelforId}}"
+         [value]="postalCode"
+         (change)="onValueChange($event.target.value)"
          [disabled]="disabled"
-         maxlength="{{maxlen}}"/>
-
-  <!-- Error messages for input -->
-  <div *ngIf="!disabled && postalRef.touched"
-        role="alert"
-        class="error-container"
-        aria-live="assertive">
-    <div class="text-danger" *ngIf="postalRef?.errors?.required">
-      Postal Code is required.
-    </div>
-  </div>
+         attr.maxlength="{{maxlen}}"/>
 </ng-template>
