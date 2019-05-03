@@ -21,18 +21,9 @@ import {
 import { TypeaheadMatch } from 'ngx-bootstrap';
 import { Base } from '../../../models/src/base';
 import { GeocoderService, GeoAddressResult } from '../../../services/src/geocoder.service';
+import { CountryList } from '../country/country.component';
+import { ProvinceList } from '../province/province.component';
 
-/** Interface for countries */
-export interface CountryList {
-  countryCode: string;
-  description: string;
-}
-
-export interface ProvinceList {
-  country: string;
-  provinceCode: string;
-  description: string;
-}
 
 @Component({
   selector: 'common-address',
