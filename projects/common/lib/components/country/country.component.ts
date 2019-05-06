@@ -8,6 +8,9 @@ export interface CountryList {
   description: string;
 }
 
+export const CANADA = 'CAN';
+export const UNITED_STATES = 'USA';
+
 @Component({
   selector: 'common-country',
   templateUrl: './country.component.html',

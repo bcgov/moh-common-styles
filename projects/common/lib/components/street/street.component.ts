@@ -126,6 +126,7 @@ export class StreetComponent extends Base implements OnInit, ControlValueAccesso
   }
 
   onSelect(event: TypeaheadMatch): void {
+    console.log( 'onSelect: ', event.item );
     this.street = event.item.street;
     this.selectEvent.emit( event.item );
   }

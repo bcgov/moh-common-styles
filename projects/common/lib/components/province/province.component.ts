@@ -2,7 +2,7 @@ import { Component, Input, Output, EventEmitter, Optional, Self } from '@angular
 import { Base } from '../../../models/src/base';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 
-
+export const BRITISH_COLUMBIA = 'BC';
 export interface ProvinceList {
   country: string;
   provinceCode: string;
