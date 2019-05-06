@@ -11,7 +11,7 @@ export class CityComponent extends Base implements ControlValueAccessor  {
 
   @Input() label: string = 'City';
   @Input() maxlen: string = '100';
-  @Input() labelforId: string = 'city' + this.objectId;
+  @Input() labelforId: string = 'city_' + this.objectId;
   @Input() disabled: boolean = false;
 
   @Input()

@@ -17,7 +17,7 @@ export class CountryComponent extends Base implements ControlValueAccessor {
 
   @Input() label: string = 'Country';
   @Input() countryList: CountryList[];
-  @Input() labelforId: string = 'country' + this.objectId;
+  @Input() labelforId: string = 'country_' + this.objectId;
   @Input() disabled: boolean = false;
   @Input() required: boolean = false;
 

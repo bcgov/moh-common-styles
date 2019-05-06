@@ -18,7 +18,7 @@ export class ProvinceComponent extends Base implements ControlValueAccessor {
 
   @Input() label: string = 'Province';
   @Input() provinceList: ProvinceList[];
-  @Input() labelforId: string = 'province' + this.objectId;
+  @Input() labelforId: string = 'province_' + this.objectId;
   @Input() disabled: boolean = false;
   @Input() required: boolean = false;
   @Input() placeholder: string = 'Please select a province';

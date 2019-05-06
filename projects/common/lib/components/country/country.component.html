@@ -11,7 +11,7 @@
            bindLabel="description"></ng-select>
 
   <!-- Error messages for input -->
-  <div *ngIf="controlDir && !disabled && controlDir.touched"
+  <div *ngIf="controlDir && !disabled &&  (controlDir.touched || controlDir.dirty)"
         role="alert"
         class="error-container"
         aria-live="assertive">

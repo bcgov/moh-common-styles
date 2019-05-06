@@ -5,11 +5,12 @@
        id="{{labelforId}}"
        [value]="city"
        (change)="onValueChange($event.target.value)"
+       (blur)="onBlurEvent($event)"
        [disabled]="disabled"
        [attr.maxlength]="maxlen"/>
 
  <!-- Error messages for input -->
-<div *ngIf="controlDir && !disabled && controlDir.touched"
+<div *ngIf="controlDir && !disabled && (controlDir.touched || controlDir.dirty)"
      role="alert"
      class="error-container"
      aria-live="assertive">
