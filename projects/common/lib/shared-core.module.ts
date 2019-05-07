@@ -24,7 +24,35 @@ import { DropdownComponent } from './components/dropdown/dropdown.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { ToggleComponent } from './components/toggle/toggle.component';
 import { AddressComponent } from './components/address/address.component';
+import { CountryComponent } from './components/country/country.component';
+import { ProvinceComponent } from './components/province/province.component';
+import { CityComponent } from './components/city/city.component';
+import { StreetComponent } from './components/street/street.component';
 
+const componentList = [
+  CoreBreadcrumbComponent,
+  FormActionBarComponent,
+  PageFrameworkComponent,
+  PasswordComponent,
+  WizardProgressBarComponent,
+  DateComponent,
+  DayValidationDirective,
+  DateFieldFormatDirective,
+  YearValidateDirective,
+  DatepickerComponent,
+  FileUploaderComponent,
+  ThumbnailComponent,
+  FormSubmitBarComponent,
+  PostalCodeComponent,
+  PageSectionComponent,
+  DropdownComponent,
+  ToggleComponent,
+  AddressComponent,
+  CountryComponent,
+  ProvinceComponent,
+  CityComponent,
+  StreetComponent
+];
 @NgModule({
   imports: [
     CommonModule,
@@ -38,44 +66,10 @@ import { AddressComponent } from './components/address/address.component';
     TypeaheadModule.forRoot()
   ],
   declarations: [
-    CoreBreadcrumbComponent,
-    FormActionBarComponent,
-    PageFrameworkComponent,
-    PasswordComponent,
-    WizardProgressBarComponent,
-    DateComponent,
-    DayValidationDirective,
-    DateFieldFormatDirective,
-    YearValidateDirective,
-    DatepickerComponent,
-    FileUploaderComponent,
-    ThumbnailComponent,
-    FormSubmitBarComponent,
-    PostalCodeComponent,
-    PageSectionComponent,
-    DropdownComponent,
-    ToggleComponent,
-    AddressComponent
+    componentList
   ],
   exports: [
-    CoreBreadcrumbComponent,
-    FormActionBarComponent,
-    PageFrameworkComponent,
-    PasswordComponent,
-    WizardProgressBarComponent,
-    DateComponent,
-    DayValidationDirective,
-    DateFieldFormatDirective,
-    YearValidateDirective,
-    DatepickerComponent,
-    FileUploaderComponent,
-    ThumbnailComponent,
-    FormSubmitBarComponent,
-    PostalCodeComponent,
-    PageSectionComponent,
-    DropdownComponent,
-    ToggleComponent,
-    AddressComponent
+    componentList
   ],
   providers: [
     NgForm
