@@ -1,5 +1,19 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef, ControlValueAccessor } from '@angular/core';
 
+/**
+ * ButtonGroupComponent is a Radio component. It is radio and shows YES/NO option as a button group
+ * 
+ *
+ *
+ * @example
+ *       <common-button-group [showError]="showError"
+ *          [errorMessageRequired]="'This field is Required. Please select any value.'"
+ *          [label]="'Please select a value'" 
+ *          [data]="data.value" (dataChange)="setMovedToBCPermanently($event)" >
+ *         </common-button-group>
+ *
+ * @export
+ */
 
 
 @Component({
@@ -7,7 +21,7 @@ import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef }
   templateUrl: './button-group.component.html',
   styleUrls: ['./button-group.component.scss']
 })
-export class ButtonGroupComponent implements OnInit {
+export class ButtonGroupComponent implements OnInit, ControlValueAccessor {
 
   @Input() data: boolean;
   @Input() required: boolean = true;
@@ -17,6 +31,9 @@ export class ButtonGroupComponent implements OnInit {
   @Input() label: string = 'Default Checkbox';
   @Output() dataChange: EventEmitter<boolean> = new EventEmitter<boolean>();
   @ViewChild('buttonGroup') buttonGroup: ElementRef;
+
+  public _onChange = (_: any) => {};
+  public _onTouched = () => {};
 
   constructor() { 
 
@@ -29,4 +46,15 @@ export class ButtonGroupComponent implements OnInit {
     this.buttonGroup.nativeElement.focus();
   }
 
+  registerOnChange(fn: any): void {
+    this._onChange = fn;
+  }
+
+  registerOnTouched(fn: any): void {
+    this._onTouched = fn;
+  }
+
+  writeValue(value: any): void {
+    this.data = value;
+  }
 }
