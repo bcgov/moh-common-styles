@@ -1,28 +1,17 @@
 import {
   Component,
-  OnInit,
   Input,
   Output,
   EventEmitter,
-  forwardRef,
-  ViewChild,
-  ElementRef,
-  OnChanges
+  OnChanges,
+  forwardRef
 } from '@angular/core';
-import { ControlContainer, NgForm, ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Address } from '../../../models/src/address.model';
-import { Observable, Subject, of } from 'rxjs';
-import {
-  debounceTime,
-  distinctUntilChanged,
-  switchMap,
-  catchError
-} from 'rxjs/operators';
-import { TypeaheadMatch } from 'ngx-bootstrap';
+import { ControlContainer, ControlValueAccessor, NgForm, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Base } from '../../../models/src/base';
-import { GeocoderService, GeoAddressResult } from '../../../services/src/geocoder.service';
-import { CountryList } from '../country/country.component';
-import { ProvinceList } from '../province/province.component';
+import { GeoAddressResult } from '../../../services/src/geocoder.service';
+import { Address } from '../../../models/src/address.model';
+import { CountryList, CANADA, UNITED_STATES } from '../country/country.component';
+import { ProvinceList, BRITISH_COLUMBIA } from '../province/province.component';
 
 
 @Component({
@@ -33,71 +22,40 @@ import { ProvinceList } from '../province/province.component';
    * up in its parents `this.form`, and will auto-update `this.form.valid`
    */
   viewProviders: [
-    { provide: ControlContainer, useExisting: forwardRef(() => NgForm) }
+    { provide: ControlContainer, useExisting: forwardRef(() => NgForm ) }
   ],
   providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => AddressComponent),
-      multi: true
-    }
-  ],
+    { provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AddressComponent )}
+  ]
 })
-export class AddressComponent extends Base implements OnInit, OnChanges, ControlValueAccessor {
-    // Field lengths
-    public CITY_MAXLEN = '100';
-    public PROV_MAXLEN = '250';
-    public STREET_RURAL_MAXLEN = '1000';
-
-
-  // TODO: Create Unit tests for this component
-  // Exists for unit testing to validate errors set
-  @ViewChild('provRef') provRef: ElementRef;
-  @ViewChild('streetRef') streetRef: ElementRef;
-  @ViewChild('cityRef') cityRef: ElementRef;
-  @ViewChild('postalRef') postalRef: ElementRef;
+export class AddressComponent extends Base
+       implements OnChanges, ControlValueAccessor {
 
   @Input() disabled: boolean = false;
   @Input() isRequired: boolean = false;
-  @Input() address: Address = new Address();
   @Input() countryList: CountryList[];
   @Input() defaultCountry: string;
   @Input() provinceList: ProvinceList[];
   @Input() defaultProvince: string;
 
-  @Output() addressChange: EventEmitter<Address> = new EventEmitter<Address>();
-
-  public onModelChange: any;
-  public onTouch: any;
-
-  /** Search string to store result from GeoCoder request */
-  public search: string;
-  /**
-   * The list of results, from API, that is passed to the typeahead list
-   * Result from GeoCoderService address lookup
-   */
-  public typeaheadList$: Observable<GeoAddressResult[]>;
-  /** The subject that triggers on user text input and gets typeaheadList$ to update.  */
-  private searchText$ = new Subject<string>();
-
-  public provList: ProvinceList[];
-
-  constructor(private geocoderService: GeocoderService) {
-    super();
+  @Input()
+  set address( val: Address ) {
+    this.addr = val;
+  }
+  get address(): Address {
+    return this.addr;
   }
 
-  ngOnInit() {
-    // Set up for using GeoCoder
-    this.typeaheadList$ = this.searchText$.pipe(
-      debounceTime(500),
-      distinctUntilChanged(),
-      // Trigger the network request, get results
-      switchMap(searchPhrase => {
-        return this.geocoderService.lookup(searchPhrase);
-      }),
-      // tap(log => console.log('taplog', log)),
-      catchError(err => this.onError(err))
-    );
+  @Output() addressChange: EventEmitter<Address> = new EventEmitter<Address>();
+
+  addr: Address;
+  provList: ProvinceList[];
+
+  _onChange = (_: any) => {};
+  _onTouched = (_: any) => {};
+
+  constructor() {
+    super();
   }
 
   /**
@@ -105,74 +63,70 @@ export class AddressComponent extends Base implements OnInit, OnChanges, Control
    * @param value
    */
   setCountry(value: string) {
-    this.address.province = this.setDefaultProvinceAsOption(value);
-    this.address.country = value;
+    this.addr.province = this.setDefaultProvinceAsOption(value);
+    this.addr.country = value;
     this.updateProvList();
-    this.addressChange.emit(this.address);
-    this.onModelChange(this.address);
-    this.onTouch();
+    this._onChange( this.addr );
+    this.addressChange.emit( this.addr );
+    this._onTouched( this.addr );
   }
 
   setProvince(value: string) {
-    this.address.province = value;
-    this.addressChange.emit(this.address);
-    this.onModelChange(this.address);
-    this.onTouch();
+    this.addr.province = value;
+    this._onChange( this.addr );
+    this.addressChange.emit(this.addr);
+    this._onTouched( this.addr );
   }
 
   setStreetAddress(value: string) {
-    this.address.street = value;
-    this.addressChange.emit(this.address);
-    this.onModelChange(this.address);
-    this.onTouch();
+    this.addr.street = value;
+    this._onChange( this.addr );
+    this.addressChange.emit( this.addr );
+    this._onTouched( this.addr );
   }
 
   setCity(value: string) {
-    this.address.city = value;
-    this.addressChange.emit(this.address);
-    this.onModelChange(this.address);
-    this.onTouch();
-  }
-
-  get postalCode() {
-    return this.address.postal;
+    this.addr.city = value;
+    this._onChange( this.addr );
+    this.addressChange.emit( this.addr );
+    this._onTouched( this.addr );
   }
 
   /**
    * Sets string after converted upper case
    * @param text
    */
-  set postalCode(value: string) {
-    this.address.postal = value.toUpperCase();
-    this.addressChange.emit(this.address);
-    this.onModelChange(this.address);
-    this.onTouch();
+  setPostalCode(value: string) {
+    this.addr.postal = value;
+    this._onChange( this.addr );
+    this.addressChange.emit(this.addr);
+    this._onTouched( this.addr );
   }
 
   isCanada(): boolean {
-    return this.address && 'CAN' === this.address.country;
+    return this.addr && CANADA === this.addr.country;
   }
 
   isCanadaUSA(): boolean {
-    return (this.address && 'USA' === this.address.country) || this.isCanada();
+    return (this.addr && UNITED_STATES === this.addr.country) || this.isCanada();
   }
 
   ngOnChanges(changes) {
     if (changes['countryList'] && changes['countryList'].currentValue) {
 
-      if ( !this.address.country ) {
+      if ( this.addr && !this.addr.country ) {
         // Set defaults
-        this.address.country = this.setDefaultCountryAsOption();
-      }
-      // Set defaults
-      this.address.province = this.setDefaultProvinceAsOption( this.address.country );
+        this.addr.country = this.setDefaultCountryAsOption();
 
+        // Set defaults
+        this.addr.province = this.setDefaultProvinceAsOption( this.addr.country );
+      }
       this.updateProvList();
     }
     if (changes['provinceList'] && changes['provinceList'].currentValue) {
-      if ( !this.address.province ) {
+      if ( this.addr && !this.addr.province ) {
         // Set defaults
-        this.address.province = this.setDefaultProvinceAsOption( this.address.country );
+        this.addr.province = this.setDefaultProvinceAsOption( this.addr.country );
       }
       this.updateProvList();
     }
@@ -186,7 +140,7 @@ export class AddressComponent extends Base implements OnInit, OnChanges, Control
     if (!this.provinceList) { return; } // When data is async and hasn't loaded
     this.provList = this.provinceList
       .map(prov => {
-        if (prov.country === this.address.country) {
+        if (prov.country === this.addr.country) {
           return prov;
         }
       })
@@ -226,50 +180,34 @@ export class AddressComponent extends Base implements OnInit, OnChanges, Control
    * GeoCoder only is applicable when address is BC, Canada.
    */
   useGeoCoder(): boolean {
-    return this.isCanada() && 'BC' === this.address.province;
-  }
-
-  onKeyUp(event: KeyboardEvent): void {
-    /**
-     * Filter out 'enter' and other similar keyboard events that can trigger
-     * when user is selecting a typeahead option instead of entering new text.
-     * Without this filter, we do another HTTP request + force disiplay the UI
-     * for now reason
-     */
-    if (event.keyCode === 13 || event.keyCode === 9) {
-      // enter & tab
-      return;
-    }
-
-    this.searchText$.next(this.search);
-  }
-
-  onError(err: any): Observable<GeoAddressResult[]> {
-    // Empty array simulates no result response, nothing for typeahead to iterate over
-    return of([]);
+    return this.isCanada() && BRITISH_COLUMBIA === this.addr.province;
   }
 
   // Only BC addresses therefore no need to copy province into structure.
-  onSelect(event: TypeaheadMatch): void {
-    const data: GeoAddressResult = event.item;
-
-    this.search = data.street;
-    this.address.street = data.street;
-    this.address.city = data.city;
-    this.address.province = 'BC';
-    this.address.country = 'CAN';
-    this.addressChange.emit(this.address);
-    this.onModelChange(this.address);
-    this.onTouch();
+  setAddress(data: GeoAddressResult) {
+    this.addr.street = data.street;
+    this.addr.city = data.city;
+    this.addr.province = data.province;
+    this.addr.country = data.country;
+    this.addressChange.emit( this.addr );
   }
 
-  writeValue(addr: Address) {
-    this.address = addr;
+  writeValue( value: Address) {
+    console.log( 'address writeValue: ', value );
+    if ( value ) {
+      this.addr = value;
+    }
   }
+
   registerOnChange(fn: any): void {
-    this.onModelChange = fn;
+    this._onChange = fn;
   }
+
   registerOnTouched(fn: any): void {
-    this.onTouch = fn;
+    this._onTouched = fn;
+  }
+
+  setDisabledState(isDisabled: boolean): void {
+    this.disabled = isDisabled;
   }
 }
