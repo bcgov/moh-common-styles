@@ -1,4 +1,4 @@
-# [Unreleased](https://github.com/bcgov/moh-common-styles/compare/v0.0.30...7d2e7cd) "moh-common-lib" (2019-04-30)
+# [Unreleased](https://github.com/bcgov/moh-common-styles/compare/v0.0.30...95f2a31) "moh-common-lib" (2019-05-07)
 
 
 ### Bug Fixes
@@ -10,6 +10,7 @@
 
 * **AddressComponent:** Create AddressComponent copied from prime-web. ([238c01d](https://github.com/bcgov/moh-common-styles/commit/238c01d))
 * **AddressComponent:** Implement NG_VALUE_ACCESSOR for reactive forms. ([8d79d30](https://github.com/bcgov/moh-common-styles/commit/8d79d30))
+* **E2E:** Create AbstractTestPage in moh-common-lib/e2e ([95f2a31](https://github.com/bcgov/moh-common-styles/commit/95f2a31))
 
 
 

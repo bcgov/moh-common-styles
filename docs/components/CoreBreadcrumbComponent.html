@@ -43,6 +43,9 @@
             <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
         </li>
         <li >
+            <a href="#readme" role="tab" id="readme-tab" data-toggle="tab" data-link="readme">README</a>
+        </li>
+        <li >
             <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
         </li>
         <li >
@@ -242,6 +245,11 @@ attribute to the top level elements inside of the breadcrumb element.</p>
 
 </div>
 
+    <div class="tab-pane fade " id="c-readme">
+        <p><h2 id="design-guidelines">Design Guidelines</h2>
+<p>todo</p>
+</p>
+    </div>
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
@@ -355,7 +363,7 @@ export class CoreBreadcrumbComponent implements OnInit {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><nav class="breadcrumb d-flex justify-content-between horizontal-scroll">    <ng-content select="[left]"></ng-content>    <ng-content class=\'d-flex\' select="[center]"></ng-content>    <ng-content select="[right]"></ng-content></nav></div>'
-    var COMPONENTS = [{'name': 'CaptchaComponent', 'selector': 'common-captcha'},{'name': 'CoreBreadcrumbComponent', 'selector': 'common-core-breadcrumb'},{'name': 'DateComponent', 'selector': 'common-date'},{'name': 'DatepickerComponent', 'selector': 'common-datepicker'},{'name': 'DropdownComponent', 'selector': 'common-dropdown'},{'name': 'FileUploaderComponent', 'selector': 'common-file-uploader'},{'name': 'FormActionBarComponent', 'selector': 'common-form-action-bar'},{'name': 'FormSubmitBarComponent', 'selector': 'common-form-submit-bar'},{'name': 'PageFrameworkComponent', 'selector': 'common-page-framework'},{'name': 'PageSectionComponent', 'selector': 'common-page-section'},{'name': 'PasswordComponent', 'selector': 'common-password'},{'name': 'PostalCodeComponent', 'selector': 'common-postal-code'},{'name': 'ThumbnailComponent', 'selector': 'common-thumbnail'},{'name': 'ToggleComponent', 'selector': 'common-toggle'},{'name': 'WizardProgressBarComponent', 'selector': 'common-wizard-progress-bar'}];
+    var COMPONENTS = [{'name': 'AddressComponent', 'selector': 'common-address'},{'name': 'CaptchaComponent', 'selector': 'common-captcha'},{'name': 'CoreBreadcrumbComponent', 'selector': 'common-core-breadcrumb'},{'name': 'DateComponent', 'selector': 'common-date'},{'name': 'DatepickerComponent', 'selector': 'common-datepicker'},{'name': 'DropdownComponent', 'selector': 'common-dropdown'},{'name': 'FileUploaderComponent', 'selector': 'common-file-uploader'},{'name': 'FormActionBarComponent', 'selector': 'common-form-action-bar'},{'name': 'FormSubmitBarComponent', 'selector': 'common-form-submit-bar'},{'name': 'PageFrameworkComponent', 'selector': 'common-page-framework'},{'name': 'PageSectionComponent', 'selector': 'common-page-section'},{'name': 'PasswordComponent', 'selector': 'common-password'},{'name': 'PostalCodeComponent', 'selector': 'common-postal-code'},{'name': 'ThumbnailComponent', 'selector': 'common-thumbnail'},{'name': 'ToggleComponent', 'selector': 'common-toggle'},{'name': 'WizardProgressBarComponent', 'selector': 'common-wizard-progress-bar'}];
     var DIRECTIVES = [{'name': 'DateFieldFormatDirective', 'selector': '[commonDateFieldFormat]'},{'name': 'DayValidationDirective', 'selector': '[commonDayValidation]'},{'name': 'YearValidateDirective', 'selector': '[commonYearValidate]'}];
     var ACTUAL_COMPONENT = {'name': 'CoreBreadcrumbComponent'};
 </script>

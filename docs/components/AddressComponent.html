@@ -1,0 +1,2800 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>moh-common-lib</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">moh-common-lib</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>AddressComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#readme" role="tab" id="readme-tab" data-toggle="tab" data-link="readme">README</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>projects/common/lib/components/address/address.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Extends</h3>
+    </p>
+    <p class="comment">
+                <code><a href="../classes/Base.html" target="_self" >Base</a></code>
+    </p>
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+                    <code><a href="https://angular.io/api/core/OnChanges" target="_blank" >OnChanges</a></code>
+                    <code><a href="https://angular.io/api/forms/ControlValueAccessor" target="_blank" >ControlValueAccessor</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">providers</td>
+                <td class="col-md-9">
+                                <code><a href="../classes/Address.html" target="_self" >{
+    provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() &#x3D;&gt; AddressComponent), multi: true
+}</a></code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>common-address</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./address.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./address.component.html</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">viewProviders</td>
+                <td class="col-md-9">
+                    <code>
+                                <code><a href="../classes/Container.html" target="_self" >{ provide: ControlContainer, useExisting: forwardRef(() &#x3D;&gt; NgForm) }</a></code>
+                    </code>
+                </td>
+            </tr>
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#CITY_MAXLEN">CITY_MAXLEN</a>
+                            </li>
+                            <li>
+                                <a href="#cityRef">cityRef</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#onModelChange">onModelChange</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#onTouch">onTouch</a>
+                            </li>
+                            <li>
+                                <a href="#postalRef">postalRef</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#PROV_MAXLEN">PROV_MAXLEN</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#provList">provList</a>
+                            </li>
+                            <li>
+                                <a href="#provRef">provRef</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#search">search</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#searchText$">searchText$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#STREET_RURAL_MAXLEN">STREET_RURAL_MAXLEN</a>
+                            </li>
+                            <li>
+                                <a href="#streetRef">streetRef</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#typeaheadList$">typeaheadList$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#objectId">objectId</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#isCanada">isCanada</a>
+                            </li>
+                            <li>
+                                <a href="#isCanadaUSA">isCanadaUSA</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnChanges">ngOnChanges</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onError">onError</a>
+                            </li>
+                            <li>
+                                <a href="#onKeyUp">onKeyUp</a>
+                            </li>
+                            <li>
+                                <a href="#onSelect">onSelect</a>
+                            </li>
+                            <li>
+                                <a href="#registerOnChange">registerOnChange</a>
+                            </li>
+                            <li>
+                                <a href="#registerOnTouched">registerOnTouched</a>
+                            </li>
+                            <li>
+                                <a href="#setCity">setCity</a>
+                            </li>
+                            <li>
+                                <a href="#setCountry">setCountry</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#setDefaultCountryAsOption">setDefaultCountryAsOption</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#setDefaultProvinceAsOption">setDefaultProvinceAsOption</a>
+                            </li>
+                            <li>
+                                <a href="#setProvince">setProvince</a>
+                            </li>
+                            <li>
+                                <a href="#setStreetAddress">setStreetAddress</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#updateProvList">updateProvList</a>
+                            </li>
+                            <li>
+                                <a href="#useGeoCoder">useGeoCoder</a>
+                            </li>
+                            <li>
+                                <a href="#writeValue">writeValue</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#address">address</a>
+                            </li>
+                            <li>
+                                <a href="#countryList">countryList</a>
+                            </li>
+                            <li>
+                                <a href="#defaultCountry">defaultCountry</a>
+                            </li>
+                            <li>
+                                <a href="#defaultProvince">defaultProvince</a>
+                            </li>
+                            <li>
+                                <a href="#disabled">disabled</a>
+                            </li>
+                            <li>
+                                <a href="#isRequired">isRequired</a>
+                            </li>
+                            <li>
+                                <a href="#provinceList">provinceList</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#addressChange">addressChange</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#postalCode">postalCode</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(geocoderService: <a href="../injectables/GeocoderService.html">GeocoderService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">projects/common/lib/components/address/address.component.ts:92</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>geocoderService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/GeocoderService.html" target="_self" >GeocoderService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="address"></a>
+                        <b>address</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../classes/Address.html" target="_self" >Address</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Address()</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">projects/common/lib/components/address/address.component.ts:71</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="countryList"></a>
+                        <b>countryList</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/CountryList.html" target="_self" >CountryList[]</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="72" class="link-to-prism">projects/common/lib/components/address/address.component.ts:72</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="defaultCountry"></a>
+                        <b>defaultCountry</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">projects/common/lib/components/address/address.component.ts:73</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="defaultProvince"></a>
+                        <b>defaultProvince</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">projects/common/lib/components/address/address.component.ts:75</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="disabled"></a>
+                        <b>disabled</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">projects/common/lib/components/address/address.component.ts:69</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="isRequired"></a>
+                        <b>isRequired</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">projects/common/lib/components/address/address.component.ts:70</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="provinceList"></a>
+                        <b>provinceList</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/ProvinceList.html" target="_self" >ProvinceList[]</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">projects/common/lib/components/address/address.component.ts:74</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+    <section>
+    <h3 id="outputs">Outputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="addressChange"></a>
+                        <b>addressChange</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../classes/Address.html" target="_self" >EventEmitter&lt;Address&gt;</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">projects/common/lib/components/address/address.component.ts:77</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isCanada"></a>
+                    <span class="name">
+                        <b>
+                            isCanada
+                        </b>
+                        <a href="#isCanada"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>isCanada()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="161"
+                            class="link-to-prism">projects/common/lib/components/address/address.component.ts:161</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isCanadaUSA"></a>
+                    <span class="name">
+                        <b>
+                            isCanadaUSA
+                        </b>
+                        <a href="#isCanadaUSA"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>isCanadaUSA()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="165"
+                            class="link-to-prism">projects/common/lib/components/address/address.component.ts:165</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnChanges"></a>
+                    <span class="name">
+                        <b>
+                            ngOnChanges
+                        </b>
+                        <a href="#ngOnChanges"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnChanges(changes)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="169"
+                            class="link-to-prism">projects/common/lib/components/address/address.component.ts:169</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>changes</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <b>
+                            ngOnInit
+                        </b>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="98"
+                            class="link-to-prism">projects/common/lib/components/address/address.component.ts:98</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onError"></a>
+                    <span class="name">
+                        <b>
+                            onError
+                        </b>
+                        <a href="#onError"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onError(err: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="256"
+                            class="link-to-prism">projects/common/lib/components/address/address.component.ts:256</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>err</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/GeoAddressResult.html" target="_self" >Observable&lt;GeoAddressResult[]&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onKeyUp"></a>
+                    <span class="name">
+                        <b>
+                            onKeyUp
+                        </b>
+                        <a href="#onKeyUp"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onKeyUp(event: KeyboardEvent)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="241"
+                            class="link-to-prism">projects/common/lib/components/address/address.component.ts:241</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>event</td>
+                                    <td>
+                                            <code>KeyboardEvent</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onSelect"></a>
+                    <span class="name">
+                        <b>
+                            onSelect
+                        </b>
+                        <a href="#onSelect"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onSelect(event: TypeaheadMatch)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="262"
+                            class="link-to-prism">projects/common/lib/components/address/address.component.ts:262</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>event</td>
+                                    <td>
+                                            <code>TypeaheadMatch</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="registerOnChange"></a>
+                    <span class="name">
+                        <b>
+                            registerOnChange
+                        </b>
+                        <a href="#registerOnChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>registerOnChange(fn: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="278"
+                            class="link-to-prism">projects/common/lib/components/address/address.component.ts:278</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>fn</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="registerOnTouched"></a>
+                    <span class="name">
+                        <b>
+                            registerOnTouched
+                        </b>
+                        <a href="#registerOnTouched"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>registerOnTouched(fn: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="281"
+                            class="link-to-prism">projects/common/lib/components/address/address.component.ts:281</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>fn</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setCity"></a>
+                    <span class="name">
+                        <b>
+                            setCity
+                        </b>
+                        <a href="#setCity"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setCity(value: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="139"
+                            class="link-to-prism">projects/common/lib/components/address/address.component.ts:139</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>value</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setCountry"></a>
+                    <span class="name">
+                        <b>
+                            setCountry
+                        </b>
+                        <a href="#setCountry"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setCountry(value: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="116"
+                            class="link-to-prism">projects/common/lib/components/address/address.component.ts:116</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Set country province blank</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>value</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setDefaultCountryAsOption"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            setDefaultCountryAsOption
+                        </b>
+                        <a href="#setDefaultCountryAsOption"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>setDefaultCountryAsOption()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="221"
+                            class="link-to-prism">projects/common/lib/components/address/address.component.ts:221</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Set country to default
+Search uses country code or country name to find item is list.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setDefaultProvinceAsOption"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            setDefaultProvinceAsOption
+                        </b>
+                        <a href="#setDefaultProvinceAsOption"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>setDefaultProvinceAsOption(country: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="208"
+                            class="link-to-prism">projects/common/lib/components/address/address.component.ts:208</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Sets the default province option value</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>country</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setProvince"></a>
+                    <span class="name">
+                        <b>
+                            setProvince
+                        </b>
+                        <a href="#setProvince"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setProvince(value: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="125"
+                            class="link-to-prism">projects/common/lib/components/address/address.component.ts:125</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>value</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setStreetAddress"></a>
+                    <span class="name">
+                        <b>
+                            setStreetAddress
+                        </b>
+                        <a href="#setStreetAddress"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setStreetAddress(value: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="132"
+                            class="link-to-prism">projects/common/lib/components/address/address.component.ts:132</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>value</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateProvList"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            updateProvList
+                        </b>
+                        <a href="#updateProvList"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>updateProvList()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="194"
+                            class="link-to-prism">projects/common/lib/components/address/address.component.ts:194</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Updates the provList variable. Values must be stored in a variable and not
+accessed via function invocation for performance.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="useGeoCoder"></a>
+                    <span class="name">
+                        <b>
+                            useGeoCoder
+                        </b>
+                        <a href="#useGeoCoder"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>useGeoCoder()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="237"
+                            class="link-to-prism">projects/common/lib/components/address/address.component.ts:237</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>GeoCoder only is applicable when address is BC, Canada.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="writeValue"></a>
+                    <span class="name">
+                        <b>
+                            writeValue
+                        </b>
+                        <a href="#writeValue"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>writeValue(addr: <a href="../classes/Address.html">Address</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="275"
+                            class="link-to-prism">projects/common/lib/components/address/address.component.ts:275</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>addr</td>
+                                    <td>
+                                                <code><a href="../classes/Address.html" target="_self" >Address</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="CITY_MAXLEN"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            CITY_MAXLEN</b>
+                            <a href="#CITY_MAXLEN"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>&#x27;100&#x27;</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">projects/common/lib/components/address/address.component.ts:57</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="cityRef"></a>
+                        <span class="name">
+                            <b>
+                            cityRef</b>
+                            <a href="#cityRef"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://angular.io/api/core/ElementRef" target="_blank" >ElementRef</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ViewChild(&#x27;cityRef&#x27;)<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">projects/common/lib/components/address/address.component.ts:66</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="onModelChange"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            onModelChange</b>
+                            <a href="#onModelChange"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">projects/common/lib/components/address/address.component.ts:79</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="onTouch"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            onTouch</b>
+                            <a href="#onTouch"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">projects/common/lib/components/address/address.component.ts:80</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="postalRef"></a>
+                        <span class="name">
+                            <b>
+                            postalRef</b>
+                            <a href="#postalRef"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://angular.io/api/core/ElementRef" target="_blank" >ElementRef</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ViewChild(&#x27;postalRef&#x27;)<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">projects/common/lib/components/address/address.component.ts:67</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="PROV_MAXLEN"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            PROV_MAXLEN</b>
+                            <a href="#PROV_MAXLEN"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>&#x27;250&#x27;</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">projects/common/lib/components/address/address.component.ts:58</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="provList"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            provList</b>
+                            <a href="#provList"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../interfaces/ProvinceList.html" target="_self" >ProvinceList[]</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">projects/common/lib/components/address/address.component.ts:92</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="provRef"></a>
+                        <span class="name">
+                            <b>
+                            provRef</b>
+                            <a href="#provRef"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://angular.io/api/core/ElementRef" target="_blank" >ElementRef</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ViewChild(&#x27;provRef&#x27;)<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">projects/common/lib/components/address/address.component.ts:64</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="search"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            search</b>
+                            <a href="#search"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="83" class="link-to-prism">projects/common/lib/components/address/address.component.ts:83</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Search string to store result from GeoCoder request </p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="searchText$"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            searchText$</b>
+                            <a href="#searchText$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>new Subject&lt;string&gt;()</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="90" class="link-to-prism">projects/common/lib/components/address/address.component.ts:90</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The subject that triggers on user text input and gets typeaheadList$ to update.  </p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="STREET_RURAL_MAXLEN"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            STREET_RURAL_MAXLEN</b>
+                            <a href="#STREET_RURAL_MAXLEN"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>&#x27;1000&#x27;</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">projects/common/lib/components/address/address.component.ts:59</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="streetRef"></a>
+                        <span class="name">
+                            <b>
+                            streetRef</b>
+                            <a href="#streetRef"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://angular.io/api/core/ElementRef" target="_blank" >ElementRef</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ViewChild(&#x27;streetRef&#x27;)<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">projects/common/lib/components/address/address.component.ts:65</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="typeaheadList$"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            typeaheadList$</b>
+                            <a href="#typeaheadList$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../interfaces/GeoAddressResult.html" target="_self" >Observable&lt;GeoAddressResult[]&gt;</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">projects/common/lib/components/address/address.component.ts:88</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The list of results, from API, that is passed to the typeahead list
+Result from GeoCoderService address lookup</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="objectId"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            objectId</b>
+                            <a href="#objectId"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>UUID.UUID().toString()</code>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Inherited from         <code><a href="../classes/Base.html" target="_self" >Base</a></code>
+</div>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in         <code><a href="../classes/Base.html#source" target="_self" >Base:11</a></code>
+</div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>An identifier for parents to keep track of components </p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="postalCode"></a>
+                        <span class="name"><b>postalCode</b><a href="#postalCode"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>postalCode()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="146" class="link-to-prism">projects/common/lib/components/address/address.component.ts:146</a></div>
+                                </td>
+                            </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>set</b><code>postalCode(value: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="154" class="link-to-prism">projects/common/lib/components/address/address.component.ts:154</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Sets string after converted upper case</p>
+</div>
+
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                        <td>Type</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                            <td>value</td>
+                                                    
+                                                            <td>
+                                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                            </td>
+                                                    
+                                                        <td>
+                                                                No
+                                                        </td>
+                                                        
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+</section>
+</div>
+
+    <div class="tab-pane fade " id="c-readme">
+        <p><h2 id="design-guidelines">Design Guidelines</h2>
+<p>todo</p>
+</p>
+    </div>
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  forwardRef,
+  ViewChild,
+  ElementRef,
+  OnChanges
+} from &#x27;@angular/core&#x27;;
+import { ControlContainer, NgForm, ControlValueAccessor, NG_VALUE_ACCESSOR } from &#x27;@angular/forms&#x27;;
+import { Address } from &#x27;../../../models/src/address.model&#x27;;
+import { Observable, Subject, of } from &#x27;rxjs&#x27;;
+import {
+  debounceTime,
+  distinctUntilChanged,
+  switchMap,
+  catchError
+} from &#x27;rxjs/operators&#x27;;
+import { TypeaheadMatch } from &#x27;ngx-bootstrap&#x27;;
+import { Base } from &#x27;../../../models/src/base&#x27;;
+import { GeocoderService, GeoAddressResult } from &#x27;../../../services/src/geocoder.service&#x27;;
+
+/** Interface for countries */
+export interface CountryList {
+  countryCode: string;
+  description: string;
+}
+
+export interface ProvinceList {
+  country: string;
+  provinceCode: string;
+  description: string;
+}
+
+@Component({
+  selector: &#x27;common-address&#x27;,
+  templateUrl: &#x27;./address.component.html&#x27;,
+  styleUrls: [&#x27;./address.component.scss&#x27;],
+  /* Re-use the same ngForm that it&#x27;s parent is using. The component will show
+   * up in its parents &#x60;this.form&#x60;, and will auto-update &#x60;this.form.valid&#x60;
+   */
+  viewProviders: [
+    { provide: ControlContainer, useExisting: forwardRef(() &#x3D;&gt; NgForm) }
+  ],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() &#x3D;&gt; AddressComponent),
+      multi: true
+    }
+  ],
+})
+export class AddressComponent extends Base implements OnInit, OnChanges, ControlValueAccessor {
+    // Field lengths
+    public CITY_MAXLEN &#x3D; &#x27;100&#x27;;
+    public PROV_MAXLEN &#x3D; &#x27;250&#x27;;
+    public STREET_RURAL_MAXLEN &#x3D; &#x27;1000&#x27;;
+
+
+  // TODO: Create Unit tests for this component
+  // Exists for unit testing to validate errors set
+  @ViewChild(&#x27;provRef&#x27;) provRef: ElementRef;
+  @ViewChild(&#x27;streetRef&#x27;) streetRef: ElementRef;
+  @ViewChild(&#x27;cityRef&#x27;) cityRef: ElementRef;
+  @ViewChild(&#x27;postalRef&#x27;) postalRef: ElementRef;
+
+  @Input() disabled: boolean &#x3D; false;
+  @Input() isRequired: boolean &#x3D; false;
+  @Input() address: Address &#x3D; new Address();
+  @Input() countryList: CountryList[];
+  @Input() defaultCountry: string;
+  @Input() provinceList: ProvinceList[];
+  @Input() defaultProvince: string;
+
+  @Output() addressChange: EventEmitter&lt;Address&gt; &#x3D; new EventEmitter&lt;Address&gt;();
+
+  public onModelChange: any;
+  public onTouch: any;
+
+  /** Search string to store result from GeoCoder request */
+  public search: string;
+  /**
+   * The list of results, from API, that is passed to the typeahead list
+   * Result from GeoCoderService address lookup
+   */
+  public typeaheadList$: Observable&lt;GeoAddressResult[]&gt;;
+  /** The subject that triggers on user text input and gets typeaheadList$ to update.  */
+  private searchText$ &#x3D; new Subject&lt;string&gt;();
+
+  public provList: ProvinceList[];
+
+  constructor(private geocoderService: GeocoderService) {
+    super();
+  }
+
+  ngOnInit() {
+    // Set up for using GeoCoder
+    this.typeaheadList$ &#x3D; this.searchText$.pipe(
+      debounceTime(500),
+      distinctUntilChanged(),
+      // Trigger the network request, get results
+      switchMap(searchPhrase &#x3D;&gt; {
+        return this.geocoderService.lookup(searchPhrase);
+      }),
+      // tap(log &#x3D;&gt; console.log(&#x27;taplog&#x27;, log)),
+      catchError(err &#x3D;&gt; this.onError(err))
+    );
+  }
+
+  /**
+   * Set country province blank
+   * @param value
+   */
+  setCountry(value: string) {
+    this.address.province &#x3D; this.setDefaultProvinceAsOption(value);
+    this.address.country &#x3D; value;
+    this.updateProvList();
+    this.addressChange.emit(this.address);
+    this.onModelChange(this.address);
+    this.onTouch();
+  }
+
+  setProvince(value: string) {
+    this.address.province &#x3D; value;
+    this.addressChange.emit(this.address);
+    this.onModelChange(this.address);
+    this.onTouch();
+  }
+
+  setStreetAddress(value: string) {
+    this.address.street &#x3D; value;
+    this.addressChange.emit(this.address);
+    this.onModelChange(this.address);
+    this.onTouch();
+  }
+
+  setCity(value: string) {
+    this.address.city &#x3D; value;
+    this.addressChange.emit(this.address);
+    this.onModelChange(this.address);
+    this.onTouch();
+  }
+
+  get postalCode() {
+    return this.address.postal;
+  }
+
+  /**
+   * Sets string after converted upper case
+   * @param text
+   */
+  set postalCode(value: string) {
+    this.address.postal &#x3D; value.toUpperCase();
+    this.addressChange.emit(this.address);
+    this.onModelChange(this.address);
+    this.onTouch();
+  }
+
+  isCanada(): boolean {
+    return this.address &amp;&amp; &#x27;CAN&#x27; &#x3D;&#x3D;&#x3D; this.address.country;
+  }
+
+  isCanadaUSA(): boolean {
+    return (this.address &amp;&amp; &#x27;USA&#x27; &#x3D;&#x3D;&#x3D; this.address.country) || this.isCanada();
+  }
+
+  ngOnChanges(changes) {
+    if (changes[&#x27;countryList&#x27;] &amp;&amp; changes[&#x27;countryList&#x27;].currentValue) {
+
+      if ( !this.address.country ) {
+        // Set defaults
+        this.address.country &#x3D; this.setDefaultCountryAsOption();
+      }
+      // Set defaults
+      this.address.province &#x3D; this.setDefaultProvinceAsOption( this.address.country );
+
+      this.updateProvList();
+    }
+    if (changes[&#x27;provinceList&#x27;] &amp;&amp; changes[&#x27;provinceList&#x27;].currentValue) {
+      if ( !this.address.province ) {
+        // Set defaults
+        this.address.province &#x3D; this.setDefaultProvinceAsOption( this.address.country );
+      }
+      this.updateProvList();
+    }
+  }
+
+  /**
+   * Updates the provList variable. Values must be stored in a variable and not
+   * accessed via function invocation for performance.
+   */
+  private updateProvList() {
+    if (!this.provinceList) { return; } // When data is async and hasn&#x27;t loaded
+    this.provList &#x3D; this.provinceList
+      .map(prov &#x3D;&gt; {
+        if (prov.country &#x3D;&#x3D;&#x3D; this.address.country) {
+          return prov;
+        }
+      })
+      .filter(x &#x3D;&gt; x);
+  }
+
+  /**
+   * Sets the default province option value
+   */
+  private setDefaultProvinceAsOption( country: string ): string {
+    const provObj &#x3D; !this.provinceList ? null : this.provinceList.find(
+      val &#x3D;&gt; (val.provinceCode &#x3D;&#x3D;&#x3D; this.defaultProvince ||
+             val.description &#x3D;&#x3D;&#x3D; this.defaultProvince) &amp;&amp;
+             val.country &#x3D;&#x3D;&#x3D; country
+    );
+    return (provObj ? provObj.provinceCode : null );
+  }
+
+  /**
+   * Set country to default
+   * Search uses country code or country name to find item is list.
+   */
+  private setDefaultCountryAsOption(): string {
+    const countryObj &#x3D; !this.countryList
+    ? null
+    : this.countryList.find(
+        val &#x3D;&gt;
+          val.countryCode &#x3D;&#x3D;&#x3D; this.defaultCountry ||
+          val.description &#x3D;&#x3D;&#x3D; this.defaultCountry
+      );
+    return countryObj ? countryObj.countryCode : null;
+  }
+
+  // GeoCoder
+
+  /**
+   * GeoCoder only is applicable when address is BC, Canada.
+   */
+  useGeoCoder(): boolean {
+    return this.isCanada() &amp;&amp; &#x27;BC&#x27; &#x3D;&#x3D;&#x3D; this.address.province;
+  }
+
+  onKeyUp(event: KeyboardEvent): void {
+    /**
+     * Filter out &#x27;enter&#x27; and other similar keyboard events that can trigger
+     * when user is selecting a typeahead option instead of entering new text.
+     * Without this filter, we do another HTTP request + force disiplay the UI
+     * for now reason
+     */
+    if (event.keyCode &#x3D;&#x3D;&#x3D; 13 || event.keyCode &#x3D;&#x3D;&#x3D; 9) {
+      // enter &amp; tab
+      return;
+    }
+
+    this.searchText$.next(this.search);
+  }
+
+  onError(err: any): Observable&lt;GeoAddressResult[]&gt; {
+    // Empty array simulates no result response, nothing for typeahead to iterate over
+    return of([]);
+  }
+
+  // Only BC addresses therefore no need to copy province into structure.
+  onSelect(event: TypeaheadMatch): void {
+    const data: GeoAddressResult &#x3D; event.item;
+
+    this.search &#x3D; data.street;
+    this.address.street &#x3D; data.street;
+    this.address.city &#x3D; data.city;
+    this.address.province &#x3D; &#x27;BC&#x27;;
+    this.address.country &#x3D; &#x27;CAN&#x27;;
+    this.addressChange.emit(this.address);
+    this.onModelChange(this.address);
+    this.onTouch();
+  }
+
+  writeValue(addr: Address) {
+    this.address &#x3D; addr;
+  }
+  registerOnChange(fn: any): void {
+    this.onModelChange &#x3D; fn;
+  }
+  registerOnTouched(fn: any): void {
+    this.onTouch &#x3D; fn;
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;form-group col-sm-8 p-sm-0&quot;&gt;
+  &lt;label for&#x3D;&quot;country_{{objectId}}&quot;&gt;Country&lt;/label&gt;
+
+  &lt;ng-select [items]&#x3D;&#x27;countryList&#x27;
+             [ngModel]&#x3D;&#x27;address?.country&#x27;
+             (ngModelChange)&#x3D;&#x27;setCountry($event)&#x27;
+             [required]&#x3D;&#x27;isRequired&#x27;
+             [disabled]&#x3D;&#x27;disabled&#x27;
+             name&#x3D;&#x27;country_{{objectId}}&#x27;
+             labelForId&#x3D;&#x27;country_{{objectId}}&#x27;
+             bindValue&#x3D;&#x27;countryCode&#x27;
+             [clearable]&#x3D;&#x27;false&#x27;
+             bindLabel&#x3D;&#x27;description&#x27;&gt;&lt;/ng-select&gt;
+
+&lt;/div&gt;
+
+&lt;div class&#x3D;&quot;form-group col-sm-8 p-sm-0&quot;&gt;
+  &lt;label for&#x3D;&quot;province_{{objectId}}&quot;&gt;Province/State&lt;/label&gt;
+  &lt;div *ngIf&#x3D;&quot;isCanadaUSA(); else NotCanadaUSA&quot;&gt;
+
+    &lt;ng-select #provRef&#x3D;&#x27;ngModel&#x27;
+               name&#x3D;&#x27;province_{{objectId}}&#x27;
+               labelForId&#x3D;&#x27;province_{{objectId}}&#x27;
+               [ngModel]&#x3D;&quot;address?.province&quot;
+               (ngModelChange)&#x3D;&quot;setProvince($event)&quot;
+               [items]&#x3D;&#x27;provList&#x27;
+               [required]&#x3D;&#x27;isRequired&#x27;
+               [disabled]&#x3D;&#x27;disabled&#x27;
+               bindValue&#x3D;&#x27;provinceCode&#x27;
+               placeholder&#x3D;&#x27;Select a state&#x27;
+               [clearable]&#x3D;&#x27;false&#x27;
+               bindLabel&#x3D;&#x27;description&#x27;&gt;&lt;/ng-select&gt;
+
+
+    &lt;!-- Error messages for select --&gt;
+    &lt;div *ngIf&#x3D;&quot;!disabled &amp;&amp; provRef.touched&quot;
+        role&#x3D;&quot;alert&quot;
+        class&#x3D;&quot;error-container&quot;
+        aria-live&#x3D;&quot;assertive&quot;&gt;
+      &lt;div class&#x3D;&quot;text-danger&quot; *ngIf&#x3D;&quot;provRef?.errors?.required&quot;&gt;
+          {{isCanada() ? &#x27;Province&#x27; : &#x27;State&#x27; }} is required.
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class&#x3D;&quot;form-group col-sm-8 p-sm-0&quot;&gt;
+  &lt;label for&#x3D;&quot;street_{{objectId}}&quot;&gt;Full street address or rural route&lt;/label&gt;
+  &lt;div *ngIf&#x3D;&quot;useGeoCoder() &amp;&amp; !disabled; else noGeoCoder;&quot;&gt;
+    &lt;input class&#x3D;&quot;form-control&quot;
+           #streetRef&#x3D;&quot;ngModel&quot;
+           spellcheck&#x3D;&quot;false&quot;
+           type&#x3D;&quot;text&quot;
+           id&#x3D;&quot;street_{{objectId}}&quot;
+           name&#x3D;&quot;street_{{objectId}}&quot;
+           [(ngModel)]&#x3D;&quot;search&quot;
+           (keyup)&#x3D;&#x27;onKeyUp($event)&#x27;
+           [typeahead]&#x3D;&#x27;typeaheadList$&#x27;
+           (typeaheadOnSelect)&#x3D;&quot;onSelect($event)&quot;
+           typeaheadOptionField&#x3D;&#x27;fullAddress&#x27;
+           typeaheadMinLength&#x3D;&#x27;3&#x27;
+           autocomplete&#x3D;&quot;nope&quot;
+           [required]&#x3D;&quot;isRequired&quot;
+           maxlength&#x3D;&quot;{{STREET_RURAL_MAXLEN}}&quot;&gt;
+
+    &lt;!-- Error messages for input --&gt;
+    &lt;div *ngIf&#x3D;&quot;!disabled &amp;&amp; streetRef.touched&quot;
+         role&#x3D;&quot;alert&quot;
+         class&#x3D;&quot;error-container&quot;
+         aria-live&#x3D;&quot;assertive&quot;&gt;
+      &lt;div class&#x3D;&quot;text-danger&quot; *ngIf&#x3D;&quot;streetRef?.errors?.required&quot;&gt;
+        Full street address or rural route is required.
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class&#x3D;&quot;form-group col-sm-8 p-sm-0&quot;&gt;
+  &lt;label for&#x3D;&quot;city_{{objectId}}&quot;&gt;City&lt;/label&gt;
+  &lt;input class&#x3D;&quot;form-control&quot;
+          #cityRef&#x3D;&quot;ngModel&quot;
+          spellcheck&#x3D;&quot;false&quot;
+          type&#x3D;&quot;text&quot;
+          id&#x3D;&quot;city_{{objectId}}&quot;
+          name&#x3D;&quot;city_{{objectId}}&quot;
+          [ngModel]&#x3D;&quot;address?.city&quot;
+          (ngModelChange)&#x3D;&quot;setCity($event)&quot;
+          [required]&#x3D;&quot;isRequired&quot;
+          [disabled]&#x3D;&quot;disabled&quot;
+          maxlength&#x3D;&quot;{{CITY_MAXLEN}}&quot;/&gt;
+
+   &lt;!-- Error messages for input --&gt;
+  &lt;div *ngIf&#x3D;&quot;!disabled &amp;&amp; cityRef.touched&quot;
+       role&#x3D;&quot;alert&quot;
+       class&#x3D;&quot;error-container&quot;
+       aria-live&#x3D;&quot;assertive&quot;&gt;
+    &lt;div class&#x3D;&quot;text-danger&quot; *ngIf&#x3D;&quot;cityRef?.errors?.required&quot;&gt;
+      City is required.
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class&#x3D;&quot;form-group col-sm-4 p-sm-0&quot;&gt;
+  &lt;common-postal-code [label]&#x3D;&quot;&#x27;Postal Code&#x27;&quot;
+                      [displayMask]&#x3D;&quot;isCanada()&quot;
+                      [disabled]&#x3D;&quot;disabled&quot;
+                      [(value)]&#x3D;&quot;postalCode&quot;&gt;&lt;/common-postal-code&gt;
+&lt;/div&gt;
+
+&lt;ng-template #NotCanadaUSA&gt;
+  &lt;input #provRef&#x3D;&quot;ngModel&quot;
+         class&#x3D;&quot;form-control&quot;
+         spellcheck&#x3D;&quot;false&quot;
+         type&#x3D;&quot;text&quot;
+         id&#x3D;&quot;province_{{objectId}}&quot;
+         name&#x3D;&quot;province_{{objectId}}&quot;
+         [ngModel]&#x3D;&quot;address?.province&quot;
+         (ngModelChange)&#x3D;&quot;setProvince($event)&quot;
+         [required]&#x3D;&quot;isRequired&quot;
+         [disabled]&#x3D;&quot;disabled&quot;
+         maxlength&#x3D;&quot;{{PROV_MAXLEN}}&quot;/&gt;
+
+  &lt;!-- Error messages for select --&gt;
+  &lt;div *ngIf&#x3D;&quot;!disabled &amp;&amp; provRef.touched&quot;
+      role&#x3D;&quot;alert&quot;
+      class&#x3D;&quot;error-container&quot;
+      aria-live&#x3D;&quot;assertive&quot;&gt;
+    &lt;div class&#x3D;&quot;text-danger&quot; *ngIf&#x3D;&quot;provRef?.errors?.required&quot;&gt;
+      Province is required.
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/ng-template&gt;
+
+&lt;ng-template #noGeoCoder&gt;
+  &lt;input class&#x3D;&quot;form-control&quot;
+         #streetRef&#x3D;&quot;ngModel&quot;
+         spellcheck&#x3D;&quot;false&quot;
+         type&#x3D;&quot;text&quot;
+         id&#x3D;&quot;street_{{objectId}}&quot;
+         name&#x3D;&quot;street_{{objectId}}&quot;
+         [ngModel]&#x3D;&quot;address?.street&quot;
+         (ngModelChange)&#x3D;&quot;setStreetAddress($event)&quot;
+         [required]&#x3D;&quot;isRequired&quot;
+         [disabled]&#x3D;&quot;disabled&quot;
+         maxlength&#x3D;&quot;{{STREET_RURAL_MAXLEN}}&quot;/&gt;
+
+  &lt;!-- Error messages for input --&gt;
+  &lt;div *ngIf&#x3D;&quot;!disabled &amp;&amp; streetRef.touched&quot;
+       role&#x3D;&quot;alert&quot;
+       class&#x3D;&quot;error-container&quot;
+       aria-live&#x3D;&quot;assertive&quot;&gt;
+    &lt;div class&#x3D;&quot;text-danger&quot; *ngIf&#x3D;&quot;streetRef?.errors?.required&quot;&gt;
+      Full street address or rural route is required.
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/ng-template&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./address.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss"></code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="form-group col-sm-8 p-sm-0">  <label for="country_{{objectId}}">Country</label>  <ng-select [items]=\'countryList\'             [ngModel]=\'address?.country\'             (ngModelChange)=\'setCountry($event)\'             [required]=\'isRequired\'             [disabled]=\'disabled\'             name=\'country_{{objectId}}\'             labelForId=\'country_{{objectId}}\'             bindValue=\'countryCode\'             [clearable]=\'false\'             bindLabel=\'description\'></ng-select></div><div class="form-group col-sm-8 p-sm-0">  <label for="province_{{objectId}}">Province/State</label>  <div *ngIf="isCanadaUSA(); else NotCanadaUSA">    <ng-select #provRef=\'ngModel\'               name=\'province_{{objectId}}\'               labelForId=\'province_{{objectId}}\'               [ngModel]="address?.province"               (ngModelChange)="setProvince($event)"               [items]=\'provList\'               [required]=\'isRequired\'               [disabled]=\'disabled\'               bindValue=\'provinceCode\'               placeholder=\'Select a state\'               [clearable]=\'false\'               bindLabel=\'description\'></ng-select>    <!-- Error messages for select -->    <div *ngIf="!disabled && provRef.touched"        role="alert"        class="error-container"        aria-live="assertive">      <div class="text-danger" *ngIf="provRef?.errors?.required">          {{isCanada() ? \'Province\' : \'State\' }} is required.      </div>    </div>  </div></div><div class="form-group col-sm-8 p-sm-0">  <label for="street_{{objectId}}">Full street address or rural route</label>  <div *ngIf="useGeoCoder() && !disabled; else noGeoCoder;">    <input class="form-control"           #streetRef="ngModel"           spellcheck="false"           type="text"           id="street_{{objectId}}"           name="street_{{objectId}}"           [(ngModel)]="search"           (keyup)=\'onKeyUp($event)\'           [typeahead]=\'typeaheadList$\'           (typeaheadOnSelect)="onSelect($event)"           typeaheadOptionField=\'fullAddress\'           typeaheadMinLength=\'3\'           autocomplete="nope"           [required]="isRequired"           maxlength="{{STREET_RURAL_MAXLEN}}">    <!-- Error messages for input -->    <div *ngIf="!disabled && streetRef.touched"         role="alert"         class="error-container"         aria-live="assertive">      <div class="text-danger" *ngIf="streetRef?.errors?.required">        Full street address or rural route is required.      </div>    </div>  </div></div><div class="form-group col-sm-8 p-sm-0">  <label for="city_{{objectId}}">City</label>  <input class="form-control"          #cityRef="ngModel"          spellcheck="false"          type="text"          id="city_{{objectId}}"          name="city_{{objectId}}"          [ngModel]="address?.city"          (ngModelChange)="setCity($event)"          [required]="isRequired"          [disabled]="disabled"          maxlength="{{CITY_MAXLEN}}"/>   <!-- Error messages for input -->  <div *ngIf="!disabled && cityRef.touched"       role="alert"       class="error-container"       aria-live="assertive">    <div class="text-danger" *ngIf="cityRef?.errors?.required">      City is required.    </div>  </div></div><div class="form-group col-sm-4 p-sm-0">  <common-postal-code [label]="\'Postal Code\'"                      [displayMask]="isCanada()"                      [disabled]="disabled"                      [(value)]="postalCode"></common-postal-code></div><ng-template #NotCanadaUSA>  <input #provRef="ngModel"         class="form-control"         spellcheck="false"         type="text"         id="province_{{objectId}}"         name="province_{{objectId}}"         [ngModel]="address?.province"         (ngModelChange)="setProvince($event)"         [required]="isRequired"         [disabled]="disabled"         maxlength="{{PROV_MAXLEN}}"/>  <!-- Error messages for select -->  <div *ngIf="!disabled && provRef.touched"      role="alert"      class="error-container"      aria-live="assertive">    <div class="text-danger" *ngIf="provRef?.errors?.required">      Province is required.    </div>  </div></ng-template><ng-template #noGeoCoder>  <input class="form-control"         #streetRef="ngModel"         spellcheck="false"         type="text"         id="street_{{objectId}}"         name="street_{{objectId}}"         [ngModel]="address?.street"         (ngModelChange)="setStreetAddress($event)"         [required]="isRequired"         [disabled]="disabled"         maxlength="{{STREET_RURAL_MAXLEN}}"/>  <!-- Error messages for input -->  <div *ngIf="!disabled && streetRef.touched"       role="alert"       class="error-container"       aria-live="assertive">    <div class="text-danger" *ngIf="streetRef?.errors?.required">      Full street address or rural route is required.    </div>  </div></ng-template></div>'
+    var COMPONENTS = [{'name': 'AddressComponent', 'selector': 'common-address'},{'name': 'CaptchaComponent', 'selector': 'common-captcha'},{'name': 'CoreBreadcrumbComponent', 'selector': 'common-core-breadcrumb'},{'name': 'DateComponent', 'selector': 'common-date'},{'name': 'DatepickerComponent', 'selector': 'common-datepicker'},{'name': 'DropdownComponent', 'selector': 'common-dropdown'},{'name': 'FileUploaderComponent', 'selector': 'common-file-uploader'},{'name': 'FormActionBarComponent', 'selector': 'common-form-action-bar'},{'name': 'FormSubmitBarComponent', 'selector': 'common-form-submit-bar'},{'name': 'PageFrameworkComponent', 'selector': 'common-page-framework'},{'name': 'PageSectionComponent', 'selector': 'common-page-section'},{'name': 'PasswordComponent', 'selector': 'common-password'},{'name': 'PostalCodeComponent', 'selector': 'common-postal-code'},{'name': 'ThumbnailComponent', 'selector': 'common-thumbnail'},{'name': 'ToggleComponent', 'selector': 'common-toggle'},{'name': 'WizardProgressBarComponent', 'selector': 'common-wizard-progress-bar'}];
+    var DIRECTIVES = [{'name': 'DateFieldFormatDirective', 'selector': '[commonDateFieldFormat]'},{'name': 'DayValidationDirective', 'selector': '[commonDayValidation]'},{'name': 'YearValidateDirective', 'selector': '[commonYearValidate]'}];
+    var ACTUAL_COMPONENT = {'name': 'AddressComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'AddressComponent.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

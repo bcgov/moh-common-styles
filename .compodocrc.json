@@ -6,6 +6,7 @@
     "output": "docs",
     "includes": "./additional-doc/",
     "toggleMenuItems": [
-        "components"
+        "components",
+        "modules"
     ]
 }
