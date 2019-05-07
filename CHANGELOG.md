@@ -1,16 +1,22 @@
-# [Unreleased](https://github.com/bcgov/moh-common-styles/compare/v0.0.30...95f2a31) "moh-common-lib" (2019-05-07)
+# Unreleased "moh-common-lib" (2019-05-07)
+
+
+
+## [0.0.31](https://github.com/bcgov/moh-common-styles/compare/v0.0.30...v0.0.31) "moh-common-lib" (2019-05-07)
 
 
 ### Bug Fixes
 
 * **AddressComponent:** Include Typeahead module necessary to compile. ([7d2e7cd](https://github.com/bcgov/moh-common-styles/commit/7d2e7cd))
+* **CaptchaComponent:** Add `autocomplete="false"` to CAPTCHA ([18d69c6](https://github.com/bcgov/moh-common-styles/commit/18d69c6))
 
 
 ### Features
 
 * **AddressComponent:** Create AddressComponent copied from prime-web. ([238c01d](https://github.com/bcgov/moh-common-styles/commit/238c01d))
 * **AddressComponent:** Implement NG_VALUE_ACCESSOR for reactive forms. ([8d79d30](https://github.com/bcgov/moh-common-styles/commit/8d79d30))
-* **E2E:** Create AbstractTestPage in moh-common-lib/e2e ([95f2a31](https://github.com/bcgov/moh-common-styles/commit/95f2a31))
+* **AddressComponent:** Split AddressComponent into City/Country/Province Components ([3a98fb0](https://github.com/bcgov/moh-common-styles/commit/3a98fb0))
+* **E2E:** Create AbstractTestPage in moh-common-lib/e2e ([c347c39](https://github.com/bcgov/moh-common-styles/commit/c347c39))
 
 
 
