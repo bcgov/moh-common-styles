@@ -1,7 +1,8 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef, ControlValueAccessor } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef, forwardRef } from '@angular/core';
+import { ControlContainer, ControlValueAccessor, NgForm, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 /**
- * ButtonGroupComponent is a Radio component. It is radio and shows YES/NO option as a button group
+ * ButtonGroupComponent is a radio components which shows YES/NO option as a button group
  * 
  *
  *
@@ -19,7 +20,13 @@ import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef, 
 @Component({
   selector: 'common-button-group',
   templateUrl: './button-group.component.html',
-  styleUrls: ['./button-group.component.scss']
+  styleUrls: ['./button-group.component.scss'],
+  viewProviders: [
+    { provide: ControlContainer, useExisting: forwardRef(() => NgForm ) }
+  ],
+  providers: [
+    { provide: NG_VALUE_ACCESSOR, multi: true, useExisting: forwardRef(() => ButtonGroupComponent )}
+  ]
 })
 export class ButtonGroupComponent implements OnInit, ControlValueAccessor {
 

@@ -28,10 +28,10 @@ describe('ButtonGroupComponent', () => {
   });
 
   it ('Input label is displayed', () => {
-    component.label = 'Default Checkbox';
+    component.label = 'Select any Value';
     fixture.detectChanges();
     fixture.whenStable().then(() => {
-      expect(el.querySelector('label').textContent).toEqual('Default Checkbox');
+      expect(el.querySelector('label').textContent).toEqual('Select any Value');
     });
   });
 

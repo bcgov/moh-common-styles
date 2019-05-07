@@ -2,7 +2,7 @@
   <p id="btn" class="control-label">{{label}}</p>
   <div class="btn-group" role="group">
     <button #buttonGroup *ngFor='let answer of [{"value": true, "label": "Yes"}, {"value": false, "label": "No"}]'
-      [class.btn-radio]="data === answer.value" (click)="dataChange.emit(answer.value)" 
+      [class.btn-radio]="data === answer.value" (click)="setButtonGrpVal(answer.value)" 
       type="button" class="btn btn-default control-label"> {{answer.label}} 
     </button>
   </div>
