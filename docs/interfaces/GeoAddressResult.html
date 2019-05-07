@@ -285,15 +285,9 @@ export class GeocoderService extends AbstractHttpService {
     private BASE_URL &#x3D; &#x27;https://geocoder.api.gov.bc.ca&#x27;;
     private ADDRESS_URL &#x3D; &#x60;${this.BASE_URL}/addresses.json?&#x60;;
 
-
-    /** Defaults for service */
-    public defaultCountry: string &#x3D; &#x27;Canada&#x27;;
-    public defaultProv: string &#x3D; &#x27;British Columbia&#x27;;
-
     constructor(protected http: HttpClient) {
         super(http);
     }
-
 
     // https://geocoder.api.gov.bc.ca/addresses.json?minScore&#x3D;50&amp;maxResults&#x3D;5&amp;echo&#x3D;false&amp;brief&#x3D;true&amp;autoComplete&#x3D;true&amp;addressString&#x3D;784+Hock
     lookup(address: string): Observable&lt;GeoAddressResult[]&gt; {
@@ -325,12 +319,15 @@ export class GeocoderService extends AbstractHttpService {
             // stable than looking for commas, etc.
             const cityIndex &#x3D; props.fullAddress.indexOf(&#x60;, ${city}&#x60;);
             const street &#x3D; props.fullAddress.slice(0, cityIndex);
+            const province &#x3D; props.provinceCode;
+            const country &#x3D; &#x27;CAN&#x27;; // Default to Canada
+
             return {
-                fullAddress: props.fullAddress,
-                city,
-                street,
-                country: this.defaultCountry, // Default to Canada
-                province: this.defaultProv    // Default to BC
+              fullAddress: props.fullAddress,
+              city,
+              street,
+              province,
+              country
             };
         });
     }

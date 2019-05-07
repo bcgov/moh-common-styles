@@ -128,20 +128,28 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/SharedCoreModule.html" data-type="entity-link">SharedCoreModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-SharedCoreModule-ca5bb547027c48f4079795c52f45240e"' : 'data-target="#xs-components-links-module-SharedCoreModule-ca5bb547027c48f4079795c52f45240e"' }>
+                                            'data-target="#components-links-module-SharedCoreModule-03039342cf2563fcf81e8760f4076060"' : 'data-target="#xs-components-links-module-SharedCoreModule-03039342cf2563fcf81e8760f4076060"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SharedCoreModule-ca5bb547027c48f4079795c52f45240e"' :
-                                            'id="xs-components-links-module-SharedCoreModule-ca5bb547027c48f4079795c52f45240e"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SharedCoreModule-03039342cf2563fcf81e8760f4076060"' :
+                                            'id="xs-components-links-module-SharedCoreModule-03039342cf2563fcf81e8760f4076060"' }>
                                             <li class="link">
                                                 <a href="components/AddressComponent.html"
                                                     data-type="entity-link" data-context="sub-entity" data-context-id="modules">AddressComponent</a>
                                             </li>
                                             <li class="link">
+                                                <a href="components/CityComponent.html"
+                                                    data-type="entity-link" data-context="sub-entity" data-context-id="modules">CityComponent</a>
+                                            </li>
+                                            <li class="link">
                                                 <a href="components/CoreBreadcrumbComponent.html"
                                                     data-type="entity-link" data-context="sub-entity" data-context-id="modules">CoreBreadcrumbComponent</a>
+                                            </li>
+                                            <li class="link">
+                                                <a href="components/CountryComponent.html"
+                                                    data-type="entity-link" data-context="sub-entity" data-context-id="modules">CountryComponent</a>
                                             </li>
                                             <li class="link">
                                                 <a href="components/DateComponent.html"
@@ -184,6 +192,14 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                                     data-type="entity-link" data-context="sub-entity" data-context-id="modules">PostalCodeComponent</a>
                                             </li>
                                             <li class="link">
+                                                <a href="components/ProvinceComponent.html"
+                                                    data-type="entity-link" data-context="sub-entity" data-context-id="modules">ProvinceComponent</a>
+                                            </li>
+                                            <li class="link">
+                                                <a href="components/StreetComponent.html"
+                                                    data-type="entity-link" data-context="sub-entity" data-context-id="modules">StreetComponent</a>
+                                            </li>
+                                            <li class="link">
                                                 <a href="components/ThumbnailComponent.html"
                                                     data-type="entity-link" data-context="sub-entity" data-context-id="modules">ThumbnailComponent</a>
                                             </li>
@@ -199,13 +215,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     </li>
                                 <li class="chapter inner">
                                     <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                        'data-target="#directives-links-module-SharedCoreModule-ca5bb547027c48f4079795c52f45240e"' : 'data-target="#xs-directives-links-module-SharedCoreModule-ca5bb547027c48f4079795c52f45240e"' }>
+                                        'data-target="#directives-links-module-SharedCoreModule-03039342cf2563fcf81e8760f4076060"' : 'data-target="#xs-directives-links-module-SharedCoreModule-03039342cf2563fcf81e8760f4076060"' }>
                                         <span class="icon ion-md-code-working"></span>
                                         <span>Directives</span>
                                         <span class="icon ion-ios-arrow-down"></span>
                                     </div>
-                                    <ul class="links collapse" ${ isNormalMode ? 'id="directives-links-module-SharedCoreModule-ca5bb547027c48f4079795c52f45240e"' :
-                                        'id="xs-directives-links-module-SharedCoreModule-ca5bb547027c48f4079795c52f45240e"' }>
+                                    <ul class="links collapse" ${ isNormalMode ? 'id="directives-links-module-SharedCoreModule-03039342cf2563fcf81e8760f4076060"' :
+                                        'id="xs-directives-links-module-SharedCoreModule-03039342cf2563fcf81e8760f4076060"' }>
                                         <li class="link">
                                             <a href="directives/DateFieldFormatDirective.html"
                                                 data-type="entity-link" data-context="sub-entity" data-context-id="modules">DateFieldFormatDirective</a>
