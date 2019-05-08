@@ -28,6 +28,7 @@ import { CountryComponent } from './components/country/country.component';
 import { ProvinceComponent } from './components/province/province.component';
 import { CityComponent } from './components/city/city.component';
 import { StreetComponent } from './components/street/street.component';
+import { ButtonGroupComponent } from './components/button-group/button-group.component';
 
 const componentList = [
   CoreBreadcrumbComponent,
@@ -51,7 +52,8 @@ const componentList = [
   CountryComponent,
   ProvinceComponent,
   CityComponent,
-  StreetComponent
+  StreetComponent,
+  ButtonGroupComponent
 ];
 @NgModule({
   imports: [
