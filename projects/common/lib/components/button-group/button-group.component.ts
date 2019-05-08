@@ -28,7 +28,7 @@ import { ControlContainer, ControlValueAccessor, NgForm, NG_VALUE_ACCESSOR } fro
     { provide: NG_VALUE_ACCESSOR, multi: true, useExisting: forwardRef(() => ButtonGroupComponent )}
   ]
 })
-export class ButtonGroupComponent implements OnInit, ControlValueAccessor {
+export class ButtonGroupComponent implements ControlValueAccessor {
 
   @Input() data: boolean;
   @Input() required: boolean = true;
@@ -46,11 +46,16 @@ export class ButtonGroupComponent implements OnInit, ControlValueAccessor {
 
   }
 
-  ngOnInit() {
+  
+  setButtonGrpVal(val: any) {
+    this.dataChange.emit(val);
+    this._onChange(val);
+    this._onTouched();
   }
 
   focus() {
     this.buttonGroup.nativeElement.focus();
+    this._onTouched();
   }
 
   registerOnChange(fn: any): void {
