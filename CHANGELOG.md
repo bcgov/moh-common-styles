@@ -1,4 +1,16 @@
-# Unreleased "moh-common-lib" (2019-05-07)
+# [Unreleased](https://github.com/bcgov/moh-common-styles/compare/v0.0.31...9f5a04e) "moh-common-lib" (2019-05-08)
+
+
+### Documentation
+
+* Basic styling to use BC Gov colours and fonts ([7226b37](https://github.com/bcgov/moh-common-styles/commit/7226b37))
+* Create design guidelines markdown file for each component ([9f5a04e](https://github.com/bcgov/moh-common-styles/commit/9f5a04e))
+
+
+### Features
+
+* **ButtonGroupComponent:** Create ButtonGroupComponent with ControlValueAccessor ([22710b7](https://github.com/bcgov/moh-common-styles/commit/22710b7))
+* **Documentation:** Customize tabs in docs, adding "Design Guidelines" ([df678e6](https://github.com/bcgov/moh-common-styles/commit/df678e6))
 
 
 
