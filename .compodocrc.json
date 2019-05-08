@@ -2,13 +2,14 @@
     "$schema": "./node_modules/@compodoc/compodoc/src/config/schema.json",
     "name": "moh-common-lib",
     "hideGenerator": true,
-    "theme": "gitbook",
+    "theme": "stripe",
     "output": "docs",
     "includes": "./additional-doc/",
     "toggleMenuItems": [
         "components",
         "modules"
     ],
+    "extTheme": "./doc-styles/",
     "navTabConfig": [
         {
             "id": "info",
