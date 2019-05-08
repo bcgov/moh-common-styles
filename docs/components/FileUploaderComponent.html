@@ -49,9 +49,6 @@
             <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
         </li>
         <li >
-            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
-        </li>
-        <li >
             <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
         </li>
 </ul>
@@ -3244,94 +3241,6 @@ export class FileUploaderComponent extends Base
 </code></pre>
     </div>
 
-    <div class="tab-pane fade " id="c-styleData">
-                <p class="comment">
-                    <code>./file-uploader.component.scss</code>
-                </p>
-                <pre class="line-numbers"><code class="language-scss">@import &#x27;variables.scss&#x27;;
-
-.color-body {
-  color: $body-color;
-}
-
-.description {
-  font-weight: 400;
-}
-
-.dropzone {
-  border: 2px dashed lightgrey;
-  margin-bottom: 10px;
-  border-radius: 8px;
-  // height: 15%;
-  padding: 2em 4em;
-
-  &amp;.has-error {
-    border-color: $color-danger;
-  }
-
-  .instruction-zone {
-    margin: 10px 5px 5px;
-    text-align: left;
-    input {
-      display: none;
-    }
-    .file-upload-label {
-      color: $body-color;
-    }  
-    .file-upload-label:hover {
-      text-decoration: none;
-      cursor: pointer;
-
-    }
-  }
-
-  .preview-zone {
-    display:flex;
-    flex-wrap: wrap;
-    justify-content: left;
-    align-items: left;
-    
-    .preview-item {
-      position:relative;
-      height: 120px; 
-      text-align: left;
-      margin-left: 6rem;
-      margin-bottom: 1.5rem;
-
-
-      /* Upload Icon CSS*/
-      .icon-upload{
-        opacity: 0.3;
-        margin: 0 auto 15px auto;
-        &amp;:hover {
-          cursor: pointer;
-          opacity: 0.6;
-        }
-      }
-
-      .text-upload{
-        // text-decoration: underline;
-        &amp;:hover{
-          cursor: pointer;
-        }
-      }
-    }
-
-    .error-style {
-      color:red;
-      font-weight: bold;
-    }
-    
-  }
-  /* Hide take photo CSS*/
-  .mobileShow{display:none;}
-  @media only screen
-  and (min-device-width : 320px)
-  and (max-device-width : 480px){ .mobileShow { display: inline;}}
-}
-
-</code></pre>
-    </div>
 
     <div class="tab-pane fade " id="c-tree">
         <div id="tree-container"></div>
@@ -3359,7 +3268,7 @@ export class FileUploaderComponent extends Base
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><div class="dropzone" #dropZone [ngClass]=\'{"has-error": fileControl?.touched && fileControl?.errors?.required}\'>  <div class="instruction-zone d-flex align-items-center flex-wrap flex-sm-nowrap flex-column flex-sm-row">    <i class="fa fa-cloud-upload fa-4x d-inline-block upload-icon" aria-hidden="true" #imagePlaceholderRef tabindex="0"></i>    <input type="file" id="fileUploadBrowse-{{id}}" #browseFileRef ngModel accept="image/*,application/pdf" style="display:none;"            tabindex="0" multiple name=\'fileUploadBrowse-{{id}}\' [required]=\'required && images.length === 0\' />    <label for="fileUploadBrowse-{{id}}" class="file-upload-label d-inline-block ml-3" #selectFileLabel tabindex="0">      <span class=\'h2 color-body\'>Select a file</span>      <span class=\'d-block description\'>{{ instructionText }}</span>    </label>        <!-- TODO - STYLE/ENABLE/TEST THE BELOW FOR MOBILE ONLY! Also need to test on a phone after deploying to OpenShift-->    <!-- <span class="d-block d-sm-none">or</span>    <input type="file" id="fileUploadUseCamera-{{id}}" #captureFileRef accept="image/*,application/pdf" capture="camera"            tabindex="0" multiple />    <span class="fa fa-camera d-block d-sm-none fa-4x" aria-hidden="true"></span>    <label for="fileUploadUseCamera-{{id}}" class="file-upload-label description d-block d-sm-none" tabindex="0">      take a photo    </label> -->      </div>    <div *ngIf="fileControl?.touched" role="alert" class=\'error-container\' aria-live="assertive">    <div class="text-danger" *ngIf="fileControl?.errors?.required">      {{errorMessages.required}}    </div>  </div>  <div class="preview-zone">    <div *ngFor="let mspImage of images" class="preview-item">      <common-thumbnail [imageObject]="mspImage" (deleteImage)="deleteImage($event)">      </common-thumbnail>    </div>  </div>  <!-- The sole purpose of this element is to maintain the drop zone to an         large size to display on screen.      -->  <div class="preview-zone">    <div class="preview-item">    </div>  </div></div><!-- This hidden canvas is used to transform / resize images --><canvas #canvas style="display:none;"></canvas></div>'
-    var COMPONENTS = [{'name': 'AddressComponent', 'selector': 'common-address'},{'name': 'CaptchaComponent', 'selector': 'common-captcha'},{'name': 'CityComponent', 'selector': 'common-city'},{'name': 'CoreBreadcrumbComponent', 'selector': 'common-core-breadcrumb'},{'name': 'CountryComponent', 'selector': 'common-country'},{'name': 'DateComponent', 'selector': 'common-date'},{'name': 'DatepickerComponent', 'selector': 'common-datepicker'},{'name': 'DropdownComponent', 'selector': 'common-dropdown'},{'name': 'FileUploaderComponent', 'selector': 'common-file-uploader'},{'name': 'FormActionBarComponent', 'selector': 'common-form-action-bar'},{'name': 'FormSubmitBarComponent', 'selector': 'common-form-submit-bar'},{'name': 'PageFrameworkComponent', 'selector': 'common-page-framework'},{'name': 'PageSectionComponent', 'selector': 'common-page-section'},{'name': 'PasswordComponent', 'selector': 'common-password'},{'name': 'PostalCodeComponent', 'selector': 'common-postal-code'},{'name': 'ProvinceComponent', 'selector': 'common-province'},{'name': 'StreetComponent', 'selector': 'common-street'},{'name': 'ThumbnailComponent', 'selector': 'common-thumbnail'},{'name': 'ToggleComponent', 'selector': 'common-toggle'},{'name': 'WizardProgressBarComponent', 'selector': 'common-wizard-progress-bar'}];
+    var COMPONENTS = [{'name': 'AddressComponent', 'selector': 'common-address'},{'name': 'ButtonGroupComponent', 'selector': 'common-button-group'},{'name': 'CaptchaComponent', 'selector': 'common-captcha'},{'name': 'CityComponent', 'selector': 'common-city'},{'name': 'CoreBreadcrumbComponent', 'selector': 'common-core-breadcrumb'},{'name': 'CountryComponent', 'selector': 'common-country'},{'name': 'DateComponent', 'selector': 'common-date'},{'name': 'DatepickerComponent', 'selector': 'common-datepicker'},{'name': 'DropdownComponent', 'selector': 'common-dropdown'},{'name': 'FileUploaderComponent', 'selector': 'common-file-uploader'},{'name': 'FormActionBarComponent', 'selector': 'common-form-action-bar'},{'name': 'FormSubmitBarComponent', 'selector': 'common-form-submit-bar'},{'name': 'PageFrameworkComponent', 'selector': 'common-page-framework'},{'name': 'PageSectionComponent', 'selector': 'common-page-section'},{'name': 'PasswordComponent', 'selector': 'common-password'},{'name': 'PostalCodeComponent', 'selector': 'common-postal-code'},{'name': 'ProvinceComponent', 'selector': 'common-province'},{'name': 'StreetComponent', 'selector': 'common-street'},{'name': 'ThumbnailComponent', 'selector': 'common-thumbnail'},{'name': 'ToggleComponent', 'selector': 'common-toggle'},{'name': 'WizardProgressBarComponent', 'selector': 'common-wizard-progress-bar'}];
     var DIRECTIVES = [{'name': 'DateFieldFormatDirective', 'selector': '[commonDateFieldFormat]'},{'name': 'DayValidationDirective', 'selector': '[commonDayValidation]'},{'name': 'YearValidateDirective', 'selector': '[commonYearValidate]'}];
     var ACTUAL_COMPONENT = {'name': 'FileUploaderComponent'};
 </script>

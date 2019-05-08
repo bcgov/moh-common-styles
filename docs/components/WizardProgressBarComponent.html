@@ -49,9 +49,6 @@
             <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
         </li>
         <li >
-            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
-        </li>
-        <li >
             <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
         </li>
 </ul>
@@ -793,75 +790,6 @@ export class WizardProgressBarComponent implements OnInit, OnDestroy {
 </code></pre>
     </div>
 
-    <div class="tab-pane fade " id="c-styleData">
-                <p class="comment">
-                    <code>./wizard-progress-bar.component.scss</code>
-                </p>
-                <pre class="line-numbers"><code class="language-scss">@import &#x27;variables.scss&#x27;;
-
-:host {
-  flex: 1;
-
-  //Styling to handle .horizontal-overflow (in core-breadcrumb.component.scss)
-  padding: 0 2em;
-  min-height: 2em;
-  min-width: 650px;
-}
-
-.step-container {
-  display: flex;
-  // IE10 doesn&#x27;t support space-evenly, so use space-between
-  justify-content: space-around;
-}
-
-progressbar {
-  background-color: $gray-500;
-  height: 0.5rem;
-}
-
-.step {
-  $markerSize: 1em;
-  position: relative;
-  transform: translateX(-$markerSize / 2);
-  margin-top: 0.25rem;
-
-  &amp;:before {
-    content: &quot; &quot;;
-    position: absolute;
-    width: $markerSize;
-    height: $markerSize;
-    border-radius: 100%;
-    background: white;
-    border: 3px solid $color-primary;
-
-    // Center above
-    right: 0;
-    left: 0;
-    margin: 0 auto;
-    bottom: 100%;
-  }
-
-  &amp;:not(.active) .step-text { opacity: 0.8;}
-  &amp;:not(.active):before { background: $gray-400; }
-
-  // Take the text out of the CSS layout with position absolute so that the
-  // width of the text does not mess up the math of the positioning of the
-  // elements.
-  .step-text {
-    position: absolute;
-    transform: translateX(-33%);
-    white-space: nowrap;
-    font-size: small;
-  }
-}
-
-
-.progress-background {
-  width: 100%;
-  background-color: blue;
-}
-</code></pre>
-    </div>
 
     <div class="tab-pane fade " id="c-tree">
         <div id="tree-container"></div>
@@ -889,7 +817,7 @@ progressbar {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><progressbar  [value]="calculateProgressPercentage()"  [max]="100"  [animate]="true"></progressbar><div class="step-container" #stepContainer>  <a #steps *ngFor="let step of progressSteps; let i = index;" [routerLink]="step.route">    <div class="step" [ngClass]="{active: i === activeIndex}">      <span class="step-text">{{step.title}}</span>    </div>  </a></div></div>'
-    var COMPONENTS = [{'name': 'AddressComponent', 'selector': 'common-address'},{'name': 'CaptchaComponent', 'selector': 'common-captcha'},{'name': 'CityComponent', 'selector': 'common-city'},{'name': 'CoreBreadcrumbComponent', 'selector': 'common-core-breadcrumb'},{'name': 'CountryComponent', 'selector': 'common-country'},{'name': 'DateComponent', 'selector': 'common-date'},{'name': 'DatepickerComponent', 'selector': 'common-datepicker'},{'name': 'DropdownComponent', 'selector': 'common-dropdown'},{'name': 'FileUploaderComponent', 'selector': 'common-file-uploader'},{'name': 'FormActionBarComponent', 'selector': 'common-form-action-bar'},{'name': 'FormSubmitBarComponent', 'selector': 'common-form-submit-bar'},{'name': 'PageFrameworkComponent', 'selector': 'common-page-framework'},{'name': 'PageSectionComponent', 'selector': 'common-page-section'},{'name': 'PasswordComponent', 'selector': 'common-password'},{'name': 'PostalCodeComponent', 'selector': 'common-postal-code'},{'name': 'ProvinceComponent', 'selector': 'common-province'},{'name': 'StreetComponent', 'selector': 'common-street'},{'name': 'ThumbnailComponent', 'selector': 'common-thumbnail'},{'name': 'ToggleComponent', 'selector': 'common-toggle'},{'name': 'WizardProgressBarComponent', 'selector': 'common-wizard-progress-bar'}];
+    var COMPONENTS = [{'name': 'AddressComponent', 'selector': 'common-address'},{'name': 'ButtonGroupComponent', 'selector': 'common-button-group'},{'name': 'CaptchaComponent', 'selector': 'common-captcha'},{'name': 'CityComponent', 'selector': 'common-city'},{'name': 'CoreBreadcrumbComponent', 'selector': 'common-core-breadcrumb'},{'name': 'CountryComponent', 'selector': 'common-country'},{'name': 'DateComponent', 'selector': 'common-date'},{'name': 'DatepickerComponent', 'selector': 'common-datepicker'},{'name': 'DropdownComponent', 'selector': 'common-dropdown'},{'name': 'FileUploaderComponent', 'selector': 'common-file-uploader'},{'name': 'FormActionBarComponent', 'selector': 'common-form-action-bar'},{'name': 'FormSubmitBarComponent', 'selector': 'common-form-submit-bar'},{'name': 'PageFrameworkComponent', 'selector': 'common-page-framework'},{'name': 'PageSectionComponent', 'selector': 'common-page-section'},{'name': 'PasswordComponent', 'selector': 'common-password'},{'name': 'PostalCodeComponent', 'selector': 'common-postal-code'},{'name': 'ProvinceComponent', 'selector': 'common-province'},{'name': 'StreetComponent', 'selector': 'common-street'},{'name': 'ThumbnailComponent', 'selector': 'common-thumbnail'},{'name': 'ToggleComponent', 'selector': 'common-toggle'},{'name': 'WizardProgressBarComponent', 'selector': 'common-wizard-progress-bar'}];
     var DIRECTIVES = [{'name': 'DateFieldFormatDirective', 'selector': '[commonDateFieldFormat]'},{'name': 'DayValidationDirective', 'selector': '[commonDayValidation]'},{'name': 'YearValidateDirective', 'selector': '[commonYearValidate]'}];
     var ACTUAL_COMPONENT = {'name': 'WizardProgressBarComponent'};
 </script>

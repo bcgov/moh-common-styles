@@ -43,16 +43,13 @@
             <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
         </li>
         <li >
-            <a href="#readme" role="tab" id="readme-tab" data-toggle="tab" data-link="readme">README</a>
+            <a href="#readme" role="tab" id="readme-tab" data-toggle="tab" data-link="readme">Design Guidelines</a>
         </li>
         <li >
             <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
         </li>
         <li >
             <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
-        </li>
-        <li >
-            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
         </li>
         <li >
             <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
@@ -2071,12 +2068,6 @@ export class AddressComponent extends Base
 </code></pre>
     </div>
 
-    <div class="tab-pane fade " id="c-styleData">
-                <p class="comment">
-                    <code>./address.component.scss</code>
-                </p>
-                <pre class="line-numbers"><code class="language-scss"></code></pre>
-    </div>
 
     <div class="tab-pane fade " id="c-tree">
         <div id="tree-container"></div>
@@ -2104,7 +2095,7 @@ export class AddressComponent extends Base
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><div class="form-group col-sm-8 p-sm-0">    <common-country name="country_{{objectId}}"                    label="Country"                    [countryList]="countryList"                    [ngModel]="addr?.country"                    (ngModelChange)="setCountry($event)"                    [required]="isRequired"                    [disabled]="disabled" ></common-country>  </div>  <div class="form-group col-sm-8 p-sm-0">    <common-province name="province_{{objectId}}"                     label="Province/State"                     [ngModel]="addr?.province"                     (ngModelChange)="setProvince($event)"                     [provinceList]="provList"                     [required]="isRequired"                     [disabled]="disabled"                     placeholder="{{ isCanada()? \'Select a Province\': \'Select a State\' }}"                     [useDropDownList]="isCanadaUSA()"></common-province>  </div>  <div class="form-group col-sm-8 p-sm-0">      <common-street name="street_{{objectId}}"                     label="Full street address or rural route"                     [useGeoCoder]="useGeoCoder()"                     [ngModel]="addr?.street"                     (ngModelChange)="setStreetAddress($event)"                     (selectEvent)="setAddress($event)"                     [required]="isRequired"                     [disabled]="disabled"></common-street>    </div>  <div class="form-group col-sm-8 p-sm-0">    <common-city name="city_{{objectId}}"                 [ngModel]="addr?.city"                 (ngModelChange)="setCity($event)"                 [required]="isRequired"                 [disabled]="disabled"></common-city>  </div>  <div class="form-group col-sm-4 p-sm-0">    <common-postal-code name="pc_{{objectId}}"                        [label]="\'Postal Code\'"                        [displayMask]="isCanada()"                        [disabled]="disabled"                        [ngModel]="addr?.postal"                        (ngModelChange)="setPostalCode($event)"                        [required]="isRequired"></common-postal-code>  </div></div>'
-    var COMPONENTS = [{'name': 'AddressComponent', 'selector': 'common-address'},{'name': 'CaptchaComponent', 'selector': 'common-captcha'},{'name': 'CityComponent', 'selector': 'common-city'},{'name': 'CoreBreadcrumbComponent', 'selector': 'common-core-breadcrumb'},{'name': 'CountryComponent', 'selector': 'common-country'},{'name': 'DateComponent', 'selector': 'common-date'},{'name': 'DatepickerComponent', 'selector': 'common-datepicker'},{'name': 'DropdownComponent', 'selector': 'common-dropdown'},{'name': 'FileUploaderComponent', 'selector': 'common-file-uploader'},{'name': 'FormActionBarComponent', 'selector': 'common-form-action-bar'},{'name': 'FormSubmitBarComponent', 'selector': 'common-form-submit-bar'},{'name': 'PageFrameworkComponent', 'selector': 'common-page-framework'},{'name': 'PageSectionComponent', 'selector': 'common-page-section'},{'name': 'PasswordComponent', 'selector': 'common-password'},{'name': 'PostalCodeComponent', 'selector': 'common-postal-code'},{'name': 'ProvinceComponent', 'selector': 'common-province'},{'name': 'StreetComponent', 'selector': 'common-street'},{'name': 'ThumbnailComponent', 'selector': 'common-thumbnail'},{'name': 'ToggleComponent', 'selector': 'common-toggle'},{'name': 'WizardProgressBarComponent', 'selector': 'common-wizard-progress-bar'}];
+    var COMPONENTS = [{'name': 'AddressComponent', 'selector': 'common-address'},{'name': 'ButtonGroupComponent', 'selector': 'common-button-group'},{'name': 'CaptchaComponent', 'selector': 'common-captcha'},{'name': 'CityComponent', 'selector': 'common-city'},{'name': 'CoreBreadcrumbComponent', 'selector': 'common-core-breadcrumb'},{'name': 'CountryComponent', 'selector': 'common-country'},{'name': 'DateComponent', 'selector': 'common-date'},{'name': 'DatepickerComponent', 'selector': 'common-datepicker'},{'name': 'DropdownComponent', 'selector': 'common-dropdown'},{'name': 'FileUploaderComponent', 'selector': 'common-file-uploader'},{'name': 'FormActionBarComponent', 'selector': 'common-form-action-bar'},{'name': 'FormSubmitBarComponent', 'selector': 'common-form-submit-bar'},{'name': 'PageFrameworkComponent', 'selector': 'common-page-framework'},{'name': 'PageSectionComponent', 'selector': 'common-page-section'},{'name': 'PasswordComponent', 'selector': 'common-password'},{'name': 'PostalCodeComponent', 'selector': 'common-postal-code'},{'name': 'ProvinceComponent', 'selector': 'common-province'},{'name': 'StreetComponent', 'selector': 'common-street'},{'name': 'ThumbnailComponent', 'selector': 'common-thumbnail'},{'name': 'ToggleComponent', 'selector': 'common-toggle'},{'name': 'WizardProgressBarComponent', 'selector': 'common-wizard-progress-bar'}];
     var DIRECTIVES = [{'name': 'DateFieldFormatDirective', 'selector': '[commonDateFieldFormat]'},{'name': 'DayValidationDirective', 'selector': '[commonDayValidation]'},{'name': 'YearValidateDirective', 'selector': '[commonYearValidate]'}];
     var ACTUAL_COMPONENT = {'name': 'AddressComponent'};
 </script>

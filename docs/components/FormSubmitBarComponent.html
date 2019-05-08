@@ -49,9 +49,6 @@
             <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
         </li>
         <li >
-            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
-        </li>
-        <li >
             <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
         </li>
 </ul>
@@ -495,55 +492,6 @@ export class FormSubmitBarComponent implements OnInit {
     &lt;/ng-template&gt;</code></pre>
     </div>
 
-    <div class="tab-pane fade " id="c-styleData">
-                <p class="comment">
-                    <code>./form-submit-bar.component.scss</code>
-                </p>
-                <pre class="line-numbers"><code class="language-scss">@import &#x27;variables.scss&#x27;;
-
-.form-action-bar {
-    display: flex;
-    justify-content: flex-end;
-    padding: 1em;
-    background-color: hsla(210, 30%, 85%, 1);
-    transition: background-color 0.3s;
-    &amp;.disabled { background-color: hsla(210, 10%, 85%, 1); }
-    
-    // If browser does not support positiion sticky (IE11), gracefully degrade
-    // back to default positioning (static). We do not use position: fixed, as
-    // that leads this bar to overlap the page footer.
-    position: -webkit-sticky;
-    position: sticky;
-    bottom: 0;
-    z-index: 10;
-    // Positioning  values match .container-fluid in app.component.scss
-    left: $container-gutter-size;
-    right: $container-gutter-size;
-
-    @include media-breakpoint-down(md){
-        left: ($container-gutter-size / 2);
-        right: ($container-gutter-size / 2);
-    }
-
-    @include media-breakpoint-down(sm){
-        left: 0;
-        right: 0;
-    }
-}
-
-.submit {
-    min-width: 240px;
-
-    @include media-breakpoint-down(sm){
-        min-width: 100%;
-    }
-}
-
-.btn{
-    white-space:normal !important;
-    word-wrap: break-word;
-}</code></pre>
-    </div>
 
     <div class="tab-pane fade " id="c-tree">
         <div id="tree-container"></div>
@@ -571,7 +519,7 @@ export class FormSubmitBarComponent implements OnInit {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><div class="form-action-bar form-bar" [ngClass]="{disabled: !canContinue, \'mx-lg-n5 mx-md-n3 mb-n3 mt-3\': increaseWidth}">        <button class="btn btn-lg {{defaultColor ? \'btn-primary\' : \'btn-secondary\' }} submit"                [ngClass]="{disabled: !canContinue || isLoading}"                type=\'submit\'>          <ng-container *ngIf="!isLoading; else loadingSpinner"> {{submitLabel}} </ng-container>                  </button>    </div>        <ng-template #loadingSpinner>        <i class="fa fa-spinner fa-pulse fa-fw"></i>    </ng-template></div>'
-    var COMPONENTS = [{'name': 'AddressComponent', 'selector': 'common-address'},{'name': 'CaptchaComponent', 'selector': 'common-captcha'},{'name': 'CityComponent', 'selector': 'common-city'},{'name': 'CoreBreadcrumbComponent', 'selector': 'common-core-breadcrumb'},{'name': 'CountryComponent', 'selector': 'common-country'},{'name': 'DateComponent', 'selector': 'common-date'},{'name': 'DatepickerComponent', 'selector': 'common-datepicker'},{'name': 'DropdownComponent', 'selector': 'common-dropdown'},{'name': 'FileUploaderComponent', 'selector': 'common-file-uploader'},{'name': 'FormActionBarComponent', 'selector': 'common-form-action-bar'},{'name': 'FormSubmitBarComponent', 'selector': 'common-form-submit-bar'},{'name': 'PageFrameworkComponent', 'selector': 'common-page-framework'},{'name': 'PageSectionComponent', 'selector': 'common-page-section'},{'name': 'PasswordComponent', 'selector': 'common-password'},{'name': 'PostalCodeComponent', 'selector': 'common-postal-code'},{'name': 'ProvinceComponent', 'selector': 'common-province'},{'name': 'StreetComponent', 'selector': 'common-street'},{'name': 'ThumbnailComponent', 'selector': 'common-thumbnail'},{'name': 'ToggleComponent', 'selector': 'common-toggle'},{'name': 'WizardProgressBarComponent', 'selector': 'common-wizard-progress-bar'}];
+    var COMPONENTS = [{'name': 'AddressComponent', 'selector': 'common-address'},{'name': 'ButtonGroupComponent', 'selector': 'common-button-group'},{'name': 'CaptchaComponent', 'selector': 'common-captcha'},{'name': 'CityComponent', 'selector': 'common-city'},{'name': 'CoreBreadcrumbComponent', 'selector': 'common-core-breadcrumb'},{'name': 'CountryComponent', 'selector': 'common-country'},{'name': 'DateComponent', 'selector': 'common-date'},{'name': 'DatepickerComponent', 'selector': 'common-datepicker'},{'name': 'DropdownComponent', 'selector': 'common-dropdown'},{'name': 'FileUploaderComponent', 'selector': 'common-file-uploader'},{'name': 'FormActionBarComponent', 'selector': 'common-form-action-bar'},{'name': 'FormSubmitBarComponent', 'selector': 'common-form-submit-bar'},{'name': 'PageFrameworkComponent', 'selector': 'common-page-framework'},{'name': 'PageSectionComponent', 'selector': 'common-page-section'},{'name': 'PasswordComponent', 'selector': 'common-password'},{'name': 'PostalCodeComponent', 'selector': 'common-postal-code'},{'name': 'ProvinceComponent', 'selector': 'common-province'},{'name': 'StreetComponent', 'selector': 'common-street'},{'name': 'ThumbnailComponent', 'selector': 'common-thumbnail'},{'name': 'ToggleComponent', 'selector': 'common-toggle'},{'name': 'WizardProgressBarComponent', 'selector': 'common-wizard-progress-bar'}];
     var DIRECTIVES = [{'name': 'DateFieldFormatDirective', 'selector': '[commonDateFieldFormat]'},{'name': 'DayValidationDirective', 'selector': '[commonDayValidation]'},{'name': 'YearValidateDirective', 'selector': '[commonYearValidate]'}];
     var ACTUAL_COMPONENT = {'name': 'FormSubmitBarComponent'};
 </script>

@@ -128,16 +128,20 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/SharedCoreModule.html" data-type="entity-link">SharedCoreModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-SharedCoreModule-03039342cf2563fcf81e8760f4076060"' : 'data-target="#xs-components-links-module-SharedCoreModule-03039342cf2563fcf81e8760f4076060"' }>
+                                            'data-target="#components-links-module-SharedCoreModule-1c1dff91e5807ccc8d3cd202788dd2dd"' : 'data-target="#xs-components-links-module-SharedCoreModule-1c1dff91e5807ccc8d3cd202788dd2dd"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SharedCoreModule-03039342cf2563fcf81e8760f4076060"' :
-                                            'id="xs-components-links-module-SharedCoreModule-03039342cf2563fcf81e8760f4076060"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SharedCoreModule-1c1dff91e5807ccc8d3cd202788dd2dd"' :
+                                            'id="xs-components-links-module-SharedCoreModule-1c1dff91e5807ccc8d3cd202788dd2dd"' }>
                                             <li class="link">
                                                 <a href="components/AddressComponent.html"
                                                     data-type="entity-link" data-context="sub-entity" data-context-id="modules">AddressComponent</a>
+                                            </li>
+                                            <li class="link">
+                                                <a href="components/ButtonGroupComponent.html"
+                                                    data-type="entity-link" data-context="sub-entity" data-context-id="modules">ButtonGroupComponent</a>
                                             </li>
                                             <li class="link">
                                                 <a href="components/CityComponent.html"
@@ -215,13 +219,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     </li>
                                 <li class="chapter inner">
                                     <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                        'data-target="#directives-links-module-SharedCoreModule-03039342cf2563fcf81e8760f4076060"' : 'data-target="#xs-directives-links-module-SharedCoreModule-03039342cf2563fcf81e8760f4076060"' }>
+                                        'data-target="#directives-links-module-SharedCoreModule-1c1dff91e5807ccc8d3cd202788dd2dd"' : 'data-target="#xs-directives-links-module-SharedCoreModule-1c1dff91e5807ccc8d3cd202788dd2dd"' }>
                                         <span class="icon ion-md-code-working"></span>
                                         <span>Directives</span>
                                         <span class="icon ion-ios-arrow-down"></span>
                                     </div>
-                                    <ul class="links collapse" ${ isNormalMode ? 'id="directives-links-module-SharedCoreModule-03039342cf2563fcf81e8760f4076060"' :
-                                        'id="xs-directives-links-module-SharedCoreModule-03039342cf2563fcf81e8760f4076060"' }>
+                                    <ul class="links collapse" ${ isNormalMode ? 'id="directives-links-module-SharedCoreModule-1c1dff91e5807ccc8d3cd202788dd2dd"' :
+                                        'id="xs-directives-links-module-SharedCoreModule-1c1dff91e5807ccc8d3cd202788dd2dd"' }>
                                         <li class="link">
                                             <a href="directives/DateFieldFormatDirective.html"
                                                 data-type="entity-link" data-context="sub-entity" data-context-id="modules">DateFieldFormatDirective</a>

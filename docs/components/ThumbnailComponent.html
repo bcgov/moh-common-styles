@@ -49,9 +49,6 @@
             <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
         </li>
         <li >
-            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
-        </li>
-        <li >
             <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
         </li>
 </ul>
@@ -723,64 +720,6 @@ export class ThumbnailComponent implements OnInit {
 &lt;/div&gt;</code></pre>
     </div>
 
-    <div class="tab-pane fade " id="c-styleData">
-                <p class="comment">
-                    <code>./thumbnail.scss</code>
-                </p>
-                <pre class="line-numbers"><code class="language-scss">@import &#x27;variables.scss&#x27;;
-
-.thumbnail-container {
-  transition: 0.3s;
-  transform: translateY(0);
-
-  .image-thumbnail, .image-thumbnail-width-priority {
-    padding: 2px 2px 0 2px;
-    border-radius: 5px 5px 0px 0px;
-
-    &amp;:hover {
-      cursor: -webkit-zoom-in;
-      cursor: zoom-in;  
-    }
-  }
-
-  .image-thumbnail {
-    max-height: 100px;
-    height: auto;
-    max-width: 100%;
-  }
-  .image-thumbnail-width-priority {
-    max-width: 270px;
-    width: auto;
-    max-height: 100%;
-  }
-
-  &amp;:hover {
-    box-shadow: 0px 15px 10px -10px rgba(0, 0, 0, 0.1);
-    transform: translateY(-5px);
-
-    .action-strip {
-      background: darken($gray, 2.5%);
-    }
-  }
-
-  .action-strip {
-    height: 2em;
-    border-radius: 0px 0px 5px 5px;
-    text-align: right;
-    font-size: small;
-    margin: 0 2px 0 2px;
-    color: $color-danger;
-    padding: 0.3em;
-    transition: 0.3s;  
-  
-    a {
-      text-decoration: none;
-    }
-  }
-}
-
-</code></pre>
-    </div>
 
     <div class="tab-pane fade " id="c-tree">
         <div id="tree-container"></div>
@@ -808,7 +747,7 @@ export class ThumbnailComponent implements OnInit {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><div class="thumbnail-container">  <img [src]="imageObject.fileContent" alt="" tabindex="0"    [ngClass]="{\'image-thumbnail\': scaledWidth <= 300, \'image-thumbnail-width-priority\': scaledWidth > 300}"    (click)="showFullSizeView()">  <div class="action-strip" *ngIf="!reviewMode">    <a href="javascript:void(0)" (click)="delete($event)" class=\'text-danger\' tabindex="0">Remove</a>  </div></div><div bsModal #fullSizeViewModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">  <div class="modal-dialog modal-lg">    <div class="modal-content">      <div class="modal-header">        <h4 class="modal-title">{{imageObject.name}}</h4>        <button type="button" class="close" (click)="hideFullSizeView()" aria-label="Close">          <span aria-hidden="true">&times;</span>        </button>      </div>      <div class="modal-body">        <div class="row">          <div class="col-md-12" >            <img [src]="imageObject.fileContent" alt="{{imageObject.name}}" class="center-block img-fluid">          </div>        </div>      </div>    </div>  </div></div></div>'
-    var COMPONENTS = [{'name': 'AddressComponent', 'selector': 'common-address'},{'name': 'CaptchaComponent', 'selector': 'common-captcha'},{'name': 'CityComponent', 'selector': 'common-city'},{'name': 'CoreBreadcrumbComponent', 'selector': 'common-core-breadcrumb'},{'name': 'CountryComponent', 'selector': 'common-country'},{'name': 'DateComponent', 'selector': 'common-date'},{'name': 'DatepickerComponent', 'selector': 'common-datepicker'},{'name': 'DropdownComponent', 'selector': 'common-dropdown'},{'name': 'FileUploaderComponent', 'selector': 'common-file-uploader'},{'name': 'FormActionBarComponent', 'selector': 'common-form-action-bar'},{'name': 'FormSubmitBarComponent', 'selector': 'common-form-submit-bar'},{'name': 'PageFrameworkComponent', 'selector': 'common-page-framework'},{'name': 'PageSectionComponent', 'selector': 'common-page-section'},{'name': 'PasswordComponent', 'selector': 'common-password'},{'name': 'PostalCodeComponent', 'selector': 'common-postal-code'},{'name': 'ProvinceComponent', 'selector': 'common-province'},{'name': 'StreetComponent', 'selector': 'common-street'},{'name': 'ThumbnailComponent', 'selector': 'common-thumbnail'},{'name': 'ToggleComponent', 'selector': 'common-toggle'},{'name': 'WizardProgressBarComponent', 'selector': 'common-wizard-progress-bar'}];
+    var COMPONENTS = [{'name': 'AddressComponent', 'selector': 'common-address'},{'name': 'ButtonGroupComponent', 'selector': 'common-button-group'},{'name': 'CaptchaComponent', 'selector': 'common-captcha'},{'name': 'CityComponent', 'selector': 'common-city'},{'name': 'CoreBreadcrumbComponent', 'selector': 'common-core-breadcrumb'},{'name': 'CountryComponent', 'selector': 'common-country'},{'name': 'DateComponent', 'selector': 'common-date'},{'name': 'DatepickerComponent', 'selector': 'common-datepicker'},{'name': 'DropdownComponent', 'selector': 'common-dropdown'},{'name': 'FileUploaderComponent', 'selector': 'common-file-uploader'},{'name': 'FormActionBarComponent', 'selector': 'common-form-action-bar'},{'name': 'FormSubmitBarComponent', 'selector': 'common-form-submit-bar'},{'name': 'PageFrameworkComponent', 'selector': 'common-page-framework'},{'name': 'PageSectionComponent', 'selector': 'common-page-section'},{'name': 'PasswordComponent', 'selector': 'common-password'},{'name': 'PostalCodeComponent', 'selector': 'common-postal-code'},{'name': 'ProvinceComponent', 'selector': 'common-province'},{'name': 'StreetComponent', 'selector': 'common-street'},{'name': 'ThumbnailComponent', 'selector': 'common-thumbnail'},{'name': 'ToggleComponent', 'selector': 'common-toggle'},{'name': 'WizardProgressBarComponent', 'selector': 'common-wizard-progress-bar'}];
     var DIRECTIVES = [{'name': 'DateFieldFormatDirective', 'selector': '[commonDateFieldFormat]'},{'name': 'DayValidationDirective', 'selector': '[commonDayValidation]'},{'name': 'YearValidateDirective', 'selector': '[commonYearValidate]'}];
     var ACTUAL_COMPONENT = {'name': 'ThumbnailComponent'};
 </script>

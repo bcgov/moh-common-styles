@@ -8,5 +8,31 @@
     "toggleMenuItems": [
         "components",
         "modules"
+    ],
+    "navTabConfig": [
+        {
+            "id": "info",
+            "label": "Info"
+        },
+        {
+            "id": "readme",
+            "label": "Design Guidelines"
+        },
+        {
+            "id": "source",
+            "label": "Source"
+        },
+        {
+            "id": "templateData",
+            "label": "Template"
+        },
+        {
+            "id": "tree",
+            "label": "DOM Tree"
+        },
+        {
+            "id": "example",
+            "label": "Example"
+        }
     ]
 }
