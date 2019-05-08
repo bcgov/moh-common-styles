@@ -1,7 +1,3 @@
-/* .content-data {
-    background-color: #f2f2f2;
-} */
-
 .content {
     color: #036;
     background-color: #f2f2f2;
@@ -31,4 +27,18 @@
 
 body {
     font-family: Myriad-Pro, Calibri, Arial, sans serif !important;
+}
+
+/* Max width for "Design Guidlines" paragraph text, makes it more readable. */
+#c-readme p {
+    max-width: 900px;
+}
+
+/* The headers for the .md files for each component, inside the tab. */
+h1#design-guidelines {
+    background: none;
+    border: none;
+    color: #036 !important;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
 }
