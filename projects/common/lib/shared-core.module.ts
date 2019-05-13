@@ -29,6 +29,12 @@ import { ProvinceComponent } from './components/province/province.component';
 import { CityComponent } from './components/city/city.component';
 import { StreetComponent } from './components/street/street.component';
 import { ButtonGroupComponent } from './components/button-group/button-group.component';
+import { ButtonComponent } from './components/button/button.component';
+import { CheckboxComponent } from './components/checkbox/checkbox.component';
+import { ConsentModalComponent } from './components/consent-modal/consent-modal.component';
+import { NameComponent } from './components/name/name.component';
+import { PhoneNumberComponent } from './components/phone-number/phone-number.component';
+import { RadioComponent } from './components/radio/radio.component';
 
 const componentList = [
   CoreBreadcrumbComponent,
@@ -53,7 +59,13 @@ const componentList = [
   ProvinceComponent,
   CityComponent,
   StreetComponent,
-  ButtonGroupComponent
+  ButtonGroupComponent,
+  ButtonComponent,
+  CheckboxComponent,
+  ConsentModalComponent,
+  NameComponent,
+  PhoneNumberComponent,
+  RadioComponent
 ];
 @NgModule({
   imports: [
