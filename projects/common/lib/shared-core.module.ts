@@ -35,6 +35,9 @@ import { ConsentModalComponent } from './components/consent-modal/consent-modal.
 import { NameComponent } from './components/name/name.component';
 import { PhoneNumberComponent } from './components/phone-number/phone-number.component';
 import { RadioComponent } from './components/radio/radio.component';
+import { AccordionModule } from 'ngx-bootstrap/accordion';
+import { AccordionCommonComponent } from './components/accordion/accordion.component';
+
 
 const componentList = [
   CoreBreadcrumbComponent,
@@ -65,7 +68,8 @@ const componentList = [
   ConsentModalComponent,
   NameComponent,
   PhoneNumberComponent,
-  RadioComponent
+  RadioComponent,
+  AccordionCommonComponent
 ];
 @NgModule({
   imports: [
@@ -77,7 +81,8 @@ const componentList = [
     ModalModule.forRoot(),
     TextMaskModule,
     NgSelectModule,
-    TypeaheadModule.forRoot()
+    TypeaheadModule.forRoot(),
+    AccordionModule.forRoot()
   ],
   declarations: [
     componentList

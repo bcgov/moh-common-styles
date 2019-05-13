@@ -1,15 +1,19 @@
-<label class="control-label" >{{label}}</label>
+<section>
+  <label for="{{objectId}}" class="control-label" [innerHtml]="label" ></label><br/>
+  <div *ngFor="let val of radioLabels" [ngStyle]="{'display': display}" >
+    <div class="md-radio md-radio-inline">
+      <input type="radio" name="{{val}}-{{objectId}}" 
+            id="{{val.value}}-{{objectId}}" [disabled]="disabled"
+            (click)="setStatus(val.value);" [checked]="value == val.value" 
+            tabindex="0">
+      <label for="{{val.value}}-{{objectId}}">
+      {{val.label}}
+      </label>
+    </div>
+  </div>
 
-<div class="form-check" *ngFor="let val of radioLabels">
-  <input class='form-check-input' type="radio" name="{{val}}-{{objectId}}" 
-         id="{{val}}-{{objectId}}" [disabled]="disabled"
-         (click)="setStatus(val.value);" [checked]="value == val.value" 
-         tabindex="0">
-  <label class='form-check-label' for="{{val}}-{{objectId}}">
-   {{val.label}}
-  </label>
-</div>
 
-<div *ngIf='showError && (value === undefined || value === null)'>
-    <div class="text-danger">{{errorMessageRequired}}</div>
-</div>
+  <div *ngIf='showError && (value === undefined || value === null)'>
+      <div class="text-danger">{{errorMessageRequired}}</div>
+  </div>
+</section>

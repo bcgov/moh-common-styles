@@ -1,9 +1,9 @@
 
-<input #checkbox type="checkbox" class="input-lg form-check-input" name="name_{{objectId}})" 
+<input #checkbox type="checkbox" class="input-lg form-check-input" name="checkbox_{{objectId}})" 
     id="checkbox_{{objectId}}" [ngModel]='data' 
     (ngModelChange)='dataChange.emit($event);' 
     [disabled] = 'disabled' [required]="required">
-<label for="name_{{objectId}})" class="form-check-label">{{label}}</label>
+<label for="checkbox_{{objectId}})" class="form-check-label">{{label}}</label>
 
 <div *ngIf='showError && (data === undefined || data === null)'>
     <div class="text-danger">{{errorMessageRequired}}</div>

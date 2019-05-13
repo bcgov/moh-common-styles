@@ -23,11 +23,11 @@ import { CommonModule } from '@angular/common';
     CaptchaComponent
   ],
 })
-export class CaptchaModule { 
+export class CaptchaModule {
   static forRoot(): ModuleWithProviders<CaptchaModule> {
     return {
       ngModule: CaptchaModule,
       providers: [CaptchaDataService]
-    }
+    };
   }
 }

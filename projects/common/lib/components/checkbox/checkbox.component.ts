@@ -3,16 +3,16 @@ import { Base } from '../../../models/src/base';
 import { ControlContainer, ControlValueAccessor, NgForm, NG_VALUE_ACCESSOR } from '@angular/forms';
 /**
  * Checkbox component is a input checkbox
- * 
+ *
  * @example
- *       <common-checkbox #addressChangeChkBx 
+ *       <common-checkbox #addressChangeChkBx
  *          label='Do you want to opt in?'
  *          errorMessageRequired = 'Opt in should be selected'
- *          (dataChange)="dataChange($event)" 
- *           [(data)]='person.hasOpted' [disabled]="isDisabled" 
+ *          (dataChange)="dataChange($event)"
+ *           [(data)]='person.hasOpted' [disabled]="isDisabled"
  *          [required]="isrequired">
  *       </common-checkbox>
- *      
+ *
  * @export
  */
 
@@ -31,17 +31,17 @@ import { ControlContainer, ControlValueAccessor, NgForm, NG_VALUE_ACCESSOR } fro
 
 export class CheckboxComponent extends Base implements  ControlValueAccessor {
 
-  @Input() data: boolean = true ;
+  @Input() data: boolean = true;
   @Input() required: boolean = false;
   @Input() disabled: boolean = false;
   @Input() label: string = 'Default Checkbox';
-  @Input() errorMessageRequired: string = this.label +'Field is required.';
+  @Input() errorMessageRequired: string = this.label + 'Field is required.';
   @Input() checked: boolean =  false ;
   @Input() showError: boolean;
   @Output() dataChange: EventEmitter<boolean> = new EventEmitter<boolean>();
   @ViewChild('checkbox') checkbox: ElementRef;
 
-  
+
   public _onChange = (_: any) => {};
   public _onTouched = () => {};
 

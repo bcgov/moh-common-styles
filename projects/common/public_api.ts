@@ -12,3 +12,5 @@ export { SimpleDate } from './models/src/simple-date.interface';
 export { CountryList, CANADA, UNITED_STATES } from './lib/components/country/country.component';
 export { ProvinceList, BRITISH_COLUMBIA } from './lib/components/province/province.component';
 
+export { ConsentModalComponent } from './lib/components/consent-modal/consent-modal.component';
+
