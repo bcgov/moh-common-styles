@@ -40,7 +40,7 @@ export class NameComponent extends Base implements ControlValueAccessor{
   @Input() lastNamelabel: string = 'Last Name';
 
   @Output() onChange = new EventEmitter<any>();
-  Person: typeof Person = Person;
+  //Person: typeof Person = Person;
   firstName: string;
   middleName: string;
   lastName: string;
@@ -60,6 +60,13 @@ export class NameComponent extends Base implements ControlValueAccessor{
   }
   
   ngOnInit() {
+    
+      if(this.person) {
+      this.firstName = this.person.firstName ? this.person.firstName :'';
+      this.lastName = this.person.lastName ? this.person.lastName :'';
+      this.middleName = this.person.middleName ? this.person.middleName :'';
+    }
+
     this.errMsg =    {
       required: this.requiredMsgSeg,
       pattern: this.pattern
