@@ -38,12 +38,12 @@ export class NameComponent extends Base implements ControlValueAccessor{
   @Input() firstNamelabel: string = 'First Name';
   @Input() middleNamelabel: string = 'Middle Name';
   @Input() lastNamelabel: string = 'Last Name';
-
+  //@ViewChild('formRef') form: NgForm;
   @Output() onChange = new EventEmitter<any>();
   //Person: typeof Person = Person;
-  firstName: string;
+  firstName: string ;
   middleName: string;
-  lastName: string;
+  lastName: string ;
 
   public NameRegEx: string = '^[a-zA-Z][a-zA-Z\\-.\' ]*$';
 
@@ -60,8 +60,8 @@ export class NameComponent extends Base implements ControlValueAccessor{
   }
   
   ngOnInit() {
-    
-      if(this.person) {
+
+    if(this.person) {
       this.firstName = this.person.firstName ? this.person.firstName :'';
       this.lastName = this.person.lastName ? this.person.lastName :'';
       this.middleName = this.person.middleName ? this.person.middleName :'';
@@ -73,18 +73,29 @@ export class NameComponent extends Base implements ControlValueAccessor{
     };
   }
 
+  /*ngAfterViewInit(): void {
+      // https://github.com/angular/angular/issues/24818
+      this.form.valueChanges.pipe(debounceTime(0)).subscribe((values) => {
+        this.onChange.emit(values);
+        this._onChange(values);
+        this._onTouched();
+      }
+    );
+
+  }*/
+
   setFirstName(value: any) {
     this.person.firstName = value;
-    this.onChange.emit(value);
-    this._onChange(value);
+    this.onChange.emit(this.person);
+    this._onChange(this.person);
     this._onTouched();
   }
 
   setMiddleName(value: any) {
 
     this.person.middleName = value;
-    this.onChange.emit(value);
-    this._onChange(value);
+    this.onChange.emit(this.person);
+    this._onChange(this.person);
     this._onTouched();
 
   }
@@ -92,8 +103,8 @@ export class NameComponent extends Base implements ControlValueAccessor{
   setLastName(value: any) {
 
     this.person.lastName = value;
-    this.onChange.emit(value);
-    this._onChange(value);
+    this.onChange.emit(this.person);
+    this._onChange(this.person);
     this._onTouched();
 
   }

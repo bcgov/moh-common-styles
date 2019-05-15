@@ -39,7 +39,7 @@ describe('CheckboxComponent', () => {
   });
 
   it ('Checkbox is checked', () => {
-    component.model = true;
+    component.data = true;
     fixture.detectChanges();
     fixture.whenStable().then(() => {
       expect(el.querySelector('input[type=checkbox]').checked).toEqual(true);

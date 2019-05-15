@@ -8,13 +8,15 @@ import { ControlContainer, ControlValueAccessor, NgForm, NG_VALUE_ACCESSOR } fro
  * 
  * @example
  *       	<common-radio #gender [value]="person.gender" 
- *          [label]="'Gender'" 
- *          [radioLabels]='[{"label": "Male", "value": "Male"},{ "label": "Female", "value": "Female"}]' (onStatusChange)="onChange.emit($event)"
+ *          label='Gender' 
+ *          [radioLabels]='[{"label": "Male", "value": "Male"},{ "label": "Female", "value": "Female"}]' 
+ *          (onStatusChange)="onChange.emit($event)"
  *          [showError]="showError">
  *        </common-radio>
  * 
- * /* radioLabels value should be passed in the below format 
- = [
+ * /* You can have many radio's and the number is based on the Radio Label Value.
+ *  For 3 radio buttons, radioLabels value should be passed in the below format 
+ = [  
    {
      "label": "Myself only",
      "value": "MyselfOnly"
@@ -58,10 +60,12 @@ export class RadioComponent extends Base implements ControlValueAccessor {
 
   constructor() { super(); }
 
-  setStatus(value: string) {
-    this.onStatusChange.emit(value);
-    this._onChange(value);
+  setStatus(evt: string) {
+    this.value = evt;
+    this.onStatusChange.emit(evt);
+    this._onChange(evt);
     this._onTouched();
+   
   }
  
   registerOnChange(fn: any): void {

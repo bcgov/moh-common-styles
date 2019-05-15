@@ -6,8 +6,8 @@ import { ControlContainer, ControlValueAccessor, NgForm, NG_VALUE_ACCESSOR } fro
  * 
  * 
  * @example
- *       	<common-button [label]="'Remove Spouse'" 
- *            [styleClass]="buttonClass" 
+ *       	<common-button label='Remove Spouse' 
+ *            [(styleClass)]="buttonClass" 
  *            (btnClick)='removeSpouse()'>
  *        </common-button>
  * @export
@@ -24,7 +24,7 @@ import { ControlContainer, ControlValueAccessor, NgForm, NG_VALUE_ACCESSOR } fro
   ]
 })
 
-export class ButtonComponent implements OnInit, ControlValueAccessor {
+export class ButtonComponent implements OnInit {
   
   // Can pass the Style class of a button e.g. For primary, btn btn-primary. Default, btn btn-default. Error, btn btn-danger 
   @Input() styleClass: string = 'btn btn-default'; 
@@ -33,10 +33,6 @@ export class ButtonComponent implements OnInit, ControlValueAccessor {
   @Output() btnClick: EventEmitter<any> = new EventEmitter<any>();
   @ViewChild('button') button: ElementRef;
 
-
-  public _onChange = (_: any) => {};
-  public _onTouched = () => {};
-  
   constructor() { }
 
   ngOnInit() {
@@ -44,15 +40,5 @@ export class ButtonComponent implements OnInit, ControlValueAccessor {
 
   onClick($event) {
     this.btnClick.emit($event);
-    this._onTouched();
   }
-
-  registerOnTouched(fn: any): void {
-    this._onTouched = fn;
-  }
-
-  writeValue(value: any): void {
-    
-  }
-
 }

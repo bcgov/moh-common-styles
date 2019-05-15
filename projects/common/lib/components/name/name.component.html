@@ -2,19 +2,19 @@
 <div class="row">
     <div class="col-md-4">
         <div class="form-group"
-              [ngClass]="{'has-error': showError && (firstNameRef.touched || firstName === undefined || firstName === null)}">
-            <label class="control-label" for="firstName{{objectId}}"
+              [ngClass]="{'has-error': showError && (firstNameRef.touched && (firstName === undefined || firstName === null))}">
+            <label class="control-label" for="firstName_{{objectId}}"
                     >{{firstNamelabel}}</label>
             <input type="text"
-                    [(ngModel)]="firstName"
+                    [ngModel]="firstName"
                     name="firstName"
                     (ngModelChange)="setFirstName($event)"
                     required
                     maxlength="30"
                     [pattern]="NameRegEx"
-                    id="firstName{{objectId}}" #firstNameRef="ngModel"
+                    id="firstName_{{objectId}}" #firstNameRef="ngModel"
                     class="form-control">
-            <div *ngIf='showError && (firstNameRef.touched || firstName === undefined || firstName === null)' role="alert" aria-live="assertive">
+            <div *ngIf='showError && (firstNameRef.touched && (firstName === undefined || firstName === null))' role="alert" aria-live="assertive">
                 <div class="text-danger" *ngIf="firstNameRef.errors?.required"
                       >{{firstNamelabel}} {{errMsg.required}}</div>
                 <div class="text-danger" *ngIf="firstNameRef.errors?.pattern"
@@ -24,13 +24,13 @@
     </div>
     <div class="col-md-4">
         <div class="form-group"
-              [ngClass]="{'has-error': showError && (middleNameRef.touched || middleName === undefined || middleName === null)}">
-            <label class="control-label if-applicable" for="middleName{{objectId}}">{{middleNamelabel}}</label>
+              [ngClass]="{'has-error': showError && (middleNameRef.touched &&(middleName === undefined || middleName === null))}">
+            <label class="control-label if-applicable" for="middleName_{{objectId}}">{{middleNamelabel}}</label>
             <input type="text"
                     name="middleName"
-                    [(ngModel)]="middleName"
+                    [ngModel]="middleName"
                     (ngModelChange)="setMiddleName($event)"
-                    id='middleName{{objectId}}' #middleNameRef="ngModel"
+                    id='middleName_{{objectId}}' #middleNameRef="ngModel"
                     maxlength="30"
                     [pattern]="NameRegEx"
                     class="form-control">
@@ -44,18 +44,18 @@
     </div>
     <div class="col-md-4">
         <div class="form-group"
-        [ngClass]="{'has-error': showError && (lastNameRef.touched || lastName === undefined || lastName === null)}">
-            <label class="control-label" for="lastName{{objectId}}" >{{lastNamelabel}}</label>
+        [ngClass]="{'has-error': showError && (lastNameRef.touched && (lastName === undefined || lastName === null))}">
+            <label class="control-label" for="lastName_{{objectId}}" >{{lastNamelabel}}</label>
             <input type="text"
                     name="lastName"
-                    [(ngModel)]="lastName"
+                    [ngModel]="lastName"
                     (ngModelChange)="setLastName($event)"
-                    id="lastName{{objectId}}" #lastNameRef="ngModel"
+                    id="lastName_{{objectId}}" #lastNameRef="ngModel"
                     required
                     maxlength="30"
                     [pattern]="NameRegEx"
                     class="form-control">
-            <div *ngIf='showError && (lastNameRef.touched || lastName === undefined || lastName === null)' role="alert" aria-live="assertive">
+            <div *ngIf='showError && (lastNameRef.touched && (lastName === undefined || lastName === null))' role="alert" aria-live="assertive">
                 <div class="text-danger" *ngIf="lastNameRef.errors?.required"
                       >{{lastNamelabel}} {{errMsg.required}}</div>
                 <div class="text-danger" *ngIf="lastNameRef.errors?.pattern"

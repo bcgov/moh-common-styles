@@ -18,10 +18,10 @@ import { ControlContainer, ControlValueAccessor, NgForm, NG_VALUE_ACCESSOR } fro
  * 
  * 
  * @example
-*       	<common-consent-modal #mspConsentModal [body]="'Body Of Consent'" 
-*               [title]="'Notice'" [application]="mspAccountApp" 
-*               [processName]="'MSP'"
-*               [agreeLabel]="'I have read and understand this info'" 
+*       	<common-consent-modal #mspConsentModal body='Body Of Consent' 
+*               title='Notice' [application]="mspAccountApp" 
+*               processName='MSP'
+*               agreeLabel='I have read and understand this info'
 *               (onClose)="addressChangeChkBx.focus()">
 *           </common-consent-modal>
  * @export
@@ -126,7 +126,7 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
           // The backend returned an unsuccessful response code
           console.error(`MspMaintenanceService Backend returned error code: ${error.status}.  Error body: ${error.error}`);
       }
-      this.logService.log({event: 'error', key: 'Cannot get maintenance flag from spa-env-server'});
+      //this.logService.log({event: 'error', key: 'Cannot get maintenance flag from spa-env-server'});
       
       // A user facing erorr message /could/ go here; we shouldn't log dev info through the throwError observable
       return of(error);
