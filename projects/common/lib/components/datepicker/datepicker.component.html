@@ -1,7 +1,7 @@
 <div>
     <label><span>{{labelText}}</span>
         <div class="input-group">
-            
+
                 <input class="form-control" placeholder="YYYY/MM/DD"
                 ngx-mydatepicker name="datepicker-{{labelText}}-{{objectId}}"
                 [(ngModel)]="model"
@@ -10,7 +10,8 @@
                 #dateEl='ngModel'
                 (dateChanged)="onDateChanged($event)"
                 [required]='required'
-                [disabled]="disabled"/>
+                [disabled]="disabled"
+                autocomplete="off"/>
 
             <span class="input-group-append float-label-append">
                 <button type="button" class="btn btn-default" (click)="dp.toggleCalendar()">
@@ -47,7 +48,7 @@
         *ngIf="dateEl?.errors?.noPastDatesAllowed && errorMessages?.noPastDatesAllowed">
         {{errorMessages.noPastDatesAllowed}}
   </div>
-  
+
   <div class="text-danger"
        *ngIf="dateEl?.errors?.noFutureDatesAllowed && errorMessages?.noFutureDatesAllowed">
        {{errorMessages.noFutureDatesAllowed}}

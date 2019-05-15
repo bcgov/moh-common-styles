@@ -20,7 +20,9 @@ export class PostalCodeComponent extends Base implements ControlValueAccessor  {
 
   @Input()
   set value( val: string ) {
-    this.postalCode = val;
+    if ( val !== undefined ) {
+      this.postalCode = val;
+    }
   }
   get value() {
     return this.postalCode;
@@ -52,19 +54,15 @@ export class PostalCodeComponent extends Base implements ControlValueAccessor  {
 
   onBlurEvent( event: any ) {
 
-    const val = event.target.value;
-
-    if ( this.displayMask && val ) {
+    if ( this.displayMask && this.postalCode ) {
       // Check for valid characters
 
-      const passTest = this.pcFormat.test( val );
+      const passTest = this.pcFormat.test( this.postalCode  );
       this.controlDir.control.setErrors( (passTest ? null : { 'pattern': true } ) );
-
-      console.log( 'passTest: ', passTest, val );
     }
 
     this._onTouched( event );
-    this.blurEvent.emit( val );
+    this.blurEvent.emit( event );
   }
 
   writeValue( value: any ): void {
