@@ -1,12 +1,11 @@
 import { forwardRef, Component, EventEmitter, Input, Output, ViewChild, Inject} from '@angular/core';
 import * as moment from 'moment';
 import {ModalDirective} from 'ngx-bootstrap';
-import {ApplicationBase} from '../../../models/src/application-base.model';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders,HttpErrorResponse } from '@angular/common/http';
 import { Response } from '@angular/http';
 import { CommonLogger, CommonLogMessage } from '../../../services/src/logger.service';
-import {AbstractHttpService} from "../../../services/src/abstract-api-service"
+import { AbstractHttpService } from '../../../services/src/abstract-api-service';
 import { ControlContainer, ControlValueAccessor, NgForm, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 
@@ -55,7 +54,7 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
 
     protected _headers: HttpHeaders = new HttpHeaders();
     @Input() processName: string;
-    @Input() application: ApplicationBase;
+    @Input() application: any;
     @Input() isUnderMaintenance: boolean = false;
     @Input() title: string;
     @Input() body: string;
