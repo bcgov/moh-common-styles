@@ -1,0 +1,34 @@
+<div bsModal #fullSizeViewModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+      data-keyboard="false"
+     aria-labelledby="myLargeModalLabel" aria-hidden="true" 
+     [config]="{backdrop: 'static', ignoreBackdropClick: true}">
+
+  <div class="modal-dialog" style="margin-top: 90px;">
+    <div class="modal-content">
+      <div class="modal-header modal-header-primary">
+        <h2 id="myLargeModalLabel">{{maintenanceFlag == 'true' ? 'Maintenance notice' : title}}</h2>
+      </div>
+      <div class="modal-body">
+        <div *ngIf="maintenanceFlag == 'true'">
+            <h4 [innerHtml]="maintenanceMessage|replacewithlinks"></h4>
+        </div>  
+        <div *ngIf="maintenanceFlag != 'true'">
+            <p [innerHtml]="body"></p>
+        </div>
+
+        <br>
+        <div *ngIf="maintenanceFlag != 'true'">
+          <div class="form-check form-check-inline">
+          <input [ngModelOptions]="{standalone: true}" class="input-lg form-check-input" id="agree" type="checkbox" [(ngModel)]="agreeCheck">
+          <label class="form-check-label" for="agree" [innerHtml]="agreeLabel" ><strong></strong></label>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="maintenanceFlag != 'true'" class="modal-footer">
+        <button [disabled]="!agreeCheck" class="btn btn-block btn-primary pull-left"
+                type="submit" (click)="continue()">{{continueButton}}</button>
+          
+      </div>
+    </div>
+  </div>
+</div>
