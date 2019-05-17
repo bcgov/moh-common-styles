@@ -1,14 +1,13 @@
-import { forwardRef, Component, EventEmitter, Input, Output, ViewChild, Inject} from '@angular/core';
+import { forwardRef, Component, EventEmitter, Input, Output, ViewChild, Inject, OnInit} from '@angular/core';
 import * as moment from 'moment';
 import {ModalDirective} from 'ngx-bootstrap';
 import {ApplicationBase} from '../../../models/src/application-base.model';
 import { Observable, of } from 'rxjs';
-import { HttpClient, HttpHeaders,HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Response } from '@angular/http';
 import { CommonLogger, CommonLogMessage } from '../../../services/src/logger.service';
-import {AbstractHttpService} from "../../../services/src/abstract-api-service"
+import {AbstractHttpService} from '../../../services/src/abstract-api-service';
 import { ControlContainer, ControlValueAccessor, NgForm, NG_VALUE_ACCESSOR } from '@angular/forms';
-
 
 
 /**
@@ -51,7 +50,7 @@ export interface ISpaEnvResponse {
   ]
 })
 
-export class ConsentModalComponent extends AbstractHttpService implements ControlValueAccessor  {
+export class ConsentModalComponent extends AbstractHttpService implements ControlValueAccessor, OnInit  {
 
     protected _headers: HttpHeaders = new HttpHeaders();
     @Input() processName: string;
@@ -140,23 +139,23 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
                 .subscribe(response => {
                     this.spaEnvRes = <ISpaEnvResponse> response;
                     console.log(this.spaEnvRes);
-                    if(this.spaEnvRes.SPA_ENV_ACL_MAINTENANCE_FLAG == 'true') {
+                    if(this.spaEnvRes.SPA_ENV_ACL_MAINTENANCE_FLAG === 'true') {
                         this.maintenanceFlag = 'true';
                         this.maintenanceMessage = this.spaEnvRes.SPA_ENV_ACL_MAINTENANCE_MESSAGE; 
-                    } else if (this.spaEnvRes.SPA_ENV_MSP_MAINTENANCE_FLAG == 'true') {
+                    } else if (this.spaEnvRes.SPA_ENV_MSP_MAINTENANCE_FLAG === 'true') {
                         this.maintenanceFlag = 'true';
                         this.maintenanceMessage =  this.spaEnvRes.SPA_ENV_MSP_MAINTENANCE_MESSAGE;
                     }
-                    if(this.spaEnvRes.SPA_ENV_PACUTOFF_MAINTENANCE_START) {
-                        this.cutOffDate.emit(this.spaEnvRes);;
+                    if (this.spaEnvRes.SPA_ENV_PACUTOFF_MAINTENANCE_START) {
+                        this.cutOffDate.emit(this.spaEnvRes);
                     }
                     
 			}, (error: Response | any) => {
-                console.log('Error when calling the MSP Maintenance: '+error);
+                console.log('Error when calling the MSP Maintenance: '+ error);
                 this.logService.log({
                   event: 'ACL - SPA Env System Error',
                   success: false,
-                  errMsg: 'ACL - SPA Env Rapid Response Error'+error
+                  errMsg: 'ACL - SPA Env Rapid Response Error'+ error
                 });
         }
 
