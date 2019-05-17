@@ -14,6 +14,10 @@ import { CountryList, CANADA, UNITED_STATES } from '../country/country.component
 import { ProvinceList, BRITISH_COLUMBIA } from '../province/province.component';
 
 
+/**
+ * 
+ * Note - This component REQUIRES that `HttpClientModule` is registered in your NgModule.
+ */
 @Component({
   selector: 'common-address',
   templateUrl: './address.component.html',
