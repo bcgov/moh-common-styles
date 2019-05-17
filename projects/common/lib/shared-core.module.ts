@@ -35,6 +35,8 @@ import { ConsentModalComponent } from './components/consent-modal/consent-modal.
 import { NameComponent } from './components/name/name.component';
 import { PhoneNumberComponent } from './components/phone-number/phone-number.component';
 import { RadioComponent } from './components/radio/radio.component';
+import { ReplacewithlinksPipe } from './components/replace-link-pipe/replacewithlinks.pipe';
+
 
 const componentList = [
   CoreBreadcrumbComponent,
@@ -65,7 +67,8 @@ const componentList = [
   ConsentModalComponent,
   NameComponent,
   PhoneNumberComponent,
-  RadioComponent
+  RadioComponent,
+  ReplacewithlinksPipe
 ];
 @NgModule({
   imports: [
