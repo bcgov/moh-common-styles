@@ -65,36 +65,37 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
     @Input() url: string = '/msp/api/env';
 
     @ViewChild('fullSizeViewModal') public fullSizeViewModal: ModalDirective;
-    @Output() onClose = new EventEmitter<void>();
+    @Output() close = new EventEmitter<void>();
     @Output() cutOffDate: EventEmitter<ISpaEnvResponse> = new EventEmitter<ISpaEnvResponse>();
 
     public spaEnvRes: ISpaEnvResponse = {} as any;
-    //public maintenanceFlag: string ;
+    // public maintenanceFlag: string ;
     public maintenanceMessage: string;
 
-    private _applicationHeaderMap:Map<string, string> = new Map([["ACL", '{"SPA_ENV_MSP_ACL_MAINTENANCE_FLAG":"","SPA_ENV_MSP_ACL_MAINTENANCE_MESSAGE":""}'], ["MSP", '{"SPA_ENV_MSP_MAINTENANCE_FLAG":"","SPA_ENV_MSP_MAINTENANCE_MESSAGE":""}'],["PA", '{"SPA_ENV_PACUTOFF_MAINTENANCE_START":"","SPA_ENV_PACUTOFF_MAINTENANCE_END":"","SPA_ENV_NOW":""}']]);
+    // tslint:disable-next-line:max-line-length
+    private _applicationHeaderMap: Map<string, string> = new Map([['ACL', '{"SPA_ENV_MSP_ACL_MAINTENANCE_FLAG":"","SPA_ENV_MSP_ACL_MAINTENANCE_MESSAGE":""}'], ['MSP', '{"SPA_ENV_MSP_MAINTENANCE_FLAG":"","SPA_ENV_MSP_MAINTENANCE_MESSAGE":""}'], ['PA', '{"SPA_ENV_PACUTOFF_MAINTENANCE_START":"","SPA_ENV_PACUTOFF_MAINTENANCE_END":"","SPA_ENV_NOW":""}']]);
     agreeCheck: boolean = false;
-    
+
     public _onChange = (_: any) => {};
     public _onTouched = () => {};
 
-    
+
     constructor(protected http: HttpClient,  private logService: CommonLogger) {
         super(http);
     }
-    
- 
+
+
 
     ngOnInit(): void {
-      //Called after ngOnInit when the component's or directive's content has been initialized.
-      //Add 'implements AfterContentInit' to the class.
-      if(this.isUnderMaintenance){
+      // Called after ngOnInit when the component's or directive's content has been initialized.
+      // Add 'implements AfterContentInit' to the class.
+      if (this.isUnderMaintenance) {
         this.inMaintenance();
       }
-      
-    } 
 
-    showFullSizeView(){
+    }
+
+    showFullSizeView() {
         this.fullSizeViewModal.config.backdrop = false;
         this.fullSizeViewModal.config.keyboard = false;
         this.fullSizeViewModal.show();
@@ -103,12 +104,12 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
     continue() {
         this.application.infoCollectionAgreement = true;
         this.fullSizeViewModal.hide();
-        this.onClose.emit();
+        this.close.emit();
         this._onChange(true);
         this._onTouched();
     }
-    
-    // Api callout to get the message from the Rapid code  
+
+    // Api callout to get the message from the Rapid code
     sendSpaEnvServer(rapidResponseCode: string): Observable<any> {
         this._headers = new HttpHeaders({
             'SPA_ENV_NAME': rapidResponseCode
@@ -117,17 +118,16 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
     }
 
     protected handleError(error: HttpErrorResponse) {
-      console.log("handleError", JSON.stringify(error));
+      console.log('handleError', JSON.stringify(error));
       if (error.error instanceof ErrorEvent) {
-          //Client-side / network error occured
+          // Client-side / network error occured
           console.error('MspMaintenanceService error: ', error.error.message);
-      }
-      else {
+      } else {
           // The backend returned an unsuccessful response code
           console.error(`MspMaintenanceService Backend returned error code: ${error.status}.  Error body: ${error.error}`);
       }
-      //this.logService.log({event: 'error', key: 'Cannot get maintenance flag from spa-env-server'});
-      
+      // this.logService.log({event: 'error', key: 'Cannot get maintenance flag from spa-env-server'});
+
       // A user facing erorr message /could/ go here; we shouldn't log dev info through the throwError observable
       return of(error);
   }

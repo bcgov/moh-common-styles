@@ -25,3 +25,8 @@
 .has-float-label {
   flex-basis: calc(100% - 36px);
 }
+
+// Remove the IE-provided 'X' button. Using this can bypass our validation so we have to remove it.
+input::-ms-clear {
+  display: none;
+}

@@ -4,12 +4,13 @@
     <i class="fa fa-cloud-upload fa-4x d-inline-block upload-icon" aria-hidden="true" #imagePlaceholderRef tabindex="0"></i>
 
     <input type="file" id="fileUploadBrowse-{{id}}" #browseFileRef ngModel accept="image/*,application/pdf" style="display:none;"
-            tabindex="0" multiple name='fileUploadBrowse-{{id}}' [required]='required && images.length === 0' />
+            tabindex="0" multiple name='fileUploadBrowse-{{id}}' [required]='required && images.length === 0'
+            autocomplete="off"/>
     <label for="fileUploadBrowse-{{id}}" class="file-upload-label d-inline-block ml-3" #selectFileLabel tabindex="0">
       <span class='h2 color-body'>Select a file</span>
       <span class='d-block description'>{{ instructionText }}</span>
     </label>
-    
+
     <!-- TODO - STYLE/ENABLE/TEST THE BELOW FOR MOBILE ONLY! Also need to test on a phone after deploying to OpenShift-->
     <!-- <span class="d-block d-sm-none">or</span>
     <input type="file" id="fileUploadUseCamera-{{id}}" #captureFileRef accept="image/*,application/pdf" capture="camera"
@@ -18,9 +19,9 @@
     <label for="fileUploadUseCamera-{{id}}" class="file-upload-label description d-block d-sm-none" tabindex="0">
       take a photo
     </label> -->
-    
+
   </div>
-  
+
   <div *ngIf="fileControl?.touched" role="alert" class='error-container' aria-live="assertive">
     <div class="text-danger" *ngIf="fileControl?.errors?.required">
       {{errorMessages.required}}
@@ -34,7 +35,7 @@
     </div>
   </div>
 
-  <!-- The sole purpose of this element is to maintain the drop zone to an 
+  <!-- The sole purpose of this element is to maintain the drop zone to an
         large size to display on screen.
       -->
   <div class="preview-zone">

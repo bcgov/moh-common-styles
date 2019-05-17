@@ -1,4 +1,14 @@
-# [Unreleased](https://github.com/bcgov/moh-common-styles/compare/v0.0.31...9f5a04e) "moh-common-lib" (2019-05-08)
+# Unreleased "moh-common-lib" (2019-05-15)
+
+
+
+## [0.0.32](https://github.com/bcgov/moh-common-styles/compare/v0.0.31...v0.0.32) "moh-common-lib" (2019-05-15)
+
+
+### Bug Fixes
+
+* autocomplete turned off, fixed bug in postal to work with fpcare ([1c8242e](https://github.com/bcgov/moh-common-styles/commit/1c8242e))
+* **Datepicker:** Remove the IE provided 'X' to clear input ([2ddfc23](https://github.com/bcgov/moh-common-styles/commit/2ddfc23))
 
 
 ### Documentation

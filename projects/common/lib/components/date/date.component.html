@@ -29,7 +29,8 @@
            commonDateFieldFormat
            commonDayValidation
            [disabled]='disabled'
-           maxlength="2" />
+           maxlength="2"
+           autocomplete="off"/>
 
     <label class="visuallyhidden" for="year{{objectId}}">Year</label>
     <input type="number"
@@ -44,7 +45,8 @@
            commonDateFieldFormat
            [commonYearValidate]="restrictDate"
            [disabled]='disabled'
-           maxlength="4" />
+           maxlength="4"
+           autocomplete="off"/>
 
   </div>
 

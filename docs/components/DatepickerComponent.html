@@ -1748,7 +1748,7 @@ export enum DatepickerSizes {
         <pre class="line-numbers"><code class="language-html">&lt;div&gt;
     &lt;label&gt;&lt;span&gt;{{labelText}}&lt;/span&gt;
         &lt;div class&#x3D;&quot;input-group&quot;&gt;
-            
+
                 &lt;input class&#x3D;&quot;form-control&quot; placeholder&#x3D;&quot;YYYY/MM/DD&quot;
                 ngx-mydatepicker name&#x3D;&quot;datepicker-{{labelText}}-{{objectId}}&quot;
                 [(ngModel)]&#x3D;&quot;model&quot;
@@ -1757,7 +1757,8 @@ export enum DatepickerSizes {
                 #dateEl&#x3D;&#x27;ngModel&#x27;
                 (dateChanged)&#x3D;&quot;onDateChanged($event)&quot;
                 [required]&#x3D;&#x27;required&#x27;
-                [disabled]&#x3D;&quot;disabled&quot;/&gt;
+                [disabled]&#x3D;&quot;disabled&quot;
+                autocomplete&#x3D;&quot;off&quot;/&gt;
 
             &lt;span class&#x3D;&quot;input-group-append float-label-append&quot;&gt;
                 &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-default&quot; (click)&#x3D;&quot;dp.toggleCalendar()&quot;&gt;
@@ -1794,7 +1795,7 @@ export enum DatepickerSizes {
         *ngIf&#x3D;&quot;dateEl?.errors?.noPastDatesAllowed &amp;&amp; errorMessages?.noPastDatesAllowed&quot;&gt;
         {{errorMessages.noPastDatesAllowed}}
   &lt;/div&gt;
-  
+
   &lt;div class&#x3D;&quot;text-danger&quot;
        *ngIf&#x3D;&quot;dateEl?.errors?.noFutureDatesAllowed &amp;&amp; errorMessages?.noFutureDatesAllowed&quot;&gt;
        {{errorMessages.noFutureDatesAllowed}}
@@ -1803,7 +1804,8 @@ export enum DatepickerSizes {
        *ngIf&#x3D;&quot;(dateEl?.errors?.invalidValue || dateEl?.errors?.invalidDateFormat) &amp;&amp; errorMessages?.invalidValue&quot;&gt;
        {{errorMessages.invalidValue}}
   &lt;/div&gt;
-&lt;/div&gt;</code></pre>
+&lt;/div&gt;
+</code></pre>
     </div>
 
 
@@ -1832,7 +1834,7 @@ export enum DatepickerSizes {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div>    <label><span>{{labelText}}</span>        <div class="input-group">                            <input class="form-control" placeholder="YYYY/MM/DD"                ngx-mydatepicker name="datepicker-{{labelText}}-{{objectId}}"                [(ngModel)]="model"                [options]="datepickerOptions"                #dp="ngx-mydatepicker"                #dateEl=\'ngModel\'                (dateChanged)="onDateChanged($event)"                [required]=\'required\'                [disabled]="disabled"/>            <span class="input-group-append float-label-append">                <button type="button" class="btn btn-default" (click)="dp.toggleCalendar()">                    <i class="fa fa-calendar"></i>                </button>            </span>        </div>    </label></div><!-- InvalidDateFormat comes from ngxmydatepicker, so we have a little less control over it. --><div *ngIf="!disabled && dateEl.touched"    role="alert"    class=\'error-container\'    aria-live="assertive">  <div class="text-danger"       *ngIf="(dateEl?.errors?.required) && errorMessages?.required && !dateEl?.errors?.invalidDateFormat">       {{errorMessages.required}}  </div>  <!-- ngx-mydatepicker has it\'s own errors and we can\'t easily add our own, so we have reduced error messages. -->  <!-- <div class="text-danger"      *ngIf="dateEl?.errors?.dayOutOfRange && errorMessages?.dayOutOfRange">       {{errorMessages.dayOutOfRange}}  </div>  <div class="text-danger"       *ngIf="dateEl?.errors?.yearDistantPast && errorMessages?.yearDistantPast">       {{errorMessages.yearDistantPast}}  </div>  <div class="text-danger"       *ngIf="dateEl?.errors?.yearDistantFuture && errorMessages?.yearDistantFuture">       {{errorMessages.yearDistantFuture}}  </div>  <div class="text-danger"        *ngIf="dateEl?.errors?.noPastDatesAllowed && errorMessages?.noPastDatesAllowed">        {{errorMessages.noPastDatesAllowed}}  </div>    <div class="text-danger"       *ngIf="dateEl?.errors?.noFutureDatesAllowed && errorMessages?.noFutureDatesAllowed">       {{errorMessages.noFutureDatesAllowed}}  </div> -->  <div class="text-danger"       *ngIf="(dateEl?.errors?.invalidValue || dateEl?.errors?.invalidDateFormat) && errorMessages?.invalidValue">       {{errorMessages.invalidValue}}  </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div>    <label><span>{{labelText}}</span>        <div class="input-group">                <input class="form-control" placeholder="YYYY/MM/DD"                ngx-mydatepicker name="datepicker-{{labelText}}-{{objectId}}"                [(ngModel)]="model"                [options]="datepickerOptions"                #dp="ngx-mydatepicker"                #dateEl=\'ngModel\'                (dateChanged)="onDateChanged($event)"                [required]=\'required\'                [disabled]="disabled"                autocomplete="off"/>            <span class="input-group-append float-label-append">                <button type="button" class="btn btn-default" (click)="dp.toggleCalendar()">                    <i class="fa fa-calendar"></i>                </button>            </span>        </div>    </label></div><!-- InvalidDateFormat comes from ngxmydatepicker, so we have a little less control over it. --><div *ngIf="!disabled && dateEl.touched"    role="alert"    class=\'error-container\'    aria-live="assertive">  <div class="text-danger"       *ngIf="(dateEl?.errors?.required) && errorMessages?.required && !dateEl?.errors?.invalidDateFormat">       {{errorMessages.required}}  </div>  <!-- ngx-mydatepicker has it\'s own errors and we can\'t easily add our own, so we have reduced error messages. -->  <!-- <div class="text-danger"      *ngIf="dateEl?.errors?.dayOutOfRange && errorMessages?.dayOutOfRange">       {{errorMessages.dayOutOfRange}}  </div>  <div class="text-danger"       *ngIf="dateEl?.errors?.yearDistantPast && errorMessages?.yearDistantPast">       {{errorMessages.yearDistantPast}}  </div>  <div class="text-danger"       *ngIf="dateEl?.errors?.yearDistantFuture && errorMessages?.yearDistantFuture">       {{errorMessages.yearDistantFuture}}  </div>  <div class="text-danger"        *ngIf="dateEl?.errors?.noPastDatesAllowed && errorMessages?.noPastDatesAllowed">        {{errorMessages.noPastDatesAllowed}}  </div>  <div class="text-danger"       *ngIf="dateEl?.errors?.noFutureDatesAllowed && errorMessages?.noFutureDatesAllowed">       {{errorMessages.noFutureDatesAllowed}}  </div> -->  <div class="text-danger"       *ngIf="(dateEl?.errors?.invalidValue || dateEl?.errors?.invalidDateFormat) && errorMessages?.invalidValue">       {{errorMessages.invalidValue}}  </div></div></div>'
     var COMPONENTS = [{'name': 'AddressComponent', 'selector': 'common-address'},{'name': 'ButtonGroupComponent', 'selector': 'common-button-group'},{'name': 'CaptchaComponent', 'selector': 'common-captcha'},{'name': 'CityComponent', 'selector': 'common-city'},{'name': 'CoreBreadcrumbComponent', 'selector': 'common-core-breadcrumb'},{'name': 'CountryComponent', 'selector': 'common-country'},{'name': 'DateComponent', 'selector': 'common-date'},{'name': 'DatepickerComponent', 'selector': 'common-datepicker'},{'name': 'DropdownComponent', 'selector': 'common-dropdown'},{'name': 'FileUploaderComponent', 'selector': 'common-file-uploader'},{'name': 'FormActionBarComponent', 'selector': 'common-form-action-bar'},{'name': 'FormSubmitBarComponent', 'selector': 'common-form-submit-bar'},{'name': 'PageFrameworkComponent', 'selector': 'common-page-framework'},{'name': 'PageSectionComponent', 'selector': 'common-page-section'},{'name': 'PasswordComponent', 'selector': 'common-password'},{'name': 'PostalCodeComponent', 'selector': 'common-postal-code'},{'name': 'ProvinceComponent', 'selector': 'common-province'},{'name': 'StreetComponent', 'selector': 'common-street'},{'name': 'ThumbnailComponent', 'selector': 'common-thumbnail'},{'name': 'ToggleComponent', 'selector': 'common-toggle'},{'name': 'WizardProgressBarComponent', 'selector': 'common-wizard-progress-bar'}];
     var DIRECTIVES = [{'name': 'DateFieldFormatDirective', 'selector': '[commonDateFieldFormat]'},{'name': 'DayValidationDirective', 'selector': '[commonDayValidation]'},{'name': 'YearValidateDirective', 'selector': '[commonYearValidate]'}];
     var ACTUAL_COMPONENT = {'name': 'DatepickerComponent'};
