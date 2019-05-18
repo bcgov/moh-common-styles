@@ -20,9 +20,11 @@ export class PostalCodeComponent extends Base implements ControlValueAccessor  {
 
   @Input()
   set value( val: string ) {
+    console.log( 'set value: ', val );
     this.postalCode = val;
   }
   get value() {
+    console.log( 'get value: ', this.postalCode );
     return this.postalCode;
   }
 
@@ -47,22 +49,25 @@ export class PostalCodeComponent extends Base implements ControlValueAccessor  {
 
   onValueChange( value: any ) {
     console.log( 'onValueChange: ', value );
-    this.value = value;
+    if ( this.displayMask  && !value ) {
+      // Fixes IE issue of displaying error when in focus.
+      return;
+    }
     this._onChange( value );
     this.valueChange.emit( value );
   }
 
   onBlurEvent( event: any ) {
 
-    console.log( 'onblur: ', this.value );
+    console.log( 'onblur: ', event );
 
-    if ( this.displayMask && this.value ) {
+    if ( this.displayMask && event.target.value ) {
       // Check for valid characters
 
-      const passTest = this.pcFormat.test( this.value );
+      const passTest = this.pcFormat.test( event.target.value );
       this.controlDir.control.setErrors( (passTest ? null : { 'pattern': true } ) );
 
-      console.log( 'passTest: ', passTest, this.value );
+      console.log( 'passTest: ', passTest, event.target.value );
     }
 
     this._onTouched( event );
@@ -71,7 +76,7 @@ export class PostalCodeComponent extends Base implements ControlValueAccessor  {
 
   writeValue( value: any ): void {
     if ( value !== undefined ) {
-      this.value = value;
+      this.postalCode = value;
     }
   }
 
