@@ -46,30 +46,32 @@ export class PostalCodeComponent extends Base implements ControlValueAccessor  {
   }
 
   onValueChange( value: any ) {
+    console.log( 'onValueChange: ', value );
+    this.value = value;
     this._onChange( value );
     this.valueChange.emit( value );
   }
 
   onBlurEvent( event: any ) {
 
-    const val = event.target.value;
+    console.log( 'onblur: ', this.value );
 
-    if ( this.displayMask && val ) {
+    if ( this.displayMask && this.value ) {
       // Check for valid characters
 
-      const passTest = this.pcFormat.test( val );
+      const passTest = this.pcFormat.test( this.value );
       this.controlDir.control.setErrors( (passTest ? null : { 'pattern': true } ) );
 
-      console.log( 'passTest: ', passTest, val );
+      console.log( 'passTest: ', passTest, this.value );
     }
 
     this._onTouched( event );
-    this.blurEvent.emit( val );
+    this.blurEvent.emit( event );
   }
 
   writeValue( value: any ): void {
     if ( value !== undefined ) {
-      this.postalCode = value;
+      this.value = value;
     }
   }
 
