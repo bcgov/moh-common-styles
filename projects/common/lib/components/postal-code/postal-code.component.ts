@@ -48,11 +48,7 @@ export class PostalCodeComponent extends Base implements ControlValueAccessor  {
   }
 
   onValueChange( value: any ) {
-    console.log( 'onValueChange: ', value );
-    if ( this.displayMask  && !value ) {
-      // Fixes IE issue of displaying error when in focus.
-      return;
-    }
+    console.log( 'onValueChange: ', value, this.value );
     this._onChange( value );
     this.valueChange.emit( value );
   }
