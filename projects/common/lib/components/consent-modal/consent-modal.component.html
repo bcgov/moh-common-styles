@@ -20,7 +20,7 @@
         <div *ngIf="maintenanceFlag != 'true'">
           <div class="form-check form-check-inline">
           <input [ngModelOptions]="{standalone: true}" class="input-lg form-check-input" id="agree" type="checkbox" [(ngModel)]="agreeCheck">
-          <label class="form-check-label" for="agree" [innerHtml]="agreeLabel" ><strong></strong></label>
+          <label class="form-check-label" for="agree"><strong>{{agreeLabel}}</strong></label>
           </div>
         </div>
       </div>
