@@ -20,18 +20,20 @@ export class PostalCodeComponent extends Base implements ControlValueAccessor  {
 
   @Input()
   set value( val: string ) {
-    if ( val !== undefined ) {
+    // console.log( 'set value: ', val );
+    if( val) {
       this.postalCode = val;
     }
   }
   get value() {
+    // console.log( 'get value: ', this.postalCode );
     return this.postalCode;
   }
 
   @Output() valueChange: EventEmitter<string> = new EventEmitter<string>();
   @Output() blurEvent: EventEmitter<any> = new EventEmitter<any>();
 
-  postalCode: string = null;
+  postalCode: string = '';
   mask: any;
   pcFormat: RegExp = /^[A-Za-z][0-9][A-Za-z]\s?[0-9][A-Za-z][0-9]$/;
 
@@ -48,17 +50,27 @@ export class PostalCodeComponent extends Base implements ControlValueAccessor  {
   }
 
   onValueChange( value: any ) {
-    this._onChange( value );
-    this.valueChange.emit( value );
+    // console.log( 'onValueChange: ', value, this.postalCode );
+
+    if ( value !== this.postalCode ) { // IE fix when focus does not display required error
+      this._onChange( value );
+      this.valueChange.emit( value );
+      this.postalCode = value;
+    }
   }
 
   onBlurEvent( event: any ) {
 
-    if ( this.displayMask && this.postalCode ) {
+    // console.log( 'onblur: ', event );
+
+    if ( this.displayMask && event.target.value ) {
       // Check for valid characters
 
-      const passTest = this.pcFormat.test( this.postalCode  );
-      this.controlDir.control.setErrors( (passTest ? null : { 'pattern': true } ) );
+      const passTest = this.pcFormat.test( event.target.value );
+      if ( this.controlDir ) {
+        this.controlDir.control.setErrors( (passTest ? null : { 'pattern': true } ) );
+      }
+     // console.log( 'passTest: ', passTest, event.target.value );
     }
 
     this._onTouched( event );
@@ -66,12 +78,13 @@ export class PostalCodeComponent extends Base implements ControlValueAccessor  {
   }
 
   writeValue( value: any ): void {
-    if ( value !== undefined ) {
+    // console.log( 'writeValue: ', value, this.postalCode );
+    if ( value ) {
       this.postalCode = value;
     }
   }
 
-  // Register change function
+  // Register change functiong
   registerOnChange( fn: any ): void {
     this._onChange = fn;
   }
