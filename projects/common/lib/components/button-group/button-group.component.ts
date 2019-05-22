@@ -3,13 +3,13 @@ import { ControlContainer, ControlValueAccessor, NgForm, NG_VALUE_ACCESSOR } fro
 
 /**
  * ButtonGroupComponent is a radio components which shows YES/NO option as a button group
- * 
+ *
  *
  *
  * @example
  *       <common-button-group [showError]="showError"
  *          [errorMessageRequired]="'This field is Required. Please select any value.'"
- *          [label]="'Please select a value'" 
+ *          [label]="'Please select a value'"
  *          [data]="data.value" (dataChange)="setMovedToBCPermanently($event)" >
  *         </common-button-group>
  *
@@ -42,11 +42,11 @@ export class ButtonGroupComponent implements ControlValueAccessor {
   public _onChange = (_: any) => {};
   public _onTouched = () => {};
 
-  constructor() { 
+  constructor() {
 
   }
 
-  
+
   setButtonGrpVal(val: any) {
     this.dataChange.emit(val);
     this._onChange(val);

@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import {FormsModule, NgForm} from '@angular/forms';  
+import {FormsModule, NgForm} from '@angular/forms';
 import { NameComponent } from './name.component';
 import {Person} from '../../../models/src/person.model';
 
@@ -47,13 +47,13 @@ describe('NameComponent', () => {
 
   it ('First Name value Input by the User', () => {
     component.firstName = 'Mark';
-    
+
     fixture.detectChanges();
     fixture.whenStable().then(() => {
       expect(el.querySelector('input[type=text]').value).toEqual('Mark');
     });
   });
- 
+
 
 
 });

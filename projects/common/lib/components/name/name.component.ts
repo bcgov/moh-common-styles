@@ -1,14 +1,14 @@
 import {forwardRef, Component, Input, Output, EventEmitter, ViewChild, ChangeDetectorRef} from '@angular/core';
 import {Person} from '../../../models/src/person.model';
 import {Base} from '../../../models/src/base';
-import {debounceTime} from "rxjs/operators";
+import {debounceTime} from 'rxjs/operators';
 import { ControlContainer, ControlValueAccessor, NgForm, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 /**
  * Name components is used to show Firstname, Middle Name and Last Name in the application.
- * 
+ *
  * @example
- *       	<common-name #name [person]="person" 
+ *       	<common-name #name [person]="person"
  *            (onChange)="onChange.emit($event)" [showError]="hasError" >
  *        </common-name>
  * @export
@@ -31,7 +31,7 @@ export interface PasswordErrorMsg {
   ]
 })
 
-export class NameComponent extends Base implements ControlValueAccessor{
+export class NameComponent extends Base implements ControlValueAccessor {
 
   @Input() person: Person;
   @Input() showError: boolean;
@@ -51,20 +51,20 @@ export class NameComponent extends Base implements ControlValueAccessor{
   // default messages
   private requiredMsgSeg: string = 'is required';
   private pattern: string = 'Must begin with a letter followed by a letters, hyphen, period, apostrophe, or blank character';
-  
+
   public _onChange = (_: any) => {};
   public _onTouched = () => {};
-  
+
   constructor() {
     super();
   }
-  
+
   ngOnInit() {
 
-    if(this.person) {
-      this.firstName = this.person.firstName ? this.person.firstName :'';
-      this.lastName = this.person.lastName ? this.person.lastName :'';
-      this.middleName = this.person.middleName ? this.person.middleName :'';
+    if (this.person) {
+      this.firstName = this.person.firstName ? this.person.firstName : '';
+      this.lastName = this.person.lastName ? this.person.lastName : '';
+      this.middleName = this.person.middleName ? this.person.middleName : '';
     }
 
     this.errMsg =    {
@@ -120,6 +120,6 @@ export class NameComponent extends Base implements ControlValueAccessor{
   writeValue(value: any): void {
     this.person = value;
   }
-  
+
 
 }

@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ButtonComponent } from './button.component';
-import {FormsModule, NgForm} from '@angular/forms'; 
+import {FormsModule, NgForm} from '@angular/forms';
 
 describe('ButtonComponent', () => {
   let component: ButtonComponent;
@@ -38,7 +38,7 @@ describe('ButtonComponent', () => {
   it('Button is clicked', () => {
     spyOn(component, 'onClick');
 
-    let button = fixture.debugElement.nativeElement.querySelector('button');
+    const button = fixture.debugElement.nativeElement.querySelector('button');
     button.click();
 
     fixture.whenStable().then(() => {

@@ -11,14 +11,14 @@ import { ControlContainer, ControlValueAccessor, NgForm, NG_VALUE_ACCESSOR } fro
 
 
 /**
- * Consent Modal is a Modal with the Information or Notice. It can be used to get the User's consent an 
- * then proceed with the application. It also makes an API call to the SPA-ENV server to see if the app is under 
+ * Consent Modal is a Modal with the Information or Notice. It can be used to get the User's consent an
+ * then proceed with the application. It also makes an API call to the SPA-ENV server to see if the app is under
  * maintenance.
- * 
- * 
+ *
+ *
  * @example
-*       	<common-consent-modal #mspConsentModal body='Body Of Consent' 
-*               title='Notice' [application]="mspAccountApp" 
+*       	<common-consent-modal #mspConsentModal body='Body Of Consent'
+*               title='Notice' [application]="mspAccountApp"
 *               processName='MSP'
 *               agreeLabel='I have read and understand this info'
 *               (onClose)="addressChangeChkBx.focus()">
@@ -131,17 +131,17 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
       return of(error);
   }
 
-   
+
   inMaintenance() {
         const headerName = this._applicationHeaderMap.get(this.processName);
-        
+
         this.sendSpaEnvServer(headerName)
                 .subscribe(response => {
                     this.spaEnvRes = <ISpaEnvResponse> response;
                     console.log(this.spaEnvRes);
-                    if(this.spaEnvRes.SPA_ENV_ACL_MAINTENANCE_FLAG === 'true') {
+                    if (this.spaEnvRes.SPA_ENV_ACL_MAINTENANCE_FLAG === 'true') {
                         this.maintenanceFlag = 'true';
-                        this.maintenanceMessage = this.spaEnvRes.SPA_ENV_ACL_MAINTENANCE_MESSAGE; 
+                        this.maintenanceMessage = this.spaEnvRes.SPA_ENV_ACL_MAINTENANCE_MESSAGE;
                     } else if (this.spaEnvRes.SPA_ENV_MSP_MAINTENANCE_FLAG === 'true') {
                         this.maintenanceFlag = 'true';
                         this.maintenanceMessage =  this.spaEnvRes.SPA_ENV_MSP_MAINTENANCE_MESSAGE;
@@ -149,13 +149,13 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
                     if (this.spaEnvRes.SPA_ENV_PACUTOFF_MAINTENANCE_START) {
                         this.cutOffDate.emit(this.spaEnvRes);
                     }
-                    
+
 			}, (error: Response | any) => {
-                console.log('Error when calling the MSP Maintenance: '+ error);
+                console.log('Error when calling the MSP Maintenance: ' + error);
                 this.logService.log({
                   event: 'ACL - SPA Env System Error',
                   success: false,
-                  errMsg: 'ACL - SPA Env Rapid Response Error'+ error
+                  errMsg: 'ACL - SPA Env Rapid Response Error' + error
                 });
         }
 

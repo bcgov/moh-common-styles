@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import {FormsModule, NgForm} from '@angular/forms'; 
+import {FormsModule, NgForm} from '@angular/forms';
 import { ConsentModalComponent } from './consent-modal.component';
 
 import {ModalModule} from 'ngx-bootstrap';
@@ -14,7 +14,7 @@ describe('ConsentModalComponent', () => {
   let fixture: ComponentFixture<ConsentModalComponent>;
   let el;
 
-  
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ ConsentModalComponent, ReplacewithlinksPipe],
@@ -46,7 +46,7 @@ describe('ConsentModalComponent', () => {
 
   it ('Consent Modal checked and proceed', () => {
     spyOn(component, 'continue').and.callThrough();
-    let button = fixture.debugElement.nativeElement.querySelector('button');
+    const button = fixture.debugElement.nativeElement.querySelector('button');
     button.click();
     fixture.whenStable().then(() => {
       expect(component.continue).toBeTruthy();

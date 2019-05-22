@@ -17,7 +17,7 @@ export class MspImageProcessingError {
   rawImageFile?: File;
   maxSizeAllowed?: number;
   // added errorDescription.PDF.JS gives proper error messages as invalid pdf structure or password protected pdf.Good for splunk tracking
-  constructor(public errorCode: MspImageError, public errorDescription?: string){
+  constructor(public errorCode: MspImageError, public errorDescription?: string) {
 
   }
 }
@@ -28,7 +28,7 @@ export class MspImage {
 
   uuid: string;
 
-  constructor(){
+  constructor() {
     this.uuid = UUID.UUID();
   }
 
@@ -56,16 +56,16 @@ export interface MspImageScaleFactors {
   scaleDown(scale: number): MspImageScaleFactors;
 }
 
-export class MspImageScaleFactorsImpl implements  MspImageScaleFactors{
+export class MspImageScaleFactorsImpl implements  MspImageScaleFactors {
   widthFactor: number;
   heightFactor: number;
 
-  constructor(wFactor: number, hFactor: number){
+  constructor(wFactor: number, hFactor: number) {
     this.widthFactor = wFactor;
     this.heightFactor = hFactor;
   }
 
-  scaleDown(scale: number): MspImageScaleFactors{
+  scaleDown(scale: number): MspImageScaleFactors {
     return new MspImageScaleFactorsImpl(
       this.widthFactor * scale,
       this.heightFactor * scale);
