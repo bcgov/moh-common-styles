@@ -1,7 +1,39 @@
 import * as moment_ from 'moment';
 import { Base } from './base';
 import { SimpleDate } from './simple-date.interface';
+import { Address } from './address.model';
+
 const moment = moment_;
+
+export enum Gender {
+  Female = <any>'F',
+  Male = <any>'M'
+}
+
+
+/**
+ * Various statuses in Canada
+ */
+export enum StatusInCanada {
+  CitizenAdult, // adult
+  PermanentResident,
+  TemporaryResident,
+}
+
+
+/**
+ * Reasons for returning to Canada
+ */
+export enum Activities {
+ LivingInBCWithoutMSP,
+ MovingFromProvince,
+ MovingFromCountry,
+ WorkingInBC,
+ StudyingInBC,
+ ReligiousWorker,
+ Diplomat,
+ Visiting
+}
 
 /**
  * Person, each project can extend this person class
@@ -17,6 +49,31 @@ export class Person extends Base {
 
   /** Format to display birthdate */
   public dobFormat = 'YYYY/MM/DD';
+
+  /**
+   * Gender
+   */
+  gender: Gender;
+
+  _status: StatusInCanada;
+  _currentActivity: Activities;
+  healthNumberFromOtherProvince: string;
+  public relationship: number;
+  public sin: string;
+  public phoneNumber: string;
+  public movedFromProvinceOrCountry: string;
+  public mailingAddress: Address = new Address();
+
+  public residentialAddress: Address = new Address();
+
+    /**
+   * Now ask explicitly of the user
+   * If answser is NO, the livedInBCSinceBirth = false
+   * See https://apps.gcpe.gov.bc.ca/jira/browse/PSPDN-398
+   */
+  private _livedInBCSinceBirth: boolean = null;
+
+
 
   // Initialize dob to nulls
   public dateOfBirth: SimpleDate = { year: null, month: null, day: null };
@@ -86,6 +143,30 @@ export class Person extends Base {
     const dobDt = new Date( this.dateOfBirth.year, this.dateOfBirth.month, this.dateOfBirth.day );
     return Math.ceil( moment( ).diff( dobDt, 'year', true ) );
   }
+
+  get status() {
+    return this._status;
+  }
+
+  set status(st: StatusInCanada) {
+      this._status = st;
+      if (this._status === StatusInCanada.PermanentResident
+          || this._status === StatusInCanada.TemporaryResident) {
+          this._livedInBCSinceBirth = false;
+      }
+  }
+
+  get currentActivity() {
+      return this._currentActivity;
+  }
+
+  /**
+   * All activies in the system now indicates that person has not lived in BC since birth.
+   */
+  set currentActivity(act: Activities) {
+      this._currentActivity = act;
+  }
+
 
   /* Copy function */
   copy( object: Person ) {
