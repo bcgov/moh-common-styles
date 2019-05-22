@@ -31,7 +31,7 @@
          type="text"
          id="{{labelforId}}"
          [value]="postalCode"
-         (change)="onValueChange($event.target.value)"
+         (input)="onValueChange($event.target.value)"
          (blur)="onBlurEvent($event)"
          [disabled]="disabled"
          [attr.maxlength]="maxlen"
