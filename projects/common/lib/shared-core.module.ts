@@ -31,6 +31,8 @@ import { StreetComponent } from './components/street/street.component';
 import { ButtonGroupComponent } from './components/button-group/button-group.component';
 import { NameComponent } from './components/name/name.component';
 import { ValidateNameDirective } from './components/name/validate-name.directive';
+import { SinComponent } from './components/sin/sin.component';
+import { DuplicateSinDirective } from './components/sin/duplicate-sin.directive';
 
 const componentList = [
   CoreBreadcrumbComponent,
@@ -57,7 +59,9 @@ const componentList = [
   StreetComponent,
   ButtonGroupComponent,
   NameComponent,
-  ValidateNameDirective
+  ValidateNameDirective,
+  SinComponent,
+  DuplicateSinDirective
 ];
 @NgModule({
   imports: [
