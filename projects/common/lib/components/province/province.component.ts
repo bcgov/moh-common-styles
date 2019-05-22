@@ -27,7 +27,9 @@ export class ProvinceComponent extends Base implements ControlValueAccessor {
 
   @Input()
   set value( val: string ) {
-    this.province = val;
+    if ( val ) {
+      this.province = val;
+    }
   }
   get value() {
     return this.province;
@@ -36,7 +38,7 @@ export class ProvinceComponent extends Base implements ControlValueAccessor {
   @Output() valueChange: EventEmitter<string> = new EventEmitter<string>();
   @Output() blurEvent: EventEmitter<any> = new EventEmitter<any>();
 
-  province: string = null;
+  province: string = '';
 
   _onChange = (_: any) => {};
   _onTouched = (_: any) => {};
@@ -49,8 +51,11 @@ export class ProvinceComponent extends Base implements ControlValueAccessor {
   }
 
   onValueChange( value: any ) {
-    this._onChange( value );
-    this.valueChange.emit( value );
+    if ( value !== this.province ) {
+      this._onChange( value );
+      this.valueChange.emit( value );
+      this.province = value;
+    }
   }
 
   onBlurEvent( event: any ) {
@@ -59,7 +64,7 @@ export class ProvinceComponent extends Base implements ControlValueAccessor {
   }
 
   writeValue( value: any ): void {
-    if ( value !== undefined ) {
+    if ( value ) {
       this.province = value;
     }
   }

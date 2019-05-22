@@ -27,7 +27,7 @@ export class CountryComponent extends Base implements ControlValueAccessor {
   @Output() valueChange: EventEmitter<string> = new EventEmitter<string>();
   @Output() blurEvent: EventEmitter<any> = new EventEmitter<any>();
 
-  country: string = null;
+  country: string = '';
 
   _onChange = (_: any) => {};
   _onTouched = (_: any) => {};
@@ -40,13 +40,16 @@ export class CountryComponent extends Base implements ControlValueAccessor {
   }
 
   onValueChange( value: any ) {
-    this._onChange( value );
-    this.valueChange.emit( value );
+    if ( value !== this.country ) {
+      this._onChange( value );
+      this.valueChange.emit( value );
+      this.country = value;
+    }
   }
 
   onBlurEvent( event: any ) {
     this._onTouched( event );
-    this.blurEvent.emit( event.target.value );
+    this.blurEvent.emit( event );
   }
 
   writeValue( value: any ): void {
