@@ -29,6 +29,8 @@ import { ProvinceComponent } from './components/province/province.component';
 import { CityComponent } from './components/city/city.component';
 import { StreetComponent } from './components/street/street.component';
 import { ButtonGroupComponent } from './components/button-group/button-group.component';
+import { NameComponent } from './components/name/name.component';
+import { ValidateNameDirective } from './components/name/validate-name.directive';
 
 const componentList = [
   CoreBreadcrumbComponent,
@@ -53,7 +55,9 @@ const componentList = [
   ProvinceComponent,
   CityComponent,
   StreetComponent,
-  ButtonGroupComponent
+  ButtonGroupComponent,
+  NameComponent,
+  ValidateNameDirective
 ];
 @NgModule({
   imports: [

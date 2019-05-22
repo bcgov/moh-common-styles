@@ -1,0 +1,25 @@
+
+<label for="{{labelforId}}" class="control-label">{{label}}</label>
+<input type="text"
+       class="form-control"
+       id="{{labelforId}}"
+       [value]="nameStr"
+       (change)="onValueChange( $event.target.value )"
+       (blur)="onBlurEvent( $event )"
+       [disabled]="disabled"
+       [attr.maxlength]="maxlen"
+       autocomplete="off" />
+<!-- Error messages for component -->
+<div *ngIf="displayErrors()"
+      role="alert"
+      class="error-container"
+      aria-live="assertive">
+  <div class="text-danger" *ngIf="controlDir.errors?.required">
+    {{label}} is required.
+  </div>
+  <div class="text-danger" *ngIf="controlDir.errors?.invalidChar">
+      {{label}} must begin with a letter and cannot include special characters except hyphens,
+      periods, apostrophes and blank characters.
+  </div>
+</div>
+
