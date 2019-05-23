@@ -8,8 +8,8 @@ import { ControlContainer, ControlValueAccessor, NgForm, NG_VALUE_ACCESSOR } fro
  *
  * @example
  *       <common-button-group [showError]="showError"
- *          [errorMessageRequired]="'This field is Required. Please select any value.'"
- *          [label]="'Please select a value'"
+ *          [errorMessageRequired]="requiredErrMsg"
+ *          label="Please select a value"
  *          [data]="data.value" (dataChange)="setMovedToBCPermanently($event)" >
  *         </common-button-group>
  *

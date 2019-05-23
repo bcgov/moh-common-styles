@@ -5,25 +5,30 @@
 
   <div class="modal-dialog" style="margin-top: 90px;">
     <div class="modal-content">
+      <!--  Header -->
       <div class="modal-header modal-header-primary">
         <h2 id="myLargeModalLabel">{{maintenanceFlag == 'true' ? 'Maintenance notice' : title}}</h2>
       </div>
+
+      <!--   Modal Body   -->
       <div class="modal-body">
+        
         <div *ngIf="maintenanceFlag == 'true'">
-            <h4 [innerHtml]="maintenanceMessage|replacewithlinks"></h4>
+          <h4>{{maintenanceMessage}}</h4>
         </div>  
         <div *ngIf="maintenanceFlag != 'true'">
-            <p [innerHtml]="body"></p>
-        </div>
-
+            <ng-content></ng-content>
         <br>
         <div *ngIf="maintenanceFlag != 'true'">
           <div class="form-check form-check-inline">
-          <input [ngModelOptions]="{standalone: true}" class="input-lg form-check-input" id="agree" type="checkbox" [(ngModel)]="agreeCheck">
-          <label class="form-check-label" for="agree"><strong>{{agreeLabel}}</strong></label>
+            <input [ngModelOptions]="{standalone: true}" class="input-lg form-check-input" id="agree" type="checkbox"
+              [(ngModel)]="agreeCheck" (ngModelChange)='accept.emit($event);'  >
+            <label class="form-check-label" for="agree"><strong>{{agreeLabel}}</strong></label>
           </div>
         </div>
       </div>
+
+      <!-- Footer -->
       <div *ngIf="maintenanceFlag != 'true'" class="modal-footer">
         <button [disabled]="!agreeCheck" class="btn btn-block btn-primary pull-left"
                 type="submit" (click)="continue()">{{continueButton}}</button>

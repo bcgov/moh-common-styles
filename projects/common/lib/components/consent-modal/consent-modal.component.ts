@@ -1,7 +1,6 @@
 import { forwardRef, Component, EventEmitter, Input, Output, ViewChild, Inject, OnInit} from '@angular/core';
 import * as moment from 'moment';
 import {ModalDirective} from 'ngx-bootstrap';
-import {ApplicationBase} from '../../../models/src/application-base.model';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Response } from '@angular/http';
@@ -54,22 +53,23 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
 
     protected _headers: HttpHeaders = new HttpHeaders();
     @Input() processName: string;
-    @Input() application: ApplicationBase;
     @Input() isUnderMaintenance: boolean = false;
     @Input() title: string;
-    @Input() body: string = '<p><strong>Keep your personal information secure – especially when using a shared device like a computer at a library, school or café.</strong> To delete any information that was entered, either complete the application and submit it or, if you don’t finish, close the web browser.</p><p><strong>Need to take a break and come back later?</strong> The data you enter on this form is saved locally to the computer or device you are using until you close the web browser or submit your application.</p><p><strong>Information in this application is collected by the Ministry of Health</strong> under section 26(a), (c) and (e) of the Freedom of Information and Protection of Privacy Act and will be used to determine eligibility for provincial health care benefits in BC and administer Premium Assistance. Should you have any questions about the collection of this personal information please <a href="http://www2.gov.bc.ca/gov/content/health/health-drug-coverage/msp/bc-residents-contact-us" target="_blank">contact Health Insurance BC <i class="fa fa-external-link" aria-hidden="true"></i></a>.</p>';
+    @Input() body: string; // = '<p><strong>Keep your personal information secure – especially when using a shared device like a computer at a library, school or café.</strong> To delete any information that was entered, either complete the application and submit it or, if you don’t finish, close the web browser.</p><p><strong>Need to take a break and come back later?</strong> The data you enter on this form is saved locally to the computer or device you are using until you close the web browser or submit your application.</p><p><strong>Information in this application is collected by the Ministry of Health</strong> under section 26(a), (c) and (e) of the Freedom of Information and Protection of Privacy Act and will be used to determine eligibility for provincial health care benefits in BC and administer Premium Assistance. Should you have any questions about the collection of this personal information please <a href="http://www2.gov.bc.ca/gov/content/health/health-drug-coverage/msp/bc-residents-contact-us" target="_blank">contact Health Insurance BC <i class="fa fa-external-link" aria-hidden="true"></i></a>.</p>';
     @Input() agreeLabel: string = 'I have read and understand this info';
     @Input() continueButton: string = 'Continue';
     @Input() maintenanceFlag: string = 'false';
     @Input() url: string = '/msp/api/env';
-
     @ViewChild('fullSizeViewModal') public fullSizeViewModal: ModalDirective;
     @Output() close = new EventEmitter<void>();
     @Output() cutOffDate: EventEmitter<ISpaEnvResponse> = new EventEmitter<ISpaEnvResponse>();
+    @Output() accept = new EventEmitter<boolean>();
 
     public spaEnvRes: ISpaEnvResponse = {} as any;
-    // public maintenanceFlag: string ;
     public maintenanceMessage: string;
+    
+    // public maintenanceFlag: string ;
+   
 
     // tslint:disable-next-line:max-line-length
     private _applicationHeaderMap: Map<string, string> = new Map([['ACL', '{"SPA_ENV_MSP_ACL_MAINTENANCE_FLAG":"","SPA_ENV_MSP_ACL_MAINTENANCE_MESSAGE":""}'], ['MSP', '{"SPA_ENV_MSP_MAINTENANCE_FLAG":"","SPA_ENV_MSP_MAINTENANCE_MESSAGE":""}'], ['PA', '{"SPA_ENV_PACUTOFF_MAINTENANCE_START":"","SPA_ENV_PACUTOFF_MAINTENANCE_END":"","SPA_ENV_NOW":""}']]);
@@ -101,7 +101,7 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
     }
 
     continue() {
-        this.application.infoCollectionAgreement = true;
+        this.accept.emit(true);
         this.fullSizeViewModal.hide();
         this.close.emit();
         this._onChange(true);
@@ -163,6 +163,7 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
   }
 
   registerOnChange(fn: any): void {
+    this.accept.emit(fn) ;
     this._onChange = fn;
   }
 
@@ -171,6 +172,7 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
   }
 
   writeValue(value: any): void {
-    this.application.infoCollectionAgreement = value;
+
+    //
   }
 }

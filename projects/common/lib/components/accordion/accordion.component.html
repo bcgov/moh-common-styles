@@ -1,9 +1,9 @@
 <accordion>
-    <accordion-group #group
+    <accordion-group
       [isOpen]="isOpen">
         <div accordion-heading>
           {{title}} 
-          <i class="pull-right float-xs-right fa fa-caret-right"[ngClass]="{'isOpen': group?.isOpen}"></i>
+          <i class="pull-right float-xs-right fa fa-caret-right"[ngClass]="isOpen"></i>
           <span class="control-text">{{expandText}}</span>
         </div>
       <ng-content></ng-content>

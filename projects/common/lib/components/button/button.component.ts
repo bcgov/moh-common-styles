@@ -1,5 +1,5 @@
 import { forwardRef, Component, OnInit, ViewChild, EventEmitter, Input, Output, ElementRef } from '@angular/core';
-import { ControlContainer, ControlValueAccessor, NgForm, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlContainer, NgForm, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 /**
  * Button Component is a button which can be used across the application to have same button style.
@@ -27,7 +27,8 @@ import { ControlContainer, ControlValueAccessor, NgForm, NG_VALUE_ACCESSOR } fro
 export class ButtonComponent implements OnInit {
 
   // Can pass the Style class of a button e.g. For primary, btn btn-primary. Default, btn btn-default. Error, btn btn-danger
-  @Input() styleClass: string = 'btn btn-default';
+  //@Input() styleClass: string = 'default';
+  @Input() buttonType: 'default' | 'primary' | 'secondary' = 'default'
   @Input() disabled: boolean = false;
   @Input() label: string = 'Button';
   @Output() btnClick: EventEmitter<any> = new EventEmitter<any>();

@@ -37,7 +37,6 @@ import { PhoneNumberComponent } from './components/phone-number/phone-number.com
 import { RadioComponent } from './components/radio/radio.component';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { AccordionCommonComponent } from './components/accordion/accordion.component';
-import { ReplacewithlinksPipe } from './components/replace-link-pipe/replacewithlinks.pipe';
 
 
 const componentList = [
@@ -70,7 +69,6 @@ const componentList = [
   NameComponent,
   PhoneNumberComponent,
   RadioComponent,
-  ReplacewithlinksPipe,
   AccordionCommonComponent
 ];
 @NgModule({

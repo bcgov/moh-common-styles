@@ -20,7 +20,6 @@ export class AccordionCommonComponent implements OnInit {
 
   @Input() title: string;
   @Input() isOpen: boolean = false;
-  @ViewChild('accordian') public accordian: AccordionComponent;
 
   public expandText: string =  '(click to expand)';
   ngOnInit() {

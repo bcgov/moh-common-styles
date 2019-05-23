@@ -1,5 +1,5 @@
 <div role="dialog" aria-labelledby="btn">
-  <p id="btn" class="control-label" [innerHtml]="label"></p>
+  <p id="btn" class="control-label">{{label}}</p>
   <div class="btn-group" role="group">
     <button #buttonGroup *ngFor='let answer of [{"value": true, "label": "Yes"}, {"value": false, "label": "No"}]'
       [class.btn-radio]="data === answer.value" (click)="setButtonGrpVal(answer.value)" 

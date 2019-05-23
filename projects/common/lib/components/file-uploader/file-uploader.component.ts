@@ -802,18 +802,6 @@ export class FileUploaderComponent extends Base
         }
         return true;
     }
-    // getApplicationType(): ApplicationBase  {
-    //     if (this.router.url.indexOf('/assistance/') !== -1) {
-    //         return this.dataService.finAssistApp;
-    //     }
-    //     if (this.router.url.indexOf('/application/') !== -1) {
-    //         return this.dataService.getMspApplication();
-    //     }
-    //     if (this.router.url.indexOf('/account/') !== -1) {
-    //         return this.dataService.getMspAccountApp();
-    //     }
-    // }
-
 
 }
 
