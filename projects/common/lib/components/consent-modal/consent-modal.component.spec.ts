@@ -3,7 +3,6 @@ import {FormsModule, NgForm} from '@angular/forms';
 import { ConsentModalComponent } from './consent-modal.component';
 
 import {ModalModule} from 'ngx-bootstrap';
-import { ReplacewithlinksPipe } from '../../../lib/components/replace-link-pipe/replacewithlinks.pipe';
 import {HttpClientModule} from '@angular/common/http';
 import {RouterTestingModule} from '@angular/router/testing';
 import { BrowserModule } from '@angular/platform-browser';
@@ -17,7 +16,7 @@ describe('ConsentModalComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ConsentModalComponent, ReplacewithlinksPipe],
+      declarations: [ ConsentModalComponent],
       imports: [ FormsModule, HttpClientModule, RouterTestingModule, ModalModule.forRoot(), BrowserModule],
       providers: [ NgForm ]
     })
