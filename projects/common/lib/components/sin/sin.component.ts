@@ -11,7 +11,7 @@ import { ControlValueAccessor, NgControl } from '@angular/forms';
 export class SinComponent extends Base implements ControlValueAccessor {
 
   @Input() label: string = 'Social Insurance Number (SIN)';
-  @Input() maxlen: string = '250';
+  @Input() maxlen: string = '15';
   @Input() placeholder: string = '111 111 111';
   @Input() labelforId: string = 'sin_' + this.objectId;
   @Input() disabled: boolean = false;
@@ -34,12 +34,11 @@ export class SinComponent extends Base implements ControlValueAccessor {
 
   sin: string = '';
   mask: any;
-  sinFormat: RegExp = /^[0-9 ]*$/;
 
   _onChange = (_: any) => {};
   _onTouched = (_: any) => {};
 
-  constructor( @Optional() @Self() public controlDir: NgControl ) { // private cdref: ChangeDetectorRef
+  constructor( @Optional() @Self() public controlDir: NgControl ) {
     super();
     if ( controlDir ) {
       controlDir.valueAccessor = this;
