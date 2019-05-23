@@ -23,5 +23,8 @@
     <div class="text-danger" *ngIf="controlDir.errors?.pattern">
       {{label}} is invalid.
     </div>
+    <div class="text-danger" *ngIf="controlDir.errors?.duplicate">
+      {{label}} was already used for another family member.
+    </div>
   </div>
 

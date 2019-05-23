@@ -32,7 +32,6 @@ import { ButtonGroupComponent } from './components/button-group/button-group.com
 import { NameComponent } from './components/name/name.component';
 import { ValidateNameDirective } from './components/name/validate-name.directive';
 import { SinComponent } from './components/sin/sin.component';
-import { DuplicateSinDirective } from './components/sin/duplicate-sin.directive';
 
 const componentList = [
   CoreBreadcrumbComponent,
@@ -60,8 +59,7 @@ const componentList = [
   ButtonGroupComponent,
   NameComponent,
   ValidateNameDirective,
-  SinComponent,
-  DuplicateSinDirective
+  SinComponent
 ];
 @NgModule({
   imports: [

@@ -15,6 +15,7 @@ export class SinComponent extends Base implements ControlValueAccessor {
   @Input() placeholder: string = '111 111 111';
   @Input() labelforId: string = 'sin_' + this.objectId;
   @Input() disabled: boolean = false;
+  @Input() sinList: string[] = [];
 
   @Input()
   set value( val: string ) {
@@ -67,6 +68,16 @@ export class SinComponent extends Base implements ControlValueAccessor {
 
       if ( this.controlDir ) {
         this.controlDir.control.setErrors(( sinValid ? null : { 'pattern': true } ));
+      }
+
+      // Duplicate Sin check
+      if ( sinValid && this.sinList && this.sinList.length ) {
+
+        const duplicate = this.sinList.find( x => x === event.target.value );
+        console.log( 'duplicate sin: ', duplicate );
+        if ( this.controlDir ) {
+          this.controlDir.control.setErrors(( duplicate ? { 'duplicate': true } : null ));
+        }
       }
     }
 
