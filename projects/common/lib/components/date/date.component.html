@@ -2,10 +2,10 @@
   <legend class="date--legend">{{label}}</legend>
   <div class="form-group date-row">
 
-    <label class="visuallyhidden" for="month{{objectId}}">Month</label>
+    <label class="visuallyhidden" for="{{monthLabelforId}}">Month</label>
     <select class="form-control monthSelect"
-            id="month{{objectId}}"
-            name="month"
+            id="{{monthLabelforId}}"
+            name="{{monthLabelforId}}"
             [ngModel]="date?.month"
             (ngModelChange)="setMonth($event)"
             [disabled]='disabled'
@@ -16,11 +16,11 @@
       <option *ngFor="let month of monthList; let i = index;" [value]="i + 1">{{month}}</option>
     </select>
 
-    <label class="visuallyhidden" for="day{{objectId}}">Day</label>
+    <label class="visuallyhidden" for="{{dayLabelforId}}">Day</label>
     <input type="number"
            class="form-control dayInput"
-           id="day{{objectId}}"
-           name="day"
+           id="{{dayLabelforId}}"
+           name="{{dayLabelforId}}"
            placeholder="day"
            [ngModel]="date?.day"
            (ngModelChange)="setDay($event)"
@@ -28,15 +28,17 @@
            [required]="required"
            commonDateFieldFormat
            commonDayValidation
+           [selectedMonth]='monthRef.value'
+           [selectedYear]='yearRef.value'
            [disabled]='disabled'
            maxlength="2"
            autocomplete="off"/>
 
-    <label class="visuallyhidden" for="year{{objectId}}">Year</label>
+    <label class="visuallyhidden" for="{{yearLabelforId}}">Year</label>
     <input type="number"
            class="form-control yearInput"
-           id="year{{objectId}}"
-           name="year"
+           id="{{yearLabelforId}}"
+           name="{{yearLabelforId}}"
            placeholder="year"
            [ngModel]="date?.year"
            (ngModelChange)="setYear($event)"
@@ -44,6 +46,8 @@
            [required]="required"
            commonDateFieldFormat
            [commonYearValidate]="restrictDate"
+           [selectedMonth]='monthRef.value'
+           [selectedDay]='dayRef.value'
            [disabled]='disabled'
            maxlength="4"
            autocomplete="off"/>

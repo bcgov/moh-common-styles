@@ -6,7 +6,7 @@ const moment = moment_;
 // TODO:  Create a message structure to pass in error messages similar to password module.
 
 @Directive({
-  selector: '[commonYearValidate]',
+  selector: '[commonYearValidate][ngModel]',
   providers: [
     {provide: NG_VALIDATORS, useExisting: forwardRef(() => YearValidateDirective), multi: true}
   ]
@@ -14,9 +14,12 @@ const moment = moment_;
 export class YearValidateDirective implements Validator  {
 
   @Input() commonYearValidate: string;
+  @Input() selectedDay: string;
+  @Input() selectedMonth: string;
 
   validate( control: FormControl ): {[key: string]: any} | null {
-    const date = control.parent.value;
+    const day: number = parseInt( this.selectedDay, 10 );
+    const month: number = parseInt( this.selectedMonth, 10 );
 
     // console.log( 'validate year: ', control.value );
 
@@ -40,9 +43,9 @@ export class YearValidateDirective implements Validator  {
 
       // Check whether dates can be present or past
       if ( this.commonYearValidate && this.commonYearValidate !== 'any' &&
-           !isNaN( date.day )  && !isNaN( date.month ) ) {
+           !isNaN( day )  && !isNaN( month ) ) {
 
-        const diff = moment( { year: year, month: date.month, day: date.day } )
+        const diff = moment( { year: year, month: month, day: day } )
           .diff( moment(), 'days', true );
 
          /**
