@@ -23,6 +23,18 @@ export class CountryComponent extends Base implements ControlValueAccessor {
   @Input() labelforId: string = 'country_' + this.objectId;
   @Input() disabled: boolean = false;
   @Input() required: boolean = false;
+  @Input() useDropDownList: boolean = true;
+  @Input() maxlen: string = '250';
+
+  @Input()
+  set value( val: string ) {
+    if ( val ) {
+      this.country = val;
+    }
+  }
+  get value() {
+    return this.country;
+  }
 
   @Output() valueChange: EventEmitter<string> = new EventEmitter<string>();
   @Output() blurEvent: EventEmitter<any> = new EventEmitter<any>();
@@ -53,7 +65,7 @@ export class CountryComponent extends Base implements ControlValueAccessor {
   }
 
   writeValue( value: any ): void {
-    if ( value !== undefined ) {
+    if ( value ) {
       this.country = value;
     }
   }

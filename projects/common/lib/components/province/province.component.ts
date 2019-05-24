@@ -4,9 +4,9 @@ import { ControlValueAccessor, NgControl } from '@angular/forms';
 
 export const BRITISH_COLUMBIA = 'BC';
 export interface ProvinceList {
-  country: string;
   provinceCode: string;
   description: string;
+  country?: string;
 }
 
 @Component({
