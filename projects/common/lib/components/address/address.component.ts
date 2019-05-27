@@ -40,7 +40,9 @@ export class AddressComponent extends Base
 
   @Input()
   set address( val: Address ) {
-    this.addr = val;
+    if ( val ) {
+      this.addr = val;
+    }
   }
   get address(): Address {
     return this.addr;

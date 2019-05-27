@@ -4,8 +4,11 @@ import { TextMaskModule } from 'angular2-text-mask';
 import { Type, ViewChild, Component, DebugElement } from '@angular/core';
 import { SharedCoreModule } from '../../shared-core.module';
 import { SinComponent } from './sin.component';
-import { KeyCode } from '@ng-select/ng-select/ng-select/ng-select.types';
-import { By } from 'selenium-webdriver';
+import { By } from '@angular/platform-browser';
+
+/**
+ * TODO: Complete tests - using ng-select (github) tests as guide for writing these tests
+ */
 
 fdescribe('SinComponent', () => {
 
@@ -26,23 +29,20 @@ fdescribe('SinComponent', () => {
       );
 
     tickAndDetectChanges( fixture );
-    expect(fixture.componentInstance.inputSin.controlDir.disabled).toBe(true);
+    expect(fixture.componentInstance.input.controlDir.disabled).toBe(true);
   }));
 
-  it('should be invalid with pattern error', fakeAsync(() => {
+  it('should be set sin value', fakeAsync(() => {
     const fixture = createTestingModule(
       CommonSinTestComponent,
-      `<common-sin name='sin' [(ngModel)]="value" required></common-sin>`
+      `<common-sin name='sin' [(ngModel)]="value"></common-sin>`
       );
 
-   // fixture.nativeElement.ngModel = '041771651';
-
-    fixture.detectChanges();
-
+    tickAndDetectChanges( fixture );
+    fixture.componentInstance.value = '041771651';
+    tickAndDetectChanges( fixture );
     fixture.whenStable().then(() => {
-      expect(fixture.componentInstance.value).toBe( '041771651' );
-     // expect(fixture.componentInstance.inputSin.controlDir.invalid).toBe(true);
-     // expect(fixture.componentInstance.inputSin.controlDir.hasError('pattern')).toBe(true);
+      expect(fixture.componentInstance.input.sin).toBe( '041771651' );
     });
   }));
 });
@@ -72,7 +72,7 @@ function createTestingModule<T>( cmp: Type<T>, template: string ): ComponentFixt
   template: ``
 })
 class CommonSinTestComponent {
-   @ViewChild( SinComponent ) inputSin: SinComponent;
+   @ViewChild( SinComponent ) input: SinComponent;
 
   value: string = '';
 }
@@ -84,10 +84,16 @@ function tickAndDetectChanges(fixture: ComponentFixture<any>) {
 }
 
 
-export function triggerKeyDownEvent(element: DebugElement, which: number, key = ''): void {
+function triggerKeyDownEvent(element: DebugElement, which: number, key = ''): void {
   element.triggerEventHandler('keydown', {
       which: which,
       key: key,
       preventDefault: () => { },
   });
 }
+
+
+function getElement(fixture: ComponentFixture<any>): DebugElement {
+  return fixture.debugElement.query( By.css('common-sin') );
+}
+

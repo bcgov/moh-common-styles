@@ -20,8 +20,10 @@ export class SinComponent extends Base implements ControlValueAccessor {
   @Input()
   set value( val: string ) {
     console.log( 'set value: ', val );
-    if ( val) {
+    if ( val ) {
       this.sin = val;
+
+      console.log( 'value: ', this.sin );
     }
   }
   get value() {
