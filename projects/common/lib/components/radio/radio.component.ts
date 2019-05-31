@@ -8,13 +8,14 @@ import { ControlContainer, ControlValueAccessor, NgForm, NG_VALUE_ACCESSOR } fro
  *
  * @example
  *       	<common-radio #gender [value]="person.gender"
- *          label='Gender'
+ *          label='Gender' display='table-row-group'
  *          [radioLabels]='[{"label": "Male", "value": "Male"},{ "label": "Female", "value": "Female"}]'
  *          (onStatusChange)="onChange.emit($event)"
  *          [showError]="showError">
  *        </common-radio>
  *
- * /* You can have many radio's and the number is based on the Radio Label Value.
+ * /* To display radio in a vertical style use display="table-row-group" by default it shows in horizontal or inline display, display='inline-block' 
+ *  You can have many radio's and the number is based on the Radio label Value.
  *  For 3 radio buttons, radioLabels value should be passed in the below format
  = [
    {
@@ -52,13 +53,16 @@ export class RadioComponent extends Base implements ControlValueAccessor {
   @Input() value: string ;
   @Input() showError: boolean;
   @Input() errorMessageRequired: string = this.label + ' is required.';
+  @Input() display: 'table-row-group' | 'inline-block'  = 'inline-block';
 
   @Output() onStatusChange: EventEmitter<string> = new EventEmitter<string>();
 
   public _onChange = (_: any) => {};
   public _onTouched = () => {};
 
-  constructor() { super(); }
+  constructor() { super(); 
+
+  }
 
   setStatus(evt: string) {
     this.value = evt;
