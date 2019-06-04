@@ -27,9 +27,6 @@ import { ControlContainer, NgForm, NG_VALUE_ACCESSOR } from '@angular/forms';
   styleUrls: ['./button.component.scss'],
   viewProviders: [
     { provide: ControlContainer, useExisting: forwardRef(() => NgForm ) }
-  ],
-  providers: [
-    { provide: NG_VALUE_ACCESSOR, multi: true, useExisting: forwardRef(() => ButtonComponent )}
   ]
 })
 

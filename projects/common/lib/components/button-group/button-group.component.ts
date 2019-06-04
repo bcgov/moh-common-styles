@@ -2,7 +2,12 @@ import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef, 
 import { ControlContainer, ControlValueAccessor, NgForm, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 /**
- * ButtonGroupComponent is a radio components which shows YES/NO option as a button group
+ * BUTTONGROUPCOMPONENT IS **DEPRECATED**!  **DO NOT USE** UNLESS YOU KNOW WHAT YOU'RE
+ * DOING.
+ *
+ * If you need a Yes/No toggle, @see RadioComponent
+ * @deprecated
+ *
  *
  *
  *
