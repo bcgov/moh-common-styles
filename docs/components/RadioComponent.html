@@ -110,7 +110,7 @@ radio buttons, radioLabels value should be passed in the below format</p>
                     <pre class="line-numbers"><code class="language-html">&lt;common-radio #gender [value]=&quot;person.gender&quot;
 label='Gender' display='table-row-group'
 [radioLabels]='[{&quot;label&quot;: &quot;Male&quot;, &quot;value&quot;: &quot;Male&quot;},{ &quot;label&quot;: &quot;Female&quot;, &quot;value&quot;: &quot;Female&quot;}]'
-(onStatusChange)=&quot;onChange.emit($event)&quot;
+(statusChange)=&quot;onChange.emit($event)&quot;
 [showError]=&quot;showError&quot;&gt;
 &lt;/common-radio&gt;</code></pre>
                 </div>
@@ -270,7 +270,7 @@ label='Gender' display='table-row-group'
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#onStatusChange">onStatusChange</a>
+                                <a href="#statusChange">statusChange</a>
                             </li>
                         </ul>
                     </td>
@@ -503,8 +503,8 @@ label='Gender' display='table-row-group'
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="onStatusChange"></a>
-                        <b>onStatusChange</b>
+                        <a name="statusChange"></a>
+                        <b>statusChange</b>
                     </td>
                 </tr>
                 <tr>
@@ -953,7 +953,7 @@ import { ControlContainer, ControlValueAccessor, NgForm, NG_VALUE_ACCESSOR } fro
  *        &lt;common-radio #gender [value]&#x3D;&quot;person.gender&quot;
  *          label&#x3D;&#x27;Gender&#x27; display&#x3D;&#x27;table-row-group&#x27;
  *          [radioLabels]&#x3D;&#x27;[{&quot;label&quot;: &quot;Male&quot;, &quot;value&quot;: &quot;Male&quot;},{ &quot;label&quot;: &quot;Female&quot;, &quot;value&quot;: &quot;Female&quot;}]&#x27;
- *          (onStatusChange)&#x3D;&quot;onChange.emit($event)&quot;
+ *          (statusChange)&#x3D;&quot;onChange.emit($event)&quot;
  *          [showError]&#x3D;&quot;showError&quot;&gt;
  *        &lt;/common-radio&gt;
  * @export
@@ -982,7 +982,7 @@ export class RadioComponent extends Base implements ControlValueAccessor {
   @Input() errorMessageRequired: string &#x3D; this.label + &#x27; is required.&#x27;;
   @Input() display: &#x27;table-row-group&#x27; | &#x27;inline-block&#x27;  &#x3D; &#x27;inline-block&#x27;;
 
-  @Output() onStatusChange: EventEmitter&lt;string&gt; &#x3D; new EventEmitter&lt;string&gt;();
+  @Output() statusChange: EventEmitter&lt;string&gt; &#x3D; new EventEmitter&lt;string&gt;();
 
   public _onChange &#x3D; (_: any) &#x3D;&gt; {};
   public _onTouched &#x3D; () &#x3D;&gt; {};
@@ -993,7 +993,7 @@ export class RadioComponent extends Base implements ControlValueAccessor {
 
   setStatus(evt: string) {
     this.value &#x3D; evt;
-    this.onStatusChange.emit(evt);
+    this.statusChange.emit(evt);
     this._onChange(evt);
     this._onTouched();
 

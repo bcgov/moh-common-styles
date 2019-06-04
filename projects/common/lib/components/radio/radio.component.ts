@@ -31,7 +31,7 @@ import { ControlContainer, ControlValueAccessor, NgForm, NG_VALUE_ACCESSOR } fro
  *        <common-radio #gender [value]="person.gender"
  *          label='Gender' display='table-row-group'
  *          [radioLabels]='[{"label": "Male", "value": "Male"},{ "label": "Female", "value": "Female"}]'
- *          (onStatusChange)="onChange.emit($event)"
+ *          (statusChange)="onChange.emit($event)"
  *          [showError]="showError">
  *        </common-radio>
  * @export
@@ -60,7 +60,7 @@ export class RadioComponent extends Base implements ControlValueAccessor {
   @Input() errorMessageRequired: string = this.label + ' is required.';
   @Input() display: 'table-row-group' | 'inline-block'  = 'inline-block';
 
-  @Output() onStatusChange: EventEmitter<string> = new EventEmitter<string>();
+  @Output() statusChange: EventEmitter<string> = new EventEmitter<string>();
 
   public _onChange = (_: any) => {};
   public _onTouched = () => {};
@@ -71,7 +71,7 @@ export class RadioComponent extends Base implements ControlValueAccessor {
 
   setStatus(evt: string) {
     this.value = evt;
-    this.onStatusChange.emit(evt);
+    this.statusChange.emit(evt);
     this._onChange(evt);
     this._onTouched();
 
