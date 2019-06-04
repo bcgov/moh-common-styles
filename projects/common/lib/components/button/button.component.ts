@@ -2,12 +2,21 @@ import { forwardRef, Component, OnInit, ViewChild, EventEmitter, Input, Output, 
 import { ControlContainer, NgForm, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 /**
- * Button Component is a button which can be used across the application to have same button style.
+ * Button Component is a button which can be used across the application to have
+ * same button style.
+ *
+ * You're free to create custom (bootstrap) buttons as your application
+ * requires. The main advantages to this component are:
+ *
+ *  - consistency
+ *  - simplicity (less markup)
+ *  - making future changes easier, such as automatically updating any changes
+ * to button colour stylings.
  *
  *
  * @example
- *       	<common-button label='Remove Spouse'
- *            [(styleClass)]="buttonClass"
+ *        <common-button label='Remove Spouse'
+ *            [buttonType]="buttonClass"
  *            (btnClick)='removeSpouse()'>
  *        </common-button>
  * @export
@@ -27,8 +36,7 @@ import { ControlContainer, NgForm, NG_VALUE_ACCESSOR } from '@angular/forms';
 export class ButtonComponent implements OnInit {
 
   // Can pass the Style class of a button e.g. For primary, btn btn-primary. Default, btn btn-default. Error, btn btn-danger
-  //@Input() styleClass: string = 'default';
-  @Input() buttonType: 'default' | 'primary' | 'secondary' = 'default'
+  @Input() buttonType: 'default' | 'primary' | 'secondary' = 'default';
   @Input() disabled: boolean = false;
   @Input() label: string = 'Button';
   @Output() btnClick: EventEmitter<any> = new EventEmitter<any>();
