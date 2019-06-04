@@ -1,4 +1,28 @@
-# Unreleased "moh-common-lib" (2019-05-15)
+# Unreleased "moh-common-lib" (2019-06-04)
+
+
+
+## [0.0.33](https://github.com/bcgov/moh-common-styles/compare/v0.0.32...v0.0.33) "moh-common-lib" (2019-06-04)
+
+
+### Bug Fixes
+
+* **ConsentModal:**  ConsentModal passes TSLint rules ([66f9608](https://github.com/bcgov/moh-common-styles/commit/66f9608))
+* **ConsentModal:** Fixed multiple compile time issues with import paths ([09ce95a](https://github.com/bcgov/moh-common-styles/commit/09ce95a))
+* **RadioComponent:** Changed onStatusChange to statusChange ([185148b](https://github.com/bcgov/moh-common-styles/commit/185148b))
+
+
+### Documentation
+
+* **ButtonComponent:** Updated documentation for ButtonComponent. ([4d5992a](https://github.com/bcgov/moh-common-styles/commit/4d5992a))
+* **ButtonGroupComponent:** ButtonGroupComponent is DEPRECATED ([c580225](https://github.com/bcgov/moh-common-styles/commit/c580225))
+* **RadioComponent:** Re-organize docs for radio component ([b80520f](https://github.com/bcgov/moh-common-styles/commit/b80520f))
+
+
+### Features
+
+* Create Button, Checkbox, Consent Modal, Radio, Name, Phone Number components ([dd29a60](https://github.com/bcgov/moh-common-styles/commit/dd29a60))
+* Create Button, Checkbox, Consent Modal, radio, Name, Phone Number Components  ([53a109b](https://github.com/bcgov/moh-common-styles/commit/53a109b)), closes [PR#13](https://github.com/PR/issues/13)
 
 
 
