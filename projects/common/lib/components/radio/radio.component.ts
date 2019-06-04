@@ -3,34 +3,39 @@ import {Base} from '../../../models/src/base';
 import { ControlContainer, ControlValueAccessor, NgForm, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 /**
- * RadioComponent is a single radio which can be used to have multiple radios based on
- * the radio label values.
+ * RadioComponent is a single radio which can be used to have multiple radios
+ * based on the radio label values.
+ *
+ * To display radio in a vertical style use display="table-row-group" by default
+ * it shows in horizontal or inline display, display='inline-block' You can
+ * have many radio's and the number is based on the Radio label Value. For 3
+ * radio buttons, radioLabels value should be passed in the below format
+ *
+ *
+ *      [
+ *             {
+ *               "label": "Myself only",
+ *               "value": "MyselfOnly"
+ *             },
+ *             {
+ *               "label": "All members on my MSP account",
+ *               "value": "AllMembers"
+ *             },
+ *             {
+ *               "label": "One specific member on my MSP account",
+ *               "value": "SpecificMember"
+ *             }
+ *      ];
  *
  * @example
- *       	<common-radio #gender [value]="person.gender"
+ *        <common-radio #gender [value]="person.gender"
  *          label='Gender' display='table-row-group'
  *          [radioLabels]='[{"label": "Male", "value": "Male"},{ "label": "Female", "value": "Female"}]'
  *          (onStatusChange)="onChange.emit($event)"
  *          [showError]="showError">
  *        </common-radio>
- *
- * /* To display radio in a vertical style use display="table-row-group" by default it shows in horizontal or inline display, display='inline-block' 
- *  You can have many radio's and the number is based on the Radio label Value.
- *  For 3 radio buttons, radioLabels value should be passed in the below format
- = [
-   {
-     "label": "Myself only",
-     "value": "MyselfOnly"
-   },
-   {
-     "label": "All members on my MSP account",
-     "value": "AllMembers"
-   },
-   {
-     "label": "One specific member on my MSP account",
-     "value": "SpecificMember"
-   }];
  * @export
+ *
  */
 @Component({
   selector: 'common-radio',

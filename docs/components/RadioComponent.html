@@ -66,9 +66,26 @@
         <h3>Description</h3>
     </p>
     <p class="comment">
-        <p>RadioComponent is a single radio which can be used to have multiple radios based on
-the radio label values.</p>
-
+        <p>RadioComponent is a single radio which can be used to have multiple radios
+based on the radio label values.</p>
+<p>To display radio in a vertical style use display=&quot;table-row-group&quot; by default
+it shows in horizontal or inline display, display=&#39;inline-block&#39; You can
+have many radio&#39;s and the number is based on the Radio label Value. For 3
+radio buttons, radioLabels value should be passed in the below format</p>
+<div><pre class="line-numbers"><code class="language-none">  [
+         {
+           &quot;label&quot;: &quot;Myself only&quot;,
+           &quot;value&quot;: &quot;MyselfOnly&quot;
+         },
+         {
+           &quot;label&quot;: &quot;All members on my MSP account&quot;,
+           &quot;value&quot;: &quot;AllMembers&quot;
+         },
+         {
+           &quot;label&quot;: &quot;One specific member on my MSP account&quot;,
+           &quot;value&quot;: &quot;SpecificMember&quot;
+         }
+  ];</code></pre></div>
     </p>
 
     <p class="comment">
@@ -95,24 +112,7 @@ label='Gender' display='table-row-group'
 [radioLabels]='[{&quot;label&quot;: &quot;Male&quot;, &quot;value&quot;: &quot;Male&quot;},{ &quot;label&quot;: &quot;Female&quot;, &quot;value&quot;: &quot;Female&quot;}]'
 (onStatusChange)=&quot;onChange.emit($event)&quot;
 [showError]=&quot;showError&quot;&gt;
-&lt;/common-radio&gt;
-
-/* To display radio in a vertical style use display=&quot;table-row-group&quot; by default it shows in horizontal or inline display, display='inline-block' 
-You can have many radio's and the number is based on the Radio label Value.
-For 3 radio buttons, radioLabels value should be passed in the below format
-= [
-{
-&quot;label&quot;: &quot;Myself only&quot;,
-&quot;value&quot;: &quot;MyselfOnly&quot;
-},
-{
-&quot;label&quot;: &quot;All members on my MSP account&quot;,
-&quot;value&quot;: &quot;AllMembers&quot;
-},
-{
-&quot;label&quot;: &quot;One specific member on my MSP account&quot;,
-&quot;value&quot;: &quot;SpecificMember&quot;
-}];</code></pre>
+&lt;/common-radio&gt;</code></pre>
                 </div>
     </div>
 
@@ -293,7 +293,7 @@ For 3 radio buttons, radioLabels value should be passed in the below format
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">projects/common/lib/components/radio/radio.component.ts:61</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">projects/common/lib/components/radio/radio.component.ts:66</a></div>
                             </td>
                         </tr>
 
@@ -324,7 +324,7 @@ For 3 radio buttons, radioLabels value should be passed in the below format
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">projects/common/lib/components/radio/radio.component.ts:50</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">projects/common/lib/components/radio/radio.component.ts:55</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -350,7 +350,7 @@ For 3 radio buttons, radioLabels value should be passed in the below format
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">projects/common/lib/components/radio/radio.component.ts:51</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">projects/common/lib/components/radio/radio.component.ts:56</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -376,7 +376,7 @@ For 3 radio buttons, radioLabels value should be passed in the below format
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">projects/common/lib/components/radio/radio.component.ts:56</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">projects/common/lib/components/radio/radio.component.ts:61</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -402,7 +402,7 @@ For 3 radio buttons, radioLabels value should be passed in the below format
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">projects/common/lib/components/radio/radio.component.ts:55</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">projects/common/lib/components/radio/radio.component.ts:60</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -428,7 +428,7 @@ For 3 radio buttons, radioLabels value should be passed in the below format
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">projects/common/lib/components/radio/radio.component.ts:52</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">projects/common/lib/components/radio/radio.component.ts:57</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -449,7 +449,7 @@ For 3 radio buttons, radioLabels value should be passed in the below format
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">projects/common/lib/components/radio/radio.component.ts:49</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">projects/common/lib/components/radio/radio.component.ts:54</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -470,7 +470,7 @@ For 3 radio buttons, radioLabels value should be passed in the below format
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">projects/common/lib/components/radio/radio.component.ts:54</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">projects/common/lib/components/radio/radio.component.ts:59</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -491,7 +491,7 @@ For 3 radio buttons, radioLabels value should be passed in the below format
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">projects/common/lib/components/radio/radio.component.ts:53</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">projects/common/lib/components/radio/radio.component.ts:58</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -515,7 +515,7 @@ For 3 radio buttons, radioLabels value should be passed in the below format
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">projects/common/lib/components/radio/radio.component.ts:58</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">projects/common/lib/components/radio/radio.component.ts:63</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -550,8 +550,8 @@ For 3 radio buttons, radioLabels value should be passed in the below format
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="75"
-                            class="link-to-prism">projects/common/lib/components/radio/radio.component.ts:75</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="80"
+                            class="link-to-prism">projects/common/lib/components/radio/radio.component.ts:80</a></div>
                 </td>
             </tr>
 
@@ -620,8 +620,8 @@ For 3 radio buttons, radioLabels value should be passed in the below format
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="79"
-                            class="link-to-prism">projects/common/lib/components/radio/radio.component.ts:79</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="84"
+                            class="link-to-prism">projects/common/lib/components/radio/radio.component.ts:84</a></div>
                 </td>
             </tr>
 
@@ -690,8 +690,8 @@ For 3 radio buttons, radioLabels value should be passed in the below format
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="67"
-                            class="link-to-prism">projects/common/lib/components/radio/radio.component.ts:67</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="72"
+                            class="link-to-prism">projects/common/lib/components/radio/radio.component.ts:72</a></div>
                 </td>
             </tr>
 
@@ -760,8 +760,8 @@ For 3 radio buttons, radioLabels value should be passed in the below format
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="83"
-                            class="link-to-prism">projects/common/lib/components/radio/radio.component.ts:83</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="88"
+                            class="link-to-prism">projects/common/lib/components/radio/radio.component.ts:88</a></div>
                 </td>
             </tr>
 
@@ -834,7 +834,7 @@ For 3 radio buttons, radioLabels value should be passed in the below format
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">projects/common/lib/components/radio/radio.component.ts:60</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">projects/common/lib/components/radio/radio.component.ts:65</a></div>
                             </td>
                         </tr>
 
@@ -861,7 +861,7 @@ For 3 radio buttons, radioLabels value should be passed in the below format
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">projects/common/lib/components/radio/radio.component.ts:61</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">projects/common/lib/components/radio/radio.component.ts:66</a></div>
                             </td>
                         </tr>
 
@@ -925,34 +925,39 @@ import {Base} from &#x27;../../../models/src/base&#x27;;
 import { ControlContainer, ControlValueAccessor, NgForm, NG_VALUE_ACCESSOR } from &#x27;@angular/forms&#x27;;
 
 /**
- * RadioComponent is a single radio which can be used to have multiple radios based on
- * the radio label values.
+ * RadioComponent is a single radio which can be used to have multiple radios
+ * based on the radio label values.
+ *
+ * To display radio in a vertical style use display&#x3D;&quot;table-row-group&quot; by default
+ * it shows in horizontal or inline display, display&#x3D;&#x27;inline-block&#x27; You can
+ * have many radio&#x27;s and the number is based on the Radio label Value. For 3
+ * radio buttons, radioLabels value should be passed in the below format
+ *
+ *
+ *      [
+ *             {
+ *               &quot;label&quot;: &quot;Myself only&quot;,
+ *               &quot;value&quot;: &quot;MyselfOnly&quot;
+ *             },
+ *             {
+ *               &quot;label&quot;: &quot;All members on my MSP account&quot;,
+ *               &quot;value&quot;: &quot;AllMembers&quot;
+ *             },
+ *             {
+ *               &quot;label&quot;: &quot;One specific member on my MSP account&quot;,
+ *               &quot;value&quot;: &quot;SpecificMember&quot;
+ *             }
+ *      ];
  *
  * @example
- *       	&lt;common-radio #gender [value]&#x3D;&quot;person.gender&quot;
+ *        &lt;common-radio #gender [value]&#x3D;&quot;person.gender&quot;
  *          label&#x3D;&#x27;Gender&#x27; display&#x3D;&#x27;table-row-group&#x27;
  *          [radioLabels]&#x3D;&#x27;[{&quot;label&quot;: &quot;Male&quot;, &quot;value&quot;: &quot;Male&quot;},{ &quot;label&quot;: &quot;Female&quot;, &quot;value&quot;: &quot;Female&quot;}]&#x27;
  *          (onStatusChange)&#x3D;&quot;onChange.emit($event)&quot;
  *          [showError]&#x3D;&quot;showError&quot;&gt;
  *        &lt;/common-radio&gt;
- *
- * /* To display radio in a vertical style use display&#x3D;&quot;table-row-group&quot; by default it shows in horizontal or inline display, display&#x3D;&#x27;inline-block&#x27; 
- *  You can have many radio&#x27;s and the number is based on the Radio label Value.
- *  For 3 radio buttons, radioLabels value should be passed in the below format
- &#x3D; [
-   {
-     &quot;label&quot;: &quot;Myself only&quot;,
-     &quot;value&quot;: &quot;MyselfOnly&quot;
-   },
-   {
-     &quot;label&quot;: &quot;All members on my MSP account&quot;,
-     &quot;value&quot;: &quot;AllMembers&quot;
-   },
-   {
-     &quot;label&quot;: &quot;One specific member on my MSP account&quot;,
-     &quot;value&quot;: &quot;SpecificMember&quot;
-   }];
  * @export
+ *
  */
 @Component({
   selector: &#x27;common-radio&#x27;,
