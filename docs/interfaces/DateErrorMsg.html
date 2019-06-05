@@ -426,7 +426,11 @@ export class DateComponent extends Base implements OnInit {
     &#x27;July&#x27;, &#x27;August&#x27;, &#x27;September&#x27;, &#x27;October&#x27;, &#x27;November&#x27;, &#x27;December&#x27;
   ];
 
-  constructor( private form: NgForm,
+  monthLabelforId: string &#x3D; &#x27;month_&#x27; + this.objectId;
+  dayLabelforId: string &#x3D; &#x27;day_&#x27; + this.objectId;
+  yearLabelforId: string &#x3D; &#x27;year_&#x27; + this.objectId;
+
+  constructor( public form: NgForm,
                private cd: ChangeDetectorRef ) {
     super();
   }
@@ -479,7 +483,7 @@ export class DateComponent extends Base implements OnInit {
   setYear( value: string ): void {
     const year &#x3D; this.getNumericValue( value );
 
-    // console.log( &#x27;yearRef: &#x27;, this.yearRef );
+    console.log( &#x27;yearRef: &#x27;, this.yearRef );
     if ( this.date ) {
       this.date.year &#x3D; year;
       this.triggerDayValidation();
@@ -495,9 +499,9 @@ export class DateComponent extends Base implements OnInit {
   private triggerDayValidation() {
     // We have to wrap this in a timeout, otherwise it runs before Angular has updated the values
     setTimeout( () &#x3D;&gt; {
-      if ( this.form.controls[&#x27;day&#x27;] ) {
-        // console.log( &#x27;Trigger day validation&#x27; );
-        this.form.controls[&#x27;day&#x27;].updateValueAndValidity();
+      if ( this.form.controls[this.dayLabelforId] ) {
+        console.log( &#x27;Trigger day validation&#x27; );
+        this.form.controls[this.dayLabelforId].updateValueAndValidity();
         this.cd.detectChanges();
       }
     }, 0);
