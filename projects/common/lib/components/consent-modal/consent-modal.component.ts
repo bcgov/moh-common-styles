@@ -4,8 +4,9 @@ import {ModalDirective} from 'ngx-bootstrap';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Response } from '@angular/http';
-import { CommonLogger, CommonLogMessage } from '../../../services/src/logger.service';
-import { AbstractHttpService } from '../../../services/src/abstract-api-service';
+import { CommonLogger, CommonLogMessage } from '../../services/logger.service';
+// import { }
+import { AbstractHttpService } from '../../services/abstract-api-service';
 import { ControlContainer, ControlValueAccessor, NgForm, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 

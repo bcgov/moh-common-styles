@@ -7,9 +7,9 @@ import {
   forwardRef
 } from '@angular/core';
 import { ControlContainer, ControlValueAccessor, NgForm, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Base } from '../../../models/src/base';
-import { GeoAddressResult } from '../../../services/src/geocoder.service';
-import { Address } from '../../../models/src/address.model';
+import { Base } from '../../models/base';
+import { GeoAddressResult } from '../../services/geocoder.service';
+import { Address } from '../../models/address.model';
 import { CountryList, CANADA, UNITED_STATES } from '../country/country.component';
 import { ProvinceList, BRITISH_COLUMBIA } from '../province/province.component';
 

@@ -4,6 +4,7 @@
 
 export class Address {
 
+  static PostalCodeBCRegEx = '^[Vv]\\d[ABCEGHJ-NPRSTV-Zabceghj-nprstv-z][ ]?\\d[ABCEGHJ-NPRSTV-Zabceghj-nprstv-z]\\d$';
   /* Variables for class */
   public street: string;
   public addressLine1: string;
@@ -13,9 +14,10 @@ export class Address {
   public country: string;
   public province: string;
   public city: string;
+  public hasValue: boolean;
+  public isValid: boolean;
 
 
-  static PostalCodeBCRegEx = '^[Vv]\\d[ABCEGHJ-NPRSTV-Zabceghj-nprstv-z][ ]?\\d[ABCEGHJ-NPRSTV-Zabceghj-nprstv-z]\\d$';
 
 
   /** Overwrite the native JavaScript toString method to determine how the
@@ -27,7 +29,6 @@ export class Address {
     return `${this.street}, ${this.city}`;
   }
 
-  hasValue: boolean;
   /*{
     return (this.addressLine1 != null);
   }*/
@@ -37,7 +38,7 @@ export class Address {
    * Address must have all fields filled out to be considered
    * complete
    */
-  isValid: boolean; /* {
+  /* {
     // All fields have data - not empty
     return !!(this.street && this.city && this.country &&
              this.province && this.postal);
