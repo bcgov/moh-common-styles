@@ -21,7 +21,9 @@ export class StreetComponent extends Base implements OnInit, ControlValueAccesso
 
   @Input()
   set value( val: string ) {
-    this.street = val;
+    if ( val ) {
+      this.street = val;
+    }
   }
   get value() {
     return this.street;
@@ -31,7 +33,7 @@ export class StreetComponent extends Base implements OnInit, ControlValueAccesso
   @Output() blurEvent: EventEmitter<any> = new EventEmitter<any>();
   @Output() selectEvent: EventEmitter<GeoAddressResult> = new EventEmitter<GeoAddressResult>();
 
-  street: string = null;
+  street: string = '';
 
   /**
    * The list of results, from API, that is passed to the typeahead list
@@ -85,7 +87,7 @@ export class StreetComponent extends Base implements OnInit, ControlValueAccesso
   }
 
   writeValue( value: any ): void {
-    if ( value !== undefined ) {
+    if ( value ) {
         this.street = value;
     }
   }

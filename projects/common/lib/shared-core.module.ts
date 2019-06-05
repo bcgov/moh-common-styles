@@ -37,7 +37,9 @@ import { PhoneNumberComponent } from './components/phone-number/phone-number.com
 import { RadioComponent } from './components/radio/radio.component';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { AccordionCommonComponent } from './components/accordion/accordion.component';
-
+import { ValidateNameDirective } from './components/name/validate-name.directive';
+import { SinComponent } from './components/sin/sin.component';
+import { PhnComponent } from './components/phn/phn.component';
 
 const componentList = [
   CoreBreadcrumbComponent,
@@ -69,7 +71,10 @@ const componentList = [
   NameComponent,
   PhoneNumberComponent,
   RadioComponent,
-  AccordionCommonComponent
+  AccordionCommonComponent,
+  ValidateNameDirective,
+  SinComponent,
+  PhnComponent
 ];
 @NgModule({
   imports: [

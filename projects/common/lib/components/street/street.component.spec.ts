@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { StreetComponent } from './street.component';
+import { FormsModule } from '@angular/forms';
+import { TypeaheadModule } from 'ngx-bootstrap';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('StreetComponent', () => {
   let component: StreetComponent;
@@ -8,7 +10,12 @@ describe('StreetComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ StreetComponent ]
+      declarations: [ StreetComponent ],
+      imports: [
+        FormsModule,
+        HttpClientTestingModule,
+        TypeaheadModule.forRoot()
+      ]
     })
     .compileComponents();
   }));

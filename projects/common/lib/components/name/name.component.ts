@@ -1,125 +1,83 @@
-import {forwardRef, Component, Input, Output, EventEmitter, ViewChild, ChangeDetectorRef} from '@angular/core';
-import {Person} from '../../../models/src/person.model';
-import {Base} from '../../../models/src/base';
-import {debounceTime} from 'rxjs/operators';
-import { ControlContainer, ControlValueAccessor, NgForm, NG_VALUE_ACCESSOR } from '@angular/forms';
-
-/**
- * Name components is used to show Firstname, Middle Name and Last Name in the application.
- *
- * @example
- *       	<common-name #name [person]="person"
- *            (onChange)="onChange.emit($event)" [showError]="hasError" >
- *        </common-name>
- * @export
- */
-
-export interface PasswordErrorMsg {
-  required?: string;
-  pattern?: string;
-}
+import {
+  Component,
+  Input,
+  Optional,
+  Self,
+  Output,
+  EventEmitter } from '@angular/core';
+import { ControlValueAccessor, NgControl } from '@angular/forms';
+import { Base } from '../../../models/src/base';
 
 @Component({
   selector: 'common-name',
   templateUrl: './name.component.html',
-  styleUrls: ['./name.component.scss'],
-  viewProviders: [
-    { provide: ControlContainer, useExisting: forwardRef(() => NgForm ) }
-  ],
-  providers: [
-    { provide: NG_VALUE_ACCESSOR, multi: true, useExisting: forwardRef(() => NameComponent )}
-  ]
+  styleUrls: ['./name.component.scss']
 })
-
 export class NameComponent extends Base implements ControlValueAccessor {
 
-  @Input() person: Person;
-  @Input() showError: boolean;
-  @Input() firstNamelabel: string = 'First Name';
-  @Input() middleNamelabel: string = 'Middle Name';
-  @Input() lastNamelabel: string = 'Last Name';
-  //@ViewChild('formRef') form: NgForm;
-  @Output() onChange = new EventEmitter<any>();
-  //Person: typeof Person = Person;
-  firstName: string ;
-  middleName: string;
-  lastName: string ;
+  @Input() disabled: boolean = false;
+  @Input() label: string = 'Name';
+  @Input() maxlen: string = '255';
+  @Input() labelforId: string = 'name_' + this.objectId;
 
-  public NameRegEx: string = '^[a-zA-Z][a-zA-Z\\-.\' ]*$';
-
-  public errMsg: PasswordErrorMsg ;
-  // default messages
-  private requiredMsgSeg: string = 'is required';
-  private pattern: string = 'Must begin with a letter followed by a letters, hyphen, period, apostrophe, or blank character';
-
-  public _onChange = (_: any) => {};
-  public _onTouched = () => {};
-
-  constructor() {
-    super();
-  }
-
-  ngOnInit() {
-
-    if (this.person) {
-      this.firstName = this.person.firstName ? this.person.firstName : '';
-      this.lastName = this.person.lastName ? this.person.lastName : '';
-      this.middleName = this.person.middleName ? this.person.middleName : '';
+  @Input()
+  set value( val: string ) {
+    if ( val ) {
+      this.nameStr = val;
     }
-
-    this.errMsg =    {
-      required: this.requiredMsgSeg,
-      pattern: this.pattern
-    };
+  }
+  get value() {
+    return this.nameStr;
   }
 
-  /*ngAfterViewInit(): void {
-      // https://github.com/angular/angular/issues/24818
-      this.form.valueChanges.pipe(debounceTime(0)).subscribe((values) => {
-        this.onChange.emit(values);
-        this._onChange(values);
-        this._onTouched();
-      }
-    );
+  @Output() valueChange: EventEmitter<string> = new EventEmitter<string>();
+  @Output() blurEvent: EventEmitter<any> = new EventEmitter<any>();
 
-  }*/
+  public nameStr: string = '';
 
-  setFirstName(value: any) {
-    this.person.firstName = value;
-    this.onChange.emit(this.person);
-    this._onChange(this.person);
-    this._onTouched();
+  _onChange = (_: any) => {};
+  _onTouched = (_: any) => {};
+
+  constructor( @Optional() @Self() public controlDir: NgControl ) {
+    super();
+    if ( controlDir ) {
+      controlDir.valueAccessor = this;
+    }
   }
 
-  setMiddleName(value: any) {
-
-    this.person.middleName = value;
-    this.onChange.emit(this.person);
-    this._onChange(this.person);
-    this._onTouched();
-
+  onValueChange( value: any ) {
+      this._onChange( value );
+      this.valueChange.emit( value );
   }
 
-  setLastName(value: any) {
-
-    this.person.lastName = value;
-    this.onChange.emit(this.person);
-    this._onChange(this.person);
-    this._onTouched();
-
+  onBlurEvent( event: any ) {
+    this._onTouched( event );
+    this.blurEvent.emit( event.target.value );
   }
 
-  registerOnChange(fn: any): void {
+  writeValue( value: any ): void {
+    if ( value ) {
+      this.nameStr = value;
+    }
+  }
+
+  // Register change function
+  registerOnChange( fn: any ): void {
     this._onChange = fn;
   }
 
-  registerOnTouched(fn: any): void {
+  // Register touched function
+  registerOnTouched( fn: any ): void {
     this._onTouched = fn;
   }
 
-  writeValue(value: any): void {
-    this.person = value;
+  setDisabledState(isDisabled: boolean): void {
+    this.disabled = isDisabled;
   }
 
-
+  displayErrors(): boolean {
+    const displayErr = this.controlDir && !this.controlDir.disabled &&
+    ( this.controlDir.dirty || this.controlDir.touched );
+    return displayErr;
+  }
 }

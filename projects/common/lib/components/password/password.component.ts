@@ -6,6 +6,10 @@ import * as zxcvbn_ from 'zxcvbn';
 // https://github.com/jvandemo/generator-angular2-library/issues/221#issuecomment-355945207
 const zxcvbn = zxcvbn_;
 
+
+/**
+ * TODO:  Convert to custom form control - remove ngForm
+ */
 /**
  * Interface for passing in error messages
  * Example:

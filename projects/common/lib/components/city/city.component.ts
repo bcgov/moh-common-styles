@@ -16,7 +16,9 @@ export class CityComponent extends Base implements ControlValueAccessor  {
 
   @Input()
   set value( val: string ) {
-    this.city = val;
+    if ( val ) {
+      this.city = val;
+    }
   }
   get value() {
     return this.city;
@@ -25,8 +27,7 @@ export class CityComponent extends Base implements ControlValueAccessor  {
   @Output() valueChange: EventEmitter<string> = new EventEmitter<string>();
   @Output() blurEvent: EventEmitter<any> = new EventEmitter<any>();
 
-  city: string = null;
-
+  city: string = '';
 
   _onChange = (_: any) => {};
   _onTouched = (_: any) => {};
@@ -49,7 +50,7 @@ export class CityComponent extends Base implements ControlValueAccessor  {
   }
 
   writeValue( value: any ): void {
-    if ( value !== undefined ) {
+    if ( value ) {
       this.city = value;
     }
   }
