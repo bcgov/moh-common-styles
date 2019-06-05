@@ -2,7 +2,7 @@ import { Component, Input, Output, EventEmitter, Optional, Self, OnInit } from '
 import { Base } from '../../models/base';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { Observable, Subject, of } from 'rxjs';
-import { GeoAddressResult, GeocoderService } from '../../../services/src/geocoder.service';
+import { GeoAddressResult, GeocoderService } from '../../services/geocoder.service';
 import { debounceTime, distinctUntilChanged, switchMap, catchError } from 'rxjs/operators';
 import { TypeaheadMatch } from 'ngx-bootstrap';
 

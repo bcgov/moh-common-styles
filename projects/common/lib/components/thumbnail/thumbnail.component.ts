@@ -1,7 +1,7 @@
 import { Component, ViewChild, OnInit, Input, Output, EventEmitter, ViewContainerRef } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap';
 
-import { CommonImage } from '../../../images/src/images';
+import { CommonImage } from '../../models/images.model';
 
 @Component({
   selector: 'common-thumbnail',

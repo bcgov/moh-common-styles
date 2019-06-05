@@ -6,7 +6,7 @@ import {
   EventEmitter
 } from '@angular/core';
 import { ControlContainer, NgForm } from '@angular/forms';
-import { MaskModel, NUMBER, SPACE } from '../../../models/src/mask.model';
+import { MaskModel, NUMBER, SPACE } from '../../models/mask.model';
 
 import {  ControlValueAccessor,  NG_VALUE_ACCESSOR } from '@angular/forms';
 /**

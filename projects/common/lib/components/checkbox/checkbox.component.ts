@@ -1,5 +1,5 @@
 import { forwardRef, Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef} from '@angular/core';
-import { Base } from '../../../models/src/base';
+import { Base } from '../../models/base';
 import { ControlContainer, ControlValueAccessor, NgForm, NG_VALUE_ACCESSOR } from '@angular/forms';
 /**
  * Checkbox component is a input checkbox

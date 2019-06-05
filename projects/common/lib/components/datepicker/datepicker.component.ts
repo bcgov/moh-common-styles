@@ -3,7 +3,7 @@ import { INgxMyDpOptions, IMyDate, NgxMyDatePickerDirective } from 'ngx-mydatepi
 import * as moment_ from 'moment';
 import { NgForm, ControlContainer, FormControl, NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { DateErrorMsg } from '../date/date.component';
-import { Base } from '../../../models/src/base';
+import { Base } from '../../models/base';
 const moment = moment_;
 
 

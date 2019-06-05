@@ -4,7 +4,7 @@ import { Component, OnInit, Input, ViewChild, ElementRef,
 import { Router, NavigationEnd } from '@angular/router';
 import { filter, map } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
-import { WizardProgressItem } from '../../../models/src/container';
+import { WizardProgressItem } from '../../models/container';
 
 /**
  * NPM Dependencies:

@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter, Optional, Self } from '@angular/core';
-import { Base } from '../../../models/src/base';
+import { Base } from '../../models/base';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 
 /** Interface for countries */

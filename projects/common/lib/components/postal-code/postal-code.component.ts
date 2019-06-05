@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter, Optional, Self } from '@angular/core';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
-import { LETTER, NUMBER, SPACE } from '../../../models/src/mask.model';
-import { Base } from '../../../models/src/base';
+import { LETTER, NUMBER, SPACE } from '../../models/mask.model';
+import { Base } from '../../models/base';
 
 
 @Component({

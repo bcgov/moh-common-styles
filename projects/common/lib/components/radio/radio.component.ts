@@ -1,5 +1,5 @@
 import {forwardRef, ElementRef, Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
-import {Base} from '../../../models/src/base';
+import {Base} from '../../models/base';
 import { ControlContainer, ControlValueAccessor, NgForm, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 /**

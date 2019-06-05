@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter, Optional, Self } from '@angular/core';
-import { Base } from '../../../models/src/base';
+import { Base } from '../../models/base';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 
 @Component({

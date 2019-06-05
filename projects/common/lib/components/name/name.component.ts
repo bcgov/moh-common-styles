@@ -6,7 +6,7 @@ import {
   Output,
   EventEmitter } from '@angular/core';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
-import { Base } from '../../../models/src/base';
+import { Base } from '../../models/base';
 
 @Component({
   selector: 'common-name',

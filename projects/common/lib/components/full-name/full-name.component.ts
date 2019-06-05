@@ -1,6 +1,6 @@
 import {forwardRef, Component, Input, Output, EventEmitter, ViewChild, ChangeDetectorRef, OnInit} from '@angular/core';
-import {Person} from '../../../models/src/person.model';
-import {Base} from '../../../models/src/base';
+import {Person} from '../../models/person.model';
+import {Base} from '../../models/base';
 import {debounceTime} from 'rxjs/operators';
 import { ControlContainer, ControlValueAccessor, NgForm, NG_VALUE_ACCESSOR } from '@angular/forms';
 

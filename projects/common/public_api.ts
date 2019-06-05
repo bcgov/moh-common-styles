@@ -8,9 +8,23 @@
 export * from './lib/shared-core.module';
 
 // Interfaces
-export { SimpleDate } from './models/src/simple-date.interface';
 export { CountryList, CANADA, UNITED_STATES } from './lib/components/country/country.component';
 export { ProvinceList, BRITISH_COLUMBIA } from './lib/components/province/province.component';
-
 export { ConsentModalComponent } from './lib/components/consent-modal/consent-modal.component';
+export { SimpleDate } from './lib/models/simple-date.interface';
+
+
+// Models
+export * from './lib/models/container';
+export { AbstractForm } from './lib/models/abstract-form';
+export { Address } from './lib/models/address.model';
+export { Base } from './lib/models/base';
+export { Person } from './lib/models/person.model';
+export { MaskModel, LETTER, NUMBER, SPACE } from './lib/models/mask.model';
+
+// Services
+export * from './lib/services/abstract-api-service';
+export * from './lib/services/geocoder.service';
+export * from './lib/services/logger.service';
+
 

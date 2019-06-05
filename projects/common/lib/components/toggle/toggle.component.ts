@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Base } from '../../../models/src/base';
+import { Base } from '../../models/base';
 
 @Component({
   selector: 'common-toggle',
