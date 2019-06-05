@@ -2,6 +2,20 @@
 
 
 
+# [1.0.0](https://github.com/bcgov/moh-common-styles/compare/v0.0.34...v1.0.0) "moh-common-lib" (2019-06-05)
+
+
+### Bug Fixes
+
+* **Imports:** Merge /services, /models, /images entry points into main ([151f173](https://github.com/bcgov/moh-common-styles/commit/151f173))
+
+
+### Features
+
+* **FullName:** Create FullNameComponent for first/middle/last ([41f5609](https://github.com/bcgov/moh-common-styles/commit/41f5609))
+
+
+
 ## [0.0.34](https://github.com/bcgov/moh-common-styles/compare/v0.0.33...v0.0.34) "moh-common-lib" (2019-06-05)
 
 
