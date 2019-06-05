@@ -44,7 +44,7 @@
 
 <ol class="breadcrumb">
   <li>Interfaces</li>
-  <li>WizardProgressItem</li>
+  <li>FullNameErrorMsg</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -62,7 +62,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>projects/common/lib/models/container.ts</code>
+            <code>projects/common/lib/components/full-name/full-name.component.ts</code>
         </p>
 
 
@@ -80,10 +80,12 @@
                         <td class="col-md-4">
                             <ul class="index-list">
                                 <li>
-                                        <a href="#route">route</a>
+                                            <span class="modifier">Optional</span>
+                                        <a href="#pattern">pattern</a>
                                 </li>
                                 <li>
-                                        <a href="#title">title</a>
+                                            <span class="modifier">Optional</span>
+                                        <a href="#required">required</a>
                                 </li>
                             </ul>
                         </td>
@@ -100,13 +102,13 @@
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="route"></a>
-                                        <span class="name"><b>route</b><a href="#route"><span class="icon ion-ios-link"></span></a></span>
+                                        <a name="pattern"></a>
+                                        <span class="name"><b>pattern</b><a href="#pattern"><span class="icon ion-ios-link"></span></a></span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>route:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                        <code>pattern:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 </code>
                                     </td>
                                 </tr>
@@ -119,6 +121,11 @@
                                         </td>
                                     </tr>
 
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
 
 
 
@@ -129,13 +136,13 @@
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="title"></a>
-                                        <span class="name"><b>title</b><a href="#title"><span class="icon ion-ios-link"></span></a></span>
+                                        <a name="required"></a>
+                                        <span class="name"><b>required</b><a href="#required"><span class="icon ion-ios-link"></span></a></span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>title:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                        <code>required:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 </code>
                                     </td>
                                 </tr>
@@ -148,6 +155,11 @@
                                         </td>
                                     </tr>
 
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
 
 
 
@@ -159,38 +171,131 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Route } from &#x27;@angular/router&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {forwardRef, Component, Input, Output, EventEmitter, ViewChild, ChangeDetectorRef, OnInit} from &#x27;@angular/core&#x27;;
+import {Person} from &#x27;../../models/person.model&#x27;;
+import {Base} from &#x27;../../models/base&#x27;;
+import {debounceTime} from &#x27;rxjs/operators&#x27;;
+import { ControlContainer, ControlValueAccessor, NgForm, NG_VALUE_ACCESSOR } from &#x27;@angular/forms&#x27;;
 
-export interface WizardProgressItem {
-  title: string;
-  route: string;
+
+export interface FullNameErrorMsg {
+  required?: string;
+  pattern?: string;
 }
 
-/** Base functionality for container that is used to display bread crumbs */
-export class Container {
+/**
+ * FullNameComponent includes a first, middle, and last name field.  If you only
+ * need an individual field, @see NameComponent.
+ *
+ * **Note** This component is in dev, there are issues around &quot;required&quot;
+ * TODO - Properly handle &quot;required&quot;
+ *
+ * @example
+ *          &lt;common-full-name [(person)]&#x3D;&#x27;person&#x27;&gt;&lt;/common-full-name&gt;
+ *
+ * @export
+ */
+@Component({
+  selector: &#x27;common-full-name&#x27;,
+  templateUrl: &#x27;./full-name.component.html&#x27;,
+  styleUrls: [&#x27;./full-name.component.scss&#x27;],
+  providers: [
+    { provide: NG_VALUE_ACCESSOR, multi: true, useExisting: forwardRef(() &#x3D;&gt; FullNameComponent )}
+  ]
+})
 
-  /** Route items for the stepper */
-  progressSteps: WizardProgressItem[];
+export class FullNameComponent extends Base implements ControlValueAccessor, OnInit {
 
-  /**
-   * Converts a lower case string of a route in a user readable title.  e.g.
-   * &quot;personal-info&quot; -&gt; &quot;Personal Info&quot;
-   */
-  convertRouteToTitle(routePath: string): string {
-    return routePath.split(&#x27;-&#x27;).map(x &#x3D;&gt; x[0].toUpperCase() + x.slice(1)).join(&#x27; &#x27;);
+  @Input() person: Person;
+  @Output() personChange &#x3D; new EventEmitter&lt;Person&gt;();
+  @Input() showError: boolean;
+  @Input() firstNamelabel: string &#x3D; &#x27;First Name&#x27;;
+  @Input() middleNamelabel: string &#x3D; &#x27;Middle Name&#x27;;
+  @Input() lastNamelabel: string &#x3D; &#x27;Last Name&#x27;;
+  @Input() disabled: boolean &#x3D; false;
+
+
+  firstName: string ;
+  middleName: string;
+  lastName: string ;
+
+  public NameRegEx: string &#x3D; &#x27;^[a-zA-Z][a-zA-Z\\-.\&#x27; ]*$&#x27;;
+
+  public errMsg: FullNameErrorMsg ;
+  // default messages
+  private requiredMsgSeg: string &#x3D; &#x27;is required&#x27;;
+  private pattern: string &#x3D; &#x27;Must begin with a letter followed by a letters, hyphen, period, apostrophe, or blank character&#x27;;
+
+  public _onChange &#x3D; (_: any) &#x3D;&gt; {};
+  public _onTouched &#x3D; () &#x3D;&gt; {};
+
+  constructor() {
+    super();
   }
 
-  protected setProgressSteps( pageRoutes: Route[] ): void {
-        // Interface for wizard progress items
-        this.progressSteps &#x3D; pageRoutes.map(page &#x3D;&gt; {
-          if (page.path !&#x3D;&#x3D; &#x27;&#x27;) {
-            return {
-              title: this.convertRouteToTitle(page.path),
-              route: page.path
-            };
-          }
-        }).filter(x &#x3D;&gt; x);
+  ngOnInit() {
+
+    if (this.person) {
+      this.firstName &#x3D; this.person.firstName ? this.person.firstName : &#x27;&#x27;;
+      this.lastName &#x3D; this.person.lastName ? this.person.lastName : &#x27;&#x27;;
+      this.middleName &#x3D; this.person.middleName ? this.person.middleName : &#x27;&#x27;;
+    }
+
+    this.errMsg &#x3D;    {
+      required: this.requiredMsgSeg,
+      pattern: this.pattern
+    };
   }
+
+  /*ngAfterViewInit(): void {
+      // https://github.com/angular/angular/issues/24818
+      this.form.valueChanges.pipe(debounceTime(0)).subscribe((values) &#x3D;&gt; {
+        this.onChange.emit(values);
+        this._onChange(values);
+        this._onTouched();
+      }
+    );
+
+  }*/
+
+  // setFirstName(value: any) {
+  //   this.person.firstName &#x3D; value;
+  //   this.onChange.emit(this.person);
+  //   this._onChange(this.person);
+  //   this._onTouched();
+  // }
+
+  // setMiddleName(value: any) {
+
+  //   this.person.middleName &#x3D; value;
+  //   this.onChange.emit(this.person);
+  //   this._onChange(this.person);
+  //   this._onTouched();
+
+  // }
+
+  // setLastName(value: any) {
+
+  //   this.person.lastName &#x3D; value;
+  //   this.onChange.emit(this.person);
+  //   this._onChange(this.person);
+  //   this._onTouched();
+
+  // }
+
+  registerOnChange(fn: any): void {
+    this._onChange &#x3D; fn;
+  }
+
+  registerOnTouched(fn: any): void {
+    this._onTouched &#x3D; fn;
+  }
+
+  writeValue(value: any): void {
+    this.person &#x3D; value;
+  }
+
+
 }
 </code></pre>
     </div>
@@ -218,7 +323,7 @@ export class Container {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
-            var COMPODOC_CURRENT_PAGE_URL = 'WizardProgressItem.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'FullNameErrorMsg.html';
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

@@ -321,7 +321,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:38</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:39</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -347,7 +347,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:39</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:40</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -373,7 +373,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:40</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:41</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -394,7 +394,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:41</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:42</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -512,7 +512,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:42</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:43</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -1075,7 +1075,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:44</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:38</a></div>
                             </td>
                         </tr>
 
@@ -1212,7 +1212,7 @@
   EventEmitter
 } from &#x27;@angular/core&#x27;;
 import { ControlContainer, NgForm } from &#x27;@angular/forms&#x27;;
-import { MaskModel, NUMBER, SPACE } from &#x27;../../../models/src/mask.model&#x27;;
+import { MaskModel, NUMBER, SPACE } from &#x27;../../models/mask.model&#x27;;
 
 import {  ControlValueAccessor,  NG_VALUE_ACCESSOR } from &#x27;@angular/forms&#x27;;
 /**
@@ -1240,14 +1240,14 @@ import {  ControlValueAccessor,  NG_VALUE_ACCESSOR } from &#x27;@angular/forms&#
 })
 
 export class PhoneNumberComponent extends MaskModel implements ControlValueAccessor {
-
+  
+  static PhoneNumberRegEx &#x3D; &#x27;^[2-9]{1}\\d{2}[\\-]?\\d{3}[\\-]?\\d{4}$&#x27;;
   @Input() displayMask: boolean &#x3D; true;
   @Input() label: string &#x3D; &#x27;Mobile&#x27;;
   @Input() objectID: string &#x3D; &#x27;phone_&#x27; + this.objectId;
   @Input() phoneNumber: string;
   @Output() onChange &#x3D; new EventEmitter&lt;string&gt;();
  // public mask &#x3D; [&#x27;+&#x27;,&#x27;1&#x27;,SPACE,&#x27;(&#x27;,NUMBER,NUMBER,NUMBER,&#x27;)&#x27;,SPACE,NUMBER,NUMBER,NUMBER,&#x27;-&#x27;,NUMBER,NUMBER,NUMBER,NUMBER];
-  static PhoneNumberRegEx &#x3D; &#x27;^[2-9]{1}\\d{2}[\\-]?\\d{3}[\\-]?\\d{4}$&#x27;;
   public _onChange &#x3D; (_: any) &#x3D;&gt; {};
   public _onTouched &#x3D; () &#x3D;&gt; {};
 
@@ -1359,7 +1359,7 @@ export class PhoneNumberComponent extends MaskModel implements ControlValueAcces
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><label for="phone_{{objectId}}" class="control-label">{{label}}</label><div *ngIf="displayMask; else NoMask">  <input #phoneRef="ngModel"          class="form-control"          type="text"          name="phone_{{objectID}}"          id="phone_{{objectID}}"          [ngModel]="phoneNumber"          (ngModelChange)="setPhoneNumber($event)"          [placeholder]="placeholder "          [textMask]="{mask: mask}"          [required]="required"          [disabled]="disabled"/>  <!-- Error messages for component -->  <div *ngIf="!disabled && phoneRef.touched"      role="alert"      class="error-container"      aria-live="assertive">    <div class="text-danger" *ngIf="phoneRef?.errors?.required">      {{label}} is required.    </div>  </div></div><ng-template #NoMask>  <input #phoneRef="ngModel"          class="form-control"          type="text"          name="phone_{{objectID}}"          id="phone_{{objectID}}"          [ngModel]="phoneNumber"          (ngModelChange)="setPhoneNumber($event)"          [required]="required"          [disabled]="disabled" />          <!-- Error messages for component -->  <div *ngIf="!disabled && phoneRef.touched"        role="alert"        class="error-container"        aria-live="assertive">    <div class="text-danger" *ngIf="phoneRef?.errors?.required">      {{label}} is required.     </div>  </div></ng-template></div>'
-    var COMPONENTS = [{'name': 'AccordionCommonComponent', 'selector': 'common-accordion'},{'name': 'AddressComponent', 'selector': 'common-address'},{'name': 'ButtonComponent', 'selector': 'common-button'},{'name': 'ButtonGroupComponent', 'selector': 'common-button-group'},{'name': 'CaptchaComponent', 'selector': 'common-captcha'},{'name': 'CheckboxComponent', 'selector': 'common-checkbox'},{'name': 'CityComponent', 'selector': 'common-city'},{'name': 'ConsentModalComponent', 'selector': 'common-consent-modal'},{'name': 'CoreBreadcrumbComponent', 'selector': 'common-core-breadcrumb'},{'name': 'CountryComponent', 'selector': 'common-country'},{'name': 'DateComponent', 'selector': 'common-date'},{'name': 'DatepickerComponent', 'selector': 'common-datepicker'},{'name': 'DropdownComponent', 'selector': 'common-dropdown'},{'name': 'FileUploaderComponent', 'selector': 'common-file-uploader'},{'name': 'FormActionBarComponent', 'selector': 'common-form-action-bar'},{'name': 'FormSubmitBarComponent', 'selector': 'common-form-submit-bar'},{'name': 'NameComponent', 'selector': 'common-name'},{'name': 'PageFrameworkComponent', 'selector': 'common-page-framework'},{'name': 'PageSectionComponent', 'selector': 'common-page-section'},{'name': 'PasswordComponent', 'selector': 'common-password'},{'name': 'PhnComponent', 'selector': 'common-phn'},{'name': 'PhoneNumberComponent', 'selector': 'common-phone-number'},{'name': 'PostalCodeComponent', 'selector': 'common-postal-code'},{'name': 'ProvinceComponent', 'selector': 'common-province'},{'name': 'RadioComponent', 'selector': 'common-radio'},{'name': 'SinComponent', 'selector': 'common-sin'},{'name': 'StreetComponent', 'selector': 'common-street'},{'name': 'ThumbnailComponent', 'selector': 'common-thumbnail'},{'name': 'ToggleComponent', 'selector': 'common-toggle'},{'name': 'WizardProgressBarComponent', 'selector': 'common-wizard-progress-bar'}];
+    var COMPONENTS = [{'name': 'AccordionCommonComponent', 'selector': 'common-accordion'},{'name': 'AddressComponent', 'selector': 'common-address'},{'name': 'ButtonComponent', 'selector': 'common-button'},{'name': 'ButtonGroupComponent', 'selector': 'common-button-group'},{'name': 'CaptchaComponent', 'selector': 'common-captcha'},{'name': 'CheckboxComponent', 'selector': 'common-checkbox'},{'name': 'CityComponent', 'selector': 'common-city'},{'name': 'ConsentModalComponent', 'selector': 'common-consent-modal'},{'name': 'CoreBreadcrumbComponent', 'selector': 'common-core-breadcrumb'},{'name': 'CountryComponent', 'selector': 'common-country'},{'name': 'DateComponent', 'selector': 'common-date'},{'name': 'DatepickerComponent', 'selector': 'common-datepicker'},{'name': 'DropdownComponent', 'selector': 'common-dropdown'},{'name': 'FileUploaderComponent', 'selector': 'common-file-uploader'},{'name': 'FormActionBarComponent', 'selector': 'common-form-action-bar'},{'name': 'FormSubmitBarComponent', 'selector': 'common-form-submit-bar'},{'name': 'FullNameComponent', 'selector': 'common-full-name'},{'name': 'NameComponent', 'selector': 'common-name'},{'name': 'PageFrameworkComponent', 'selector': 'common-page-framework'},{'name': 'PageSectionComponent', 'selector': 'common-page-section'},{'name': 'PasswordComponent', 'selector': 'common-password'},{'name': 'PhnComponent', 'selector': 'common-phn'},{'name': 'PhoneNumberComponent', 'selector': 'common-phone-number'},{'name': 'PostalCodeComponent', 'selector': 'common-postal-code'},{'name': 'ProvinceComponent', 'selector': 'common-province'},{'name': 'RadioComponent', 'selector': 'common-radio'},{'name': 'SinComponent', 'selector': 'common-sin'},{'name': 'StreetComponent', 'selector': 'common-street'},{'name': 'ThumbnailComponent', 'selector': 'common-thumbnail'},{'name': 'ToggleComponent', 'selector': 'common-toggle'},{'name': 'WizardProgressBarComponent', 'selector': 'common-wizard-progress-bar'}];
     var DIRECTIVES = [{'name': 'DateFieldFormatDirective', 'selector': '[commonDateFieldFormat]'},{'name': 'DayValidationDirective', 'selector': '[commonDayValidation][ngModel]'},{'name': 'ValidateNameDirective', 'selector': '[commonValidateName]'},{'name': 'YearValidateDirective', 'selector': '[commonYearValidate][ngModel]'}];
     var ACTUAL_COMPONENT = {'name': 'PhoneNumberComponent'};
 </script>

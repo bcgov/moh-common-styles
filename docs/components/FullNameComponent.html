@@ -36,7 +36,7 @@
 
 <ol class="breadcrumb">
   <li>Components</li>
-  <li>CheckboxComponent</li>
+  <li>FullNameComponent</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -59,14 +59,17 @@
     <h3>File</h3>
 </p>
 <p class="comment">
-    <code>projects/common/lib/components/checkbox/checkbox.component.ts</code>
+    <code>projects/common/lib/components/full-name/full-name.component.ts</code>
 </p>
 
     <p class="comment">
         <h3>Description</h3>
     </p>
     <p class="comment">
-        <p>Checkbox component is a input checkbox</p>
+        <p>FullNameComponent includes a first, middle, and last name field.  If you only
+need an individual field, @see NameComponent.</p>
+<p><strong>Note</strong> This component is in dev, there are issues around &quot;required&quot;
+TODO - Properly handle &quot;required&quot;</p>
 
     </p>
 
@@ -82,6 +85,7 @@
     </p>
     <p class="comment">
                     <code><a href="https://angular.io/api/forms/ControlValueAccessor" target="_blank" >ControlValueAccessor</a></code>
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
     </p>
 
     <p class="comment">
@@ -89,13 +93,7 @@
     </p>
     <div class="io-description">
                 <div>
-                    <pre class="line-numbers"><code class="language-html">&lt;common-checkbox #addressChangeChkBx
-label='Do you want to opt in?'
-errorMessageRequired = 'Opt in should be selected'
-(dataChange)=&quot;dataChange($event)&quot;
-[(data)]='person.hasOpted' [disabled]=&quot;isDisabled&quot;
-[required]=&quot;isrequired&quot;&gt;
-&lt;/common-checkbox&gt;</code></pre>
+                    <pre class="line-numbers"><code class="language-html">&lt;common-full-name [(person)]='person'&gt;&lt;/common-full-name&gt;</code></pre>
                 </div>
     </div>
 
@@ -115,36 +113,28 @@ errorMessageRequired = 'Opt in should be selected'
             <tr>
                 <td class="col-md-3">providers</td>
                 <td class="col-md-9">
-                                <code><a href="../components/CheckboxComponent.html" target="_self" >{ provide: NG_VALUE_ACCESSOR, multi: true, useExisting: forwardRef(() &#x3D;&gt; CheckboxComponent) }</a></code>
+                            <code>{ provide: NG_VALUE_ACCESSOR, multi: true, useExisting: forwardRef(() &#x3D;&gt; FullNameComponent) }</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-3">selector</td>
-                <td class="col-md-9"><code>common-checkbox</code></td>
+                <td class="col-md-9"><code>common-full-name</code></td>
             </tr>
 
             <tr>
                 <td class="col-md-3">styleUrls</td>
-                <td class="col-md-9"><code>./checkbox.component.scss</code></td>
+                <td class="col-md-9"><code>./full-name.component.scss</code></td>
             </tr>
 
 
 
             <tr>
                 <td class="col-md-3">templateUrl</td>
-                <td class="col-md-9"><code>./checkbox.component.html</code></td>
+                <td class="col-md-9"><code>./full-name.component.html</code></td>
             </tr>
 
-            <tr>
-                <td class="col-md-3">viewProviders</td>
-                <td class="col-md-9">
-                    <code>
-                                <code><a href="../classes/Container.html" target="_self" >{ provide: ControlContainer, useExisting: forwardRef(() &#x3D;&gt; NgForm) }</a></code>
-                    </code>
-                </td>
-            </tr>
 
 
 
@@ -177,7 +167,29 @@ errorMessageRequired = 'Opt in should be selected'
                                 <a href="#_onTouched">_onTouched</a>
                             </li>
                             <li>
-                                <a href="#checkbox">checkbox</a>
+                                    <span class="modifier">Public</span>
+                                <a href="#errMsg">errMsg</a>
+                            </li>
+                            <li>
+                                <a href="#firstName">firstName</a>
+                            </li>
+                            <li>
+                                <a href="#lastName">lastName</a>
+                            </li>
+                            <li>
+                                <a href="#middleName">middleName</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#NameRegEx">NameRegEx</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#pattern">pattern</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#requiredMsgSeg">requiredMsgSeg</a>
                             </li>
                             <li>
                                     <span class="modifier">Public</span>
@@ -196,7 +208,7 @@ errorMessageRequired = 'Opt in should be selected'
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#focus">focus</a>
+                                <a href="#ngOnInit">ngOnInit</a>
                             </li>
                             <li>
                                 <a href="#registerOnChange">registerOnChange</a>
@@ -220,22 +232,19 @@ errorMessageRequired = 'Opt in should be selected'
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#checked">checked</a>
-                            </li>
-                            <li>
-                                <a href="#data">data</a>
-                            </li>
-                            <li>
                                 <a href="#disabled">disabled</a>
                             </li>
                             <li>
-                                <a href="#errorMessageRequired">errorMessageRequired</a>
+                                <a href="#firstNamelabel">firstNamelabel</a>
                             </li>
                             <li>
-                                <a href="#label">label</a>
+                                <a href="#lastNamelabel">lastNamelabel</a>
                             </li>
                             <li>
-                                <a href="#required">required</a>
+                                <a href="#middleNamelabel">middleNamelabel</a>
+                            </li>
+                            <li>
+                                <a href="#person">person</a>
                             </li>
                             <li>
                                 <a href="#showError">showError</a>
@@ -253,7 +262,7 @@ errorMessageRequired = 'Opt in should be selected'
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#dataChange">dataChange</a>
+                                <a href="#personChange">personChange</a>
                             </li>
                         </ul>
                     </td>
@@ -276,7 +285,7 @@ errorMessageRequired = 'Opt in should be selected'
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">projects/common/lib/components/checkbox/checkbox.component.ts:46</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">projects/common/lib/components/full-name/full-name.component.ts:57</a></div>
                             </td>
                         </tr>
 
@@ -286,58 +295,6 @@ errorMessageRequired = 'Opt in should be selected'
 
     <section>
     <h3 id="inputs">Inputs</h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="checked"></a>
-                        <b>checked</b>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>false</code>
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">projects/common/lib/components/checkbox/checkbox.component.ts:39</a></div>
-                            </td>
-                        </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="data"></a>
-                        <b>data</b>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>true</code>
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">projects/common/lib/components/checkbox/checkbox.component.ts:34</a></div>
-                            </td>
-                        </tr>
-            </tbody>
-        </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
@@ -359,7 +316,7 @@ errorMessageRequired = 'Opt in should be selected'
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">projects/common/lib/components/checkbox/checkbox.component.ts:36</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">projects/common/lib/components/full-name/full-name.component.ts:42</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -368,8 +325,8 @@ errorMessageRequired = 'Opt in should be selected'
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="errorMessageRequired"></a>
-                        <b>errorMessageRequired</b>
+                        <a name="firstNamelabel"></a>
+                        <b>firstNamelabel</b>
                     </td>
                 </tr>
                 <tr>
@@ -380,12 +337,12 @@ errorMessageRequired = 'Opt in should be selected'
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>this.label + &#x27;Field is required.&#x27;</code>
+                        <i>Default value : </i><code>&#x27;First Name&#x27;</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">projects/common/lib/components/checkbox/checkbox.component.ts:38</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">projects/common/lib/components/full-name/full-name.component.ts:39</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -394,8 +351,8 @@ errorMessageRequired = 'Opt in should be selected'
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="label"></a>
-                        <b>label</b>
+                        <a name="lastNamelabel"></a>
+                        <b>lastNamelabel</b>
                     </td>
                 </tr>
                 <tr>
@@ -406,12 +363,12 @@ errorMessageRequired = 'Opt in should be selected'
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>&#x27;Default Checkbox&#x27;</code>
+                        <i>Default value : </i><code>&#x27;Last Name&#x27;</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">projects/common/lib/components/checkbox/checkbox.component.ts:37</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">projects/common/lib/components/full-name/full-name.component.ts:41</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -420,24 +377,45 @@ errorMessageRequired = 'Opt in should be selected'
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="required"></a>
-                        <b>required</b>
+                        <a name="middleNamelabel"></a>
+                        <b>middleNamelabel</b>
                     </td>
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 
                     </td>
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>false</code>
+                        <i>Default value : </i><code>&#x27;Middle Name&#x27;</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">projects/common/lib/components/checkbox/checkbox.component.ts:35</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">projects/common/lib/components/full-name/full-name.component.ts:40</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="person"></a>
+                        <b>person</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../classes/Person.html" target="_self" >Person</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">projects/common/lib/components/full-name/full-name.component.ts:36</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -458,7 +436,7 @@ errorMessageRequired = 'Opt in should be selected'
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">projects/common/lib/components/checkbox/checkbox.component.ts:40</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">projects/common/lib/components/full-name/full-name.component.ts:38</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -470,19 +448,19 @@ errorMessageRequired = 'Opt in should be selected'
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="dataChange"></a>
-                        <b>dataChange</b>
+                        <a name="personChange"></a>
+                        <b>personChange</b>
                     </td>
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>    <code>EventEmitter&lt;boolean&gt;</code>
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
 
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">projects/common/lib/components/checkbox/checkbox.component.ts:41</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">projects/common/lib/components/full-name/full-name.component.ts:37</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -499,26 +477,26 @@ errorMessageRequired = 'Opt in should be selected'
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="focus"></a>
+                    <a name="ngOnInit"></a>
                     <span class="name">
                         <b>
-                            focus
+                            ngOnInit
                         </b>
-                        <a href="#focus"><span class="icon ion-ios-link"></span></a>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>focus()</code>
+<code>ngOnInit()</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="60"
-                            class="link-to-prism">projects/common/lib/components/checkbox/checkbox.component.ts:60</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="63"
+                            class="link-to-prism">projects/common/lib/components/full-name/full-name.component.ts:63</a></div>
                 </td>
             </tr>
 
@@ -556,8 +534,8 @@ errorMessageRequired = 'Opt in should be selected'
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="64"
-                            class="link-to-prism">projects/common/lib/components/checkbox/checkbox.component.ts:64</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="113"
+                            class="link-to-prism">projects/common/lib/components/full-name/full-name.component.ts:113</a></div>
                 </td>
             </tr>
 
@@ -626,8 +604,8 @@ errorMessageRequired = 'Opt in should be selected'
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="68"
-                            class="link-to-prism">projects/common/lib/components/checkbox/checkbox.component.ts:68</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="117"
+                            class="link-to-prism">projects/common/lib/components/full-name/full-name.component.ts:117</a></div>
                 </td>
             </tr>
 
@@ -696,8 +674,8 @@ errorMessageRequired = 'Opt in should be selected'
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="72"
-                            class="link-to-prism">projects/common/lib/components/checkbox/checkbox.component.ts:72</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="121"
+                            class="link-to-prism">projects/common/lib/components/full-name/full-name.component.ts:121</a></div>
                 </td>
             </tr>
 
@@ -770,7 +748,7 @@ errorMessageRequired = 'Opt in should be selected'
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">projects/common/lib/components/checkbox/checkbox.component.ts:45</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">projects/common/lib/components/full-name/full-name.component.ts:56</a></div>
                             </td>
                         </tr>
 
@@ -797,7 +775,7 @@ errorMessageRequired = 'Opt in should be selected'
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">projects/common/lib/components/checkbox/checkbox.component.ts:46</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">projects/common/lib/components/full-name/full-name.component.ts:57</a></div>
                             </td>
                         </tr>
 
@@ -808,32 +786,204 @@ errorMessageRequired = 'Opt in should be selected'
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="checkbox"></a>
+                        <a name="errMsg"></a>
                         <span class="name">
                             <b>
-                            checkbox</b>
-                            <a href="#checkbox"><span class="icon ion-ios-link"></span></a>
+                                <span class="modifier">Public</span>
+                            errMsg</b>
+                            <a href="#errMsg"><span class="icon ion-ios-link"></span></a>
                         </span>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="https://angular.io/api/core/ElementRef" target="_blank" >ElementRef</a></code>
+                            <i>Type : </i>        <code><a href="../interfaces/FullNameErrorMsg.html" target="_self" >FullNameErrorMsg</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">projects/common/lib/components/full-name/full-name.component.ts:51</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="firstName"></a>
+                        <span class="name">
+                            <b>
+                            firstName</b>
+                            <a href="#firstName"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">projects/common/lib/components/full-name/full-name.component.ts:45</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="lastName"></a>
+                        <span class="name">
+                            <b>
+                            lastName</b>
+                            <a href="#lastName"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">projects/common/lib/components/full-name/full-name.component.ts:47</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="middleName"></a>
+                        <span class="name">
+                            <b>
+                            middleName</b>
+                            <a href="#middleName"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">projects/common/lib/components/full-name/full-name.component.ts:46</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="NameRegEx"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            NameRegEx</b>
+                            <a href="#NameRegEx"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <b>Decorators : </b>
-                            <br />
-                            <code>
-                                @ViewChild(&#x27;checkbox&#x27;)<br />
-                            </code>
+                            <i>Default value : </i><code>&#x27;^[a-zA-Z][a-zA-Z\\-.\&#x27; ]*$&#x27;</code>
                         </td>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">projects/common/lib/components/checkbox/checkbox.component.ts:42</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">projects/common/lib/components/full-name/full-name.component.ts:49</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="pattern"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            pattern</b>
+                            <a href="#pattern"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>&#x27;Must begin with a letter followed by a letters, hyphen, period, apostrophe, or blank character&#x27;</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">projects/common/lib/components/full-name/full-name.component.ts:54</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="requiredMsgSeg"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            requiredMsgSeg</b>
+                            <a href="#requiredMsgSeg"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>&#x27;is required&#x27;</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">projects/common/lib/components/full-name/full-name.component.ts:53</a></div>
                             </td>
                         </tr>
 
@@ -892,68 +1042,117 @@ errorMessageRequired = 'Opt in should be selected'
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { forwardRef, Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef} from &#x27;@angular/core&#x27;;
-import { Base } from &#x27;../../models/base&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {forwardRef, Component, Input, Output, EventEmitter, ViewChild, ChangeDetectorRef, OnInit} from &#x27;@angular/core&#x27;;
+import {Person} from &#x27;../../models/person.model&#x27;;
+import {Base} from &#x27;../../models/base&#x27;;
+import {debounceTime} from &#x27;rxjs/operators&#x27;;
 import { ControlContainer, ControlValueAccessor, NgForm, NG_VALUE_ACCESSOR } from &#x27;@angular/forms&#x27;;
+
+
+export interface FullNameErrorMsg {
+  required?: string;
+  pattern?: string;
+}
+
 /**
- * Checkbox component is a input checkbox
+ * FullNameComponent includes a first, middle, and last name field.  If you only
+ * need an individual field, @see NameComponent.
+ *
+ * **Note** This component is in dev, there are issues around &quot;required&quot;
+ * TODO - Properly handle &quot;required&quot;
  *
  * @example
- *       &lt;common-checkbox #addressChangeChkBx
- *          label&#x3D;&#x27;Do you want to opt in?&#x27;
- *          errorMessageRequired &#x3D; &#x27;Opt in should be selected&#x27;
- *          (dataChange)&#x3D;&quot;dataChange($event)&quot;
- *           [(data)]&#x3D;&#x27;person.hasOpted&#x27; [disabled]&#x3D;&quot;isDisabled&quot;
- *          [required]&#x3D;&quot;isrequired&quot;&gt;
- *       &lt;/common-checkbox&gt;
+ *          &lt;common-full-name [(person)]&#x3D;&#x27;person&#x27;&gt;&lt;/common-full-name&gt;
  *
  * @export
  */
-
-
 @Component({
-  selector: &#x27;common-checkbox&#x27;,
-  templateUrl: &#x27;./checkbox.component.html&#x27;,
-  styleUrls: [&#x27;./checkbox.component.scss&#x27;],
-  viewProviders: [
-    { provide: ControlContainer, useExisting: forwardRef(() &#x3D;&gt; NgForm ) }
-  ],
+  selector: &#x27;common-full-name&#x27;,
+  templateUrl: &#x27;./full-name.component.html&#x27;,
+  styleUrls: [&#x27;./full-name.component.scss&#x27;],
   providers: [
-    { provide: NG_VALUE_ACCESSOR, multi: true, useExisting: forwardRef(() &#x3D;&gt; CheckboxComponent )}
+    { provide: NG_VALUE_ACCESSOR, multi: true, useExisting: forwardRef(() &#x3D;&gt; FullNameComponent )}
   ]
 })
 
-export class CheckboxComponent extends Base implements  ControlValueAccessor {
+export class FullNameComponent extends Base implements ControlValueAccessor, OnInit {
 
-  @Input() data: boolean &#x3D; true;
-  @Input() required: boolean &#x3D; false;
-  @Input() disabled: boolean &#x3D; false;
-  @Input() label: string &#x3D; &#x27;Default Checkbox&#x27;;
-  @Input() errorMessageRequired: string &#x3D; this.label + &#x27;Field is required.&#x27;;
-  @Input() checked: boolean &#x3D;  false ;
+  @Input() person: Person;
+  @Output() personChange &#x3D; new EventEmitter&lt;Person&gt;();
   @Input() showError: boolean;
-  @Output() dataChange: EventEmitter&lt;boolean&gt; &#x3D; new EventEmitter&lt;boolean&gt;();
-  @ViewChild(&#x27;checkbox&#x27;) checkbox: ElementRef;
+  @Input() firstNamelabel: string &#x3D; &#x27;First Name&#x27;;
+  @Input() middleNamelabel: string &#x3D; &#x27;Middle Name&#x27;;
+  @Input() lastNamelabel: string &#x3D; &#x27;Last Name&#x27;;
+  @Input() disabled: boolean &#x3D; false;
 
+
+  firstName: string ;
+  middleName: string;
+  lastName: string ;
+
+  public NameRegEx: string &#x3D; &#x27;^[a-zA-Z][a-zA-Z\\-.\&#x27; ]*$&#x27;;
+
+  public errMsg: FullNameErrorMsg ;
+  // default messages
+  private requiredMsgSeg: string &#x3D; &#x27;is required&#x27;;
+  private pattern: string &#x3D; &#x27;Must begin with a letter followed by a letters, hyphen, period, apostrophe, or blank character&#x27;;
 
   public _onChange &#x3D; (_: any) &#x3D;&gt; {};
   public _onTouched &#x3D; () &#x3D;&gt; {};
 
+  constructor() {
+    super();
+  }
 
-  constructor() { super(); }
+  ngOnInit() {
 
+    if (this.person) {
+      this.firstName &#x3D; this.person.firstName ? this.person.firstName : &#x27;&#x27;;
+      this.lastName &#x3D; this.person.lastName ? this.person.lastName : &#x27;&#x27;;
+      this.middleName &#x3D; this.person.middleName ? this.person.middleName : &#x27;&#x27;;
+    }
 
-  /*setCheckboxVal(event: boolean) {
-    console.log(event);
-    this.data &#x3D; event;
-    this.dataChange.emit(this.data);
-    this._onChange(event);
-    this._onTouched();
+    this.errMsg &#x3D;    {
+      required: this.requiredMsgSeg,
+      pattern: this.pattern
+    };
+  }
+
+  /*ngAfterViewInit(): void {
+      // https://github.com/angular/angular/issues/24818
+      this.form.valueChanges.pipe(debounceTime(0)).subscribe((values) &#x3D;&gt; {
+        this.onChange.emit(values);
+        this._onChange(values);
+        this._onTouched();
+      }
+    );
+
   }*/
 
-  focus() {
-    this.checkbox.nativeElement.focus();
-  }
+  // setFirstName(value: any) {
+  //   this.person.firstName &#x3D; value;
+  //   this.onChange.emit(this.person);
+  //   this._onChange(this.person);
+  //   this._onTouched();
+  // }
+
+  // setMiddleName(value: any) {
+
+  //   this.person.middleName &#x3D; value;
+  //   this.onChange.emit(this.person);
+  //   this._onChange(this.person);
+  //   this._onTouched();
+
+  // }
+
+  // setLastName(value: any) {
+
+  //   this.person.lastName &#x3D; value;
+  //   this.onChange.emit(this.person);
+  //   this._onChange(this.person);
+  //   this._onTouched();
+
+  // }
 
   registerOnChange(fn: any): void {
     this._onChange &#x3D; fn;
@@ -964,7 +1163,7 @@ export class CheckboxComponent extends Base implements  ControlValueAccessor {
   }
 
   writeValue(value: any): void {
-    this.data &#x3D; value;
+    this.person &#x3D; value;
   }
 
 
@@ -973,17 +1172,97 @@ export class CheckboxComponent extends Base implements  ControlValueAccessor {
     </div>
 
     <div class="tab-pane fade " id="c-templateData">
-        <pre class="line-numbers"><code class="language-html">
-&lt;input #checkbox type&#x3D;&quot;checkbox&quot; class&#x3D;&quot;input-lg form-check-input&quot; name&#x3D;&quot;checkbox_{{objectId}})&quot; 
-    id&#x3D;&quot;checkbox_{{objectId}}&quot; [ngModel]&#x3D;&#x27;data&#x27; 
-    (ngModelChange)&#x3D;&#x27;dataChange.emit($event);&#x27; 
-    [disabled] &#x3D; &#x27;disabled&#x27; [required]&#x3D;&quot;required&quot;&gt;
-&lt;label for&#x3D;&quot;checkbox_{{objectId}})&quot; class&#x3D;&quot;form-check-label&quot;&gt;{{label}}&lt;/label&gt;
-
-&lt;div *ngIf&#x3D;&#x27;showError &amp;&amp; (data &#x3D;&#x3D;&#x3D; undefined || data &#x3D;&#x3D;&#x3D; null)&#x27;&gt;
-    &lt;div class&#x3D;&quot;text-danger&quot;&gt;{{errorMessageRequired}}&lt;/div&gt;
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;form-group col-sm-6 p-sm-0&quot;&gt;
+    &lt;common-name label&#x3D;&quot;First Name&quot;
+                 [disabled]&#x3D;&quot;disabled&quot;
+                 [(value)]&#x3D;&quot;person.firstName&quot;
+                 objectID&#x3D;&quot;first_name&quot;&gt;&lt;/common-name&gt;
+                 &lt;!-- (blurEvent)&#x3D;&quot;onBlur($event)&quot; --&gt;
 &lt;/div&gt;
-	
+
+&lt;div class&#x3D;&quot;form-group col-sm-6 p-sm-0&quot;&gt;
+    &lt;common-name label&#x3D;&quot;Middle Name&quot;
+                 [disabled]&#x3D;&quot;disabled&quot;
+                 [(value)]&#x3D;&quot;person.middleName&quot;
+                 objectID&#x3D;&quot;middle_name&quot;&gt;&lt;/common-name&gt;
+&lt;/div&gt;
+
+&lt;div class&#x3D;&quot;form-group col-sm-6 p-sm-0&quot;&gt;
+    &lt;common-name label&#x3D;&quot;Last Name&quot;
+                 required
+                 [disabled]&#x3D;&quot;disabled&quot;
+                 [(value)]&#x3D;&quot;person.lastName&quot;
+                 objectID&#x3D;&quot;last_name&quot;&gt;&lt;/common-name&gt;
+&lt;/div&gt;
+
+
+&lt;!-- 
+&lt;div class&#x3D;&quot;row&quot;&gt;
+    &lt;div class&#x3D;&quot;col-md-4&quot;&gt;
+        &lt;div class&#x3D;&quot;form-group&quot;
+              [ngClass]&#x3D;&quot;{&#x27;has-error&#x27;: showError &amp;&amp; (firstNameRef.touched &amp;&amp; (firstName &#x3D;&#x3D;&#x3D; undefined || firstName &#x3D;&#x3D;&#x3D; null))}&quot;&gt;
+            &lt;label class&#x3D;&quot;control-label&quot; for&#x3D;&quot;firstName_{{objectId}}&quot;
+                    &gt;{{firstNamelabel}}&lt;/label&gt;
+            &lt;input type&#x3D;&quot;text&quot;
+                    [ngModel]&#x3D;&quot;firstName&quot;
+                    name&#x3D;&quot;firstName&quot;
+                    (ngModelChange)&#x3D;&quot;setFirstName($event)&quot;
+                    required
+                    maxlength&#x3D;&quot;30&quot;
+                    [pattern]&#x3D;&quot;NameRegEx&quot;
+                    id&#x3D;&quot;firstName_{{objectId}}&quot; #firstNameRef&#x3D;&quot;ngModel&quot;
+                    class&#x3D;&quot;form-control&quot;&gt;
+            &lt;div *ngIf&#x3D;&#x27;showError &amp;&amp; (firstNameRef.touched &amp;&amp; (firstName &#x3D;&#x3D;&#x3D; undefined || firstName &#x3D;&#x3D;&#x3D; null))&#x27; role&#x3D;&quot;alert&quot; aria-live&#x3D;&quot;assertive&quot;&gt;
+                &lt;div class&#x3D;&quot;text-danger&quot; *ngIf&#x3D;&quot;firstNameRef.errors?.required&quot;
+                      &gt;{{firstNamelabel}} {{errMsg.required}}&lt;/div&gt;
+                &lt;div class&#x3D;&quot;text-danger&quot; *ngIf&#x3D;&quot;firstNameRef.errors?.pattern&quot;
+                      &gt;{{errMsg.pattern}}&lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;col-md-4&quot;&gt;
+        &lt;div class&#x3D;&quot;form-group&quot;
+              [ngClass]&#x3D;&quot;{&#x27;has-error&#x27;: showError &amp;&amp; (middleNameRef.touched &amp;&amp;(middleName &#x3D;&#x3D;&#x3D; undefined || middleName &#x3D;&#x3D;&#x3D; null))}&quot;&gt;
+            &lt;label class&#x3D;&quot;control-label if-applicable&quot; for&#x3D;&quot;middleName_{{objectId}}&quot;&gt;{{middleNamelabel}}&lt;/label&gt;
+            &lt;input type&#x3D;&quot;text&quot;
+                    name&#x3D;&quot;middleName&quot;
+                    [ngModel]&#x3D;&quot;middleName&quot;
+                    (ngModelChange)&#x3D;&quot;setMiddleName($event)&quot;
+                    id&#x3D;&#x27;middleName_{{objectId}}&#x27; #middleNameRef&#x3D;&quot;ngModel&quot;
+                    maxlength&#x3D;&quot;30&quot;
+                    [pattern]&#x3D;&quot;NameRegEx&quot;
+                    class&#x3D;&quot;form-control&quot;&gt;
+            &lt;div *ngIf&#x3D;&#x27;middleNameRef.touched || showError&#x27; role&#x3D;&quot;alert&quot; aria-live&#x3D;&quot;assertive&quot;&gt;
+                &lt;div class&#x3D;&quot;text-danger&quot; *ngIf&#x3D;&quot;middleNameRef.errors?.required&quot;
+                      &gt;{{middleNamelabel}} {{errMsg.required}}&lt;/div&gt;
+                &lt;div class&#x3D;&quot;text-danger&quot; *ngIf&#x3D;&quot;middleNameRef.errors?.pattern&quot;
+                      &gt;{{errMsg.pattern}}&lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;col-md-4&quot;&gt;
+        &lt;div class&#x3D;&quot;form-group&quot;
+        [ngClass]&#x3D;&quot;{&#x27;has-error&#x27;: showError &amp;&amp; (lastNameRef.touched &amp;&amp; (lastName &#x3D;&#x3D;&#x3D; undefined || lastName &#x3D;&#x3D;&#x3D; null))}&quot;&gt;
+            &lt;label class&#x3D;&quot;control-label&quot; for&#x3D;&quot;lastName_{{objectId}}&quot; &gt;{{lastNamelabel}}&lt;/label&gt;
+            &lt;input type&#x3D;&quot;text&quot;
+                    name&#x3D;&quot;lastName&quot;
+                    [ngModel]&#x3D;&quot;lastName&quot;
+                    (ngModelChange)&#x3D;&quot;setLastName($event)&quot;
+                    id&#x3D;&quot;lastName_{{objectId}}&quot; #lastNameRef&#x3D;&quot;ngModel&quot;
+                    required
+                    maxlength&#x3D;&quot;30&quot;
+                    [pattern]&#x3D;&quot;NameRegEx&quot;
+                    class&#x3D;&quot;form-control&quot;&gt;
+            &lt;div *ngIf&#x3D;&#x27;showError &amp;&amp; (lastNameRef.touched &amp;&amp; (lastName &#x3D;&#x3D;&#x3D; undefined || lastName &#x3D;&#x3D;&#x3D; null))&#x27; role&#x3D;&quot;alert&quot; aria-live&#x3D;&quot;assertive&quot;&gt;
+                &lt;div class&#x3D;&quot;text-danger&quot; *ngIf&#x3D;&quot;lastNameRef.errors?.required&quot;
+                      &gt;{{lastNamelabel}} {{errMsg.required}}&lt;/div&gt;
+                &lt;div class&#x3D;&quot;text-danger&quot; *ngIf&#x3D;&quot;lastNameRef.errors?.pattern&quot;
+                      &gt;{{errMsg.pattern}}&lt;/div&gt;
+            &lt;/div&gt;
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt; --&gt;
 </code></pre>
     </div>
 
@@ -1013,10 +1292,10 @@ export class CheckboxComponent extends Base implements  ControlValueAccessor {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><input #checkbox type="checkbox" class="input-lg form-check-input" name="checkbox_{{objectId}})"     id="checkbox_{{objectId}}" [ngModel]=\'data\'     (ngModelChange)=\'dataChange.emit($event);\'     [disabled] = \'disabled\' [required]="required"><label for="checkbox_{{objectId}})" class="form-check-label">{{label}}</label><div *ngIf=\'showError && (data === undefined || data === null)\'>    <div class="text-danger">{{errorMessageRequired}}</div></div>	</div>'
+        var COMPONENT_TEMPLATE = '<div><div class="form-group col-sm-6 p-sm-0">    <common-name label="First Name"                 [disabled]="disabled"                 [(value)]="person.firstName"                 objectID="first_name"></common-name>                 <!-- (blurEvent)="onBlur($event)" --></div><div class="form-group col-sm-6 p-sm-0">    <common-name label="Middle Name"                 [disabled]="disabled"                 [(value)]="person.middleName"                 objectID="middle_name"></common-name></div><div class="form-group col-sm-6 p-sm-0">    <common-name label="Last Name"                 required                 [disabled]="disabled"                 [(value)]="person.lastName"                 objectID="last_name"></common-name></div><!-- <div class="row">    <div class="col-md-4">        <div class="form-group"              [ngClass]="{\'has-error\': showError && (firstNameRef.touched && (firstName === undefined || firstName === null))}">            <label class="control-label" for="firstName_{{objectId}}"                    >{{firstNamelabel}}</label>            <input type="text"                    [ngModel]="firstName"                    name="firstName"                    (ngModelChange)="setFirstName($event)"                    required                    maxlength="30"                    [pattern]="NameRegEx"                    id="firstName_{{objectId}}" #firstNameRef="ngModel"                    class="form-control">            <div *ngIf=\'showError && (firstNameRef.touched && (firstName === undefined || firstName === null))\' role="alert" aria-live="assertive">                <div class="text-danger" *ngIf="firstNameRef.errors?.required"                      >{{firstNamelabel}} {{errMsg.required}}</div>                <div class="text-danger" *ngIf="firstNameRef.errors?.pattern"                      >{{errMsg.pattern}}</div>            </div>        </div>    </div>    <div class="col-md-4">        <div class="form-group"              [ngClass]="{\'has-error\': showError && (middleNameRef.touched &&(middleName === undefined || middleName === null))}">            <label class="control-label if-applicable" for="middleName_{{objectId}}">{{middleNamelabel}}</label>            <input type="text"                    name="middleName"                    [ngModel]="middleName"                    (ngModelChange)="setMiddleName($event)"                    id=\'middleName_{{objectId}}\' #middleNameRef="ngModel"                    maxlength="30"                    [pattern]="NameRegEx"                    class="form-control">            <div *ngIf=\'middleNameRef.touched || showError\' role="alert" aria-live="assertive">                <div class="text-danger" *ngIf="middleNameRef.errors?.required"                      >{{middleNamelabel}} {{errMsg.required}}</div>                <div class="text-danger" *ngIf="middleNameRef.errors?.pattern"                      >{{errMsg.pattern}}</div>            </div>        </div>    </div>    <div class="col-md-4">        <div class="form-group"        [ngClass]="{\'has-error\': showError && (lastNameRef.touched && (lastName === undefined || lastName === null))}">            <label class="control-label" for="lastName_{{objectId}}" >{{lastNamelabel}}</label>            <input type="text"                    name="lastName"                    [ngModel]="lastName"                    (ngModelChange)="setLastName($event)"                    id="lastName_{{objectId}}" #lastNameRef="ngModel"                    required                    maxlength="30"                    [pattern]="NameRegEx"                    class="form-control">            <div *ngIf=\'showError && (lastNameRef.touched && (lastName === undefined || lastName === null))\' role="alert" aria-live="assertive">                <div class="text-danger" *ngIf="lastNameRef.errors?.required"                      >{{lastNamelabel}} {{errMsg.required}}</div>                <div class="text-danger" *ngIf="lastNameRef.errors?.pattern"                      >{{errMsg.pattern}}</div>            </div>        </div>    </div></div> --></div>'
     var COMPONENTS = [{'name': 'AccordionCommonComponent', 'selector': 'common-accordion'},{'name': 'AddressComponent', 'selector': 'common-address'},{'name': 'ButtonComponent', 'selector': 'common-button'},{'name': 'ButtonGroupComponent', 'selector': 'common-button-group'},{'name': 'CaptchaComponent', 'selector': 'common-captcha'},{'name': 'CheckboxComponent', 'selector': 'common-checkbox'},{'name': 'CityComponent', 'selector': 'common-city'},{'name': 'ConsentModalComponent', 'selector': 'common-consent-modal'},{'name': 'CoreBreadcrumbComponent', 'selector': 'common-core-breadcrumb'},{'name': 'CountryComponent', 'selector': 'common-country'},{'name': 'DateComponent', 'selector': 'common-date'},{'name': 'DatepickerComponent', 'selector': 'common-datepicker'},{'name': 'DropdownComponent', 'selector': 'common-dropdown'},{'name': 'FileUploaderComponent', 'selector': 'common-file-uploader'},{'name': 'FormActionBarComponent', 'selector': 'common-form-action-bar'},{'name': 'FormSubmitBarComponent', 'selector': 'common-form-submit-bar'},{'name': 'FullNameComponent', 'selector': 'common-full-name'},{'name': 'NameComponent', 'selector': 'common-name'},{'name': 'PageFrameworkComponent', 'selector': 'common-page-framework'},{'name': 'PageSectionComponent', 'selector': 'common-page-section'},{'name': 'PasswordComponent', 'selector': 'common-password'},{'name': 'PhnComponent', 'selector': 'common-phn'},{'name': 'PhoneNumberComponent', 'selector': 'common-phone-number'},{'name': 'PostalCodeComponent', 'selector': 'common-postal-code'},{'name': 'ProvinceComponent', 'selector': 'common-province'},{'name': 'RadioComponent', 'selector': 'common-radio'},{'name': 'SinComponent', 'selector': 'common-sin'},{'name': 'StreetComponent', 'selector': 'common-street'},{'name': 'ThumbnailComponent', 'selector': 'common-thumbnail'},{'name': 'ToggleComponent', 'selector': 'common-toggle'},{'name': 'WizardProgressBarComponent', 'selector': 'common-wizard-progress-bar'}];
     var DIRECTIVES = [{'name': 'DateFieldFormatDirective', 'selector': '[commonDateFieldFormat]'},{'name': 'DayValidationDirective', 'selector': '[commonDayValidation][ngModel]'},{'name': 'ValidateNameDirective', 'selector': '[commonValidateName]'},{'name': 'YearValidateDirective', 'selector': '[commonYearValidate][ngModel]'}];
-    var ACTUAL_COMPONENT = {'name': 'CheckboxComponent'};
+    var ACTUAL_COMPONENT = {'name': 'FullNameComponent'};
 </script>
 <script src="../js/tree.js"></script>
 
@@ -1050,7 +1329,7 @@ export class CheckboxComponent extends Base implements  ControlValueAccessor {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
-            var COMPODOC_CURRENT_PAGE_URL = 'CheckboxComponent.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'FullNameComponent.html';
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>
