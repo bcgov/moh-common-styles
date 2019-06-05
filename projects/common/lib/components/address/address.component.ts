@@ -15,7 +15,7 @@ import { ProvinceList, BRITISH_COLUMBIA } from '../province/province.component';
 
 
 /**
- * 
+ *
  * Note - This component REQUIRES that `HttpClientModule` is registered in your NgModule.
  */
 @Component({

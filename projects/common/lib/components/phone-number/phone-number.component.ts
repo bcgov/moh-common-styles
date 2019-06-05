@@ -34,14 +34,14 @@ import {  ControlValueAccessor,  NG_VALUE_ACCESSOR } from '@angular/forms';
 })
 
 export class PhoneNumberComponent extends MaskModel implements ControlValueAccessor {
-
+  
+  static PhoneNumberRegEx = '^[2-9]{1}\\d{2}[\\-]?\\d{3}[\\-]?\\d{4}$';
   @Input() displayMask: boolean = true;
   @Input() label: string = 'Mobile';
   @Input() objectID: string = 'phone_' + this.objectId;
   @Input() phoneNumber: string;
   @Output() onChange = new EventEmitter<string>();
  // public mask = ['+','1',SPACE,'(',NUMBER,NUMBER,NUMBER,')',SPACE,NUMBER,NUMBER,NUMBER,'-',NUMBER,NUMBER,NUMBER,NUMBER];
-  static PhoneNumberRegEx = '^[2-9]{1}\\d{2}[\\-]?\\d{3}[\\-]?\\d{4}$';
   public _onChange = (_: any) => {};
   public _onTouched = () => {};
 

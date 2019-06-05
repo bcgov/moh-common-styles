@@ -65,7 +65,7 @@ export class RadioComponent extends Base implements ControlValueAccessor {
   public _onChange = (_: any) => {};
   public _onTouched = () => {};
 
-  constructor() { super(); 
+  constructor() { super();
 
   }
 

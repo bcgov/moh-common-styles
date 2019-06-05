@@ -21,7 +21,7 @@ export class PostalCodeComponent extends Base implements ControlValueAccessor  {
   @Input()
   set value( val: string ) {
     // console.log( 'set value: ', val );
-    if( val) {
+    if (val) {
       this.postalCode = val;
     }
   }
