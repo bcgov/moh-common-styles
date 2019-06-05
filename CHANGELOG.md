@@ -1,4 +1,13 @@
-# Unreleased "moh-common-lib" (2019-06-04)
+# Unreleased "moh-common-lib" (2019-06-05)
+
+
+
+## [0.0.34](https://github.com/bcgov/moh-common-styles/compare/v0.0.33...v0.0.34) "moh-common-lib" (2019-06-05)
+
+
+### Features
+
+* PHN, SIN components from FPC. Name majorly refactored. ([c04b81d](https://github.com/bcgov/moh-common-styles/commit/c04b81d))
 
 
 
