@@ -40,6 +40,7 @@ import { AccordionCommonComponent } from './components/accordion/accordion.compo
 import { ValidateNameDirective } from './components/name/validate-name.directive';
 import { SinComponent } from './components/sin/sin.component';
 import { PhnComponent } from './components/phn/phn.component';
+import { FullNameComponent } from './components/full-name/full-name.component';
 
 const componentList = [
   CoreBreadcrumbComponent,
@@ -69,6 +70,7 @@ const componentList = [
   CheckboxComponent,
   ConsentModalComponent,
   NameComponent,
+  FullNameComponent,
   PhoneNumberComponent,
   RadioComponent,
   AccordionCommonComponent,
