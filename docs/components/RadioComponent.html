@@ -421,11 +421,6 @@ label='Gender' display='table-row-group'
 
                     </td>
                 </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>&#x27;Status&#x27;</code>
-                    </td>
-                </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
                                     <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">projects/common/lib/components/radio/radio.component.ts:57</a></div>
@@ -976,7 +971,7 @@ export class RadioComponent extends Base implements ControlValueAccessor {
   @Input() radioLabels: Array&lt;{label: string, value: string}&gt; ;
   @Input() checked: boolean &#x3D; false;
   @Input() disabled: boolean &#x3D; false;
-  @Input() label: string &#x3D; &#x27;Status&#x27;;
+  @Input() label: string ;
   @Input() value: string ;
   @Input() showError: boolean;
   @Input() errorMessageRequired: string &#x3D; this.label + &#x27; is required.&#x27;;
@@ -1020,11 +1015,11 @@ export class RadioComponent extends Base implements ControlValueAccessor {
   &lt;label for&#x3D;&quot;{{objectId}}&quot; class&#x3D;&quot;control-label&quot; [innerHtml]&#x3D;&quot;label&quot; &gt;&lt;/label&gt;&lt;br/&gt;
   &lt;div *ngFor&#x3D;&quot;let val of radioLabels&quot; [ngStyle]&#x3D;&quot;{&#x27;display&#x27;: display}&quot; &gt;
     &lt;div class&#x3D;&quot;md-radio md-radio-inline&quot;&gt;
-      &lt;input type&#x3D;&quot;radio&quot; name&#x3D;&quot;{{val}}-{{objectId}}&quot; 
-            id&#x3D;&quot;{{val.value}}-{{objectId}}&quot; [disabled]&#x3D;&quot;disabled&quot;
+      &lt;input type&#x3D;&quot;radio&quot; name&#x3D;&quot;selection__{{objectId}}&quot; 
+            id&#x3D;&quot;{{val.value}}_{{objectId}}&quot; [disabled]&#x3D;&quot;disabled&quot;
             (click)&#x3D;&quot;setStatus(val.value);&quot; [checked]&#x3D;&quot;value &#x3D;&#x3D; val.value&quot; 
             tabindex&#x3D;&quot;0&quot;&gt;
-      &lt;label for&#x3D;&quot;{{val.value}}-{{objectId}}&quot;&gt;
+      &lt;label for&#x3D;&quot;{{val.value}}_{{objectId}}&quot;&gt;
       {{val.label}}
       &lt;/label&gt;
     &lt;/div&gt;
@@ -1063,7 +1058,7 @@ export class RadioComponent extends Base implements ControlValueAccessor {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><section>  <label for="{{objectId}}" class="control-label" [innerHtml]="label" ></label><br/>  <div *ngFor="let val of radioLabels" [ngStyle]="{\'display\': display}" >    <div class="md-radio md-radio-inline">      <input type="radio" name="{{val}}-{{objectId}}"             id="{{val.value}}-{{objectId}}" [disabled]="disabled"            (click)="setStatus(val.value);" [checked]="value == val.value"             tabindex="0">      <label for="{{val.value}}-{{objectId}}">      {{val.label}}      </label>    </div>  </div>  <div *ngIf=\'showError && (value === undefined || value === null)\'>      <div class="text-danger">{{errorMessageRequired}}</div>  </div></section></div>'
+        var COMPONENT_TEMPLATE = '<div><section>  <label for="{{objectId}}" class="control-label" [innerHtml]="label" ></label><br/>  <div *ngFor="let val of radioLabels" [ngStyle]="{\'display\': display}" >    <div class="md-radio md-radio-inline">      <input type="radio" name="selection__{{objectId}}"             id="{{val.value}}_{{objectId}}" [disabled]="disabled"            (click)="setStatus(val.value);" [checked]="value == val.value"             tabindex="0">      <label for="{{val.value}}_{{objectId}}">      {{val.label}}      </label>    </div>  </div>  <div *ngIf=\'showError && (value === undefined || value === null)\'>      <div class="text-danger">{{errorMessageRequired}}</div>  </div></section></div>'
     var COMPONENTS = [{'name': 'AccordionCommonComponent', 'selector': 'common-accordion'},{'name': 'AddressComponent', 'selector': 'common-address'},{'name': 'ButtonComponent', 'selector': 'common-button'},{'name': 'ButtonGroupComponent', 'selector': 'common-button-group'},{'name': 'CaptchaComponent', 'selector': 'common-captcha'},{'name': 'CheckboxComponent', 'selector': 'common-checkbox'},{'name': 'CityComponent', 'selector': 'common-city'},{'name': 'ConsentModalComponent', 'selector': 'common-consent-modal'},{'name': 'CoreBreadcrumbComponent', 'selector': 'common-core-breadcrumb'},{'name': 'CountryComponent', 'selector': 'common-country'},{'name': 'DateComponent', 'selector': 'common-date'},{'name': 'DatepickerComponent', 'selector': 'common-datepicker'},{'name': 'DropdownComponent', 'selector': 'common-dropdown'},{'name': 'FileUploaderComponent', 'selector': 'common-file-uploader'},{'name': 'FormActionBarComponent', 'selector': 'common-form-action-bar'},{'name': 'FormSubmitBarComponent', 'selector': 'common-form-submit-bar'},{'name': 'FullNameComponent', 'selector': 'common-full-name'},{'name': 'NameComponent', 'selector': 'common-name'},{'name': 'PageFrameworkComponent', 'selector': 'common-page-framework'},{'name': 'PageSectionComponent', 'selector': 'common-page-section'},{'name': 'PasswordComponent', 'selector': 'common-password'},{'name': 'PhnComponent', 'selector': 'common-phn'},{'name': 'PhoneNumberComponent', 'selector': 'common-phone-number'},{'name': 'PostalCodeComponent', 'selector': 'common-postal-code'},{'name': 'ProvinceComponent', 'selector': 'common-province'},{'name': 'RadioComponent', 'selector': 'common-radio'},{'name': 'SinComponent', 'selector': 'common-sin'},{'name': 'StreetComponent', 'selector': 'common-street'},{'name': 'ThumbnailComponent', 'selector': 'common-thumbnail'},{'name': 'ToggleComponent', 'selector': 'common-toggle'},{'name': 'WizardProgressBarComponent', 'selector': 'common-wizard-progress-bar'}];
     var DIRECTIVES = [{'name': 'DateFieldFormatDirective', 'selector': '[commonDateFieldFormat]'},{'name': 'DayValidationDirective', 'selector': '[commonDayValidation][ngModel]'},{'name': 'ValidateNameDirective', 'selector': '[commonValidateName]'},{'name': 'YearValidateDirective', 'selector': '[commonYearValidate][ngModel]'}];
     var ACTUAL_COMPONENT = {'name': 'RadioComponent'};

@@ -423,31 +423,10 @@ export class ToggleComponent extends Base implements OnInit {
     </div>
 
     <div class="tab-pane fade " id="c-templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;fieldset class&#x3D;&quot;p-sm-1&quot;&gt;
-   &lt;legend class&#x3D;&quot;toggle--legend&quot;&gt;{{label}}&lt;/legend&gt;
-   &lt;div class&#x3D;&quot;custom-radio custom-control custom-control-inline&quot;&gt;
-      &lt;input class&#x3D;&quot;custom-control-input &quot;
-         type&#x3D;&quot;radio&quot;
-         id&#x3D;&quot;no_{{objectId}}&quot;
-         name&#x3D;&quot;selection_{{objectId}}&quot;
-         value&#x3D;&quot;No&quot;
-         [checked]&#x3D;&quot;data &#x3D;&#x3D;&#x3D; false&quot;
-         (click)&#x3D;&quot;dataChange.emit(false)&quot;&gt;
-      &lt;label class&#x3D;&quot;custom-control-label&quot; for&#x3D;&quot;no_{{objectId}}&quot;&gt;No&lt;/label&gt;
-   &lt;/div&gt;
-   &lt;div class&#x3D;&quot;custom-radio custom-control custom-control-inline&quot;&gt;
-      &lt;input class&#x3D;&quot;custom-control-input&quot;
-         type&#x3D;&quot;radio&quot;
-         id&#x3D;&quot;yes_{{objectId}}&quot;
-         name&#x3D;&quot;selection_{{objectId}}&quot;
-         value&#x3D;&quot;Yes&quot;
-         [checked]&#x3D;&quot;data &#x3D;&#x3D;&#x3D; true&quot;
-         (click)&#x3D;&quot;dataChange.emit(true)&quot;&gt;
-      &lt;label class&#x3D;&quot;custom-control-label&quot; for&#x3D;&quot;yes_{{objectId}}&quot;&gt;Yes&lt;/label&gt;
-   &lt;/div&gt;
-&lt;/fieldset&gt;
-
-</code></pre>
+        <pre class="line-numbers"><code class="language-html"> &lt;common-radio [value]&#x3D;&quot;data&quot;  [label]&#x3D;&quot;label&quot; 
+        [radioLabels]&#x3D;&#x27;[{&quot;label&quot;: &quot;Yes&quot;, &quot;value&quot;: true},{ &quot;label&quot;: &quot;No&quot;, &quot;value&quot;: false}]&#x27;
+        (onStatusChange)&#x3D;&quot;dataChange.emit($event)&quot;&gt;
+&lt;/common-radio&gt; </code></pre>
     </div>
 
 
@@ -476,7 +455,7 @@ export class ToggleComponent extends Base implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><fieldset class="p-sm-1">   <legend class="toggle--legend">{{label}}</legend>   <div class="custom-radio custom-control custom-control-inline">      <input class="custom-control-input "         type="radio"         id="no_{{objectId}}"         name="selection_{{objectId}}"         value="No"         [checked]="data === false"         (click)="dataChange.emit(false)">      <label class="custom-control-label" for="no_{{objectId}}">No</label>   </div>   <div class="custom-radio custom-control custom-control-inline">      <input class="custom-control-input"         type="radio"         id="yes_{{objectId}}"         name="selection_{{objectId}}"         value="Yes"         [checked]="data === true"         (click)="dataChange.emit(true)">      <label class="custom-control-label" for="yes_{{objectId}}">Yes</label>   </div></fieldset></div>'
+        var COMPONENT_TEMPLATE = '<div> <common-radio [value]="data"  [label]="label"         [radioLabels]=\'[{"label": "Yes", "value": true},{ "label": "No", "value": false}]\'        (onStatusChange)="dataChange.emit($event)"></common-radio> </div>'
     var COMPONENTS = [{'name': 'AccordionCommonComponent', 'selector': 'common-accordion'},{'name': 'AddressComponent', 'selector': 'common-address'},{'name': 'ButtonComponent', 'selector': 'common-button'},{'name': 'ButtonGroupComponent', 'selector': 'common-button-group'},{'name': 'CaptchaComponent', 'selector': 'common-captcha'},{'name': 'CheckboxComponent', 'selector': 'common-checkbox'},{'name': 'CityComponent', 'selector': 'common-city'},{'name': 'ConsentModalComponent', 'selector': 'common-consent-modal'},{'name': 'CoreBreadcrumbComponent', 'selector': 'common-core-breadcrumb'},{'name': 'CountryComponent', 'selector': 'common-country'},{'name': 'DateComponent', 'selector': 'common-date'},{'name': 'DatepickerComponent', 'selector': 'common-datepicker'},{'name': 'DropdownComponent', 'selector': 'common-dropdown'},{'name': 'FileUploaderComponent', 'selector': 'common-file-uploader'},{'name': 'FormActionBarComponent', 'selector': 'common-form-action-bar'},{'name': 'FormSubmitBarComponent', 'selector': 'common-form-submit-bar'},{'name': 'FullNameComponent', 'selector': 'common-full-name'},{'name': 'NameComponent', 'selector': 'common-name'},{'name': 'PageFrameworkComponent', 'selector': 'common-page-framework'},{'name': 'PageSectionComponent', 'selector': 'common-page-section'},{'name': 'PasswordComponent', 'selector': 'common-password'},{'name': 'PhnComponent', 'selector': 'common-phn'},{'name': 'PhoneNumberComponent', 'selector': 'common-phone-number'},{'name': 'PostalCodeComponent', 'selector': 'common-postal-code'},{'name': 'ProvinceComponent', 'selector': 'common-province'},{'name': 'RadioComponent', 'selector': 'common-radio'},{'name': 'SinComponent', 'selector': 'common-sin'},{'name': 'StreetComponent', 'selector': 'common-street'},{'name': 'ThumbnailComponent', 'selector': 'common-thumbnail'},{'name': 'ToggleComponent', 'selector': 'common-toggle'},{'name': 'WizardProgressBarComponent', 'selector': 'common-wizard-progress-bar'}];
     var DIRECTIVES = [{'name': 'DateFieldFormatDirective', 'selector': '[commonDateFieldFormat]'},{'name': 'DayValidationDirective', 'selector': '[commonDayValidation][ngModel]'},{'name': 'ValidateNameDirective', 'selector': '[commonValidateName]'},{'name': 'YearValidateDirective', 'selector': '[commonYearValidate][ngModel]'}];
     var ACTUAL_COMPONENT = {'name': 'ToggleComponent'};
