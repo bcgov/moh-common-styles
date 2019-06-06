@@ -1,24 +1,4 @@
-<fieldset class="p-sm-1">
-   <legend class="toggle--legend">{{label}}</legend>
-   <div class="custom-radio custom-control custom-control-inline">
-      <input class="custom-control-input "
-         type="radio"
-         id="no_{{objectId}}"
-         name="selection_{{objectId}}"
-         value="No"
-         [checked]="data === false"
-         (click)="dataChange.emit(false)">
-      <label class="custom-control-label" for="no_{{objectId}}">No</label>
-   </div>
-   <div class="custom-radio custom-control custom-control-inline">
-      <input class="custom-control-input"
-         type="radio"
-         id="yes_{{objectId}}"
-         name="selection_{{objectId}}"
-         value="Yes"
-         [checked]="data === true"
-         (click)="dataChange.emit(true)">
-      <label class="custom-control-label" for="yes_{{objectId}}">Yes</label>
-   </div>
-</fieldset>
-
+ <common-radio [value]="data"  [label]="label" 
+        [radioLabels]='[{"label": "Yes", "value": true},{ "label": "No", "value": false}]'
+        (onStatusChange)="dataChange.emit($event)">
+</common-radio> 
