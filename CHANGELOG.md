@@ -1,4 +1,19 @@
-# Unreleased "moh-common-lib" (2019-06-05)
+# Unreleased "moh-common-lib" (2019-06-06)
+
+
+
+## [1.0.1](https://github.com/bcgov/moh-common-styles/compare/v1.0.0...v1.0.1) "moh-common-lib" (2019-06-06)
+
+
+### Bug Fixes
+
+* **Radio:** Removed the default status label and changed the name of radio (#17) ([acbbdc1](https://github.com/bcgov/moh-common-styles/commit/acbbdc1)), closes [#17](https://github.com/bcgov/moh-common-styles/issues/17)
+
+
+### Code Refactoring
+
+* **Security:** up to date in 10.256s ([ac7406b](https://github.com/bcgov/moh-common-styles/commit/ac7406b))
+* **Toggle:** ToggleComponent now uses RadioComponent under the hood ([e81927b](https://github.com/bcgov/moh-common-styles/commit/e81927b))
 
 
 
