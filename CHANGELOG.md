@@ -2,6 +2,15 @@
 
 
 
+## [1.0.2](https://github.com/bcgov/moh-common-styles/compare/v1.0.1...v1.0.2) "moh-common-lib" (2019-06-06)
+
+
+### Bug Fixes
+
+* **Toggle:** Properly emit value changes. Had a typo. ([e2271b7](https://github.com/bcgov/moh-common-styles/commit/e2271b7))
+
+
+
 ## [1.0.1](https://github.com/bcgov/moh-common-styles/compare/v1.0.0...v1.0.1) "moh-common-lib" (2019-06-06)
 
 
