@@ -54,7 +54,7 @@ export class RadioComponent extends Base implements ControlValueAccessor {
   @Input() radioLabels: Array<{label: string, value: string}> ;
   @Input() checked: boolean = false;
   @Input() disabled: boolean = false;
-  @Input() label: string = 'Status';
+  @Input() label: string ;
   @Input() value: string ;
   @Input() showError: boolean;
   @Input() errorMessageRequired: string = this.label + ' is required.';
