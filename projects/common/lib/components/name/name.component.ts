@@ -8,6 +8,9 @@ import {
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { Base } from '../../models/base';
 
+/**
+ * TODO DOCUMENT NEED TO USE NGMODEL FOR REQUIRED TO WORK. Also test with reactive forms to see if still nec
+ */
 @Component({
   selector: 'common-name',
   templateUrl: './name.component.html',
