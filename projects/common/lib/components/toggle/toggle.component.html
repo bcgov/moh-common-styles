@@ -1,4 +1,4 @@
  <common-radio [value]="data"  [label]="label" 
         [radioLabels]='[{"label": "Yes", "value": true},{ "label": "No", "value": false}]'
-        (onStatusChange)="dataChange.emit($event)">
+        (statusChange)="dataChange.emit($event)">
 </common-radio> 
