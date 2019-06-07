@@ -38,11 +38,11 @@ export class Address {
    * Address must have all fields filled out to be considered
    * complete
    */
-  /* {
+  isComplete(): boolean {
     // All fields have data - not empty
     return !!(this.street && this.city && this.country &&
              this.province && this.postal);
-  }*/
+  }
 
   get isBCOnly(): boolean {
     let isValid = false;
