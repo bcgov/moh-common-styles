@@ -1,4 +1,8 @@
-# [Unreleased](https://github.com/bcgov/moh-common-styles/compare/v1.0.2...f334faf) "moh-common-lib" (2019-06-07)
+# Unreleased "moh-common-lib" (2019-06-07)
+
+
+
+# [1.1.0](https://github.com/bcgov/moh-common-styles/compare/v1.0.2...v1.1.0) "moh-common-lib" (2019-06-07)
 
 
 ### Bug Fixes
@@ -6,9 +10,19 @@
 * **SIN, PHN:** SIN string all zeros is invalid, added isBCPHn to PHN. ([51bfe3b](https://github.com/bcgov/moh-common-styles/commit/51bfe3b))
 
 
+### Build
+
+* **npm-scripts:** Update what is committed after auto-buiding ([c8fb31b](https://github.com/bcgov/moh-common-styles/commit/c8fb31b))
+
+
 ### Documentation
 
 * **Readme:** Update to readme and docs homepage ([f334faf](https://github.com/bcgov/moh-common-styles/commit/f334faf))
+
+
+### Features
+
+* **Header:** Create HeaderComponent with built-in "Skip To Content" ([3868c50](https://github.com/bcgov/moh-common-styles/commit/3868c50))
 
 
 
