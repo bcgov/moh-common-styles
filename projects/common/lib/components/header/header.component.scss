@@ -1,0 +1,84 @@
+@import 'variables.scss';
+
+// Header, adds the gold bottom border and shadow
+header nav {
+  background-color: map-get($theme-colors, primary);;
+  border-bottom: 2px solid map-get($theme-colors, secondary);
+
+  -webkit-box-shadow: 0 3px 3px 1px rgba(51, 51, 51, 0.5);
+  -moz-box-shadow: 0 3px 3px 1px rgba(51, 51, 51, 0.5);
+  box-shadow: 0 3px 3px 1px rgba(51, 51, 51, 0.5);
+  margin-bottom: 20px;
+}
+
+header {
+  //Bootstrap 3 to 4: Change access of brand colours
+  background-color: $color-primary;
+  border-bottom: 2px solid #fcba19;
+  padding-top: 10px;
+  padding-bottom: 20px;
+
+  //Bootstrap 3 to 4: Using breakpoint mixin.
+  @include media-breakpoint-down(sm) {
+    padding-top: 2px;
+    padding-bottom: 8px;
+  }
+
+  .title {
+    font-size: 30px;
+    font-weight: bold;
+    color: #fff;
+    white-space: nowrap;
+    align-self: center;
+
+    @include media-breakpoint-down(xs){
+      font-size: 24px;
+    }
+  }
+}
+
+header .nav-link {
+  color: white !important;
+}
+
+.separator:after {
+  content: " ";
+  background-color: #ffffff33;
+  height: 100%;
+  min-height: 100%;
+  display: block;
+  width: 3px;
+  margin: 0 1em;
+}
+
+
+// A little Flexbox hack for vertical spacing when the items wrap to a new row.
+// For mobile.
+.header-container {
+  margin-top: -1em;
+  & > .d-flex { margin-top: 1em; }
+}
+
+.skip-to-content {
+  color: white;
+
+  // styling... TODO refine
+  // border: 5px solid white;
+  // border-radius: 10px;
+  // margin: auto;
+  // padding: 5px;
+
+  border-radius: 2px;
+  border: 2px solid white;
+  cursor: pointer;
+  display: inline-block;
+  text-decoration: underline;
+  width: 109px;
+  text-align: center;
+  background: hsla(0, 0%, 100%, 0.1);
+
+  // Only visible if focused
+  opacity: 0;
+  height: 0;
+  &:focus { opacity: 1; height: auto; }
+}

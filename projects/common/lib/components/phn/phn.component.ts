@@ -16,6 +16,7 @@ export class PhnComponent extends Base implements ControlValueAccessor {
   @Input() labelforId: string = 'phn_' + this.objectId;
   @Input() disabled: boolean = false;
   @Input() phnList: string[] = [];
+  @Input() isBCPhn: boolean = true;
 
   @Input()
   set value( val: string ) {
@@ -62,7 +63,7 @@ export class PhnComponent extends Base implements ControlValueAccessor {
     console.log( 'onblur: ', event );
 
     if ( event.target.value ) {
-      const phnValid = this.validatePHN( event.target.value );
+      const phnValid = this.validatePHN( event.target.value , this.isBCPhn );
       console.log( 'phnValid: ', phnValid, event.target.value );
 
       if ( this.controlDir ) {

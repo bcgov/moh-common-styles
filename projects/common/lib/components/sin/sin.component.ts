@@ -130,6 +130,10 @@ export class SinComponent extends Base implements ControlValueAccessor {
       return false;
     }
 
+    // Test for string of zeros
+    if ( sin === '000000000') {
+      return false;
+    }
 
     // Walk through each character
     for (let i = 0; i < sin.length; i++) {
