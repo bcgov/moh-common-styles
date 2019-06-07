@@ -21,7 +21,7 @@
     "docs": "npx compodoc -p projects/common/tsconfig.lib.json",
     "changelog": "rm CHANGELOG.md && npx conventional-changelog --context build_utils/changelog.config.json -o CHANGELOG.md --config build_utils/changelog.writer.js -p angular -u",
     "version": "npm run version:bump && npm run package",
-    "postversion": "npm run changelog && git add CHANGELOG.md && git commit -m \"chore: Commit changelog\" ",
+    "postversion": "npm run changelog && git add . && git commit -m \"chore: Commit changelog\" ",
     "version:bump": "node build_utils/update-lib-version.js && git add \"*/package.json\"",
     "setup:git-hooks": "cp build_utils/commit-msg .git/hooks/commit-msg",
     "postinstall": "npm run setup:git-hooks"
