@@ -6,7 +6,7 @@ import { PageFrameworkComponent } from './components/page-framework/page-framewo
 import { PasswordComponent } from './components/password/password.component';
 import { WizardProgressBarComponent } from './components/wizard-progress-bar/wizard-progress-bar.component';
 import { NgForm, FormsModule } from '@angular/forms';
-import { ProgressbarModule, ModalModule, TypeaheadMatch, TypeaheadModule } from 'ngx-bootstrap';
+import { ProgressbarModule, ModalModule, TypeaheadModule } from 'ngx-bootstrap';
 import { RouterModule } from '@angular/router';
 import { DateComponent } from './components/date/date.component';
 import { DayValidationDirective } from './components/date/day-validation.directive';
@@ -41,6 +41,7 @@ import { ValidateNameDirective } from './components/name/validate-name.directive
 import { SinComponent } from './components/sin/sin.component';
 import { PhnComponent } from './components/phn/phn.component';
 import { FullNameComponent } from './components/full-name/full-name.component';
+import { HeaderComponent } from './components/header/header.component';
 
 const componentList = [
   CoreBreadcrumbComponent,
@@ -76,7 +77,8 @@ const componentList = [
   AccordionCommonComponent,
   ValidateNameDirective,
   SinComponent,
-  PhnComponent
+  PhnComponent,
+  HeaderComponent
 ];
 @NgModule({
   imports: [
