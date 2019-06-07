@@ -2,6 +2,15 @@
 
 
 
+## [1.1.1](https://github.com/bcgov/moh-common-styles/compare/v1.1.0...v1.1.1) "moh-common-lib" (2019-06-07)
+
+
+### Features
+
+* **Header:** Logo image path can be overwritten ([03c1243](https://github.com/bcgov/moh-common-styles/commit/03c1243))
+
+
+
 # [1.1.0](https://github.com/bcgov/moh-common-styles/compare/v1.0.2...v1.1.0) "moh-common-lib" (2019-06-07)
 
 
