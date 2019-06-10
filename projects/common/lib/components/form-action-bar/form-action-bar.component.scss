@@ -28,6 +28,13 @@
         left: 0;
         right: 0;
     }
+
+    &.option-extra-width-mobile-only {
+        @include media-breakpoint-down(sm){
+            width: calc(100% + 30px);
+            margin-left: -15px;
+        }
+    }
 }
 
 .submit {
@@ -42,3 +49,4 @@
     white-space:normal !important;
     word-wrap: break-word;
 }
+
