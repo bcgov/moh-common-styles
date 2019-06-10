@@ -36,8 +36,28 @@ export interface ISpaEnvResponse {
   SPA_ENV_PACUTOFF_MAINTENANCE_END: string;
 }
 
+// Disabling tslint for @example below.
+// tslint:disable:max-line-length
 
-
+/**
+ * ConsentModalComponent, aka the "Information Collection Notice", is a modal
+ * designed to be shown at the beginning of an application. It is a boilerplate
+ * checkbox to consent to information collection.
+ *
+ * Currently this component requires the body to be manually set as a child
+ * element (via transclusion)
+ *
+ * TODO - Set default body if none is passed in.
+ *
+ * @example
+ *       <common-consent-modal #consentModal [isUnderMaintenance]="false"
+ *                          title="Information collection notice"
+ *                          agreeLabel="I have read and understand this information"
+ *                          processName="processName"
+ *                          (accept)="accountLetterApplication.infoCollectionAgreement = $event;  saveApplication($event)">
+ *                      <p><strong>Keep your personal information secure – especially when using a shared device like a computer at a library, school or café.</strong> To delete any information that was entered, either complete the application and submit it or, if you don’t finish, close the web browser.</p><p><strong>Need to take a break and come back later?</strong> The data you enter on this form is saved locally to the computer or device you are using until you close the web browser or submit your application.</p><p><strong>Information in this application is collected by the Ministry of Health</strong> under section 26(a), (c) and (e) of the Freedom of Information and Protection of Privacy Act and will be used to determine eligibility for provincial health care benefits in BC and administer Premium Assistance. Should you have any questions about the collection of this personal information please <a href="http://www2.gov.bc.ca/gov/content/health/health-drug-coverage/msp/bc-residents-contact-us" target="_blank">contact Health Insurance BC <i class="fa fa-external-link" aria-hidden="true"></i></a>.</p> 
+ *       </common-consent-modal>
+ */
 @Component({
   selector: 'common-consent-modal',
   templateUrl: './consent-modal.component.html',
@@ -54,6 +74,13 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
 
     protected _headers: HttpHeaders = new HttpHeaders();
     @Input() processName: string;
+
+    /**
+     * If `isUnderMaintenance` is true, then this will automatically try and
+     * make a request to the SPA ENV server to determine if it's in a
+     * maintenance window.  If your application determines this manually, leave
+     * this alone.
+     */
     @Input() isUnderMaintenance: boolean = false;
     @Input() title: string;
     @Input() body: string; // = '<p><strong>Keep your personal information secure – especially when using a shared device like a computer at a library, school or café.</strong> To delete any information that was entered, either complete the application and submit it or, if you don’t finish, close the web browser.</p><p><strong>Need to take a break and come back later?</strong> The data you enter on this form is saved locally to the computer or device you are using until you close the web browser or submit your application.</p><p><strong>Information in this application is collected by the Ministry of Health</strong> under section 26(a), (c) and (e) of the Freedom of Information and Protection of Privacy Act and will be used to determine eligibility for provincial health care benefits in BC and administer Premium Assistance. Should you have any questions about the collection of this personal information please <a href="http://www2.gov.bc.ca/gov/content/health/health-drug-coverage/msp/bc-residents-contact-us" target="_blank">contact Health Insurance BC <i class="fa fa-external-link" aria-hidden="true"></i></a>.</p>';

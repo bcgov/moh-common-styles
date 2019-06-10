@@ -62,6 +62,18 @@
     <code>projects/common/lib/components/consent-modal/consent-modal.component.ts</code>
 </p>
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>ConsentModalComponent, aka the &quot;Information Collection Notice&quot;, is a modal
+designed to be shown at the beginning of an application. It is a boilerplate
+checkbox to consent to information collection.</p>
+<p>Currently this component requires the body to be manually set as a child
+element (via transclusion)</p>
+<p>TODO - Set default body if none is passed in.</p>
+
+    </p>
 
     <p class="comment">
         <h3>Extends</h3>
@@ -78,6 +90,20 @@
                     <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
     </p>
 
+    <p class="comment">
+        <h3>Example</h3>
+    </p>
+    <div class="io-description">
+                <div>
+                    <pre class="line-numbers"><code class="language-html">&lt;common-consent-modal #consentModal [isUnderMaintenance]=&quot;false&quot;
+        title=&quot;Information collection notice&quot;
+        agreeLabel=&quot;I have read and understand this information&quot;
+        processName=&quot;processName&quot;
+        (accept)=&quot;accountLetterApplication.infoCollectionAgreement = $event;  saveApplication($event)&quot;&gt;
+    &lt;p&gt;&lt;strong&gt;Keep your personal information secure – especially when using a shared device like a computer at a library, school or café.&lt;/strong&gt; To delete any information that was entered, either complete the application and submit it or, if you don’t finish, close the web browser.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Need to take a break and come back later?&lt;/strong&gt; The data you enter on this form is saved locally to the computer or device you are using until you close the web browser or submit your application.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Information in this application is collected by the Ministry of Health&lt;/strong&gt; under section 26(a), (c) and (e) of the Freedom of Information and Protection of Privacy Act and will be used to determine eligibility for provincial health care benefits in BC and administer Premium Assistance. Should you have any questions about the collection of this personal information please &lt;a href=&quot;http://www2.gov.bc.ca/gov/content/health/health-drug-coverage/msp/bc-residents-contact-us&quot; target=&quot;_blank&quot;&gt;contact Health Insurance BC &lt;i class=&quot;fa fa-external-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/a&gt;.&lt;/p&gt; 
+&lt;/common-consent-modal&gt;</code></pre>
+                </div>
+    </div>
 
 <section>
     <h3>Metadata</h3>
@@ -323,7 +349,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:80</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="107" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:107</a></div>
                             </td>
                         </tr>
 
@@ -396,7 +422,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:60</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="87" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:87</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -417,7 +443,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:59</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="86" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:86</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -443,7 +469,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:61</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:88</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -469,9 +495,18 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:57</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:84</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>If <code>isUnderMaintenance</code> is true, then this will automatically try and
+make a request to the SPA ENV server to determine if it&#39;s in a
+maintenance window.  If your application determines this manually, leave
+this alone.</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
@@ -495,7 +530,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:62</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="89" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:89</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -516,7 +551,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:56</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:76</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -537,7 +572,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:58</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:85</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -563,7 +598,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:63</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="90" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:90</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -587,7 +622,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:67</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="94" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:94</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -608,7 +643,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:65</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:92</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -629,7 +664,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:66</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="93" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:93</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -664,8 +699,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="104"
-                            class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:104</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="131"
+                            class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:131</a></div>
                 </td>
             </tr>
 
@@ -705,8 +740,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="120"
-                            class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:120</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="147"
+                            class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:147</a></div>
                 </td>
             </tr>
 
@@ -775,8 +810,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="136"
-                            class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:136</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="163"
+                            class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:163</a></div>
                 </td>
             </tr>
 
@@ -814,8 +849,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="89"
-                            class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:89</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="116"
+                            class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:116</a></div>
                 </td>
             </tr>
 
@@ -853,8 +888,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="166"
-                            class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:166</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="193"
+                            class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:193</a></div>
                 </td>
             </tr>
 
@@ -923,8 +958,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="171"
-                            class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:171</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="198"
+                            class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:198</a></div>
                 </td>
             </tr>
 
@@ -993,8 +1028,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="113"
-                            class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:113</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="140"
+                            class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:140</a></div>
                 </td>
             </tr>
 
@@ -1063,8 +1098,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="98"
-                            class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:98</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="125"
+                            class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:125</a></div>
                 </td>
             </tr>
 
@@ -1102,8 +1137,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="175"
-                            class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:175</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="202"
+                            class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:202</a></div>
                 </td>
             </tr>
 
@@ -1546,7 +1581,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:76</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="103" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:103</a></div>
                             </td>
                         </tr>
 
@@ -1579,7 +1614,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:55</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:75</a></div>
                             </td>
                         </tr>
 
@@ -1606,7 +1641,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:79</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:106</a></div>
                             </td>
                         </tr>
 
@@ -1633,7 +1668,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:80</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="107" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:107</a></div>
                             </td>
                         </tr>
 
@@ -1665,7 +1700,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:77</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="104" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:104</a></div>
                             </td>
                         </tr>
 
@@ -1702,7 +1737,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:64</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="91" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:91</a></div>
                             </td>
                         </tr>
 
@@ -1730,7 +1765,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:70</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="97" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:97</a></div>
                             </td>
                         </tr>
 
@@ -1763,7 +1798,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:69</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="96" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:96</a></div>
                             </td>
                         </tr>
 
@@ -1896,8 +1931,28 @@ export interface ISpaEnvResponse {
   SPA_ENV_PACUTOFF_MAINTENANCE_END: string;
 }
 
+// Disabling tslint for @example below.
+// tslint:disable:max-line-length
 
-
+/**
+ * ConsentModalComponent, aka the &quot;Information Collection Notice&quot;, is a modal
+ * designed to be shown at the beginning of an application. It is a boilerplate
+ * checkbox to consent to information collection.
+ *
+ * Currently this component requires the body to be manually set as a child
+ * element (via transclusion)
+ *
+ * TODO - Set default body if none is passed in.
+ *
+ * @example
+ *       &lt;common-consent-modal #consentModal [isUnderMaintenance]&#x3D;&quot;false&quot;
+ *                          title&#x3D;&quot;Information collection notice&quot;
+ *                          agreeLabel&#x3D;&quot;I have read and understand this information&quot;
+ *                          processName&#x3D;&quot;processName&quot;
+ *                          (accept)&#x3D;&quot;accountLetterApplication.infoCollectionAgreement &#x3D; $event;  saveApplication($event)&quot;&gt;
+ *                      &lt;p&gt;&lt;strong&gt;Keep your personal information secure – especially when using a shared device like a computer at a library, school or café.&lt;/strong&gt; To delete any information that was entered, either complete the application and submit it or, if you don’t finish, close the web browser.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Need to take a break and come back later?&lt;/strong&gt; The data you enter on this form is saved locally to the computer or device you are using until you close the web browser or submit your application.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Information in this application is collected by the Ministry of Health&lt;/strong&gt; under section 26(a), (c) and (e) of the Freedom of Information and Protection of Privacy Act and will be used to determine eligibility for provincial health care benefits in BC and administer Premium Assistance. Should you have any questions about the collection of this personal information please &lt;a href&#x3D;&quot;http://www2.gov.bc.ca/gov/content/health/health-drug-coverage/msp/bc-residents-contact-us&quot; target&#x3D;&quot;_blank&quot;&gt;contact Health Insurance BC &lt;i class&#x3D;&quot;fa fa-external-link&quot; aria-hidden&#x3D;&quot;true&quot;&gt;&lt;/i&gt;&lt;/a&gt;.&lt;/p&gt; 
+ *       &lt;/common-consent-modal&gt;
+ */
 @Component({
   selector: &#x27;common-consent-modal&#x27;,
   templateUrl: &#x27;./consent-modal.component.html&#x27;,
@@ -1914,6 +1969,13 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
 
     protected _headers: HttpHeaders &#x3D; new HttpHeaders();
     @Input() processName: string;
+
+    /**
+     * If &#x60;isUnderMaintenance&#x60; is true, then this will automatically try and
+     * make a request to the SPA ENV server to determine if it&#x27;s in a
+     * maintenance window.  If your application determines this manually, leave
+     * this alone.
+     */
     @Input() isUnderMaintenance: boolean &#x3D; false;
     @Input() title: string;
     @Input() body: string; // &#x3D; &#x27;&lt;p&gt;&lt;strong&gt;Keep your personal information secure – especially when using a shared device like a computer at a library, school or café.&lt;/strong&gt; To delete any information that was entered, either complete the application and submit it or, if you don’t finish, close the web browser.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Need to take a break and come back later?&lt;/strong&gt; The data you enter on this form is saved locally to the computer or device you are using until you close the web browser or submit your application.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Information in this application is collected by the Ministry of Health&lt;/strong&gt; under section 26(a), (c) and (e) of the Freedom of Information and Protection of Privacy Act and will be used to determine eligibility for provincial health care benefits in BC and administer Premium Assistance. Should you have any questions about the collection of this personal information please &lt;a href&#x3D;&quot;http://www2.gov.bc.ca/gov/content/health/health-drug-coverage/msp/bc-residents-contact-us&quot; target&#x3D;&quot;_blank&quot;&gt;contact Health Insurance BC &lt;i class&#x3D;&quot;fa fa-external-link&quot; aria-hidden&#x3D;&quot;true&quot;&gt;&lt;/i&gt;&lt;/a&gt;.&lt;/p&gt;&#x27;;
