@@ -1,4 +1,13 @@
-# Unreleased "moh-common-lib" (2019-06-07)
+# Unreleased "moh-common-lib" (2019-06-10)
+
+
+
+# [1.2.0](https://github.com/bcgov/moh-common-styles/compare/v1.1.1...v1.2.0) "moh-common-lib" (2019-06-10)
+
+
+### Features
+
+* **FormActionBar:** Add "widthOption" to for custom CSS width override ([36476f8](https://github.com/bcgov/moh-common-styles/commit/36476f8))
 
 
 
