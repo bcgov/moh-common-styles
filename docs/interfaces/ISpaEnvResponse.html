@@ -387,6 +387,14 @@ export interface ISpaEnvResponse {
  *                          (accept)&#x3D;&quot;accountLetterApplication.infoCollectionAgreement &#x3D; $event;  saveApplication($event)&quot;&gt;
  *                      &lt;p&gt;&lt;strong&gt;Keep your personal information secure – especially when using a shared device like a computer at a library, school or café.&lt;/strong&gt; To delete any information that was entered, either complete the application and submit it or, if you don’t finish, close the web browser.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Need to take a break and come back later?&lt;/strong&gt; The data you enter on this form is saved locally to the computer or device you are using until you close the web browser or submit your application.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Information in this application is collected by the Ministry of Health&lt;/strong&gt; under section 26(a), (c) and (e) of the Freedom of Information and Protection of Privacy Act and will be used to determine eligibility for provincial health care benefits in BC and administer Premium Assistance. Should you have any questions about the collection of this personal information please &lt;a href&#x3D;&quot;http://www2.gov.bc.ca/gov/content/health/health-drug-coverage/msp/bc-residents-contact-us&quot; target&#x3D;&quot;_blank&quot;&gt;contact Health Insurance BC &lt;i class&#x3D;&quot;fa fa-external-link&quot; aria-hidden&#x3D;&quot;true&quot;&gt;&lt;/i&gt;&lt;/a&gt;.&lt;/p&gt; 
  *       &lt;/common-consent-modal&gt;
+ *
+ *
+ *        // Component code - Remove backticks when copying (necessary to render docs)
+ *        &#x60;@ViewChild(&#x27;consentModal&#x27;) consentModal: ConsentModalComponent&#x60;
+ *        ...
+ *        openModal(){
+ *          this.consentModal.showFullSizeView();
+ *        }
  */
 @Component({
   selector: &#x27;common-consent-modal&#x27;,
@@ -452,6 +460,9 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
 
     }
 
+    /**
+     * Call this method to display the modal.
+     */
     showFullSizeView() {
         this.fullSizeViewModal.config.backdrop &#x3D; false;
         this.fullSizeViewModal.config.keyboard &#x3D; false;
