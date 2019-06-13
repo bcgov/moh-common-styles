@@ -1,4 +1,19 @@
-# Unreleased "moh-common-lib" (2019-06-10)
+# Unreleased "moh-common-lib" (2019-06-13)
+
+
+
+# [1.3.0](https://github.com/bcgov/moh-common-styles/compare/v1.2.0...v1.3.0) "moh-common-lib" (2019-06-13)
+
+
+### Documentation
+
+* **ConsentModal:** Add example typescript code to open modal. ([7ff8510](https://github.com/bcgov/moh-common-styles/commit/7ff8510))
+* **ConsentModal:** Document consent modal with example ([fbc012d](https://github.com/bcgov/moh-common-styles/commit/fbc012d))
+
+
+### Features
+
+* **FormActionBar:** Add 'extra-width' option to widthOption for all bps ([5b88093](https://github.com/bcgov/moh-common-styles/commit/5b88093))
 
 
 
