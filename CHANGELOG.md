@@ -2,6 +2,15 @@
 
 
 
+# [1.4.0](https://github.com/bcgov/moh-common-styles/compare/v1.3.0...v1.4.0) "moh-common-lib" (2019-06-13)
+
+
+### Features
+
+* **e2e:** Add new methods in abstract-test-page (#19) ([a702d6d](https://github.com/bcgov/moh-common-styles/commit/a702d6d)), closes [#19](https://github.com/bcgov/moh-common-styles/issues/19)
+
+
+
 # [1.3.0](https://github.com/bcgov/moh-common-styles/compare/v1.2.0...v1.3.0) "moh-common-lib" (2019-06-13)
 
 
