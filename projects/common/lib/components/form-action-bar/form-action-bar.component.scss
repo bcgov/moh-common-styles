@@ -35,6 +35,11 @@
             margin-left: -15px;
         }
     }
+
+    &.option-extra-width {
+        width: calc(100% + 30px);
+        margin-left: -15px;
+    }
 }
 
 .submit {

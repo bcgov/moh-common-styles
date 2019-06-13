@@ -24,7 +24,7 @@ export class FormActionBarComponent implements OnInit {
    *
    *     .container-fluid { @include media-breakpoint-up(md){ padding-left: 0; padding-right: 0; } }
    */
-  @Input() widthOption: 'default' | 'extra-width-mobile-only' = 'default';
+  @Input() widthOption: 'default' | 'extra-width-mobile-only' | 'extra-width' = 'default';
 
   constructor() { }
 
