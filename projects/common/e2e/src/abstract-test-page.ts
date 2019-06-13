@@ -106,19 +106,84 @@ export abstract class AbstractTestPage {
   }
 
   /**
-   * Enter text into an input via label name.
-   * @param labelId Human readable label name for a text input
+   * Enter text into an input via ng-reflect-name component
+   * @param refNameVal Value of ng-reflect-name component
    * @param text Text to enter into the input
    */
-  typeText(labelId: string, text: string) {
-    element(by.css(`input[ng-reflect-name^="${labelId}"]`)).sendKeys(text);
+  typeText(refNameVal: string, text: string) {
+    element(by.css(`input[ng-reflect-name^="${refNameVal}"]`)).sendKeys(text);
   }
 
-  clickButton(labelId: string, value: string) {
-    element(by.cssContainingText(`button[class^="${labelId}"]`, value)).click();
+  /**
+   * Clicks the button based on the text specified
+   * @param classVal Human readable class value for a button
+   * @param text Text inside the button
+   */
+  clickButton(classVal: string, text: string) {
+    element(by.cssContainingText(`button[class*="${classVal}"]`, text)).click();
   }
 
-  clickCheckBox(labelRefName: string) {
-    element(by.css(`input[ng-reflect-name="${labelRefName}"]`)).click();
+  /**
+   * Clicks the check box based on the ng-reflect-name component
+   * @param refNameVal Value of ng-reflect-name component
+   */
+  clickCheckBox(refNameVal: string) {
+    element(by.css(`input[ng-reflect-name="${refNameVal}"]`)).click();
+  }
+
+  /**
+   * Clicks the checkbox which means the user agrees with the info collection notice.
+   * InfoColectionNoticeComponent <common-collection-modal>
+   */
+  agreeConsentModal() {
+    element(by.css('label[for="agree"]')).element(by.css('strong')).click();
+  }
+
+  /**
+   * Clicks continue inside the modal
+   * InfoColectionNoticeComponent <common-collection-modal>
+   */
+  clickConsentModalContinue() {
+    element(by.css('div[class="modal-footer"]')).element(by.css('button[type="submit"]')).click();
+  }
+
+  /**
+   * Checks if the consent modal is currently displayed or not
+   */
+  checkConsentModal() {
+    return element(by.css('common-consent-modal')).element(by.css('div[aria-labelledby="myLargeModalLabel"]')).isDisplayed();
+  }
+
+  /**
+   * Scrolls up to the top of the page
+   */
+  scrollUp() {
+      browser.executeScript('window.scrollTo(0,0)');
+  }
+
+  /**
+   * Types the text inside the first ocurrence of input field
+   * @param refNameVal Value of ng-reflect-name component
+   * @param text Text to enter into the input
+   */
+  typeTextFirstOccurrence(refNameVal: string, text: string) {
+      element.all(by.css(`input[ng-reflect-name^="${refNameVal}"]`)).first().sendKeys(text);
+  }
+
+  /**
+   * Clicks the link based from the label and text provided
+   * @param label
+   * @param text
+   */
+  clickLink(label: string, text: string) {
+      element(by.cssContainingText(label, text)).click();
+  }
+
+  /**
+   * Counts the number of options inside a dropdown box
+   * @param refNameVal
+   */
+  countLength(refNameVal: string){
+      return $$(`select[ng-reflect-name^="${refNameVal}"] option`);
   }
 }
