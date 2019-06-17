@@ -2,6 +2,14 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 
+/**
+ * HeaderComponent is the stylized blue header at the top of every single
+ * application.  It has a built-in "Skip to Content" tab-accessible section
+ * that's best practice for screen readers.  **You must create an element with
+ * `id='content'` for this to work!**  Best practice is to put this "content"
+ * element as a wrapper aroud your `<router-outlet>`
+ *
+ */
 @Component({
   selector: 'common-header',
   templateUrl: './header.component.html',
@@ -11,6 +19,7 @@ export class HeaderComponent implements OnInit {
 
   @Input() serviceName: string = '';
   @Input() urlBaseName: string = '';
+  @Input() logoSrc: string = 'assets/gov3_bc_logo.png';
 
   public skipLinkPath;
   private SKIP_CONTENT_HASH = '#content';

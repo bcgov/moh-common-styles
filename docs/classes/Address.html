@@ -147,6 +147,9 @@
                                 <a href="#copy">copy</a>
                             </li>
                             <li>
+                                <a href="#isComplete">isComplete</a>
+                            </li>
+                            <li>
                                 <a href="#toString">toString</a>
                             </li>
                         </ul>
@@ -575,6 +578,48 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="isComplete"></a>
+                    <span class="name">
+                        <b>
+                            isComplete
+                        </b>
+                        <a href="#isComplete"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>isComplete()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="41"
+                            class="link-to-prism">projects/common/lib/models/address.model.ts:41</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Address must have all fields filled out to be considered
+complete</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="toString"></a>
                     <span class="name">
                         <b>
@@ -645,18 +690,6 @@ PharmaCare&#39;s BC focus. </p>
                                     <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">projects/common/lib/models/address.model.ts:47</a></div>
                                 </td>
                             </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-description"><p>Address must have all fields filled out to be considered
-complete</p>
-</div>
-
-                                <div class="io-description">
-                                    <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
-
-                                </div>
-                        </td>
-                    </tr>
 
             </tbody>
         </table>
@@ -701,11 +734,11 @@ complete</p>
    * Address must have all fields filled out to be considered
    * complete
    */
-  /* {
+  isComplete(): boolean {
     // All fields have data - not empty
     return !!(this.street &amp;&amp; this.city &amp;&amp; this.country &amp;&amp;
              this.province &amp;&amp; this.postal);
-  }*/
+  }
 
   get isBCOnly(): boolean {
     let isValid &#x3D; false;

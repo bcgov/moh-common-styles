@@ -1,4 +1,70 @@
-# Unreleased "moh-common-lib" (2019-06-06)
+# Unreleased "moh-common-lib" (2019-06-13)
+
+
+
+# [1.4.0](https://github.com/bcgov/moh-common-styles/compare/v1.3.0...v1.4.0) "moh-common-lib" (2019-06-13)
+
+
+### Features
+
+* **e2e:** Add new methods in abstract-test-page (#19) ([a702d6d](https://github.com/bcgov/moh-common-styles/commit/a702d6d)), closes [#19](https://github.com/bcgov/moh-common-styles/issues/19)
+
+
+
+# [1.3.0](https://github.com/bcgov/moh-common-styles/compare/v1.2.0...v1.3.0) "moh-common-lib" (2019-06-13)
+
+
+### Documentation
+
+* **ConsentModal:** Add example typescript code to open modal. ([7ff8510](https://github.com/bcgov/moh-common-styles/commit/7ff8510))
+* **ConsentModal:** Document consent modal with example ([fbc012d](https://github.com/bcgov/moh-common-styles/commit/fbc012d))
+
+
+### Features
+
+* **FormActionBar:** Add 'extra-width' option to widthOption for all bps ([5b88093](https://github.com/bcgov/moh-common-styles/commit/5b88093))
+
+
+
+# [1.2.0](https://github.com/bcgov/moh-common-styles/compare/v1.1.1...v1.2.0) "moh-common-lib" (2019-06-10)
+
+
+### Features
+
+* **FormActionBar:** Add "widthOption" to for custom CSS width override ([36476f8](https://github.com/bcgov/moh-common-styles/commit/36476f8))
+
+
+
+## [1.1.1](https://github.com/bcgov/moh-common-styles/compare/v1.1.0...v1.1.1) "moh-common-lib" (2019-06-07)
+
+
+### Features
+
+* **Header:** Logo image path can be overwritten ([03c1243](https://github.com/bcgov/moh-common-styles/commit/03c1243))
+
+
+
+# [1.1.0](https://github.com/bcgov/moh-common-styles/compare/v1.0.2...v1.1.0) "moh-common-lib" (2019-06-07)
+
+
+### Bug Fixes
+
+* **SIN, PHN:** SIN string all zeros is invalid, added isBCPHn to PHN. ([51bfe3b](https://github.com/bcgov/moh-common-styles/commit/51bfe3b))
+
+
+### Build
+
+* **npm-scripts:** Update what is committed after auto-buiding ([c8fb31b](https://github.com/bcgov/moh-common-styles/commit/c8fb31b))
+
+
+### Documentation
+
+* **Readme:** Update to readme and docs homepage ([f334faf](https://github.com/bcgov/moh-common-styles/commit/f334faf))
+
+
+### Features
+
+* **Header:** Create HeaderComponent with built-in "Skip To Content" ([3868c50](https://github.com/bcgov/moh-common-styles/commit/3868c50))
 
 
 
