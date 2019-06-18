@@ -22,8 +22,9 @@ List of valid types:
 * **refactor**: A code change that neither fixes a bug nor adds a feature
 * **perf**: A code change that improves performance
 * **test**: Adding missing or correcting existing tests
-* **chore**: Changes to the build process or auxiliary tools and libraries such as documentation
+* **chore**: Does NOT appear in changelog. Use this to hide menial commits that don't need to be in the changelog.
   generation
+* **WIP**: Similar to chore, this does NOT appear in changelog. Use this for work-in-progress commits that shouldn't bein changelog.
 * **build**: Changes to the build process
 
 Scopes may arbitrarily be created.
