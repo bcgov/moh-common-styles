@@ -1,4 +1,14 @@
-# Unreleased "moh-common-lib" (2019-06-13)
+# Unreleased "moh-common-lib" (2019-06-18)
+
+
+
+# [1.5.0](https://github.com/bcgov/moh-common-styles/compare/v1.4.0...v1.5.0) "moh-common-lib" (2019-06-18)
+
+
+### Bug Fixes
+
+* **SIN, Address, RouteGuard:** SIN all 0s fix, add RouteGuard service, and default address data. ([4295b03](https://github.com/bcgov/moh-common-styles/commit/4295b03))
+* **Toggle:** Switch order of Yes/No, so that 'No' comes first. ([e485f67](https://github.com/bcgov/moh-common-styles/commit/e485f67))
 
 
 

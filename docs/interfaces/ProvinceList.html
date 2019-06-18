@@ -218,6 +218,22 @@ export interface ProvinceList {
   country?: string;
 }
 
+export const PROVINCE_LIST: ProvinceList[] &#x3D; [
+  { provinceCode: &#x27;AB&#x27;, description: &#x27;Alberta&#x27;},
+  { provinceCode: &#x27;BC&#x27;, description: &#x27;British Columbia&#x27;},
+  { provinceCode: &#x27;MB&#x27;, description: &#x27;Manitoba&#x27;},
+  { provinceCode: &#x27;NB&#x27;, description: &#x27;New Brunswick&#x27;},
+  { provinceCode: &#x27;NL&#x27;, description: &#x27;Newfoundland and Labrador&#x27;},
+  { provinceCode: &#x27;NS&#x27;, description: &#x27;Nova Scotia&#x27;},
+  { provinceCode: &#x27;ON&#x27;, description: &#x27;Ontario&#x27;},
+  { provinceCode: &#x27;PE&#x27;, description: &#x27;Prince Edward Island&#x27;},
+  { provinceCode: &#x27;QC&#x27;, description: &#x27;Quebec&#x27;},
+  { provinceCode: &#x27;SK&#x27;, description: &#x27;Saskatchewan&#x27;},
+  { provinceCode: &#x27;NT&#x27;, description: &#x27;Northwest Territories&#x27;},
+  { provinceCode: &#x27;NU&#x27;, description: &#x27;Nunavut&#x27;},
+  { provinceCode: &#x27;YT&#x27;, description: &#x27;Yukon&#x27; }
+];
+
 @Component({
   selector: &#x27;common-province&#x27;,
   templateUrl: &#x27;./province.component.html&#x27;,
@@ -226,7 +242,7 @@ export interface ProvinceList {
 export class ProvinceComponent extends Base implements ControlValueAccessor {
 
   @Input() label: string &#x3D; &#x27;Province&#x27;;
-  @Input() provinceList: ProvinceList[];
+  @Input() provinceList: ProvinceList[] &#x3D; PROVINCE_LIST;
   @Input() labelforId: string &#x3D; &#x27;province_&#x27; + this.objectId;
   @Input() disabled: boolean &#x3D; false;
   @Input() required: boolean &#x3D; false;
