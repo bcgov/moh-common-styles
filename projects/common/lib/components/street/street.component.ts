@@ -14,7 +14,7 @@ import { TypeaheadMatch } from 'ngx-bootstrap';
 export class StreetComponent extends Base implements OnInit, ControlValueAccessor  {
 
   @Input() label: string = 'Full street address or rural route';
-  @Input() maxlen: string = '1000';
+  @Input() maxlen: string = '250';
   @Input() labelforId: string = 'street_' + this.objectId;
   @Input() disabled: boolean = false;
   @Input() useGeoCoder: boolean = false;

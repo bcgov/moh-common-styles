@@ -45,7 +45,6 @@ export interface FileUploaderMsg {
 })
 export class FileUploaderComponent extends Base
     implements OnInit, OnChanges, AfterContentInit {
-    // lang = require('./i18n');
     noIdImage: Boolean = false;
     private appConstants;
     @ViewChild('dropZone') dropZone: ElementRef;

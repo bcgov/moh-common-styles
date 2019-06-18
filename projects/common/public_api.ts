@@ -8,8 +8,8 @@
 export * from './lib/shared-core.module';
 
 // Interfaces
-export { CountryList, CANADA, UNITED_STATES } from './lib/components/country/country.component';
-export { ProvinceList, BRITISH_COLUMBIA } from './lib/components/province/province.component';
+export { CountryList, CANADA, UNITED_STATES, COUNTRY_LIST } from './lib/components/country/country.component';
+export { ProvinceList, BRITISH_COLUMBIA, PROVINCE_LIST } from './lib/components/province/province.component';
 export { ConsentModalComponent } from './lib/components/consent-modal/consent-modal.component';
 export { SimpleDate } from './lib/models/simple-date.interface';
 
@@ -26,5 +26,8 @@ export { MaskModel, LETTER, NUMBER, SPACE } from './lib/models/mask.model';
 export * from './lib/services/abstract-api-service';
 export * from './lib/services/geocoder.service';
 export * from './lib/services/logger.service';
+export * from './lib/services/check-complete-base.service';
+export * from './lib/services/route-guard.service';
+export * from './lib/services/abstract-pg-check.service';
 
 
