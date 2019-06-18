@@ -10,8 +10,8 @@ import { ControlContainer, ControlValueAccessor, NgForm, NG_VALUE_ACCESSOR } fro
 import { Base } from '../../models/base';
 import { GeoAddressResult } from '../../services/geocoder.service';
 import { Address } from '../../models/address.model';
-import { CountryList, CANADA, UNITED_STATES } from '../country/country.component';
-import { ProvinceList, BRITISH_COLUMBIA } from '../province/province.component';
+import { CountryList, CANADA, UNITED_STATES, COUNTRY_LIST } from '../country/country.component';
+import { ProvinceList, BRITISH_COLUMBIA, PROVINCE_LIST} from '../province/province.component';
 
 
 /**
@@ -37,10 +37,10 @@ export class AddressComponent extends Base
 
   @Input() disabled: boolean = false;
   @Input() isRequired: boolean = false;
-  @Input() countryList: CountryList[];
-  @Input() defaultCountry: string;
-  @Input() provinceList: ProvinceList[];
-  @Input() defaultProvince: string;
+  @Input() countryList: CountryList[] = COUNTRY_LIST;
+  @Input() defaultCountry: string = CANADA;
+  @Input() provinceList: ProvinceList[] = PROVINCE_LIST;
+  @Input() defaultProvince: string = BRITISH_COLUMBIA;
 
   @Input()
   set address( val: Address ) {

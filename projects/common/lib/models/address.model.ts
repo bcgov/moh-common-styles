@@ -5,6 +5,7 @@
 export class Address {
 
   static PostalCodeBCRegEx = '^[Vv]\\d[ABCEGHJ-NPRSTV-Zabceghj-nprstv-z][ ]?\\d[ABCEGHJ-NPRSTV-Zabceghj-nprstv-z]\\d$';
+
   /* Variables for class */
   public street: string;
   public addressLine1: string;

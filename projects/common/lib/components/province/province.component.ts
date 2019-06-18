@@ -9,6 +9,22 @@ export interface ProvinceList {
   country?: string;
 }
 
+export const PROVINCE_LIST: ProvinceList[] = [
+  { provinceCode: 'AB', description: 'Alberta'},
+  { provinceCode: 'BC', description: 'British Columbia'},
+  { provinceCode: 'MB', description: 'Manitoba'},
+  { provinceCode: 'NB', description: 'New Brunswick'},
+  { provinceCode: 'NL', description: 'Newfoundland and Labrador'},
+  { provinceCode: 'NS', description: 'Nova Scotia'},
+  { provinceCode: 'ON', description: 'Ontario'},
+  { provinceCode: 'PE', description: 'Prince Edward Island'},
+  { provinceCode: 'QC', description: 'Quebec'},
+  { provinceCode: 'SK', description: 'Saskatchewan'},
+  { provinceCode: 'NT', description: 'Northwest Territories'},
+  { provinceCode: 'NU', description: 'Nunavut'},
+  { provinceCode: 'YT', description: 'Yukon' }
+];
+
 @Component({
   selector: 'common-province',
   templateUrl: './province.component.html',
@@ -17,7 +33,7 @@ export interface ProvinceList {
 export class ProvinceComponent extends Base implements ControlValueAccessor {
 
   @Input() label: string = 'Province';
-  @Input() provinceList: ProvinceList[];
+  @Input() provinceList: ProvinceList[] = PROVINCE_LIST;
   @Input() labelforId: string = 'province_' + this.objectId;
   @Input() disabled: boolean = false;
   @Input() required: boolean = false;
