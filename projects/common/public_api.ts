@@ -26,5 +26,7 @@ export { MaskModel, LETTER, NUMBER, SPACE } from './lib/models/mask.model';
 export * from './lib/services/abstract-api-service';
 export * from './lib/services/geocoder.service';
 export * from './lib/services/logger.service';
+export * from './lib/services/check-complete-base.service';
+export * from './lib/services/route-guard.service';
 
 
