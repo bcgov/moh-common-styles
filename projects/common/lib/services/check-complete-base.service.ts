@@ -1,41 +1,63 @@
 import { Router } from '@angular/router';
+import { AbstractPgCheckService } from './abstract-pg-check.service';
 import { Injectable } from '@angular/core';
 
 /**
  * Interface for used when checking completeness of item
  */
-export interface ItemCheckInterface {
+export interface PageListInterface {
   route: string;
   isComplete: boolean;
 }
 
-export class CheckCompleteBaseService {
+@Injectable({
+  providedIn: 'root'
+})
+export class CheckCompleteBaseService implements AbstractPgCheckService {
 
-  public itemCheckList: ItemCheckInterface [] = [];
+  public pageCheckList: PageListInterface [] = [];
 
-  constructor( protected router: Router ) { }
+  private _startUrl: string = '';
+  private _bypassGuards: boolean = false;
 
+  constructor( protected router: Router ) {}
+
+  set startUrl( url: string ) {
+    this._startUrl = url;
+  }
+
+  set bypassGuards( bypass: boolean) {
+    this._bypassGuards = bypass;
+  }
+
+  public canBypassGuards(): boolean {
+    return this._bypassGuards;
+  }
+
+  public getStartUrl(): string {
+    return this._startUrl;
+  }
 
   /** Any prerequisites that need to be complete prior to starting to check pages */
-  public prerequisitesComplete(): boolean {
+  public isPrerequisiteComplete(): boolean {
     return true;
   }
 
   /**
    * Checks if item list is present
    */
-  public isEmpty(): boolean {
-    console.log( 'CheckCompleteBaseService - isEmpty' );
-    return (this.itemCheckList.length === 0);
+  public isStartPageVisited(): boolean {
+    console.log( 'CheckCompleteBaseService - isStartPageVisited' );
+    return (this.pageCheckList.length === 0);
   }
 
   /**
    *  Sets page to not be completed, so applicants cannot complete application out of sequence
    */
-  public setItemIncomplete(): void {
+  public setPageIncomplete(): void {
     const idx = this.getUrlIndex( this.router.url );
-    if ( !this.isEmpty() ) { // Check guards could be turned off in dev environment
-      this.itemCheckList = this.itemCheckList.map((item, index) => {
+    if ( !this.isStartPageVisited() ) { // Check guards could be turned off in dev environment
+      this.pageCheckList = this.pageCheckList.map((item, index) => {
         if (index >= idx) {
           item.isComplete = false;
         }
@@ -47,10 +69,10 @@ export class CheckCompleteBaseService {
   /**
    * Sets the page to completed, allowing applicant to proceed to next page.
    */
-  public setItemComplete(): void {
+  public setPageComplete(): void {
     const idx = this.getUrlIndex( this.router.url );
-    if ( !this.isEmpty() ) { // Check guards could be turned in dev environment
-      this.itemCheckList[idx].isComplete = true;
+    if ( !this.isStartPageVisited() ) { // Check guards could be turned in dev environment
+      this.pageCheckList[idx].isComplete = true;
     }
   }
 
@@ -61,7 +83,7 @@ export class CheckCompleteBaseService {
     const idx = this.getUrlIndex( url );
 
     // returns previous items isComplete value
-    return (idx - 1 >= 0) ? this.itemCheckList[idx - 1].isComplete : true;
+    return (idx - 1 >= 0) ? this.pageCheckList[idx - 1].isComplete : true;
   }
 
   /**
@@ -69,7 +91,7 @@ export class CheckCompleteBaseService {
    */
   public isComplete(): boolean {
 
-    const incompletePages = this.itemCheckList.filter( x => x.isComplete !== true );
+    const incompletePages = this.pageCheckList.filter( x => x.isComplete !== true );
     return (incompletePages.length !== 0 ? false : true );
   }
 
@@ -77,6 +99,6 @@ export class CheckCompleteBaseService {
    * Index of URL in the items list, -1 if not exist
    */
   private getUrlIndex( url: string ): number {
-    return this.itemCheckList.findIndex( x => url.includes( x.route ) );
+    return this.pageCheckList.findIndex( x => url.includes( x.route ) );
   }
 }

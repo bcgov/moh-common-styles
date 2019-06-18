@@ -28,5 +28,6 @@ export * from './lib/services/geocoder.service';
 export * from './lib/services/logger.service';
 export * from './lib/services/check-complete-base.service';
 export * from './lib/services/route-guard.service';
+export * from './lib/services/abstract-pg-check.service';
 
 
