@@ -1,40 +1,47 @@
 import { Injectable, InjectionToken, Injector } from '@angular/core';
-import { CanActivateChild, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { CanActivateChild, Router, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, CanActivate } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AbstractPgCheckService } from './abstract-pg-check.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class RouteGuardService implements CanActivateChild  {
+export class RouteGuardService implements CanActivate, CanActivateChild  {
 
   constructor( private router: Router,
                private service: AbstractPgCheckService ) {
   }
 
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): Observable<boolean|UrlTree>|Promise<boolean|UrlTree>|boolean|UrlTree {
+
+    return this._continue( state.url );
+  }
+
   canActivateChild(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
+    return this._continue( state.url );
+  }
 
-    console.log( 'BypassGuards: ', this.service.canBypassGuards() );
+  /** Logic to determine whether or not allow to continue to next page */
+  private _continue( pageUrl: string ): boolean {
 
     if ( this.service.canBypassGuards() ) {
-      console.log( 'Bypassing route guards' );
       return true;
     }
 
-   console.log( 'canActivateChild: ', next, state, this.router.url );
-
     /**
-     * If start page not visited, send user there to start process
+     * Pre-requisite has not be completed
      */
-    if ( !this.service.isPrerequisiteComplete() || this.service.isStartPageVisited() ) {
+    if ( false === this.service.isPrerequisiteComplete() ) {
       this.router.navigate( [this.service.getStartUrl()] );
       return false;
     }
 
-    if ( !this.service.isPageComplete( state.url ) ) {
-      console.log( 'Page is not complete' );
+    if ( false === this.service.isPageComplete( pageUrl ) ) {
       return false;
     }
 
