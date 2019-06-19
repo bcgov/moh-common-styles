@@ -1,28 +1,29 @@
 import { Component, Input, Output, EventEmitter, Optional, Self } from '@angular/core';
 import { Base } from '../../models/base';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
+import { CANADA } from '../country/country.component';
 
 export const BRITISH_COLUMBIA = 'BC';
 export interface ProvinceList {
   provinceCode: string;
   description: string;
-  country?: string;
+  country: string;
 }
 
 export const PROVINCE_LIST: ProvinceList[] = [
-  { provinceCode: 'AB', description: 'Alberta'},
-  { provinceCode: 'BC', description: 'British Columbia'},
-  { provinceCode: 'MB', description: 'Manitoba'},
-  { provinceCode: 'NB', description: 'New Brunswick'},
-  { provinceCode: 'NL', description: 'Newfoundland and Labrador'},
-  { provinceCode: 'NS', description: 'Nova Scotia'},
-  { provinceCode: 'ON', description: 'Ontario'},
-  { provinceCode: 'PE', description: 'Prince Edward Island'},
-  { provinceCode: 'QC', description: 'Quebec'},
-  { provinceCode: 'SK', description: 'Saskatchewan'},
-  { provinceCode: 'NT', description: 'Northwest Territories'},
-  { provinceCode: 'NU', description: 'Nunavut'},
-  { provinceCode: 'YT', description: 'Yukon' }
+  { provinceCode: 'AB', description: 'Alberta', country: CANADA },
+  { provinceCode: 'BC', description: 'British Columbia', country: CANADA },
+  { provinceCode: 'MB', description: 'Manitoba', country: CANADA },
+  { provinceCode: 'NB', description: 'New Brunswick', country: CANADA },
+  { provinceCode: 'NL', description: 'Newfoundland and Labrador', country: CANADA },
+  { provinceCode: 'NS', description: 'Nova Scotia', country: CANADA },
+  { provinceCode: 'ON', description: 'Ontario', country: CANADA },
+  { provinceCode: 'PE', description: 'Prince Edward Island', country: CANADA },
+  { provinceCode: 'QC', description: 'Quebec', country: CANADA },
+  { provinceCode: 'SK', description: 'Saskatchewan', country: CANADA },
+  { provinceCode: 'NT', description: 'Northwest Territories', country: CANADA },
+  { provinceCode: 'NU', description: 'Nunavut', country: CANADA },
+  { provinceCode: 'YT', description: 'Yukon', country: CANADA }
 ];
 
 @Component({

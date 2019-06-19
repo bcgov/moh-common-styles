@@ -4,7 +4,8 @@ import {
   Output,
   EventEmitter,
   OnChanges,
-  forwardRef
+  forwardRef,
+  OnInit
 } from '@angular/core';
 import { ControlContainer, ControlValueAccessor, NgForm, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Base } from '../../models/base';
@@ -33,7 +34,7 @@ import { ProvinceList, BRITISH_COLUMBIA, PROVINCE_LIST} from '../province/provin
   ]
 })
 export class AddressComponent extends Base
-       implements OnChanges, ControlValueAccessor {
+       implements OnInit, OnChanges, ControlValueAccessor {
 
   @Input() disabled: boolean = false;
   @Input() isRequired: boolean = false;
@@ -62,6 +63,23 @@ export class AddressComponent extends Base
 
   constructor() {
     super();
+  }
+
+  ngOnInit() {
+
+    if ( this.addr ) {
+
+      if ( !this.addr.country ) {
+        this.addr.country = this.setDefaultCountryAsOption();
+      }
+
+      if ( !this.addr.province ) {
+        this.addr.province = this.setDefaultProvinceAsOption( this.addr.country );
+      }
+    }
+
+
+    this.updateProvList();
   }
 
   /**
