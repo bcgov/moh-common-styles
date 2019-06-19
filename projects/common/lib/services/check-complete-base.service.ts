@@ -38,17 +38,9 @@ export class CheckCompleteBaseService implements AbstractPgCheckService {
     return this._startUrl;
   }
 
-  /** Any prerequisites that need to be complete prior to starting to check pages */
+  /** Any prerequisites that need list of pages */
   public isPrerequisiteComplete(): boolean {
-    return true;
-  }
-
-  /**
-   * Checks if item list is present
-   */
-  public isStartPageVisited(): boolean {
-    console.log( 'CheckCompleteBaseService - isStartPageVisited' );
-    return (this.pageCheckList.length === 0);
+    return !this.isPageListEmpty();
   }
 
   /**
@@ -56,7 +48,7 @@ export class CheckCompleteBaseService implements AbstractPgCheckService {
    */
   public setPageIncomplete(): void {
     const idx = this.getUrlIndex( this.router.url );
-    if ( !this.isStartPageVisited() ) { // Check guards could be turned off in dev environment
+    if ( !this.isPageListEmpty() ) { // Check guards could be turned off in dev environment
       this.pageCheckList = this.pageCheckList.map((item, index) => {
         if (index >= idx) {
           item.isComplete = false;
@@ -71,7 +63,7 @@ export class CheckCompleteBaseService implements AbstractPgCheckService {
    */
   public setPageComplete(): void {
     const idx = this.getUrlIndex( this.router.url );
-    if ( !this.isStartPageVisited() ) { // Check guards could be turned in dev environment
+    if ( !this.isPageListEmpty() ) { // Check guards could be turned in dev environment
       this.pageCheckList[idx].isComplete = true;
     }
   }
@@ -80,6 +72,7 @@ export class CheckCompleteBaseService implements AbstractPgCheckService {
    * Indicates whether page has been completed or not.
    */
   public isPageComplete( url: string ): boolean {
+
     const idx = this.getUrlIndex( url );
 
     // returns previous items isComplete value
@@ -90,7 +83,6 @@ export class CheckCompleteBaseService implements AbstractPgCheckService {
    * Check for incomplete pages
    */
   public isComplete(): boolean {
-
     const incompletePages = this.pageCheckList.filter( x => x.isComplete !== true );
     return (incompletePages.length !== 0 ? false : true );
   }
@@ -100,5 +92,9 @@ export class CheckCompleteBaseService implements AbstractPgCheckService {
    */
   private getUrlIndex( url: string ): number {
     return this.pageCheckList.findIndex( x => url.includes( x.route ) );
+  }
+
+  private isPageListEmpty() {
+    return ( this.pageCheckList.length === 0 );
   }
 }
