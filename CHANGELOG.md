@@ -1,4 +1,18 @@
-# Unreleased "moh-common-lib" (2019-06-18)
+# Unreleased "moh-common-lib" (2019-06-19)
+
+
+
+# [1.6.0](https://github.com/bcgov/moh-common-styles/compare/v1.5.0...v1.6.0) "moh-common-lib" (2019-06-19)
+
+
+### Documentation
+
+* **Contributing:** Update contributing to show WIP option ([3f42b31](https://github.com/bcgov/moh-common-styles/commit/3f42b31))
+
+
+### Features
+
+* **PageFramework:** Add 15px left/right padding, to counter taking padding from .container-fluid ([7febf6d](https://github.com/bcgov/moh-common-styles/commit/7febf6d))
 
 
 
