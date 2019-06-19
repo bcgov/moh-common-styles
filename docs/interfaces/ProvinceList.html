@@ -83,7 +83,6 @@
                         <td class="col-md-4">
                             <ul class="index-list">
                                 <li>
-                                            <span class="modifier">Optional</span>
                                         <a href="#country">country</a>
                                 </li>
                                 <li>
@@ -126,11 +125,6 @@
                                         </td>
                                     </tr>
 
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <i>Optional</i>
-                                        </td>
-                                    </tr>
 
 
 
@@ -210,28 +204,29 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Input, Output, EventEmitter, Optional, Self } from &#x27;@angular/core&#x27;;
 import { Base } from &#x27;../../models/base&#x27;;
 import { ControlValueAccessor, NgControl } from &#x27;@angular/forms&#x27;;
+import { CANADA } from &#x27;../country/country.component&#x27;;
 
 export const BRITISH_COLUMBIA &#x3D; &#x27;BC&#x27;;
 export interface ProvinceList {
   provinceCode: string;
   description: string;
-  country?: string;
+  country: string;
 }
 
 export const PROVINCE_LIST: ProvinceList[] &#x3D; [
-  { provinceCode: &#x27;AB&#x27;, description: &#x27;Alberta&#x27;},
-  { provinceCode: &#x27;BC&#x27;, description: &#x27;British Columbia&#x27;},
-  { provinceCode: &#x27;MB&#x27;, description: &#x27;Manitoba&#x27;},
-  { provinceCode: &#x27;NB&#x27;, description: &#x27;New Brunswick&#x27;},
-  { provinceCode: &#x27;NL&#x27;, description: &#x27;Newfoundland and Labrador&#x27;},
-  { provinceCode: &#x27;NS&#x27;, description: &#x27;Nova Scotia&#x27;},
-  { provinceCode: &#x27;ON&#x27;, description: &#x27;Ontario&#x27;},
-  { provinceCode: &#x27;PE&#x27;, description: &#x27;Prince Edward Island&#x27;},
-  { provinceCode: &#x27;QC&#x27;, description: &#x27;Quebec&#x27;},
-  { provinceCode: &#x27;SK&#x27;, description: &#x27;Saskatchewan&#x27;},
-  { provinceCode: &#x27;NT&#x27;, description: &#x27;Northwest Territories&#x27;},
-  { provinceCode: &#x27;NU&#x27;, description: &#x27;Nunavut&#x27;},
-  { provinceCode: &#x27;YT&#x27;, description: &#x27;Yukon&#x27; }
+  { provinceCode: &#x27;AB&#x27;, description: &#x27;Alberta&#x27;, country: CANADA },
+  { provinceCode: &#x27;BC&#x27;, description: &#x27;British Columbia&#x27;, country: CANADA },
+  { provinceCode: &#x27;MB&#x27;, description: &#x27;Manitoba&#x27;, country: CANADA },
+  { provinceCode: &#x27;NB&#x27;, description: &#x27;New Brunswick&#x27;, country: CANADA },
+  { provinceCode: &#x27;NL&#x27;, description: &#x27;Newfoundland and Labrador&#x27;, country: CANADA },
+  { provinceCode: &#x27;NS&#x27;, description: &#x27;Nova Scotia&#x27;, country: CANADA },
+  { provinceCode: &#x27;ON&#x27;, description: &#x27;Ontario&#x27;, country: CANADA },
+  { provinceCode: &#x27;PE&#x27;, description: &#x27;Prince Edward Island&#x27;, country: CANADA },
+  { provinceCode: &#x27;QC&#x27;, description: &#x27;Quebec&#x27;, country: CANADA },
+  { provinceCode: &#x27;SK&#x27;, description: &#x27;Saskatchewan&#x27;, country: CANADA },
+  { provinceCode: &#x27;NT&#x27;, description: &#x27;Northwest Territories&#x27;, country: CANADA },
+  { provinceCode: &#x27;NU&#x27;, description: &#x27;Nunavut&#x27;, country: CANADA },
+  { provinceCode: &#x27;YT&#x27;, description: &#x27;Yukon&#x27;, country: CANADA }
 ];
 
 @Component({

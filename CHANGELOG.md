@@ -2,6 +2,20 @@
 
 
 
+## [1.6.1](https://github.com/bcgov/moh-common-styles/compare/v1.6.0...v1.6.1) "moh-common-lib" (2019-06-19)
+
+
+### Bug Fixes
+
+* address and component - defaults now displaying ([6c09982](https://github.com/bcgov/moh-common-styles/commit/6c09982))
+
+
+### Features
+
+* route guard implemented ([befc319](https://github.com/bcgov/moh-common-styles/commit/befc319))
+
+
+
 # [1.6.0](https://github.com/bcgov/moh-common-styles/compare/v1.5.0...v1.6.0) "moh-common-lib" (2019-06-19)
 
 
@@ -73,6 +87,7 @@
 
 ### Bug Fixes
 
+* SIN string all zeros - invalid ([96a58b1](https://github.com/bcgov/moh-common-styles/commit/96a58b1))
 * **SIN, PHN:** SIN string all zeros is invalid, added isBCPHn to PHN. ([51bfe3b](https://github.com/bcgov/moh-common-styles/commit/51bfe3b))
 
 
