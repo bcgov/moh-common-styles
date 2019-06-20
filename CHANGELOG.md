@@ -1,4 +1,13 @@
-# Unreleased "moh-common-lib" (2019-06-19)
+# Unreleased "moh-common-lib" (2019-06-20)
+
+
+
+## [1.6.2](https://github.com/bcgov/moh-common-styles/compare/v1.6.1...v1.6.2) "moh-common-lib" (2019-06-20)
+
+
+### Bug Fixes
+
+* **Checkbox:** Fix labels for checkbox to properly associate ([af516d0](https://github.com/bcgov/moh-common-styles/commit/af516d0))
 
 
 
