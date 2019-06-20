@@ -80,6 +80,13 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_continue">_continue</a>
+                            </li>
+                            <li>
+                                <a href="#canActivate">canActivate</a>
+                            </li>
+                            <li>
                                 <a href="#canActivateChild">canActivateChild</a>
                             </li>
                         </ul>
@@ -164,6 +171,162 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="_continue"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            _continue
+                        </b>
+                        <a href="#_continue"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_continue(pageUrl: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="30"
+                            class="link-to-prism">projects/common/lib/services/route-guard.service.ts:30</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Logic to determine whether or not allow to continue to next page </p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>pageUrl</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="canActivate"></a>
+                    <span class="name">
+                        <b>
+                            canActivate
+                        </b>
+                        <a href="#canActivate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>canActivate(route: <a href="https://angular.io/api/router/ActivatedRouteSnapshot" target="_blank">ActivatedRouteSnapshot</a>, state: <a href="https://angular.io/api/router/RouterStateSnapshot" target="_blank">RouterStateSnapshot</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="15"
+                            class="link-to-prism">projects/common/lib/services/route-guard.service.ts:15</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>route</td>
+                                    <td>
+                                                <code><a href="https://angular.io/api/router/ActivatedRouteSnapshot" target="_blank" >ActivatedRouteSnapshot</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>state</td>
+                                    <td>
+                                                <code><a href="https://angular.io/api/router/RouterStateSnapshot" target="_blank" >RouterStateSnapshot</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable | Promise | boolean | UrlTree</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="canActivateChild"></a>
                     <span class="name">
                         <b>
@@ -182,8 +345,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="15"
-                            class="link-to-prism">projects/common/lib/services/route-guard.service.ts:15</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="23"
+                            class="link-to-prism">projects/common/lib/services/route-guard.service.ts:23</a></div>
                 </td>
             </tr>
 
@@ -248,42 +411,49 @@
 
         <div class="tab-pane fade  tab-source-code" id="c-source">
             <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable, InjectionToken, Injector } from &#x27;@angular/core&#x27;;
-import { CanActivateChild, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from &#x27;@angular/router&#x27;;
+import { CanActivateChild, Router, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, CanActivate } from &#x27;@angular/router&#x27;;
 import { Observable } from &#x27;rxjs&#x27;;
 import { AbstractPgCheckService } from &#x27;./abstract-pg-check.service&#x27;;
 
 @Injectable({
   providedIn: &#x27;root&#x27;
 })
-export class RouteGuardService implements CanActivateChild  {
+export class RouteGuardService implements CanActivate, CanActivateChild  {
 
   constructor( private router: Router,
                private service: AbstractPgCheckService ) {
   }
 
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): Observable&lt;boolean|UrlTree&gt;|Promise&lt;boolean|UrlTree&gt;|boolean|UrlTree {
+
+    return this._continue( state.url );
+  }
+
   canActivateChild(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable&lt;boolean&gt; | Promise&lt;boolean&gt; | boolean {
+    return this._continue( state.url );
+  }
 
-    console.log( &#x27;BypassGuards: &#x27;, this.service.canBypassGuards() );
+  /** Logic to determine whether or not allow to continue to next page */
+  private _continue( pageUrl: string ): boolean {
 
     if ( this.service.canBypassGuards() ) {
-      console.log( &#x27;Bypassing route guards&#x27; );
       return true;
     }
 
-   console.log( &#x27;canActivateChild: &#x27;, next, state, this.router.url );
-
     /**
-     * If start page not visited, send user there to start process
+     * Pre-requisite has not be completed
      */
-    if ( !this.service.isPrerequisiteComplete() || this.service.isStartPageVisited() ) {
+    if ( false &#x3D;&#x3D;&#x3D; this.service.isPrerequisiteComplete() ) {
       this.router.navigate( [this.service.getStartUrl()] );
       return false;
     }
 
-    if ( !this.service.isPageComplete( state.url ) ) {
-      console.log( &#x27;Page is not complete&#x27; );
+    if ( false &#x3D;&#x3D;&#x3D; this.service.isPageComplete( pageUrl ) ) {
       return false;
     }
 

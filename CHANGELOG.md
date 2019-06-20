@@ -1,4 +1,41 @@
-# Unreleased "moh-common-lib" (2019-06-18)
+# Unreleased "moh-common-lib" (2019-06-20)
+
+
+
+## [1.6.2](https://github.com/bcgov/moh-common-styles/compare/v1.6.1...v1.6.2) "moh-common-lib" (2019-06-20)
+
+
+### Bug Fixes
+
+* **Checkbox:** Fix labels for checkbox to properly associate ([af516d0](https://github.com/bcgov/moh-common-styles/commit/af516d0))
+
+
+
+## [1.6.1](https://github.com/bcgov/moh-common-styles/compare/v1.6.0...v1.6.1) "moh-common-lib" (2019-06-19)
+
+
+### Bug Fixes
+
+* address and component - defaults now displaying ([6c09982](https://github.com/bcgov/moh-common-styles/commit/6c09982))
+
+
+### Features
+
+* route guard implemented ([befc319](https://github.com/bcgov/moh-common-styles/commit/befc319))
+
+
+
+# [1.6.0](https://github.com/bcgov/moh-common-styles/compare/v1.5.0...v1.6.0) "moh-common-lib" (2019-06-19)
+
+
+### Documentation
+
+* **Contributing:** Update contributing to show WIP option ([3f42b31](https://github.com/bcgov/moh-common-styles/commit/3f42b31))
+
+
+### Features
+
+* **PageFramework:** Add 15px left/right padding, to counter taking padding from .container-fluid ([7febf6d](https://github.com/bcgov/moh-common-styles/commit/7febf6d))
 
 
 
@@ -59,6 +96,7 @@
 
 ### Bug Fixes
 
+* SIN string all zeros - invalid ([96a58b1](https://github.com/bcgov/moh-common-styles/commit/96a58b1))
 * **SIN, PHN:** SIN string all zeros is invalid, added isBCPHn to PHN. ([51bfe3b](https://github.com/bcgov/moh-common-styles/commit/51bfe3b))
 
 
