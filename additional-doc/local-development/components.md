@@ -55,12 +55,14 @@ If the folder does not exist, or is empty, make sure to build the library.
 
 #### Setting up npm link for library
 
+You must make sure to set `"preserveSymlinks": true` in angular.json under the project>architect>build>options.
+
 Then navigate to the application which will consume the library, make sure you're in the same folder as that application's `package.json` (this should be the top level, e.g. `prime-web/`).  From there, run `npm link moh-common-lib`.  That's it, the build artifacts from the library will now appear in `node_modules/` and can be imported like any other library.  Now in the application you can write...
 
 ```TypeScript
 import { example } from 'moh-common-lib'
 ```
 
-If you've made any changes to the library make sure to re-build with `ng build moh-commmon-lib` from the library folder.
+If you've made any chanfges to the library make sure to re-build with `ng build moh-commmon-lib` from the library folder.
 
 As for what specifically you can import from 'moh-common-lib', that is all defined in `projects/common/src/public_api.ts.`
