@@ -8,6 +8,7 @@ import { Injectable } from '@angular/core';
 export interface PageListInterface {
   route: string;
   isComplete: boolean;
+  [key: string]: any;
 }
 
 @Injectable({

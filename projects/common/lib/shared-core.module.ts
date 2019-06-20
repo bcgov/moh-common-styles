@@ -81,7 +81,8 @@ const componentList = [
   SinComponent,
   PhnComponent,
   HeaderComponent,
-  ValidateBcPostalDirective
+  ValidateBcPostalDirective,
+  XiconButtonComponent
 ];
 @NgModule({
   imports: [
@@ -97,8 +98,7 @@ const componentList = [
     AccordionModule.forRoot()
   ],
   declarations: [
-    componentList,
-    XiconButtonComponent
+    componentList
   ],
   exports: [
     componentList
