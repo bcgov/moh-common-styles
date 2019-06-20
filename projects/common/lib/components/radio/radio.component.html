@@ -2,10 +2,14 @@
   <label for="{{objectId}}" class="control-label" [innerHtml]="label" ></label><br/>
   <div *ngFor="let val of radioLabels" [ngStyle]="{'display': display}" >
     <div class="md-radio md-radio-inline">
-      <input type="radio" name="selection__{{objectId}}" 
-            id="{{val.value}}_{{objectId}}" [disabled]="disabled"
-            (click)="setStatus(val.value);" [checked]="value == val.value" 
-            tabindex="0">
+      <input type="radio"
+             name="selection__{{objectId}}"
+             id="{{val.value}}_{{objectId}}"
+             [disabled]="disabled"
+             [value]="val.value"
+             (click)="setStatus(val.value);"
+             [checked]="value == val.value"
+             tabindex="0">
       <label for="{{val.value}}_{{objectId}}">
       {{val.label}}
       </label>
