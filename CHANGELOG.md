@@ -1,4 +1,25 @@
-# Unreleased "moh-common-lib" (2019-06-20)
+# Unreleased "moh-common-lib" (2019-06-24)
+
+
+
+# [1.7.0](https://github.com/bcgov/moh-common-styles/compare/v1.6.2...v1.7.0) "moh-common-lib" (2019-06-24)
+
+
+### Bug Fixes
+
+* **Checkbox:** Checkbox component now defaults to unchecked. ([6775a4d](https://github.com/bcgov/moh-common-styles/commit/6775a4d))
+
+
+### Documentation
+
+* **AdditionalDocumentation:**  preserveSymlinks in for npm link ([e458627](https://github.com/bcgov/moh-common-styles/commit/e458627))
+* **RouteGuard:** Document RouteGuardService and related classes. ([fc7fe65](https://github.com/bcgov/moh-common-styles/commit/fc7fe65))
+* **RouteGuard:** Fix instruction examples for RouteGuard. ([3a06f99](https://github.com/bcgov/moh-common-styles/commit/3a06f99))
+
+
+### Features
+
+* **XIconButton:** Add XIconButtonComponent. Include fixes to RadioComponent. ([0ba1d1e](https://github.com/bcgov/moh-common-styles/commit/0ba1d1e))
 
 
 
