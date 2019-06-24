@@ -10,6 +10,13 @@ export interface PageListInterface {
   isComplete: boolean;
 }
 
+/**
+ * Extend this class when creating a service to create your custom Route Guard
+ * logic.  This class should work as-is for simple use-cases.  For Route Guard
+ * setup @see RouteGuardService.
+ *
+ * @see RouteGuardService
+ */
 @Injectable({
   providedIn: 'root'
 })

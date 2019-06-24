@@ -60,8 +60,32 @@
             <code>projects/common/lib/services/abstract-pg-check.service.ts</code>
         </p>
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>The abstract class for our route guard service.  You MUST setup the NgModule
+to provide your application&#39;s service in place of AbstractPgCheckService.</p>
+<p>Your application&#39;s route guard service can do whatever it wants as long as it
+implements these methods.</p>
+<p>More information on setup can be found in @see RouteGuardService.</p>
+
+            </p>
 
 
+            <p class="comment">
+                <h3>Example</h3>
+            </p>
+            <div class="io-description">
+                        <div>
+                            <pre class="line-numbers"><code class="language-html">//registration.module.ts
+providers: [
+...
+{ provide: AbstractPgCheckService, useExisting: RegistrationService },
+RouteGuardService
+]</code></pre>
+                        </div>
+            </div>
 
             <section>
     <h3 id="index">Index</h3>
@@ -139,8 +163,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="6"
-                            class="link-to-prism">projects/common/lib/services/abstract-pg-check.service.ts:6</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="24"
+                            class="link-to-prism">projects/common/lib/services/abstract-pg-check.service.ts:24</a></div>
                 </td>
             </tr>
 
@@ -181,8 +205,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="9"
-                            class="link-to-prism">projects/common/lib/services/abstract-pg-check.service.ts:9</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="27"
+                            class="link-to-prism">projects/common/lib/services/abstract-pg-check.service.ts:27</a></div>
                 </td>
             </tr>
 
@@ -223,8 +247,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="7"
-                            class="link-to-prism">projects/common/lib/services/abstract-pg-check.service.ts:7</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="25"
+                            class="link-to-prism">projects/common/lib/services/abstract-pg-check.service.ts:25</a></div>
                 </td>
             </tr>
 
@@ -296,8 +320,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="8"
-                            class="link-to-prism">projects/common/lib/services/abstract-pg-check.service.ts:8</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="26"
+                            class="link-to-prism">projects/common/lib/services/abstract-pg-check.service.ts:26</a></div>
                 </td>
             </tr>
 
@@ -321,6 +345,24 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
 
+/**
+ * The abstract class for our route guard service.  You MUST setup the NgModule
+ * to provide your application&#x27;s service in place of AbstractPgCheckService.
+ *
+ * Your application&#x27;s route guard service can do whatever it wants as long as it
+ * implements these methods.
+ * 
+ * More information on setup can be found in @see RouteGuardService.
+ *
+ *  @example
+ *                //registration.module.ts
+ *                providers: [
+ *                        ...
+ *                        { provide: AbstractPgCheckService, useExisting: RegistrationService },
+ *                        RouteGuardService
+ *                ]
+ *
+ */
 @Injectable()
 export abstract class AbstractPgCheckService {
 

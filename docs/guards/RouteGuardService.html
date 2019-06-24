@@ -62,9 +62,57 @@
                 <code>projects/common/lib/services/route-guard.service.ts</code>
             </p>
 
+                <p class="comment">
+                <h3>Description</h3>
+                </p>
+                <p class="comment">
+                    <p>Use this service to implement Route Guards in your application. This is for a
+typical form flow, where the user must proceed sequentially from one page to
+the next.</p>
+<p>To setup, you must:</p>
+<ol>
+<li>Create a service that <code>extends CheckCompleteBaseService</code> (&quot;RegistrationService&quot;)</li>
+<li>Setup AbstractPgCheckService in NgModule providers, to <code>useExisting</code> the service from previous step..</li>
+<li>Add this RouteGuardService to same providers from previous step.</li>
+<li>Configure routes to use RouteGuardService - <code>canActivate</code> or <code>canActivateChild</code></li>
+<li>Have each &quot;page&quot; in the form call <code>setPageIncomplete()</code> or <code>setPageComplete()</code> (from the &quot;RegistrationService&quot;)</li>
+</ol>
+<p>You must make sure to setup AbstractPgCheckService in NgModules correctly.</p>
+
+                </p>
 
 
 
+                <p class="comment">
+                <h3>Example</h3>
+                </p>
+                <div class="io-description">
+                            <div>
+                                <pre class="line-numbers"><code class="language-html">//STEP 2 + STEP 3
+//registration.module.ts
+providers: [
+...
+{ provide: AbstractPgCheckService, useExisting: RegistrationService },
+RouteGuardService
+]
+
+
+//STEP 4
+//registration-routing.modle.ts
+const routes: Routes = [{
+path: '',
+canActivateChild: [RouteGuardService] //or canActivate
+}
+...
+]
+
+
+//STEP 5
+//example.component.ts
+ngOnInit() { this.setPageIncomplete(); }
+continue() { this.setPageComplete(); }</code></pre>
+                            </div>
+                </div>
 
                 <section>
     <h3 id="index">Index</h3>
@@ -112,7 +160,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">projects/common/lib/services/route-guard.service.ts:9</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">projects/common/lib/services/route-guard.service.ts:52</a></div>
                             </td>
                         </tr>
 
@@ -191,8 +239,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="30"
-                            class="link-to-prism">projects/common/lib/services/route-guard.service.ts:30</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="73"
+                            class="link-to-prism">projects/common/lib/services/route-guard.service.ts:73</a></div>
                 </td>
             </tr>
 
@@ -263,8 +311,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="15"
-                            class="link-to-prism">projects/common/lib/services/route-guard.service.ts:15</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="58"
+                            class="link-to-prism">projects/common/lib/services/route-guard.service.ts:58</a></div>
                 </td>
             </tr>
 
@@ -345,8 +393,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="23"
-                            class="link-to-prism">projects/common/lib/services/route-guard.service.ts:23</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="66"
+                            class="link-to-prism">projects/common/lib/services/route-guard.service.ts:66</a></div>
                 </td>
             </tr>
 
@@ -415,45 +463,88 @@ import { CanActivateChild, Router, ActivatedRouteSnapshot, RouterStateSnapshot, 
 import { Observable } from &#x27;rxjs&#x27;;
 import { AbstractPgCheckService } from &#x27;./abstract-pg-check.service&#x27;;
 
+/**
+ * Use this service to implement Route Guards in your application. This is for a
+ * typical form flow, where the user must proceed sequentially from one page to
+ * the next.
+ *
+ * To setup, you must:
+ *
+ * 1. Create a service that &#x60;extends CheckCompleteBaseService&#x60; (&quot;RegistrationService&quot;)
+ * 2. Setup AbstractPgCheckService in NgModule providers, to &#x60;useExisting&#x60; the service from previous step..
+ * 3. Add this RouteGuardService to same providers from previous step.
+ * 4. Configure routes to use RouteGuardService - &#x60;canActivate&#x60; or &#x60;canActivateChild&#x60;
+ * 5. Have each &quot;page&quot; in the form call &#x60;setPageIncomplete()&#x60; or &#x60;setPageComplete()&#x60; (from the &quot;RegistrationService&quot;)
+ *
+ *
+ * You must make sure to setup AbstractPgCheckService in NgModules correctly.
+ *
+ *  @example
+ *                //STEP 2 + STEP 3
+ *                //registration.module.ts
+ *                providers: [
+ *                        ...
+ *                        { provide: AbstractPgCheckService, useExisting: RegistrationService },
+ *                        RouteGuardService
+ *                ]
+ *
+ *
+ *                //STEP 4
+ *                //registration-routing.modle.ts
+ *                const routes: Routes &#x3D; [{
+ *                      path: &#x27;&#x27;,
+ *                      canActivateChild: [RouteGuardService] //or canActivate
+ *                     }
+ *                      ...
+ *                ]
+ *
+ *
+ *                //STEP 5
+ *                //example.component.ts
+ *                ngOnInit() { this.setPageIncomplete(); }
+ *                continue() { this.setPageComplete(); }
+ *
+ *
+ */
 @Injectable({
   providedIn: &#x27;root&#x27;
 })
-export class RouteGuardService implements CanActivate, CanActivateChild  {
+export class RouteGuardService implements CanActivate, CanActivateChild {
 
-  constructor( private router: Router,
-               private service: AbstractPgCheckService ) {
+  constructor(private router: Router,
+    private service: AbstractPgCheckService) {
   }
 
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): Observable&lt;boolean|UrlTree&gt;|Promise&lt;boolean|UrlTree&gt;|boolean|UrlTree {
+  ): Observable&lt;boolean | UrlTree&gt; | Promise&lt;boolean | UrlTree&gt; | boolean | UrlTree {
 
-    return this._continue( state.url );
+    return this._continue(state.url);
   }
 
   canActivateChild(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable&lt;boolean&gt; | Promise&lt;boolean&gt; | boolean {
-    return this._continue( state.url );
+    return this._continue(state.url);
   }
 
   /** Logic to determine whether or not allow to continue to next page */
-  private _continue( pageUrl: string ): boolean {
+  private _continue(pageUrl: string): boolean {
 
-    if ( this.service.canBypassGuards() ) {
+    if (this.service.canBypassGuards()) {
       return true;
     }
 
     /**
      * Pre-requisite has not be completed
      */
-    if ( false &#x3D;&#x3D;&#x3D; this.service.isPrerequisiteComplete() ) {
-      this.router.navigate( [this.service.getStartUrl()] );
+    if (false &#x3D;&#x3D;&#x3D; this.service.isPrerequisiteComplete()) {
+      this.router.navigate([this.service.getStartUrl()]);
       return false;
     }
 
-    if ( false &#x3D;&#x3D;&#x3D; this.service.isPageComplete( pageUrl ) ) {
+    if (false &#x3D;&#x3D;&#x3D; this.service.isPageComplete(pageUrl)) {
       return false;
     }
 
