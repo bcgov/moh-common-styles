@@ -71,8 +71,8 @@ typical form flow, where the user must proceed sequentially from one page to
 the next.</p>
 <p>To setup, you must:</p>
 <ol>
-<li>Create a service that <code>extends CheckCompleteBaseService</code> (&quot;RegistrationService&quot;)</li>
-<li>Setup AbstractPgCheckService in NgModule providers, to <code>useExisting</code> the service from previous step..</li>
+<li>Create a service implementing the abstract methods in <code>AbstractPgService</code> (&quot;RegistrationService&quot;)</li>
+<li>Setup AbstractPgCheckService in NgModule providers, to <code>useExisting</code> the service from previous step.</li>
 <li>Add this RouteGuardService to same providers from previous step.</li>
 <li>Configure routes to use RouteGuardService - <code>canActivate</code> or <code>canActivateChild</code></li>
 <li>Have each &quot;page&quot; in the form call <code>setPageIncomplete()</code> or <code>setPageComplete()</code> (from the &quot;RegistrationService&quot;)</li>
@@ -470,8 +470,8 @@ import { AbstractPgCheckService } from &#x27;./abstract-pg-check.service&#x27;;
  *
  * To setup, you must:
  *
- * 1. Create a service that &#x60;extends CheckCompleteBaseService&#x60; (&quot;RegistrationService&quot;)
- * 2. Setup AbstractPgCheckService in NgModule providers, to &#x60;useExisting&#x60; the service from previous step..
+ * 1. Create a service implementing the abstract methods in &#x60;AbstractPgService&#x60; (&quot;RegistrationService&quot;)
+ * 2. Setup AbstractPgCheckService in NgModule providers, to &#x60;useExisting&#x60; the service from previous step.
  * 3. Add this RouteGuardService to same providers from previous step.
  * 4. Configure routes to use RouteGuardService - &#x60;canActivate&#x60; or &#x60;canActivateChild&#x60;
  * 5. Have each &quot;page&quot; in the form call &#x60;setPageIncomplete()&#x60; or &#x60;setPageComplete()&#x60; (from the &quot;RegistrationService&quot;)
@@ -492,10 +492,10 @@ import { AbstractPgCheckService } from &#x27;./abstract-pg-check.service&#x27;;
  *                //STEP 4
  *                //registration-routing.modle.ts
  *                const routes: Routes &#x3D; [{
- *                      path: &#x27;&#x27;,
- *                      canActivateChild: [RouteGuardService] //or canActivate
- *                     }
- *                      ...
+ *                   path: &#x27;&#x27;,
+ *                   canActivateChild: [RouteGuardService] //or canActivate
+ *                  }
+ *                   ...
  *                ]
  *
  *

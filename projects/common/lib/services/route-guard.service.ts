@@ -10,8 +10,8 @@ import { AbstractPgCheckService } from './abstract-pg-check.service';
  *
  * To setup, you must:
  *
- * 1. Create a service that `extends CheckCompleteBaseService` ("RegistrationService")
- * 2. Setup AbstractPgCheckService in NgModule providers, to `useExisting` the service from previous step..
+ * 1. Create a service implementing the abstract methods in `AbstractPgService` ("RegistrationService")
+ * 2. Setup AbstractPgCheckService in NgModule providers, to `useExisting` the service from previous step.
  * 3. Add this RouteGuardService to same providers from previous step.
  * 4. Configure routes to use RouteGuardService - `canActivate` or `canActivateChild`
  * 5. Have each "page" in the form call `setPageIncomplete()` or `setPageComplete()` (from the "RegistrationService")
