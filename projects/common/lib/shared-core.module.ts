@@ -43,6 +43,7 @@ import { PhnComponent } from './components/phn/phn.component';
 import { FullNameComponent } from './components/full-name/full-name.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ValidateBcPostalDirective } from './components/postal-code/validate-bc-postal.directive';
+import { XiconButtonComponent } from './components/xicon-button/xicon-button.component';
 
 const componentList = [
   CoreBreadcrumbComponent,
@@ -80,7 +81,8 @@ const componentList = [
   SinComponent,
   PhnComponent,
   HeaderComponent,
-  ValidateBcPostalDirective
+  ValidateBcPostalDirective,
+  XiconButtonComponent
 ];
 @NgModule({
   imports: [

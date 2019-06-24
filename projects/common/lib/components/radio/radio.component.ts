@@ -1,6 +1,6 @@
-import {forwardRef, ElementRef, Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, EventEmitter, Input, Output, Optional, Self} from '@angular/core';
 import {Base} from '../../models/base';
-import { ControlContainer, ControlValueAccessor, NgForm, NG_VALUE_ACCESSOR } from '@angular/forms';
+import {ControlValueAccessor, NgControl} from '@angular/forms';
 
 /**
  * RadioComponent is a single radio which can be used to have multiple radios
@@ -34,25 +34,20 @@ import { ControlContainer, ControlValueAccessor, NgForm, NG_VALUE_ACCESSOR } fro
  *          (statusChange)="onChange.emit($event)"
  *          [showError]="showError">
  *        </common-radio>
+ *
  * @export
  *
  */
 @Component({
   selector: 'common-radio',
   templateUrl: './radio.component.html',
-  styleUrls: ['./radio.component.scss'],
-  viewProviders: [
-    { provide: ControlContainer, useExisting: forwardRef(() => NgForm ) }
-  ],
-  providers: [
-    { provide: NG_VALUE_ACCESSOR, multi: true, useExisting: forwardRef(() => RadioComponent )}
-  ]
+  styleUrls: ['./radio.component.scss']
 })
 export class RadioComponent extends Base implements ControlValueAccessor {
 
 
   @Input() radioLabels: Array<{label: string, value: string}> ;
-  @Input() checked: boolean = false;
+  @Input() checked: boolean = false; // TODO: Remove after confirm not used
   @Input() disabled: boolean = false;
   @Input() label: string ;
   @Input() value: string ;
@@ -65,16 +60,18 @@ export class RadioComponent extends Base implements ControlValueAccessor {
   public _onChange = (_: any) => {};
   public _onTouched = () => {};
 
-  constructor() { super();
-
+  constructor( @Optional() @Self() public controlDir: NgControl ) {
+    super();
+    if ( controlDir ) {
+      controlDir.valueAccessor = this;
+    }
   }
 
   setStatus(evt: string) {
-    this.value = evt;
-    this.statusChange.emit(evt);
+    // this.value = evt;
     this._onChange(evt);
+    this.statusChange.emit(evt);
     this._onTouched();
-
   }
 
   registerOnChange(fn: any): void {
@@ -89,4 +86,7 @@ export class RadioComponent extends Base implements ControlValueAccessor {
     this.value = value;
   }
 
+  setDisabledState(isDisabled: boolean): void {
+    this.disabled = isDisabled;
+  }
 }

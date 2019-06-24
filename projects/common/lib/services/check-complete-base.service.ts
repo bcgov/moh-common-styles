@@ -8,6 +8,7 @@ import { Injectable } from '@angular/core';
 export interface PageListInterface {
   route: string;
   isComplete: boolean;
+  [key: string]: any;
 }
 
 /**
@@ -97,11 +98,11 @@ export class CheckCompleteBaseService implements AbstractPgCheckService {
   /**
    * Index of URL in the items list, -1 if not exist
    */
-  private getUrlIndex( url: string ): number {
+  protected getUrlIndex( url: string ): number {
     return this.pageCheckList.findIndex( x => url.includes( x.route ) );
   }
 
-  private isPageListEmpty() {
+  protected isPageListEmpty() {
     return ( this.pageCheckList.length === 0 );
   }
 }
