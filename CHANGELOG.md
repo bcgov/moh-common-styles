@@ -1,4 +1,17 @@
-# Unreleased "moh-common-lib" (2019-06-24)
+# [Unreleased](https://github.com/bcgov/moh-common-styles/compare/v1.7.0...8f24e2e) "moh-common-lib" (2019-06-25)
+
+
+### Bug Fixes
+
+* **Dropdown:** Add visible form label to input ([2a511e7](https://github.com/bcgov/moh-common-styles/commit/2a511e7))
+* **Province:** Add placeholder when not using dropdown ([8e823c5](https://github.com/bcgov/moh-common-styles/commit/8e823c5))
+
+
+### Features
+
+* **City:** Add placeholder [@Input](https://github.com/Input) with default ([f103e7c](https://github.com/bcgov/moh-common-styles/commit/f103e7c))
+* **Dropdown:** Add 'clearable' property from ng-select ([8f24e2e](https://github.com/bcgov/moh-common-styles/commit/8f24e2e))
+* **Street:** Add placeholder [@Input](https://github.com/Input) with default ([ae493e7](https://github.com/bcgov/moh-common-styles/commit/ae493e7))
 
 
 
