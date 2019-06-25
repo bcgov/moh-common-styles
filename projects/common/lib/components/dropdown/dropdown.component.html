@@ -1,5 +1,8 @@
-<ng-select name='{{label}}'
-           labelForId='{{label}}'
+
+<label for="{{label}}_{{objectId}}" class="control-label">{{label}}</label>
+
+<ng-select name='{{label}}_{{objectId}}'
+           labelForId='{{label}}_{{objectId}}'
            [ngModel]='model'
            (ngModelChange)='model=$event;'
            [items]='items'
