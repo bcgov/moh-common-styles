@@ -24,6 +24,7 @@ export class DropdownComponent extends Base implements OnInit, ControlValueAcces
   @Input() addTag: boolean = false;
   @Input() addTagText: string = 'Add';
   @Input() required: boolean;
+  @Input() clearable: boolean = true;
 
   public _onChange = (_: any) => {};
   public _onTouched = () => {};
