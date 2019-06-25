@@ -1130,11 +1130,6 @@
 
                         </td>
                     </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Default value : </i><code>&#x27;&#x27;</code>
-                        </td>
-                    </tr>
                         <tr>
                             <td class="col-md-4">
                                     <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">projects/common/lib/components/province/province.component.ts:58</a></div>
@@ -1334,7 +1329,7 @@ export class ProvinceComponent extends Base implements ControlValueAccessor {
   @Output() valueChange: EventEmitter&lt;string&gt; &#x3D; new EventEmitter&lt;string&gt;();
   @Output() blurEvent: EventEmitter&lt;any&gt; &#x3D; new EventEmitter&lt;any&gt;();
 
-  province: string &#x3D; &#x27;&#x27;;
+  province: string;
 
   _onChange &#x3D; (_: any) &#x3D;&gt; {};
   _onTouched &#x3D; (_: any) &#x3D;&gt; {};
@@ -1395,8 +1390,8 @@ export class ProvinceComponent extends Base implements ControlValueAccessor {
              labelForId&#x3D;&quot;{{labelforId}}&quot;
              bindValue&#x3D;&quot;provinceCode&quot;
              bindLabel&#x3D;&quot;description&quot;
-             [clearable]&#x3D;&quot;false&quot;
-             [placeholder]&#x3D;&quot;placeholder&quot;&gt;&lt;/ng-select&gt;
+             [clearable]&#x3D;&quot;!required&quot;
+             placeholder&#x3D;&quot;{{ placeholder }}&quot;&gt;&lt;/ng-select&gt;
 &lt;/div&gt;
 
 &lt;!-- Error messages for input --&gt;
@@ -1419,6 +1414,7 @@ export class ProvinceComponent extends Base implements ControlValueAccessor {
           (blur)&#x3D;&quot;onBlurEvent($event)&quot;
           [disabled]&#x3D;&quot;disabled&quot;
           [attr.maxlength]&#x3D;&quot;maxlen&quot;
+          [placeholder]&#x3D;&quot;placeholder&quot;
           autocomplete&#x3D;&quot;off&quot;/&gt;
 &lt;/ng-template&gt;
 </code></pre>
@@ -1450,7 +1446,7 @@ export class ProvinceComponent extends Base implements ControlValueAccessor {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><label for="{{labelforId}}" class="control-label">{{label}}</label><div *ngIf="useDropDownList; else NotDropDownList">  <ng-select [items]="provinceList"             [ngModel]="province"             (ngModelChange)="onValueChange($event)"             (blur)="onBlurEvent($event)"             [required]="required"             [disabled]="disabled"             labelForId="{{labelforId}}"             bindValue="provinceCode"             bindLabel="description"             [clearable]="false"             [placeholder]="placeholder"></ng-select></div><!-- Error messages for input --><div *ngIf="controlDir && !disabled && controlDir.touched"      role="alert"      class="error-container"      aria-live="assertive">  <div class="text-danger" *ngIf="controlDir.errors?.required">    {{label}} is required.  </div></div><ng-template #NotDropDownList>  <input class="form-control"          spellcheck="false"          type="text"          id="{{labelforId}}"          [value]="province"          (change)="onValueChange($event.target.value)"          (blur)="onBlurEvent($event)"          [disabled]="disabled"          [attr.maxlength]="maxlen"          autocomplete="off"/></ng-template></div>'
+        var COMPONENT_TEMPLATE = '<div><label for="{{labelforId}}" class="control-label">{{label}}</label><div *ngIf="useDropDownList; else NotDropDownList">  <ng-select [items]="provinceList"             [ngModel]="province"             (ngModelChange)="onValueChange($event)"             (blur)="onBlurEvent($event)"             [required]="required"             [disabled]="disabled"             labelForId="{{labelforId}}"             bindValue="provinceCode"             bindLabel="description"             [clearable]="!required"             placeholder="{{ placeholder }}"></ng-select></div><!-- Error messages for input --><div *ngIf="controlDir && !disabled && controlDir.touched"      role="alert"      class="error-container"      aria-live="assertive">  <div class="text-danger" *ngIf="controlDir.errors?.required">    {{label}} is required.  </div></div><ng-template #NotDropDownList>  <input class="form-control"          spellcheck="false"          type="text"          id="{{labelforId}}"          [value]="province"          (change)="onValueChange($event.target.value)"          (blur)="onBlurEvent($event)"          [disabled]="disabled"          [attr.maxlength]="maxlen"          [placeholder]="placeholder"          autocomplete="off"/></ng-template></div>'
     var COMPONENTS = [{'name': 'AccordionCommonComponent', 'selector': 'common-accordion'},{'name': 'AddressComponent', 'selector': 'common-address'},{'name': 'ButtonComponent', 'selector': 'common-button'},{'name': 'ButtonGroupComponent', 'selector': 'common-button-group'},{'name': 'CaptchaComponent', 'selector': 'common-captcha'},{'name': 'CheckboxComponent', 'selector': 'common-checkbox'},{'name': 'CityComponent', 'selector': 'common-city'},{'name': 'ConsentModalComponent', 'selector': 'common-consent-modal'},{'name': 'CoreBreadcrumbComponent', 'selector': 'common-core-breadcrumb'},{'name': 'CountryComponent', 'selector': 'common-country'},{'name': 'DateComponent', 'selector': 'common-date'},{'name': 'DatepickerComponent', 'selector': 'common-datepicker'},{'name': 'DropdownComponent', 'selector': 'common-dropdown'},{'name': 'FileUploaderComponent', 'selector': 'common-file-uploader'},{'name': 'FormActionBarComponent', 'selector': 'common-form-action-bar'},{'name': 'FormSubmitBarComponent', 'selector': 'common-form-submit-bar'},{'name': 'FullNameComponent', 'selector': 'common-full-name'},{'name': 'HeaderComponent', 'selector': 'common-header'},{'name': 'NameComponent', 'selector': 'common-name'},{'name': 'PageFrameworkComponent', 'selector': 'common-page-framework'},{'name': 'PageSectionComponent', 'selector': 'common-page-section'},{'name': 'PasswordComponent', 'selector': 'common-password'},{'name': 'PhnComponent', 'selector': 'common-phn'},{'name': 'PhoneNumberComponent', 'selector': 'common-phone-number'},{'name': 'PostalCodeComponent', 'selector': 'common-postal-code'},{'name': 'ProvinceComponent', 'selector': 'common-province'},{'name': 'RadioComponent', 'selector': 'common-radio'},{'name': 'SinComponent', 'selector': 'common-sin'},{'name': 'StreetComponent', 'selector': 'common-street'},{'name': 'ThumbnailComponent', 'selector': 'common-thumbnail'},{'name': 'ToggleComponent', 'selector': 'common-toggle'},{'name': 'WizardProgressBarComponent', 'selector': 'common-wizard-progress-bar'},{'name': 'XiconButtonComponent', 'selector': 'common-xicon-button'}];
     var DIRECTIVES = [{'name': 'DateFieldFormatDirective', 'selector': '[commonDateFieldFormat]'},{'name': 'DayValidationDirective', 'selector': '[commonDayValidation][ngModel]'},{'name': 'ValidateBcPostalDirective', 'selector': '[commonValidateBcPostal]'},{'name': 'ValidateNameDirective', 'selector': '[commonValidateName]'},{'name': 'YearValidateDirective', 'selector': '[commonYearValidate][ngModel]'}];
     var ACTUAL_COMPONENT = {'name': 'ProvinceComponent'};
