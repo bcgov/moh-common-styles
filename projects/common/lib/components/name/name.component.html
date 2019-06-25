@@ -18,8 +18,14 @@
     {{label}} is required.
   </div>
   <div class="text-danger" *ngIf="controlDir.errors?.invalidChar">
-      {{label}} must begin with a letter and cannot include special characters except hyphens,
-      periods, apostrophes and blank characters.
+    <div *ngIf="maxLenAsNumber > 1; else initInvalid;">
+        {{label}} must begin with a letter and cannot include special characters except hyphens,
+        periods, apostrophes and blank characters.
+    </div>
   </div>
 </div>
+
+<ng-template #initInvalid>
+  {{label}} must be with a letter.
+</ng-template>
 
