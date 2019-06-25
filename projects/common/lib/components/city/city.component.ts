@@ -13,6 +13,7 @@ export class CityComponent extends Base implements ControlValueAccessor  {
   @Input() maxlen: string = '100';
   @Input() labelforId: string = 'city_' + this.objectId;
   @Input() disabled: boolean = false;
+  @Input() placeholder: string = 'City Name';
 
   @Input()
   set value( val: string ) {

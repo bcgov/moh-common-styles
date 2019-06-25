@@ -14,6 +14,7 @@
            typeaheadOptionField='fullAddress'
            typeaheadMinLength='3'
            (typeaheadOnSelect)="onSelect($event)"
+           [placeholder]="placeholder"
            autocomplete="off"/>
 </div>
 
@@ -38,5 +39,6 @@
          (blur)="onBlurEvent($event)"
          [disabled]="disabled"
          [attr.maxlength]="maxlen"
+         [placeholder]="placeholder"
          autocomplete="off"/>
 </ng-template>

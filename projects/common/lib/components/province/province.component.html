@@ -10,8 +10,8 @@
              labelForId="{{labelforId}}"
              bindValue="provinceCode"
              bindLabel="description"
-             [clearable]="false"
-             [placeholder]="placeholder"></ng-select>
+             [clearable]="!required"
+             placeholder="{{ placeholder }}"></ng-select>
 </div>
 
 <!-- Error messages for input -->
@@ -34,5 +34,6 @@
           (blur)="onBlurEvent($event)"
           [disabled]="disabled"
           [attr.maxlength]="maxlen"
+          [placeholder]="placeholder"
           autocomplete="off"/>
 </ng-template>

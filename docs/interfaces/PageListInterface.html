@@ -100,6 +100,24 @@
         </section>
 
 
+            <section>
+    <h3 id="inputs">Indexable</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <code>[key: string]:        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">projects/common/lib/services/check-complete-base.service.ts:10</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
 
             <section>
                 <h3 id="inputs">Properties</h3>
@@ -176,8 +194,16 @@ import { Injectable } from &#x27;@angular/core&#x27;;
 export interface PageListInterface {
   route: string;
   isComplete: boolean;
+  [key: string]: any;
 }
 
+/**
+ * Extend this class when creating a service to create your custom Route Guard
+ * logic.  This class should work as-is for simple use-cases.  For Route Guard
+ * setup @see RouteGuardService.
+ *
+ * @see RouteGuardService
+ */
 @Injectable({
   providedIn: &#x27;root&#x27;
 })
@@ -258,11 +284,11 @@ export class CheckCompleteBaseService implements AbstractPgCheckService {
   /**
    * Index of URL in the items list, -1 if not exist
    */
-  private getUrlIndex( url: string ): number {
+  protected getUrlIndex( url: string ): number {
     return this.pageCheckList.findIndex( x &#x3D;&gt; url.includes( x.route ) );
   }
 
-  private isPageListEmpty() {
+  protected isPageListEmpty() {
     return ( this.pageCheckList.length &#x3D;&#x3D;&#x3D; 0 );
   }
 }

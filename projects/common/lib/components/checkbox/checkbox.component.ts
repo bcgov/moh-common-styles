@@ -31,7 +31,10 @@ import { ControlContainer, ControlValueAccessor, NgForm, NG_VALUE_ACCESSOR } fro
 
 export class CheckboxComponent extends Base implements  ControlValueAccessor {
 
-  @Input() data: boolean = true;
+  /**
+   * You can bind to [(data)] OR you can use [(ngModel)] but don't use both.
+   */
+  @Input() data: boolean = false;
   @Input() required: boolean = false;
   @Input() disabled: boolean = false;
   @Input() label: string = 'Default Checkbox';

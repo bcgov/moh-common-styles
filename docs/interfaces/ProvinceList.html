@@ -258,7 +258,7 @@ export class ProvinceComponent extends Base implements ControlValueAccessor {
   @Output() valueChange: EventEmitter&lt;string&gt; &#x3D; new EventEmitter&lt;string&gt;();
   @Output() blurEvent: EventEmitter&lt;any&gt; &#x3D; new EventEmitter&lt;any&gt;();
 
-  province: string &#x3D; &#x27;&#x27;;
+  province: string;
 
   _onChange &#x3D; (_: any) &#x3D;&gt; {};
   _onTouched &#x3D; (_: any) &#x3D;&gt; {};

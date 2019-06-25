@@ -1,4 +1,44 @@
-# Unreleased "moh-common-lib" (2019-06-20)
+# Unreleased "moh-common-lib" (2019-06-25)
+
+
+
+# [1.8.0](https://github.com/bcgov/moh-common-styles/compare/v1.7.0...v1.8.0) "moh-common-lib" (2019-06-25)
+
+
+### Bug Fixes
+
+* **Dropdown:** Add visible form label to input ([2a511e7](https://github.com/bcgov/moh-common-styles/commit/2a511e7))
+* **Province:** Add placeholder when not using dropdown ([8e823c5](https://github.com/bcgov/moh-common-styles/commit/8e823c5))
+* **Province:** Init val = undefined (was empty string); fix placeholder. ([09ae712](https://github.com/bcgov/moh-common-styles/commit/09ae712))
+
+
+### Features
+
+* **City:** Add placeholder [@Input](https://github.com/Input) with default ([f103e7c](https://github.com/bcgov/moh-common-styles/commit/f103e7c))
+* **Dropdown:** Add 'clearable' property from ng-select ([8f24e2e](https://github.com/bcgov/moh-common-styles/commit/8f24e2e))
+* **Province:** Field is clearable when not required ([47d614a](https://github.com/bcgov/moh-common-styles/commit/47d614a))
+* **Street:** Add placeholder [@Input](https://github.com/Input) with default ([ae493e7](https://github.com/bcgov/moh-common-styles/commit/ae493e7))
+
+
+
+# [1.7.0](https://github.com/bcgov/moh-common-styles/compare/v1.6.2...v1.7.0) "moh-common-lib" (2019-06-24)
+
+
+### Bug Fixes
+
+* **Checkbox:** Checkbox component now defaults to unchecked. ([6775a4d](https://github.com/bcgov/moh-common-styles/commit/6775a4d))
+
+
+### Documentation
+
+* **AdditionalDocumentation:**  preserveSymlinks in for npm link ([e458627](https://github.com/bcgov/moh-common-styles/commit/e458627))
+* **RouteGuard:** Document RouteGuardService and related classes. ([fc7fe65](https://github.com/bcgov/moh-common-styles/commit/fc7fe65))
+* **RouteGuard:** Fix instruction examples for RouteGuard. ([3a06f99](https://github.com/bcgov/moh-common-styles/commit/3a06f99))
+
+
+### Features
+
+* **XIconButton:** Add XIconButtonComponent. Include fixes to RadioComponent. ([0ba1d1e](https://github.com/bcgov/moh-common-styles/commit/0ba1d1e))
 
 
 
