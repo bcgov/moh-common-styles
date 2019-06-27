@@ -24,19 +24,9 @@
         right: ($container-gutter-size / 2);
     }
 
+    // Counteract mobile .container-fluid styling for mobile.  This makes sure
+    // bar stays full width.     
     @include media-breakpoint-down(sm){
-        left: 0;
-        right: 0;
-    }
-
-    &.option-extra-width-mobile-only {
-        @include media-breakpoint-down(sm){
-            width: calc(100% + 30px);
-            margin-left: -15px;
-        }
-    }
-
-    &.option-extra-width {
         width: calc(100% + 30px);
         margin-left: -15px;
     }
