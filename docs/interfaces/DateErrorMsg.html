@@ -483,7 +483,6 @@ export class DateComponent extends Base implements OnInit {
   setYear( value: string ): void {
     const year &#x3D; this.getNumericValue( value );
 
-    console.log( &#x27;yearRef: &#x27;, this.yearRef );
     if ( this.date ) {
       this.date.year &#x3D; year;
       this.triggerDayValidation();
@@ -500,7 +499,6 @@ export class DateComponent extends Base implements OnInit {
     // We have to wrap this in a timeout, otherwise it runs before Angular has updated the values
     setTimeout( () &#x3D;&gt; {
       if ( this.form.controls[this.dayLabelforId] ) {
-        console.log( &#x27;Trigger day validation&#x27; );
         this.form.controls[this.dayLabelforId].updateValueAndValidity();
         this.cd.detectChanges();
       }

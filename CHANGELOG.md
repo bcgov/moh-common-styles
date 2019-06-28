@@ -1,4 +1,32 @@
-# Unreleased "moh-common-lib" (2019-06-25)
+# Unreleased "moh-common-lib" (2019-06-28)
+
+
+
+# [2.0.0](https://github.com/bcgov/moh-common-styles/compare/v1.8.0...v2.0.0) "moh-common-lib" (2019-06-28)
+
+
+### Bug Fixes
+
+* **Date:** Remove console logs. ([a9aaf59](https://github.com/bcgov/moh-common-styles/commit/a9aaf59))
+* **PHN:** Remove console logs when setting values. ([d4f0e3b](https://github.com/bcgov/moh-common-styles/commit/d4f0e3b))
+* **Stepper/WizardProgress:** Add vertical padding ([b555787](https://github.com/bcgov/moh-common-styles/commit/b555787))
+
+
+### Features
+
+* **FormActionBar:** Change to full-width,  remove `widthOptions` ([6254d29](https://github.com/bcgov/moh-common-styles/commit/6254d29))
+* **Name, Postal:** Update validators to be compatible with reactive forms ([e35f16b](https://github.com/bcgov/moh-common-styles/commit/e35f16b))
+
+
+### Styles
+
+* **PageFramework:**  Full height page framework, pushes form bar down ([6b8cedd](https://github.com/bcgov/moh-common-styles/commit/6b8cedd))
+
+
+### BREAKING CHANGES
+
+* **PageFramework:** Shows an error when a FormActionBar is embedded
+* **FormActionBar:** Width changes may break designs, @Input removed
 
 
 

@@ -20,13 +20,11 @@ export class PhnComponent extends Base implements ControlValueAccessor {
 
   @Input()
   set value( val: string ) {
-    console.log( 'set value: ', val );
     if ( val) {
       this.phn = val;
     }
   }
   get value() {
-    console.log( 'get value: ', this.phn );
     return this.phn;
   }
 

@@ -2,9 +2,9 @@
 
 :host {
   flex: 1;
+  padding: 1em 2em;
 
   //Styling to handle .horizontal-overflow (in core-breadcrumb.component.scss)
-  padding: 0 2em;
   min-height: 2em;
   min-width: 650px;
 }
