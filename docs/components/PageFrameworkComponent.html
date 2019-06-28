@@ -70,8 +70,10 @@
     </p>
     <p class="comment">
         <p>The &quot;Page Framework&quot; is a template to be used on FPCare pages to ensure
-consistent layout.  It applies to most pages, but should NOT be used on
-Dashboards, or full-width table components.</p>
+consistent layout.  It should be used on every page unless there is a good
+exception.</p>
+<p>Note: CommonFormActionBar (and SubmitBar) must come <em>AFTER</em> this element, not
+inside in version 2.0.0 and above.</p>
 
     </p>
 
@@ -92,7 +94,8 @@ Dashboards, or full-width table components.</p>
 &lt;div&gt;This will go in the middle column&lt;/div&gt;
 &lt;p&gt;So will this&lt;/p&gt;
 &lt;div aside&gt; This will go in the side column, or tips.&lt;/div&gt;
-&lt;/common-page-framework&gt;</code></pre>
+&lt;/common-page-framework&gt;
+&lt;common-form-action-bar&gt;&lt;/common-form-action-bar&gt;</code></pre>
                 </div>
     </div>
 
@@ -209,7 +212,7 @@ Dashboards, or full-width table components.</p>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">projects/common/lib/components/page-framework/page-framework.component.ts:25</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">projects/common/lib/components/page-framework/page-framework.component.ts:29</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -245,8 +248,8 @@ Dashboards, or full-width table components.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="27"
-                            class="link-to-prism">projects/common/lib/components/page-framework/page-framework.component.ts:27</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="31"
+                            class="link-to-prism">projects/common/lib/components/page-framework/page-framework.component.ts:31</a></div>
                 </td>
             </tr>
 
@@ -279,8 +282,11 @@ Dashboards, or full-width table components.</p>
 
 /**
  * The &quot;Page Framework&quot; is a template to be used on FPCare pages to ensure
- * consistent layout.  It applies to most pages, but should NOT be used on
- * Dashboards, or full-width table components.
+ * consistent layout.  It should be used on every page unless there is a good
+ * exception.
+ *
+ * Note: CommonFormActionBar (and SubmitBar) must come *AFTER* this element, not
+ * inside in version 2.0.0 and above.
  *
  * @example
  * &lt;common-page-framework&gt;
@@ -288,6 +294,7 @@ Dashboards, or full-width table components.</p>
  *        &lt;p&gt;So will this&lt;/p&gt;
  *        &lt;div aside&gt; This will go in the side column, or tips.&lt;/div&gt;
  * &lt;/common-page-framework&gt;
+ * &lt;common-form-action-bar&gt;&lt;/common-form-action-bar&gt;
  *
  * @export
  */

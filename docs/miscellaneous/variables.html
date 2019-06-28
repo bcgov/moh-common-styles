@@ -76,6 +76,12 @@
                             <a href="#CANADA" title="projects/common/lib/components/country/country.component.ts"><b>CANADA</b>&nbsp;&nbsp;&nbsp;(projects/.../country.component.ts)</a>
                         </li>
                         <li>
+                            <a href="#commonValidateBcPostal" title="projects/common/lib/components/postal-code/validate-bc-postal.directive.ts"><b>commonValidateBcPostal</b>&nbsp;&nbsp;&nbsp;(projects/.../validate-bc-postal.directive.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#commonValidateName" title="projects/common/lib/components/name/validate-name.directive.ts"><b>commonValidateName</b>&nbsp;&nbsp;&nbsp;(projects/.../validate-name.directive.ts)</a>
+                        </li>
+                        <li>
                             <a href="#componentList" title="projects/common/lib/shared-core.module.ts"><b>componentList</b>&nbsp;&nbsp;&nbsp;(projects/.../shared-core.module.ts)</a>
                         </li>
                         <li>
@@ -103,19 +109,19 @@
                             <a href="#message" title="projects/common/schematics/src/version-js/files/version.GENERATED.ts"><b>message</b>&nbsp;&nbsp;&nbsp;(projects/.../version.GENERATED.ts)</a>
                         </li>
                         <li>
-                            <a href="#moment" title="projects/common/lib/components/date/date.component.ts"><b>moment</b>&nbsp;&nbsp;&nbsp;(projects/.../date.component.ts)</a>
-                        </li>
-                        <li>
                             <a href="#moment" title="projects/common/lib/components/date/year-validate.directive.ts"><b>moment</b>&nbsp;&nbsp;&nbsp;(projects/.../year-validate.directive.ts)</a>
                         </li>
                         <li>
                             <a href="#moment" title="projects/common/lib/components/date/day-validation.directive.ts"><b>moment</b>&nbsp;&nbsp;&nbsp;(projects/.../day-validation.directive.ts)</a>
                         </li>
                         <li>
-                            <a href="#moment" title="projects/common/lib/models/person.model.ts"><b>moment</b>&nbsp;&nbsp;&nbsp;(projects/.../person.model.ts)</a>
+                            <a href="#moment" title="projects/common/lib/components/date/date.component.ts"><b>moment</b>&nbsp;&nbsp;&nbsp;(projects/.../date.component.ts)</a>
                         </li>
                         <li>
                             <a href="#moment" title="projects/common/lib/services/logger.service.ts"><b>moment</b>&nbsp;&nbsp;&nbsp;(projects/.../logger.service.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#moment" title="projects/common/lib/models/person.model.ts"><b>moment</b>&nbsp;&nbsp;&nbsp;(projects/.../person.model.ts)</a>
                         </li>
                         <li>
                             <a href="#moment" title="projects/common/lib/components/datepicker/datepicker.component.ts"><b>moment</b>&nbsp;&nbsp;&nbsp;(projects/.../datepicker.component.ts)</a>
@@ -937,6 +943,86 @@ header .nav-link {
             </tbody>
         </table>
 </section>
+    <h3>projects/common/lib/components/postal-code/validate-bc-postal.directive.ts</h3>
+    <section>
+    <h3></h3>        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="commonValidateBcPostal"></a>
+                        <span class="name">
+                            <b>
+                            commonValidateBcPostal</b>
+                            <a href="#commonValidateBcPostal"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://angular.io/api/forms/ValidatorFn" target="_blank" >ValidatorFn</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>(control: AbstractControl): ValidationErrors | null &#x3D;&gt; {
+  /**
+  * Valid characters for BC postal code
+  */
+ const criteria: RegExp &#x3D; RegExp(&#x27;^[Vv]\\d[ABCEGHJ-NPRSTV-Zabceghj-nprstv-z][ ]?\\d[ABCEGHJ-NPRSTV-Zabceghj-nprstv-z]\\d$&#x27;);
+
+  if ( control.value ) {
+    return criteria.test( control.value ) ? null : { &#x27;invalidBCPostal&#x27;: true };
+  }
+  return null;
+}</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+</section>
+    <h3>projects/common/lib/components/name/validate-name.directive.ts</h3>
+    <section>
+    <h3></h3>        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="commonValidateName"></a>
+                        <span class="name">
+                            <b>
+                            commonValidateName</b>
+                            <a href="#commonValidateName"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://angular.io/api/forms/ValidatorFn" target="_blank" >ValidatorFn</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>(control: AbstractControl): ValidationErrors | null &#x3D;&gt; {
+   /**
+   * Valid characters for name
+   */
+  const criteria: RegExp &#x3D; RegExp( &#x27;^[a-zA-Z][a-zA-Z\-.\&#x27; ]*$&#x27; );
+
+  if ( control.value ) {
+    return criteria.test( control.value ) ? null : { &#x27;invalidChar&#x27;: true };
+  }
+  return null;
+}</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+</section>
     <h3>projects/common/lib/shared-core.module.ts</h3>
     <section>
     <h3></h3>        <table class="table table-sm table-bordered">
@@ -1276,30 +1362,6 @@ limitations under the License.&#x60;</code>
             </tbody>
         </table>
 </section>
-    <h3>projects/common/lib/components/date/date.component.ts</h3>
-    <section>
-    <h3></h3>        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="moment"></a>
-                        <span class="name">
-                            <b>
-                            moment</b>
-                            <a href="#moment"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Default value : </i><code>moment_</code>
-                        </td>
-                    </tr>
-
-
-            </tbody>
-        </table>
-</section>
     <h3>projects/common/lib/components/date/year-validate.directive.ts</h3>
     <section>
     <h3></h3>        <table class="table table-sm table-bordered">
@@ -1348,7 +1410,7 @@ limitations under the License.&#x60;</code>
             </tbody>
         </table>
 </section>
-    <h3>projects/common/lib/models/person.model.ts</h3>
+    <h3>projects/common/lib/components/date/date.component.ts</h3>
     <section>
     <h3></h3>        <table class="table table-sm table-bordered">
             <tbody>
@@ -1373,6 +1435,30 @@ limitations under the License.&#x60;</code>
         </table>
 </section>
     <h3>projects/common/lib/services/logger.service.ts</h3>
+    <section>
+    <h3></h3>        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="moment"></a>
+                        <span class="name">
+                            <b>
+                            moment</b>
+                            <a href="#moment"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>moment_</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+</section>
+    <h3>projects/common/lib/models/person.model.ts</h3>
     <section>
     <h3></h3>        <table class="table table-sm table-bordered">
             <tbody>
