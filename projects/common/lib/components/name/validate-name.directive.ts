@@ -1,5 +1,19 @@
 import { Directive } from '@angular/core';
-import { NG_VALIDATORS, Validator, AbstractControl } from '@angular/forms';
+import { NG_VALIDATORS, Validator, AbstractControl, ValidatorFn, ValidationErrors } from '@angular/forms';
+
+
+export const commonValidateName: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
+   /**
+   * Valid characters for name
+   */
+  const criteria: RegExp = RegExp( '^[a-zA-Z][a-zA-Z\-.\' ]*$' );
+
+  if ( control.value ) {
+    return criteria.test( control.value ) ? null : { 'invalidChar': true };
+  }
+  return null;
+};
+
 
 @Directive({
   selector: '[commonValidateName]',
@@ -9,16 +23,8 @@ import { NG_VALIDATORS, Validator, AbstractControl } from '@angular/forms';
 })
 export class ValidateNameDirective implements Validator {
 
-  /**
-   * Valid characters for name
-   */
-  private criteria: RegExp = RegExp( '^[a-zA-Z][a-zA-Z\-.\' ]*$' );
-
   validate( control: AbstractControl ): {[key: string]: any} | null {
 
-    if ( control.value ) {
-      return this.criteria.test( control.value ) ? null : { 'invalidChar': true };
-    }
-    return null;
+    return commonValidateName( control );
   }
 }

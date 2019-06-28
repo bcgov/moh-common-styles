@@ -30,4 +30,7 @@ export * from './lib/services/check-complete-base.service';
 export * from './lib/services/route-guard.service';
 export * from './lib/services/abstract-pg-check.service';
 
+// Validators
+export { commonValidateName } from './lib/components/name/validate-name.directive';
+export { commonValidateBcPostal } from './lib/components/postal-code/validate-bc-postal.directive';
 

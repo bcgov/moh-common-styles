@@ -83,4 +83,8 @@ export class NameComponent extends Base implements ControlValueAccessor {
     ( this.controlDir.dirty || this.controlDir.touched );
     return displayErr;
   }
+
+  get maxLenAsNumber(): number {
+    return Number.parseInt( this.maxlen, 10 );
+  }
 }
