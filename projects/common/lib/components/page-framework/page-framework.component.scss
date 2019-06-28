@@ -7,8 +7,28 @@ common-page-framework {
   // have full-width white content and no gutters. This keeps the padding the
   // same by adding the padding into the child. In practice this requires making
   // sure app.component.scss sets .container-fluid x-padding to 0 for md-up bps.
-  padding-right: 15px;
-  padding-left: 15px;
+  padding-left: 30px;
+  padding-right: 30px;
+  
+  // We need the page to have a min-height in order to push down the form action
+  // bar and footer. Applications are free to overwrite this value if e.g. they
+  // have a differently sized header.
+  $header: 80.5px;
+  $breadcrumb: 78.5px;
+  $footer: 51px;
+  $actionBar: 70px;
+  $offset: $header + $breadcrumb + $footer + $actionBar; // 280px
+  
+
+  // min-height: calc(100vh - 280px);
+  min-height: calc(100vh - #{$offset});
+
+  // @deprecate Deprecation notice
+  common-form-action-bar, common-form-submit-bar {
+    > .form-bar {background-color: red !important; }
+    .btn { font-size: 0; }
+    .btn:after {font-size: 1rem; content: "FORM BAR MUST BE PLACED OUTSIDE OF COMMON-PAGE-FRAMEWORK"}
+  }
 }
 
 // for use as titles in asides / info boxes

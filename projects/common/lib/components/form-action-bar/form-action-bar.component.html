@@ -1,4 +1,4 @@
-<div class="form-action-bar form-bar option-{{widthOption}}" [ngClass]="{disabled: !canContinue}">
+<div class="form-action-bar form-bar" [ngClass]="{disabled: !canContinue}">
     <button class="btn btn-lg {{defaultColor ? 'btn-primary' : 'btn-secondary' }} submit"
             (click)="onClick($event)"
             [ngClass]="{disabled: !canContinue || isLoading}">

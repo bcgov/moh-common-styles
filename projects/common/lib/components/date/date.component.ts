@@ -108,7 +108,6 @@ export class DateComponent extends Base implements OnInit {
   setYear( value: string ): void {
     const year = this.getNumericValue( value );
 
-    console.log( 'yearRef: ', this.yearRef );
     if ( this.date ) {
       this.date.year = year;
       this.triggerDayValidation();
@@ -125,7 +124,6 @@ export class DateComponent extends Base implements OnInit {
     // We have to wrap this in a timeout, otherwise it runs before Angular has updated the values
     setTimeout( () => {
       if ( this.form.controls[this.dayLabelforId] ) {
-        console.log( 'Trigger day validation' );
         this.form.controls[this.dayLabelforId].updateValueAndValidity();
         this.cd.detectChanges();
       }
