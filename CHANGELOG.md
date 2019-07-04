@@ -1,4 +1,18 @@
-# Unreleased "moh-common-lib" (2019-06-28)
+# Unreleased "moh-common-lib" (2019-07-04)
+
+
+
+## [2.0.1](https://github.com/bcgov/moh-common-styles/compare/v2.0.0...v2.0.1) "moh-common-lib" (2019-07-04)
+
+
+### Bug Fixes
+
+* **PhoneNumber:** `Required` [@Input](https://github.com/Input) works properly ([5b18c5f](https://github.com/bcgov/moh-common-styles/commit/5b18c5f))
+
+
+### Code Refactoring
+
+* **XIconButton:** Add (click) event, [@deprecate](https://github.com/deprecate) (clickEvent) ([baee5ad](https://github.com/bcgov/moh-common-styles/commit/baee5ad))
 
 
 
