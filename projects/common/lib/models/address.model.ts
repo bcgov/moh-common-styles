@@ -6,10 +6,14 @@ export class Address {
 
   static PostalCodeBCRegEx = '^[Vv]\\d[ABCEGHJ-NPRSTV-Zabceghj-nprstv-z][ ]?\\d[ABCEGHJ-NPRSTV-Zabceghj-nprstv-z]\\d$';
 
-  /* Variables for class */
+  /** Same as addressLine1, your application should use one or the other. */
   public street: string;
+
+  /** Same as street, your application should use one or the other. */
   public addressLine1: string;
+  /** Used to store optional extra address fields. Can be used with addressLine1 OR street. */
   public addressLine2: string;
+  /** Used to store optional extra address fields. Can be used with addressLine1 OR street. */
   public addressLine3: string;
   public postal: string;
   public country: string;
