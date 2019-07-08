@@ -1,5 +1,5 @@
 <section>
-  <label for="{{objectId}}" class="control-label" [innerHtml]="label" ></label><br/>
+  <p class="control-label">{{ label }} </p>
   <div *ngFor="let val of radioLabels" [ngStyle]="{'display': display}" >
     <div class="md-radio md-radio-inline">
       <input type="radio"
