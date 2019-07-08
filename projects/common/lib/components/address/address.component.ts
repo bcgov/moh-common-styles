@@ -42,6 +42,7 @@ export class AddressComponent extends Base
   @Input() defaultCountry: string = CANADA;
   @Input() provinceList: ProvinceList[] = PROVINCE_LIST;
   @Input() defaultProvince: string = BRITISH_COLUMBIA;
+  @Input() disableGeocoder: boolean = false;
 
   @Input()
   set address( val: Address ) {
@@ -224,6 +225,9 @@ export class AddressComponent extends Base
    * GeoCoder only is applicable when address is BC, Canada.
    */
   useGeoCoder(): boolean {
+    if (this.disableGeocoder) {
+      return false;
+    }
     return this.isCanada() && BRITISH_COLUMBIA === this.addr.province;
   }
 
