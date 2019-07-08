@@ -34,3 +34,5 @@ export * from './lib/services/abstract-pg-check.service';
 export { commonValidateName } from './lib/components/name/validate-name.directive';
 export { commonValidateBcPostal } from './lib/components/postal-code/validate-bc-postal.directive';
 
+// Functions
+export { validatePHN } from './lib/components/phn/phn.component';
