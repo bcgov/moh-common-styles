@@ -15,6 +15,8 @@ export class StreetComponent extends Base implements OnInit, ControlValueAccesso
 
   @Input() label: string = 'Full street address or rural route';
   @Input() maxlen: string = '250';
+  // TODO - Replace maxlen with maxlength across this and all other components
+  // @Input() maxlength: string = '250';
   @Input() labelforId: string = 'street_' + this.objectId;
   @Input() disabled: boolean = false;
   @Input() useGeoCoder: boolean = false;

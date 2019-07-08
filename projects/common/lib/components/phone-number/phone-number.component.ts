@@ -37,6 +37,7 @@ export class PhoneNumberComponent extends MaskModel implements ControlValueAcces
   
   static PhoneNumberRegEx = '^[2-9]{1}\\d{2}[\\-]?\\d{3}[\\-]?\\d{4}$';
   @Input() displayMask: boolean = true;
+  @Input() required: boolean = false;
   @Input() label: string = 'Mobile';
   @Input() objectID: string = 'phone_' + this.objectId;
   @Input() phoneNumber: string;

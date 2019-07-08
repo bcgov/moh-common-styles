@@ -153,6 +153,9 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                <a href="#click">click</a>
+                            </li>
+                            <li>
                                 <a href="#clickEvent">clickEvent</a>
                             </li>
                         </ul>
@@ -176,7 +179,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">projects/common/lib/components/xicon-button/xicon-button.component.ts:11</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">projects/common/lib/components/xicon-button/xicon-button.component.ts:15</a></div>
                             </td>
                         </tr>
 
@@ -214,6 +217,27 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
+                        <a name="click"></a>
+                        <b>click</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>EventEmitter&lt;any&gt;</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">projects/common/lib/components/xicon-button/xicon-button.component.ts:15</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
                         <a name="clickEvent"></a>
                         <b>clickEvent</b>
                     </td>
@@ -226,7 +250,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">projects/common/lib/components/xicon-button/xicon-button.component.ts:11</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">projects/common/lib/components/xicon-button/xicon-button.component.ts:14</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -261,8 +285,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="15"
-                            class="link-to-prism">projects/common/lib/components/xicon-button/xicon-button.component.ts:15</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="19"
+                            class="link-to-prism">projects/common/lib/components/xicon-button/xicon-button.component.ts:19</a></div>
                 </td>
             </tr>
 
@@ -294,12 +318,17 @@
 export class XiconButtonComponent {
 
   @Input() label: string;
+  /**
+   * @deprecated - Remove at breaking change and go to (click)
+   */
   @Output() clickEvent: EventEmitter&lt;any&gt; &#x3D; new EventEmitter&lt;any&gt;();
+  @Output() click: EventEmitter&lt;any&gt; &#x3D; new EventEmitter&lt;any&gt;();
 
   constructor() {}
 
   onBtnClick() {
     this.clickEvent.emit();
+    this.click.emit();
   }
 }
 </code></pre>
