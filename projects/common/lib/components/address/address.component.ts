@@ -58,6 +58,14 @@ export class AddressComponent extends Base
   addr: Address;
   provList: ProvinceList[];
 
+  /**
+   * If true, adds a plus icon next to street and enables users to add a second
+   * address line.  This value binds to `address.addressLine2`
+   */
+  @Input() allowExtralines: boolean = false;
+
+  showLine = false;
+
   _onChange = (_: any) => {};
   _onTouched = (_: any) => {};
 
@@ -76,8 +84,12 @@ export class AddressComponent extends Base
       if ( !this.addr.province ) {
         this.addr.province = this.setDefaultProvinceAsOption( this.addr.country );
       }
-    }
 
+      // Make sure addressLine2 is visible if there is data persisted to display there.
+      if (this.allowExtralines && this.addr.addressLine2) {
+        this.addLine();
+      }
+    }
 
     this.updateProvList();
   }
@@ -154,6 +166,14 @@ export class AddressComponent extends Base
       }
       this.updateProvList();
     }
+  }
+
+  addLine(){
+    this.showLine = true;
+  }
+
+  removeLine(){
+      this.showLine = false;
   }
 
   /**

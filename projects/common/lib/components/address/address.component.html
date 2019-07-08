@@ -1,26 +1,6 @@
-<div class="form-group col-sm-8 p-sm-0">
-    <common-country name="country_{{objectId}}"
-                    label="Country"
-                    [countryList]="countryList"
-                    [ngModel]="addr?.country"
-                    (ngModelChange)="setCountry($event)"
-                    [required]="isRequired"
-                    [disabled]="disabled" ></common-country>
-  </div>
-
-  <div class="form-group col-sm-8 p-sm-0">
-    <common-province name="province_{{objectId}}"
-                     label="Province/State"
-                     [ngModel]="addr?.province"
-                     (ngModelChange)="setProvince($event)"
-                     [provinceList]="provList"
-                     [required]="isRequired"
-                     [disabled]="disabled"
-                     placeholder="{{ isCanada()? 'Select a Province': 'Select a State' }}"
-                     [useDropDownList]="isCanadaUSA()"></common-province>
-  </div>
-
-  <div class="form-group col-sm-8 p-sm-0">
+<div class="form-group">
+  <div class="row">
+    <div class="col-11">
       <common-street name="street_{{objectId}}"
                      label="Full street address or rural route"
                      [useGeoCoder]="useGeoCoder()"
@@ -30,21 +10,82 @@
                      [required]="isRequired"
                      [disabled]="disabled"></common-street>
     </div>
-
-  <div class="form-group col-sm-8 p-sm-0">
-    <common-city name="city_{{objectId}}"
-                 [ngModel]="addr?.city"
-                 (ngModelChange)="setCity($event)"
-                 [required]="isRequired"
-                 [disabled]="disabled"></common-city>
+    <div class="col-1">
+      <div class="h-50"></div>
+      <button class=" btn btn-transparent"
+              aria-label="Add Address Line 2 (optional)"
+              (click)="addLine()">
+        <i class="fa fa-plus"></i>
+      </button>
+    </div>
   </div>
+</div>
 
-  <div class="form-group col-sm-4 p-sm-0">
-    <common-postal-code name="pc_{{objectId}}"
-                        [label]="'Postal Code'"
-                        [displayMask]="isCanada()"
-                        [disabled]="disabled"
-                        [ngModel]="addr?.postal"
-                        (ngModelChange)="setPostalCode($event)"
-                        [required]="isRequired"></common-postal-code>
+
+<!-- TODO - Potentially put this behind an ngFor if we ever need to show AddressLine3 -->
+<div class="form-group"
+     *ngIf='showLine'>
+  <div class="row">
+
+
+    <div class="col-11">
+      <common-street label='Address Line 2'
+                     name="street_line_2_{{objectId}}"
+                     [useGeoCoder]='false'
+                     [(ngModel)]='addr.addressLine2'></common-street>
+    </div>
+    <div class="col-1">
+      <div class="h-50"></div>
+      <button class=" btn btn-transparent"
+              aria-label='Remove Address Line 2'
+              (click)="removeLine()">
+        <i class="fa fa-minus"></i>
+      </button>
+    </div>
   </div>
+</div>
+
+
+
+
+<div class="form-group">
+  <common-city name="city_{{objectId}}"
+               [ngModel]="addr?.city"
+               (ngModelChange)="setCity($event)"
+               [required]="isRequired"
+               [disabled]="disabled"></common-city>
+</div>
+
+
+<div class="form-group">
+  <common-country name="country_{{objectId}}"
+                  label="Country"
+                  [countryList]="countryList"
+                  [ngModel]="addr?.country"
+                  (ngModelChange)="setCountry($event)"
+                  [required]="isRequired"
+                  [disabled]="disabled"></common-country>
+</div>
+
+<div class="form-group">
+  <common-province name="province_{{objectId}}"
+                   label="Province/State"
+                   [ngModel]="addr?.province"
+                   (ngModelChange)="setProvince($event)"
+                   [provinceList]="provList"
+                   [required]="isRequired"
+                   [disabled]="disabled"
+                   placeholder="{{ isCanada()? 'Select a Province': 'Select a State' }}"
+                   [useDropDownList]="isCanadaUSA()"></common-province>
+</div>
+
+
+<div class="form-group col-sm-4 p-sm-0">
+  <common-postal-code name="pc_{{objectId}}"
+                      [label]="'Postal Code'"
+                      [displayMask]="isCanada()"
+                      [disabled]="disabled"
+                      [ngModel]="addr?.postal"
+                      (ngModelChange)="setPostalCode($event)"
+                      [required]="isRequired"></common-postal-code>
+</div>
