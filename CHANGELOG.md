@@ -1,4 +1,19 @@
-# Unreleased "moh-common-lib" (2019-07-04)
+# [Unreleased](https://github.com/bcgov/moh-common-styles/compare/v2.0.1...a512eb0) "moh-common-lib" (2019-07-08)
+
+
+### Code Refactoring
+
+* **AddressComponent:** Reorganize order of inputs, add AddressLine1 ([5d8f61d](https://github.com/bcgov/moh-common-styles/commit/5d8f61d))
+
+
+### Documentation
+
+* **AddressModel:** Add TSDOC descriptions on street and addressLine1 ([6f093d2](https://github.com/bcgov/moh-common-styles/commit/6f093d2))
+
+
+### Features
+
+* **AddressComponent:** Add 'disableGeocoder' [@Input](https://github.com/Input) ([a512eb0](https://github.com/bcgov/moh-common-styles/commit/a512eb0))
 
 
 
