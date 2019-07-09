@@ -169,12 +169,12 @@ export class AddressComponent extends Base
     }
   }
 
-  addLine(){
+  addLine() {
     this.showLine = true;
   }
 
-  removeLine(){
-      this.showLine = false;
+  removeLine() {
+    this.showLine = false;
   }
 
   /**

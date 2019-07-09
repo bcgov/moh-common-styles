@@ -1,6 +1,6 @@
 <div class="form-group">
   <div class="row">
-    <div class="col-11">
+    <div [ngClass]="{'col-11': allowExtralines, 'col-12': !allowExtralines}">
       <common-street name="street_{{objectId}}"
                      label="Full street address or rural route"
                      [useGeoCoder]="useGeoCoder()"
@@ -10,9 +10,11 @@
                      [required]="isRequired"
                      [disabled]="disabled"></common-street>
     </div>
-    <div class="col-1">
+    <div class="col-1"
+         *ngIf='allowExtralines'>
       <div class="h-50"></div>
       <button class=" btn btn-transparent"
+              *ngIf='!showLine'
               aria-label="Add Address Line 2 (optional)"
               (click)="addLine()">
         <i class="fa fa-plus"></i>
