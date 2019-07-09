@@ -134,7 +134,6 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
      * Call this method to display the modal.
      */
     showFullSizeView() {
-        this.fullSizeViewModal.config.backdrop = false;
         this.fullSizeViewModal.config.keyboard = false;
         this.fullSizeViewModal.show();
     }
