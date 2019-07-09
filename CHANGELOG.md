@@ -2,6 +2,20 @@
 
 
 
+## [2.1.1](https://github.com/bcgov/moh-common-styles/compare/v2.1.0...v2.1.1) "moh-common-lib" (2019-07-09)
+
+
+### Bug Fixes
+
+* **Address:** Implement `allowExtralines` to opt-in to new multi-line ([5a7c37b](https://github.com/bcgov/moh-common-styles/commit/5a7c37b))
+
+
+### BREAKING CHANGES
+
+* **Address:** This reverts an accidentally introduced breaking change in 2.1.0 where all address components would use the new line behaviour.  Now, it is opt-in.
+
+
+
 # [2.1.0](https://github.com/bcgov/moh-common-styles/compare/v2.0.1...v2.1.0) "moh-common-lib" (2019-07-09)
 
 
