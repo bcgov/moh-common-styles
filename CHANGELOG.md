@@ -1,4 +1,8 @@
-# [Unreleased](https://github.com/bcgov/moh-common-styles/compare/v2.0.1...a27faa9) "moh-common-lib" (2019-07-09)
+# Unreleased "moh-common-lib" (2019-07-09)
+
+
+
+# [2.1.0](https://github.com/bcgov/moh-common-styles/compare/v2.0.1...v2.1.0) "moh-common-lib" (2019-07-09)
 
 
 ### Accessibility
@@ -9,6 +13,11 @@
 ### Bug Fixes
 
 * **Radio:** Fix empty label for RadioComponent for a11y (Waze) ([7400a64](https://github.com/bcgov/moh-common-styles/commit/7400a64))
+
+
+### Build
+
+* Add "a11y" type to changelog and commit types ([edf0b2e](https://github.com/bcgov/moh-common-styles/commit/edf0b2e))
 
 
 ### Code Refactoring
