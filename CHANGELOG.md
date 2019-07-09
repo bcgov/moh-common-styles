@@ -1,4 +1,52 @@
-# Unreleased "moh-common-lib" (2019-07-04)
+# Unreleased "moh-common-lib" (2019-07-09)
+
+
+
+## [2.1.1](https://github.com/bcgov/moh-common-styles/compare/v2.1.0...v2.1.1) "moh-common-lib" (2019-07-09)
+
+
+### Bug Fixes
+
+* **Address:** Implement `allowExtralines` to opt-in to new multi-line ([5a7c37b](https://github.com/bcgov/moh-common-styles/commit/5a7c37b))
+
+
+### BREAKING CHANGES
+
+* **Address:** This reverts an accidentally introduced breaking change in 2.1.0 where all address components would use the new line behaviour.  Now, it is opt-in.
+
+
+
+# [2.1.0](https://github.com/bcgov/moh-common-styles/compare/v2.0.1...v2.1.0) "moh-common-lib" (2019-07-09)
+
+
+### Accessibility
+
+* **Stepper/Wizard:** Darken link text by 5% to get AA colour contrast ([a27faa9](https://github.com/bcgov/moh-common-styles/commit/a27faa9))
+
+
+### Bug Fixes
+
+* **Radio:** Fix empty label for RadioComponent for a11y (Waze) ([7400a64](https://github.com/bcgov/moh-common-styles/commit/7400a64))
+
+
+### Build
+
+* Add "a11y" type to changelog and commit types ([edf0b2e](https://github.com/bcgov/moh-common-styles/commit/edf0b2e))
+
+
+### Code Refactoring
+
+* **AddressComponent:** Reorganize order of inputs, add AddressLine1 ([5d8f61d](https://github.com/bcgov/moh-common-styles/commit/5d8f61d))
+
+
+### Documentation
+
+* **AddressModel:** Add TSDOC descriptions on street and addressLine1 ([6f093d2](https://github.com/bcgov/moh-common-styles/commit/6f093d2))
+
+
+### Features
+
+* **AddressComponent:** Add 'disableGeocoder' [@Input](https://github.com/Input) ([a512eb0](https://github.com/bcgov/moh-common-styles/commit/a512eb0))
 
 
 

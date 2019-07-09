@@ -53,11 +53,8 @@ progressbar {
     transform: translateX(-33%);
     white-space: nowrap;
     font-size: small;
+    
+    // a11y - necessary to get AA colour contrast against the $gray-500 background.
+    color: darken($link-color, 5);
   }
-}
-
-
-.progress-background {
-  width: 100%;
-  background-color: blue;
 }
