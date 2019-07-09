@@ -12,6 +12,7 @@ var TYPES = {
   feat: true,
   fix: true,
   docs: true,
+  a11y: true,
   style: true,
   refactor: true,
   perf: true,

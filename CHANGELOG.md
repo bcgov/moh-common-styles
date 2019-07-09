@@ -1,4 +1,9 @@
-# [Unreleased](https://github.com/bcgov/moh-common-styles/compare/v2.0.1...7400a64) "moh-common-lib" (2019-07-08)
+# [Unreleased](https://github.com/bcgov/moh-common-styles/compare/v2.0.1...a27faa9) "moh-common-lib" (2019-07-09)
+
+
+### Accessibility
+
+* **Stepper/Wizard:** Darken link text by 5% to get AA colour contrast ([a27faa9](https://github.com/bcgov/moh-common-styles/commit/a27faa9))
 
 
 ### Bug Fixes
