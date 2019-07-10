@@ -1,5 +1,5 @@
-<section>
-  <p class="control-label">{{ label }} </p>
+<fieldset>
+  <legend class="radio-box--legend" [innerHtml]="label"></legend>
   <div *ngFor="let val of radioLabels" [ngStyle]="{'display': display}" >
     <div class="md-radio md-radio-inline">
       <input type="radio"
@@ -20,4 +20,4 @@
   <div *ngIf='showError && (value === undefined || value === null)'>
       <div class="text-danger">{{errorMessageRequired}}</div>
   </div>
-</section>
+</fieldset>
