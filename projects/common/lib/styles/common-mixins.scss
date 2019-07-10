@@ -1,0 +1,21 @@
+
+// https://ghinda.net/article/mimic-native-focus-css/
+
+
+// Looks like an input has :focus, in browser defaults. Useful for custom form controls.
+@mixin custom-focus {
+    outline-width: 2px;
+    outline-style: solid;
+    outline-color: Highlight;
+
+    
+      /* WebKit gets its native focus styles.
+       */
+      @media (-webkit-min-device-pixel-ratio:0) {
+        .unreal-focus {
+          outline-color: -webkit-focus-ring-color;
+          outline-style: auto;
+        }
+      }
+}
+  
