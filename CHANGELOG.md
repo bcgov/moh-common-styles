@@ -1,4 +1,18 @@
-# Unreleased "moh-common-lib" (2019-07-09)
+# Unreleased "moh-common-lib" (2019-07-10)
+
+
+
+## [2.1.2](https://github.com/bcgov/moh-common-styles/compare/v2.1.1...v2.1.2) "moh-common-lib" (2019-07-10)
+
+
+### Accessibility
+
+* **Radio:** Radio is now focusable via tab / screenreader ([126d876](https://github.com/bcgov/moh-common-styles/commit/126d876))
+
+
+### Styles
+
+* **ConsentModal:** Backdrop enabled when modal is open. ([b901868](https://github.com/bcgov/moh-common-styles/commit/b901868))
 
 
 
