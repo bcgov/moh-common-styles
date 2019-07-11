@@ -1,4 +1,5 @@
 @import 'variables.scss';
+@import 'common-mixins.scss';
 
 .radio-box--legend {
   font-size: inherit;
@@ -34,7 +35,9 @@ $md-radio-ripple-size: 15px;
   }
 
   input[type="radio"] {
-    display: none;
+    // hides the input while keeping it focusable. `display:none` messes with focus
+    width: 0; // Keeps the input focusable
+    height: 0;
 
     &:checked+label:before {
       border-color: $md-radio-checked-color;
@@ -43,6 +46,10 @@ $md-radio-ripple-size: 15px;
 
     &:checked+label:after {
       transform: scale(1);
+    }
+
+    &:focus + label {
+      @include custom-focus;
     }
   }
 
@@ -85,11 +92,11 @@ $md-radio-ripple-size: 15px;
 
 
 
-// *************************************
+// // *************************************
 
-// *************************************
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-}
+// // *************************************
+// *,
+// *:before,
+// *:after {
+//   box-sizing: border-box;
+// }
