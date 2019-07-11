@@ -48,8 +48,14 @@ $md-radio-ripple-size: 15px;
       transform: scale(1);
     }
 
-    &:focus + label {
-      @include custom-focus;
+
+    
+    // Custom focus styles from material to match radio
+    // https://material.angular.io/components/radio/examples
+    // This is for a11y and tab focus as well as mouse focus.
+    &:focus + label:before {
+      box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.1);
+      animation: none;
     }
   }
 
