@@ -1,5 +1,5 @@
-<section>
-  <p class="control-label" tabindex="-1">{{ label }} </p>
+<fieldset>
+  <legend *ngIf="label; else noLabel;" class="radio-box--legend" tabindex="-1">{{label}}</legend>
   <div *ngFor="let val of radioLabels" [ngStyle]="{'display': display}" >
     <div class="md-radio md-radio-inline">
       <input type="radio"
@@ -20,4 +20,12 @@
   <div *ngIf='showError && (value === undefined || value === null)'>
       <div class="text-danger">{{errorMessageRequired}}</div>
   </div>
-</section>
+</fieldset>
+
+
+<ng-template #noLabel>
+  <legend class="radio-box--legend" tabindex="-1">
+    <ng-content></ng-content>
+  </legend>
+</ng-template>
+

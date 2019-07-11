@@ -1,6 +1,11 @@
 @import 'variables.scss';
 @import 'common-mixins.scss';
 
+.radio-box--legend {
+  font-size: inherit;
+  font-weight: bold;
+}
+
 $md-radio-checked-color: $blue;
 $md-radio-border-color: rgba(0, 0, 0, 0.54);
 $md-radio-size: 20px;
@@ -28,7 +33,7 @@ $md-radio-ripple-size: 15px;
   &.md-radio-inline {
     display: inline-block;
   }
-  
+
   input[type="radio"] {
     // hides the input while keeping it focusable. `display:none` messes with focus
     width: 0; // Keeps the input focusable
@@ -95,4 +100,3 @@ $md-radio-ripple-size: 15px;
 // *:after {
 //   box-sizing: border-box;
 // }
-
