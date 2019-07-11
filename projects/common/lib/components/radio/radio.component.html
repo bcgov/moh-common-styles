@@ -1,5 +1,5 @@
 <fieldset>
-  <legend class="radio-box--legend" [innerHtml]="label"></legend>
+  <legend *ngIf="label; else noLabel;" class="radio-box--legend">{{label}}</legend>
   <div *ngFor="let val of radioLabels" [ngStyle]="{'display': display}" >
     <div class="md-radio md-radio-inline">
       <input type="radio"
@@ -21,3 +21,11 @@
       <div class="text-danger">{{errorMessageRequired}}</div>
   </div>
 </fieldset>
+
+
+<ng-template #noLabel>
+  <legend class="radio-box--legend">
+    <ng-content></ng-content>
+  </legend>
+</ng-template>
+
