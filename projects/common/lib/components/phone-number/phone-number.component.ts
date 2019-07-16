@@ -39,14 +39,16 @@ export class PhoneNumberComponent extends MaskModel implements ControlValueAcces
   @Input() displayMask: boolean = true;
   @Input() required: boolean = false;
   @Input() label: string = 'Mobile';
-  @Input() objectID: string = 'phone_' + this.objectId;
   @Input() phoneNumber: string;
+
+  /** @deprecate - Do we have any applications that need to use this? */
+  @Input() objectID: string = 'phone_' + this.objectId;
   @Output() onChange = new EventEmitter<string>();
- // public mask = ['+','1',SPACE,'(',NUMBER,NUMBER,NUMBER,')',SPACE,NUMBER,NUMBER,NUMBER,'-',NUMBER,NUMBER,NUMBER,NUMBER];
+  // public mask = ['+','1',SPACE,'(',NUMBER,NUMBER,NUMBER,')',SPACE,NUMBER,NUMBER,NUMBER,'-',NUMBER,NUMBER,NUMBER,NUMBER];
   public _onChange = (_: any) => {};
   public _onTouched = () => {};
-
-
+  
+  
   constructor() {
     super();
     this.placeholder = '+1 (555) 555-5555';
