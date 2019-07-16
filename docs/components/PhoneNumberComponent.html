@@ -293,7 +293,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:47</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:49</a></div>
                             </td>
                         </tr>
 
@@ -376,7 +376,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:42</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:45</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -397,7 +397,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:43</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:42</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -541,7 +541,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:44</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:46</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -604,8 +604,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="64"
-                            class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:64</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="66"
+                            class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:66</a></div>
                 </td>
             </tr>
 
@@ -674,8 +674,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="68"
-                            class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:68</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="70"
+                            class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:70</a></div>
                 </td>
             </tr>
 
@@ -744,8 +744,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="57"
-                            class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:57</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="59"
+                            class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:59</a></div>
                 </td>
             </tr>
 
@@ -814,8 +814,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="72"
-                            class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:72</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="74"
+                            class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:74</a></div>
                 </td>
             </tr>
 
@@ -1044,7 +1044,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:46</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:48</a></div>
                             </td>
                         </tr>
 
@@ -1071,7 +1071,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:47</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:49</a></div>
                             </td>
                         </tr>
 
@@ -1274,14 +1274,16 @@ export class PhoneNumberComponent extends MaskModel implements ControlValueAcces
   @Input() displayMask: boolean &#x3D; true;
   @Input() required: boolean &#x3D; false;
   @Input() label: string &#x3D; &#x27;Mobile&#x27;;
-  @Input() objectID: string &#x3D; &#x27;phone_&#x27; + this.objectId;
   @Input() phoneNumber: string;
+
+  /** @deprecate - Do we have any applications that need to use this? */
+  @Input() objectID: string &#x3D; &#x27;phone_&#x27; + this.objectId;
   @Output() onChange &#x3D; new EventEmitter&lt;string&gt;();
- // public mask &#x3D; [&#x27;+&#x27;,&#x27;1&#x27;,SPACE,&#x27;(&#x27;,NUMBER,NUMBER,NUMBER,&#x27;)&#x27;,SPACE,NUMBER,NUMBER,NUMBER,&#x27;-&#x27;,NUMBER,NUMBER,NUMBER,NUMBER];
+  // public mask &#x3D; [&#x27;+&#x27;,&#x27;1&#x27;,SPACE,&#x27;(&#x27;,NUMBER,NUMBER,NUMBER,&#x27;)&#x27;,SPACE,NUMBER,NUMBER,NUMBER,&#x27;-&#x27;,NUMBER,NUMBER,NUMBER,NUMBER];
   public _onChange &#x3D; (_: any) &#x3D;&gt; {};
   public _onTouched &#x3D; () &#x3D;&gt; {};
-
-
+  
+  
   constructor() {
     super();
     this.placeholder &#x3D; &#x27;+1 (555) 555-5555&#x27;;
@@ -1319,8 +1321,8 @@ export class PhoneNumberComponent extends MaskModel implements ControlValueAcces
   &lt;input #phoneRef&#x3D;&quot;ngModel&quot;
           class&#x3D;&quot;form-control&quot;
           type&#x3D;&quot;text&quot;
-          name&#x3D;&quot;phone_{{objectID}}&quot;
-          id&#x3D;&quot;phone_{{objectID}}&quot;
+          name&#x3D;&quot;phone_{{objectId}}&quot;
+          id&#x3D;&quot;phone_{{objectId}}&quot;
           [ngModel]&#x3D;&quot;phoneNumber&quot;
           (ngModelChange)&#x3D;&quot;setPhoneNumber($event)&quot;
           [placeholder]&#x3D;&quot;placeholder &quot;
@@ -1342,8 +1344,8 @@ export class PhoneNumberComponent extends MaskModel implements ControlValueAcces
   &lt;input #phoneRef&#x3D;&quot;ngModel&quot;
           class&#x3D;&quot;form-control&quot;
           type&#x3D;&quot;text&quot;
-          name&#x3D;&quot;phone_{{objectID}}&quot;
-          id&#x3D;&quot;phone_{{objectID}}&quot;
+          name&#x3D;&quot;phone_{{objectId}}&quot;
+          id&#x3D;&quot;phone_{{objectId}}&quot;
           [ngModel]&#x3D;&quot;phoneNumber&quot;
           (ngModelChange)&#x3D;&quot;setPhoneNumber($event)&quot;
           [required]&#x3D;&quot;required&quot;
@@ -1388,7 +1390,7 @@ export class PhoneNumberComponent extends MaskModel implements ControlValueAcces
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><label for="phone_{{objectId}}" class="control-label">{{label}}</label><div *ngIf="displayMask; else NoMask">  <input #phoneRef="ngModel"          class="form-control"          type="text"          name="phone_{{objectID}}"          id="phone_{{objectID}}"          [ngModel]="phoneNumber"          (ngModelChange)="setPhoneNumber($event)"          [placeholder]="placeholder "          [textMask]="{mask: mask}"          [required]="required"          [disabled]="disabled"/>  <!-- Error messages for component -->  <div *ngIf="!disabled && phoneRef.touched"      role="alert"      class="error-container"      aria-live="assertive">    <div class="text-danger" *ngIf="phoneRef?.errors?.required">      {{label}} is required.    </div>  </div></div><ng-template #NoMask>  <input #phoneRef="ngModel"          class="form-control"          type="text"          name="phone_{{objectID}}"          id="phone_{{objectID}}"          [ngModel]="phoneNumber"          (ngModelChange)="setPhoneNumber($event)"          [required]="required"          [disabled]="disabled" />          <!-- Error messages for component -->  <div *ngIf="!disabled && phoneRef.touched"        role="alert"        class="error-container"        aria-live="assertive">    <div class="text-danger" *ngIf="phoneRef?.errors?.required">      {{label}} is required.     </div>  </div></ng-template></div>'
+        var COMPONENT_TEMPLATE = '<div><label for="phone_{{objectId}}" class="control-label">{{label}}</label><div *ngIf="displayMask; else NoMask">  <input #phoneRef="ngModel"          class="form-control"          type="text"          name="phone_{{objectId}}"          id="phone_{{objectId}}"          [ngModel]="phoneNumber"          (ngModelChange)="setPhoneNumber($event)"          [placeholder]="placeholder "          [textMask]="{mask: mask}"          [required]="required"          [disabled]="disabled"/>  <!-- Error messages for component -->  <div *ngIf="!disabled && phoneRef.touched"      role="alert"      class="error-container"      aria-live="assertive">    <div class="text-danger" *ngIf="phoneRef?.errors?.required">      {{label}} is required.    </div>  </div></div><ng-template #NoMask>  <input #phoneRef="ngModel"          class="form-control"          type="text"          name="phone_{{objectId}}"          id="phone_{{objectId}}"          [ngModel]="phoneNumber"          (ngModelChange)="setPhoneNumber($event)"          [required]="required"          [disabled]="disabled" />          <!-- Error messages for component -->  <div *ngIf="!disabled && phoneRef.touched"        role="alert"        class="error-container"        aria-live="assertive">    <div class="text-danger" *ngIf="phoneRef?.errors?.required">      {{label}} is required.     </div>  </div></ng-template></div>'
     var COMPONENTS = [{'name': 'AccordionCommonComponent', 'selector': 'common-accordion'},{'name': 'AddressComponent', 'selector': 'common-address'},{'name': 'ButtonComponent', 'selector': 'common-button'},{'name': 'ButtonGroupComponent', 'selector': 'common-button-group'},{'name': 'CaptchaComponent', 'selector': 'common-captcha'},{'name': 'CheckboxComponent', 'selector': 'common-checkbox'},{'name': 'CityComponent', 'selector': 'common-city'},{'name': 'ConsentModalComponent', 'selector': 'common-consent-modal'},{'name': 'CoreBreadcrumbComponent', 'selector': 'common-core-breadcrumb'},{'name': 'CountryComponent', 'selector': 'common-country'},{'name': 'DateComponent', 'selector': 'common-date'},{'name': 'DatepickerComponent', 'selector': 'common-datepicker'},{'name': 'DropdownComponent', 'selector': 'common-dropdown'},{'name': 'FileUploaderComponent', 'selector': 'common-file-uploader'},{'name': 'FormActionBarComponent', 'selector': 'common-form-action-bar'},{'name': 'FormSubmitBarComponent', 'selector': 'common-form-submit-bar'},{'name': 'FullNameComponent', 'selector': 'common-full-name'},{'name': 'HeaderComponent', 'selector': 'common-header'},{'name': 'NameComponent', 'selector': 'common-name'},{'name': 'PageFrameworkComponent', 'selector': 'common-page-framework'},{'name': 'PageSectionComponent', 'selector': 'common-page-section'},{'name': 'PasswordComponent', 'selector': 'common-password'},{'name': 'PhnComponent', 'selector': 'common-phn'},{'name': 'PhoneNumberComponent', 'selector': 'common-phone-number'},{'name': 'PostalCodeComponent', 'selector': 'common-postal-code'},{'name': 'ProvinceComponent', 'selector': 'common-province'},{'name': 'RadioComponent', 'selector': 'common-radio'},{'name': 'SinComponent', 'selector': 'common-sin'},{'name': 'StreetComponent', 'selector': 'common-street'},{'name': 'ThumbnailComponent', 'selector': 'common-thumbnail'},{'name': 'ToggleComponent', 'selector': 'common-toggle'},{'name': 'WizardProgressBarComponent', 'selector': 'common-wizard-progress-bar'},{'name': 'XiconButtonComponent', 'selector': 'common-xicon-button'}];
     var DIRECTIVES = [{'name': 'DateFieldFormatDirective', 'selector': '[commonDateFieldFormat]'},{'name': 'DayValidationDirective', 'selector': '[commonDayValidation][ngModel]'},{'name': 'ValidateBcPostalDirective', 'selector': '[commonValidateBcPostal]'},{'name': 'ValidateNameDirective', 'selector': '[commonValidateName]'},{'name': 'YearValidateDirective', 'selector': '[commonYearValidate][ngModel]'}];
     var ACTUAL_COMPONENT = {'name': 'PhoneNumberComponent'};
