@@ -1,4 +1,13 @@
-# Unreleased "moh-common-lib" (2019-07-11)
+# Unreleased "moh-common-lib" (2019-07-16)
+
+
+
+## [2.1.4](https://github.com/bcgov/moh-common-styles/compare/v2.1.3...v2.1.4) "moh-common-lib" (2019-07-16)
+
+
+### Accessibility
+
+* **Phone:** Fix association of labels for phone component ([c122a2a](https://github.com/bcgov/moh-common-styles/commit/c122a2a))
 
 
 
