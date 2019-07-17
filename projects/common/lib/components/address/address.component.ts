@@ -80,6 +80,9 @@ export class AddressComponent extends Base
 
       if ( !this.addr.country ) {
         this.addr.country = this.setDefaultCountryAsOption();
+      } else {
+        // If string for country submitted, need to find code to display value in select box
+        this.addr.country = this.findCountryCode( this.addr.country );
       }
 
       if ( !this.addr.province ) {
@@ -100,7 +103,13 @@ export class AddressComponent extends Base
    * @param value
    */
   setCountry(value: string) {
-    this.addr.province = this.setDefaultProvinceAsOption(value);
+    const prov = this.addr.province;
+    this.addr.province = this.setDefaultProvinceAsOption( value );
+
+    // leave last value for province if no default
+    if ( !this.addr.province ) {
+      this.addr.province = this.findProvinceDescription( prov );
+    }
     this.addr.country = value;
     this.updateProvList();
     this._onChange( this.addr );
@@ -204,17 +213,29 @@ export class AddressComponent extends Base
     return (provObj ? provObj.provinceCode : null );
   }
 
+  private findProvinceDescription( prov: string ): string {
+    const provObj = !this.provinceList ? null : this.provinceList.find(
+      val => val.provinceCode === prov ||
+             val.description === prov
+    );
+    return (provObj ? provObj.description : null );
+  }
+
   /**
    * Set country to default
    * Search uses country code or country name to find item is list.
    */
   private setDefaultCountryAsOption(): string {
+    return this.findCountryCode( this.defaultCountry );
+  }
+
+  private findCountryCode( country: string ): string {
     const countryObj = !this.countryList
     ? null
     : this.countryList.find(
         val =>
-          val.countryCode === this.defaultCountry ||
-          val.description === this.defaultCountry
+          val.countryCode === country ||
+          val.description === country
       );
     return countryObj ? countryObj.countryCode : null;
   }
@@ -241,7 +262,6 @@ export class AddressComponent extends Base
   }
 
   writeValue( value: Address) {
-    console.log( 'address writeValue: ', value );
     if ( value ) {
       this.addr = value;
     }
