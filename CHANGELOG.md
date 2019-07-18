@@ -1,4 +1,14 @@
-# Unreleased "moh-common-lib" (2019-07-16)
+# Unreleased "moh-common-lib" (2019-07-18)
+
+
+
+## [2.1.5](https://github.com/bcgov/moh-common-styles/compare/v2.1.4...v2.1.5) "moh-common-lib" (2019-07-18)
+
+
+### Accessibility
+
+* **Radio:** Hide radio for FireFox but keep tab-focusable. ([8f6886f](https://github.com/bcgov/moh-common-styles/commit/8f6886f))
+* **XIconButton:** Add label ([867f969](https://github.com/bcgov/moh-common-styles/commit/867f969))
 
 
 

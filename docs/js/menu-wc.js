@@ -338,6 +338,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="classes/MaskModel.html" data-type="entity-link">MaskModel</a>
                             </li>
                             <li class="link">
+                                <a href="classes/MoHCommonLibraryError.html" data-type="entity-link">MoHCommonLibraryError</a>
+                            </li>
+                            <li class="link">
                                 <a href="classes/Person.html" data-type="entity-link">Person</a>
                             </li>
                         </ul>

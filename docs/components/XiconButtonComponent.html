@@ -64,6 +64,12 @@
 
 
 
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
 
 
 <section>
@@ -123,6 +129,9 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                            <li>
                                 <a href="#onBtnClick">onBtnClick</a>
                             </li>
                         </ul>
@@ -179,7 +188,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">projects/common/lib/components/xicon-button/xicon-button.component.ts:15</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">projects/common/lib/components/xicon-button/xicon-button.component.ts:20</a></div>
                             </td>
                         </tr>
 
@@ -205,9 +214,15 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">projects/common/lib/components/xicon-button/xicon-button.component.ts:10</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">projects/common/lib/components/xicon-button/xicon-button.component.ts:15</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Label to use for accessibility.</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
 </section>
@@ -229,7 +244,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">projects/common/lib/components/xicon-button/xicon-button.component.ts:15</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">projects/common/lib/components/xicon-button/xicon-button.component.ts:20</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -250,7 +265,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">projects/common/lib/components/xicon-button/xicon-button.component.ts:14</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">projects/common/lib/components/xicon-button/xicon-button.component.ts:19</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -263,6 +278,45 @@
     <h3 id="methods">
         Methods
     </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <b>
+                            ngOnInit
+                        </b>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="24"
+                            class="link-to-prism">projects/common/lib/components/xicon-button/xicon-button.component.ts:24</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
     <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -285,8 +339,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="19"
-                            class="link-to-prism">projects/common/lib/components/xicon-button/xicon-button.component.ts:19</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="35"
+                            class="link-to-prism">projects/common/lib/components/xicon-button/xicon-button.component.ts:35</a></div>
                 </td>
             </tr>
 
@@ -308,15 +362,20 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Input, Output, EventEmitter } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Input, Output, EventEmitter, OnInit } from &#x27;@angular/core&#x27;;
+import { MoHCommonLibraryError } from &#x27;../../../helpers/library-errorr&#x27;;
 
 @Component({
   selector: &#x27;common-xicon-button&#x27;,
   templateUrl: &#x27;./xicon-button.component.html&#x27;,
   styleUrls: [&#x27;./xicon-button.component.scss&#x27;]
 })
-export class XiconButtonComponent {
+export class XiconButtonComponent implements OnInit {
 
+  /**
+   * Label to use for accessibility.
+   * @required
+   */
   @Input() label: string;
   /**
    * @deprecated - Remove at breaking change and go to (click)
@@ -324,7 +383,18 @@ export class XiconButtonComponent {
   @Output() clickEvent: EventEmitter&lt;any&gt; &#x3D; new EventEmitter&lt;any&gt;();
   @Output() click: EventEmitter&lt;any&gt; &#x3D; new EventEmitter&lt;any&gt;();
 
-  constructor() {}
+  constructor() { }
+
+  ngOnInit() {
+    if (!this.label) {
+      // todo - change to MohCommmonLibraryError -&gt; test in IE10
+      // throw Error(&#x27;common-xicon-button initialized without label. You MUST supply a label attribute for accessibility.&#x27;);
+      const msg &#x3D; &#x60;common-xicon-button initialized without label. You MUST supply a label attribute for accessibility.
+      e.g. &lt;common-xicon-button label&#x3D;&#x27;Remove Spouse&#x27;&gt;
+&#x60;; // Intentional to create a blank line between our error and stack trace.
+      throw new MoHCommonLibraryError(msg);
+    }
+  }
 
   onBtnClick() {
     this.clickEvent.emit();
@@ -338,6 +408,7 @@ export class XiconButtonComponent {
         <pre class="line-numbers"><code class="language-html">&lt;button class&#x3D;&#x27;close d-inline-block&#x27;
         (click)&#x3D;&#x27;onBtnClick()&#x27;
         type&#x3D;&#x27;button&#x27;
+        [attr.title]&#x3D;&#x27;label&#x27;
         [attr.aria-label]&#x3D;&quot;label&quot;&gt;
         &lt;i class&#x3D;&quot;fa fa-times text-danger&quot; aria-hidden&#x3D;&quot;true&quot;&gt;&lt;/i&gt;
 &lt;/button&gt;
@@ -370,7 +441,7 @@ export class XiconButtonComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><button class=\'close d-inline-block\'        (click)=\'onBtnClick()\'        type=\'button\'        [attr.aria-label]="label">        <i class="fa fa-times text-danger" aria-hidden="true"></i></button></div>'
+        var COMPONENT_TEMPLATE = '<div><button class=\'close d-inline-block\'        (click)=\'onBtnClick()\'        type=\'button\'        [attr.title]=\'label\'        [attr.aria-label]="label">        <i class="fa fa-times text-danger" aria-hidden="true"></i></button></div>'
     var COMPONENTS = [{'name': 'AccordionCommonComponent', 'selector': 'common-accordion'},{'name': 'AddressComponent', 'selector': 'common-address'},{'name': 'ButtonComponent', 'selector': 'common-button'},{'name': 'ButtonGroupComponent', 'selector': 'common-button-group'},{'name': 'CaptchaComponent', 'selector': 'common-captcha'},{'name': 'CheckboxComponent', 'selector': 'common-checkbox'},{'name': 'CityComponent', 'selector': 'common-city'},{'name': 'ConsentModalComponent', 'selector': 'common-consent-modal'},{'name': 'CoreBreadcrumbComponent', 'selector': 'common-core-breadcrumb'},{'name': 'CountryComponent', 'selector': 'common-country'},{'name': 'DateComponent', 'selector': 'common-date'},{'name': 'DatepickerComponent', 'selector': 'common-datepicker'},{'name': 'DropdownComponent', 'selector': 'common-dropdown'},{'name': 'FileUploaderComponent', 'selector': 'common-file-uploader'},{'name': 'FormActionBarComponent', 'selector': 'common-form-action-bar'},{'name': 'FormSubmitBarComponent', 'selector': 'common-form-submit-bar'},{'name': 'FullNameComponent', 'selector': 'common-full-name'},{'name': 'HeaderComponent', 'selector': 'common-header'},{'name': 'NameComponent', 'selector': 'common-name'},{'name': 'PageFrameworkComponent', 'selector': 'common-page-framework'},{'name': 'PageSectionComponent', 'selector': 'common-page-section'},{'name': 'PasswordComponent', 'selector': 'common-password'},{'name': 'PhnComponent', 'selector': 'common-phn'},{'name': 'PhoneNumberComponent', 'selector': 'common-phone-number'},{'name': 'PostalCodeComponent', 'selector': 'common-postal-code'},{'name': 'ProvinceComponent', 'selector': 'common-province'},{'name': 'RadioComponent', 'selector': 'common-radio'},{'name': 'SinComponent', 'selector': 'common-sin'},{'name': 'StreetComponent', 'selector': 'common-street'},{'name': 'ThumbnailComponent', 'selector': 'common-thumbnail'},{'name': 'ToggleComponent', 'selector': 'common-toggle'},{'name': 'WizardProgressBarComponent', 'selector': 'common-wizard-progress-bar'},{'name': 'XiconButtonComponent', 'selector': 'common-xicon-button'}];
     var DIRECTIVES = [{'name': 'DateFieldFormatDirective', 'selector': '[commonDateFieldFormat]'},{'name': 'DayValidationDirective', 'selector': '[commonDayValidation][ngModel]'},{'name': 'ValidateBcPostalDirective', 'selector': '[commonValidateBcPostal]'},{'name': 'ValidateNameDirective', 'selector': '[commonValidateName]'},{'name': 'YearValidateDirective', 'selector': '[commonYearValidate][ngModel]'}];
     var ACTUAL_COMPONENT = {'name': 'XiconButtonComponent'};
