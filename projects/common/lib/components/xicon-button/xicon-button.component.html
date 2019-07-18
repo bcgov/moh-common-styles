@@ -1,6 +1,7 @@
 <button class='close d-inline-block'
         (click)='onBtnClick()'
         type='button'
+        [attr.title]='label'
         [attr.aria-label]="label">
         <i class="fa fa-times text-danger" aria-hidden="true"></i>
 </button>
