@@ -28,7 +28,6 @@
      *ngIf='showLine2'>
   <div class="row">
 
-
     <div class="col-11">
       <common-street label='Address Line 2'
                      name="street_line_2_{{objectId}}"
@@ -38,6 +37,7 @@
     <div class="col-1">
       <div class="h-50"></div>
       <button class=" btn btn-transparent"
+              *ngIf="!showLine3"
               aria-label='Remove Address Line 2'
               (click)="removeLine(2)">
         <i class="fa fa-minus"></i>
