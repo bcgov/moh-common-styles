@@ -1,4 +1,19 @@
-# Unreleased "moh-common-lib" (2019-07-18)
+# Unreleased "moh-common-lib" (2019-07-25)
+
+
+
+# [2.2.0](https://github.com/bcgov/moh-common-styles/compare/v2.1.5...v2.2.0) "moh-common-lib" (2019-07-25)
+
+
+### Features
+
+* **Address:** Additional lines must be removed in order ([ac9d61c](https://github.com/bcgov/moh-common-styles/commit/ac9d61c))
+* **Address:** Now can show 2 extra address lines (previously only one) ([af91989](https://github.com/bcgov/moh-common-styles/commit/af91989))
+
+
+### Styles
+
+* **XIconButton:** Change icon from 'times' to 'times-circle' ([aad93b5](https://github.com/bcgov/moh-common-styles/commit/aad93b5))
 
 
 
