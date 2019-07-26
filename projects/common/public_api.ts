@@ -34,7 +34,5 @@ export * from './lib/services/abstract-pg-check.service';
 export { commonValidateName } from './lib/components/name/validate-name.directive';
 export { commonValidateBcPostal } from './lib/components/postal-code/validate-bc-postal.directive';
 export { commonValidateSin } from './lib/components/sin/validate-sin.directive';
-export { commonDuplicateSin } from './lib/components/sin/duplicate-sin.directive';
-
-// Functions
-export { validatePHN } from './lib/components/phn/phn.component';
+export { commonValidatePhn } from './lib/components/phn/validate-phn.directive';
+export { commonDuplicateCheck } from './lib/components/duplicate-check/duplicate-check.directive';

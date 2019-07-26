@@ -45,7 +45,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { ValidateBcPostalDirective } from './components/postal-code/validate-bc-postal.directive';
 import { XiconButtonComponent } from './components/xicon-button/xicon-button.component';
 import { ValidateSinDirective } from './components/sin/validate-sin.directive';
-import { DuplicateSinDirective } from './components/sin/duplicate-sin.directive';
+import { ValidatePhnDirective } from './components/phn/validate-phn.directive';
+import { DuplicateCheckDirective } from './components/duplicate-check/duplicate-check.directive';
 
 const componentList = [
   CoreBreadcrumbComponent,
@@ -86,7 +87,8 @@ const componentList = [
   ValidateBcPostalDirective,
   XiconButtonComponent,
   ValidateSinDirective,
-  DuplicateSinDirective
+  ValidatePhnDirective,
+  DuplicateCheckDirective
 ];
 @NgModule({
   imports: [
