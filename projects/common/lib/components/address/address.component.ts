@@ -55,17 +55,17 @@ export class AddressComponent extends Base
   }
 
   @Output() addressChange: EventEmitter<Address> = new EventEmitter<Address>();
-
-  addr: Address;
-  provList: ProvinceList[];
-
   /**
    * If true, adds a plus icon next to street and enables users to add a second
    * address line.  This value binds to `address.addressLine2`
    */
   @Input() allowExtralines: boolean = false;
 
-  showLine = false;
+  addr: Address;
+  provList: ProvinceList[];
+  showLine2 = false;
+  showLine3 = false;
+
 
   _onChange = (_: any) => {};
   _onTouched = (_: any) => {};
@@ -90,8 +90,14 @@ export class AddressComponent extends Base
       }
 
       // Make sure addressLine2 is visible if there is data persisted to display there.
-      if (this.allowExtralines && this.addr.addressLine2) {
-        this.addLine();
+      if (this.allowExtralines) {
+        if (this.addr.addressLine2) {
+          this.addLine(2);
+        }
+
+        if (this.addr.addressLine3) {
+          this.addLine(3);
+        }
       }
     }
 
@@ -178,12 +184,28 @@ export class AddressComponent extends Base
     }
   }
 
-  addLine() {
-    this.showLine = true;
+  addLine(line: 2 | 3 = null) {
+
+    // Add lines in order
+    if (line === null) {
+      if (!this.showLine2) {
+        this.showLine2 = true;
+      } else if (!this.showLine3) {
+        this.showLine3 = true;
+      }
+    } else {
+      // Add specific line number
+      const lookup = `showLine${line}`;
+      this[lookup] = true;
+    }
   }
 
-  removeLine() {
-    this.showLine = false;
+  removeLine(line: 2 | 3) {
+    // We can remove lines in any order, depending on user input
+
+    // Dynamically lookup variable based on line number input.
+    const lookup = `showLine${line}`;
+    this[lookup] = false;
   }
 
   /**

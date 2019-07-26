@@ -38,6 +38,7 @@ $md-radio-ripple-size: 15px;
     // hides the input while keeping it focusable. `display:none` messes with focus
     width: 0; // Keeps the input focusable
     height: 0;
+    opacity: 0; // necessary for FireFox where width/height doesn't work
 
     &:checked+label:before {
       border-color: $md-radio-checked-color;
