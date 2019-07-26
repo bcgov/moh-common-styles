@@ -20,7 +20,7 @@
     <div class="text-danger" *ngIf="controlDir.errors?.required">
       {{label}} is required.
     </div>
-    <div class="text-danger" *ngIf="controlDir.errors?.pattern">
+    <div class="text-danger" *ngIf="controlDir.errors?.invalid">
       {{label}} is invalid.
     </div>
     <div class="text-danger" *ngIf="controlDir.errors?.duplicate">
