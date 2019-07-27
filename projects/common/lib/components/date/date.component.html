@@ -1,6 +1,6 @@
 <fieldset>
   <legend class="date--legend">{{label}}</legend>
-  <div class="form-group date-row">
+  <div class="date-row">
 
     <label class="visuallyhidden" for="{{monthLabelforId}}">Month</label>
     <select class="form-control monthSelect"
@@ -53,43 +53,31 @@
            autocomplete="off"/>
 
   </div>
-
 </fieldset>
 
 <!-- Error messages for component -->
-<div *ngIf="!disabled && (monthRef.touched || monthRef.dirty) && (dayRef.touched || dayRef.dirty) && (yearRef.touched || yearRef.dirty)"
-    role="alert"
-    class='error-container'
-    aria-live="assertive">
-  <div class="text-danger"
-       *ngIf="(monthRef?.errors?.required || dayRef?.errors?.required || yearRef?.errors?.required ) && errorMessages?.required">
-       {{errorMessages.required}}
+<common-error-container
+    [displayError]="!disabled && (monthRef.touched || monthRef.dirty) && (dayRef.touched || dayRef.dirty) && (yearRef.touched || yearRef.dirty)">
+  <div *ngIf="(monthRef?.errors?.required || dayRef?.errors?.required || yearRef?.errors?.required ) && errorMessages?.required">
+      {{errorMessages.required}}
   </div>
-  <div class="text-danger"
-      *ngIf="dayRef?.errors?.dayOutOfRange && errorMessages?.dayOutOfRange">
-       {{errorMessages.dayOutOfRange}}
+  <div *ngIf="dayRef?.errors?.dayOutOfRange && errorMessages?.dayOutOfRange">
+      {{errorMessages.dayOutOfRange}}
   </div>
-  <div class="text-danger"
-       *ngIf="yearRef?.errors?.yearDistantPast && errorMessages?.yearDistantPast">
-       {{errorMessages.yearDistantPast}}
+  <div *ngIf="yearRef?.errors?.yearDistantPast && errorMessages?.yearDistantPast">
+      {{errorMessages.yearDistantPast}}
   </div>
-  <div class="text-danger"
-       *ngIf="yearRef?.errors?.yearDistantFuture && errorMessages?.yearDistantFuture">
-       {{errorMessages.yearDistantFuture}}
+  <div *ngIf="yearRef?.errors?.yearDistantFuture && errorMessages?.yearDistantFuture">
+      {{errorMessages.yearDistantFuture}}
   </div>
-  <div class="text-danger"
-        *ngIf="yearRef?.errors?.noPastDatesAllowed && errorMessages?.noPastDatesAllowed">
+  <div *ngIf="yearRef?.errors?.noPastDatesAllowed && errorMessages?.noPastDatesAllowed">
         {{errorMessages.noPastDatesAllowed}}
   </div>
-  <div class="text-danger"
-       *ngIf="yearRef?.errors?.noFutureDatesAllowed && errorMessages?.noFutureDatesAllowed">
-       {{errorMessages.noFutureDatesAllowed}}
+  <div *ngIf="yearRef?.errors?.noFutureDatesAllowed && errorMessages?.noFutureDatesAllowed">
+      {{errorMessages.noFutureDatesAllowed}}
   </div>
   <!-- Case should not happen until something is not formatted correctly-->
-  <div class="text-danger"
-       *ngIf="(dayRef?.errors?.invalidValue || yearRef?.errors?.invalidValue) && errorMessages?.invalidValue">
-       {{errorMessages.invalidValue}}
+  <div *ngIf="(dayRef?.errors?.invalidValue || yearRef?.errors?.invalidValue) && errorMessages?.invalidValue">
+      {{errorMessages.invalidValue}}
   </div>
-</div>
-
-
+</common-error-container>

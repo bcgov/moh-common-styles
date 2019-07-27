@@ -47,6 +47,7 @@ import { XiconButtonComponent } from './components/xicon-button/xicon-button.com
 import { ValidateSinDirective } from './components/sin/validate-sin.directive';
 import { ValidatePhnDirective } from './components/phn/validate-phn.directive';
 import { DuplicateCheckDirective } from './components/duplicate-check/duplicate-check.directive';
+import { ErrorContainerComponent } from './components/error-container/error-container.component';
 
 const componentList = [
   CoreBreadcrumbComponent,
@@ -88,7 +89,8 @@ const componentList = [
   XiconButtonComponent,
   ValidateSinDirective,
   ValidatePhnDirective,
-  DuplicateCheckDirective
+  DuplicateCheckDirective,
+  ErrorContainerComponent
 ];
 @NgModule({
   imports: [

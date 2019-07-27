@@ -13,17 +13,15 @@
   </div>
 
   <!-- Error messages for input -->
-  <div *ngIf="controlDir && !disabled && (controlDir.touched || controlDir.dirty)"
-        role="alert"
-        class="error-container"
-        aria-live="assertive">
-    <div class="text-danger" *ngIf="controlDir.errors?.required">
+  <common-error-container
+    [displayError]="controlDir && !disabled && (controlDir.touched || controlDir.dirty)">
+    <div *ngIf="controlDir.errors?.required">
       {{label}} is required.
     </div>
-    <div class="text-danger" *ngIf="controlDir.errors?.pattern">
+    <div *ngIf="controlDir.errors?.pattern">
       Must be in the format {{placeholder}}.
     </div>
-  </div>
+  </common-error-container>
 
 <ng-template #NoMask>
   <input class="form-control"
