@@ -12,11 +12,9 @@
        autocomplete="off"/>
 
  <!-- Error messages for input -->
-<div *ngIf="controlDir && !disabled && (controlDir.touched || controlDir.dirty)"
-     role="alert"
-     class="error-container"
-     aria-live="assertive">
-  <div class="text-danger" *ngIf="controlDir.errors?.required">
+<common-error-container
+    [displayError]="controlDir && !disabled && (controlDir.touched || controlDir.dirty)">
+  <div *ngIf="controlDir.errors?.required">
     {{label}} is required.
   </div>
-</div>
+</common-error-container>
