@@ -15,7 +15,6 @@ export class SinComponent extends Base implements ControlValueAccessor {
   @Input() placeholder: string = '111 111 111';
   @Input() labelforId: string = 'sin_' + this.objectId;
   @Input() disabled: boolean = false;
-  @Input() sinList: string[] = [];
 
   @Input()
   set value( val: string ) {
@@ -51,7 +50,6 @@ export class SinComponent extends Base implements ControlValueAccessor {
   }
 
   onValueChange( value: any ) {
-    console.log( 'onValueChange: ', value, this.sin );
 
     if ( value !== this.sin ) { // IE fix when focus does not display required error
       this._onChange( value );
@@ -61,33 +59,11 @@ export class SinComponent extends Base implements ControlValueAccessor {
   }
 
   onBlurEvent( event: any ) {
-    console.log( 'onblur: ', event );
-
-    if ( event.target.value ) {
-      const sinValid = this.validateSIN( event.target.value );
-      console.log( 'sinValid: ', sinValid, event.target.value );
-
-      if ( this.controlDir ) {
-        this.controlDir.control.setErrors(( sinValid ? null : { 'pattern': true } ));
-      }
-
-      // Duplicate Sin check
-      if ( sinValid && this.sinList && this.sinList.length ) {
-
-        const duplicate = this.sinList.find( x => x === event.target.value );
-        console.log( 'duplicate sin: ', duplicate );
-        if ( this.controlDir ) {
-          this.controlDir.control.setErrors(( duplicate ? { 'duplicate': true } : null ));
-        }
-      }
-    }
-
     this._onTouched( event );
     this.blurEvent.emit( event );
   }
 
   writeValue( value: any ): void {
-    console.log( 'writeValue: ', value, this.sin );
     if ( value ) {
       this.sin = value;
     }
@@ -105,66 +81,5 @@ export class SinComponent extends Base implements ControlValueAccessor {
 
   setDisabledState(isDisabled: boolean): void {
     this.disabled = isDisabled;
-  }
-
-  private validateSIN( sin: string ): boolean {
-
-    // pre req checks
-    if (sin === null || sin === undefined || sin.length < 1) {
-      return false;
-    }
-
-    // Init weights and other stuff
-    const weights: number[] = [1, 2, 1, 2, 1, 2, 1, 2, 1];
-    let sum = 0;
-
-    // Clean up string
-    sin = sin.trim();
-
-    // Rip off spaces a regex
-    const regexp = new RegExp('[ ]', 'g');
-    sin = sin.replace(regexp, '');
-
-    // Test for length
-    if (sin.length !== 9) {
-      return false;
-    }
-
-    // Test for string of zeros
-    if ( sin === '000000000') {
-      return false;
-    }
-
-    // Walk through each character
-    for (let i = 0; i < sin.length; i++) {
-
-      // pull out char
-      const char = sin.charAt(i);
-
-      // parse the number
-      const num = Number(char);
-      if (Number.isNaN(num)) {
-        return false;
-      }
-
-      // multiply the value against the weight
-      let result = num * weights[i];
-
-      // If two digit result, substract 9
-      if (result > 9) {
-        result = result - 9;
-      }
-
-      // add it to our sum
-      sum += result;
-    }
-
-    // The sum must be divisible by 10
-    if (sum % 10 !== 0) {
-      return false;
-    }
-
-    // All done!
-    return true;
   }
 }

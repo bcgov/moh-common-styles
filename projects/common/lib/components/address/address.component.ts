@@ -82,7 +82,7 @@ export class AddressComponent extends Base
         this.addr.country = this.setDefaultCountryAsOption();
       } else {
         // If string for country submitted, need to find code to display value in select box
-        this.addr.country = this.findCountryCode(this.addr.country);
+        this.addr.country = this.findCountryCode( this.addr.country );
       }
 
       if (!this.addr.province) {
@@ -110,11 +110,11 @@ export class AddressComponent extends Base
    */
   setCountry(value: string) {
     const prov = this.addr.province;
-    this.addr.province = this.setDefaultProvinceAsOption(value);
+    this.addr.province = this.setDefaultProvinceAsOption( value );
 
     // leave last value for province if no default
-    if (!this.addr.province) {
-      this.addr.province = this.findProvinceDescription(prov);
+    if ( !this.addr.province ) {
+      this.addr.province = this.findProvinceDescription( prov );
     }
     this.addr.country = value;
     this.updateProvList();
@@ -248,10 +248,10 @@ export class AddressComponent extends Base
    * Search uses country code or country name to find item is list.
    */
   private setDefaultCountryAsOption(): string {
-    return this.findCountryCode(this.defaultCountry);
+    return this.findCountryCode( this.defaultCountry );
   }
 
-  private findCountryCode(country: string): string {
+  private findCountryCode( country: string ): string {
     const countryObj = !this.countryList
       ? null
       : this.countryList.find(
@@ -283,8 +283,8 @@ export class AddressComponent extends Base
     this.addressChange.emit(this.addr);
   }
 
-  writeValue(value: Address) {
-    if (value) {
+  writeValue( value: Address) {
+    if ( value ) {
       this.addr = value;
     }
   }
