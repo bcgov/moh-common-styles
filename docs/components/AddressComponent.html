@@ -2378,7 +2378,7 @@ export class AddressComponent extends Base
         this.addr.country &#x3D; this.setDefaultCountryAsOption();
       } else {
         // If string for country submitted, need to find code to display value in select box
-        this.addr.country &#x3D; this.findCountryCode(this.addr.country);
+        this.addr.country &#x3D; this.findCountryCode( this.addr.country );
       }
 
       if (!this.addr.province) {
@@ -2406,11 +2406,11 @@ export class AddressComponent extends Base
    */
   setCountry(value: string) {
     const prov &#x3D; this.addr.province;
-    this.addr.province &#x3D; this.setDefaultProvinceAsOption(value);
+    this.addr.province &#x3D; this.setDefaultProvinceAsOption( value );
 
     // leave last value for province if no default
-    if (!this.addr.province) {
-      this.addr.province &#x3D; this.findProvinceDescription(prov);
+    if ( !this.addr.province ) {
+      this.addr.province &#x3D; this.findProvinceDescription( prov );
     }
     this.addr.country &#x3D; value;
     this.updateProvList();
@@ -2544,10 +2544,10 @@ export class AddressComponent extends Base
    * Search uses country code or country name to find item is list.
    */
   private setDefaultCountryAsOption(): string {
-    return this.findCountryCode(this.defaultCountry);
+    return this.findCountryCode( this.defaultCountry );
   }
 
-  private findCountryCode(country: string): string {
+  private findCountryCode( country: string ): string {
     const countryObj &#x3D; !this.countryList
       ? null
       : this.countryList.find(
@@ -2579,8 +2579,8 @@ export class AddressComponent extends Base
     this.addressChange.emit(this.addr);
   }
 
-  writeValue(value: Address) {
-    if (value) {
+  writeValue( value: Address) {
+    if ( value ) {
       this.addr &#x3D; value;
     }
   }
@@ -2744,8 +2744,8 @@ export class AddressComponent extends Base
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><div class="form-group">  <div class="row">    <div [ngClass]="{\'col-11\': allowExtralines, \'col-12\': !allowExtralines}">      <common-street name="street_{{objectId}}"                     label="Full street address or rural route"                     [useGeoCoder]="useGeoCoder()"                     [ngModel]="addr?.street"                     (ngModelChange)="setStreetAddress($event)"                     (selectEvent)="setAddress($event)"                     [required]="isRequired"                     [disabled]="disabled"></common-street>    </div>    <div class="col-1"         *ngIf=\'allowExtralines\'>      <div class="h-50"></div>      <button class=" btn btn-transparent"              *ngIf=\'!(showLine2 && showLine3)\'              aria-label="Add Additional Address Line (optional)"              (click)="addLine()">        <i class="fa fa-plus"></i>      </button>    </div>  </div></div><div class="form-group"     *ngIf=\'showLine2\'>  <div class="row">    <div class="col-11">      <common-street label=\'Address Line 2\'                     name="street_line_2_{{objectId}}"                     [useGeoCoder]=\'false\'                     [(ngModel)]=\'addr.addressLine2\'></common-street>    </div>    <div class="col-1">      <div class="h-50"></div>      <button class=" btn btn-transparent"              *ngIf="!showLine3"              aria-label=\'Remove Address Line 2\'              (click)="removeLine(2)">        <i class="fa fa-minus"></i>      </button>    </div>  </div></div><div class="form-group"     *ngIf=\'showLine3\'>  <div class="row">    <div class="col-11">      <common-street label=\'Address Line 3\'                     name="street_line_3_{{objectId}}"                     [useGeoCoder]=\'false\'                     [(ngModel)]=\'addr.addressLine3\'></common-street>    </div>    <div class="col-1">      <div class="h-50"></div>      <button class=" btn btn-transparent"              aria-label=\'Remove Address Line 3\'              (click)="removeLine(3)">        <i class="fa fa-minus"></i>      </button>    </div>  </div></div><div class="form-group">  <common-city name="city_{{objectId}}"               [ngModel]="addr?.city"               (ngModelChange)="setCity($event)"               [required]="isRequired"               [disabled]="disabled"></common-city></div><div class="form-group">  <common-country name="country_{{objectId}}"                  label="Country"                  [countryList]="countryList"                  [ngModel]="addr?.country"                  (ngModelChange)="setCountry($event)"                  [required]="isRequired"                  [disabled]="disabled"></common-country></div><div class="form-group">  <common-province name="province_{{objectId}}"                   label="Province/State"                   [ngModel]="addr?.province"                   (ngModelChange)="setProvince($event)"                   [provinceList]="provList"                   [required]="isRequired"                   [disabled]="disabled"                   placeholder="{{ isCanada()? \'Select a Province\': \'Select a State\' }}"                   [useDropDownList]="isCanadaUSA()"></common-province></div><div class="form-group col-sm-4 p-sm-0">  <common-postal-code name="pc_{{objectId}}"                      [label]="\'Postal Code\'"                      [displayMask]="isCanada()"                      [disabled]="disabled"                      [ngModel]="addr?.postal"                      (ngModelChange)="setPostalCode($event)"                      [required]="isRequired"></common-postal-code></div></div>'
-    var COMPONENTS = [{'name': 'AccordionCommonComponent', 'selector': 'common-accordion'},{'name': 'AddressComponent', 'selector': 'common-address'},{'name': 'ButtonComponent', 'selector': 'common-button'},{'name': 'ButtonGroupComponent', 'selector': 'common-button-group'},{'name': 'CaptchaComponent', 'selector': 'common-captcha'},{'name': 'CheckboxComponent', 'selector': 'common-checkbox'},{'name': 'CityComponent', 'selector': 'common-city'},{'name': 'ConsentModalComponent', 'selector': 'common-consent-modal'},{'name': 'CoreBreadcrumbComponent', 'selector': 'common-core-breadcrumb'},{'name': 'CountryComponent', 'selector': 'common-country'},{'name': 'DateComponent', 'selector': 'common-date'},{'name': 'DatepickerComponent', 'selector': 'common-datepicker'},{'name': 'DropdownComponent', 'selector': 'common-dropdown'},{'name': 'FileUploaderComponent', 'selector': 'common-file-uploader'},{'name': 'FormActionBarComponent', 'selector': 'common-form-action-bar'},{'name': 'FormSubmitBarComponent', 'selector': 'common-form-submit-bar'},{'name': 'FullNameComponent', 'selector': 'common-full-name'},{'name': 'HeaderComponent', 'selector': 'common-header'},{'name': 'NameComponent', 'selector': 'common-name'},{'name': 'PageFrameworkComponent', 'selector': 'common-page-framework'},{'name': 'PageSectionComponent', 'selector': 'common-page-section'},{'name': 'PasswordComponent', 'selector': 'common-password'},{'name': 'PhnComponent', 'selector': 'common-phn'},{'name': 'PhoneNumberComponent', 'selector': 'common-phone-number'},{'name': 'PostalCodeComponent', 'selector': 'common-postal-code'},{'name': 'ProvinceComponent', 'selector': 'common-province'},{'name': 'RadioComponent', 'selector': 'common-radio'},{'name': 'SinComponent', 'selector': 'common-sin'},{'name': 'StreetComponent', 'selector': 'common-street'},{'name': 'ThumbnailComponent', 'selector': 'common-thumbnail'},{'name': 'ToggleComponent', 'selector': 'common-toggle'},{'name': 'WizardProgressBarComponent', 'selector': 'common-wizard-progress-bar'},{'name': 'XiconButtonComponent', 'selector': 'common-xicon-button'}];
-    var DIRECTIVES = [{'name': 'DateFieldFormatDirective', 'selector': '[commonDateFieldFormat]'},{'name': 'DayValidationDirective', 'selector': '[commonDayValidation][ngModel]'},{'name': 'ValidateBcPostalDirective', 'selector': '[commonValidateBcPostal]'},{'name': 'ValidateNameDirective', 'selector': '[commonValidateName]'},{'name': 'YearValidateDirective', 'selector': '[commonYearValidate][ngModel]'}];
+    var COMPONENTS = [{'name': 'AccordionCommonComponent', 'selector': 'common-accordion'},{'name': 'AddressComponent', 'selector': 'common-address'},{'name': 'ButtonComponent', 'selector': 'common-button'},{'name': 'ButtonGroupComponent', 'selector': 'common-button-group'},{'name': 'CaptchaComponent', 'selector': 'common-captcha'},{'name': 'CheckboxComponent', 'selector': 'common-checkbox'},{'name': 'CityComponent', 'selector': 'common-city'},{'name': 'ConsentModalComponent', 'selector': 'common-consent-modal'},{'name': 'CoreBreadcrumbComponent', 'selector': 'common-core-breadcrumb'},{'name': 'CountryComponent', 'selector': 'common-country'},{'name': 'DateComponent', 'selector': 'common-date'},{'name': 'DatepickerComponent', 'selector': 'common-datepicker'},{'name': 'DropdownComponent', 'selector': 'common-dropdown'},{'name': 'ErrorContainerComponent', 'selector': 'common-error-container'},{'name': 'FileUploaderComponent', 'selector': 'common-file-uploader'},{'name': 'FormActionBarComponent', 'selector': 'common-form-action-bar'},{'name': 'FormSubmitBarComponent', 'selector': 'common-form-submit-bar'},{'name': 'FullNameComponent', 'selector': 'common-full-name'},{'name': 'HeaderComponent', 'selector': 'common-header'},{'name': 'NameComponent', 'selector': 'common-name'},{'name': 'PageFrameworkComponent', 'selector': 'common-page-framework'},{'name': 'PageSectionComponent', 'selector': 'common-page-section'},{'name': 'PasswordComponent', 'selector': 'common-password'},{'name': 'PhnComponent', 'selector': 'common-phn'},{'name': 'PhoneNumberComponent', 'selector': 'common-phone-number'},{'name': 'PostalCodeComponent', 'selector': 'common-postal-code'},{'name': 'ProvinceComponent', 'selector': 'common-province'},{'name': 'RadioComponent', 'selector': 'common-radio'},{'name': 'SinComponent', 'selector': 'common-sin'},{'name': 'StreetComponent', 'selector': 'common-street'},{'name': 'ThumbnailComponent', 'selector': 'common-thumbnail'},{'name': 'ToggleComponent', 'selector': 'common-toggle'},{'name': 'WizardProgressBarComponent', 'selector': 'common-wizard-progress-bar'},{'name': 'XiconButtonComponent', 'selector': 'common-xicon-button'}];
+    var DIRECTIVES = [{'name': 'DateFieldFormatDirective', 'selector': '[commonDateFieldFormat]'},{'name': 'DayValidationDirective', 'selector': '[commonDayValidation][ngModel]'},{'name': 'DuplicateCheckDirective', 'selector': '[commonDuplicateCheck]'},{'name': 'ValidateBcPostalDirective', 'selector': '[commonValidateBcPostal]'},{'name': 'ValidateNameDirective', 'selector': '[commonValidateName]'},{'name': 'ValidatePhnDirective', 'selector': '[commonValidatePhn]'},{'name': 'ValidateSinDirective', 'selector': '[commonValidateSin]'},{'name': 'YearValidateDirective', 'selector': '[commonYearValidate][ngModel]'}];
     var ACTUAL_COMPONENT = {'name': 'AddressComponent'};
 </script>
 <script src="../js/tree.js"></script>

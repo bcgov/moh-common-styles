@@ -128,13 +128,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/SharedCoreModule.html" data-type="entity-link">SharedCoreModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-SharedCoreModule-d70fb96b5b0f26abf9f2ee72d2b4483d"' : 'data-target="#xs-components-links-module-SharedCoreModule-d70fb96b5b0f26abf9f2ee72d2b4483d"' }>
+                                            'data-target="#components-links-module-SharedCoreModule-bfd55c753fbf5c082b636b5d56e12470"' : 'data-target="#xs-components-links-module-SharedCoreModule-bfd55c753fbf5c082b636b5d56e12470"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SharedCoreModule-d70fb96b5b0f26abf9f2ee72d2b4483d"' :
-                                            'id="xs-components-links-module-SharedCoreModule-d70fb96b5b0f26abf9f2ee72d2b4483d"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SharedCoreModule-bfd55c753fbf5c082b636b5d56e12470"' :
+                                            'id="xs-components-links-module-SharedCoreModule-bfd55c753fbf5c082b636b5d56e12470"' }>
                                             <li class="link">
                                                 <a href="components/AccordionCommonComponent.html"
                                                     data-type="entity-link" data-context="sub-entity" data-context-id="modules">AccordionCommonComponent</a>
@@ -182,6 +182,10 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                             <li class="link">
                                                 <a href="components/DropdownComponent.html"
                                                     data-type="entity-link" data-context="sub-entity" data-context-id="modules">DropdownComponent</a>
+                                            </li>
+                                            <li class="link">
+                                                <a href="components/ErrorContainerComponent.html"
+                                                    data-type="entity-link" data-context="sub-entity" data-context-id="modules">ErrorContainerComponent</a>
                                             </li>
                                             <li class="link">
                                                 <a href="components/FileUploaderComponent.html"
@@ -267,13 +271,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     </li>
                                 <li class="chapter inner">
                                     <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                        'data-target="#directives-links-module-SharedCoreModule-d70fb96b5b0f26abf9f2ee72d2b4483d"' : 'data-target="#xs-directives-links-module-SharedCoreModule-d70fb96b5b0f26abf9f2ee72d2b4483d"' }>
+                                        'data-target="#directives-links-module-SharedCoreModule-bfd55c753fbf5c082b636b5d56e12470"' : 'data-target="#xs-directives-links-module-SharedCoreModule-bfd55c753fbf5c082b636b5d56e12470"' }>
                                         <span class="icon ion-md-code-working"></span>
                                         <span>Directives</span>
                                         <span class="icon ion-ios-arrow-down"></span>
                                     </div>
-                                    <ul class="links collapse" ${ isNormalMode ? 'id="directives-links-module-SharedCoreModule-d70fb96b5b0f26abf9f2ee72d2b4483d"' :
-                                        'id="xs-directives-links-module-SharedCoreModule-d70fb96b5b0f26abf9f2ee72d2b4483d"' }>
+                                    <ul class="links collapse" ${ isNormalMode ? 'id="directives-links-module-SharedCoreModule-bfd55c753fbf5c082b636b5d56e12470"' :
+                                        'id="xs-directives-links-module-SharedCoreModule-bfd55c753fbf5c082b636b5d56e12470"' }>
                                         <li class="link">
                                             <a href="directives/DateFieldFormatDirective.html"
                                                 data-type="entity-link" data-context="sub-entity" data-context-id="modules">DateFieldFormatDirective</a>
@@ -283,12 +287,24 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                                 data-type="entity-link" data-context="sub-entity" data-context-id="modules">DayValidationDirective</a>
                                         </li>
                                         <li class="link">
+                                            <a href="directives/DuplicateCheckDirective.html"
+                                                data-type="entity-link" data-context="sub-entity" data-context-id="modules">DuplicateCheckDirective</a>
+                                        </li>
+                                        <li class="link">
                                             <a href="directives/ValidateBcPostalDirective.html"
                                                 data-type="entity-link" data-context="sub-entity" data-context-id="modules">ValidateBcPostalDirective</a>
                                         </li>
                                         <li class="link">
                                             <a href="directives/ValidateNameDirective.html"
                                                 data-type="entity-link" data-context="sub-entity" data-context-id="modules">ValidateNameDirective</a>
+                                        </li>
+                                        <li class="link">
+                                            <a href="directives/ValidatePhnDirective.html"
+                                                data-type="entity-link" data-context="sub-entity" data-context-id="modules">ValidatePhnDirective</a>
+                                        </li>
+                                        <li class="link">
+                                            <a href="directives/ValidateSinDirective.html"
+                                                data-type="entity-link" data-context="sub-entity" data-context-id="modules">ValidateSinDirective</a>
                                         </li>
                                         <li class="link">
                                             <a href="directives/YearValidateDirective.html"
