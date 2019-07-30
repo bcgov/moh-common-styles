@@ -64,6 +64,15 @@
                             <a href="#addPackageToPackageJson" title="projects/common/schematics/src/moh-start/package-config.ts"><b>addPackageToPackageJson</b>&nbsp;&nbsp;&nbsp;(projects/.../package-config.ts)</a>
                         </li>
                         <li>
+                            <a href="#checkForDuplicates" title="projects/common/lib/components/duplicate-check/duplicate-check.directive.ts"><b>checkForDuplicates</b>&nbsp;&nbsp;&nbsp;(projects/.../duplicate-check.directive.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#commonDuplicateCheck" title="projects/common/lib/components/duplicate-check/duplicate-check.directive.ts"><b>commonDuplicateCheck</b>&nbsp;&nbsp;&nbsp;(projects/.../duplicate-check.directive.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#commonValidatePhn" title="projects/common/lib/components/phn/validate-phn.directive.ts"><b>commonValidatePhn</b>&nbsp;&nbsp;&nbsp;(projects/.../validate-phn.directive.ts)</a>
+                        </li>
+                        <li>
                             <a href="#copyLicense" title="projects/common/schematics/src/copy-license/index.ts"><b>copyLicense</b>&nbsp;&nbsp;&nbsp;(projects/.../index.ts)</a>
                         </li>
                         <li>
@@ -88,10 +97,10 @@
                             <a href="#overwriteFile" title="projects/common/schematics/src/moh-start/index.ts"><b>overwriteFile</b>&nbsp;&nbsp;&nbsp;(projects/.../index.ts)</a>
                         </li>
                         <li>
-                            <a href="#sortObjectByKeys" title="projects/common/schematics/src/helpers/json.ts"><b>sortObjectByKeys</b>&nbsp;&nbsp;&nbsp;(projects/.../json.ts)</a>
+                            <a href="#sortObjectByKeys" title="projects/common/schematics/src/moh-start/package-config.ts"><b>sortObjectByKeys</b>&nbsp;&nbsp;&nbsp;(projects/.../package-config.ts)</a>
                         </li>
                         <li>
-                            <a href="#sortObjectByKeys" title="projects/common/schematics/src/moh-start/package-config.ts"><b>sortObjectByKeys</b>&nbsp;&nbsp;&nbsp;(projects/.../package-config.ts)</a>
+                            <a href="#sortObjectByKeys" title="projects/common/schematics/src/helpers/json.ts"><b>sortObjectByKeys</b>&nbsp;&nbsp;&nbsp;(projects/.../json.ts)</a>
                         </li>
                         <li>
                             <a href="#updateAngularJson" title="projects/common/schematics/src/moh-start/index.ts"><b>updateAngularJson</b>&nbsp;&nbsp;&nbsp;(projects/.../index.ts)</a>
@@ -104,6 +113,9 @@
                         </li>
                         <li>
                             <a href="#updateTsConfig" title="projects/common/schematics/src/moh-start/index.ts"><b>updateTsConfig</b>&nbsp;&nbsp;&nbsp;(projects/.../index.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#validatePHN" title="projects/common/lib/components/phn/validate-phn.directive.ts"><b>validatePHN</b>&nbsp;&nbsp;&nbsp;(projects/.../validate-phn.directive.ts)</a>
                         </li>
                         <li>
                             <a href="#versionJS" title="projects/common/schematics/src/version-js/index.ts"><b>versionJS</b>&nbsp;&nbsp;&nbsp;(projects/.../index.ts)</a>
@@ -671,6 +683,302 @@
                         </table>
                     </div>
                     <div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>projects/common/lib/components/duplicate-check/duplicate-check.directive.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="checkForDuplicates"></a>
+                    <span class="name">
+                        <b>
+                            checkForDuplicates
+                        </b>
+                        <a href="#checkForDuplicates"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>checkForDuplicates(control, dupList)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>control</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>dupList</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>literal type | null</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="commonDuplicateCheck"></a>
+                    <span class="name">
+                        <b>
+                            commonDuplicateCheck
+                        </b>
+                        <a href="#commonDuplicateCheck"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>commonDuplicateCheck(dupList)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>dupList</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://angular.io/api/forms/ValidatorFn" target="_blank" >ValidatorFn</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    <h3>projects/common/lib/components/phn/validate-phn.directive.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="commonValidatePhn"></a>
+                    <span class="name">
+                        <b>
+                            commonValidatePhn
+                        </b>
+                        <a href="#commonValidatePhn"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>commonValidatePhn(isBCPhn: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>, allowEmptyValue: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>isBCPhn</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>allowEmptyValue</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://angular.io/api/forms/ValidatorFn" target="_blank" >ValidatorFn</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="validatePHN"></a>
+                    <span class="name">
+                        <b>
+                            validatePHN
+                        </b>
+                        <a href="#validatePHN"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>validatePHN(phn, isBCPhn: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>, allowEmptyValue: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>phn</td>
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>isBCPhn</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>allowEmptyValue</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>literal type | null</code>
+
+                    </div>
+                    <div class="io-description">
+                        
                     </div>
                 </td>
             </tr>

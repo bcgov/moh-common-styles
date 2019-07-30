@@ -14,8 +14,8 @@
          *ngIf='allowExtralines'>
       <div class="h-50"></div>
       <button class=" btn btn-transparent"
-              *ngIf='!showLine'
-              aria-label="Add Address Line 2 (optional)"
+              *ngIf='!(showLine2 && showLine3)'
+              aria-label="Add Additional Address Line (optional)"
               (click)="addLine()">
         <i class="fa fa-plus"></i>
       </button>
@@ -24,11 +24,9 @@
 </div>
 
 
-<!-- TODO - Potentially put this behind an ngFor if we ever need to show AddressLine3 -->
 <div class="form-group"
-     *ngIf='showLine'>
+     *ngIf='showLine2'>
   <div class="row">
-
 
     <div class="col-11">
       <common-street label='Address Line 2'
@@ -39,8 +37,31 @@
     <div class="col-1">
       <div class="h-50"></div>
       <button class=" btn btn-transparent"
+              *ngIf="!showLine3"
               aria-label='Remove Address Line 2'
-              (click)="removeLine()">
+              (click)="removeLine(2)">
+        <i class="fa fa-minus"></i>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="form-group"
+     *ngIf='showLine3'>
+  <div class="row">
+
+
+    <div class="col-11">
+      <common-street label='Address Line 3'
+                     name="street_line_3_{{objectId}}"
+                     [useGeoCoder]='false'
+                     [(ngModel)]='addr.addressLine3'></common-street>
+    </div>
+    <div class="col-1">
+      <div class="h-50"></div>
+      <button class=" btn btn-transparent"
+              aria-label='Remove Address Line 3'
+              (click)="removeLine(3)">
         <i class="fa fa-minus"></i>
       </button>
     </div>

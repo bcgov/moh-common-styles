@@ -25,9 +25,6 @@
   max-width: 25%;
   height: 35px;
 }
-.error-container {
-  flex-basis: 100% !important;
-}
 
 /* Remove spinners */
 input[type=number]::-webkit-inner-spin-button,
@@ -41,4 +38,3 @@ input[type=number]::-webkit-outer-spin-button {
 select option[selected] {
   color: gray !important;
 }
-

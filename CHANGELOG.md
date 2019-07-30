@@ -1,4 +1,42 @@
-# Unreleased "moh-common-lib" (2019-07-16)
+# Unreleased "moh-common-lib" (2019-07-29)
+
+
+
+# [2.4.0](https://github.com/bcgov/moh-common-styles/compare/v2.3.0...v2.4.0) "moh-common-lib" (2019-07-29)
+
+
+
+# [2.3.0](https://github.com/bcgov/moh-common-styles/compare/v2.2.0...v2.3.0) "moh-common-lib" (2019-07-25)
+
+
+### Features
+
+* **Address:** Now has default country/prov behaviour built in ([8361a0e](https://github.com/bcgov/moh-common-styles/commit/8361a0e))
+
+
+
+# [2.2.0](https://github.com/bcgov/moh-common-styles/compare/v2.1.5...v2.2.0) "moh-common-lib" (2019-07-25)
+
+
+### Features
+
+* **Address:** Additional lines must be removed in order ([ac9d61c](https://github.com/bcgov/moh-common-styles/commit/ac9d61c))
+* **Address:** Now can show 2 extra address lines (previously only one) ([af91989](https://github.com/bcgov/moh-common-styles/commit/af91989))
+
+
+### Styles
+
+* **XIconButton:** Change icon from 'times' to 'times-circle' ([aad93b5](https://github.com/bcgov/moh-common-styles/commit/aad93b5))
+
+
+
+## [2.1.5](https://github.com/bcgov/moh-common-styles/compare/v2.1.4...v2.1.5) "moh-common-lib" (2019-07-18)
+
+
+### Accessibility
+
+* **Radio:** Hide radio for FireFox but keep tab-focusable. ([8f6886f](https://github.com/bcgov/moh-common-styles/commit/8f6886f))
+* **XIconButton:** Add label ([867f969](https://github.com/bcgov/moh-common-styles/commit/867f969))
 
 
 
