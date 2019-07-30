@@ -1,4 +1,17 @@
-# Unreleased "moh-common-lib" (2019-07-25)
+# Unreleased "moh-common-lib" (2019-07-29)
+
+
+
+# [2.4.0](https://github.com/bcgov/moh-common-styles/compare/v2.3.0...v2.4.0) "moh-common-lib" (2019-07-29)
+
+
+
+# [2.3.0](https://github.com/bcgov/moh-common-styles/compare/v2.2.0...v2.3.0) "moh-common-lib" (2019-07-25)
+
+
+### Features
+
+* **Address:** Now has default country/prov behaviour built in ([8361a0e](https://github.com/bcgov/moh-common-styles/commit/8361a0e))
 
 
 

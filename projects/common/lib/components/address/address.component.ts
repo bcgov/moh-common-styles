@@ -12,7 +12,7 @@ import { Base } from '../../models/base';
 import { GeoAddressResult } from '../../services/geocoder.service';
 import { Address } from '../../models/address.model';
 import { CountryList, CANADA, UNITED_STATES, COUNTRY_LIST } from '../country/country.component';
-import { ProvinceList, BRITISH_COLUMBIA, PROVINCE_LIST} from '../province/province.component';
+import { ProvinceList, BRITISH_COLUMBIA, PROVINCE_LIST } from '../province/province.component';
 
 
 /**
@@ -27,14 +27,14 @@ import { ProvinceList, BRITISH_COLUMBIA, PROVINCE_LIST} from '../province/provin
    * up in its parents `this.form`, and will auto-update `this.form.valid`
    */
   viewProviders: [
-    { provide: ControlContainer, useExisting: forwardRef(() => NgForm ) }
+    { provide: ControlContainer, useExisting: forwardRef(() => NgForm) }
   ],
   providers: [
-    { provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AddressComponent )}
+    { provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => AddressComponent) }
   ]
 })
 export class AddressComponent extends Base
-       implements OnInit, OnChanges, ControlValueAccessor {
+  implements OnInit, OnChanges, ControlValueAccessor {
 
   @Input() disabled: boolean = false;
   @Input() isRequired: boolean = false;
@@ -45,8 +45,8 @@ export class AddressComponent extends Base
   @Input() disableGeocoder: boolean = false;
 
   @Input()
-  set address( val: Address ) {
-    if ( val ) {
+  set address(val: Address) {
+    if (val) {
       this.addr = val;
     }
   }
@@ -67,8 +67,8 @@ export class AddressComponent extends Base
   showLine3 = false;
 
 
-  _onChange = (_: any) => {};
-  _onTouched = (_: any) => {};
+  _onChange = (_: any) => { };
+  _onTouched = (_: any) => { };
 
   constructor() {
     super();
@@ -76,17 +76,17 @@ export class AddressComponent extends Base
 
   ngOnInit() {
 
-    if ( this.addr ) {
+    if (this.addr) {
 
-      if ( !this.addr.country ) {
+      if (!this.addr.country) {
         this.addr.country = this.setDefaultCountryAsOption();
       } else {
         // If string for country submitted, need to find code to display value in select box
         this.addr.country = this.findCountryCode( this.addr.country );
       }
 
-      if ( !this.addr.province ) {
-        this.addr.province = this.setDefaultProvinceAsOption( this.addr.country );
+      if (!this.addr.province) {
+        this.addr.province = this.setDefaultProvinceAsOption(this.addr.country);
       }
 
       // Make sure addressLine2 is visible if there is data persisted to display there.
@@ -118,30 +118,30 @@ export class AddressComponent extends Base
     }
     this.addr.country = value;
     this.updateProvList();
-    this._onChange( this.addr );
-    this.addressChange.emit( this.addr );
-    this._onTouched( this.addr );
+    this._onChange(this.addr);
+    this.addressChange.emit(this.addr);
+    this._onTouched(this.addr);
   }
 
   setProvince(value: string) {
     this.addr.province = value;
-    this._onChange( this.addr );
+    this._onChange(this.addr);
     this.addressChange.emit(this.addr);
-    this._onTouched( this.addr );
+    this._onTouched(this.addr);
   }
 
   setStreetAddress(value: string) {
     this.addr.street = value;
-    this._onChange( this.addr );
-    this.addressChange.emit( this.addr );
-    this._onTouched( this.addr );
+    this._onChange(this.addr);
+    this.addressChange.emit(this.addr);
+    this._onTouched(this.addr);
   }
 
   setCity(value: string) {
     this.addr.city = value;
-    this._onChange( this.addr );
-    this.addressChange.emit( this.addr );
-    this._onTouched( this.addr );
+    this._onChange(this.addr);
+    this.addressChange.emit(this.addr);
+    this._onTouched(this.addr);
   }
 
   /**
@@ -150,9 +150,9 @@ export class AddressComponent extends Base
    */
   setPostalCode(value: string) {
     this.addr.postal = value;
-    this._onChange( this.addr );
+    this._onChange(this.addr);
     this.addressChange.emit(this.addr);
-    this._onTouched( this.addr );
+    this._onTouched(this.addr);
   }
 
   isCanada(): boolean {
@@ -166,19 +166,19 @@ export class AddressComponent extends Base
   ngOnChanges(changes) {
     if (changes['countryList'] && changes['countryList'].currentValue) {
 
-      if ( this.addr && !this.addr.country ) {
+      if (this.addr && !this.addr.country) {
         // Set defaults
         this.addr.country = this.setDefaultCountryAsOption();
 
         // Set defaults
-        this.addr.province = this.setDefaultProvinceAsOption( this.addr.country );
+        this.addr.province = this.setDefaultProvinceAsOption(this.addr.country);
       }
       this.updateProvList();
     }
     if (changes['provinceList'] && changes['provinceList'].currentValue) {
-      if ( this.addr && !this.addr.province ) {
+      if (this.addr && !this.addr.province) {
         // Set defaults
-        this.addr.province = this.setDefaultProvinceAsOption( this.addr.country );
+        this.addr.province = this.setDefaultProvinceAsOption(this.addr.country);
       }
       this.updateProvList();
     }
@@ -226,21 +226,21 @@ export class AddressComponent extends Base
   /**
    * Sets the default province option value
    */
-  private setDefaultProvinceAsOption( country: string ): string {
+  private setDefaultProvinceAsOption(country: string): string {
     const provObj = !this.provinceList ? null : this.provinceList.find(
       val => (val.provinceCode === this.defaultProvince ||
-             val.description === this.defaultProvince) &&
-             val.country === country
+        val.description === this.defaultProvince) &&
+        val.country === country
     );
-    return (provObj ? provObj.provinceCode : null );
+    return (provObj ? provObj.provinceCode : null);
   }
 
-  private findProvinceDescription( prov: string ): string {
+  private findProvinceDescription(prov: string): string {
     const provObj = !this.provinceList ? null : this.provinceList.find(
       val => val.provinceCode === prov ||
-             val.description === prov
+        val.description === prov
     );
-    return (provObj ? provObj.description : null );
+    return (provObj ? provObj.description : null);
   }
 
   /**
@@ -253,8 +253,8 @@ export class AddressComponent extends Base
 
   private findCountryCode( country: string ): string {
     const countryObj = !this.countryList
-    ? null
-    : this.countryList.find(
+      ? null
+      : this.countryList.find(
         val =>
           val.countryCode === country ||
           val.description === country
@@ -280,7 +280,7 @@ export class AddressComponent extends Base
     this.addr.city = data.city;
     this.addr.province = data.province;
     this.addr.country = data.country;
-    this.addressChange.emit( this.addr );
+    this.addressChange.emit(this.addr);
   }
 
   writeValue( value: Address) {
