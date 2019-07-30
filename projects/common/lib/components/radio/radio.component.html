@@ -4,7 +4,6 @@
   <div *ngFor="let val of radioLabels" [ngStyle]="{'display': display}" >
     <div class="md-radio md-radio-inline"> 
       <input type="radio"
-             style="display:none;"
              name="selection__{{objectId}}"
              id="{{val.value}}_{{objectId}}"
              [disabled]="disabled"
