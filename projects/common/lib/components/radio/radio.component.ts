@@ -54,7 +54,7 @@ export class RadioComponent extends Base implements ControlValueAccessor {
   @Input() showError: boolean;
   @Input() errorMessageRequired: string = this.label + ' is required.';
   @Input() display: 'table-row-group' | 'inline-block'  = 'inline-block';
-
+  @Input() instructionText: string;
   @Output() statusChange: EventEmitter<string> = new EventEmitter<string>();
 
   public _onChange = (_: any) => {};
