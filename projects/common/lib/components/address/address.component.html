@@ -2,7 +2,7 @@
   <div class="row">
     <div [ngClass]="{'col-11': allowExtralines, 'col-12': !allowExtralines}">
       <common-street name="street_{{objectId}}"
-                     label="Full street address or rural route"
+                     label="{{addrLabels.address1}}"
                      [useGeoCoder]="useGeoCoder()"
                      [ngModel]="addr?.street"
                      (ngModelChange)="setStreetAddress($event)"
@@ -29,16 +29,16 @@
   <div class="row">
 
     <div class="col-11">
-      <common-street label='Address Line 2'
+      <common-street label="{{addrLabels.address2}}"
                      name="street_line_2_{{objectId}}"
                      [useGeoCoder]='false'
                      [(ngModel)]='addr.addressLine2'></common-street>
     </div>
     <div class="col-1">
       <div class="h-50"></div>
-      <button class=" btn btn-transparent"
+      <button class="btn btn-transparent"
               *ngIf="!showLine3"
-              aria-label='Remove Address Line 2'
+              aria-label='Remove ' + {{lablels.address2}}
               (click)="removeLine(2)">
         <i class="fa fa-minus"></i>
       </button>
@@ -52,7 +52,7 @@
 
 
     <div class="col-11">
-      <common-street label='Address Line 3'
+      <common-street label="{{addrLabels.address3}}"
                      name="street_line_3_{{objectId}}"
                      [useGeoCoder]='false'
                      [(ngModel)]='addr.addressLine3'></common-street>
@@ -60,7 +60,7 @@
     <div class="col-1">
       <div class="h-50"></div>
       <button class=" btn btn-transparent"
-              aria-label='Remove Address Line 3'
+              aria-label='Remove ' + {{labels.address3}}
               (click)="removeLine(3)">
         <i class="fa fa-minus"></i>
       </button>
@@ -69,10 +69,9 @@
 </div>
 
 
-
-
-<div class="form-group">
+<div class="form-group col-sm-11 p-sm-0">
   <common-city name="city_{{objectId}}"
+               label="{{addrLabels.city}}"
                [ngModel]="addr?.city"
                (ngModelChange)="setCity($event)"
                [required]="isRequired"
@@ -80,9 +79,9 @@
 </div>
 
 
-<div class="form-group">
+<div class="form-group col-sm-11 p-sm-0">
   <common-country name="country_{{objectId}}"
-                  label="Country"
+                  label="{{addrLabels.country}}"
                   [countryList]="countryList"
                   [ngModel]="addr?.country"
                   (ngModelChange)="setCountry($event)"
@@ -90,9 +89,9 @@
                   [disabled]="disabled"></common-country>
 </div>
 
-<div class="form-group">
+<div class="form-group col-sm-11 p-sm-0">
   <common-province name="province_{{objectId}}"
-                   label="Province/State"
+                   label="{{addrLabels.province}}"
                    [ngModel]="addr?.province"
                    (ngModelChange)="setProvince($event)"
                    [provinceList]="provList"
@@ -105,7 +104,7 @@
 
 <div class="form-group col-sm-4 p-sm-0">
   <common-postal-code name="pc_{{objectId}}"
-                      [label]="'Postal Code'"
+                      label="{{addrLabels.postalCode}}"
                       [displayMask]="isCanada()"
                       [disabled]="disabled"
                       [ngModel]="addr?.postal"
