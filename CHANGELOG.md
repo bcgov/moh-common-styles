@@ -1,4 +1,13 @@
-# Unreleased "moh-common-lib" (2019-07-29)
+# Unreleased "moh-common-lib" (2019-07-31)
+
+
+
+# [2.5.0](https://github.com/bcgov/moh-common-styles/compare/v2.4.0...v2.5.0) "moh-common-lib" (2019-07-31)
+
+
+### Features
+
+* **Address:** added input to address component to allow users to change default labels on fields. (#31) ([ebb6998](https://github.com/bcgov/moh-common-styles/commit/ebb6998)), closes [#31](https://github.com/bcgov/moh-common-styles/issues/31)
 
 
 

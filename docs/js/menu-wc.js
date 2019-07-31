@@ -405,6 +405,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                         </div>
                         <ul class="links collapse" ${ isNormalMode ? ' id="interfaces-links"' : 'id="xs-interfaces-links"' }>
                             <li class="link">
+                                <a href="interfaces/AddrLabelList.html" data-type="entity-link">AddrLabelList</a>
+                            </li>
+                            <li class="link">
                                 <a href="interfaces/CommonImageScaleFactors.html" data-type="entity-link">CommonImageScaleFactors</a>
                             </li>
                             <li class="link">
