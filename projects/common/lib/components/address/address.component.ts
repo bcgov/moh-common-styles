@@ -14,6 +14,15 @@ import { Address } from '../../models/address.model';
 import { CountryList, CANADA, UNITED_STATES, COUNTRY_LIST } from '../country/country.component';
 import { ProvinceList, BRITISH_COLUMBIA, PROVINCE_LIST } from '../province/province.component';
 
+export interface AddrLabelList {
+  address1?: string;
+  address2?: string;
+  address3?: string;
+  city?: string;
+  province?: string;
+  country?: string;
+  postalCode?: string;
+}
 
 /**
  *
@@ -43,6 +52,7 @@ export class AddressComponent extends Base
   @Input() provinceList: ProvinceList[] = PROVINCE_LIST;
   @Input() defaultProvince: string = BRITISH_COLUMBIA;
   @Input() disableGeocoder: boolean = false;
+  @Input() labels: AddrLabelList;
 
   @Input()
   set address(val: Address) {
@@ -66,6 +76,15 @@ export class AddressComponent extends Base
   showLine2 = false;
   showLine3 = false;
 
+  addrLabels: AddrLabelList =  {
+    address1: 'Full street address or rural route',
+    address2: 'Address Line 2',
+    address3: 'Address Line 3',
+    city: 'City',
+    province: 'Province/State',
+    country: 'Country',
+    postalCode: 'Postal Code'
+  };
 
   _onChange = (_: any) => { };
   _onTouched = (_: any) => { };
@@ -75,6 +94,8 @@ export class AddressComponent extends Base
   }
 
   ngOnInit() {
+
+    this.setLabels();
 
     if (this.addr) {
 
@@ -299,5 +320,11 @@ export class AddressComponent extends Base
 
   setDisabledState(isDisabled: boolean): void {
     this.disabled = isDisabled;
+  }
+
+  private setLabels() {
+    if ( this.labels ) {
+      Object.keys(this.labels).map( x => this.addrLabels[x] = this.labels[x] );
+    }
   }
 }
