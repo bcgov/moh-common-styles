@@ -2,6 +2,15 @@
 
 
 
+## [2.5.1](https://github.com/bcgov/moh-common-styles/compare/v2.5.0...v2.5.1) "moh-common-lib" (2019-07-31)
+
+
+### Bug Fixes
+
+* removed plus sign used to concatenate string for aria-label (#32) ([3a5677b](https://github.com/bcgov/moh-common-styles/commit/3a5677b)), closes [#32](https://github.com/bcgov/moh-common-styles/issues/32)
+
+
+
 # [2.5.0](https://github.com/bcgov/moh-common-styles/compare/v2.4.0...v2.5.0) "moh-common-lib" (2019-07-31)
 
 
