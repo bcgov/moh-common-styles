@@ -1,4 +1,8 @@
-# Unreleased "moh-common-lib" (2019-07-31)
+# Unreleased "moh-common-lib" (2019-08-02)
+
+
+
+## [2.5.2](https://github.com/bcgov/moh-common-styles/compare/v2.5.1...v2.5.2) "moh-common-lib" (2019-08-02)
 
 
 
