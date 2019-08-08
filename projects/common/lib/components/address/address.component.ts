@@ -86,20 +86,22 @@ export class AddressComponent extends Base
   showLine2 = false;
   showLine3 = false;
 
+  // Labels defaulted to MSP
   addrLabels: AddrLabelList =  {
-    address1: 'Full street address or rural route',
+    address1: 'Full street address, rural route, PO Box or general delivery',
     address2: 'Address Line 2',
     address3: 'Address Line 3',
     city: 'City',
-    province: 'Province/State',
+    province: 'Province or state',
     country: 'Country',
-    postalCode: 'Postal Code'
+    postalCode: 'Postal Code or ZIP'
   };
 
+  // Lengths defaulted to MSP
   fieldMaxLenghts: Maxlengths = {
     address: '25',
     city: '25',
-    province: '250',
+    province: '25',
     country: '250',
     postalCode: '25'
   };
