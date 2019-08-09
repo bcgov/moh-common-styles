@@ -1309,7 +1309,7 @@ export class NameComponent extends Base implements ControlValueAccessor {
 
   displayErrors(): boolean {
     const displayErr &#x3D; this.controlDir &amp;&amp; !this.controlDir.disabled &amp;&amp;
-    ( this.controlDir.dirty || this.controlDir.touched );
+    ( this.controlDir.dirty || this.controlDir.touched ) &amp;&amp; !!this.controlDir.errors;
     return displayErr;
   }
 

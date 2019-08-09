@@ -175,7 +175,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">projects/common/lib/components/page-section/page-section.component.ts:11</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">projects/common/lib/components/page-section/page-section.component.ts:17</a></div>
                             </td>
                         </tr>
 
@@ -206,7 +206,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">projects/common/lib/components/page-section/page-section.component.ts:11</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">projects/common/lib/components/page-section/page-section.component.ts:17</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -242,8 +242,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="15"
-                            class="link-to-prism">projects/common/lib/components/page-section/page-section.component.ts:15</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="21"
+                            class="link-to-prism">projects/common/lib/components/page-section/page-section.component.ts:21</a></div>
                 </td>
             </tr>
 
@@ -273,6 +273,12 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, Input, ViewEncapsulation } from &#x27;@angular/core&#x27;;
+
+// IMPROVEMENT: Add a &#x27;flex&#x27; @Input(), that adds display flex.  Importantly, it
+// must set flex on the wrapper/row divs in the html.  There are some cases
+// (like SiteReg) where having flex layout is beneficial.  My first suggestion
+// was to simply style the &lt;common-page-section&gt;, but the problem is that we
+// need flex on the child elements of page-section (that still wrap ng-content).
 
 @Component({
   selector: &#x27;common-page-section&#x27;,

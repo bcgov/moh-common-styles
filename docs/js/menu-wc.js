@@ -432,6 +432,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="interfaces/ISpaEnvResponse.html" data-type="entity-link">ISpaEnvResponse</a>
                             </li>
                             <li class="link">
+                                <a href="interfaces/Maxlengths.html" data-type="entity-link">Maxlengths</a>
+                            </li>
+                            <li class="link">
                                 <a href="interfaces/PageListInterface.html" data-type="entity-link">PageListInterface</a>
                             </li>
                             <li class="link">
