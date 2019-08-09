@@ -26,6 +26,11 @@ export const PROVINCE_LIST: ProvinceList[] = [
   { provinceCode: 'YT', description: 'Yukon', country: CANADA }
 ];
 
+export function getProvinceDescription( provinceCode: string ) {
+  const provObj = PROVINCE_LIST.find( val => provinceCode === val.provinceCode && CANADA === val.country );
+  return provObj ? provObj.description : provinceCode;
+}
+
 @Component({
   selector: 'common-province',
   templateUrl: './province.component.html',
