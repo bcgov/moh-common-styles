@@ -13,7 +13,7 @@
 
  <!-- Error messages for input -->
 <common-error-container
-    [displayError]="controlDir && !disabled && (controlDir.touched || controlDir.dirty)">
+    [displayError]="controlDir && !disabled && (controlDir.touched || controlDir.dirty) && controlDir.errors">
   <div *ngIf="controlDir.errors?.required">
     {{label}} is required.
   </div>

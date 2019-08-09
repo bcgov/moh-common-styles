@@ -80,7 +80,7 @@ export class NameComponent extends Base implements ControlValueAccessor {
 
   displayErrors(): boolean {
     const displayErr = this.controlDir && !this.controlDir.disabled &&
-    ( this.controlDir.dirty || this.controlDir.touched );
+    ( this.controlDir.dirty || this.controlDir.touched ) && !!this.controlDir.errors;
     return displayErr;
   }
 

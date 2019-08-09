@@ -264,6 +264,11 @@ export const COUNTRY_LIST: CountryList[] = [
   { countryCode: 'ZWE', description: 'Zimbabwe' }
 ];
 
+export function getCountryDescription( countryCode: string ) {
+  const countryObj = COUNTRY_LIST.find( val => countryCode === val.countryCode );
+  return countryObj ? countryObj.description : countryCode;
+}
+
 @Component({
   selector: 'common-country',
   templateUrl: './country.component.html',

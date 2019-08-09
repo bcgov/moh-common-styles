@@ -8,11 +8,11 @@
 export * from './lib/shared-core.module';
 
 // Interfaces
-export { CountryList, CANADA, UNITED_STATES, COUNTRY_LIST } from './lib/components/country/country.component';
-export { ProvinceList, BRITISH_COLUMBIA, PROVINCE_LIST } from './lib/components/province/province.component';
+export { CountryList, CANADA, UNITED_STATES, COUNTRY_LIST, getCountryDescription } from './lib/components/country/country.component';
+export { ProvinceList, BRITISH_COLUMBIA, PROVINCE_LIST, getProvinceDescription } from './lib/components/province/province.component';
 export { ConsentModalComponent } from './lib/components/consent-modal/consent-modal.component';
 export { SimpleDate } from './lib/models/simple-date.interface';
-export { AddrLabelList } from './lib/components/address/address.component';
+export { AddrLabelList , Maxlengths } from './lib/components/address/address.component';
 
 
 // Models

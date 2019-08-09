@@ -13,11 +13,20 @@ import { GeoAddressResult } from '../../services/geocoder.service';
 import { Address } from '../../models/address.model';
 import { CountryList, CANADA, UNITED_STATES, COUNTRY_LIST } from '../country/country.component';
 import { ProvinceList, BRITISH_COLUMBIA, PROVINCE_LIST } from '../province/province.component';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 export interface AddrLabelList {
   address1?: string;
   address2?: string;
   address3?: string;
+  city?: string;
+  province?: string;
+  country?: string;
+  postalCode?: string;
+}
+
+export interface Maxlengths {
+  address?: string;
   city?: string;
   province?: string;
   country?: string;
@@ -53,6 +62,7 @@ export class AddressComponent extends Base
   @Input() defaultProvince: string = BRITISH_COLUMBIA;
   @Input() disableGeocoder: boolean = false;
   @Input() labels: AddrLabelList;
+  @Input() maxlengths: Maxlengths;
 
   @Input()
   set address(val: Address) {
@@ -76,14 +86,24 @@ export class AddressComponent extends Base
   showLine2 = false;
   showLine3 = false;
 
+  // Labels defaulted to MSP
   addrLabels: AddrLabelList =  {
-    address1: 'Full street address or rural route',
+    address1: 'Full street address, rural route, PO Box or general delivery',
     address2: 'Address Line 2',
     address3: 'Address Line 3',
     city: 'City',
-    province: 'Province/State',
+    province: 'Province or state',
     country: 'Country',
-    postalCode: 'Postal Code'
+    postalCode: 'Postal Code or ZIP'
+  };
+
+  // Lengths defaulted to MSP
+  fieldMaxLenghts: Maxlengths = {
+    address: '25',
+    city: '25',
+    province: '25',
+    country: '250',
+    postalCode: '25'
   };
 
   _onChange = (_: any) => { };
@@ -96,6 +116,7 @@ export class AddressComponent extends Base
   ngOnInit() {
 
     this.setLabels();
+    this.setMaxlengths();
 
     if (this.addr) {
 
@@ -325,6 +346,12 @@ export class AddressComponent extends Base
   private setLabels() {
     if ( this.labels ) {
       Object.keys(this.labels).map( x => this.addrLabels[x] = this.labels[x] );
+    }
+  }
+
+  private setMaxlengths() {
+    if ( this.maxlengths ) {
+      Object.keys(this.fieldMaxLenghts).map( x => this.maxlengths[x] = this.fieldMaxLenghts[x]);
     }
   }
 }
