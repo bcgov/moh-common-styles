@@ -10,7 +10,7 @@
        [attr.maxlength]="maxlen"
        autocomplete="off" />
 <!-- Error messages for component -->
-<common-error-container [displayError]="displayErrors()">
+<common-error-container [displayError]="controlDir && !disabled && (controlDir.dirty || controlDir.touched) && controlDir.errors">
   <div *ngIf="controlDir.errors?.required">
     {{label}} is required.
   </div>
