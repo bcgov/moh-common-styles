@@ -1,4 +1,13 @@
-# Unreleased "moh-common-lib" (2019-08-09)
+# Unreleased "moh-common-lib" (2019-08-13)
+
+
+
+# [2.7.0](https://github.com/bcgov/moh-common-styles/compare/v2.6.0...v2.7.0) "moh-common-lib" (2019-08-13)
+
+
+### Bug Fixes
+
+* **Address:**  Clear out address line data when removing the line ([3f1149e](https://github.com/bcgov/moh-common-styles/commit/3f1149e))
 
 
 
