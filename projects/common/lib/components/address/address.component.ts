@@ -244,10 +244,13 @@ export class AddressComponent extends Base
 
   removeLine(line: 2 | 3) {
     // We can remove lines in any order, depending on user input
-
     // Dynamically lookup variable based on line number input.
     const lookup = `showLine${line}`;
     this[lookup] = false;
+    
+    // TODO - Need to clear the data in the appropriate field, just null/undefined it out.
+    const addrLookup = `addressLine${line}`;
+    this.address[addrLookup] = undefined;
   }
 
   /**
