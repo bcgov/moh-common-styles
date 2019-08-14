@@ -442,6 +442,11 @@ export const COUNTRY_LIST: CountryList[] &#x3D; [
   { countryCode: &#x27;ZWE&#x27;, description: &#x27;Zimbabwe&#x27; }
 ];
 
+export function getCountryDescription( countryCode: string ) {
+  const countryObj &#x3D; COUNTRY_LIST.find( val &#x3D;&gt; countryCode &#x3D;&#x3D;&#x3D; val.countryCode );
+  return countryObj ? countryObj.description : countryCode;
+}
+
 @Component({
   selector: &#x27;common-country&#x27;,
   templateUrl: &#x27;./country.component.html&#x27;,

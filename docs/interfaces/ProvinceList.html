@@ -229,6 +229,11 @@ export const PROVINCE_LIST: ProvinceList[] &#x3D; [
   { provinceCode: &#x27;YT&#x27;, description: &#x27;Yukon&#x27;, country: CANADA }
 ];
 
+export function getProvinceDescription( provinceCode: string ) {
+  const provObj &#x3D; PROVINCE_LIST.find( val &#x3D;&gt; provinceCode &#x3D;&#x3D;&#x3D; val.provinceCode &amp;&amp; CANADA &#x3D;&#x3D;&#x3D; val.country );
+  return provObj ? provObj.description : provinceCode;
+}
+
 @Component({
   selector: &#x27;common-province&#x27;,
   templateUrl: &#x27;./province.component.html&#x27;,

@@ -1,4 +1,27 @@
-# Unreleased "moh-common-lib" (2019-08-02)
+# Unreleased "moh-common-lib" (2019-08-13)
+
+
+
+# [2.7.0](https://github.com/bcgov/moh-common-styles/compare/v2.6.0...v2.7.0) "moh-common-lib" (2019-08-13)
+
+
+### Bug Fixes
+
+* **Address:**  Clear out address line data when removing the line ([3f1149e](https://github.com/bcgov/moh-common-styles/commit/3f1149e))
+
+
+
+# [2.6.0](https://github.com/bcgov/moh-common-styles/compare/v2.5.2...v2.6.0) "moh-common-lib" (2019-08-09)
+
+
+### Code Refactoring
+
+* Modified address to used MSP label and length defaults ([5bb54fc](https://github.com/bcgov/moh-common-styles/commit/5bb54fc))
+
+
+### Features
+
+* functions to retrieve country, prov descriptions,  maxlengths input for addresss ([978250b](https://github.com/bcgov/moh-common-styles/commit/978250b))
 
 
 
