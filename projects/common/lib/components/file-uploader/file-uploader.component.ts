@@ -122,7 +122,6 @@ export class FileUploaderComponent extends Base
 
 
     ngOnChanges(changes: SimpleChanges): void {
-        console.log('fileuploader onChanges', changes['images']);
         // if (changes['images'] && (changes['images'].currentValue.length === 0 &&
         //   changes['images'].previousValue.length > 0)) {
         if (changes['images'] && (
