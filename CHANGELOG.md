@@ -1,4 +1,14 @@
-# Unreleased "moh-common-lib" (2019-08-13)
+# Unreleased "moh-common-lib" (2019-08-15)
+
+
+
+## [2.7.1](https://github.com/bcgov/moh-common-styles/compare/v2.7.0...v2.7.1) "moh-common-lib" (2019-08-15)
+
+
+### Bug Fixes
+
+* **DateComponent:** Handles having 00 as day ([67b6f78](https://github.com/bcgov/moh-common-styles/commit/67b6f78))
+* **FileUpload:** Remove console log on ngchanges ([7c99c1e](https://github.com/bcgov/moh-common-styles/commit/7c99c1e))
 
 
 
