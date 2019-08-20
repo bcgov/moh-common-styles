@@ -286,12 +286,15 @@ export class DayValidationDirective implements Validator {
     const year: number &#x3D; parseInt( this.selectedYear, 10 );
     const month: number &#x3D; parseInt( this.selectedMonth, 10 );
 
+    if ( control.value !&#x3D;&#x3D; null &amp;&amp; control.value &lt; 1) {
+      return { &#x27;invalidValue&#x27;: true };
+    }
+
     if ( !control.value ) {
       return null; // empty value
     }
 
     const day: number &#x3D; parseInt( control.value, 10 );
-    console.log( &#x27;day: &#x27;, day );
 
     if ( !isNaN( day ) ) {
 
@@ -302,7 +305,6 @@ export class DayValidationDirective implements Validator {
         // Determine days in month
         const str &#x3D; &#x60;${year}-${month}&#x60;;
         let daysInMonth: number &#x3D; moment(str, &#x27;YYYY-MM&#x27;).daysInMonth();
-        console.log( &#x27;str: &#x27;, str + &#x27;, dayInMonth: &#x27;, daysInMonth );
 
         if ( isNaN( daysInMonth ) ) {
           daysInMonth &#x3D; 31;
