@@ -3,7 +3,7 @@ import { ValidatorFn, AbstractControl, ValidationErrors, NG_VALIDATORS, Validato
 
 export const commonValidateStreet: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
   /**
-  * Valid characters for name
+  * Valid characters for street
   */
  const criteria: RegExp = RegExp( '^(?=.*[a-zA-Z0-9])[a-zA-Z0-9#/&\-.\' ]*$' );
 

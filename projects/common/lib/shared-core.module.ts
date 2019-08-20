@@ -49,6 +49,7 @@ import { ValidatePhnDirective } from './components/phn/validate-phn.directive';
 import { DuplicateCheckDirective } from './components/duplicate-check/duplicate-check.directive';
 import { ErrorContainerComponent } from './components/error-container/error-container.component';
 import { ValidateStreetDirective } from './components/street/validate-street.directive';
+import { ValidateCityDirective } from './components/city/validate-city.directive';
 
 const componentList = [
   CoreBreadcrumbComponent,
@@ -108,7 +109,8 @@ const componentList = [
   ],
   declarations: [
     componentList,
-    ValidateStreetDirective
+    ValidateStreetDirective,
+    ValidateCityDirective
   ],
   exports: [
     componentList
