@@ -79,10 +79,19 @@
                             <a href="#commonValidateBcPostal" title="projects/common/lib/components/postal-code/validate-bc-postal.directive.ts"><b>commonValidateBcPostal</b>&nbsp;&nbsp;&nbsp;(projects/.../validate-bc-postal.directive.ts)</a>
                         </li>
                         <li>
+                            <a href="#commonValidateCity" title="projects/common/lib/components/city/validate-city.directive.ts"><b>commonValidateCity</b>&nbsp;&nbsp;&nbsp;(projects/.../validate-city.directive.ts)</a>
+                        </li>
+                        <li>
                             <a href="#commonValidateName" title="projects/common/lib/components/name/validate-name.directive.ts"><b>commonValidateName</b>&nbsp;&nbsp;&nbsp;(projects/.../validate-name.directive.ts)</a>
                         </li>
                         <li>
+                            <a href="#commonValidateRegion" title="projects/common/lib/components/validate-region/validate-region.directive.ts"><b>commonValidateRegion</b>&nbsp;&nbsp;&nbsp;(projects/.../validate-region.directive.ts)</a>
+                        </li>
+                        <li>
                             <a href="#commonValidateSin" title="projects/common/lib/components/sin/validate-sin.directive.ts"><b>commonValidateSin</b>&nbsp;&nbsp;&nbsp;(projects/.../validate-sin.directive.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#commonValidateStreet" title="projects/common/lib/components/street/validate-street.directive.ts"><b>commonValidateStreet</b>&nbsp;&nbsp;&nbsp;(projects/.../validate-street.directive.ts)</a>
                         </li>
                         <li>
                             <a href="#componentList" title="projects/common/lib/shared-core.module.ts"><b>componentList</b>&nbsp;&nbsp;&nbsp;(projects/.../shared-core.module.ts)</a>
@@ -112,22 +121,22 @@
                             <a href="#message" title="projects/common/schematics/src/version-js/files/version.GENERATED.ts"><b>message</b>&nbsp;&nbsp;&nbsp;(projects/.../version.GENERATED.ts)</a>
                         </li>
                         <li>
-                            <a href="#moment" title="projects/common/lib/components/datepicker/datepicker.component.ts"><b>moment</b>&nbsp;&nbsp;&nbsp;(projects/.../datepicker.component.ts)</a>
-                        </li>
-                        <li>
-                            <a href="#moment" title="projects/common/lib/components/date/day-validation.directive.ts"><b>moment</b>&nbsp;&nbsp;&nbsp;(projects/.../day-validation.directive.ts)</a>
-                        </li>
-                        <li>
                             <a href="#moment" title="projects/common/lib/components/date/date.component.ts"><b>moment</b>&nbsp;&nbsp;&nbsp;(projects/.../date.component.ts)</a>
-                        </li>
-                        <li>
-                            <a href="#moment" title="projects/common/lib/models/person.model.ts"><b>moment</b>&nbsp;&nbsp;&nbsp;(projects/.../person.model.ts)</a>
                         </li>
                         <li>
                             <a href="#moment" title="projects/common/lib/services/logger.service.ts"><b>moment</b>&nbsp;&nbsp;&nbsp;(projects/.../logger.service.ts)</a>
                         </li>
                         <li>
                             <a href="#moment" title="projects/common/lib/components/date/year-validate.directive.ts"><b>moment</b>&nbsp;&nbsp;&nbsp;(projects/.../year-validate.directive.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#moment" title="projects/common/lib/components/date/day-validation.directive.ts"><b>moment</b>&nbsp;&nbsp;&nbsp;(projects/.../day-validation.directive.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#moment" title="projects/common/lib/components/datepicker/datepicker.component.ts"><b>moment</b>&nbsp;&nbsp;&nbsp;(projects/.../datepicker.component.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#moment" title="projects/common/lib/models/person.model.ts"><b>moment</b>&nbsp;&nbsp;&nbsp;(projects/.../person.model.ts)</a>
                         </li>
                         <li>
                             <a href="#MyriadWebProTTF_base64" title="projects/common/schematics/src/moh-start/files/MyriadWebPro_ttf_base64.ts"><b>MyriadWebProTTF_base64</b>&nbsp;&nbsp;&nbsp;(projects/.../MyriadWebPro_ttf_base64.ts)</a>
@@ -986,6 +995,48 @@ header .nav-link {
             </tbody>
         </table>
 </section>
+    <h3>projects/common/lib/components/city/validate-city.directive.ts</h3>
+    <section>
+    <h3></h3>        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="commonValidateCity"></a>
+                        <span class="name">
+                            <b>
+                            commonValidateCity</b>
+                            <a href="#commonValidateCity"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://angular.io/api/forms/ValidatorFn" target="_blank" >ValidatorFn</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>(control: AbstractControl): ValidationErrors | null &#x3D;&gt; {
+
+  /**
+   * Valid characters for  city names
+   */
+ const criteria: RegExp &#x3D; RegExp( &#x27;^(?&#x3D;.*[a-zA-Z])[a-zA-Z0-9\-.\&#x27; ]*$&#x27; );
+
+ if ( control.value ) {
+    const result &#x3D; criteria.test( control.value );
+    return result ? null : { &#x27;invalidChar&#x27;: true };
+ }
+ return null;
+}</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+</section>
     <h3>projects/common/lib/components/name/validate-name.directive.ts</h3>
     <section>
     <h3></h3>        <table class="table table-sm table-bordered">
@@ -1018,6 +1069,48 @@ header .nav-link {
     return criteria.test( control.value ) ? null : { &#x27;invalidChar&#x27;: true };
   }
   return null;
+}</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+</section>
+    <h3>projects/common/lib/components/validate-region/validate-region.directive.ts</h3>
+    <section>
+    <h3></h3>        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="commonValidateRegion"></a>
+                        <span class="name">
+                            <b>
+                            commonValidateRegion</b>
+                            <a href="#commonValidateRegion"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://angular.io/api/forms/ValidatorFn" target="_blank" >ValidatorFn</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>(control: AbstractControl): ValidationErrors | null &#x3D;&gt; {
+
+  /**
+   * Valid characters for country/province/region names
+   */
+ const criteria: RegExp &#x3D; RegExp( &#x27;^(?&#x3D;.*[a-zA-Z])[a-zA-Z\-.\&#x27; ]*$&#x27; );
+
+ if ( control.value ) {
+    const result &#x3D; criteria.test( control.value );
+    return result ? null : { &#x27;invalidChar&#x27;: true };
+ }
+ return null;
 }</code>
                         </td>
                     </tr>
@@ -1108,6 +1201,47 @@ header .nav-link {
 
   // All done!
   return null;
+}</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+</section>
+    <h3>projects/common/lib/components/street/validate-street.directive.ts</h3>
+    <section>
+    <h3></h3>        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="commonValidateStreet"></a>
+                        <span class="name">
+                            <b>
+                            commonValidateStreet</b>
+                            <a href="#commonValidateStreet"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://angular.io/api/forms/ValidatorFn" target="_blank" >ValidatorFn</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>(control: AbstractControl): ValidationErrors | null &#x3D;&gt; {
+  /**
+  * Valid characters for street
+  */
+ const criteria: RegExp &#x3D; RegExp( &#x27;^(?&#x3D;.*[a-zA-Z0-9])[a-zA-Z0-9#/&amp;\-.\&#x27; ]*$&#x27; );
+
+ if ( control.value ) {
+    const result &#x3D; criteria.test( control.value );
+    return result ? null : { &#x27;invalidChar&#x27;: true };
+ }
+ return null;
 }</code>
                         </td>
                     </tr>
@@ -1459,79 +1593,7 @@ limitations under the License.&#x60;</code>
             </tbody>
         </table>
 </section>
-    <h3>projects/common/lib/components/datepicker/datepicker.component.ts</h3>
-    <section>
-    <h3></h3>        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="moment"></a>
-                        <span class="name">
-                            <b>
-                            moment</b>
-                            <a href="#moment"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Default value : </i><code>moment_</code>
-                        </td>
-                    </tr>
-
-
-            </tbody>
-        </table>
-</section>
-    <h3>projects/common/lib/components/date/day-validation.directive.ts</h3>
-    <section>
-    <h3></h3>        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="moment"></a>
-                        <span class="name">
-                            <b>
-                            moment</b>
-                            <a href="#moment"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Default value : </i><code>moment_</code>
-                        </td>
-                    </tr>
-
-
-            </tbody>
-        </table>
-</section>
     <h3>projects/common/lib/components/date/date.component.ts</h3>
-    <section>
-    <h3></h3>        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="moment"></a>
-                        <span class="name">
-                            <b>
-                            moment</b>
-                            <a href="#moment"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Default value : </i><code>moment_</code>
-                        </td>
-                    </tr>
-
-
-            </tbody>
-        </table>
-</section>
-    <h3>projects/common/lib/models/person.model.ts</h3>
     <section>
     <h3></h3>        <table class="table table-sm table-bordered">
             <tbody>
@@ -1580,6 +1642,78 @@ limitations under the License.&#x60;</code>
         </table>
 </section>
     <h3>projects/common/lib/components/date/year-validate.directive.ts</h3>
+    <section>
+    <h3></h3>        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="moment"></a>
+                        <span class="name">
+                            <b>
+                            moment</b>
+                            <a href="#moment"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>moment_</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+</section>
+    <h3>projects/common/lib/components/date/day-validation.directive.ts</h3>
+    <section>
+    <h3></h3>        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="moment"></a>
+                        <span class="name">
+                            <b>
+                            moment</b>
+                            <a href="#moment"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>moment_</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+</section>
+    <h3>projects/common/lib/components/datepicker/datepicker.component.ts</h3>
+    <section>
+    <h3></h3>        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="moment"></a>
+                        <span class="name">
+                            <b>
+                            moment</b>
+                            <a href="#moment"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>moment_</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+</section>
+    <h3>projects/common/lib/models/person.model.ts</h3>
     <section>
     <h3></h3>        <table class="table table-sm table-bordered">
             <tbody>

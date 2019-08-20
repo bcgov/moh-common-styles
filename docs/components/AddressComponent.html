@@ -2891,7 +2891,8 @@ export class AddressComponent extends Base
                      (selectEvent)&#x3D;&quot;setAddress($event)&quot;
                      [required]&#x3D;&quot;isRequired&quot;
                      [disabled]&#x3D;&quot;disabled&quot;
-                     [maxlen]&#x3D;&quot;fieldMaxLenghts.address&quot;&gt;&lt;/common-street&gt;
+                     [maxlen]&#x3D;&quot;fieldMaxLenghts.address&quot;
+                     commonValidateStreet&gt;&lt;/common-street&gt;
     &lt;/div&gt;
     &lt;div class&#x3D;&quot;col-1&quot;
          *ngIf&#x3D;&#x27;allowExtralines&#x27;&gt;
@@ -2916,7 +2917,8 @@ export class AddressComponent extends Base
                      name&#x3D;&quot;street_line_2_{{objectId}}&quot;
                      [useGeoCoder]&#x3D;&#x27;false&#x27;
                      [(ngModel)]&#x3D;&#x27;addr.addressLine2&#x27;
-                     [maxlen]&#x3D;&quot;fieldMaxLenghts.address&quot;&gt;&lt;/common-street&gt;
+                     [maxlen]&#x3D;&quot;fieldMaxLenghts.address&quot;
+                     commonValidateStreet&gt;&lt;/common-street&gt;
     &lt;/div&gt;
     &lt;div class&#x3D;&quot;col-1&quot;&gt;
       &lt;div class&#x3D;&quot;h-50&quot;&gt;&lt;/div&gt;
@@ -2940,7 +2942,8 @@ export class AddressComponent extends Base
                      name&#x3D;&quot;street_line_3_{{objectId}}&quot;
                      [useGeoCoder]&#x3D;&#x27;false&#x27;
                      [(ngModel)]&#x3D;&#x27;addr.addressLine3&#x27;
-                     [maxlen]&#x3D;&quot;fieldMaxLenghts.address&quot;&gt;&lt;/common-street&gt;
+                     [maxlen]&#x3D;&quot;fieldMaxLenghts.address&quot;
+                     commonValidateStreet&gt;&lt;/common-street&gt;
     &lt;/div&gt;
     &lt;div class&#x3D;&quot;col-1&quot;&gt;
       &lt;div class&#x3D;&quot;h-50&quot;&gt;&lt;/div&gt;
@@ -2961,19 +2964,8 @@ export class AddressComponent extends Base
                (ngModelChange)&#x3D;&quot;setCity($event)&quot;
                [required]&#x3D;&quot;isRequired&quot;
                [disabled]&#x3D;&quot;disabled&quot;
-               [maxlen]&#x3D;&quot;fieldMaxLenghts.city&quot;&gt;&lt;/common-city&gt;
-&lt;/div&gt;
-
-
-&lt;div class&#x3D;&quot;form-group col-sm-11 p-sm-0&quot;&gt;
-  &lt;common-country name&#x3D;&quot;country_{{objectId}}&quot;
-                  label&#x3D;&quot;{{addrLabels.country}}&quot;
-                  [countryList]&#x3D;&quot;countryList&quot;
-                  [ngModel]&#x3D;&quot;addr?.country&quot;
-                  (ngModelChange)&#x3D;&quot;setCountry($event)&quot;
-                  [required]&#x3D;&quot;isRequired&quot;
-                  [disabled]&#x3D;&quot;disabled&quot;
-                  [maxlen]&#x3D;&quot;fieldMaxLenghts.country&quot;&gt;&lt;/common-country&gt;
+               [maxlen]&#x3D;&quot;fieldMaxLenghts.city&quot;
+               commonValidateCity&gt;&lt;/common-city&gt;
 &lt;/div&gt;
 
 &lt;div class&#x3D;&quot;form-group col-sm-11 p-sm-0&quot;&gt;
@@ -2986,9 +2978,20 @@ export class AddressComponent extends Base
                    [disabled]&#x3D;&quot;disabled&quot;
                    placeholder&#x3D;&quot;{{ isCanada()? &#x27;Select a Province&#x27;: &#x27;Select a State&#x27; }}&quot;
                    [useDropDownList]&#x3D;&quot;isCanadaUSA()&quot;
-                   [maxlen]&#x3D;&quot;fieldMaxLenghts.province&quot;&gt;&lt;/common-province&gt;
+                   [maxlen]&#x3D;&quot;fieldMaxLenghts.province&quot;
+                   commonValidateRegion&gt;&lt;/common-province&gt;
 &lt;/div&gt;
 
+&lt;div class&#x3D;&quot;form-group col-sm-11 p-sm-0&quot;&gt;
+  &lt;common-country name&#x3D;&quot;country_{{objectId}}&quot;
+                  label&#x3D;&quot;{{addrLabels.country}}&quot;
+                  [countryList]&#x3D;&quot;countryList&quot;
+                  [ngModel]&#x3D;&quot;addr?.country&quot;
+                  (ngModelChange)&#x3D;&quot;setCountry($event)&quot;
+                  [required]&#x3D;&quot;isRequired&quot;
+                  [disabled]&#x3D;&quot;disabled&quot;
+                  [maxlen]&#x3D;&quot;fieldMaxLenghts.country&quot;&gt;&lt;/common-country&gt;
+&lt;/div&gt;
 
 &lt;div class&#x3D;&quot;form-group col-sm-4 p-sm-0&quot;&gt;
   &lt;common-postal-code name&#x3D;&quot;pc_{{objectId}}&quot;
@@ -2998,7 +3001,9 @@ export class AddressComponent extends Base
                       [ngModel]&#x3D;&quot;addr?.postal&quot;
                       (ngModelChange)&#x3D;&quot;setPostalCode($event)&quot;
                       [required]&#x3D;&quot;isRequired&quot;
-                      [maxlen]&#x3D;&quot;fieldMaxLenghts.postalCode&quot;&gt;&lt;/common-postal-code&gt;
+                      [maxlen]&#x3D;&quot;fieldMaxLenghts.postalCode&quot;
+                      commonValidatePostalcode
+                      [hasMask]&#x3D;&quot;isCanada()&quot;&gt;&lt;/common-postal-code&gt;
 &lt;/div&gt;
 </code></pre>
     </div>
@@ -3029,9 +3034,9 @@ export class AddressComponent extends Base
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="form-group">  <div class="row">    <div [ngClass]="{\'col-11\': allowExtralines, \'col-12\': !allowExtralines}">      <common-street name="street_{{objectId}}"                     label="{{addrLabels.address1}}"                     [useGeoCoder]="useGeoCoder()"                     [ngModel]="addr?.street"                     (ngModelChange)="setStreetAddress($event)"                     (selectEvent)="setAddress($event)"                     [required]="isRequired"                     [disabled]="disabled"                     [maxlen]="fieldMaxLenghts.address"></common-street>    </div>    <div class="col-1"         *ngIf=\'allowExtralines\'>      <div class="h-50"></div>      <button class=" btn btn-transparent"              *ngIf=\'!(showLine2 && showLine3)\'              aria-label="Add Additional Address Line (optional)"              (click)="addLine()">        <i class="fa fa-plus"></i>      </button>    </div>  </div></div><div class="form-group"     *ngIf=\'showLine2\'>  <div class="row">    <div class="col-11">      <common-street label="{{addrLabels.address2}}"                     name="street_line_2_{{objectId}}"                     [useGeoCoder]=\'false\'                     [(ngModel)]=\'addr.addressLine2\'                     [maxlen]="fieldMaxLenghts.address"></common-street>    </div>    <div class="col-1">      <div class="h-50"></div>      <button class="btn btn-transparent"              *ngIf="!showLine3"              aria-label=\'Remove Address Line 2\'              (click)="removeLine(2)">        <i class="fa fa-minus"></i>      </button>    </div>  </div></div><div class="form-group"     *ngIf=\'showLine3\'>  <div class="row">    <div class="col-11">      <common-street label="{{addrLabels.address3}}"                     name="street_line_3_{{objectId}}"                     [useGeoCoder]=\'false\'                     [(ngModel)]=\'addr.addressLine3\'                     [maxlen]="fieldMaxLenghts.address"></common-street>    </div>    <div class="col-1">      <div class="h-50"></div>      <button class=" btn btn-transparent"              aria-label=\'Remove Address Line 3 \'              (click)="removeLine(3)">        <i class="fa fa-minus"></i>      </button>    </div>  </div></div><div class="form-group col-sm-11 p-sm-0">  <common-city name="city_{{objectId}}"               label="{{addrLabels.city}}"               [ngModel]="addr?.city"               (ngModelChange)="setCity($event)"               [required]="isRequired"               [disabled]="disabled"               [maxlen]="fieldMaxLenghts.city"></common-city></div><div class="form-group col-sm-11 p-sm-0">  <common-country name="country_{{objectId}}"                  label="{{addrLabels.country}}"                  [countryList]="countryList"                  [ngModel]="addr?.country"                  (ngModelChange)="setCountry($event)"                  [required]="isRequired"                  [disabled]="disabled"                  [maxlen]="fieldMaxLenghts.country"></common-country></div><div class="form-group col-sm-11 p-sm-0">  <common-province name="province_{{objectId}}"                   label="{{addrLabels.province}}"                   [ngModel]="addr?.province"                   (ngModelChange)="setProvince($event)"                   [provinceList]="provList"                   [required]="isRequired"                   [disabled]="disabled"                   placeholder="{{ isCanada()? \'Select a Province\': \'Select a State\' }}"                   [useDropDownList]="isCanadaUSA()"                   [maxlen]="fieldMaxLenghts.province"></common-province></div><div class="form-group col-sm-4 p-sm-0">  <common-postal-code name="pc_{{objectId}}"                      label="{{addrLabels.postalCode}}"                      [displayMask]="isCanada()"                      [disabled]="disabled"                      [ngModel]="addr?.postal"                      (ngModelChange)="setPostalCode($event)"                      [required]="isRequired"                      [maxlen]="fieldMaxLenghts.postalCode"></common-postal-code></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="form-group">  <div class="row">    <div [ngClass]="{\'col-11\': allowExtralines, \'col-12\': !allowExtralines}">      <common-street name="street_{{objectId}}"                     label="{{addrLabels.address1}}"                     [useGeoCoder]="useGeoCoder()"                     [ngModel]="addr?.street"                     (ngModelChange)="setStreetAddress($event)"                     (selectEvent)="setAddress($event)"                     [required]="isRequired"                     [disabled]="disabled"                     [maxlen]="fieldMaxLenghts.address"                     commonValidateStreet></common-street>    </div>    <div class="col-1"         *ngIf=\'allowExtralines\'>      <div class="h-50"></div>      <button class=" btn btn-transparent"              *ngIf=\'!(showLine2 && showLine3)\'              aria-label="Add Additional Address Line (optional)"              (click)="addLine()">        <i class="fa fa-plus"></i>      </button>    </div>  </div></div><div class="form-group"     *ngIf=\'showLine2\'>  <div class="row">    <div class="col-11">      <common-street label="{{addrLabels.address2}}"                     name="street_line_2_{{objectId}}"                     [useGeoCoder]=\'false\'                     [(ngModel)]=\'addr.addressLine2\'                     [maxlen]="fieldMaxLenghts.address"                     commonValidateStreet></common-street>    </div>    <div class="col-1">      <div class="h-50"></div>      <button class="btn btn-transparent"              *ngIf="!showLine3"              aria-label=\'Remove Address Line 2\'              (click)="removeLine(2)">        <i class="fa fa-minus"></i>      </button>    </div>  </div></div><div class="form-group"     *ngIf=\'showLine3\'>  <div class="row">    <div class="col-11">      <common-street label="{{addrLabels.address3}}"                     name="street_line_3_{{objectId}}"                     [useGeoCoder]=\'false\'                     [(ngModel)]=\'addr.addressLine3\'                     [maxlen]="fieldMaxLenghts.address"                     commonValidateStreet></common-street>    </div>    <div class="col-1">      <div class="h-50"></div>      <button class=" btn btn-transparent"              aria-label=\'Remove Address Line 3 \'              (click)="removeLine(3)">        <i class="fa fa-minus"></i>      </button>    </div>  </div></div><div class="form-group col-sm-11 p-sm-0">  <common-city name="city_{{objectId}}"               label="{{addrLabels.city}}"               [ngModel]="addr?.city"               (ngModelChange)="setCity($event)"               [required]="isRequired"               [disabled]="disabled"               [maxlen]="fieldMaxLenghts.city"               commonValidateCity></common-city></div><div class="form-group col-sm-11 p-sm-0">  <common-province name="province_{{objectId}}"                   label="{{addrLabels.province}}"                   [ngModel]="addr?.province"                   (ngModelChange)="setProvince($event)"                   [provinceList]="provList"                   [required]="isRequired"                   [disabled]="disabled"                   placeholder="{{ isCanada()? \'Select a Province\': \'Select a State\' }}"                   [useDropDownList]="isCanadaUSA()"                   [maxlen]="fieldMaxLenghts.province"                   commonValidateRegion></common-province></div><div class="form-group col-sm-11 p-sm-0">  <common-country name="country_{{objectId}}"                  label="{{addrLabels.country}}"                  [countryList]="countryList"                  [ngModel]="addr?.country"                  (ngModelChange)="setCountry($event)"                  [required]="isRequired"                  [disabled]="disabled"                  [maxlen]="fieldMaxLenghts.country"></common-country></div><div class="form-group col-sm-4 p-sm-0">  <common-postal-code name="pc_{{objectId}}"                      label="{{addrLabels.postalCode}}"                      [displayMask]="isCanada()"                      [disabled]="disabled"                      [ngModel]="addr?.postal"                      (ngModelChange)="setPostalCode($event)"                      [required]="isRequired"                      [maxlen]="fieldMaxLenghts.postalCode"                      commonValidatePostalcode                      [hasMask]="isCanada()"></common-postal-code></div></div>'
     var COMPONENTS = [{'name': 'AccordionCommonComponent', 'selector': 'common-accordion'},{'name': 'AddressComponent', 'selector': 'common-address'},{'name': 'ButtonComponent', 'selector': 'common-button'},{'name': 'ButtonGroupComponent', 'selector': 'common-button-group'},{'name': 'CaptchaComponent', 'selector': 'common-captcha'},{'name': 'CheckboxComponent', 'selector': 'common-checkbox'},{'name': 'CityComponent', 'selector': 'common-city'},{'name': 'ConsentModalComponent', 'selector': 'common-consent-modal'},{'name': 'CoreBreadcrumbComponent', 'selector': 'common-core-breadcrumb'},{'name': 'CountryComponent', 'selector': 'common-country'},{'name': 'DateComponent', 'selector': 'common-date'},{'name': 'DatepickerComponent', 'selector': 'common-datepicker'},{'name': 'DropdownComponent', 'selector': 'common-dropdown'},{'name': 'ErrorContainerComponent', 'selector': 'common-error-container'},{'name': 'FileUploaderComponent', 'selector': 'common-file-uploader'},{'name': 'FormActionBarComponent', 'selector': 'common-form-action-bar'},{'name': 'FormSubmitBarComponent', 'selector': 'common-form-submit-bar'},{'name': 'FullNameComponent', 'selector': 'common-full-name'},{'name': 'HeaderComponent', 'selector': 'common-header'},{'name': 'NameComponent', 'selector': 'common-name'},{'name': 'PageFrameworkComponent', 'selector': 'common-page-framework'},{'name': 'PageSectionComponent', 'selector': 'common-page-section'},{'name': 'PasswordComponent', 'selector': 'common-password'},{'name': 'PhnComponent', 'selector': 'common-phn'},{'name': 'PhoneNumberComponent', 'selector': 'common-phone-number'},{'name': 'PostalCodeComponent', 'selector': 'common-postal-code'},{'name': 'ProvinceComponent', 'selector': 'common-province'},{'name': 'RadioComponent', 'selector': 'common-radio'},{'name': 'SinComponent', 'selector': 'common-sin'},{'name': 'StreetComponent', 'selector': 'common-street'},{'name': 'ThumbnailComponent', 'selector': 'common-thumbnail'},{'name': 'ToggleComponent', 'selector': 'common-toggle'},{'name': 'WizardProgressBarComponent', 'selector': 'common-wizard-progress-bar'},{'name': 'XiconButtonComponent', 'selector': 'common-xicon-button'}];
-    var DIRECTIVES = [{'name': 'DateFieldFormatDirective', 'selector': '[commonDateFieldFormat]'},{'name': 'DayValidationDirective', 'selector': '[commonDayValidation][ngModel]'},{'name': 'DuplicateCheckDirective', 'selector': '[commonDuplicateCheck]'},{'name': 'ValidateBcPostalDirective', 'selector': '[commonValidateBcPostal]'},{'name': 'ValidateNameDirective', 'selector': '[commonValidateName]'},{'name': 'ValidatePhnDirective', 'selector': '[commonValidatePhn]'},{'name': 'ValidateSinDirective', 'selector': '[commonValidateSin]'},{'name': 'YearValidateDirective', 'selector': '[commonYearValidate][ngModel]'}];
+    var DIRECTIVES = [{'name': 'DateFieldFormatDirective', 'selector': '[commonDateFieldFormat]'},{'name': 'DayValidationDirective', 'selector': '[commonDayValidation][ngModel]'},{'name': 'DuplicateCheckDirective', 'selector': '[commonDuplicateCheck]'},{'name': 'ValidateBcPostalDirective', 'selector': '[commonValidateBcPostal]'},{'name': 'ValidateCityDirective', 'selector': '[commonValidateCity]'},{'name': 'ValidateNameDirective', 'selector': '[commonValidateName]'},{'name': 'ValidatePhnDirective', 'selector': '[commonValidatePhn]'},{'name': 'ValidatePostalcodeDirective', 'selector': '[commonValidatePostalcode]'},{'name': 'ValidateRegionDirective', 'selector': '[commonValidateRegion]'},{'name': 'ValidateSinDirective', 'selector': '[commonValidateSin]'},{'name': 'ValidateStreetDirective', 'selector': '[commonValidateStreet]'},{'name': 'YearValidateDirective', 'selector': '[commonYearValidate][ngModel]'}];
     var ACTUAL_COMPONENT = {'name': 'AddressComponent'};
 </script>
 <script src="../js/tree.js"></script>

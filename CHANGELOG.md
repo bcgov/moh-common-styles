@@ -1,4 +1,20 @@
-# Unreleased "moh-common-lib" (2019-08-15)
+# Unreleased "moh-common-lib" (2019-08-20)
+
+
+
+# [2.8.0](https://github.com/bcgov/moh-common-styles/compare/v2.7.1...v2.8.0) "moh-common-lib" (2019-08-20)
+
+
+### Bug Fixes
+
+* Reorder address fields ([cbbfaa8](https://github.com/bcgov/moh-common-styles/commit/cbbfaa8))
+
+
+### Features
+
+* added validation for street component ([0699178](https://github.com/bcgov/moh-common-styles/commit/0699178))
+* added validations for postal code, country/province, added abiltiy to update error messages ([60befc2](https://github.com/bcgov/moh-common-styles/commit/60befc2))
+* validation for valid characters in city component ([16da113](https://github.com/bcgov/moh-common-styles/commit/16da113))
 
 
 
@@ -17,6 +33,7 @@
 
 ### Bug Fixes
 
+*  Fixed displaying of the error message in name component ([1650a23](https://github.com/bcgov/moh-common-styles/commit/1650a23))
 * **Address:**  Clear out address line data when removing the line ([3f1149e](https://github.com/bcgov/moh-common-styles/commit/3f1149e))
 
 

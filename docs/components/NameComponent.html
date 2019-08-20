@@ -171,9 +171,6 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#displayErrors">displayErrors</a>
-                            </li>
-                            <li>
                                 <a href="#onBlurEvent">onBlurEvent</a>
                             </li>
                             <li>
@@ -492,45 +489,6 @@
     <h3 id="methods">
         Methods
     </h3>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="displayErrors"></a>
-                    <span class="name">
-                        <b>
-                            displayErrors
-                        </b>
-                        <a href="#displayErrors"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>displayErrors()</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="81"
-                            class="link-to-prism">projects/common/lib/components/name/name.component.ts:81</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
     <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -1216,7 +1174,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="87" class="link-to-prism">projects/common/lib/components/name/name.component.ts:87</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">projects/common/lib/components/name/name.component.ts:81</a></div>
                                 </td>
                             </tr>
 
@@ -1307,12 +1265,6 @@ export class NameComponent extends Base implements ControlValueAccessor {
     this.disabled &#x3D; isDisabled;
   }
 
-  displayErrors(): boolean {
-    const displayErr &#x3D; this.controlDir &amp;&amp; !this.controlDir.disabled &amp;&amp;
-    ( this.controlDir.dirty || this.controlDir.touched ) &amp;&amp; !!this.controlDir.errors;
-    return displayErr;
-  }
-
   get maxLenAsNumber(): number {
     return Number.parseInt( this.maxlen, 10 );
   }
@@ -1333,7 +1285,7 @@ export class NameComponent extends Base implements ControlValueAccessor {
        [attr.maxlength]&#x3D;&quot;maxlen&quot;
        autocomplete&#x3D;&quot;off&quot; /&gt;
 &lt;!-- Error messages for component --&gt;
-&lt;common-error-container [displayError]&#x3D;&quot;displayErrors()&quot;&gt;
+&lt;common-error-container [displayError]&#x3D;&quot;controlDir &amp;&amp; !disabled &amp;&amp; (controlDir.dirty || controlDir.touched) &amp;&amp; controlDir.errors&quot;&gt;
   &lt;div *ngIf&#x3D;&quot;controlDir.errors?.required&quot;&gt;
     {{label}} is required.
   &lt;/div&gt;
@@ -1378,9 +1330,9 @@ export class NameComponent extends Base implements ControlValueAccessor {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><label for="{{labelforId}}" class="control-label">{{label}}</label><input type="text"       class="form-control"       id="{{labelforId}}"       [value]="nameStr"       (change)="onValueChange( $event.target.value )"       (blur)="onBlurEvent( $event )"       [disabled]="disabled"       [attr.maxlength]="maxlen"       autocomplete="off" /><!-- Error messages for component --><common-error-container [displayError]="displayErrors()">  <div *ngIf="controlDir.errors?.required">    {{label}} is required.  </div>  <div *ngIf="controlDir.errors?.invalidChar">    <div *ngIf="maxLenAsNumber > 1; else initInvalid;">        {{label}} must begin with a letter and cannot include special characters except hyphens,        periods, apostrophes and blank characters.    </div>  </div></common-error-container><ng-template #initInvalid>  {{label}} must be with a letter.</ng-template></div>'
+        var COMPONENT_TEMPLATE = '<div><label for="{{labelforId}}" class="control-label">{{label}}</label><input type="text"       class="form-control"       id="{{labelforId}}"       [value]="nameStr"       (change)="onValueChange( $event.target.value )"       (blur)="onBlurEvent( $event )"       [disabled]="disabled"       [attr.maxlength]="maxlen"       autocomplete="off" /><!-- Error messages for component --><common-error-container [displayError]="controlDir && !disabled && (controlDir.dirty || controlDir.touched) && controlDir.errors">  <div *ngIf="controlDir.errors?.required">    {{label}} is required.  </div>  <div *ngIf="controlDir.errors?.invalidChar">    <div *ngIf="maxLenAsNumber > 1; else initInvalid;">        {{label}} must begin with a letter and cannot include special characters except hyphens,        periods, apostrophes and blank characters.    </div>  </div></common-error-container><ng-template #initInvalid>  {{label}} must be with a letter.</ng-template></div>'
     var COMPONENTS = [{'name': 'AccordionCommonComponent', 'selector': 'common-accordion'},{'name': 'AddressComponent', 'selector': 'common-address'},{'name': 'ButtonComponent', 'selector': 'common-button'},{'name': 'ButtonGroupComponent', 'selector': 'common-button-group'},{'name': 'CaptchaComponent', 'selector': 'common-captcha'},{'name': 'CheckboxComponent', 'selector': 'common-checkbox'},{'name': 'CityComponent', 'selector': 'common-city'},{'name': 'ConsentModalComponent', 'selector': 'common-consent-modal'},{'name': 'CoreBreadcrumbComponent', 'selector': 'common-core-breadcrumb'},{'name': 'CountryComponent', 'selector': 'common-country'},{'name': 'DateComponent', 'selector': 'common-date'},{'name': 'DatepickerComponent', 'selector': 'common-datepicker'},{'name': 'DropdownComponent', 'selector': 'common-dropdown'},{'name': 'ErrorContainerComponent', 'selector': 'common-error-container'},{'name': 'FileUploaderComponent', 'selector': 'common-file-uploader'},{'name': 'FormActionBarComponent', 'selector': 'common-form-action-bar'},{'name': 'FormSubmitBarComponent', 'selector': 'common-form-submit-bar'},{'name': 'FullNameComponent', 'selector': 'common-full-name'},{'name': 'HeaderComponent', 'selector': 'common-header'},{'name': 'NameComponent', 'selector': 'common-name'},{'name': 'PageFrameworkComponent', 'selector': 'common-page-framework'},{'name': 'PageSectionComponent', 'selector': 'common-page-section'},{'name': 'PasswordComponent', 'selector': 'common-password'},{'name': 'PhnComponent', 'selector': 'common-phn'},{'name': 'PhoneNumberComponent', 'selector': 'common-phone-number'},{'name': 'PostalCodeComponent', 'selector': 'common-postal-code'},{'name': 'ProvinceComponent', 'selector': 'common-province'},{'name': 'RadioComponent', 'selector': 'common-radio'},{'name': 'SinComponent', 'selector': 'common-sin'},{'name': 'StreetComponent', 'selector': 'common-street'},{'name': 'ThumbnailComponent', 'selector': 'common-thumbnail'},{'name': 'ToggleComponent', 'selector': 'common-toggle'},{'name': 'WizardProgressBarComponent', 'selector': 'common-wizard-progress-bar'},{'name': 'XiconButtonComponent', 'selector': 'common-xicon-button'}];
-    var DIRECTIVES = [{'name': 'DateFieldFormatDirective', 'selector': '[commonDateFieldFormat]'},{'name': 'DayValidationDirective', 'selector': '[commonDayValidation][ngModel]'},{'name': 'DuplicateCheckDirective', 'selector': '[commonDuplicateCheck]'},{'name': 'ValidateBcPostalDirective', 'selector': '[commonValidateBcPostal]'},{'name': 'ValidateNameDirective', 'selector': '[commonValidateName]'},{'name': 'ValidatePhnDirective', 'selector': '[commonValidatePhn]'},{'name': 'ValidateSinDirective', 'selector': '[commonValidateSin]'},{'name': 'YearValidateDirective', 'selector': '[commonYearValidate][ngModel]'}];
+    var DIRECTIVES = [{'name': 'DateFieldFormatDirective', 'selector': '[commonDateFieldFormat]'},{'name': 'DayValidationDirective', 'selector': '[commonDayValidation][ngModel]'},{'name': 'DuplicateCheckDirective', 'selector': '[commonDuplicateCheck]'},{'name': 'ValidateBcPostalDirective', 'selector': '[commonValidateBcPostal]'},{'name': 'ValidateCityDirective', 'selector': '[commonValidateCity]'},{'name': 'ValidateNameDirective', 'selector': '[commonValidateName]'},{'name': 'ValidatePhnDirective', 'selector': '[commonValidatePhn]'},{'name': 'ValidatePostalcodeDirective', 'selector': '[commonValidatePostalcode]'},{'name': 'ValidateRegionDirective', 'selector': '[commonValidateRegion]'},{'name': 'ValidateSinDirective', 'selector': '[commonValidateSin]'},{'name': 'ValidateStreetDirective', 'selector': '[commonValidateStreet]'},{'name': 'YearValidateDirective', 'selector': '[commonYearValidate][ngModel]'}];
     var ACTUAL_COMPONENT = {'name': 'NameComponent'};
 </script>
 <script src="../js/tree.js"></script>
