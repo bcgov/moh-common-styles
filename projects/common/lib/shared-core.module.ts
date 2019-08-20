@@ -48,6 +48,10 @@ import { ValidateSinDirective } from './components/sin/validate-sin.directive';
 import { ValidatePhnDirective } from './components/phn/validate-phn.directive';
 import { DuplicateCheckDirective } from './components/duplicate-check/duplicate-check.directive';
 import { ErrorContainerComponent } from './components/error-container/error-container.component';
+import { ValidateStreetDirective } from './components/street/validate-street.directive';
+import { ValidateCityDirective } from './components/city/validate-city.directive';
+import { ValidateRegionDirective } from './components/validate-region/validate-region.directive';
+import { ValidatePostalcodeDirective } from './components/postal-code/validate-postalcode.directive';
 
 const componentList = [
   CoreBreadcrumbComponent,
@@ -106,7 +110,11 @@ const componentList = [
     AccordionModule.forRoot()
   ],
   declarations: [
-    componentList
+    componentList,
+    ValidateStreetDirective,
+    ValidateCityDirective,
+    ValidateRegionDirective,
+    ValidatePostalcodeDirective
   ],
   exports: [
     componentList

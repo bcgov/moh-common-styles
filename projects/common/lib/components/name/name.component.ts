@@ -78,12 +78,6 @@ export class NameComponent extends Base implements ControlValueAccessor {
     this.disabled = isDisabled;
   }
 
-  displayErrors(): boolean {
-    const displayErr = this.controlDir && !this.controlDir.disabled &&
-    ( this.controlDir.dirty || this.controlDir.touched ) && !!this.controlDir.errors;
-    return displayErr;
-  }
-
   get maxLenAsNumber(): number {
     return Number.parseInt( this.maxlen, 10 );
   }

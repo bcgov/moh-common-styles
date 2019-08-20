@@ -9,7 +9,8 @@
                      (selectEvent)="setAddress($event)"
                      [required]="isRequired"
                      [disabled]="disabled"
-                     [maxlen]="fieldMaxLenghts.address"></common-street>
+                     [maxlen]="fieldMaxLenghts.address"
+                     commonValidateStreet></common-street>
     </div>
     <div class="col-1"
          *ngIf='allowExtralines'>
@@ -34,7 +35,8 @@
                      name="street_line_2_{{objectId}}"
                      [useGeoCoder]='false'
                      [(ngModel)]='addr.addressLine2'
-                     [maxlen]="fieldMaxLenghts.address"></common-street>
+                     [maxlen]="fieldMaxLenghts.address"
+                     commonValidateStreet></common-street>
     </div>
     <div class="col-1">
       <div class="h-50"></div>
@@ -58,7 +60,8 @@
                      name="street_line_3_{{objectId}}"
                      [useGeoCoder]='false'
                      [(ngModel)]='addr.addressLine3'
-                     [maxlen]="fieldMaxLenghts.address"></common-street>
+                     [maxlen]="fieldMaxLenghts.address"
+                     commonValidateStreet></common-street>
     </div>
     <div class="col-1">
       <div class="h-50"></div>
@@ -79,19 +82,8 @@
                (ngModelChange)="setCity($event)"
                [required]="isRequired"
                [disabled]="disabled"
-               [maxlen]="fieldMaxLenghts.city"></common-city>
-</div>
-
-
-<div class="form-group col-sm-11 p-sm-0">
-  <common-country name="country_{{objectId}}"
-                  label="{{addrLabels.country}}"
-                  [countryList]="countryList"
-                  [ngModel]="addr?.country"
-                  (ngModelChange)="setCountry($event)"
-                  [required]="isRequired"
-                  [disabled]="disabled"
-                  [maxlen]="fieldMaxLenghts.country"></common-country>
+               [maxlen]="fieldMaxLenghts.city"
+               commonValidateCity></common-city>
 </div>
 
 <div class="form-group col-sm-11 p-sm-0">
@@ -104,9 +96,20 @@
                    [disabled]="disabled"
                    placeholder="{{ isCanada()? 'Select a Province': 'Select a State' }}"
                    [useDropDownList]="isCanadaUSA()"
-                   [maxlen]="fieldMaxLenghts.province"></common-province>
+                   [maxlen]="fieldMaxLenghts.province"
+                   commonValidateRegion></common-province>
 </div>
 
+<div class="form-group col-sm-11 p-sm-0">
+  <common-country name="country_{{objectId}}"
+                  label="{{addrLabels.country}}"
+                  [countryList]="countryList"
+                  [ngModel]="addr?.country"
+                  (ngModelChange)="setCountry($event)"
+                  [required]="isRequired"
+                  [disabled]="disabled"
+                  [maxlen]="fieldMaxLenghts.country"></common-country>
+</div>
 
 <div class="form-group col-sm-4 p-sm-0">
   <common-postal-code name="pc_{{objectId}}"
@@ -116,5 +119,7 @@
                       [ngModel]="addr?.postal"
                       (ngModelChange)="setPostalCode($event)"
                       [required]="isRequired"
-                      [maxlen]="fieldMaxLenghts.postalCode"></common-postal-code>
+                      [maxlen]="fieldMaxLenghts.postalCode"
+                      commonValidatePostalcode
+                      [hasMask]="isCanada()"></common-postal-code>
 </div>

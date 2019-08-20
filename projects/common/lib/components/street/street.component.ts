@@ -5,6 +5,7 @@ import { Observable, Subject, of } from 'rxjs';
 import { GeoAddressResult, GeocoderService } from '../../services/geocoder.service';
 import { debounceTime, distinctUntilChanged, switchMap, catchError } from 'rxjs/operators';
 import { TypeaheadMatch } from 'ngx-bootstrap';
+import { ErrorMessage } from '../../../public_api';
 
 @Component({
   selector: 'common-street',
@@ -21,6 +22,7 @@ export class StreetComponent extends Base implements OnInit, ControlValueAccesso
   @Input() disabled: boolean = false;
   @Input() useGeoCoder: boolean = false;
   @Input() placeholder: string = 'Street Name';
+  @Input() errorMessage: ErrorMessage;
 
   @Input()
   set value( val: string ) {
@@ -49,6 +51,12 @@ export class StreetComponent extends Base implements OnInit, ControlValueAccesso
   /** The subject that triggers on user text input and gets typeaheadList$ to update.  */
   private searchText$ = new Subject<string>();
 
+  defaultErrMsg: ErrorMessage = {
+    required: 'is required.',
+    invalidChar: 'must contain letters, and numbers and may include special characters such as hyphen, ' +
+                 'period, apostrophe, number sign, ampersand and blank characters.'
+  };
+
   _onChange = (_: any) => {};
   _onTouched = (_: any) => {};
 
@@ -61,6 +69,8 @@ export class StreetComponent extends Base implements OnInit, ControlValueAccesso
   }
 
   ngOnInit() {
+
+    this.setErrorMsg();
 
     // Set up for using GeoCoder
     this.typeaheadList$ = this.searchText$.pipe(
@@ -134,5 +144,11 @@ export class StreetComponent extends Base implements OnInit, ControlValueAccesso
     console.log( 'onSelect: ', event.item );
     this.street = event.item.street;
     this.selectEvent.emit( event.item );
+  }
+
+  private setErrorMsg() {
+    if ( this.errorMessage ) {
+      Object.keys(this.errorMessage).map( x => this.defaultErrMsg[x] = this.errorMessage[x] );
+    }
   }
 }

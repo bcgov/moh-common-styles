@@ -1,7 +1,8 @@
-import { Component, Input, Output, EventEmitter, Optional, Self } from '@angular/core';
+import { Component, Input, Output, EventEmitter, Optional, Self, OnInit } from '@angular/core';
 import { Base } from '../../models/base';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { CANADA } from '../country/country.component';
+import { ErrorMessage } from '../../../public_api';
 
 export const BRITISH_COLUMBIA = 'BC';
 export interface ProvinceList {
@@ -36,7 +37,7 @@ export function getProvinceDescription( provinceCode: string ) {
   templateUrl: './province.component.html',
   styleUrls: ['./province.component.scss']
 })
-export class ProvinceComponent extends Base implements ControlValueAccessor {
+export class ProvinceComponent extends Base implements OnInit, ControlValueAccessor {
 
   @Input() label: string = 'Province';
   @Input() provinceList: ProvinceList[] = PROVINCE_LIST;
@@ -46,6 +47,7 @@ export class ProvinceComponent extends Base implements ControlValueAccessor {
   @Input() placeholder: string = 'Please select a province';
   @Input() maxlen: string = '250';
   @Input() useDropDownList: boolean = true;
+  @Input() errorMessage: ErrorMessage;
 
   @Input()
   set value( val: string ) {
@@ -62,6 +64,12 @@ export class ProvinceComponent extends Base implements ControlValueAccessor {
 
   province: string;
 
+  defaultErrMsg: ErrorMessage = {
+    required: 'is required.',
+    invalidChar: 'must contain letters and may include special characters such as hyphens, ' +
+                 'periods, apostrophes and blank characters.'
+  };
+
   _onChange = (_: any) => {};
   _onTouched = (_: any) => {};
 
@@ -70,6 +78,10 @@ export class ProvinceComponent extends Base implements ControlValueAccessor {
     if ( controlDir ) {
       controlDir.valueAccessor = this;
     }
+  }
+
+  ngOnInit() {
+    this.setErrorMsg();
   }
 
   onValueChange( value: any ) {
@@ -103,5 +115,11 @@ export class ProvinceComponent extends Base implements ControlValueAccessor {
 
   setDisabledState(isDisabled: boolean): void {
     this.disabled = isDisabled;
+  }
+
+  private setErrorMsg() {
+    if ( this.errorMessage ) {
+      Object.keys(this.errorMessage).map( x => this.defaultErrMsg[x] = this.errorMessage[x] );
+    }
   }
 }

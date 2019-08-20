@@ -1,7 +1,8 @@
-import { Component, Input, Output, EventEmitter, Optional, Self } from '@angular/core';
+import { Component, Input, Output, EventEmitter, Optional, Self, OnInit } from '@angular/core';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { LETTER, NUMBER, SPACE } from '../../models/mask.model';
 import { Base } from '../../models/base';
+import { ErrorMessage } from '../../../public_api';
 
 
 @Component({
@@ -9,7 +10,7 @@ import { Base } from '../../models/base';
   templateUrl: './postal-code.component.html',
   styleUrls: ['./postal-code.component.scss']
 })
-export class PostalCodeComponent extends Base implements ControlValueAccessor  {
+export class PostalCodeComponent extends Base implements OnInit, ControlValueAccessor  {
 
   @Input() label: string = 'Postal Code';
   @Input() displayMask: boolean = true;
@@ -17,6 +18,7 @@ export class PostalCodeComponent extends Base implements ControlValueAccessor  {
   @Input() placeholder: string = 'A1A 1A1';
   @Input() labelforId: string = 'postalCode_' + this.objectId;
   @Input() disabled: boolean = false;
+  @Input() errorMessage: ErrorMessage;
 
   @Input()
   set value( val: string ) {
@@ -35,7 +37,13 @@ export class PostalCodeComponent extends Base implements ControlValueAccessor  {
 
   postalCode: string = '';
   mask: any;
-  pcFormat: RegExp = /^[A-Za-z][0-9][A-Za-z]\s?[0-9][A-Za-z][0-9]$/;
+
+  defaultErrMsg: ErrorMessage = {
+    required: 'is required.',
+    invalidChar: 'must contain letters and/or numbers and may include blank characters.',
+    pattern: 'Must be in the format',
+    invalidBCPostal: 'Invalid postal code for British Columbia.'
+  };
 
   _onChange = (_: any) => {};
   _onTouched = (_: any) => {};
@@ -49,6 +57,10 @@ export class PostalCodeComponent extends Base implements ControlValueAccessor  {
     this.mask = [LETTER, NUMBER, LETTER, SPACE, NUMBER, LETTER, NUMBER];
   }
 
+  ngOnInit() {
+    this.setErrorMsg();
+  }
+
   onValueChange( value: any ) {
     // console.log( 'onValueChange: ', value, this.postalCode );
 
@@ -60,19 +72,6 @@ export class PostalCodeComponent extends Base implements ControlValueAccessor  {
   }
 
   onBlurEvent( event: any ) {
-
-    // console.log( 'onblur: ', event );
-
-    if ( this.displayMask && event.target.value ) {
-      // Check for valid characters
-
-      const passTest = this.pcFormat.test( event.target.value );
-      if ( this.controlDir ) {
-        this.controlDir.control.setErrors( (passTest ? null : { 'pattern': true } ) );
-      }
-     // console.log( 'passTest: ', passTest, event.target.value );
-    }
-
     this._onTouched( event );
     this.blurEvent.emit( event );
   }
@@ -103,5 +102,11 @@ export class PostalCodeComponent extends Base implements ControlValueAccessor  {
    */
   upperCasePipe(text: string) {
     return text.toUpperCase();
+  }
+
+  private setErrorMsg() {
+    if ( this.errorMessage ) {
+      Object.keys(this.errorMessage).map( x => this.defaultErrMsg[x] = this.errorMessage[x] );
+    }
   }
 }
