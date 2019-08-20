@@ -24,6 +24,11 @@
   <div *ngIf="controlDir.errors?.required">
     {{label}} is required.
   </div>
+  <div *ngIf="controlDir.errors?.invalidChar">
+    {{label}} must contain letters, and numbers and may include special characters such as hyphen,
+    period, apostrophe, number sign, ampersand and blank characters.
+  </div>
+
 </common-error-container>
 
 

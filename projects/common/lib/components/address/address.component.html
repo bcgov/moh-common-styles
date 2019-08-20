@@ -9,7 +9,8 @@
                      (selectEvent)="setAddress($event)"
                      [required]="isRequired"
                      [disabled]="disabled"
-                     [maxlen]="fieldMaxLenghts.address"></common-street>
+                     [maxlen]="fieldMaxLenghts.address"
+                     commonValidateStreet></common-street>
     </div>
     <div class="col-1"
          *ngIf='allowExtralines'>
@@ -34,7 +35,8 @@
                      name="street_line_2_{{objectId}}"
                      [useGeoCoder]='false'
                      [(ngModel)]='addr.addressLine2'
-                     [maxlen]="fieldMaxLenghts.address"></common-street>
+                     [maxlen]="fieldMaxLenghts.address"
+                     commonValidateStreet></common-street>
     </div>
     <div class="col-1">
       <div class="h-50"></div>
@@ -58,7 +60,8 @@
                      name="street_line_3_{{objectId}}"
                      [useGeoCoder]='false'
                      [(ngModel)]='addr.addressLine3'
-                     [maxlen]="fieldMaxLenghts.address"></common-street>
+                     [maxlen]="fieldMaxLenghts.address"
+                     commonValidateStreet></common-street>
     </div>
     <div class="col-1">
       <div class="h-50"></div>
