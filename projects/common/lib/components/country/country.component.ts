@@ -1,6 +1,7 @@
-import { Component, Input, Output, EventEmitter, Optional, Self } from '@angular/core';
+import { Component, Input, Output, EventEmitter, Optional, Self, OnInit } from '@angular/core';
 import { Base } from '../../models/base';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
+import { ErrorMessage } from '../../models/error-message.interface';
 
 /** Interface for countries */
 export interface CountryList {
@@ -274,7 +275,7 @@ export function getCountryDescription( countryCode: string ) {
   templateUrl: './country.component.html',
   styleUrls: ['./country.component.scss']
 })
-export class CountryComponent extends Base implements ControlValueAccessor {
+export class CountryComponent extends Base implements OnInit, ControlValueAccessor {
 
   @Input() label: string = 'Country';
   @Input() countryList: CountryList[] = COUNTRY_LIST;
@@ -283,6 +284,7 @@ export class CountryComponent extends Base implements ControlValueAccessor {
   @Input() required: boolean = false;
   @Input() useDropDownList: boolean = true;
   @Input() maxlen: string = '250';
+  @Input() errorMessage: ErrorMessage;
 
   @Input()
   set value( val: string ) {
@@ -299,6 +301,11 @@ export class CountryComponent extends Base implements ControlValueAccessor {
 
   country: string = '';
 
+  defaultErrMsg: ErrorMessage = {
+    required: 'is required.',
+    invalidChar: 'must contain letters and may include special characters such as hyphens, periods, apostrophes and blank characters.',
+  };
+
   _onChange = (_: any) => {};
   _onTouched = (_: any) => {};
 
@@ -307,6 +314,10 @@ export class CountryComponent extends Base implements ControlValueAccessor {
     if ( controlDir ) {
       controlDir.valueAccessor = this;
     }
+  }
+
+  ngOnInit() {
+    this.setErrorMsg();
   }
 
   onValueChange( value: any ) {
@@ -340,5 +351,11 @@ export class CountryComponent extends Base implements ControlValueAccessor {
 
   setDisabledState(isDisabled: boolean): void {
     this.disabled = isDisabled;
+  }
+
+  private setErrorMsg() {
+    if ( this.errorMessage ) {
+      Object.keys(this.errorMessage).map( x => this.defaultErrMsg[x] = this.errorMessage[x] );
+    }
   }
 }

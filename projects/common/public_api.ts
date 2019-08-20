@@ -22,6 +22,7 @@ export { Address } from './lib/models/address.model';
 export { Base } from './lib/models/base';
 export { Person } from './lib/models/person.model';
 export { MaskModel, LETTER, NUMBER, SPACE } from './lib/models/mask.model';
+export { ErrorMessage } from './lib/models/error-message.interface';
 
 // Services
 export * from './lib/services/abstract-api-service';
@@ -39,3 +40,5 @@ export { commonValidatePhn } from './lib/components/phn/validate-phn.directive';
 export { commonDuplicateCheck } from './lib/components/duplicate-check/duplicate-check.directive';
 export { commonValidateStreet } from './lib/components/street/validate-street.directive';
 export { commonValidateCity } from './lib/components/city/validate-city.directive';
+export { commonValidateRegion } from './lib/components/validate-region/validate-region.directive';
+export { commonValidatePostalcode } from './lib/components/postal-code/validate-postalcode.directive';

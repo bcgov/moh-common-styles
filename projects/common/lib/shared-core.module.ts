@@ -50,6 +50,8 @@ import { DuplicateCheckDirective } from './components/duplicate-check/duplicate-
 import { ErrorContainerComponent } from './components/error-container/error-container.component';
 import { ValidateStreetDirective } from './components/street/validate-street.directive';
 import { ValidateCityDirective } from './components/city/validate-city.directive';
+import { ValidateRegionDirective } from './components/validate-region/validate-region.directive';
+import { ValidatePostalcodeDirective } from './components/postal-code/validate-postalcode.directive';
 
 const componentList = [
   CoreBreadcrumbComponent,
@@ -110,7 +112,9 @@ const componentList = [
   declarations: [
     componentList,
     ValidateStreetDirective,
-    ValidateCityDirective
+    ValidateCityDirective,
+    ValidateRegionDirective,
+    ValidatePostalcodeDirective
   ],
   exports: [
     componentList
