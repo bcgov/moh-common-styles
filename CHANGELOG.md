@@ -1,4 +1,13 @@
-# Unreleased "moh-common-lib" (2019-08-20)
+# Unreleased "moh-common-lib" (2019-08-22)
+
+
+
+## [2.8.1](https://github.com/bcgov/moh-common-styles/compare/v2.8.0...v2.8.1) "moh-common-lib" (2019-08-22)
+
+
+### Bug Fixes
+
+* **Date:** Capitalize placeholders ([4d39002](https://github.com/bcgov/moh-common-styles/commit/4d39002))
 
 
 
