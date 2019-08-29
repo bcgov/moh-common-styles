@@ -23,6 +23,7 @@ export { Base } from './lib/models/base';
 export { Person } from './lib/models/person.model';
 export { MaskModel, LETTER, NUMBER, SPACE } from './lib/models/mask.model';
 export { ErrorMessage } from './lib/models/error-message.interface';
+export * from './lib/models/images.model';
 
 // Services
 export * from './lib/services/abstract-api-service';
