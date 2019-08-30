@@ -1,4 +1,13 @@
-# Unreleased "moh-common-lib" (2019-08-22)
+# Unreleased "moh-common-lib" (2019-08-30)
+
+
+
+# [2.9.0](https://github.com/bcgov/moh-common-styles/compare/v2.8.1...v2.9.0) "moh-common-lib" (2019-08-30)
+
+
+### Bug Fixes
+
+* export common image elementsgit ([483b735](https://github.com/bcgov/moh-common-styles/commit/483b735))
 
 
 
