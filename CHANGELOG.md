@@ -1,4 +1,13 @@
-# Unreleased "moh-common-lib" (2019-08-30)
+# Unreleased "moh-common-lib" (2019-09-05)
+
+
+
+# [2.10.0](https://github.com/bcgov/moh-common-styles/compare/v2.9.0...v2.10.0) "moh-common-lib" (2019-09-05)
+
+
+### Bug Fixes
+
+* **PhoneNumber:** The first numbers within the brackets must be 2-9 now ([5069fe8](https://github.com/bcgov/moh-common-styles/commit/5069fe8))
 
 
 
