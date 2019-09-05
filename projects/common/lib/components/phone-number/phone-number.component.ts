@@ -36,6 +36,7 @@ import {  ControlValueAccessor,  NG_VALUE_ACCESSOR } from '@angular/forms';
 export class PhoneNumberComponent extends MaskModel implements ControlValueAccessor {
   
   static PhoneNumberRegEx = '^[2-9]{1}\\d{2}[\\-]?\\d{3}[\\-]?\\d{4}$';
+  // schema: ^[2-9]([0-9]{9})$
   @Input() displayMask: boolean = true;
   @Input() required: boolean = false;
   @Input() label: string = 'Mobile';
@@ -47,12 +48,15 @@ export class PhoneNumberComponent extends MaskModel implements ControlValueAcces
   // public mask = ['+','1',SPACE,'(',NUMBER,NUMBER,NUMBER,')',SPACE,NUMBER,NUMBER,NUMBER,'-',NUMBER,NUMBER,NUMBER,NUMBER];
   public _onChange = (_: any) => {};
   public _onTouched = () => {};
-  
-  
+
+
   constructor() {
     super();
     this.placeholder = '+1 (555) 555-5555';
-    this.mask = ['+', '1', SPACE, '(', NUMBER, NUMBER, NUMBER, ')', SPACE, NUMBER, NUMBER, NUMBER, '-', NUMBER, NUMBER, NUMBER, NUMBER];
+    // Note - we added in the /[2-9]/ regex in order to match MSP's JSON Schema.
+    // Make sure both places match.
+    this.mask = ['+', '1', SPACE, '(', /[2-9]/, NUMBER, NUMBER, ')', SPACE, NUMBER, NUMBER, NUMBER, '-', NUMBER, NUMBER, NUMBER, NUMBER];
+
   }
 
 
