@@ -5,15 +5,12 @@ import { calendarFormat } from 'moment';
 // local function
 function validatePC(control: AbstractControl, hasMask: boolean): { [key: string]: boolean } | null {
 
-  console.log( 'Control value = ', control.value );
   if ( control.value ) {
     if ( hasMask ) {
-      console.log( 'hasMask' );
       const cdnFormat: RegExp = /^[A-Za-z][0-9][A-Za-z]\s?[0-9][A-Za-z][0-9]$/;
       return cdnFormat.test( control.value ) ? null : { 'pattern': true };
     }
 
-    console.log( 'no mask' );
     const criteria: RegExp = RegExp( '^(?=.*[a-zA-Z0-9])[a-zA-Z0-9 ]*$' );
     return criteria.test( control.value ) ? null : { 'invalidChar': true };
   }

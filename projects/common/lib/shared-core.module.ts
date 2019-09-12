@@ -60,9 +60,6 @@ const componentList = [
   PasswordComponent,
   WizardProgressBarComponent,
   DateComponent,
-  DayValidationDirective,
-  DateFieldFormatDirective,
-  YearValidateDirective,
   DatepickerComponent,
   FileUploaderComponent,
   ThumbnailComponent,
@@ -85,16 +82,25 @@ const componentList = [
   PhoneNumberComponent,
   RadioComponent,
   AccordionCommonComponent,
-  ValidateNameDirective,
   SinComponent,
   PhnComponent,
   HeaderComponent,
-  ValidateBcPostalDirective,
   XiconButtonComponent,
+  ErrorContainerComponent,
+
+  // Directives
+  DayValidationDirective,
+  DateFieldFormatDirective,
+  YearValidateDirective,
+  ValidateNameDirective,
   ValidateSinDirective,
   ValidatePhnDirective,
   DuplicateCheckDirective,
-  ErrorContainerComponent
+  ValidateBcPostalDirective,
+  ValidateStreetDirective,
+  ValidateCityDirective,
+  ValidateRegionDirective,
+  ValidatePostalcodeDirective
 ];
 @NgModule({
   imports: [
@@ -110,11 +116,7 @@ const componentList = [
     AccordionModule.forRoot()
   ],
   declarations: [
-    componentList,
-    ValidateStreetDirective,
-    ValidateCityDirective,
-    ValidateRegionDirective,
-    ValidatePostalcodeDirective
+    componentList
   ],
   exports: [
     componentList

@@ -158,8 +158,15 @@ export class AddressComponent extends Base
     if ( !this.addr.province ) {
       this.addr.province = this.findProvinceDescription( prov );
     }
+
     this.addr.country = value;
     this.updateProvList();
+
+   if ( this.isCanada() ) {
+      // If Canada, clear postal code to display mask
+      this.addr.postal = '';
+    }
+
     this._onChange(this.addr);
     this.addressChange.emit(this.addr);
     this._onTouched(this.addr);
@@ -247,7 +254,7 @@ export class AddressComponent extends Base
     // Dynamically lookup variable based on line number input.
     const lookup = `showLine${line}`;
     this[lookup] = false;
-    
+
     // TODO - Need to clear the data in the appropriate field, just null/undefined it out.
     const addrLookup = `addressLine${line}`;
     this.address[addrLookup] = undefined;
