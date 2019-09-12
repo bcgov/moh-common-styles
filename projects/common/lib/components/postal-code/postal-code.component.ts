@@ -62,7 +62,7 @@ export class PostalCodeComponent extends Base implements OnInit, ControlValueAcc
   }
 
   onValueChange( value: any ) {
-    // console.log( 'onValueChange: ', value, this.postalCode );
+     //console.log( 'onValueChange: ', value, this.postalCode );
 
     if ( value !== this.postalCode ) { // IE fix when focus does not display required error
       this._onChange( value );
@@ -77,8 +77,7 @@ export class PostalCodeComponent extends Base implements OnInit, ControlValueAcc
   }
 
   writeValue( value: any ): void {
-    // console.log( 'writeValue: ', value, this.postalCode );
-    if ( value ) {
+    if ( value !== undefined ) {
       this.postalCode = value;
     }
   }
