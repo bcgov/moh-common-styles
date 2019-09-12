@@ -1,4 +1,18 @@
-# Unreleased "moh-common-lib" (2019-09-05)
+# Unreleased "moh-common-lib" (2019-09-12)
+
+
+
+# [2.11.0](https://github.com/bcgov/moh-common-styles/compare/v2.10.0...v2.11.0) "moh-common-lib" (2019-09-12)
+
+
+### Bug Fixes
+
+* Postal code clears when country changes to Canada ([2c0b127](https://github.com/bcgov/moh-common-styles/commit/2c0b127))
+
+
+### Documentation
+
+* Add info on publishing new builds ([9855d9c](https://github.com/bcgov/moh-common-styles/commit/9855d9c))
 
 
 
@@ -105,12 +119,16 @@
 
 
 
-# [2.3.0](https://github.com/bcgov/moh-common-styles/compare/v2.2.0...v2.3.0) "moh-common-lib" (2019-07-25)
+# [2.3.0](https://github.com/bcgov/moh-common-styles/compare/2.0.0...v2.3.0) "moh-common-lib" (2019-07-25)
 
 
 ### Features
 
 * **Address:** Now has default country/prov behaviour built in ([8361a0e](https://github.com/bcgov/moh-common-styles/commit/8361a0e))
+
+
+
+# [2.0.0](https://github.com/bcgov/moh-common-styles/compare/v2.2.0...2.0.0) "moh-common-lib" (2019-07-25)
 
 
 

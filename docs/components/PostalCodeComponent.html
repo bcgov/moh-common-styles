@@ -781,8 +781,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="87"
-                            class="link-to-prism">projects/common/lib/components/postal-code/postal-code.component.ts:87</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="86"
+                            class="link-to-prism">projects/common/lib/components/postal-code/postal-code.component.ts:86</a></div>
                 </td>
             </tr>
 
@@ -851,8 +851,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="92"
-                            class="link-to-prism">projects/common/lib/components/postal-code/postal-code.component.ts:92</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="91"
+                            class="link-to-prism">projects/common/lib/components/postal-code/postal-code.component.ts:91</a></div>
                 </td>
             </tr>
 
@@ -921,8 +921,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="96"
-                            class="link-to-prism">projects/common/lib/components/postal-code/postal-code.component.ts:96</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="95"
+                            class="link-to-prism">projects/common/lib/components/postal-code/postal-code.component.ts:95</a></div>
                 </td>
             </tr>
 
@@ -993,8 +993,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="107"
-                            class="link-to-prism">projects/common/lib/components/postal-code/postal-code.component.ts:107</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="106"
+                            class="link-to-prism">projects/common/lib/components/postal-code/postal-code.component.ts:106</a></div>
                 </td>
             </tr>
 
@@ -1032,8 +1032,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="103"
-                            class="link-to-prism">projects/common/lib/components/postal-code/postal-code.component.ts:103</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="102"
+                            class="link-to-prism">projects/common/lib/components/postal-code/postal-code.component.ts:102</a></div>
                 </td>
             </tr>
 
@@ -1540,7 +1540,7 @@ export class PostalCodeComponent extends Base implements OnInit, ControlValueAcc
   }
 
   onValueChange( value: any ) {
-    // console.log( &#x27;onValueChange: &#x27;, value, this.postalCode );
+     //console.log( &#x27;onValueChange: &#x27;, value, this.postalCode );
 
     if ( value !&#x3D;&#x3D; this.postalCode ) { // IE fix when focus does not display required error
       this._onChange( value );
@@ -1555,8 +1555,7 @@ export class PostalCodeComponent extends Base implements OnInit, ControlValueAcc
   }
 
   writeValue( value: any ): void {
-    // console.log( &#x27;writeValue: &#x27;, value, this.postalCode );
-    if ( value ) {
+    if ( value !&#x3D;&#x3D; undefined ) {
       this.postalCode &#x3D; value;
     }
   }
