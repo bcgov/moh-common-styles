@@ -100,7 +100,7 @@ export class StreetComponent extends Base implements OnInit, ControlValueAccesso
   }
 
   writeValue( value: any ): void {
-    if ( value ) {
+    if ( value !== undefined ) {
         this.street = value;
     }
   }

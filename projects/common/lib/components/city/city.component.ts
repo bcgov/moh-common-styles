@@ -63,7 +63,7 @@ export class CityComponent extends Base implements OnInit, ControlValueAccessor 
   }
 
   writeValue( value: any ): void {
-    if ( value ) {
+    if ( value !== undefined ) {
       this.city = value;
     }
   }

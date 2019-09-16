@@ -170,14 +170,7 @@ export class AddressComponent extends Base
    * @param value
    */
   setCountry(value: string) {
-    const prov = this.addr.province;
     this.addr.province = this.setDefaultProvinceAsOption( value );
-
-    // leave last value for province if no default
-    if ( !this.addr.province ) {
-      this.addr.province = this.findProvinceDescription( prov );
-    }
-
     this.addr.country = value;
     this.updateProvList();
 
@@ -303,7 +296,7 @@ export class AddressComponent extends Base
         val.description === this.defaultProvince) &&
         val.country === country
     );
-    return (provObj ? provObj.provinceCode : null);
+    return (provObj ? provObj.provinceCode : '');
   }
 
   private findProvinceDescription(prov: string): string {
