@@ -308,7 +308,6 @@ import { GeoAddressResult } from &#x27;../../services/geocoder.service&#x27;;
 import { Address } from &#x27;../../models/address.model&#x27;;
 import { CountryList, CANADA, UNITED_STATES, COUNTRY_LIST } from &#x27;../country/country.component&#x27;;
 import { ProvinceList, BRITISH_COLUMBIA, PROVINCE_LIST } from &#x27;../province/province.component&#x27;;
-import { THIS_EXPR } from &#x27;@angular/compiler/src/output/output_ast&#x27;;
 
 export interface AddrLabelList {
   address1?: string;
@@ -326,6 +325,14 @@ export interface Maxlengths {
   province?: string;
   country?: string;
   postalCode?: string;
+}
+
+export interface ReadOnlyFields {
+  address?: boolean;
+  city?: boolean;
+  province?: boolean;
+  country?: boolean;
+  postalCode?: boolean;
 }
 
 /**
@@ -349,7 +356,10 @@ export interface Maxlengths {
 export class AddressComponent extends Base
   implements OnInit, OnChanges, ControlValueAccessor {
 
-  @Input() disabled: boolean &#x3D; false;
+  /* Disable all fields by sending in boolean,
+   * disable specific fields by sending in ReadOnlyFields structure
+   */
+  @Input() disabled: boolean | ReadOnlyFields &#x3D; false;
   @Input() isRequired: boolean &#x3D; false;
   @Input() countryList: CountryList[] &#x3D; COUNTRY_LIST;
   @Input() defaultCountry: string &#x3D; CANADA;
@@ -401,6 +411,14 @@ export class AddressComponent extends Base
     postalCode: &#x27;25&#x27;
   };
 
+  readOnlyFields: ReadOnlyFields &#x3D; {
+    address: false,
+    city: false,
+    province: false,
+    country: false,
+    postalCode: false,
+  };
+
   _onChange &#x3D; (_: any) &#x3D;&gt; { };
   _onTouched &#x3D; (_: any) &#x3D;&gt; { };
 
@@ -412,6 +430,7 @@ export class AddressComponent extends Base
 
     this.setLabels();
     this.setMaxlengths();
+    this.setReadOnlyFields();
 
     if (this.addr) {
 
@@ -646,6 +665,7 @@ export class AddressComponent extends Base
 
   setDisabledState(isDisabled: boolean): void {
     this.disabled &#x3D; isDisabled;
+    this.setReadOnlyFields();
   }
 
   private setLabels() {
@@ -657,6 +677,14 @@ export class AddressComponent extends Base
   private setMaxlengths() {
     if ( this.maxlengths ) {
       Object.keys(this.fieldMaxLenghts).map( x &#x3D;&gt; this.maxlengths[x] &#x3D; this.fieldMaxLenghts[x]);
+    }
+  }
+
+  private setReadOnlyFields() {
+    if ( typeof this.disabled &#x3D;&#x3D;&#x3D; &#x27;boolean&#x27; ) {
+      Object.keys(this.readOnlyFields).map( x &#x3D;&gt; this.readOnlyFields[x] &#x3D; this.disabled );
+    } else {
+      Object.keys(this.disabled).map( x &#x3D;&gt; this.readOnlyFields[x] &#x3D; this.disabled[x] );
     }
   }
 }

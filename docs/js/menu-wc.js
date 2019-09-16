@@ -463,6 +463,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="interfaces/ProvinceList.html" data-type="entity-link">ProvinceList</a>
                             </li>
                             <li class="link">
+                                <a href="interfaces/ReadOnlyFields.html" data-type="entity-link">ReadOnlyFields</a>
+                            </li>
+                            <li class="link">
                                 <a href="interfaces/SimpleDate.html" data-type="entity-link">SimpleDate</a>
                             </li>
                             <li class="link">

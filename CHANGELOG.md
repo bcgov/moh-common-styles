@@ -1,4 +1,19 @@
-# Unreleased "moh-common-lib" (2019-09-12)
+# Unreleased "moh-common-lib" (2019-09-16)
+
+
+
+# [2.12.0](https://github.com/bcgov/moh-common-styles/compare/v2.11.0...v2.12.0) "moh-common-lib" (2019-09-16)
+
+
+### Bug Fixes
+
+* radio buttons working for more than 2 options as custom form control ([f2ccfe6](https://github.com/bcgov/moh-common-styles/commit/f2ccfe6))
+* Removed check for undefined ([7398e93](https://github.com/bcgov/moh-common-styles/commit/7398e93))
+
+
+### Features
+
+* Added ability to disable specfic fields in address component ([5965aec](https://github.com/bcgov/moh-common-styles/commit/5965aec))
 
 
 
