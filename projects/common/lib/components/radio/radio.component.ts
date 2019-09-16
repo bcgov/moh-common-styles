@@ -89,9 +89,7 @@ export class RadioComponent extends Base implements ControlValueAccessor {
   }
 
   writeValue(value: any): void {
-    if ( value !== undefined ) {
-      this.value = value;
-    }
+    this.value = value;
   }
 
   setDisabledState(isDisabled: boolean): void {
