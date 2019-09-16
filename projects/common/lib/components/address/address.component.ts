@@ -13,7 +13,6 @@ import { GeoAddressResult } from '../../services/geocoder.service';
 import { Address } from '../../models/address.model';
 import { CountryList, CANADA, UNITED_STATES, COUNTRY_LIST } from '../country/country.component';
 import { ProvinceList, BRITISH_COLUMBIA, PROVINCE_LIST } from '../province/province.component';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 export interface AddrLabelList {
   address1?: string;
@@ -31,6 +30,14 @@ export interface Maxlengths {
   province?: string;
   country?: string;
   postalCode?: string;
+}
+
+export interface ReadOnlyFields {
+  address?: boolean;
+  city?: boolean;
+  province?: boolean;
+  country?: boolean;
+  postalCode?: boolean;
 }
 
 /**
@@ -54,7 +61,10 @@ export interface Maxlengths {
 export class AddressComponent extends Base
   implements OnInit, OnChanges, ControlValueAccessor {
 
-  @Input() disabled: boolean = false;
+  /* Disable all fields by sending in boolean,
+   * disable specific fields by sending in ReadOnlyFields structure
+   */
+  @Input() disabled: boolean | ReadOnlyFields = false;
   @Input() isRequired: boolean = false;
   @Input() countryList: CountryList[] = COUNTRY_LIST;
   @Input() defaultCountry: string = CANADA;
@@ -106,6 +116,14 @@ export class AddressComponent extends Base
     postalCode: '25'
   };
 
+  readOnlyFields: ReadOnlyFields = {
+    address: false,
+    city: false,
+    province: false,
+    country: false,
+    postalCode: false,
+  };
+
   _onChange = (_: any) => { };
   _onTouched = (_: any) => { };
 
@@ -117,6 +135,7 @@ export class AddressComponent extends Base
 
     this.setLabels();
     this.setMaxlengths();
+    this.setReadOnlyFields();
 
     if (this.addr) {
 
@@ -351,6 +370,7 @@ export class AddressComponent extends Base
 
   setDisabledState(isDisabled: boolean): void {
     this.disabled = isDisabled;
+    this.setReadOnlyFields();
   }
 
   private setLabels() {
@@ -362,6 +382,14 @@ export class AddressComponent extends Base
   private setMaxlengths() {
     if ( this.maxlengths ) {
       Object.keys(this.fieldMaxLenghts).map( x => this.maxlengths[x] = this.fieldMaxLenghts[x]);
+    }
+  }
+
+  private setReadOnlyFields() {
+    if ( typeof this.disabled === 'boolean' ) {
+      Object.keys(this.readOnlyFields).map( x => this.readOnlyFields[x] = this.disabled );
+    } else {
+      Object.keys(this.disabled).map( x => this.readOnlyFields[x] = this.disabled[x] );
     }
   }
 }
