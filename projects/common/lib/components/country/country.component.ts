@@ -334,7 +334,7 @@ export class CountryComponent extends Base implements OnInit, ControlValueAccess
   }
 
   writeValue( value: any ): void {
-    if ( value ) {
+    if ( value !== undefined ) {
       this.country = value;
     }
   }

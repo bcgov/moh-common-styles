@@ -21,7 +21,7 @@ export class StreetComponent extends Base implements OnInit, ControlValueAccesso
   @Input() labelforId: string = 'street_' + this.objectId;
   @Input() disabled: boolean = false;
   @Input() useGeoCoder: boolean = false;
-  @Input() placeholder: string = 'Street Name';
+  @Input() placeholder: string = 'Street name';
   @Input() errorMessage: ErrorMessage;
 
   @Input()
@@ -100,7 +100,7 @@ export class StreetComponent extends Base implements OnInit, ControlValueAccesso
   }
 
   writeValue( value: any ): void {
-    if ( value ) {
+    if ( value !== undefined ) {
         this.street = value;
     }
   }

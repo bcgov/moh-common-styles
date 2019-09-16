@@ -98,7 +98,7 @@ export class ProvinceComponent extends Base implements OnInit, ControlValueAcces
   }
 
   writeValue( value: any ): void {
-    if ( value ) {
+    if ( value !== undefined ) {
       this.province = value;
     }
   }
