@@ -2,14 +2,14 @@
   <legend *ngIf="label; else noLabel;" class="radio-box--legend" tabindex="-1">{{label}}</legend>
   <div class="text-muted" *ngIf="instructionText; else noInstructionText;" >{{instructionText}}</div>
   <div *ngFor="let val of radioLabels" [ngStyle]="{'display': display}" >
-    <div class="md-radio md-radio-inline"> 
+    <div class="md-radio md-radio-inline">
       <input type="radio"
              name="selection__{{objectId}}"
              id="{{val.value}}_{{objectId}}"
              [disabled]="disabled"
              [value]="val.value"
              (click)="setStatus(val.value);"
-             [checked]="value == val.value"
+             [checked]="_value == val.value"
              tabindex="0">
       <label for="{{val.value}}_{{objectId}}">
       {{val.label}}
@@ -18,7 +18,7 @@
   </div>
 
 
-  <div *ngIf='showError && (value === undefined || value === null)'>
+  <div *ngIf='showError && (value == undefined || value == null)'>
       <div class="text-danger">{{errorMessageRequired}}</div>
   </div>
 </fieldset>

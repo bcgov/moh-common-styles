@@ -45,12 +45,18 @@ import {ControlValueAccessor, NgControl} from '@angular/forms';
 })
 export class RadioComponent extends Base implements ControlValueAccessor {
 
+  _value: string = '';
 
   @Input() radioLabels: Array<{label: string, value: string}> ;
-  @Input() checked: boolean = false; // TODO: Remove after confirm not used
   @Input() disabled: boolean = false;
   @Input() label: string ;
-  @Input() value: string ;
+  @Input()
+  set value( val: string ) {
+    this._value = val;
+  }
+  get value() {
+    return this._value;
+  }
   @Input() showError: boolean;
   @Input() errorMessageRequired: string = this.label + ' is required.';
   @Input() display: 'table-row-group' | 'inline-block'  = 'inline-block';
@@ -68,7 +74,7 @@ export class RadioComponent extends Base implements ControlValueAccessor {
   }
 
   setStatus(evt: string) {
-    // this.value = evt;
+    this.value = evt;
     this._onChange(evt);
     this.statusChange.emit(evt);
     this._onTouched();
