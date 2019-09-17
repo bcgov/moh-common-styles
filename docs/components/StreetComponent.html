@@ -499,7 +499,7 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>&#x27;Street Name&#x27;</code>
+                        <i>Default value : </i><code>&#x27;Street name&#x27;</code>
                     </td>
                 </tr>
                         <tr>
@@ -1760,7 +1760,7 @@ export class StreetComponent extends Base implements OnInit, ControlValueAccesso
   @Input() labelforId: string &#x3D; &#x27;street_&#x27; + this.objectId;
   @Input() disabled: boolean &#x3D; false;
   @Input() useGeoCoder: boolean &#x3D; false;
-  @Input() placeholder: string &#x3D; &#x27;Street Name&#x27;;
+  @Input() placeholder: string &#x3D; &#x27;Street name&#x27;;
   @Input() errorMessage: ErrorMessage;
 
   @Input()
@@ -1839,7 +1839,7 @@ export class StreetComponent extends Base implements OnInit, ControlValueAccesso
   }
 
   writeValue( value: any ): void {
-    if ( value ) {
+    if ( value !&#x3D;&#x3D; undefined ) {
         this.street &#x3D; value;
     }
   }

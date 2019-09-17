@@ -469,13 +469,13 @@ export class AddressComponent extends Base
 
   // Labels defaulted to MSP
   addrLabels: AddrLabelList &#x3D;  {
-    address1: &#x27;Full street address, rural route, PO Box or general delivery&#x27;,
+    address1: &#x27;Full street address, rural route, PO box or general delivery&#x27;,
     address2: &#x27;Address Line 2&#x27;,
     address3: &#x27;Address Line 3&#x27;,
     city: &#x27;City&#x27;,
     province: &#x27;Province or state&#x27;,
     country: &#x27;Country&#x27;,
-    postalCode: &#x27;Postal Code or ZIP&#x27;
+    postalCode: &#x27;Postal Code or Zip Code&#x27;
   };
 
   // Lengths defaulted to MSP
@@ -541,14 +541,7 @@ export class AddressComponent extends Base
    * @param value
    */
   setCountry(value: string) {
-    const prov &#x3D; this.addr.province;
     this.addr.province &#x3D; this.setDefaultProvinceAsOption( value );
-
-    // leave last value for province if no default
-    if ( !this.addr.province ) {
-      this.addr.province &#x3D; this.findProvinceDescription( prov );
-    }
-
     this.addr.country &#x3D; value;
     this.updateProvList();
 
@@ -674,7 +667,7 @@ export class AddressComponent extends Base
         val.description &#x3D;&#x3D;&#x3D; this.defaultProvince) &amp;&amp;
         val.country &#x3D;&#x3D;&#x3D; country
     );
-    return (provObj ? provObj.provinceCode : null);
+    return (provObj ? provObj.provinceCode : &#x27;&#x27;);
   }
 
   private findProvinceDescription(prov: string): string {

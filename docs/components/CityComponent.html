@@ -461,7 +461,7 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>&#x27;City Name&#x27;</code>
+                        <i>Default value : </i><code>&#x27;City name&#x27;</code>
                     </td>
                 </tr>
                         <tr>
@@ -1357,7 +1357,7 @@ export class CityComponent extends Base implements OnInit, ControlValueAccessor 
   @Input() maxlen: string &#x3D; &#x27;100&#x27;;
   @Input() labelforId: string &#x3D; &#x27;city_&#x27; + this.objectId;
   @Input() disabled: boolean &#x3D; false;
-  @Input() placeholder: string &#x3D; &#x27;City Name&#x27;;
+  @Input() placeholder: string &#x3D; &#x27;City name&#x27;;
   @Input() errorMessage: ErrorMessage;
 
   @Input()
@@ -1406,7 +1406,7 @@ export class CityComponent extends Base implements OnInit, ControlValueAccessor 
   }
 
   writeValue( value: any ): void {
-    if ( value ) {
+    if ( value !&#x3D;&#x3D; undefined ) {
       this.city &#x3D; value;
     }
   }

@@ -1,4 +1,13 @@
-# Unreleased "moh-common-lib" (2019-09-16)
+# Unreleased "moh-common-lib" (2019-09-17)
+
+
+
+# [2.13.0](https://github.com/bcgov/moh-common-styles/compare/v2.12.0...v2.13.0) "moh-common-lib" (2019-09-17)
+
+
+### Bug Fixes
+
+* clear province when country changes, placeholders updated ([8380850](https://github.com/bcgov/moh-common-styles/commit/8380850))
 
 
 
