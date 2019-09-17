@@ -2,6 +2,15 @@
 
 
 
+# [2.14.0](https://github.com/bcgov/moh-common-styles/compare/v2.13.0...v2.14.0) "moh-common-lib" (2019-09-17)
+
+
+### Features
+
+* Set label defaults to yes/no in radio component ([66e58e7](https://github.com/bcgov/moh-common-styles/commit/66e58e7))
+
+
+
 # [2.13.0](https://github.com/bcgov/moh-common-styles/compare/v2.12.0...v2.13.0) "moh-common-lib" (2019-09-17)
 
 
