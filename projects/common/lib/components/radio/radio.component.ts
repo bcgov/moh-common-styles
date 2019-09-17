@@ -47,7 +47,11 @@ export class RadioComponent extends Base implements ControlValueAccessor {
 
   _value: string = '';
 
-  @Input() radioLabels: Array<{label: string, value: string}> ;
+  @Input() radioLabels: Array<{label: string, value: any}> = [
+    {label: 'No', value: false},
+    {label: 'Yes', value: true}
+  ];
+
   @Input() disabled: boolean = false;
   @Input() label: string ;
   @Input()
@@ -61,7 +65,9 @@ export class RadioComponent extends Base implements ControlValueAccessor {
   @Input() errorMessageRequired: string = this.label + ' is required.';
   @Input() display: 'table-row-group' | 'inline-block'  = 'inline-block';
   @Input() instructionText: string;
-  @Output() statusChange: EventEmitter<string> = new EventEmitter<string>();
+  // TODO: remove status change - breaking change
+  @Output() statusChange: EventEmitter<string> = new EventEmitter<any>();
+  @Output() valueChange: EventEmitter<string> = new EventEmitter<any>();
 
   public _onChange = (_: any) => {};
   public _onTouched = () => {};
@@ -77,6 +83,7 @@ export class RadioComponent extends Base implements ControlValueAccessor {
     this.value = evt;
     this._onChange(evt);
     this.statusChange.emit(evt);
+    this.valueChange.emit(evt);
     this._onTouched();
   }
 
