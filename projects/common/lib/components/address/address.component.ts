@@ -220,10 +220,6 @@ export class AddressComponent extends Base
     return this.addr && CANADA === this.addr.country;
   }
 
-  isCanadaUSA(): boolean {
-    return (this.addr && UNITED_STATES === this.addr.country) || this.isCanada();
-  }
-
   ngOnChanges(changes) {
     if (changes['countryList'] && changes['countryList'].currentValue) {
 
