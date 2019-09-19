@@ -1273,7 +1273,7 @@ export class PhnComponent extends Base implements ControlValueAccessor {
   }
 
   writeValue( value: any ): void {
-    if ( value ) {
+    if ( value !&#x3D;&#x3D; undefined ) {
       this.phn &#x3D; value;
     }
   }

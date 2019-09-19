@@ -515,10 +515,6 @@ export class AddressComponent extends Base
     return this.addr &amp;&amp; CANADA &#x3D;&#x3D;&#x3D; this.addr.country;
   }
 
-  isCanadaUSA(): boolean {
-    return (this.addr &amp;&amp; UNITED_STATES &#x3D;&#x3D;&#x3D; this.addr.country) || this.isCanada();
-  }
-
   ngOnChanges(changes) {
     if (changes[&#x27;countryList&#x27;] &amp;&amp; changes[&#x27;countryList&#x27;].currentValue) {
 

@@ -1,4 +1,13 @@
-# Unreleased "moh-common-lib" (2019-09-17)
+# Unreleased "moh-common-lib" (2019-09-19)
+
+
+
+# [2.15.0](https://github.com/bcgov/moh-common-styles/compare/v2.14.0...v2.15.0) "moh-common-lib" (2019-09-19)
+
+
+### Bug Fixes
+
+* removed check for US from address component ([996cad7](https://github.com/bcgov/moh-common-styles/commit/996cad7))
 
 
 
