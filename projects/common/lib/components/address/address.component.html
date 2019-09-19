@@ -97,7 +97,7 @@
                    [required]="isRequired"
                    [disabled]="readOnlyFields.province"
                    placeholder="{{ isCanada()? 'Select a Province': 'Select a State' }}"
-                   [useDropDownList]="isCanadaUSA()"
+                   [useDropDownList]="isCanada()"
                    [maxlen]="fieldMaxLenghts.province"
                    commonValidateRegion></common-province>
 </div>

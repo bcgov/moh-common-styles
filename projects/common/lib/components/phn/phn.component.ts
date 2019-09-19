@@ -61,7 +61,7 @@ export class PhnComponent extends Base implements ControlValueAccessor {
   }
 
   writeValue( value: any ): void {
-    if ( value ) {
+    if ( value !== undefined ) {
       this.phn = value;
     }
   }
