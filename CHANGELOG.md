@@ -1,4 +1,13 @@
-# Unreleased "moh-common-lib" (2019-09-19)
+# Unreleased "moh-common-lib" (2019-09-20)
+
+
+
+# [2.16.0](https://github.com/bcgov/moh-common-styles/compare/v2.15.0...v2.16.0) "moh-common-lib" (2019-09-20)
+
+
+### Bug Fixes
+
+* update address1 when street updated ([29e521c](https://github.com/bcgov/moh-common-styles/commit/29e521c))
 
 
 
