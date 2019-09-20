@@ -4,6 +4,8 @@
 
 export class Address {
 
+  // TODO: remove 'street' to eliminate confusion.  Possible breaking change
+
   static PostalCodeBCRegEx = '^[Vv]\\d[ABCEGHJ-NPRSTV-Zabceghj-nprstv-z][ ]?\\d[ABCEGHJ-NPRSTV-Zabceghj-nprstv-z]\\d$';
 
   /** Same as addressLine1, your application should use one or the other. */
@@ -31,13 +33,8 @@ export class Address {
    * should access the properties directly. We omit Province/Country because of
    * PharmaCare's BC focus. */
   toString() {
-    return `${this.street}, ${this.city}`;
+    return `${this.addressLine1}, ${this.city}`;
   }
-
-  /*{
-    return (this.addressLine1 != null);
-  }*/
-
 
   /**
    * Address must have all fields filled out to be considered
