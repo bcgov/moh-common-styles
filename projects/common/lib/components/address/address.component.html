@@ -4,7 +4,7 @@
       <common-street name="street_{{objectId}}"
                      label="{{addrLabels.address1}}"
                      [useGeoCoder]="useGeoCoder()"
-                     [ngModel]="addr?.street"
+                     [ngModel]="addr?.addressLine1"
                      (ngModelChange)="setStreetAddress($event)"
                      (selectEvent)="setAddress($event)"
                      [required]="isRequired"

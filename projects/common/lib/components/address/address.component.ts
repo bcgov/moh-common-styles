@@ -40,9 +40,6 @@ export interface ReadOnlyFields {
   postalCode?: boolean;
 }
 
-// TODO: remove 'street' to eliminate confusion.  Possible breaking change
-
-
 /**
  *
  * Note - This component REQUIRES that `HttpClientModule` is registered in your NgModule.
@@ -195,7 +192,6 @@ export class AddressComponent extends Base
   }
 
   setStreetAddress(value: string) {
-    this.addr.street = value;
     this.addr.addressLine1 = value;
     this._onChange(this.addr);
     this.addressChange.emit(this.addr);
@@ -340,7 +336,6 @@ export class AddressComponent extends Base
 
   // Only BC addresses therefore no need to copy province into structure.
   setAddress(data: GeoAddressResult) {
-    this.addr.street = data.street;
     this.addr.addressLine1 = data.street;
     this.addr.city = data.city;
     this.addr.province = data.province;

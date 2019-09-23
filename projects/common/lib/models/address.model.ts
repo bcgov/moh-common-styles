@@ -4,14 +4,8 @@
 
 export class Address {
 
-  // TODO: remove 'street' to eliminate confusion.  Possible breaking change
-
   static PostalCodeBCRegEx = '^[Vv]\\d[ABCEGHJ-NPRSTV-Zabceghj-nprstv-z][ ]?\\d[ABCEGHJ-NPRSTV-Zabceghj-nprstv-z]\\d$';
 
-  /** Same as addressLine1, your application should use one or the other. */
-  public street: string;
-
-  /** Same as street, your application should use one or the other. */
   public addressLine1: string;
   /** Used to store optional extra address fields. Can be used with addressLine1 OR street. */
   public addressLine2: string;
@@ -25,7 +19,14 @@ export class Address {
   public isValid: boolean;
 
 
+  // For backward compatibilty with applications that use street.
+  get street() {
+    return this.addressLine1;
+  }
 
+  set street( val: string ) {
+    this.addressLine1 = val;
+  }
 
   /** Overwrite the native JavaScript toString method to determine how the
    * object should be printed, instead of [object Object].  This provides a
@@ -42,7 +43,7 @@ export class Address {
    */
   isComplete(): boolean {
     // All fields have data - not empty
-    return !!(this.street && this.city && this.country &&
+    return !!(this.addressLine1 && this.city && this.country &&
              this.province && this.postal);
   }
 
@@ -58,7 +59,6 @@ export class Address {
 
   /* Copy function */
   copy(object: Address) {
-    this.street = object.street;
     this.addressLine1 = object.addressLine1;
     this.addressLine2 = object.addressLine2;
     this.addressLine3 = object.addressLine3;
