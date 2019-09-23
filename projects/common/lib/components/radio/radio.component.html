@@ -9,6 +9,7 @@
              [disabled]="disabled"
              [value]="val.value"
              (click)="setStatus(val.value);"
+             (blur)="_onTouched()"
              [checked]="_value == val.value"
              tabindex="0">
       <label for="{{val.value}}_{{objectId}}">
@@ -17,10 +18,15 @@
     </div>
   </div>
 
-
-  <div *ngIf='showError && (value == undefined || value == null)'>
-      <div class="text-danger">{{errorMessageRequired}}</div>
+  <!--TODO: to be removed - breaking change -->
+  <div *ngIf="showError && (value == undefined || value == null)">
+      <div class="text-danger">{{defaultErrorMessage}}</div>
   </div>
+
+  <common-error-container
+      [displayError]="controlDir && !disabled && (controlDir.touched || controlDir.dirty) && controlDir.errors">
+    <div  *ngIf="controlDir.errors?.required">{{defaultErrorMessage}}</div>
+  </common-error-container>
 </fieldset>
 
 

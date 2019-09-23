@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output, Optional, Self} from '@angular/core';
+import {Component, EventEmitter, Input, Output, Optional, Self, OnInit} from '@angular/core';
 import {Base} from '../../models/base';
 import {ControlValueAccessor, NgControl} from '@angular/forms';
 
@@ -43,9 +43,10 @@ import {ControlValueAccessor, NgControl} from '@angular/forms';
   templateUrl: './radio.component.html',
   styleUrls: ['./radio.component.scss']
 })
-export class RadioComponent extends Base implements ControlValueAccessor {
+export class RadioComponent extends Base implements OnInit, ControlValueAccessor {
 
   _value: string = '';
+  defaultErrorMessage: string = '';
 
   @Input() radioLabels: Array<{label: string, value: any}> = [
     {label: 'No', value: false},
@@ -53,7 +54,7 @@ export class RadioComponent extends Base implements ControlValueAccessor {
   ];
 
   @Input() disabled: boolean = false;
-  @Input() label: string ;
+  @Input() label: string;
   @Input()
   set value( val: string ) {
     this._value = val;
@@ -61,8 +62,8 @@ export class RadioComponent extends Base implements ControlValueAccessor {
   get value() {
     return this._value;
   }
-  @Input() showError: boolean;
-  @Input() errorMessageRequired: string = this.label + ' is required.';
+  @Input() showError: boolean; // TODO: Remove - breaking change
+  @Input() errorMessageRequired: string;
   @Input() display: 'table-row-group' | 'inline-block'  = 'inline-block';
   @Input() instructionText: string;
   // TODO: remove status change - breaking change
@@ -79,12 +80,19 @@ export class RadioComponent extends Base implements ControlValueAccessor {
     }
   }
 
+  ngOnInit() {
+    if ( this.errorMessageRequired ) {
+      this.defaultErrorMessage = this.errorMessageRequired;
+    } else {
+      this.defaultErrorMessage = (this.label ? this.label : 'Field' ) + 'is required.';
+    }
+  }
+
   setStatus(evt: string) {
     this.value = evt;
     this._onChange(evt);
     this.statusChange.emit(evt);
     this.valueChange.emit(evt);
-    this._onTouched();
   }
 
   registerOnChange(fn: any): void {
