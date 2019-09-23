@@ -84,7 +84,7 @@ export class RadioComponent extends Base implements OnInit, ControlValueAccessor
     if ( this.errorMessageRequired ) {
       this.defaultErrorMessage = this.errorMessageRequired;
     } else {
-      this.defaultErrorMessage = (this.label ? this.label : 'Field' ) + 'is required.';
+      this.defaultErrorMessage = (this.label ? this.label : 'Field' ) + ' is required.';
     }
   }
 
