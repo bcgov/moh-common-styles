@@ -1,4 +1,26 @@
-# Unreleased "moh-common-lib" (2019-09-20)
+# Unreleased "moh-common-lib" (2019-09-24)
+
+
+
+# [2.17.0](https://github.com/bcgov/moh-common-styles/compare/v2.16.0...v2.17.0) "moh-common-lib" (2019-09-24)
+
+
+### Bug Fixes
+
+* added space in error message (radio) ([6427f10](https://github.com/bcgov/moh-common-styles/commit/6427f10))
+* bug introduced when try to display errors when field touched (radio/checkbox) ([aceb028](https://github.com/bcgov/moh-common-styles/commit/aceb028))
+* checkbox fixed to be custom form control ([1c51f01](https://github.com/bcgov/moh-common-styles/commit/1c51f01))
+* set radio touched on blur, display required message when touched ([c78856a](https://github.com/bcgov/moh-common-styles/commit/c78856a))
+
+
+### Documentation
+
+* Tweak publishing so it passes markdownlint ([901885e](https://github.com/bcgov/moh-common-styles/commit/901885e))
+
+
+### Features
+
+* Added required error message to component ([d5dd02f](https://github.com/bcgov/moh-common-styles/commit/d5dd02f))
 
 
 
@@ -170,16 +192,12 @@
 
 
 
-# [2.3.0](https://github.com/bcgov/moh-common-styles/compare/2.0.0...v2.3.0) "moh-common-lib" (2019-07-25)
+# [2.3.0](https://github.com/bcgov/moh-common-styles/compare/v2.2.0...v2.3.0) "moh-common-lib" (2019-07-25)
 
 
 ### Features
 
 * **Address:** Now has default country/prov behaviour built in ([8361a0e](https://github.com/bcgov/moh-common-styles/commit/8361a0e))
-
-
-
-# [2.0.0](https://github.com/bcgov/moh-common-styles/compare/v2.2.0...2.0.0) "moh-common-lib" (2019-07-25)
 
 
 
