@@ -9,7 +9,6 @@
              [disabled]="disabled"
              [value]="val.value"
              (click)="setStatus(val.value);"
-             (blur)="_onTouched()"
              [checked]="_value == val.value"
              tabindex="0">
       <label for="{{val.value}}_{{objectId}}">

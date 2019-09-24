@@ -66,6 +66,7 @@ export class CheckboxComponent extends Base implements  OnInit, ControlValueAcce
     this.data = event;
     this.dataChange.emit(this.data);
     this._onChange(event);
+    this._onTouched();
   }
 
   focus() {

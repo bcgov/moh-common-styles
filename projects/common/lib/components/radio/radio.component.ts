@@ -90,9 +90,11 @@ export class RadioComponent extends Base implements OnInit, ControlValueAccessor
 
   setStatus(evt: string) {
     this.value = evt;
-    this._onChange(evt);
     this.statusChange.emit(evt);
     this.valueChange.emit(evt);
+
+    this._onChange(evt);
+    this._onTouched();
   }
 
   registerOnChange(fn: any): void {

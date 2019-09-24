@@ -6,7 +6,6 @@
       id="checkbox_{{objectId}}"
       [ngModel]="data"
       (ngModelChange)="setCheckboxVal($event);"
-      (blur)="_onTouched()"
       [disabled]="disabled"
       [required]="required">
 <label for="checkbox_{{objectId}}" class="form-check-label">{{label}}</label>
