@@ -15,8 +15,8 @@ export class Address {
   public country: string;
   public province: string;
   public city: string;
-  public hasValue: boolean;
-  public isValid: boolean;
+  public hasValue: boolean; // TODO: Why do we need this? - Remove - breaking change
+  public isValid: boolean; // TODO: Why do we need this? - Remove - breaking change
 
 
   // For backward compatibilty with applications that use street.
