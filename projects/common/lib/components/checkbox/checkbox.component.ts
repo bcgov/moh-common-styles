@@ -62,7 +62,6 @@ export class CheckboxComponent extends Base implements  OnInit, ControlValueAcce
   }
 
   setCheckboxVal(event: boolean) {
-    console.log(event);
     this.data = event;
     this.dataChange.emit(this.data);
     this._onChange(event);
