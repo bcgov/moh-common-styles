@@ -1,6 +1,6 @@
-import { forwardRef, Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef} from '@angular/core';
+import { forwardRef, Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef, Optional, Self} from '@angular/core';
 import { Base } from '../../models/base';
-import { ControlContainer, ControlValueAccessor, NgForm, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlContainer, ControlValueAccessor, NgForm, NG_VALUE_ACCESSOR, NgControl } from '@angular/forms';
 /**
  * Checkbox component is a input checkbox
  *
@@ -21,25 +21,23 @@ import { ControlContainer, ControlValueAccessor, NgForm, NG_VALUE_ACCESSOR } fro
   selector: 'common-checkbox',
   templateUrl: './checkbox.component.html',
   styleUrls: ['./checkbox.component.scss'],
+
+  // TODO: Remove to make custom form control -- possible breaking change
   viewProviders: [
     { provide: ControlContainer, useExisting: forwardRef(() => NgForm ) }
-  ],
-  providers: [
-    { provide: NG_VALUE_ACCESSOR, multi: true, useExisting: forwardRef(() => CheckboxComponent )}
   ]
 })
-
-export class CheckboxComponent extends Base implements  ControlValueAccessor {
+export class CheckboxComponent extends Base implements  OnInit, ControlValueAccessor {
+  defaultErrorMessage: string = '';
 
   /**
    * You can bind to [(data)] OR you can use [(ngModel)] but don't use both.
    */
   @Input() data: boolean = false;
-  @Input() required: boolean = false;
+  @Input() required: boolean = false;  // TODO: Remove - breaking change
   @Input() disabled: boolean = false;
   @Input() label: string = 'Default Checkbox';
-  @Input() errorMessageRequired: string = this.label + 'Field is required.';
-  @Input() checked: boolean =  false ;
+  @Input() errorMessageRequired: string;
   @Input() showError: boolean;
   @Output() dataChange: EventEmitter<boolean> = new EventEmitter<boolean>();
   @ViewChild('checkbox') checkbox: ElementRef;
@@ -48,17 +46,27 @@ export class CheckboxComponent extends Base implements  ControlValueAccessor {
   public _onChange = (_: any) => {};
   public _onTouched = () => {};
 
+  constructor( @Optional() @Self() public controlDir: NgControl ) {
+    super();
+    if ( controlDir ) {
+      controlDir.valueAccessor = this;
+    }
+  }
 
-  constructor() { super(); }
+  ngOnInit() {
+    if ( this.errorMessageRequired ) {
+      this.defaultErrorMessage = this.errorMessageRequired;
+    } else {
+      this.defaultErrorMessage = this.label + ' is required.';
+    }
+  }
 
-
-  /*setCheckboxVal(event: boolean) {
-    console.log(event);
+  setCheckboxVal(event: boolean) {
     this.data = event;
     this.dataChange.emit(this.data);
     this._onChange(event);
     this._onTouched();
-  }*/
+  }
 
   focus() {
     this.checkbox.nativeElement.focus();
@@ -75,6 +83,4 @@ export class CheckboxComponent extends Base implements  ControlValueAccessor {
   writeValue(value: any): void {
     this.data = value;
   }
-
-
 }

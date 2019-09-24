@@ -1,20 +1,13 @@
-import { Component, OnInit, Input, forwardRef } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Component, OnInit, Input, forwardRef, Optional, Self } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, NgControl } from '@angular/forms';
 import { Base } from '../../models/base';
 
 @Component({
   selector: 'common-dropdown',
   templateUrl: './dropdown.component.html',
-  styleUrls: ['./dropdown.component.scss'],
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      multi: true,
-      useExisting: forwardRef(() => DropdownComponent)
-    }
-  ]
+  styleUrls: ['./dropdown.component.scss']
 })
-export class DropdownComponent extends Base implements OnInit, ControlValueAccessor {
+export class DropdownComponent extends Base implements ControlValueAccessor {
   public model: any;
 
   @Input() items = [];
@@ -29,13 +22,11 @@ export class DropdownComponent extends Base implements OnInit, ControlValueAcces
   public _onChange = (_: any) => {};
   public _onTouched = () => {};
 
-
-
-  constructor() {
+  constructor( @Optional() @Self() public controlDir: NgControl ) {
     super();
-   }
-
-  ngOnInit() {
+    if ( controlDir ) {
+      controlDir.valueAccessor = this;
+    }
   }
 
   writeValue(value: any): void {
