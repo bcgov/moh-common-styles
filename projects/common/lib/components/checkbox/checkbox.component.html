@@ -16,6 +16,6 @@
 </div>
 
 <common-error-container
-  [displayError]="controlDir && !disabled && (controlDir.touched || controlDir.dirty) && controlDir.errors">
+  [displayError]="controlDir && !disabled && (controlDir.touched || controlDir.dirty) && controlDir?.errors">
   <div  *ngIf="controlDir.errors?.required">{{defaultErrorMessage}}</div>
 </common-error-container>
