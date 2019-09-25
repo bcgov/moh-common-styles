@@ -1,4 +1,21 @@
-# Unreleased "moh-common-lib" (2019-09-24)
+# Unreleased "moh-common-lib" (2019-09-25)
+
+
+
+## [2.17.1](https://github.com/bcgov/moh-common-styles/compare/v2.17.0...v2.17.1) "moh-common-lib" (2019-09-25)
+
+
+### Bug Fixes
+
+* added check for errors when component not used as form control ([7d274e8](https://github.com/bcgov/moh-common-styles/commit/7d274e8))
+* color-success changed to 83D31D to match color on mockups ([c64c066](https://github.com/bcgov/moh-common-styles/commit/c64c066))
+* error in checkbox html check errors exist ([29c5160](https://github.com/bcgov/moh-common-styles/commit/29c5160))
+
+
+### Documentation
+
+* **TODO:** Create TODO file with list of breaking changes for version 3 ([9dc5375](https://github.com/bcgov/moh-common-styles/commit/9dc5375))
+* **TODO:** Rename todo to a markdown file for GitHub support ([496c252](https://github.com/bcgov/moh-common-styles/commit/496c252))
 
 
 
