@@ -15,16 +15,16 @@
   <!-- Error messages for input -->
   <common-error-container
     [displayError]="controlDir && !disabled && (controlDir.touched || controlDir.dirty) && controlDir.errors">
-    <div *ngIf="controlDir.errors?.required">
+    <div *ngIf="controlDir?.errors?.required">
       {{label}} {{defaultErrMsg.required}}
     </div>
-    <div *ngIf="controlDir.errors?.pattern">
+    <div *ngIf="controlDir?.errors?.pattern">
       {{defaultErrMsg.pattern}} {{placeholder}}.
     </div>
-    <div *ngIf="controlDir.errors?.invalidBCPostal">
+    <div *ngIf="controlDir?.errors?.invalidBCPostal">
       {{defaultErrMsg.invalidBCPostal}}
     </div>
-    <div *ngIf="controlDir.errors?.invalidChar">
+    <div *ngIf="controlDir?.errors?.invalidChar">
     {{label}} {{defaultErrMsg.invalidChar}}
   </div>
   </common-error-container>

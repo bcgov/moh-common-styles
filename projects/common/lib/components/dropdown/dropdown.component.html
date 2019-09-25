@@ -17,6 +17,6 @@
            (close)='_onTouched()'></ng-select>
 
 <common-error-container
-  [displayError]="controlDir && (controlDir.touched || controlDir.dirty) && controlDir.errors">
-  <div  *ngIf="controlDir.errors?.required">{{label}} is required.</div>
+  [displayError]="controlDir && (controlDir.touched || controlDir.dirty) && controlDir?.errors">
+  <div  *ngIf="controlDir?.errors?.required">{{label}} is required.</div>
 </common-error-container>

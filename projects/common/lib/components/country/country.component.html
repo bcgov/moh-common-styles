@@ -14,11 +14,11 @@
 
 <!-- Error messages for input -->
 <common-error-container
-  [displayError]="controlDir && !disabled &&  (controlDir.touched || controlDir.dirty) && controlDir.errors">
-  <div *ngIf="controlDir.errors?.required">
+  [displayError]="controlDir && !disabled &&  (controlDir.touched || controlDir.dirty) && controlDir?.errors">
+  <div *ngIf="controlDir?.errors?.required">
     {{label}} {{defaultErrMsg.required}}
   </div>
-  <div *ngIf="controlDir.errors?.invalidChar">
+  <div *ngIf="controlDir?.errors?.invalidChar">
     {{label}} {{defaultErrMsg.invalidChar}}
   </div>
 </common-error-container>
