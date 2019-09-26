@@ -1,0 +1,31 @@
+<div bsModal #samplesModal="bs-modal"
+     class="modal"
+     role="dialog"
+     aria-labelledby="samplesModalTitle"
+     aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header modal-header-primary">
+        <h2 class="modal-title pull-left" id="samplesModalTitle">{{title}}</h2>
+        <a class="pull-right" (click)="closeModal()" aria-label="Close">
+          <i class="text-danger fa fa-2x fa-times"></i>
+        </a>
+      </div>
+
+      <div class="modal-body">
+        <div *ngFor="let image of images" class="fpcare-sample--row">
+          <label for="image_{{objectId}}" *ngIf="image?.title">{{image.title}}</label>
+          <img class="fpcare-sample--image" id="image_{{objectId}}" src="{{image.path}}" alt="{{image.desc}}"/>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-block btn-primary pull-left"
+                type="submit"
+                (click)="closeModal()">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+

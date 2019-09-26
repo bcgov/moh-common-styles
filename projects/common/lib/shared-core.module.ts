@@ -52,6 +52,7 @@ import { ValidateStreetDirective } from './components/street/validate-street.dir
 import { ValidateCityDirective } from './components/city/validate-city.directive';
 import { ValidateRegionDirective } from './components/validate-region/validate-region.directive';
 import { ValidatePostalcodeDirective } from './components/postal-code/validate-postalcode.directive';
+import { SampleModalComponent } from './components/sample-modal/sample-modal.component';
 
 const componentList = [
   CoreBreadcrumbComponent,
@@ -87,6 +88,7 @@ const componentList = [
   HeaderComponent,
   XiconButtonComponent,
   ErrorContainerComponent,
+  SampleModalComponent,
 
   // Directives
   DayValidationDirective,
