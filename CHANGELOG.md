@@ -1,4 +1,18 @@
-# Unreleased "moh-common-lib" (2019-09-25)
+# Unreleased "moh-common-lib" (2019-09-26)
+
+
+
+# [2.18.0](https://github.com/bcgov/moh-common-styles/compare/v2.17.1...v2.18.0) "moh-common-lib" (2019-09-26)
+
+
+### Bug Fixes
+
+* bug in file uploader - check for null array ([cf962bc](https://github.com/bcgov/moh-common-styles/commit/cf962bc))
+
+
+### Features
+
+* added sample-modal component to display sample doc images ([4f8f2e7](https://github.com/bcgov/moh-common-styles/commit/4f8f2e7))
 
 
 

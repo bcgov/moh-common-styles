@@ -328,14 +328,12 @@ maintenance.</p>
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { forwardRef, Component, EventEmitter, Input, Output, ViewChild, Inject, OnInit} from &#x27;@angular/core&#x27;;
-import * as moment from &#x27;moment&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { forwardRef, Component, EventEmitter, Input, Output, ViewChild, OnInit} from &#x27;@angular/core&#x27;;
 import {ModalDirective} from &#x27;ngx-bootstrap&#x27;;
 import { Observable, of } from &#x27;rxjs&#x27;;
 import { HttpClient, HttpHeaders, HttpErrorResponse } from &#x27;@angular/common/http&#x27;;
 import { Response } from &#x27;@angular/http&#x27;;
-import { CommonLogger, CommonLogMessage } from &#x27;../../services/logger.service&#x27;;
-// import { }
+import { CommonLogger } from &#x27;../../services/logger.service&#x27;;
 import { AbstractHttpService } from &#x27;../../services/abstract-api-service&#x27;;
 import { ControlContainer, ControlValueAccessor, NgForm, NG_VALUE_ACCESSOR } from &#x27;@angular/forms&#x27;;
 
@@ -385,7 +383,7 @@ export interface ISpaEnvResponse {
  *                          agreeLabel&#x3D;&quot;I have read and understand this information&quot;
  *                          processName&#x3D;&quot;processName&quot;
  *                          (accept)&#x3D;&quot;accountLetterApplication.infoCollectionAgreement &#x3D; $event;  saveApplication($event)&quot;&gt;
- *                      &lt;p&gt;&lt;strong&gt;Keep your personal information secure – especially when using a shared device like a computer at a library, school or café.&lt;/strong&gt; To delete any information that was entered, either complete the application and submit it or, if you don’t finish, close the web browser.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Need to take a break and come back later?&lt;/strong&gt; The data you enter on this form is saved locally to the computer or device you are using until you close the web browser or submit your application.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Information in this application is collected by the Ministry of Health&lt;/strong&gt; under section 26(a), (c) and (e) of the Freedom of Information and Protection of Privacy Act and will be used to determine eligibility for provincial health care benefits in BC and administer Premium Assistance. Should you have any questions about the collection of this personal information please &lt;a href&#x3D;&quot;http://www2.gov.bc.ca/gov/content/health/health-drug-coverage/msp/bc-residents-contact-us&quot; target&#x3D;&quot;_blank&quot;&gt;contact Health Insurance BC &lt;i class&#x3D;&quot;fa fa-external-link&quot; aria-hidden&#x3D;&quot;true&quot;&gt;&lt;/i&gt;&lt;/a&gt;.&lt;/p&gt; 
+ *                      &lt;p&gt;&lt;strong&gt;Keep your personal information secure – especially when using a shared device like a computer at a library, school or café.&lt;/strong&gt; To delete any information that was entered, either complete the application and submit it or, if you don’t finish, close the web browser.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Need to take a break and come back later?&lt;/strong&gt; The data you enter on this form is saved locally to the computer or device you are using until you close the web browser or submit your application.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Information in this application is collected by the Ministry of Health&lt;/strong&gt; under section 26(a), (c) and (e) of the Freedom of Information and Protection of Privacy Act and will be used to determine eligibility for provincial health care benefits in BC and administer Premium Assistance. Should you have any questions about the collection of this personal information please &lt;a href&#x3D;&quot;http://www2.gov.bc.ca/gov/content/health/health-drug-coverage/msp/bc-residents-contact-us&quot; target&#x3D;&quot;_blank&quot;&gt;contact Health Insurance BC &lt;i class&#x3D;&quot;fa fa-external-link&quot; aria-hidden&#x3D;&quot;true&quot;&gt;&lt;/i&gt;&lt;/a&gt;.&lt;/p&gt;
  *       &lt;/common-consent-modal&gt;
  *
  *
@@ -433,9 +431,9 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
 
     public spaEnvRes: ISpaEnvResponse &#x3D; {} as any;
     public maintenanceMessage: string;
-    
+
     // public maintenanceFlag: string ;
-   
+
 
     // tslint:disable-next-line:max-line-length
     private _applicationHeaderMap: Map&lt;string, string&gt; &#x3D; new Map([[&#x27;ACL&#x27;, &#x27;{&quot;SPA_ENV_MSP_ACL_MAINTENANCE_FLAG&quot;:&quot;&quot;,&quot;SPA_ENV_MSP_ACL_MAINTENANCE_MESSAGE&quot;:&quot;&quot;}&#x27;], [&#x27;MSP&#x27;, &#x27;{&quot;SPA_ENV_MSP_MAINTENANCE_FLAG&quot;:&quot;&quot;,&quot;SPA_ENV_MSP_MAINTENANCE_MESSAGE&quot;:&quot;&quot;}&#x27;], [&#x27;PA&#x27;, &#x27;{&quot;SPA_ENV_PACUTOFF_MAINTENANCE_START&quot;:&quot;&quot;,&quot;SPA_ENV_PACUTOFF_MAINTENANCE_END&quot;:&quot;&quot;,&quot;SPA_ENV_NOW&quot;:&quot;&quot;}&#x27;]]);
