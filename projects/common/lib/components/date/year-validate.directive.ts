@@ -45,7 +45,8 @@ export class YearValidateDirective implements Validator  {
       if ( this.commonYearValidate && this.commonYearValidate !== 'any' &&
            !isNaN( day )  && !isNaN( month ) ) {
 
-        const diff = moment( { year: year, month: month, day: day } )
+        // Month - 1, select box adds one to array index
+        const diff = moment( { year: year, month: month - 1, day: day } )
           .diff( moment(), 'days', true );
 
          /**
