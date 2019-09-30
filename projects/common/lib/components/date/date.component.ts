@@ -89,6 +89,7 @@ export class DateComponent extends Base implements OnInit {
     if ( this.date ) {
       this.date.month = month;
       this.triggerDayValidation();
+      this.triggerYearValidation();
       this.dateChange.emit( this.date );
     }
   }
@@ -100,11 +101,12 @@ export class DateComponent extends Base implements OnInit {
     // console.log(  'dayRef: ', this.dayRef );
     if ( this.date ) {
       this.date.day = day;
+      this.triggerYearValidation();
       this.dateChange.emit( this.date );
     }
   }
 
-  /** Set the yera and notify caller of change */
+  /** Set the year and notify caller of change */
   setYear( value: string ): void {
     const year = this.getNumericValue( value );
 
@@ -125,6 +127,16 @@ export class DateComponent extends Base implements OnInit {
     setTimeout( () => {
       if ( this.form.controls[this.dayLabelforId] ) {
         this.form.controls[this.dayLabelforId].updateValueAndValidity();
+        this.cd.detectChanges();
+      }
+    }, 0);
+  }
+
+  private triggerYearValidation() {
+    // We have to wrap this in a timeout, otherwise it runs before Angular has updated the values
+    setTimeout( () => {
+      if ( this.form.controls[this.yearLabelforId] ) {
+        this.form.controls[this.yearLabelforId].updateValueAndValidity();
         this.cd.detectChanges();
       }
     }, 0);
