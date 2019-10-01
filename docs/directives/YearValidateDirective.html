@@ -313,45 +313,57 @@ export class YearValidateDirective implements Validator  {
     const day: number &#x3D; parseInt( this.selectedDay, 10 );
     const month: number &#x3D; parseInt( this.selectedMonth, 10 );
 
-    // console.log( &#x27;validate year: &#x27;, control.value );
+    // console.log( &#x27;validate year: control value &#x3D; &#x27;, control.value );
 
-    if ( !control.value ) {
+    if ( undefined &#x3D;&#x3D;&#x3D; control.value || null &#x3D;&#x3D;&#x3D; control.value ) {
       return null; // empty value
     }
 
     const year: number &#x3D; parseInt( control.value, 10 );
 
+    // console.log( &#x27;validate year: year &#x3D; &#x27;, year );
+    // console.log( &#x27;validate year: isNaN( year ) &#x3D; &#x27;, isNaN( year ) );
+
     // Only process if value is numeric
-    if ( !isNaN(  year ) ) {
+    if ( !isNaN( year ) &amp;&amp; year &gt; 0 ) {
+
       const currentYear &#x3D; moment().get( &#x27;y&#x27; );
 
+      // console.log( &#x27;validate year: currentYear &#x3D; &#x27;, currentYear );
+
       if ( currentYear - year &gt; 150 ) {
+        // console.log( &#x27;validate year: yearDistantPast&#x27; );
         return { &#x27;yearDistantPast&#x27;: true };
       }
 
       if ( year - currentYear &gt; 150 ) {
+        // console.log( &#x27;validate year: yearDistantFuture&#x27; );
         return { &#x27;yearDistantFuture&#x27;: true} ;
       }
 
+      // console.log( &#x27;validate year: commonYearValidate &#x3D; &#x27;, this.commonYearValidate, day, month );
+
       // Check whether dates can be present or past
       if ( this.commonYearValidate &amp;&amp; this.commonYearValidate !&#x3D;&#x3D; &#x27;any&#x27; &amp;&amp;
-           !isNaN( day )  &amp;&amp; !isNaN( month ) ) {
+           !isNaN( day ) &amp;&amp; !isNaN( month ) ) {
 
         // Month - 1, select box adds one to array index
         const diff &#x3D; moment( { year: year, month: month - 1, day: day } )
           .diff( moment(), &#x27;days&#x27;, true );
 
-         /**
-          * Validate current date as if it&#x27;s a future date, and reject it when only
-          * accepting past dates.  We accomplish this by comparing diff against 1.
-          */
-          if ( diff &lt; -1 &amp;&amp; this.commonYearValidate &#x3D;&#x3D;&#x3D; &#x27;future&#x27; ) {
-            return { &#x27;noPastDatesAllowed&#x27;: true };
-          }
+       // console.log( &#x27;validate year: diff &#x3D; &#x27;, diff, moment().format( &#x27;YYYY-MM-DD&#x27;), moment().isUTC() );
 
-          if ( diff &gt;&#x3D; -1 &amp;&amp; this.commonYearValidate &#x3D;&#x3D;&#x3D; &#x27;past&#x27; ) {
-            return { &#x27;noFutureDatesAllowed&#x27;: true };
-          }
+        /**
+        * Validate current date as if it&#x27;s a future date, and reject it when only
+        * accepting past dates.  We accomplish this by comparing diff against 1.
+        */
+        if ( diff &lt; -1 &amp;&amp; this.commonYearValidate &#x3D;&#x3D;&#x3D; &#x27;future&#x27; ) {
+          return { &#x27;noPastDatesAllowed&#x27;: true };
+        }
+
+        if ( diff &gt;&#x3D; -1 &amp;&amp; this.commonYearValidate &#x3D;&#x3D;&#x3D; &#x27;past&#x27; ) {
+          return { &#x27;noFutureDatesAllowed&#x27;: true };
+        }
       }
 
       return null;

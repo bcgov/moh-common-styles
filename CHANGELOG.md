@@ -1,4 +1,14 @@
-# Unreleased "moh-common-lib" (2019-09-27)
+# Unreleased "moh-common-lib" (2019-10-01)
+
+
+
+# [2.19.0](https://github.com/bcgov/moh-common-styles/compare/v2.18.1...v2.19.0) "moh-common-lib" (2019-10-01)
+
+
+### Bug Fixes
+
+* date component to check for null, undefined and zero, trigger year validation on month change ([0ed3875](https://github.com/bcgov/moh-common-styles/commit/0ed3875))
+* file uploader - check to confirm have array to check length in onChange method ([c6067fd](https://github.com/bcgov/moh-common-styles/commit/c6067fd))
 
 
 
@@ -232,16 +242,12 @@
 
 
 
-# [2.3.0](https://github.com/bcgov/moh-common-styles/compare/2.0.0...v2.3.0) "moh-common-lib" (2019-07-25)
+# [2.3.0](https://github.com/bcgov/moh-common-styles/compare/v2.2.0...v2.3.0) "moh-common-lib" (2019-07-25)
 
 
 ### Features
 
 * **Address:** Now has default country/prov behaviour built in ([8361a0e](https://github.com/bcgov/moh-common-styles/commit/8361a0e))
-
-
-
-# [2.0.0](https://github.com/bcgov/moh-common-styles/compare/v2.2.0...2.0.0) "moh-common-lib" (2019-07-25)
 
 
 

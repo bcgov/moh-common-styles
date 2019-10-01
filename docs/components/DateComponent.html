@@ -206,6 +206,10 @@
                                     <span class="modifier">Private</span>
                                 <a href="#triggerDayValidation">triggerDayValidation</a>
                             </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#triggerYearValidation">triggerYearValidation</a>
+                            </li>
                         </ul>
                     </td>
                 </tr>
@@ -561,8 +565,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="134"
-                            class="link-to-prism">projects/common/lib/components/date/date.component.ts:134</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="146"
+                            class="link-to-prism">projects/common/lib/components/date/date.component.ts:146</a></div>
                 </td>
             </tr>
 
@@ -672,8 +676,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="97"
-                            class="link-to-prism">projects/common/lib/components/date/date.component.ts:97</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="98"
+                            class="link-to-prism">projects/common/lib/components/date/date.component.ts:98</a></div>
                 </td>
             </tr>
 
@@ -816,15 +820,15 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="108"
-                            class="link-to-prism">projects/common/lib/components/date/date.component.ts:108</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="110"
+                            class="link-to-prism">projects/common/lib/components/date/date.component.ts:110</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Set the yera and notify caller of change </p>
+                    <div class="io-description"><p>Set the year and notify caller of change </p>
 </div>
 
                     <div class="io-description">
@@ -890,8 +894,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="123"
-                            class="link-to-prism">projects/common/lib/components/date/date.component.ts:123</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="125"
+                            class="link-to-prism">projects/common/lib/components/date/date.component.ts:125</a></div>
                 </td>
             </tr>
 
@@ -902,6 +906,47 @@
 where user fills fields out of order, e.g. sets days to 31 then month to
 Februrary.</p>
 </div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="triggerYearValidation"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            triggerYearValidation
+                        </b>
+                        <a href="#triggerYearValidation"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>triggerYearValidation()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="135"
+                            class="link-to-prism">projects/common/lib/components/date/date.component.ts:135</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -1335,6 +1380,7 @@ export class DateComponent extends Base implements OnInit {
     if ( this.date ) {
       this.date.month &#x3D; month;
       this.triggerDayValidation();
+      this.triggerYearValidation();
       this.dateChange.emit( this.date );
     }
   }
@@ -1346,11 +1392,12 @@ export class DateComponent extends Base implements OnInit {
     // console.log(  &#x27;dayRef: &#x27;, this.dayRef );
     if ( this.date ) {
       this.date.day &#x3D; day;
+      this.triggerYearValidation();
       this.dateChange.emit( this.date );
     }
   }
 
-  /** Set the yera and notify caller of change */
+  /** Set the year and notify caller of change */
   setYear( value: string ): void {
     const year &#x3D; this.getNumericValue( value );
 
@@ -1371,6 +1418,16 @@ export class DateComponent extends Base implements OnInit {
     setTimeout( () &#x3D;&gt; {
       if ( this.form.controls[this.dayLabelforId] ) {
         this.form.controls[this.dayLabelforId].updateValueAndValidity();
+        this.cd.detectChanges();
+      }
+    }, 0);
+  }
+
+  private triggerYearValidation() {
+    // We have to wrap this in a timeout, otherwise it runs before Angular has updated the values
+    setTimeout( () &#x3D;&gt; {
+      if ( this.form.controls[this.yearLabelforId] ) {
+        this.form.controls[this.yearLabelforId].updateValueAndValidity();
         this.cd.detectChanges();
       }
     }, 0);
