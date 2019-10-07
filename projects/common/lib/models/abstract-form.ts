@@ -1,6 +1,6 @@
 import { ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, Params } from '@angular/router';
 
 /**
  *
@@ -33,8 +33,9 @@ export abstract class AbstractForm {
   }
 
   /** Navigates to a route then automatically scrolls to the top of the page. */
-  protected navigate(url: string) {
-    this.router.navigate([url])
+  protected navigate(url: string, queryParams?: Params ) {
+
+    this.router.navigate([url], { queryParams: queryParams })
       .then((data) => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
