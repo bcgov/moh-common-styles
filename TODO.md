@@ -3,6 +3,8 @@ Moh-Common-Lib:
   
 Breaking Changes for version 3.0.0:
 
+- [ ] FormActionBar / FormSubmiBar - make the on load default colour yellow
+  - This can fix a "flash" of the first colour on macbooks and faster computers (nonVDI)
 - [ ] Delete all instances of `showError`. We never use it as an @Input.
 - [ ] *address.model.ts*
   - [ ] public hasValue: boolean; // TODO: Why do we need this? - Remove - breaking change
