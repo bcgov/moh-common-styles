@@ -1,4 +1,13 @@
-# Unreleased "moh-common-lib" (2019-10-01)
+# Unreleased "moh-common-lib" (2019-10-08)
+
+
+
+# [2.20.0](https://github.com/bcgov/moh-common-styles/compare/v2.19.0...v2.20.0) "moh-common-lib" (2019-10-08)
+
+
+### Features
+
+* added ability to set query parameters on navigate method in abstract form ([4f3e59f](https://github.com/bcgov/moh-common-styles/commit/4f3e59f))
 
 
 

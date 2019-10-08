@@ -412,8 +412,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="44"
-                            class="link-to-prism">projects/common/lib/models/abstract-form.ts:44</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="45"
+                            class="link-to-prism">projects/common/lib/models/abstract-form.ts:45</a></div>
                 </td>
             </tr>
 
@@ -448,7 +448,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>navigate(url: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <code>navigate(url: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, queryParams?: <a href="https://angular.io/api/router/Params" target="_blank">Params</a>)</code>
                 </td>
             </tr>
 
@@ -489,6 +489,18 @@
 
 
                                 </tr>
+                                <tr>
+                                    <td>queryParams</td>
+                                    <td>
+                                                <code><a href="https://angular.io/api/router/Params" target="_blank" >Params</a></code>
+                                    </td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -517,7 +529,7 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ViewChild } from &#x27;@angular/core&#x27;;
 import { NgForm } from &#x27;@angular/forms&#x27;;
-import { Router } from &#x27;@angular/router&#x27;;
+import { Router, Params } from &#x27;@angular/router&#x27;;
 
 /**
  *
@@ -550,8 +562,9 @@ export abstract class AbstractForm {
   }
 
   /** Navigates to a route then automatically scrolls to the top of the page. */
-  protected navigate(url: string) {
-    this.router.navigate([url])
+  protected navigate(url: string, queryParams?: Params ) {
+
+    this.router.navigate([url], { queryParams: queryParams })
       .then((data) &#x3D;&gt; {
         window.scrollTo({ top: 0, behavior: &#x27;smooth&#x27; });
       });
