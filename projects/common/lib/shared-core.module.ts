@@ -53,6 +53,8 @@ import { ValidateCityDirective } from './components/city/validate-city.directive
 import { ValidateRegionDirective } from './components/validate-region/validate-region.directive';
 import { ValidatePostalcodeDirective } from './components/postal-code/validate-postalcode.directive';
 import { SampleModalComponent } from './components/sample-modal/sample-modal.component';
+import { EmailComponent } from './components/email/email.component';
+import { ValidateEmailDirective } from './components/email/validate-email.directive';
 
 const componentList = [
   CoreBreadcrumbComponent,
@@ -89,6 +91,7 @@ const componentList = [
   XiconButtonComponent,
   ErrorContainerComponent,
   SampleModalComponent,
+  EmailComponent,
 
   // Directives
   DayValidationDirective,
@@ -102,7 +105,8 @@ const componentList = [
   ValidateStreetDirective,
   ValidateCityDirective,
   ValidateRegionDirective,
-  ValidatePostalcodeDirective
+  ValidatePostalcodeDirective,
+  ValidateEmailDirective,
 ];
 @NgModule({
   imports: [

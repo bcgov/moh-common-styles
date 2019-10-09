@@ -1,0 +1,22 @@
+
+<label for="{{labelforId}}" class="control-label">{{label}}</label>
+<input type="text"
+       class="form-control"
+       id="{{labelforId}}"
+       [value]="email"
+       (change)="onValueChange( $event.target.value )"
+       (blur)="onBlurEvent( $event )"
+       [disabled]="disabled"
+       [attr.maxlength]="maxlength"
+       commonValidateEmail
+       autocomplete="off" />
+<!-- Error messages for component -->
+<common-error-container [displayError]="controlDir && !disabled && (controlDir.dirty || controlDir.touched) && controlDir?.errors">
+  <div *ngIf="controlDir?.errors?.required">
+    {{label}} is required.
+  </div>
+  <div *ngIf="controlDir?.errors?.invalidEmail && !controlDir?.errors?.required">
+    Invalid email format.
+  </div>
+</common-error-container>
+
