@@ -44,3 +44,4 @@ export { commonValidateStreet } from './lib/components/street/validate-street.di
 export { commonValidateCity } from './lib/components/city/validate-city.directive';
 export { commonValidateRegion } from './lib/components/validate-region/validate-region.directive';
 export { commonValidatePostalcode } from './lib/components/postal-code/validate-postalcode.directive';
+export { commonValidatePhone } from './lib/components/phone-number/validate-phone-number.directive';

@@ -55,6 +55,7 @@ import { ValidatePostalcodeDirective } from './components/postal-code/validate-p
 import { SampleModalComponent } from './components/sample-modal/sample-modal.component';
 import { EmailComponent } from './components/email/email.component';
 import { ValidateEmailDirective } from './components/email/validate-email.directive';
+import { ValidatePhoneDirective } from './components/phone-number/validate-phone-number.directive';
 
 const componentList = [
   CoreBreadcrumbComponent,
@@ -107,6 +108,7 @@ const componentList = [
   ValidateRegionDirective,
   ValidatePostalcodeDirective,
   ValidateEmailDirective,
+  ValidatePhoneDirective,
 ];
 @NgModule({
   imports: [
