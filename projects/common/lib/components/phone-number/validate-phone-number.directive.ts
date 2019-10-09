@@ -24,7 +24,6 @@ export class ValidatePhoneDirective implements Validator {
  * PhoneNumberComponent's text-mask having a lot of underscore characters.
  */
 export const commonValidatePhone: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
-  console.log('valdating', control.value);
   const value = control.value;
 
   if (value) {
