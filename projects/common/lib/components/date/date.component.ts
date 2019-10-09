@@ -3,15 +3,27 @@ import { Base } from '../../models/base';
 import { SimpleDate } from '../../models/simple-date.interface';
 import { ControlContainer, NgForm, NgModel } from '@angular/forms';
 import * as moment_ from 'moment';
+import { ErrorMessage, LabelReplacementTag, replaceLabelTag } from '../../models/error-message.interface';
 const moment = moment_;
 
 /**
  * Component NPM package dependencies:
  * a) moment
+ *
+ * This component reports the following errors.
+ *    required
+ *    dayOutOfRange
+ *    yearDistantPast
+ *    yearDistantFuture
+ *    noFutureDatesAllowed
+ *    invalidValue
+ *
+ *  These messages can be changed by updated messages using the errorMessages interface/
+ *  Ex. { required: 'This field is required', invalidValue: '{label} is invalid' }
  */
 
-export interface DateErrorMsg {
-  required: string;
+export interface DateErrorMsg { // TODO: Remove - possible breaking change - currently datepicker uses it
+  required?: string;
   dayOutOfRange?: string;
   yearDistantPast?: string;
   yearDistantFuture?: string;
@@ -42,7 +54,7 @@ export class DateComponent extends Base implements OnInit {
   @Input() date: SimpleDate;
   /** Can be one of: "future", "past". "future" includes today, "past" does not. */
   @Input() restrictDate: 'future' | 'past' | 'any' = 'any';
-  @Input() errorMessages: DateErrorMsg;
+  @Input() errorMessages: ErrorMessage | DateErrorMsg;
 
   @Output() dateChange: EventEmitter<SimpleDate> = new EventEmitter<SimpleDate>();
 
@@ -55,23 +67,24 @@ export class DateComponent extends Base implements OnInit {
   dayLabelforId: string = 'day_' + this.objectId;
   yearLabelforId: string = 'year_' + this.objectId;
 
+  defaultErrMsg: ErrorMessage = {
+    required: `${LabelReplacementTag} is required.`,
+    dayOutOfRange: `Invalid ${LabelReplacementTag}.`,
+    yearDistantPast: `Invalid ${LabelReplacementTag}.`,
+    yearDistantFuture: `Invalid ${LabelReplacementTag}.`,
+    noPastDatesAllowed: `Invalid ${LabelReplacementTag}.`,
+    noFutureDatesAllowed: `Invalid ${LabelReplacementTag}.`,
+    invalidValue: `Invalid ${LabelReplacementTag}.`
+  };
+
   constructor( public form: NgForm,
                private cd: ChangeDetectorRef ) {
     super();
   }
 
   ngOnInit() {
-    if ( !this.errorMessages ) {
-      // Use default messages
-      this.errorMessages = {
-        required: this.label + ' is required.',
-        dayOutOfRange: 'Invalid ' + this.label + '.',
-        yearDistantPast: 'Invalid ' + this.label + '.',
-        yearDistantFuture: 'Invalid ' + this.label + '.',
-        noFutureDatesAllowed: 'Invalid ' + this.label + '.',
-        invalidValue: 'Invalid ' + this.label + '.'
-      };
-    }
+
+    this.setErrorMsg();
 
     if ( this.useCurrentDate ) {
       // Set date to current date
@@ -117,6 +130,11 @@ export class DateComponent extends Base implements OnInit {
     }
   }
 
+  // Replace tag in message
+  errorMessage( msg: string ) {
+    return replaceLabelTag( msg, this.label );
+  }
+
   /**
    * Force the `day` input to run it's directives again. Important in cases
    * where user fills fields out of order, e.g. sets days to 31 then month to
@@ -146,5 +164,11 @@ export class DateComponent extends Base implements OnInit {
   private getNumericValue( value: string ): number | null {
     const parsed = parseInt( value, 10 );
     return ( isNaN( parsed ) ? null : parsed );
+  }
+
+  private setErrorMsg() {
+    if ( this.errorMessages ) {
+      Object.keys(this.errorMessages).map( x => this.defaultErrMsg[x] = this.errorMessages[x] );
+    }
   }
 }
