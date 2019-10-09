@@ -1,4 +1,13 @@
-# Unreleased "moh-common-lib" (2019-10-08)
+# Unreleased "moh-common-lib" (2019-10-09)
+
+
+
+## [2.20.1](https://github.com/bcgov/moh-common-styles/compare/v2.20.0...v2.20.1) "moh-common-lib" (2019-10-09)
+
+
+### Styles
+
+* **Header:** Header text wraps on mobile, no longer breaking mobile ([1303722](https://github.com/bcgov/moh-common-styles/commit/1303722))
 
 
 
