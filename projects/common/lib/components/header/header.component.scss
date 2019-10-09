@@ -28,7 +28,6 @@ header {
     font-size: 30px;
     font-weight: bold;
     color: #fff;
-    white-space: nowrap;
     align-self: center;
 
     @include media-breakpoint-down(xs){
