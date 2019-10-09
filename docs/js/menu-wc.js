@@ -40,6 +40,11 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </a>
                         </li>
                         <li class="link">
+                            <a href="contributing.html"  data-type="chapter-link">
+                                <span class="icon ion-ios-paper"></span>CONTRIBUTING
+                            </a>
+                        </li>
+                        <li class="link">
                             <a href="license.html"  data-type="chapter-link">
                                 <span class="icon ion-ios-paper"></span>LICENSE
                             </a>
@@ -133,13 +138,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/SharedCoreModule.html" data-type="entity-link">SharedCoreModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-SharedCoreModule-372a2a8011591d18e1a4a0c03857f7f0"' : 'data-target="#xs-components-links-module-SharedCoreModule-372a2a8011591d18e1a4a0c03857f7f0"' }>
+                                            'data-target="#components-links-module-SharedCoreModule-f6e6f4eadfe0dd4918c9b05bf0fd5a6f"' : 'data-target="#xs-components-links-module-SharedCoreModule-f6e6f4eadfe0dd4918c9b05bf0fd5a6f"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SharedCoreModule-372a2a8011591d18e1a4a0c03857f7f0"' :
-                                            'id="xs-components-links-module-SharedCoreModule-372a2a8011591d18e1a4a0c03857f7f0"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SharedCoreModule-f6e6f4eadfe0dd4918c9b05bf0fd5a6f"' :
+                                            'id="xs-components-links-module-SharedCoreModule-f6e6f4eadfe0dd4918c9b05bf0fd5a6f"' }>
                                             <li class="link">
                                                 <a href="components/AccordionCommonComponent.html"
                                                     data-type="entity-link" data-context="sub-entity" data-context-id="modules">AccordionCommonComponent</a>
@@ -187,6 +192,10 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                             <li class="link">
                                                 <a href="components/DropdownComponent.html"
                                                     data-type="entity-link" data-context="sub-entity" data-context-id="modules">DropdownComponent</a>
+                                            </li>
+                                            <li class="link">
+                                                <a href="components/EmailComponent.html"
+                                                    data-type="entity-link" data-context="sub-entity" data-context-id="modules">EmailComponent</a>
                                             </li>
                                             <li class="link">
                                                 <a href="components/ErrorContainerComponent.html"
@@ -280,13 +289,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     </li>
                                 <li class="chapter inner">
                                     <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                        'data-target="#directives-links-module-SharedCoreModule-372a2a8011591d18e1a4a0c03857f7f0"' : 'data-target="#xs-directives-links-module-SharedCoreModule-372a2a8011591d18e1a4a0c03857f7f0"' }>
+                                        'data-target="#directives-links-module-SharedCoreModule-f6e6f4eadfe0dd4918c9b05bf0fd5a6f"' : 'data-target="#xs-directives-links-module-SharedCoreModule-f6e6f4eadfe0dd4918c9b05bf0fd5a6f"' }>
                                         <span class="icon ion-md-code-working"></span>
                                         <span>Directives</span>
                                         <span class="icon ion-ios-arrow-down"></span>
                                     </div>
-                                    <ul class="links collapse" ${ isNormalMode ? 'id="directives-links-module-SharedCoreModule-372a2a8011591d18e1a4a0c03857f7f0"' :
-                                        'id="xs-directives-links-module-SharedCoreModule-372a2a8011591d18e1a4a0c03857f7f0"' }>
+                                    <ul class="links collapse" ${ isNormalMode ? 'id="directives-links-module-SharedCoreModule-f6e6f4eadfe0dd4918c9b05bf0fd5a6f"' :
+                                        'id="xs-directives-links-module-SharedCoreModule-f6e6f4eadfe0dd4918c9b05bf0fd5a6f"' }>
                                         <li class="link">
                                             <a href="directives/DateFieldFormatDirective.html"
                                                 data-type="entity-link" data-context="sub-entity" data-context-id="modules">DateFieldFormatDirective</a>
@@ -306,6 +315,10 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                         <li class="link">
                                             <a href="directives/ValidateCityDirective.html"
                                                 data-type="entity-link" data-context="sub-entity" data-context-id="modules">ValidateCityDirective</a>
+                                        </li>
+                                        <li class="link">
+                                            <a href="directives/ValidateEmailDirective.html"
+                                                data-type="entity-link" data-context="sub-entity" data-context-id="modules">ValidateEmailDirective</a>
                                         </li>
                                         <li class="link">
                                             <a href="directives/ValidateNameDirective.html"
