@@ -2,6 +2,15 @@
 
 
 
+# [2.22.0](https://github.com-maximus/bcgov/moh-common-styles/compare/v2.21.0...v2.22.0) "moh-common-lib" (2019-10-09)
+
+
+### Features
+
+* **commonValidatePhone:** Phone format validation ([510ad9e](https://github.com-maximus/bcgov/moh-common-styles/commit/510ad9e))
+
+
+
 # [2.21.0](https://github.com-maximus/bcgov/moh-common-styles/compare/v2.20.1...v2.21.0) "moh-common-lib" (2019-10-09)
 
 
