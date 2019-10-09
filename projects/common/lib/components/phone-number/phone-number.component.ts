@@ -34,7 +34,7 @@ import {  ControlValueAccessor,  NG_VALUE_ACCESSOR } from '@angular/forms';
 })
 
 export class PhoneNumberComponent extends MaskModel implements ControlValueAccessor {
-  
+
   static PhoneNumberRegEx = '^[2-9]{1}\\d{2}[\\-]?\\d{3}[\\-]?\\d{4}$';
   // schema: ^[2-9]([0-9]{9})$
   @Input() displayMask: boolean = true;
@@ -77,6 +77,9 @@ export class PhoneNumberComponent extends MaskModel implements ControlValueAcces
 
   writeValue(value: any): void {
     this.value = value;
+    // phoneNumber is where the actual data is displayed to user for this
+    // component
+    this.phoneNumber = value;
   }
 
 }
