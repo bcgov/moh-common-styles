@@ -23,7 +23,7 @@ export { Address } from './lib/models/address.model';
 export { Base } from './lib/models/base';
 export { Person } from './lib/models/person.model';
 export { MaskModel, LETTER, NUMBER, SPACE } from './lib/models/mask.model';
-export { ErrorMessage } from './lib/models/error-message.interface';
+export { ErrorMessage, LabelReplacementTag } from './lib/models/error-message.interface';
 export * from './lib/models/images.model';
 
 // Services

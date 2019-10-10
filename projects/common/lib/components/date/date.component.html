@@ -58,26 +58,26 @@
 <!-- Error messages for component -->
 <common-error-container
     [displayError]="!disabled && (monthRef.touched || monthRef.dirty) && (dayRef.touched || dayRef.dirty) && (yearRef.touched || yearRef.dirty)">
-  <div *ngIf="(monthRef?.errors?.required || dayRef?.errors?.required || yearRef?.errors?.required ) && errorMessages?.required">
-      {{errorMessages.required}}
+  <div *ngIf="(monthRef?.errors?.required || dayRef?.errors?.required || yearRef?.errors?.required )">
+      {{errorMessage(defaultErrMsg.required)}}
   </div>
-  <div *ngIf="dayRef?.errors?.dayOutOfRange && errorMessages?.dayOutOfRange">
-      {{errorMessages.dayOutOfRange}}
+  <div *ngIf="dayRef?.errors?.dayOutOfRange">
+      {{errorMessage(defaultErrMsg.dayOutOfRange)}}
   </div>
-  <div *ngIf="yearRef?.errors?.yearDistantPast && errorMessages?.yearDistantPast">
-      {{errorMessages.yearDistantPast}}
+  <div *ngIf="yearRef?.errors?.yearDistantPast">
+      {{errorMessage(defaultErrMsg.yearDistantPast)}}
   </div>
-  <div *ngIf="yearRef?.errors?.yearDistantFuture && errorMessages?.yearDistantFuture">
-      {{errorMessages.yearDistantFuture}}
+  <div *ngIf="yearRef?.errors?.yearDistantFuture">
+      {{errorMessage(defaultErrMsg.yearDistantFuture)}}
   </div>
-  <div *ngIf="yearRef?.errors?.noPastDatesAllowed && errorMessages?.noPastDatesAllowed">
-        {{errorMessages.noPastDatesAllowed}}
+  <div *ngIf="yearRef?.errors?.noPastDatesAllowed">
+        {{errorMessage(defaultErrMsg.noPastDatesAllowed)}}
   </div>
-  <div *ngIf="yearRef?.errors?.noFutureDatesAllowed && errorMessages?.noFutureDatesAllowed">
-      {{errorMessages.noFutureDatesAllowed}}
+  <div *ngIf="yearRef?.errors?.noFutureDatesAllowed">
+      {{errorMessage(defaultErrMsg.noFutureDatesAllowed)}}
   </div>
   <!-- Case should not happen until something is not formatted correctly-->
-  <div *ngIf="(dayRef?.errors?.invalidValue || yearRef?.errors?.invalidValue) && errorMessages?.invalidValue">
-      {{errorMessages.invalidValue}}
+  <div *ngIf="(dayRef?.errors?.invalidValue || yearRef?.errors?.invalidValue)">
+      {{errorMessage(defaultErrMsg.invalidValue)}}
   </div>
 </common-error-container>
