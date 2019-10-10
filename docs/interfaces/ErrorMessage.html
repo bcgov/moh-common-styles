@@ -65,14 +65,6 @@
             <code>projects/common/lib/models/error-message.interface.ts</code>
         </p>
 
-            <p class="comment">
-                <h3>Description</h3>
-            </p>
-            <p class="comment">
-                <p>In most cases this will be the part of the error message that will appear after the field label.</p>
-<p>{{label}} is required.</p>
-
-            </p>
 
 
         <section>
@@ -111,7 +103,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">projects/common/lib/models/error-message.interface.ts:7</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">projects/common/lib/models/error-message.interface.ts:13</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -159,9 +151,15 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">export interface ErrorMessage {
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">export const LabelReplacementTag &#x3D; &#x27;{label}&#x27;;
+export interface ErrorMessage {
   required?: string;
   [key: string]: string;
+}
+
+// Function only used with library
+export function replaceLabelTag( str: string, value: string ) {
+  return str.replace( LabelReplacementTag, value );
 }
 </code></pre>
     </div>

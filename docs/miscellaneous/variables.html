@@ -115,6 +115,9 @@
                             <a href="#gitCommit" title="projects/common/schematics/src/version-js/files/version.GENERATED.ts"><b>gitCommit</b>&nbsp;&nbsp;&nbsp;(projects/.../version.GENERATED.ts)</a>
                         </li>
                         <li>
+                            <a href="#LabelReplacementTag" title="projects/common/lib/models/error-message.interface.ts"><b>LabelReplacementTag</b>&nbsp;&nbsp;&nbsp;(projects/.../error-message.interface.ts)</a>
+                        </li>
+                        <li>
                             <a href="#LETTER" title="projects/common/lib/models/mask.model.ts"><b>LETTER</b>&nbsp;&nbsp;&nbsp;(projects/.../mask.model.ts)</a>
                         </li>
                         <li>
@@ -130,6 +133,15 @@
                             <a href="#MIN_PHONE_LENGTH" title="projects/common/lib/components/phone-number/validate-phone-number.directive.ts"><b>MIN_PHONE_LENGTH</b>&nbsp;&nbsp;&nbsp;(projects/.../validate-phone-number.directive.ts)</a>
                         </li>
                         <li>
+                            <a href="#moment" title="projects/common/lib/models/person.model.ts"><b>moment</b>&nbsp;&nbsp;&nbsp;(projects/.../person.model.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#moment" title="projects/common/lib/services/logger.service.ts"><b>moment</b>&nbsp;&nbsp;&nbsp;(projects/.../logger.service.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#moment" title="projects/common/lib/components/date/date.component.ts"><b>moment</b>&nbsp;&nbsp;&nbsp;(projects/.../date.component.ts)</a>
+                        </li>
+                        <li>
                             <a href="#moment" title="projects/common/lib/components/datepicker/datepicker.component.ts"><b>moment</b>&nbsp;&nbsp;&nbsp;(projects/.../datepicker.component.ts)</a>
                         </li>
                         <li>
@@ -137,15 +149,6 @@
                         </li>
                         <li>
                             <a href="#moment" title="projects/common/lib/components/date/day-validation.directive.ts"><b>moment</b>&nbsp;&nbsp;&nbsp;(projects/.../day-validation.directive.ts)</a>
-                        </li>
-                        <li>
-                            <a href="#moment" title="projects/common/lib/components/date/date.component.ts"><b>moment</b>&nbsp;&nbsp;&nbsp;(projects/.../date.component.ts)</a>
-                        </li>
-                        <li>
-                            <a href="#moment" title="projects/common/lib/services/logger.service.ts"><b>moment</b>&nbsp;&nbsp;&nbsp;(projects/.../logger.service.ts)</a>
-                        </li>
-                        <li>
-                            <a href="#moment" title="projects/common/lib/models/person.model.ts"><b>moment</b>&nbsp;&nbsp;&nbsp;(projects/.../person.model.ts)</a>
                         </li>
                         <li>
                             <a href="#MyriadWebProTTF_base64" title="projects/common/schematics/src/moh-start/files/MyriadWebPro_ttf_base64.ts"><b>MyriadWebProTTF_base64</b>&nbsp;&nbsp;&nbsp;(projects/.../MyriadWebPro_ttf_base64.ts)</a>
@@ -1531,6 +1534,46 @@ PhoneNumberComponent&#39;s text-mask having a lot of underscore characters.</p>
             </tbody>
         </table>
 </section>
+    <h3>projects/common/lib/models/error-message.interface.ts</h3>
+    <section>
+    <h3></h3>        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="LabelReplacementTag"></a>
+                        <span class="name">
+                            <b>
+                            LabelReplacementTag</b>
+                            <a href="#LabelReplacementTag"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>&#x27;{label}&#x27;</code>
+                        </td>
+                    </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>In most cases this will be the part of the error message that will appear after the field label.</p>
+<p>{{label}} is required.</p>
+<p>Date component will subsitute &#39;{label}&#39; for the label in the component.
+Ex. { required: &#39;{label} is required.&#39; }</p>
+<p>Note: &#39;{label}&#39; is exported in constant &#39;LabelReplacementTag&#39;.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+</section>
     <h3>projects/common/lib/models/mask.model.ts</h3>
     <section>
     <h3></h3>        <table class="table table-sm table-bordered">
@@ -1732,6 +1775,78 @@ limitations under the License.&#x60;</code>
             </tbody>
         </table>
 </section>
+    <h3>projects/common/lib/models/person.model.ts</h3>
+    <section>
+    <h3></h3>        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="moment"></a>
+                        <span class="name">
+                            <b>
+                            moment</b>
+                            <a href="#moment"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>moment_</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+</section>
+    <h3>projects/common/lib/services/logger.service.ts</h3>
+    <section>
+    <h3></h3>        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="moment"></a>
+                        <span class="name">
+                            <b>
+                            moment</b>
+                            <a href="#moment"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>moment_</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+</section>
+    <h3>projects/common/lib/components/date/date.component.ts</h3>
+    <section>
+    <h3></h3>        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="moment"></a>
+                        <span class="name">
+                            <b>
+                            moment</b>
+                            <a href="#moment"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>moment_</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+</section>
     <h3>projects/common/lib/components/datepicker/datepicker.component.ts</h3>
     <section>
     <h3></h3>        <table class="table table-sm table-bordered">
@@ -1781,78 +1896,6 @@ limitations under the License.&#x60;</code>
         </table>
 </section>
     <h3>projects/common/lib/components/date/day-validation.directive.ts</h3>
-    <section>
-    <h3></h3>        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="moment"></a>
-                        <span class="name">
-                            <b>
-                            moment</b>
-                            <a href="#moment"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Default value : </i><code>moment_</code>
-                        </td>
-                    </tr>
-
-
-            </tbody>
-        </table>
-</section>
-    <h3>projects/common/lib/components/date/date.component.ts</h3>
-    <section>
-    <h3></h3>        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="moment"></a>
-                        <span class="name">
-                            <b>
-                            moment</b>
-                            <a href="#moment"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Default value : </i><code>moment_</code>
-                        </td>
-                    </tr>
-
-
-            </tbody>
-        </table>
-</section>
-    <h3>projects/common/lib/services/logger.service.ts</h3>
-    <section>
-    <h3></h3>        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="moment"></a>
-                        <span class="name">
-                            <b>
-                            moment</b>
-                            <a href="#moment"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Default value : </i><code>moment_</code>
-                        </td>
-                    </tr>
-
-
-            </tbody>
-        </table>
-</section>
-    <h3>projects/common/lib/models/person.model.ts</h3>
     <section>
     <h3></h3>        <table class="table table-sm table-bordered">
             <tbody>

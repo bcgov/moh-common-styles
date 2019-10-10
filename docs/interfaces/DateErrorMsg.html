@@ -74,6 +74,15 @@
             <p class="comment">
                 <p>Component NPM package dependencies:
 a) moment</p>
+<p>This component reports the following errors.
+    required
+    dayOutOfRange
+    yearDistantPast
+    yearDistantFuture
+    noFutureDatesAllowed
+    invalidValue</p>
+<p>  These messages can be changed by updated messages using the errorMessages interface/
+  Ex. { required: &#39;This field is required&#39;, invalidValue: &#39;{label} is invalid&#39; }</p>
 
             </p>
 
@@ -107,6 +116,7 @@ a) moment</p>
                                         <a href="#noPastDatesAllowed">noPastDatesAllowed</a>
                                 </li>
                                 <li>
+                                            <span class="modifier">Optional</span>
                                         <a href="#required">required</a>
                                 </li>
                                 <li>
@@ -287,6 +297,11 @@ a) moment</p>
                                         </td>
                                     </tr>
 
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
 
 
 
@@ -378,15 +393,27 @@ import { Base } from &#x27;../../models/base&#x27;;
 import { SimpleDate } from &#x27;../../models/simple-date.interface&#x27;;
 import { ControlContainer, NgForm, NgModel } from &#x27;@angular/forms&#x27;;
 import * as moment_ from &#x27;moment&#x27;;
+import { ErrorMessage, LabelReplacementTag, replaceLabelTag } from &#x27;../../models/error-message.interface&#x27;;
 const moment &#x3D; moment_;
 
 /**
  * Component NPM package dependencies:
  * a) moment
+ *
+ * This component reports the following errors.
+ *    required
+ *    dayOutOfRange
+ *    yearDistantPast
+ *    yearDistantFuture
+ *    noFutureDatesAllowed
+ *    invalidValue
+ *
+ *  These messages can be changed by updated messages using the errorMessages interface/
+ *  Ex. { required: &#x27;This field is required&#x27;, invalidValue: &#x27;{label} is invalid&#x27; }
  */
 
-export interface DateErrorMsg {
-  required: string;
+export interface DateErrorMsg { // TODO: Remove - possible breaking change - currently datepicker uses it
+  required?: string;
   dayOutOfRange?: string;
   yearDistantPast?: string;
   yearDistantFuture?: string;
@@ -417,7 +444,7 @@ export class DateComponent extends Base implements OnInit {
   @Input() date: SimpleDate;
   /** Can be one of: &quot;future&quot;, &quot;past&quot;. &quot;future&quot; includes today, &quot;past&quot; does not. */
   @Input() restrictDate: &#x27;future&#x27; | &#x27;past&#x27; | &#x27;any&#x27; &#x3D; &#x27;any&#x27;;
-  @Input() errorMessages: DateErrorMsg;
+  @Input() errorMessages: ErrorMessage | DateErrorMsg;
 
   @Output() dateChange: EventEmitter&lt;SimpleDate&gt; &#x3D; new EventEmitter&lt;SimpleDate&gt;();
 
@@ -430,23 +457,24 @@ export class DateComponent extends Base implements OnInit {
   dayLabelforId: string &#x3D; &#x27;day_&#x27; + this.objectId;
   yearLabelforId: string &#x3D; &#x27;year_&#x27; + this.objectId;
 
+  defaultErrMsg: ErrorMessage &#x3D; {
+    required: &#x60;${LabelReplacementTag} is required.&#x60;,
+    dayOutOfRange: &#x60;Invalid ${LabelReplacementTag}.&#x60;,
+    yearDistantPast: &#x60;Invalid ${LabelReplacementTag}.&#x60;,
+    yearDistantFuture: &#x60;Invalid ${LabelReplacementTag}.&#x60;,
+    noPastDatesAllowed: &#x60;Invalid ${LabelReplacementTag}.&#x60;,
+    noFutureDatesAllowed: &#x60;Invalid ${LabelReplacementTag}.&#x60;,
+    invalidValue: &#x60;Invalid ${LabelReplacementTag}.&#x60;
+  };
+
   constructor( public form: NgForm,
                private cd: ChangeDetectorRef ) {
     super();
   }
 
   ngOnInit() {
-    if ( !this.errorMessages ) {
-      // Use default messages
-      this.errorMessages &#x3D; {
-        required: this.label + &#x27; is required.&#x27;,
-        dayOutOfRange: &#x27;Invalid &#x27; + this.label + &#x27;.&#x27;,
-        yearDistantPast: &#x27;Invalid &#x27; + this.label + &#x27;.&#x27;,
-        yearDistantFuture: &#x27;Invalid &#x27; + this.label + &#x27;.&#x27;,
-        noFutureDatesAllowed: &#x27;Invalid &#x27; + this.label + &#x27;.&#x27;,
-        invalidValue: &#x27;Invalid &#x27; + this.label + &#x27;.&#x27;
-      };
-    }
+
+    this.setErrorMsg();
 
     if ( this.useCurrentDate ) {
       // Set date to current date
@@ -492,6 +520,11 @@ export class DateComponent extends Base implements OnInit {
     }
   }
 
+  // Replace tag in message
+  errorMessage( msg: string ) {
+    return replaceLabelTag( msg, this.label );
+  }
+
   /**
    * Force the &#x60;day&#x60; input to run it&#x27;s directives again. Important in cases
    * where user fills fields out of order, e.g. sets days to 31 then month to
@@ -521,6 +554,12 @@ export class DateComponent extends Base implements OnInit {
   private getNumericValue( value: string ): number | null {
     const parsed &#x3D; parseInt( value, 10 );
     return ( isNaN( parsed ) ? null : parsed );
+  }
+
+  private setErrorMsg() {
+    if ( this.errorMessages ) {
+      Object.keys(this.errorMessages).map( x &#x3D;&gt; this.defaultErrMsg[x] &#x3D; this.errorMessages[x] );
+    }
   }
 }
 </code></pre>
