@@ -8,7 +8,7 @@ import { UUID } from 'angular2-uuid';
 export class Base {
 
   /** An identifier for parents to keep track of components */
-  public objectId: string = UUID.UUID().toString();
+  public objectId: string = UUID.UUID();
 
   constructor() {}
 }
