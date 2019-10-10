@@ -1,6 +1,6 @@
 import { AfterContentInit, ChangeDetectorRef, Component,
     ContentChild, ElementRef, EventEmitter, Input, NgZone, OnChanges,
-    OnInit, Output, SimpleChanges, ViewChild, forwardRef, AfterViewInit } from '@angular/core';
+    OnInit, Output, SimpleChanges, ViewChild, forwardRef, AfterViewInit, ViewEncapsulation } from '@angular/core';
 import { NgForm, ControlContainer } from '@angular/forms';
 import * as moment from 'moment';
 import { ModalDirective} from 'ngx-bootstrap';
@@ -41,6 +41,7 @@ export interface FileUploaderMsg {
     selector: 'common-file-uploader',
     templateUrl: './file-uploader.component.html',
     styleUrls: ['./file-uploader.component.scss'],
+    encapsulation: ViewEncapsulation.None,
     viewProviders: [ { provide: ControlContainer, useExisting: forwardRef(() => NgForm ) } ]
 })
 export class FileUploaderComponent extends Base
@@ -303,6 +304,13 @@ export class FileUploaderComponent extends Base
                 return event;
             })
         ).subscribe( (event) => { this.browseFileRef.nativeElement.click(); });
+    }
+
+
+    /** Opens the file upload dialog from the browser. */
+    openFileDialog() {
+        console.log('opening file dialog');
+        this.browseFileRef.nativeElement.click();
     }
 
     /**

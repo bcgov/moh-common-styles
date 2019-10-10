@@ -35,6 +35,19 @@
       <common-thumbnail [imageObject]="mspImage" (deleteImage)="deleteImage($event)">
       </common-thumbnail>
     </div>
+
+      <div class="common-thumbnail" (click)='openFileDialog()'>
+        <div class="thumbnail-container">
+          <div class="image-thumbnail demo-thumbnail">
+            <i class="fa fa-plus fa-3x"></i>
+          </div>
+          <div class="action-strip text-primary">
+            Add
+          </div>
+        </div>
+      </div>
+
+
   </div>
 
   <!-- The sole purpose of this element is to maintain the drop zone to an

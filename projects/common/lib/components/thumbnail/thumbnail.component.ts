@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit, Input, Output, EventEmitter, ViewContainerRef } from '@angular/core';
+import { Component, ViewChild, OnInit, Input, Output, EventEmitter, ViewContainerRef, ViewEncapsulation } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap';
 
 import { CommonImage } from '../../models/images.model';
@@ -6,7 +6,8 @@ import { CommonImage } from '../../models/images.model';
 @Component({
   selector: 'common-thumbnail',
   templateUrl: './thumbnail.html',
-  styleUrls: ['./thumbnail.scss']
+  styleUrls: ['./thumbnail.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class ThumbnailComponent implements OnInit {
   @Input() imageObject: CommonImage;

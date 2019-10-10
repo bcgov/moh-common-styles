@@ -1,82 +1,148 @@
 @import 'variables.scss';
 
-.color-body {
-  color: $body-color;
-}
 
-.description {
-  font-weight: 400;
-}
-
-.dropzone {
-  border: 2px dashed lightgrey;
-  margin-bottom: 10px;
-  border-radius: 8px;
-  // height: 15%;
-  padding: 2em 4em;
-
-  &.has-error {
-    border-color: $color-danger;
+common-file-uploader {
+  .color-body {
+    color: $body-color;
   }
-
-  .instruction-zone {
-    margin: 10px 5px 5px;
-    text-align: left;
-    input {
-      display: none;
-    }
-    .file-upload-label {
-      color: $body-color;
-    }  
-    .file-upload-label:hover {
-      text-decoration: none;
-      cursor: pointer;
-
-    }
+  
+  .description {
+    font-weight: 400;
   }
-
-  .preview-zone {
-    display:flex;
-    flex-wrap: wrap;
-    justify-content: left;
-    align-items: left;
-    
-    .preview-item {
-      position:relative;
-      height: 120px; 
+  
+  .dropzone {
+    border: 2px dashed lightgrey;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    // height: 15%;
+    padding: 2em 4em;
+  
+    &.has-error {
+      border-color: $color-danger;
+    }
+  
+    .instruction-zone {
+      margin: 10px 5px 5px;
       text-align: left;
-      margin-left: 6rem;
-      margin-bottom: 1.5rem;
-
-
-      /* Upload Icon CSS*/
-      .icon-upload{
-        opacity: 0.3;
-        margin: 0 auto 15px auto;
-        &:hover {
-          cursor: pointer;
-          opacity: 0.6;
-        }
+      input {
+        display: none;
       }
-
-      .text-upload{
-        // text-decoration: underline;
-        &:hover{
-          cursor: pointer;
-        }
+      .file-upload-label {
+        color: $body-color;
+      }  
+      .file-upload-label:hover {
+        text-decoration: none;
+        cursor: pointer;
+  
       }
     }
-
-    .error-style {
-      color:red;
-      font-weight: bold;
+  
+    .preview-zone {
+      display:flex;
+      flex-wrap: wrap;
+      justify-content: left;
+      align-items: left;
+      
+      .preview-item {
+        position:relative;
+        height: 120px; 
+        text-align: left;
+        margin-left: 6rem;
+        margin-bottom: 1.5rem;
+  
+  
+        /* Upload Icon CSS*/
+        .icon-upload{
+          opacity: 0.3;
+          margin: 0 auto 15px auto;
+          &:hover {
+            cursor: pointer;
+            opacity: 0.6;
+          }
+        }
+  
+        .text-upload{
+          // text-decoration: underline;
+          &:hover{
+            cursor: pointer;
+          }
+        }
+      }
+  
+      .error-style {
+        color:red;
+        font-weight: bold;
+      }
+      
     }
-    
+    /* Hide take photo CSS*/
+    .mobileShow{display:none;}
+    @media only screen
+    and (min-device-width : 320px)
+    and (max-device-width : 480px){ .mobileShow { display: inline;}}
   }
-  /* Hide take photo CSS*/
-  .mobileShow{display:none;}
-  @media only screen
-  and (min-device-width : 320px)
-  and (max-device-width : 480px){ .mobileShow { display: inline;}}
+}
+
+// COMMON-THUMBNAIL
+
+common-thumbnail .thumbnail-container, 
+.common-thumbnail .thumbnail-container {
+  transition: 0.3s;
+  transform: translateY(0);
+
+  .image-thumbnail, .image-thumbnail-width-priority {
+    padding: 2px 2px 0 2px;
+    border-radius: 5px 5px 0px 0px;
+
+    &:hover {
+      cursor: -webkit-zoom-in;
+      cursor: zoom-in;  
+    }
+  }
+
+  .demo-thumbnail {
+    height: 100px !important;
+    width: 100px;
+    background-color: $gray-300;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:hover { cursor: pointer !important;}
+  }
+
+  .image-thumbnail {
+    max-height: 100px;
+    height: auto;
+    max-width: 100%;
+  }
+  .image-thumbnail-width-priority {
+    max-width: 270px;
+    width: auto;
+    max-height: 100%;
+  }
+
+  &:hover {
+    box-shadow: 0px 15px 10px -10px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+
+    .action-strip {
+      background: darken($gray, 2.5%);
+    }
+  }
+
+  .action-strip {
+    height: 2em;
+    border-radius: 0px 0px 5px 5px;
+    text-align: right;
+    font-size: small;
+    margin: 0 2px 0 2px;
+    color: $color-danger;
+    padding: 0.3em;
+    transition: 0.3s;  
+  
+    a {
+      text-decoration: none;
+    }
+  }
 }
 
