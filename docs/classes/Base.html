@@ -151,7 +151,7 @@ NPM package dependencies:
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Default value : </i><code>UUID.UUID().toString()</code>
+                            <i>Default value : </i><code>UUID.UUID()</code>
                         </td>
                     </tr>
                         <tr>
@@ -191,7 +191,7 @@ NPM package dependencies:
 export class Base {
 
   /** An identifier for parents to keep track of components */
-  public objectId: string &#x3D; UUID.UUID().toString();
+  public objectId: string &#x3D; UUID.UUID();
 
   constructor() {}
 }

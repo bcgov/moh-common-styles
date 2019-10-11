@@ -1,4 +1,15 @@
-# Unreleased "moh-common-lib" (2019-10-10)
+# Unreleased "moh-common-lib" (2019-10-11)
+
+
+
+# [2.24.0](https://github.com/bcgov/moh-common-styles/compare/v2.23.0...v2.24.0) "moh-common-lib" (2019-10-11)
+
+
+### Features
+
+* **FileUploader:** Add a blank "Add" thumbnail user can click ([1251212](https://github.com/bcgov/moh-common-styles/commit/1251212))
+* Added confirmation template for response pages ([1f1a0f9](https://github.com/bcgov/moh-common-styles/commit/1f1a0f9))
+* Added confirmation template for response pages ([aa2b7f9](https://github.com/bcgov/moh-common-styles/commit/aa2b7f9))
 
 
 

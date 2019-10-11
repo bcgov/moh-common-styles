@@ -190,9 +190,6 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#errorMessage">errorMessage</a>
-                            </li>
-                            <li>
                                     <span class="modifier">Private</span>
                                 <a href="#getNumericValue">getNumericValue</a>
                             </li>
@@ -555,76 +552,6 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="errorMessage"></a>
-                    <span class="name">
-                        <b>
-                            errorMessage
-                        </b>
-                        <a href="#errorMessage"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>errorMessage(msg: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="134"
-                            class="link-to-prism">projects/common/lib/components/date/date.component.ts:134</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>msg</td>
-                                    <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
                     <a name="getNumericValue"></a>
                     <span class="name">
                         <b>
@@ -645,8 +572,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="164"
-                            class="link-to-prism">projects/common/lib/components/date/date.component.ts:164</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="159"
+                            class="link-to-prism">projects/common/lib/components/date/date.component.ts:159</a></div>
                 </td>
             </tr>
 
@@ -830,8 +757,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="169"
-                            class="link-to-prism">projects/common/lib/components/date/date.component.ts:169</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="164"
+                            class="link-to-prism">projects/common/lib/components/date/date.component.ts:164</a></div>
                 </td>
             </tr>
 
@@ -1015,8 +942,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="143"
-                            class="link-to-prism">projects/common/lib/components/date/date.component.ts:143</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="138"
+                            class="link-to-prism">projects/common/lib/components/date/date.component.ts:138</a></div>
                 </td>
             </tr>
 
@@ -1060,8 +987,8 @@ Februrary.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="153"
-                            class="link-to-prism">projects/common/lib/components/date/date.component.ts:153</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="148"
+                            class="link-to-prism">projects/common/lib/components/date/date.component.ts:148</a></div>
                 </td>
             </tr>
 
@@ -1412,7 +1339,7 @@ Februrary.</p>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Default value : </i><code>UUID.UUID().toString()</code>
+                            <i>Default value : </i><code>UUID.UUID()</code>
                         </td>
                     </tr>
                             <tr>
@@ -1582,11 +1509,6 @@ export class DateComponent extends Base implements OnInit {
     }
   }
 
-  // Replace tag in message
-  errorMessage( msg: string ) {
-    return replaceLabelTag( msg, this.label );
-  }
-
   /**
    * Force the &#x60;day&#x60; input to run it&#x27;s directives again. Important in cases
    * where user fills fields out of order, e.g. sets days to 31 then month to
@@ -1622,6 +1544,7 @@ export class DateComponent extends Base implements OnInit {
     if ( this.errorMessages ) {
       Object.keys(this.errorMessages).map( x &#x3D;&gt; this.defaultErrMsg[x] &#x3D; this.errorMessages[x] );
     }
+    Object.keys(this.defaultErrMsg).map( x &#x3D;&gt; this.defaultErrMsg[x] &#x3D; replaceLabelTag( this.defaultErrMsg[x] , this.label ) );
   }
 }
 </code></pre>
@@ -1689,26 +1612,26 @@ export class DateComponent extends Base implements OnInit {
 &lt;common-error-container
     [displayError]&#x3D;&quot;!disabled &amp;&amp; (monthRef.touched || monthRef.dirty) &amp;&amp; (dayRef.touched || dayRef.dirty) &amp;&amp; (yearRef.touched || yearRef.dirty)&quot;&gt;
   &lt;div *ngIf&#x3D;&quot;(monthRef?.errors?.required || dayRef?.errors?.required || yearRef?.errors?.required )&quot;&gt;
-      {{errorMessage(defaultErrMsg.required)}}
+      {{defaultErrMsg.required}}
   &lt;/div&gt;
   &lt;div *ngIf&#x3D;&quot;dayRef?.errors?.dayOutOfRange&quot;&gt;
-      {{errorMessage(defaultErrMsg.dayOutOfRange)}}
+      {{defaultErrMsg.dayOutOfRange}}
   &lt;/div&gt;
   &lt;div *ngIf&#x3D;&quot;yearRef?.errors?.yearDistantPast&quot;&gt;
-      {{errorMessage(defaultErrMsg.yearDistantPast)}}
+      {{defaultErrMsg.yearDistantPast}}
   &lt;/div&gt;
   &lt;div *ngIf&#x3D;&quot;yearRef?.errors?.yearDistantFuture&quot;&gt;
-      {{errorMessage(defaultErrMsg.yearDistantFuture)}}
+      {{defaultErrMsg.yearDistantFuture}}
   &lt;/div&gt;
   &lt;div *ngIf&#x3D;&quot;yearRef?.errors?.noPastDatesAllowed&quot;&gt;
-        {{errorMessage(defaultErrMsg.noPastDatesAllowed)}}
+        {{defaultErrMsg.noPastDatesAllowed}}
   &lt;/div&gt;
   &lt;div *ngIf&#x3D;&quot;yearRef?.errors?.noFutureDatesAllowed&quot;&gt;
-      {{errorMessage(defaultErrMsg.noFutureDatesAllowed)}}
+      {{defaultErrMsg.noFutureDatesAllowed}}
   &lt;/div&gt;
   &lt;!-- Case should not happen until something is not formatted correctly--&gt;
   &lt;div *ngIf&#x3D;&quot;(dayRef?.errors?.invalidValue || yearRef?.errors?.invalidValue)&quot;&gt;
-      {{errorMessage(defaultErrMsg.invalidValue)}}
+      {{defaultErrMsg.invalidValue}}
   &lt;/div&gt;
 &lt;/common-error-container&gt;
 </code></pre>
@@ -1740,8 +1663,8 @@ export class DateComponent extends Base implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><fieldset>  <legend class="date--legend">{{label}}</legend>  <div class="date-row">    <label class="visuallyhidden" for="{{monthLabelforId}}">Month</label>    <select class="form-control monthSelect"            id="{{monthLabelforId}}"            name="{{monthLabelforId}}"            [ngModel]="date?.month"            (ngModelChange)="setMonth($event)"            [disabled]=\'disabled\'            #monthRef="ngModel"            [required]="required">      <!-- We show the blank option so the user can clear out their data.-->      <option value="null" label="-- month --" selected [disabled]=\'required\'></option>      <option *ngFor="let month of monthList; let i = index;" [value]="i + 1">{{month}}</option>    </select>    <label class="visuallyhidden" for="{{dayLabelforId}}">Day</label>    <input type="number"           class="form-control dayInput"           id="{{dayLabelforId}}"           name="{{dayLabelforId}}"           placeholder="Day"           [ngModel]="date?.day"           (ngModelChange)="setDay($event)"           #dayRef="ngModel"           [required]="required"           commonDateFieldFormat           commonDayValidation           [selectedMonth]=\'monthRef.value\'           [selectedYear]=\'yearRef.value\'           [disabled]=\'disabled\'           maxlength="2"           autocomplete="off"/>    <label class="visuallyhidden" for="{{yearLabelforId}}">Year</label>    <input type="number"           class="form-control yearInput"           id="{{yearLabelforId}}"           name="{{yearLabelforId}}"           placeholder="Year"           [ngModel]="date?.year"           (ngModelChange)="setYear($event)"           #yearRef="ngModel"           [required]="required"           commonDateFieldFormat           [commonYearValidate]="restrictDate"           [selectedMonth]=\'monthRef.value\'           [selectedDay]=\'dayRef.value\'           [disabled]=\'disabled\'           maxlength="4"           autocomplete="off"/>  </div></fieldset><!-- Error messages for component --><common-error-container    [displayError]="!disabled && (monthRef.touched || monthRef.dirty) && (dayRef.touched || dayRef.dirty) && (yearRef.touched || yearRef.dirty)">  <div *ngIf="(monthRef?.errors?.required || dayRef?.errors?.required || yearRef?.errors?.required )">      {{errorMessage(defaultErrMsg.required)}}  </div>  <div *ngIf="dayRef?.errors?.dayOutOfRange">      {{errorMessage(defaultErrMsg.dayOutOfRange)}}  </div>  <div *ngIf="yearRef?.errors?.yearDistantPast">      {{errorMessage(defaultErrMsg.yearDistantPast)}}  </div>  <div *ngIf="yearRef?.errors?.yearDistantFuture">      {{errorMessage(defaultErrMsg.yearDistantFuture)}}  </div>  <div *ngIf="yearRef?.errors?.noPastDatesAllowed">        {{errorMessage(defaultErrMsg.noPastDatesAllowed)}}  </div>  <div *ngIf="yearRef?.errors?.noFutureDatesAllowed">      {{errorMessage(defaultErrMsg.noFutureDatesAllowed)}}  </div>  <!-- Case should not happen until something is not formatted correctly-->  <div *ngIf="(dayRef?.errors?.invalidValue || yearRef?.errors?.invalidValue)">      {{errorMessage(defaultErrMsg.invalidValue)}}  </div></common-error-container></div>'
-    var COMPONENTS = [{'name': 'AccordionCommonComponent', 'selector': 'common-accordion'},{'name': 'AddressComponent', 'selector': 'common-address'},{'name': 'ButtonComponent', 'selector': 'common-button'},{'name': 'ButtonGroupComponent', 'selector': 'common-button-group'},{'name': 'CaptchaComponent', 'selector': 'common-captcha'},{'name': 'CheckboxComponent', 'selector': 'common-checkbox'},{'name': 'CityComponent', 'selector': 'common-city'},{'name': 'ConsentModalComponent', 'selector': 'common-consent-modal'},{'name': 'CoreBreadcrumbComponent', 'selector': 'common-core-breadcrumb'},{'name': 'CountryComponent', 'selector': 'common-country'},{'name': 'DateComponent', 'selector': 'common-date'},{'name': 'DatepickerComponent', 'selector': 'common-datepicker'},{'name': 'DropdownComponent', 'selector': 'common-dropdown'},{'name': 'EmailComponent', 'selector': 'common-email'},{'name': 'ErrorContainerComponent', 'selector': 'common-error-container'},{'name': 'FileUploaderComponent', 'selector': 'common-file-uploader'},{'name': 'FormActionBarComponent', 'selector': 'common-form-action-bar'},{'name': 'FormSubmitBarComponent', 'selector': 'common-form-submit-bar'},{'name': 'FullNameComponent', 'selector': 'common-full-name'},{'name': 'HeaderComponent', 'selector': 'common-header'},{'name': 'NameComponent', 'selector': 'common-name'},{'name': 'PageFrameworkComponent', 'selector': 'common-page-framework'},{'name': 'PageSectionComponent', 'selector': 'common-page-section'},{'name': 'PasswordComponent', 'selector': 'common-password'},{'name': 'PhnComponent', 'selector': 'common-phn'},{'name': 'PhoneNumberComponent', 'selector': 'common-phone-number'},{'name': 'PostalCodeComponent', 'selector': 'common-postal-code'},{'name': 'ProvinceComponent', 'selector': 'common-province'},{'name': 'RadioComponent', 'selector': 'common-radio'},{'name': 'SampleModalComponent', 'selector': 'common-sample-modal'},{'name': 'SinComponent', 'selector': 'common-sin'},{'name': 'StreetComponent', 'selector': 'common-street'},{'name': 'ThumbnailComponent', 'selector': 'common-thumbnail'},{'name': 'ToggleComponent', 'selector': 'common-toggle'},{'name': 'WizardProgressBarComponent', 'selector': 'common-wizard-progress-bar'},{'name': 'XiconButtonComponent', 'selector': 'common-xicon-button'}];
+        var COMPONENT_TEMPLATE = '<div><fieldset>  <legend class="date--legend">{{label}}</legend>  <div class="date-row">    <label class="visuallyhidden" for="{{monthLabelforId}}">Month</label>    <select class="form-control monthSelect"            id="{{monthLabelforId}}"            name="{{monthLabelforId}}"            [ngModel]="date?.month"            (ngModelChange)="setMonth($event)"            [disabled]=\'disabled\'            #monthRef="ngModel"            [required]="required">      <!-- We show the blank option so the user can clear out their data.-->      <option value="null" label="-- month --" selected [disabled]=\'required\'></option>      <option *ngFor="let month of monthList; let i = index;" [value]="i + 1">{{month}}</option>    </select>    <label class="visuallyhidden" for="{{dayLabelforId}}">Day</label>    <input type="number"           class="form-control dayInput"           id="{{dayLabelforId}}"           name="{{dayLabelforId}}"           placeholder="Day"           [ngModel]="date?.day"           (ngModelChange)="setDay($event)"           #dayRef="ngModel"           [required]="required"           commonDateFieldFormat           commonDayValidation           [selectedMonth]=\'monthRef.value\'           [selectedYear]=\'yearRef.value\'           [disabled]=\'disabled\'           maxlength="2"           autocomplete="off"/>    <label class="visuallyhidden" for="{{yearLabelforId}}">Year</label>    <input type="number"           class="form-control yearInput"           id="{{yearLabelforId}}"           name="{{yearLabelforId}}"           placeholder="Year"           [ngModel]="date?.year"           (ngModelChange)="setYear($event)"           #yearRef="ngModel"           [required]="required"           commonDateFieldFormat           [commonYearValidate]="restrictDate"           [selectedMonth]=\'monthRef.value\'           [selectedDay]=\'dayRef.value\'           [disabled]=\'disabled\'           maxlength="4"           autocomplete="off"/>  </div></fieldset><!-- Error messages for component --><common-error-container    [displayError]="!disabled && (monthRef.touched || monthRef.dirty) && (dayRef.touched || dayRef.dirty) && (yearRef.touched || yearRef.dirty)">  <div *ngIf="(monthRef?.errors?.required || dayRef?.errors?.required || yearRef?.errors?.required )">      {{defaultErrMsg.required}}  </div>  <div *ngIf="dayRef?.errors?.dayOutOfRange">      {{defaultErrMsg.dayOutOfRange}}  </div>  <div *ngIf="yearRef?.errors?.yearDistantPast">      {{defaultErrMsg.yearDistantPast}}  </div>  <div *ngIf="yearRef?.errors?.yearDistantFuture">      {{defaultErrMsg.yearDistantFuture}}  </div>  <div *ngIf="yearRef?.errors?.noPastDatesAllowed">        {{defaultErrMsg.noPastDatesAllowed}}  </div>  <div *ngIf="yearRef?.errors?.noFutureDatesAllowed">      {{defaultErrMsg.noFutureDatesAllowed}}  </div>  <!-- Case should not happen until something is not formatted correctly-->  <div *ngIf="(dayRef?.errors?.invalidValue || yearRef?.errors?.invalidValue)">      {{defaultErrMsg.invalidValue}}  </div></common-error-container></div>'
+    var COMPONENTS = [{'name': 'AccordionCommonComponent', 'selector': 'common-accordion'},{'name': 'AddressComponent', 'selector': 'common-address'},{'name': 'ButtonComponent', 'selector': 'common-button'},{'name': 'ButtonGroupComponent', 'selector': 'common-button-group'},{'name': 'CaptchaComponent', 'selector': 'common-captcha'},{'name': 'CheckboxComponent', 'selector': 'common-checkbox'},{'name': 'CityComponent', 'selector': 'common-city'},{'name': 'ConfirmTemplateComponent', 'selector': 'common-confirm-template'},{'name': 'ConsentModalComponent', 'selector': 'common-consent-modal'},{'name': 'CoreBreadcrumbComponent', 'selector': 'common-core-breadcrumb'},{'name': 'CountryComponent', 'selector': 'common-country'},{'name': 'DateComponent', 'selector': 'common-date'},{'name': 'DatepickerComponent', 'selector': 'common-datepicker'},{'name': 'DropdownComponent', 'selector': 'common-dropdown'},{'name': 'EmailComponent', 'selector': 'common-email'},{'name': 'ErrorContainerComponent', 'selector': 'common-error-container'},{'name': 'FileUploaderComponent', 'selector': 'common-file-uploader'},{'name': 'FormActionBarComponent', 'selector': 'common-form-action-bar'},{'name': 'FormSubmitBarComponent', 'selector': 'common-form-submit-bar'},{'name': 'FullNameComponent', 'selector': 'common-full-name'},{'name': 'HeaderComponent', 'selector': 'common-header'},{'name': 'NameComponent', 'selector': 'common-name'},{'name': 'PageFrameworkComponent', 'selector': 'common-page-framework'},{'name': 'PageSectionComponent', 'selector': 'common-page-section'},{'name': 'PasswordComponent', 'selector': 'common-password'},{'name': 'PhnComponent', 'selector': 'common-phn'},{'name': 'PhoneNumberComponent', 'selector': 'common-phone-number'},{'name': 'PostalCodeComponent', 'selector': 'common-postal-code'},{'name': 'ProvinceComponent', 'selector': 'common-province'},{'name': 'RadioComponent', 'selector': 'common-radio'},{'name': 'SampleModalComponent', 'selector': 'common-sample-modal'},{'name': 'SinComponent', 'selector': 'common-sin'},{'name': 'StreetComponent', 'selector': 'common-street'},{'name': 'ThumbnailComponent', 'selector': 'common-thumbnail'},{'name': 'ToggleComponent', 'selector': 'common-toggle'},{'name': 'WizardProgressBarComponent', 'selector': 'common-wizard-progress-bar'},{'name': 'XiconButtonComponent', 'selector': 'common-xicon-button'}];
     var DIRECTIVES = [{'name': 'DateFieldFormatDirective', 'selector': '[commonDateFieldFormat]'},{'name': 'DayValidationDirective', 'selector': '[commonDayValidation][ngModel]'},{'name': 'DuplicateCheckDirective', 'selector': '[commonDuplicateCheck]'},{'name': 'ValidateBcPostalDirective', 'selector': '[commonValidateBcPostal]'},{'name': 'ValidateCityDirective', 'selector': '[commonValidateCity]'},{'name': 'ValidateEmailDirective', 'selector': '[commonValidateEmail]'},{'name': 'ValidateNameDirective', 'selector': '[commonValidateName]'},{'name': 'ValidatePhnDirective', 'selector': '[commonValidatePhn]'},{'name': 'ValidatePhoneDirective', 'selector': '[commonValidatePhone]'},{'name': 'ValidatePostalcodeDirective', 'selector': '[commonValidatePostalcode]'},{'name': 'ValidateRegionDirective', 'selector': '[commonValidateRegion]'},{'name': 'ValidateSinDirective', 'selector': '[commonValidateSin]'},{'name': 'ValidateStreetDirective', 'selector': '[commonValidateStreet]'},{'name': 'YearValidateDirective', 'selector': '[commonYearValidate][ngModel]'}];
     var ACTUAL_COMPONENT = {'name': 'DateComponent'};
 </script>
