@@ -56,6 +56,7 @@ import { SampleModalComponent } from './components/sample-modal/sample-modal.com
 import { EmailComponent } from './components/email/email.component';
 import { ValidateEmailDirective } from './components/email/validate-email.directive';
 import { ValidatePhoneDirective } from './components/phone-number/validate-phone-number.directive';
+import { ConfirmTemplateComponent } from './components/confirm-template/confirm-template.component';
 
 const componentList = [
   CoreBreadcrumbComponent,
@@ -93,6 +94,7 @@ const componentList = [
   ErrorContainerComponent,
   SampleModalComponent,
   EmailComponent,
+  ConfirmTemplateComponent,
 
   // Directives
   DayValidationDirective,

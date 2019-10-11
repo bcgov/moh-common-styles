@@ -59,25 +59,25 @@
 <common-error-container
     [displayError]="!disabled && (monthRef.touched || monthRef.dirty) && (dayRef.touched || dayRef.dirty) && (yearRef.touched || yearRef.dirty)">
   <div *ngIf="(monthRef?.errors?.required || dayRef?.errors?.required || yearRef?.errors?.required )">
-      {{errorMessage(defaultErrMsg.required)}}
+      {{defaultErrMsg.required}}
   </div>
   <div *ngIf="dayRef?.errors?.dayOutOfRange">
-      {{errorMessage(defaultErrMsg.dayOutOfRange)}}
+      {{defaultErrMsg.dayOutOfRange}}
   </div>
   <div *ngIf="yearRef?.errors?.yearDistantPast">
-      {{errorMessage(defaultErrMsg.yearDistantPast)}}
+      {{defaultErrMsg.yearDistantPast}}
   </div>
   <div *ngIf="yearRef?.errors?.yearDistantFuture">
-      {{errorMessage(defaultErrMsg.yearDistantFuture)}}
+      {{defaultErrMsg.yearDistantFuture}}
   </div>
   <div *ngIf="yearRef?.errors?.noPastDatesAllowed">
-        {{errorMessage(defaultErrMsg.noPastDatesAllowed)}}
+        {{defaultErrMsg.noPastDatesAllowed}}
   </div>
   <div *ngIf="yearRef?.errors?.noFutureDatesAllowed">
-      {{errorMessage(defaultErrMsg.noFutureDatesAllowed)}}
+      {{defaultErrMsg.noFutureDatesAllowed}}
   </div>
   <!-- Case should not happen until something is not formatted correctly-->
   <div *ngIf="(dayRef?.errors?.invalidValue || yearRef?.errors?.invalidValue)">
-      {{errorMessage(defaultErrMsg.invalidValue)}}
+      {{defaultErrMsg.invalidValue}}
   </div>
 </common-error-container>

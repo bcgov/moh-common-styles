@@ -130,11 +130,6 @@ export class DateComponent extends Base implements OnInit {
     }
   }
 
-  // Replace tag in message
-  errorMessage( msg: string ) {
-    return replaceLabelTag( msg, this.label );
-  }
-
   /**
    * Force the `day` input to run it's directives again. Important in cases
    * where user fills fields out of order, e.g. sets days to 31 then month to
@@ -170,5 +165,6 @@ export class DateComponent extends Base implements OnInit {
     if ( this.errorMessages ) {
       Object.keys(this.errorMessages).map( x => this.defaultErrMsg[x] = this.errorMessages[x] );
     }
+    Object.keys(this.defaultErrMsg).map( x => this.defaultErrMsg[x] = replaceLabelTag( this.defaultErrMsg[x] , this.label ) );
   }
 }
