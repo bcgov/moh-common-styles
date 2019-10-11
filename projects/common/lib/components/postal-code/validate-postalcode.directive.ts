@@ -1,12 +1,19 @@
 import { Directive, Input } from '@angular/core';
-import { ValidatorFn, AbstractControl, ValidationErrors, NG_VALIDATORS, Validator } from '@angular/forms';
-import { calendarFormat } from 'moment';
+import { ValidatorFn, AbstractControl, NG_VALIDATORS, Validator } from '@angular/forms';
 
 // local function
-function validatePC(control: AbstractControl, hasMask: boolean): { [key: string]: boolean } | null {
+function validatePC(control: AbstractControl, hasMask: boolean, bcOnly: boolean): { [key: string]: boolean } | null {
 
   if ( control.value ) {
+
     if ( hasMask ) {
+
+      if ( bcOnly ) {
+        // Valid characters for BC postal code
+        const bcFormat: RegExp = RegExp('^[Vv]\\d[ABCEGHJ-NPRSTV-Z][ ]?\\d[ABCEGHJ-NPRSTV-Z]\\d$');
+        return bcFormat.test( control.value ) ? null : { 'invalidBCPostal': true };
+      }
+
       const cdnFormat: RegExp = /^[A-Za-z][0-9][A-Za-z]\s?[0-9][A-Za-z][0-9]$/;
       return cdnFormat.test( control.value ) ? null : { 'pattern': true };
     }
@@ -17,10 +24,10 @@ function validatePC(control: AbstractControl, hasMask: boolean): { [key: string]
   return null;
 }
 
-export function commonValidatePostalcode( hasMask: boolean ): ValidatorFn {
+export function commonValidatePostalcode( hasMask: boolean, bcOnly: boolean ): ValidatorFn {
 
   return ( control: AbstractControl ): { [key: string]: boolean } | null => {
-    return validatePC( control, hasMask );
+    return validatePC( control, hasMask , bcOnly);
   };
 }
 
@@ -32,10 +39,11 @@ export function commonValidatePostalcode( hasMask: boolean ): ValidatorFn {
 })
 export class ValidatePostalcodeDirective implements Validator {
   @Input() hasMask: boolean = true;
+  @Input() bcOnly: boolean = false;
 
   validate( control: AbstractControl ): {[key: string]: any} | null {
 
-    return validatePC( control, this.hasMask );
+    return validatePC( control, this.hasMask , this.bcOnly );
   }
 
 }

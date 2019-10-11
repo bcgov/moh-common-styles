@@ -2,6 +2,7 @@ import { Directive } from '@angular/core';
 import { NG_VALIDATORS, Validator, AbstractControl, ValidatorFn, ValidationErrors } from '@angular/forms';
 
 
+// TODO: determine whether this is used or not.  If not use, maybe it can be removed
 export const commonValidateBcPostal: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
   /**
   * Valid characters for BC postal code
