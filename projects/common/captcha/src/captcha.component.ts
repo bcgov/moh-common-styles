@@ -1,17 +1,35 @@
 import {
   Component, ElementRef, ViewChild, SimpleChanges, NgZone,
-  ChangeDetectorRef, Output, Input, AfterViewInit, OnInit, OnChanges, EventEmitter
+  ChangeDetectorRef, Output, Input, AfterViewInit, OnInit, OnChanges, EventEmitter, Optional, Self
 } from '@angular/core';
 // import { Http, Response } from '@angular/http';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { CaptchaDataService, ServerPayload } from './captcha-data.service';
+import { NgControl, ControlValueAccessor } from '@angular/forms';
 
+
+/**
+ * CAPTCHA can display a "required" error automatically when you programmaically
+ * call `markAllInpusAsTouched()`. (@see AbstractForm).  In order to do this,
+ * you must set: name, ngModel, and required.  Otherwise, these fields are
+ * optional.
+ *
+ *  @example
+ *           <common-captcha
+ *               [nonce]="application.uuid"
+ *               [apiBaseUrl]="captchaApiBaseUrl"
+ *               (onValidToken)="setToken($event)"
+ *               name='captcha'
+ *               ngModel
+ *               required>
+ *           </common-captcha>
+ */
 @Component({
   selector: 'common-captcha',
   templateUrl: './captcha.component.html',
   styleUrls: ['./captcha.component.scss']
 })
-export class CaptchaComponent implements AfterViewInit, OnInit, OnChanges {
+export class CaptchaComponent implements AfterViewInit, OnInit, OnChanges, ControlValueAccessor {
 
   @ViewChild('image') imageContainer: ElementRef;
   @ViewChild('audioElement') audioElement: ElementRef;
@@ -44,9 +62,32 @@ export class CaptchaComponent implements AfterViewInit, OnInit, OnChanges {
 
   public fetchingAudioInProgress = false;
 
+  public _onChange = (_: any) => {};
+  public _onTouched = () => {};
+
   constructor(private dataService: CaptchaDataService,
     private cd: ChangeDetectorRef,
-    private ngZone: NgZone) {
+    private ngZone: NgZone,
+    @Optional() @Self() public controlDir: NgControl  ) {
+      if ( controlDir ) {
+        controlDir.valueAccessor = this;
+      }
+  }
+
+  registerOnChange(fn: any): void {
+    this._onChange = fn;
+  }
+
+  registerOnTouched(fn: any): void {
+    this._onTouched = fn;
+  }
+
+  writeValue(value: any): void {
+    this.answer = value;
+  }
+
+  onBlur(): void {
+    this._onTouched();
   }
 
   ngOnInit() {
@@ -112,6 +153,7 @@ export class CaptchaComponent implements AfterViewInit, OnInit, OnChanges {
     if (payload.valid === true) {
       this.state = CAPTCHA_STATE.SUCCESS_VERIFY_ANSWER_CORRECT;
       this.onValidToken.emit(payload.jwt);
+      // this.controlDir.errors.set
     } else {
       this.incorrectAnswer = true;
       this.answer = '';
