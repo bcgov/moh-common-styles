@@ -3,6 +3,7 @@ import { NG_VALIDATORS, Validator, AbstractControl, ValidatorFn, ValidationError
 
 
 // TODO: determine whether this is used or not.  If not use, maybe it can be removed
+//  @deprecated - logic added to validate-postalcode directive
 export const commonValidateBcPostal: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
   /**
   * Valid characters for BC postal code

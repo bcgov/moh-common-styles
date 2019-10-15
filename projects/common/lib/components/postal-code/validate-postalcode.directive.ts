@@ -7,19 +7,26 @@ function validatePC(control: AbstractControl, hasMask: boolean, bcOnly: boolean)
   if ( control.value ) {
 
     if ( hasMask ) {
-
-      if ( bcOnly ) {
-        // Valid characters for BC postal code
-        const bcFormat: RegExp = RegExp('^[Vv]\\d[ABCEGHJ-NPRSTV-Z][ ]?\\d[ABCEGHJ-NPRSTV-Z]\\d$');
-        return bcFormat.test( control.value ) ? null : { 'invalidBCPostal': true };
-      }
-
       const cdnFormat: RegExp = /^[A-Za-z][0-9][A-Za-z]\s?[0-9][A-Za-z][0-9]$/;
-      return cdnFormat.test( control.value ) ? null : { 'pattern': true };
+
+      if ( !cdnFormat.test( control.value ) ) {
+        return { 'pattern': true };
+      }
+    } else {
+      const criteria: RegExp = RegExp( '^(?=.*[a-zA-Z0-9])[a-zA-Z0-9 ]*$' );
+
+      if ( !criteria.test( control.value ) ) {
+        return  { 'invalidChar': true };
+      }
     }
 
-    const criteria: RegExp = RegExp( '^(?=.*[a-zA-Z0-9])[a-zA-Z0-9 ]*$' );
-    return criteria.test( control.value ) ? null : { 'invalidChar': true };
+    if ( bcOnly ) {
+      // Valid characters for BC postal code
+      const bcFormat: RegExp = RegExp('^[Vv]\\d[ABCEGHJ-NPRSTV-Z][ ]?\\d[ABCEGHJ-NPRSTV-Z]\\d$');
+      if ( !bcFormat.test( control.value ) ) {
+        return { 'invalidBCPostal': true };
+      }
+    }
   }
   return null;
 }
