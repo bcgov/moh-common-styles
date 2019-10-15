@@ -30,7 +30,7 @@
 
       <!-- Footer -->
       <div *ngIf="maintenanceFlag != 'true'" class="modal-footer">
-        <button [disabled]="!agreeCheck" class="btn btn-block btn-primary pull-left"
+        <button [disabled]="!agreeCheck && !disableContinue" class="btn btn-block btn-primary pull-left"
                 type="submit" (click)="continue()">{{continueButton}}</button>
           
       </div>
