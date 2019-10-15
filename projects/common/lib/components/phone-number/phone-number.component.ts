@@ -29,6 +29,7 @@ import {  ControlValueAccessor,  NG_VALUE_ACCESSOR } from '@angular/forms';
   selector: 'common-phone-number',
   templateUrl: './phone-number.component.html',
   styleUrls: ['./phone-number.component.scss'],
+  /* @deprecate this ViewProvider as we're using ControlValueAccessor @Optional  */
   viewProviders: [
     { provide: ControlContainer, useExisting: forwardRef(() => NgForm ) }
   ]
@@ -41,7 +42,7 @@ export class PhoneNumberComponent extends MaskModel implements ControlValueAcces
   @Input() required: boolean = false;
   @Input() label: string = 'Mobile';
 
-  /** @deprecated - use ngModel. */
+  /** @deprecated - use ngModel - rename this to `value`. */
   @Input() phoneNumber: string = '';
 
   /** @deprecate - Do we have any applications that need to use this? */
