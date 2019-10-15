@@ -31,9 +31,9 @@ There are technically 3 commands which you can use with "npm version", each incr
     npm version minor
     npm version major
 
-In general, if you aren't sure which to use, use "minor."  
+In general, if you aren't sure which to use, use "minor."  If the build is purely a fix - with no new functionality at all and you're confident this won't accidentally break anything - you can relase it as "patch."  If it includes new functionality, or if there's a potential for breaking, use "minor."
 
-"Patch" is for backporting fixes.  For example, if we discover someone on 1.1.0 needs an urgent security patch.
+"Patch" is for fixes.  This includes releases that are pure bugfixes, and by keeping "patch" reserved for fixes it allows us to backport fixes. For example, if we discover someone on 1.1.0 needs an urgent security patch we could release 1.1.1.
 
 "Minor" is for any new work that does not break backward compatibility.  New components, new features, tests, etc, should all be minor. Minor should be the default choice and you should only deviate from it if you have good reason.
 
