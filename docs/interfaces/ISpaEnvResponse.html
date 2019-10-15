@@ -429,6 +429,12 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
     @Output() cutOffDate: EventEmitter&lt;ISpaEnvResponse&gt; &#x3D; new EventEmitter&lt;ISpaEnvResponse&gt;();
     @Output() accept &#x3D; new EventEmitter&lt;boolean&gt;();
 
+    /**
+     * Used in cases where we have custom form controls inside NgContent that we
+     * wish to be satisifed before user can continue through modal.
+     */
+    @Input() disableContinue: boolean &#x3D; false;
+
     public spaEnvRes: ISpaEnvResponse &#x3D; {} as any;
     public maintenanceMessage: string;
 

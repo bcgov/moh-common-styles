@@ -1,4 +1,19 @@
-# Unreleased "moh-common-lib" (2019-10-11)
+# Unreleased "moh-common-lib" (2019-10-15)
+
+
+
+# [2.26.0](https://github.com/bcgov/moh-common-styles/compare/v2.24.0...v2.26.0) "moh-common-lib" (2019-10-15)
+
+
+### Documentation
+
+* **Publishing:** Make it more clear when to use "patch" or "minor" versions. ([02cb2c5](https://github.com/bcgov/moh-common-styles/commit/02cb2c5))
+
+
+### Features
+
+* **CAPTCHA:** Shows required error on touched ([16be24b](https://github.com/bcgov/moh-common-styles/commit/16be24b))
+* **ConsentModal:** Add `disableContinue` [@Input](https://github.com/Input)(), used with custom controls ([8aa41ec](https://github.com/bcgov/moh-common-styles/commit/8aa41ec))
 
 
 
