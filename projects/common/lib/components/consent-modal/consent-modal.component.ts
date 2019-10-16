@@ -217,4 +217,8 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
 
     //
   }
+
+  isContinueDisabled(): boolean {
+    return !this.agreeCheck || this.disableContinue;
+  }
 }
