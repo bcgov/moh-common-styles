@@ -2,6 +2,15 @@
 
 
 
+## [2.27.1](https://github.com-maximus/bcgov/moh-common-styles/compare/v2.27.0...v2.27.1) "moh-common-lib" (2019-10-16)
+
+
+### Bug Fixes
+
+* **ConsentModal:** disableContinue works correctly ([f18457b](https://github.com-maximus/bcgov/moh-common-styles/commit/f18457b))
+
+
+
 # [2.27.0](https://github.com-maximus/bcgov/moh-common-styles/compare/v2.26.0...v2.27.0) "moh-common-lib" (2019-10-16)
 
 

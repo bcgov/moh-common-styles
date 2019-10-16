@@ -245,6 +245,9 @@ this.consentModal.showFullSizeView();
                                 <a href="#inMaintenance">inMaintenance</a>
                             </li>
                             <li>
+                                <a href="#isContinueDisabled">isContinueDisabled</a>
+                            </li>
+                            <li>
                                 <a href="#ngOnInit">ngOnInit</a>
                             </li>
                             <li>
@@ -865,6 +868,45 @@ this alone.</p>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isContinueDisabled"></a>
+                    <span class="name">
+                        <b>
+                            isContinueDisabled
+                        </b>
+                        <a href="#isContinueDisabled"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>isContinueDisabled()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="221"
+                            class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:221</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
 
                     </div>
                 </td>
@@ -2158,6 +2200,10 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
 
     //
   }
+
+  isContinueDisabled(): boolean {
+    return !this.agreeCheck || this.disableContinue;
+  }
 }
 </code></pre>
     </div>
@@ -2165,7 +2211,7 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
     <div class="tab-pane fade " id="c-templateData">
         <pre class="line-numbers"><code class="language-html">&lt;div bsModal #fullSizeViewModal&#x3D;&quot;bs-modal&quot; class&#x3D;&quot;modal fade&quot; tabindex&#x3D;&quot;-1&quot; role&#x3D;&quot;dialog&quot;
       data-keyboard&#x3D;&quot;false&quot;
-     aria-labelledby&#x3D;&quot;myLargeModalLabel&quot; aria-hidden&#x3D;&quot;true&quot; 
+     aria-labelledby&#x3D;&quot;myLargeModalLabel&quot; aria-hidden&#x3D;&quot;true&quot;
      [config]&#x3D;&quot;{backdrop: &#x27;static&#x27;, ignoreBackdropClick: true}&quot;&gt;
 
   &lt;div class&#x3D;&quot;modal-dialog&quot; style&#x3D;&quot;margin-top: 90px;&quot;&gt;
@@ -2177,10 +2223,10 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
 
       &lt;!--   Modal Body   --&gt;
       &lt;div class&#x3D;&quot;modal-body&quot;&gt;
-        
+
         &lt;div *ngIf&#x3D;&quot;maintenanceFlag &#x3D;&#x3D; &#x27;true&#x27;&quot;&gt;
           &lt;h4&gt;{{maintenanceMessage}}&lt;/h4&gt;
-        &lt;/div&gt;  
+        &lt;/div&gt;
         &lt;div *ngIf&#x3D;&quot;maintenanceFlag !&#x3D; &#x27;true&#x27;&quot;&gt;
             &lt;ng-content&gt;&lt;/ng-content&gt;
         &lt;br&gt;
@@ -2195,13 +2241,14 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
 
       &lt;!-- Footer --&gt;
       &lt;div *ngIf&#x3D;&quot;maintenanceFlag !&#x3D; &#x27;true&#x27;&quot; class&#x3D;&quot;modal-footer&quot;&gt;
-        &lt;button [disabled]&#x3D;&quot;!agreeCheck &amp;&amp; !disableContinue&quot; class&#x3D;&quot;btn btn-block btn-primary pull-left&quot;
+        &lt;button [disabled]&#x3D;&quot;isContinueDisabled()&quot; class&#x3D;&quot;btn btn-block btn-primary pull-left&quot;
                 type&#x3D;&quot;submit&quot; (click)&#x3D;&quot;continue()&quot;&gt;{{continueButton}}&lt;/button&gt;
-          
+
       &lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
-&lt;/div&gt;</code></pre>
+&lt;/div&gt;
+</code></pre>
     </div>
 
 
@@ -2230,7 +2277,7 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div bsModal #fullSizeViewModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"      data-keyboard="false"     aria-labelledby="myLargeModalLabel" aria-hidden="true"      [config]="{backdrop: \'static\', ignoreBackdropClick: true}">  <div class="modal-dialog" style="margin-top: 90px;">    <div class="modal-content">      <!--  Header -->      <div class="modal-header modal-header-primary">        <h2 id="myLargeModalLabel">{{maintenanceFlag == \'true\' ? \'Maintenance notice\' : title}}</h2>      </div>      <!--   Modal Body   -->      <div class="modal-body">                <div *ngIf="maintenanceFlag == \'true\'">          <h4>{{maintenanceMessage}}</h4>        </div>          <div *ngIf="maintenanceFlag != \'true\'">            <ng-content></ng-content>        <br>        <div *ngIf="maintenanceFlag != \'true\'">          <div class="form-check form-check-inline">            <input [ngModelOptions]="{standalone: true}" class="input-lg form-check-input" id="agree" type="checkbox"              [(ngModel)]="agreeCheck" (ngModelChange)=\'accept.emit($event);\'  >            <label class="form-check-label" for="agree"><strong>{{agreeLabel}}</strong></label>          </div>        </div>      </div>      <!-- Footer -->      <div *ngIf="maintenanceFlag != \'true\'" class="modal-footer">        <button [disabled]="!agreeCheck && !disableContinue" class="btn btn-block btn-primary pull-left"                type="submit" (click)="continue()">{{continueButton}}</button>                </div>    </div>  </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div bsModal #fullSizeViewModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"      data-keyboard="false"     aria-labelledby="myLargeModalLabel" aria-hidden="true"     [config]="{backdrop: \'static\', ignoreBackdropClick: true}">  <div class="modal-dialog" style="margin-top: 90px;">    <div class="modal-content">      <!--  Header -->      <div class="modal-header modal-header-primary">        <h2 id="myLargeModalLabel">{{maintenanceFlag == \'true\' ? \'Maintenance notice\' : title}}</h2>      </div>      <!--   Modal Body   -->      <div class="modal-body">        <div *ngIf="maintenanceFlag == \'true\'">          <h4>{{maintenanceMessage}}</h4>        </div>        <div *ngIf="maintenanceFlag != \'true\'">            <ng-content></ng-content>        <br>        <div *ngIf="maintenanceFlag != \'true\'">          <div class="form-check form-check-inline">            <input [ngModelOptions]="{standalone: true}" class="input-lg form-check-input" id="agree" type="checkbox"              [(ngModel)]="agreeCheck" (ngModelChange)=\'accept.emit($event);\'  >            <label class="form-check-label" for="agree"><strong>{{agreeLabel}}</strong></label>          </div>        </div>      </div>      <!-- Footer -->      <div *ngIf="maintenanceFlag != \'true\'" class="modal-footer">        <button [disabled]="isContinueDisabled()" class="btn btn-block btn-primary pull-left"                type="submit" (click)="continue()">{{continueButton}}</button>      </div>    </div>  </div></div></div>'
     var COMPONENTS = [{'name': 'AccordionCommonComponent', 'selector': 'common-accordion'},{'name': 'AddressComponent', 'selector': 'common-address'},{'name': 'ButtonComponent', 'selector': 'common-button'},{'name': 'ButtonGroupComponent', 'selector': 'common-button-group'},{'name': 'CaptchaComponent', 'selector': 'common-captcha'},{'name': 'CheckboxComponent', 'selector': 'common-checkbox'},{'name': 'CityComponent', 'selector': 'common-city'},{'name': 'ConfirmTemplateComponent', 'selector': 'common-confirm-template'},{'name': 'ConsentModalComponent', 'selector': 'common-consent-modal'},{'name': 'CoreBreadcrumbComponent', 'selector': 'common-core-breadcrumb'},{'name': 'CountryComponent', 'selector': 'common-country'},{'name': 'DateComponent', 'selector': 'common-date'},{'name': 'DatepickerComponent', 'selector': 'common-datepicker'},{'name': 'DropdownComponent', 'selector': 'common-dropdown'},{'name': 'EmailComponent', 'selector': 'common-email'},{'name': 'ErrorContainerComponent', 'selector': 'common-error-container'},{'name': 'FileUploaderComponent', 'selector': 'common-file-uploader'},{'name': 'FormActionBarComponent', 'selector': 'common-form-action-bar'},{'name': 'FormSubmitBarComponent', 'selector': 'common-form-submit-bar'},{'name': 'FullNameComponent', 'selector': 'common-full-name'},{'name': 'GeocoderInputComponent', 'selector': 'common-geocoder-input'},{'name': 'HeaderComponent', 'selector': 'common-header'},{'name': 'NameComponent', 'selector': 'common-name'},{'name': 'PageFrameworkComponent', 'selector': 'common-page-framework'},{'name': 'PageSectionComponent', 'selector': 'common-page-section'},{'name': 'PasswordComponent', 'selector': 'common-password'},{'name': 'PhnComponent', 'selector': 'common-phn'},{'name': 'PhoneNumberComponent', 'selector': 'common-phone-number'},{'name': 'PostalCodeComponent', 'selector': 'common-postal-code'},{'name': 'ProvinceComponent', 'selector': 'common-province'},{'name': 'RadioComponent', 'selector': 'common-radio'},{'name': 'SampleModalComponent', 'selector': 'common-sample-modal'},{'name': 'SinComponent', 'selector': 'common-sin'},{'name': 'StreetComponent', 'selector': 'common-street'},{'name': 'ThumbnailComponent', 'selector': 'common-thumbnail'},{'name': 'ToggleComponent', 'selector': 'common-toggle'},{'name': 'WizardProgressBarComponent', 'selector': 'common-wizard-progress-bar'},{'name': 'XiconButtonComponent', 'selector': 'common-xicon-button'}];
     var DIRECTIVES = [{'name': 'DateFieldFormatDirective', 'selector': '[commonDateFieldFormat]'},{'name': 'DayValidationDirective', 'selector': '[commonDayValidation][ngModel]'},{'name': 'DuplicateCheckDirective', 'selector': '[commonDuplicateCheck]'},{'name': 'ValidateBcPostalDirective', 'selector': '[commonValidateBcPostal]'},{'name': 'ValidateCityDirective', 'selector': '[commonValidateCity]'},{'name': 'ValidateEmailDirective', 'selector': '[commonValidateEmail]'},{'name': 'ValidateNameDirective', 'selector': '[commonValidateName]'},{'name': 'ValidatePhnDirective', 'selector': '[commonValidatePhn]'},{'name': 'ValidatePhoneDirective', 'selector': '[commonValidatePhone]'},{'name': 'ValidatePostalcodeDirective', 'selector': '[commonValidatePostalcode]'},{'name': 'ValidateRegionDirective', 'selector': '[commonValidateRegion]'},{'name': 'ValidateSinDirective', 'selector': '[commonValidateSin]'},{'name': 'ValidateStreetDirective', 'selector': '[commonValidateStreet]'},{'name': 'YearValidateDirective', 'selector': '[commonYearValidate][ngModel]'}];
     var ACTUAL_COMPONENT = {'name': 'ConsentModalComponent'};
