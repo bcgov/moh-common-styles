@@ -86,11 +86,11 @@
                                 <a href="#_headers">_headers</a>
                             </li>
                             <li>
-                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Protected</span>
                                 <a href="#ADDRESS_URL">ADDRESS_URL</a>
                             </li>
                             <li>
-                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Protected</span>
                                 <a href="#BASE_URL">BASE_URL</a>
                             </li>
                             <li>
@@ -122,7 +122,7 @@
                                 <a href="#lookup">lookup</a>
                             </li>
                             <li>
-                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Protected</span>
                                 <a href="#processResponse">processResponse</a>
                             </li>
                             <li>
@@ -165,7 +165,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">projects/common/lib/services/geocoder.service.ts:24</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">projects/common/lib/services/geocoder.service.ts:25</a></div>
                             </td>
                         </tr>
 
@@ -232,8 +232,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="73"
-                            class="link-to-prism">projects/common/lib/services/geocoder.service.ts:73</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="74"
+                            class="link-to-prism">projects/common/lib/services/geocoder.service.ts:74</a></div>
                 </td>
             </tr>
 
@@ -302,8 +302,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="31"
-                            class="link-to-prism">projects/common/lib/services/geocoder.service.ts:31</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="32"
+                            class="link-to-prism">projects/common/lib/services/geocoder.service.ts:32</a></div>
                 </td>
             </tr>
 
@@ -357,7 +357,7 @@
                     <a name="processResponse"></a>
                     <span class="name">
                         <b>
-                            <span class="modifier">Private</span>
+                            <span class="modifier">Protected</span>
                             processResponse
                         </b>
                         <a href="#processResponse"><span class="icon ion-ios-link"></span></a>
@@ -374,8 +374,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="52"
-                            class="link-to-prism">projects/common/lib/services/geocoder.service.ts:52</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="53"
+                            class="link-to-prism">projects/common/lib/services/geocoder.service.ts:53</a></div>
                 </td>
             </tr>
 
@@ -823,7 +823,7 @@ out on some items if matchPrecisionNot is not set.</p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">projects/common/lib/services/geocoder.service.ts:22</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">projects/common/lib/services/geocoder.service.ts:23</a></div>
                             </td>
                         </tr>
 
@@ -837,7 +837,7 @@ out on some items if matchPrecisionNot is not set.</p>
                         <a name="ADDRESS_URL"></a>
                         <span class="name">
                             <b>
-                                <span class="modifier">Private</span>
+                                <span class="modifier">Protected</span>
                             ADDRESS_URL</b>
                             <a href="#ADDRESS_URL"><span class="icon ion-ios-link"></span></a>
                         </span>
@@ -850,7 +850,7 @@ out on some items if matchPrecisionNot is not set.</p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">projects/common/lib/services/geocoder.service.ts:24</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">projects/common/lib/services/geocoder.service.ts:25</a></div>
                             </td>
                         </tr>
 
@@ -864,7 +864,7 @@ out on some items if matchPrecisionNot is not set.</p>
                         <a name="BASE_URL"></a>
                         <span class="name">
                             <b>
-                                <span class="modifier">Private</span>
+                                <span class="modifier">Protected</span>
                             BASE_URL</b>
                             <a href="#BASE_URL"><span class="icon ion-ios-link"></span></a>
                         </span>
@@ -883,7 +883,7 @@ out on some items if matchPrecisionNot is not set.</p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">projects/common/lib/services/geocoder.service.ts:23</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">projects/common/lib/services/geocoder.service.ts:24</a></div>
                             </td>
                         </tr>
 
@@ -983,6 +983,7 @@ import { AbstractHttpService } from &#x27;./abstract-api-service&#x27;;
 import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from &#x27;@angular/common/http&#x27;;
 import { map } from &#x27;rxjs/operators&#x27;;
 import { Observable, throwError } from &#x27;rxjs&#x27;;
+import { CANADA } from &#x27;../components/country/country.component&#x27;;
 
 export interface GeoAddressResult {
     /** String from the API that includes street, city, province, and country. */
@@ -1000,8 +1001,8 @@ export interface GeoAddressResult {
 export class GeocoderService extends AbstractHttpService {
 
     protected _headers: HttpHeaders &#x3D; new HttpHeaders();
-    private BASE_URL &#x3D; &#x27;https://geocoder.api.gov.bc.ca&#x27;;
-    private ADDRESS_URL &#x3D; &#x60;${this.BASE_URL}/addresses.json?&#x60;;
+    protected BASE_URL &#x3D; &#x27;https://geocoder.api.gov.bc.ca&#x27;;
+    protected  ADDRESS_URL &#x3D; &#x60;${this.BASE_URL}/addresses.json?&#x60;;
 
     constructor(protected http: HttpClient) {
         super(http);
@@ -1015,7 +1016,7 @@ export class GeocoderService extends AbstractHttpService {
             .set(&#x27;echo&#x27;, &#x27;false&#x27;)
             .set(&#x27;brief&#x27;, &#x27;false&#x27;) // API splits address string up into sub-attributes, like city  / street name
             .set(&#x27;autoComplete&#x27;, &#x27;true&#x27;)
-            .set(&#x27;matchPrecisionNot&#x27;, &#x27;LOCALITY,STREET,BLOCK,INTERSECTION&#x27;)
+            .set(&#x27;matchPrecisionNot&#x27;, &#x27;LOCALITY,STREET&#x27;)
             .set(&#x27;addressString&#x27;, address);
 
         return this.get(this.ADDRESS_URL, params).pipe(map(this.processResponse));
@@ -1029,7 +1030,7 @@ export class GeocoderService extends AbstractHttpService {
      *
      * @param obj The response from ADDRESS_URL
      */
-    private processResponse(obj): GeoAddressResult[] {
+    protected processResponse(obj): GeoAddressResult[] {
         return obj.features.map(feature &#x3D;&gt; {
             const props &#x3D; feature.properties;
             const city &#x3D; props.localityName;
@@ -1038,7 +1039,7 @@ export class GeocoderService extends AbstractHttpService {
             const cityIndex &#x3D; props.fullAddress.indexOf(&#x60;, ${city}&#x60;);
             const street &#x3D; props.fullAddress.slice(0, cityIndex);
             const province &#x3D; props.provinceCode;
-            const country &#x3D; &#x27;CAN&#x27;; // Default to Canada
+            const country &#x3D; CANADA; // ALWAYS return Canada
 
             return {
               fullAddress: props.fullAddress,

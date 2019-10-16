@@ -444,6 +444,7 @@ export class AddressComponent extends Base
   @Input() disableGeocoder: boolean &#x3D; false;
   @Input() labels: AddrLabelList;
   @Input() maxlengths: Maxlengths;
+  @Input() bcOnly: boolean &#x3D; false;
 
   @Input()
   set address(val: Address) {
@@ -503,6 +504,8 @@ export class AddressComponent extends Base
   }
 
   ngOnInit() {
+
+    console.log( &#x27;address: &#x27;, this.bcOnly );
 
     this.setLabels();
     this.setMaxlengths();

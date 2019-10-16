@@ -1,28 +1,41 @@
-# Unreleased "moh-common-lib" (2019-10-15)
+# Unreleased "moh-common-lib" (2019-10-16)
 
 
 
-# [2.26.0](https://github.com/bcgov/moh-common-styles/compare/v2.24.0...v2.26.0) "moh-common-lib" (2019-10-15)
+# [2.27.0](https://github.com-maximus/bcgov/moh-common-styles/compare/v2.26.0...v2.27.0) "moh-common-lib" (2019-10-16)
 
 
-### Documentation
+### Bug Fixes
 
-* **Publishing:** Make it more clear when to use "patch" or "minor" versions. ([02cb2c5](https://github.com/bcgov/moh-common-styles/commit/02cb2c5))
+* **GeocoderService:** Change default API filter ([34f0a40](https://github.com-maximus/bcgov/moh-common-styles/commit/34f0a40))
+* **GeocoderService:** Exendable methods via inheiritance ([7355610](https://github.com-maximus/bcgov/moh-common-styles/commit/7355610))
 
 
 ### Features
 
-* **CAPTCHA:** Shows required error on touched ([16be24b](https://github.com/bcgov/moh-common-styles/commit/16be24b))
-* **ConsentModal:** Add `disableContinue` [@Input](https://github.com/Input)(), used with custom controls ([8aa41ec](https://github.com/bcgov/moh-common-styles/commit/8aa41ec))
+* **GeocoderInput:** New Component CommonGeocoderInput ([224e362](https://github.com-maximus/bcgov/moh-common-styles/commit/224e362))
+* **GeocoderInput:** Now a ControlValueAccessor ([730f9c7](https://github.com-maximus/bcgov/moh-common-styles/commit/730f9c7))
 
 
 
-# [2.25.0](https://github.com-maximus/bcgov/moh-common-styles/compare/v2.24.0...v2.25.0) "moh-common-lib" (2019-10-11)
+# [2.26.0](https://github.com-maximus/bcgov/moh-common-styles/compare/v2.24.0...v2.26.0) "moh-common-lib" (2019-10-15)
+
+
+### Bug Fixes
+
+* logic in validate postal-code directive to handle bcOnly flag ([88bc3f3](https://github.com-maximus/bcgov/moh-common-styles/commit/88bc3f3))
+
+
+### Documentation
+
+* **Publishing:** Make it more clear when to use "patch" or "minor" versions. ([02cb2c5](https://github.com-maximus/bcgov/moh-common-styles/commit/02cb2c5))
 
 
 ### Features
 
 * **CAPTCHA:** Shows required error on touched ([16be24b](https://github.com-maximus/bcgov/moh-common-styles/commit/16be24b))
+* added bc only postal code check for address component ([e6db87e](https://github.com-maximus/bcgov/moh-common-styles/commit/e6db87e))
+* **ConsentModal:** Add `disableContinue` [@Input](https://github.com/Input)(), used with custom controls ([8aa41ec](https://github.com-maximus/bcgov/moh-common-styles/commit/8aa41ec))
 
 
 

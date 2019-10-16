@@ -150,8 +150,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="25"
-                            class="link-to-prism">projects/common/lib/components/postal-code/validate-bc-postal.directive.ts:25</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="27"
+                            class="link-to-prism">projects/common/lib/components/postal-code/validate-bc-postal.directive.ts:27</a></div>
                 </td>
             </tr>
 
@@ -209,6 +209,8 @@
 import { NG_VALIDATORS, Validator, AbstractControl, ValidatorFn, ValidationErrors } from &#x27;@angular/forms&#x27;;
 
 
+// TODO: determine whether this is used or not.  If not use, maybe it can be removed
+//  @deprecated - logic added to validate-postalcode directive
 export const commonValidateBcPostal: ValidatorFn &#x3D; (control: AbstractControl): ValidationErrors | null &#x3D;&gt; {
   /**
   * Valid characters for BC postal code

@@ -266,6 +266,7 @@ import { AbstractHttpService } from &#x27;./abstract-api-service&#x27;;
 import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from &#x27;@angular/common/http&#x27;;
 import { map } from &#x27;rxjs/operators&#x27;;
 import { Observable, throwError } from &#x27;rxjs&#x27;;
+import { CANADA } from &#x27;../components/country/country.component&#x27;;
 
 export interface GeoAddressResult {
     /** String from the API that includes street, city, province, and country. */
@@ -283,8 +284,8 @@ export interface GeoAddressResult {
 export class GeocoderService extends AbstractHttpService {
 
     protected _headers: HttpHeaders &#x3D; new HttpHeaders();
-    private BASE_URL &#x3D; &#x27;https://geocoder.api.gov.bc.ca&#x27;;
-    private ADDRESS_URL &#x3D; &#x60;${this.BASE_URL}/addresses.json?&#x60;;
+    protected BASE_URL &#x3D; &#x27;https://geocoder.api.gov.bc.ca&#x27;;
+    protected  ADDRESS_URL &#x3D; &#x60;${this.BASE_URL}/addresses.json?&#x60;;
 
     constructor(protected http: HttpClient) {
         super(http);
@@ -298,7 +299,7 @@ export class GeocoderService extends AbstractHttpService {
             .set(&#x27;echo&#x27;, &#x27;false&#x27;)
             .set(&#x27;brief&#x27;, &#x27;false&#x27;) // API splits address string up into sub-attributes, like city  / street name
             .set(&#x27;autoComplete&#x27;, &#x27;true&#x27;)
-            .set(&#x27;matchPrecisionNot&#x27;, &#x27;LOCALITY,STREET,BLOCK,INTERSECTION&#x27;)
+            .set(&#x27;matchPrecisionNot&#x27;, &#x27;LOCALITY,STREET&#x27;)
             .set(&#x27;addressString&#x27;, address);
 
         return this.get(this.ADDRESS_URL, params).pipe(map(this.processResponse));
@@ -312,7 +313,7 @@ export class GeocoderService extends AbstractHttpService {
      *
      * @param obj The response from ADDRESS_URL
      */
-    private processResponse(obj): GeoAddressResult[] {
+    protected processResponse(obj): GeoAddressResult[] {
         return obj.features.map(feature &#x3D;&gt; {
             const props &#x3D; feature.properties;
             const city &#x3D; props.localityName;
@@ -321,7 +322,7 @@ export class GeocoderService extends AbstractHttpService {
             const cityIndex &#x3D; props.fullAddress.indexOf(&#x60;, ${city}&#x60;);
             const street &#x3D; props.fullAddress.slice(0, cityIndex);
             const province &#x3D; props.provinceCode;
-            const country &#x3D; &#x27;CAN&#x27;; // Default to Canada
+            const country &#x3D; CANADA; // ALWAYS return Canada
 
             return {
               fullAddress: props.fullAddress,
