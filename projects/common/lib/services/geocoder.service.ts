@@ -36,7 +36,7 @@ export class GeocoderService extends AbstractHttpService {
             .set('echo', 'false')
             .set('brief', 'false') // API splits address string up into sub-attributes, like city  / street name
             .set('autoComplete', 'true')
-            .set('matchPrecisionNot', 'LOCALITY,STREET,BLOCK,INTERSECTION')
+            .set('matchPrecisionNot', 'LOCALITY,STREET')
             .set('addressString', address);
 
         return this.get(this.ADDRESS_URL, params).pipe(map(this.processResponse));
