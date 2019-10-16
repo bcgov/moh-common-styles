@@ -1,0 +1,48 @@
+
+<label for="geocoder_{{label}}" class='text-nowrap'>{{label}}
+  <span class="geocoder-status">
+    <ng-container *ngIf="isTypeaheadLoading; else statusContainer"> &mdash; Loading 
+      <i class="fa fa-spinner fa-pulse fa-fw"></i>
+    </ng-container>
+  </span>
+
+  <ng-template #statusContainer>
+    <ng-template *ngIf="selectedAddress; then addressSelected; else error;"></ng-template>
+  </ng-template>
+</label>
+<input class="form-control"
+       type="text"
+       id="geocoder_{{label}}"
+       name="geocoder_{{label}}"
+       [(ngModel)]='search'
+       (keyup)='onKeyUp($event)'
+       [typeahead]='typeaheadList$'
+       (typeaheadLoading)="onLoading($event)"
+       (typeaheadOnSelect)="onSelect($event)"
+       (typeaheadNoResults)="onNoResults($event)"
+       typeaheadOptionField='fullAddress'
+       typeaheadMinLength='3'
+       autocomplete="off"
+       spellcheck="false"
+        />
+        <!-- Intentionally using 'nope' for autocomplete as it is invalid and forces false - https://developer.mozilla.org/en-US/docs/Web/Security/Securing_your_site/Turning_off_form_autocompletion -->
+
+
+<ng-template #addressSelected>
+    <span> &mdash; Selected
+        <i class="fa fa-check fa-fw text-success"></i>
+    </span>
+</ng-template>        
+
+<ng-template #noResults>
+    <span *ngIf="hasNoResults"> &mdash; No Results
+        <i class="fa fa-times fa-fw text-warning"></i>
+    </span>
+</ng-template>        
+
+
+<ng-template #error>
+    <span *ngIf='hasError; else noResults'> &mdash; Error
+        <i class="fa fa-exclamation-triangle fa-fw text-danger"></i>
+    </span>
+</ng-template>   

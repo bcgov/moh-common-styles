@@ -62,6 +62,16 @@
     <code>projects/common/captcha/src/captcha.component.ts</code>
 </p>
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>CAPTCHA can display a &quot;required&quot; error automatically when you programmaically
+call <code>markAllInpusAsTouched()</code>. (@see AbstractForm).  In order to do this,
+you must set: name, ngModel, and required.  Otherwise, these fields are
+optional.</p>
+
+    </p>
 
 
     <p class="comment">
@@ -71,8 +81,24 @@
                     <code><a href="https://angular.io/api/core/AfterViewInit" target="_blank" >AfterViewInit</a></code>
                     <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
                     <code><a href="https://angular.io/api/core/OnChanges" target="_blank" >OnChanges</a></code>
+                    <code><a href="https://angular.io/api/forms/ControlValueAccessor" target="_blank" >ControlValueAccessor</a></code>
     </p>
 
+    <p class="comment">
+        <h3>Example</h3>
+    </p>
+    <div class="io-description">
+                <div>
+                    <pre class="line-numbers"><code class="language-html">&lt;common-captcha
+[nonce]=&quot;application.uuid&quot;
+[apiBaseUrl]=&quot;captchaApiBaseUrl&quot;
+(onValidToken)=&quot;setToken($event)&quot;
+name='captcha'
+ngModel
+required&gt;
+&lt;/common-captcha&gt;</code></pre>
+                </div>
+    </div>
 
 <section>
     <h3>Metadata</h3>
@@ -131,6 +157,14 @@
                         <ul class="index-list">
                             <li>
                                     <span class="modifier">Public</span>
+                                <a href="#_onChange">_onChange</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#_onTouched">_onTouched</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
                                 <a href="#answer">answer</a>
                             </li>
                             <li>
@@ -139,6 +173,10 @@
                             </li>
                             <li>
                                 <a href="#audioElement">audioElement</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#controlDir">controlDir</a>
                             </li>
                             <li>
                                 <a href="#errorFetchingImg">errorFetchingImg</a>
@@ -215,6 +253,9 @@
                                 <a href="#ngOnInit">ngOnInit</a>
                             </li>
                             <li>
+                                <a href="#onBlur">onBlur</a>
+                            </li>
+                            <li>
                                     <span class="modifier">Public</span>
                                 <a href="#playAudio">playAudio</a>
                             </li>
@@ -222,8 +263,17 @@
                                 <a href="#publicForceRefresh">publicForceRefresh</a>
                             </li>
                             <li>
+                                <a href="#registerOnChange">registerOnChange</a>
+                            </li>
+                            <li>
+                                <a href="#registerOnTouched">registerOnTouched</a>
+                            </li>
+                            <li>
                                     <span class="modifier">Public</span>
                                 <a href="#retryFetchCaptcha">retryFetchCaptcha</a>
+                            </li>
+                            <li>
+                                <a href="#writeValue">writeValue</a>
                             </li>
                         </ul>
                     </td>
@@ -286,12 +336,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(dataService: <a href="../injectables/CaptchaDataService.html">CaptchaDataService</a>, cd: <a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank">ChangeDetectorRef</a>, ngZone: <a href="https://angular.io/api/core/NgZone" target="_blank">NgZone</a>)</code>
+<code>constructor(dataService: <a href="../injectables/CaptchaDataService.html">CaptchaDataService</a>, cd: <a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank">ChangeDetectorRef</a>, ngZone: <a href="https://angular.io/api/core/NgZone" target="_blank">NgZone</a>, controlDir: <a href="https://angular.io/api/forms/NgControl" target="_blank">NgControl</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">projects/common/captcha/src/captcha.component.ts:45</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">projects/common/captcha/src/captcha.component.ts:66</a></div>
                             </td>
                         </tr>
 
@@ -344,6 +394,18 @@
                                                     </td>
                                                     
                                                 </tr>
+                                                <tr>
+                                                        <td>controlDir</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/forms/NgControl" target="_blank" >NgControl</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
                                         </tbody>
                                     </table>
                             </div>
@@ -371,7 +433,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">projects/common/captcha/src/captcha.component.ts:19</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">projects/common/captcha/src/captcha.component.ts:37</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -392,7 +454,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">projects/common/captcha/src/captcha.component.ts:24</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">projects/common/captcha/src/captcha.component.ts:42</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -418,7 +480,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">projects/common/captcha/src/captcha.component.ts:25</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">projects/common/captcha/src/captcha.component.ts:43</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -439,7 +501,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">projects/common/captcha/src/captcha.component.ts:20</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">projects/common/captcha/src/captcha.component.ts:38</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -460,7 +522,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">projects/common/captcha/src/captcha.component.ts:23</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">projects/common/captcha/src/captcha.component.ts:41</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -481,7 +543,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">projects/common/captcha/src/captcha.component.ts:26</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">projects/common/captcha/src/captcha.component.ts:44</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -505,7 +567,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">projects/common/captcha/src/captcha.component.ts:22</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">projects/common/captcha/src/captcha.component.ts:40</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -540,8 +602,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="84"
-                            class="link-to-prism">projects/common/captcha/src/captcha.component.ts:84</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="125"
+                            class="link-to-prism">projects/common/captcha/src/captcha.component.ts:125</a></div>
                 </td>
             </tr>
 
@@ -612,8 +674,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="222"
-                            class="link-to-prism">projects/common/captcha/src/captcha.component.ts:222</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="264"
+                            class="link-to-prism">projects/common/captcha/src/captcha.component.ts:264</a></div>
                 </td>
             </tr>
 
@@ -680,8 +742,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="165"
-                            class="link-to-prism">projects/common/captcha/src/captcha.component.ts:165</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="207"
+                            class="link-to-prism">projects/common/captcha/src/captcha.component.ts:207</a></div>
                 </td>
             </tr>
 
@@ -754,8 +816,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="75"
-                            class="link-to-prism">projects/common/captcha/src/captcha.component.ts:75</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="116"
+                            class="link-to-prism">projects/common/captcha/src/captcha.component.ts:116</a></div>
                 </td>
             </tr>
 
@@ -795,8 +857,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="185"
-                            class="link-to-prism">projects/common/captcha/src/captcha.component.ts:185</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="227"
+                            class="link-to-prism">projects/common/captcha/src/captcha.component.ts:227</a></div>
                 </td>
             </tr>
 
@@ -867,8 +929,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="110"
-                            class="link-to-prism">projects/common/captcha/src/captcha.component.ts:110</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="151"
+                            class="link-to-prism">projects/common/captcha/src/captcha.component.ts:151</a></div>
                 </td>
             </tr>
 
@@ -939,8 +1001,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="129"
-                            class="link-to-prism">projects/common/captcha/src/captcha.component.ts:129</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="171"
+                            class="link-to-prism">projects/common/captcha/src/captcha.component.ts:171</a></div>
                 </td>
             </tr>
 
@@ -1008,8 +1070,8 @@ The occurance of this type of case should be rare.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="60"
-                            class="link-to-prism">projects/common/captcha/src/captcha.component.ts:60</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="101"
+                            class="link-to-prism">projects/common/captcha/src/captcha.component.ts:101</a></div>
                 </td>
             </tr>
 
@@ -1047,8 +1109,8 @@ The occurance of this type of case should be rare.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="63"
-                            class="link-to-prism">projects/common/captcha/src/captcha.component.ts:63</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="104"
+                            class="link-to-prism">projects/common/captcha/src/captcha.component.ts:104</a></div>
                 </td>
             </tr>
 
@@ -1117,8 +1179,47 @@ The occurance of this type of case should be rare.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="52"
-                            class="link-to-prism">projects/common/captcha/src/captcha.component.ts:52</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="93"
+                            class="link-to-prism">projects/common/captcha/src/captcha.component.ts:93</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onBlur"></a>
+                    <span class="name">
+                        <b>
+                            onBlur
+                        </b>
+                        <a href="#onBlur"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onBlur()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="89"
+                            class="link-to-prism">projects/common/captcha/src/captcha.component.ts:89</a></div>
                 </td>
             </tr>
 
@@ -1158,8 +1259,8 @@ The occurance of this type of case should be rare.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="157"
-                            class="link-to-prism">projects/common/captcha/src/captcha.component.ts:157</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="199"
+                            class="link-to-prism">projects/common/captcha/src/captcha.component.ts:199</a></div>
                 </td>
             </tr>
 
@@ -1197,8 +1298,8 @@ The occurance of this type of case should be rare.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="80"
-                            class="link-to-prism">projects/common/captcha/src/captcha.component.ts:80</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="121"
+                            class="link-to-prism">projects/common/captcha/src/captcha.component.ts:121</a></div>
                 </td>
             </tr>
 
@@ -1209,6 +1310,146 @@ The occurance of this type of case should be rare.</p>
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="registerOnChange"></a>
+                    <span class="name">
+                        <b>
+                            registerOnChange
+                        </b>
+                        <a href="#registerOnChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>registerOnChange(fn: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="77"
+                            class="link-to-prism">projects/common/captcha/src/captcha.component.ts:77</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>fn</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="registerOnTouched"></a>
+                    <span class="name">
+                        <b>
+                            registerOnTouched
+                        </b>
+                        <a href="#registerOnTouched"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>registerOnTouched(fn: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="81"
+                            class="link-to-prism">projects/common/captcha/src/captcha.component.ts:81</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>fn</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
                     </div>
                 </td>
             </tr>
@@ -1238,8 +1479,8 @@ The occurance of this type of case should be rare.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="145"
-                            class="link-to-prism">projects/common/captcha/src/captcha.component.ts:145</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="187"
+                            class="link-to-prism">projects/common/captcha/src/captcha.component.ts:187</a></div>
                 </td>
             </tr>
 
@@ -1255,12 +1496,136 @@ The occurance of this type of case should be rare.</p>
             </tr>
         </tbody>
     </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="writeValue"></a>
+                    <span class="name">
+                        <b>
+                            writeValue
+                        </b>
+                        <a href="#writeValue"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>writeValue(value: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="85"
+                            class="link-to-prism">projects/common/captcha/src/captcha.component.ts:85</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>value</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </section>
     <section>
     
         <h3 id="inputs">
             Properties
         </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_onChange"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            _onChange</b>
+                            <a href="#_onChange"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>() &#x3D;&gt; {...}</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">projects/common/captcha/src/captcha.component.ts:65</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_onTouched"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            _onTouched</b>
+                            <a href="#_onTouched"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>() &#x3D;&gt; {...}</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">projects/common/captcha/src/captcha.component.ts:66</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
@@ -1287,7 +1652,7 @@ The occurance of this type of case should be rare.</p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">projects/common/captcha/src/captcha.component.ts:40</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">projects/common/captcha/src/captcha.component.ts:58</a></div>
                             </td>
                         </tr>
 
@@ -1320,7 +1685,7 @@ The occurance of this type of case should be rare.</p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">projects/common/captcha/src/captcha.component.ts:39</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">projects/common/captcha/src/captcha.component.ts:57</a></div>
                             </td>
                         </tr>
 
@@ -1356,7 +1721,44 @@ The occurance of this type of case should be rare.</p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">projects/common/captcha/src/captcha.component.ts:17</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">projects/common/captcha/src/captcha.component.ts:35</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="controlDir"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            controlDir</b>
+                            <a href="#controlDir"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://angular.io/api/forms/NgControl" target="_blank" >NgControl</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @Optional()<br />@Self()<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">projects/common/captcha/src/captcha.component.ts:71</a></div>
                             </td>
                         </tr>
 
@@ -1388,7 +1790,7 @@ The occurance of this type of case should be rare.</p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">projects/common/captcha/src/captcha.component.ts:31</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">projects/common/captcha/src/captcha.component.ts:49</a></div>
                             </td>
                         </tr>
 
@@ -1426,7 +1828,7 @@ The occurance of this type of case should be rare.</p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">projects/common/captcha/src/captcha.component.ts:36</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">projects/common/captcha/src/captcha.component.ts:54</a></div>
                             </td>
                         </tr>
 
@@ -1459,7 +1861,7 @@ The occurance of this type of case should be rare.</p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">projects/common/captcha/src/captcha.component.ts:45</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">projects/common/captcha/src/captcha.component.ts:63</a></div>
                             </td>
                         </tr>
 
@@ -1495,7 +1897,7 @@ The occurance of this type of case should be rare.</p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">projects/common/captcha/src/captcha.component.ts:16</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">projects/common/captcha/src/captcha.component.ts:34</a></div>
                             </td>
                         </tr>
 
@@ -1522,7 +1924,7 @@ The occurance of this type of case should be rare.</p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">projects/common/captcha/src/captcha.component.ts:43</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">projects/common/captcha/src/captcha.component.ts:61</a></div>
                             </td>
                         </tr>
 
@@ -1549,7 +1951,7 @@ The occurance of this type of case should be rare.</p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">projects/common/captcha/src/captcha.component.ts:42</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">projects/common/captcha/src/captcha.component.ts:60</a></div>
                             </td>
                         </tr>
 
@@ -1649,7 +2051,7 @@ The occurance of this type of case should be rare.</p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="232" class="link-to-prism">projects/common/captcha/src/captcha.component.ts:232</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="274" class="link-to-prism">projects/common/captcha/src/captcha.component.ts:274</a></div>
                             </td>
                         </tr>
 
@@ -1682,7 +2084,7 @@ The occurance of this type of case should be rare.</p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">projects/common/captcha/src/captcha.component.ts:38</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">projects/common/captcha/src/captcha.component.ts:56</a></div>
                             </td>
                         </tr>
 
@@ -1697,18 +2099,36 @@ The occurance of this type of case should be rare.</p>
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
   Component, ElementRef, ViewChild, SimpleChanges, NgZone,
-  ChangeDetectorRef, Output, Input, AfterViewInit, OnInit, OnChanges, EventEmitter
+  ChangeDetectorRef, Output, Input, AfterViewInit, OnInit, OnChanges, EventEmitter, Optional, Self
 } from &#x27;@angular/core&#x27;;
 // import { Http, Response } from &#x27;@angular/http&#x27;;
 import { HttpClient, HttpResponse } from &#x27;@angular/common/http&#x27;;
 import { CaptchaDataService, ServerPayload } from &#x27;./captcha-data.service&#x27;;
+import { NgControl, ControlValueAccessor } from &#x27;@angular/forms&#x27;;
 
+
+/**
+ * CAPTCHA can display a &quot;required&quot; error automatically when you programmaically
+ * call &#x60;markAllInpusAsTouched()&#x60;. (@see AbstractForm).  In order to do this,
+ * you must set: name, ngModel, and required.  Otherwise, these fields are
+ * optional.
+ *
+ *  @example
+ *           &lt;common-captcha
+ *               [nonce]&#x3D;&quot;application.uuid&quot;
+ *               [apiBaseUrl]&#x3D;&quot;captchaApiBaseUrl&quot;
+ *               (onValidToken)&#x3D;&quot;setToken($event)&quot;
+ *               name&#x3D;&#x27;captcha&#x27;
+ *               ngModel
+ *               required&gt;
+ *           &lt;/common-captcha&gt;
+ */
 @Component({
   selector: &#x27;common-captcha&#x27;,
   templateUrl: &#x27;./captcha.component.html&#x27;,
   styleUrls: [&#x27;./captcha.component.scss&#x27;]
 })
-export class CaptchaComponent implements AfterViewInit, OnInit, OnChanges {
+export class CaptchaComponent implements AfterViewInit, OnInit, OnChanges, ControlValueAccessor {
 
   @ViewChild(&#x27;image&#x27;) imageContainer: ElementRef;
   @ViewChild(&#x27;audioElement&#x27;) audioElement: ElementRef;
@@ -1741,9 +2161,32 @@ export class CaptchaComponent implements AfterViewInit, OnInit, OnChanges {
 
   public fetchingAudioInProgress &#x3D; false;
 
+  public _onChange &#x3D; (_: any) &#x3D;&gt; {};
+  public _onTouched &#x3D; () &#x3D;&gt; {};
+
   constructor(private dataService: CaptchaDataService,
     private cd: ChangeDetectorRef,
-    private ngZone: NgZone) {
+    private ngZone: NgZone,
+    @Optional() @Self() public controlDir: NgControl  ) {
+      if ( controlDir ) {
+        controlDir.valueAccessor &#x3D; this;
+      }
+  }
+
+  registerOnChange(fn: any): void {
+    this._onChange &#x3D; fn;
+  }
+
+  registerOnTouched(fn: any): void {
+    this._onTouched &#x3D; fn;
+  }
+
+  writeValue(value: any): void {
+    this.answer &#x3D; value;
+  }
+
+  onBlur(): void {
+    this._onTouched();
   }
 
   ngOnInit() {
@@ -1809,6 +2252,7 @@ export class CaptchaComponent implements AfterViewInit, OnInit, OnChanges {
     if (payload.valid &#x3D;&#x3D;&#x3D; true) {
       this.state &#x3D; CAPTCHA_STATE.SUCCESS_VERIFY_ANSWER_CORRECT;
       this.onValidToken.emit(payload.jwt);
+      // this.controlDir.errors.set
     } else {
       this.incorrectAnswer &#x3D; true;
       this.answer &#x3D; &#x27;&#x27;;
@@ -2021,21 +2465,21 @@ enum CAPTCHA_STATE {
     &lt;defs&gt;
         &lt;symbol id&#x3D;&quot;icon-play-def&quot; viewBox&#x3D;&quot;0 0 32 32&quot;&gt;
             &lt;path d&#x3D;&quot;M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM16 29c-7.18 0-13-5.82-13-13s5.82-13 13-13 13 5.82 13 13-5.82 13-13 13zM12 9l12 7-12 7z&quot;&gt;&lt;/path&gt;
-        &lt;/symbol&gt;  
+        &lt;/symbol&gt;
 
         &lt;symbol id&#x3D;&quot;icon-loop-def&quot; viewBox&#x3D;&quot;0 0 32 32&quot;&gt;
           &lt;path d&#x3D;&quot;M27.802 5.197c-2.925-3.194-7.13-5.197-11.803-5.197-8.837 0-16 7.163-16 16h3c0-7.18 5.82-13 13-13 3.844 0 7.298 1.669 9.678 4.322l-4.678 4.678h11v-11l-4.198 4.197z&quot;&gt;&lt;/path&gt;
           &lt;path d&#x3D;&quot;M29 16c0 7.18-5.82 13-13 13-3.844 0-7.298-1.669-9.678-4.322l4.678-4.678h-11v11l4.197-4.197c2.925 3.194 7.13 5.197 11.803 5.197 8.837 0 16-7.163 16-16h-3z&quot;&gt;&lt;/path&gt;
-        &lt;/symbol&gt;  
-        
+        &lt;/symbol&gt;
+
         &lt;symbol id&#x3D;&quot;icon-check-def&quot; viewBox&#x3D;&quot;0 0 24 24&quot;&gt;
           &lt;path d&#x3D;&quot;M9 16.172l10.594-10.594 1.406 1.406-12 12-5.578-5.578 1.406-1.406z&quot;&gt;&lt;/path&gt;
-        &lt;/symbol&gt;    
-        
+        &lt;/symbol&gt;
+
         &lt;symbol id&#x3D;&quot;icon-exclamation-triangle-def&quot; viewBox&#x3D;&quot;0 0 28 28&quot;&gt;
             &lt;path d&#x3D;&quot;M16 21.484v-2.969c0-0.281-0.219-0.516-0.5-0.516h-3c-0.281 0-0.5 0.234-0.5 0.516v2.969c0 0.281 0.219 0.516 0.5 0.516h3c0.281 0 0.5-0.234 0.5-0.516zM15.969 15.641l0.281-7.172c0-0.094-0.047-0.219-0.156-0.297-0.094-0.078-0.234-0.172-0.375-0.172h-3.437c-0.141 0-0.281 0.094-0.375 0.172-0.109 0.078-0.156 0.234-0.156 0.328l0.266 7.141c0 0.203 0.234 0.359 0.531 0.359h2.891c0.281 0 0.516-0.156 0.531-0.359zM15.75 1.047l12 22c0.344 0.609 0.328 1.359-0.031 1.969s-1.016 0.984-1.719 0.984h-24c-0.703 0-1.359-0.375-1.719-0.984s-0.375-1.359-0.031-1.969l12-22c0.344-0.641 1.016-1.047 1.75-1.047s1.406 0.406 1.75 1.047z&quot;&gt;&lt;/path&gt;
         &lt;/symbol&gt;
-        
+
     &lt;/defs&gt;
   &lt;/svg&gt;
 
@@ -2044,7 +2488,7 @@ enum CAPTCHA_STATE {
   &lt;form style&#x3D;&quot;clear:both&quot; #formRef&#x3D;&quot;ngForm&quot;&gt;
     &lt;div [ngClass]&#x3D;&quot;{&#x27;has-error&#x27;: !!incorrectAnswer}&quot;&gt;
       &lt;div&gt;
-        
+
         &lt;div class&#x3D;&quot;spinner-box&quot; *ngIf&#x3D;&quot;!state || state &#x3D;&#x3D;&#x3D; 1&quot;&gt;
          &lt;div style&#x3D;&quot;float:left; margin: 2px 0 1px 8px&quot;&gt;
             &lt;svg class&#x3D;&quot;lds-spinner&quot; width&#x3D;&quot;45px&quot;  height&#x3D;&quot;45px&quot;  xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; xmlns:xlink&#x3D;&quot;http://www.w3.org/1999/xlink&quot; viewBox&#x3D;&quot;0 0 100 100&quot; preserveAspectRatio&#x3D;&quot;xMidYMid&quot; style&#x3D;&quot;background: none;&quot;&gt;&lt;g transform&#x3D;&quot;rotate(0 50 50)&quot;&gt;
@@ -2090,7 +2534,7 @@ enum CAPTCHA_STATE {
          &lt;/div&gt;
          &lt;div style&#x3D;&quot;clear:both&quot;&gt;&lt;/div&gt;
         &lt;/div&gt;
-        
+
         &lt;div [ngClass]&#x3D;&quot;{&#x27;captcha-box-visible&#x27;: state &#x3D;&#x3D;&#x3D; 2, &#x27;captcha-box-invisible&#x27;: state !&#x3D;&#x3D; 2}&quot;&gt;
           &lt;div&gt;
             &lt;div style&#x3D;&quot;float: left;&quot; #image class&#x3D;&quot;captcha-image&quot;&gt;&lt;/div&gt;
@@ -2100,7 +2544,7 @@ enum CAPTCHA_STATE {
             &lt;div style&#x3D;&quot;float: left; margin-top: 8px&quot;&gt;
               &lt;a class&#x3D;&quot;play-audio&quot; href&#x3D;&quot;javascript:void(0)&quot; (click)&#x3D;&quot;playAudio()&quot; role&#x3D;&quot;button&quot;&gt;
                 &lt;svg *ngIf&#x3D;&quot;!fetchingAudioInProgress&quot; class&#x3D;&quot;icon-play&quot;&gt;&lt;use xlink:href&#x3D;&quot;#icon-play-def&quot;&gt;&lt;/use&gt;&lt;/svg&gt;
-                
+
                 &lt;svg *ngIf&#x3D;&quot;fetchingAudioInProgress&quot; class&#x3D;&quot;lds-spinner&quot; width&#x3D;&quot;15px&quot;  height&#x3D;&quot;15px&quot;  xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; xmlns:xlink&#x3D;&quot;http://www.w3.org/1999/xlink&quot; viewBox&#x3D;&quot;0 0 100 100&quot; preserveAspectRatio&#x3D;&quot;xMidYMid&quot; style&#x3D;&quot;background: none;&quot;&gt;&lt;g transform&#x3D;&quot;rotate(0 50 50)&quot;&gt;
                   &lt;rect x&#x3D;&quot;45&quot; y&#x3D;&quot;9&quot; rx&#x3D;&quot;2.7&quot; ry&#x3D;&quot;0.54&quot; width&#x3D;&quot;10&quot; height&#x3D;&quot;22&quot; fill&#x3D;&quot;#1d3f72&quot;&gt;
                     &lt;animate attributeName&#x3D;&quot;opacity&quot; values&#x3D;&quot;1;0&quot; times&#x3D;&quot;0;1&quot; dur&#x3D;&quot;1s&quot; begin&#x3D;&quot;-0.8888888888888888s&quot; repeatCount&#x3D;&quot;indefinite&quot;&gt;&lt;/animate&gt;
@@ -2142,9 +2586,9 @@ enum CAPTCHA_STATE {
                 {{translatedMessages.playAudio[language]}}
               &lt;/a&gt;
               &lt;div style&#x3D;&quot;clear:both;&quot;&gt;&lt;/div&gt;
-              
+
               &lt;a class&#x3D;&quot;try-another-image&quot; href&#x3D;&quot;javascript:void(0)&quot; (click)&#x3D;&quot;retryFetchCaptcha()&quot; role&#x3D;&quot;button&quot;&gt;
-                  &lt;svg class&#x3D;&quot;icon-loop icon-loop-def&quot;&gt;&lt;use xlink:href&#x3D;&quot;#icon-loop-def&quot;&gt;&lt;/use&gt;&lt;/svg&gt;                
+                  &lt;svg class&#x3D;&quot;icon-loop icon-loop-def&quot;&gt;&lt;use xlink:href&#x3D;&quot;#icon-loop-def&quot;&gt;&lt;/use&gt;&lt;/svg&gt;
                   {{translatedMessages.tryAnotherImg[language]}}
               &lt;/a&gt;
             &lt;/div&gt;
@@ -2157,12 +2601,13 @@ enum CAPTCHA_STATE {
                 #userAnswerRef &#x3D; &quot;ngModel&quot;
                 [(ngModel)]&#x3D;&quot;answer&quot;
                 (input)&#x3D;&quot;answerChanged($event)&quot;
+                (blur)&#x3D;&#x27;onBlur()&#x27;
                 [ngClass]&#x3D;&quot;{&#x27;captcha-wrong-answer&#x27;: userAnswerRef.dirty &amp;&amp; incorrectAnswer}&quot;
                 name&#x3D;&quot;answer&quot;
                 maxlength&#x3D;&quot;6&quot;
                 required
-                autocorrect&#x3D;&quot;off&quot; 
-                autocomplete&#x3D;&quot;off&quot; 
+                autocorrect&#x3D;&quot;off&quot;
+                autocomplete&#x3D;&quot;off&quot;
                 autocapitalize&#x3D;&quot;none&quot;&gt;
             &lt;/label&gt;
           &lt;/div&gt;
@@ -2173,38 +2618,42 @@ enum CAPTCHA_STATE {
         &lt;div class&#x3D;&quot;error-captcha&quot; *ngIf&#x3D;&quot;state &#x3D;&#x3D;&#x3D; 3&quot; role&#x3D;&quot;alert&quot; aria-live&#x3D;&quot;assertive&quot;&gt;
           &lt;div style&#x3D;&quot;float:left; margin-left: 5px;&quot;&gt;
             &lt;svg class&#x3D;&quot;icon-exclamation-triangle&quot;&gt;&lt;use xlink:href&#x3D;&quot;#icon-exclamation-triangle-def&quot;&gt;&lt;/use&gt;&lt;/svg&gt;
-  
-            &lt;span&gt; {{translatedMessages.errorRetrievingImg[language].substring(0,translatedMessages.errorRetrievingImg[language].indexOf(&#x27;{&#x27;))}} 
-              &lt;a href&#x3D;&quot;javascript:void(0)&quot; (click)&#x3D;&quot;retryFetchCaptcha()&quot;&gt;{{translatedMessages.errorRetrievingImg[language].substring(translatedMessages.errorRetrievingImg[language].lastIndexOf(&#x27;{&#x27;)+1,translatedMessages.errorRetrievingImg[language].indexOf(&#x27;}&#x27;))}}&lt;/a&gt; 
-              {{translatedMessages.errorRetrievingImg[language].substring(translatedMessages.errorRetrievingImg[language].lastIndexOf(&#x27;}&#x27;)+1)}} 
+
+            &lt;span&gt; {{translatedMessages.errorRetrievingImg[language].substring(0,translatedMessages.errorRetrievingImg[language].indexOf(&#x27;{&#x27;))}}
+              &lt;a href&#x3D;&quot;javascript:void(0)&quot; (click)&#x3D;&quot;retryFetchCaptcha()&quot;&gt;{{translatedMessages.errorRetrievingImg[language].substring(translatedMessages.errorRetrievingImg[language].lastIndexOf(&#x27;{&#x27;)+1,translatedMessages.errorRetrievingImg[language].indexOf(&#x27;}&#x27;))}}&lt;/a&gt;
+              {{translatedMessages.errorRetrievingImg[language].substring(translatedMessages.errorRetrievingImg[language].lastIndexOf(&#x27;}&#x27;)+1)}}
             &lt;/span&gt;
           &lt;/div&gt;
           &lt;div style&#x3D;&quot;clear:both&quot;&gt;&lt;/div&gt;
-          
+
           &lt;div style&#x3D;&quot;float:left; margin-left: 25px;&quot;&gt;
               {{errorFetchingImg}}
           &lt;/div&gt;
           &lt;div style&#x3D;&quot;clear:both&quot;&gt;&lt;/div&gt;
         &lt;/div&gt;
-        
+
         &lt;div class&#x3D;&quot;spinner-box&quot; *ngIf&#x3D;&quot;state &#x3D;&#x3D; 4&quot; role&#x3D;&quot;alert&quot; aria-live&#x3D;&quot;assertive&quot;&gt;
           &lt;span&gt;{{translatedMessages.verifyingAnswer[language]}}&lt;/span&gt;
         &lt;/div&gt;
         &lt;div class&#x3D;&quot;error-captcha&quot; *ngIf&#x3D;&quot;state &#x3D;&#x3D;&#x3D; 6&quot;  role&#x3D;&quot;alert&quot; aria-live&#x3D;&quot;assertive&quot;&gt;
           &lt;svg class&#x3D;&quot;icon-exclamation-triangle&quot;&gt;&lt;use xlink:href&#x3D;&quot;#icon-exclamation-triangle-def&quot;&gt;&lt;/use&gt;&lt;/svg&gt;
-          &lt;span&gt;{{translatedMessages.errorVerifyingAnswer[language].substring(0,translatedMessages.errorVerifyingAnswer[language].indexOf(&#x27;{&#x27;))}} 
-              &lt;a href&#x3D;&quot;javascript:void(0)&quot; (click)&#x3D;&quot;retryFetchCaptcha()&quot;&gt;{{translatedMessages.errorVerifyingAnswer[language].substring(translatedMessages.errorVerifyingAnswer[language].lastIndexOf(&#x27;{&#x27;)+1,translatedMessages.errorVerifyingAnswer[language].indexOf(&#x27;}&#x27;))}}&lt;/a&gt; 
-              {{translatedMessages.errorVerifyingAnswer[language].substring(translatedMessages.errorVerifyingAnswer[language].lastIndexOf(&#x27;}&#x27;)+1)}} 
+          &lt;span&gt;{{translatedMessages.errorVerifyingAnswer[language].substring(0,translatedMessages.errorVerifyingAnswer[language].indexOf(&#x27;{&#x27;))}}
+              &lt;a href&#x3D;&quot;javascript:void(0)&quot; (click)&#x3D;&quot;retryFetchCaptcha()&quot;&gt;{{translatedMessages.errorVerifyingAnswer[language].substring(translatedMessages.errorVerifyingAnswer[language].lastIndexOf(&#x27;{&#x27;)+1,translatedMessages.errorVerifyingAnswer[language].indexOf(&#x27;}&#x27;))}}&lt;/a&gt;
+              {{translatedMessages.errorVerifyingAnswer[language].substring(translatedMessages.errorVerifyingAnswer[language].lastIndexOf(&#x27;}&#x27;)+1)}}
           &lt;/span&gt;
           &lt;p&gt;
           &lt;/p&gt;
         &lt;/div&gt;
-        
+
         &lt;div class&#x3D;&quot;captcha-error&quot; style&#x3D;&quot;margin-top: 2px&quot; *ngIf&#x3D;&quot;incorrectAnswer &#x3D;&#x3D;&#x3D; true&quot; role&#x3D;&quot;alert&quot; aria-live&#x3D;&quot;assertive&quot;&gt;
           {{translatedMessages.incorrectAnswer[language]}}
         &lt;/div&gt;
+
+        &lt;div class&#x3D;&quot;captcha-error&quot; style&#x3D;&quot;margin-top: 2px&quot; *ngIf&#x3D;&quot;state &#x3D;&#x3D;&#x3D; 2 &amp;&amp; !incorrectAnswer &amp;&amp;  controlDir?.touched &amp;&amp; controlDir?.errors?.required&quot; role&#x3D;&quot;alert&quot; aria-live&#x3D;&quot;assertive&quot;&gt;
+            Field is required.
+          &lt;/div&gt;
       &lt;/div&gt;
-      
+
       &lt;/div&gt;
     &lt;/div&gt;
   &lt;/form&gt;
@@ -2244,7 +2693,7 @@ enum CAPTCHA_STATE {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="bcgov-captcha">  <svg style="position: absolute; width: 0; height: 0; overflow: hidden" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">    <defs>        <symbol id="icon-play-def" viewBox="0 0 32 32">            <path d="M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM16 29c-7.18 0-13-5.82-13-13s5.82-13 13-13 13 5.82 13 13-5.82 13-13 13zM12 9l12 7-12 7z"></path>        </symbol>          <symbol id="icon-loop-def" viewBox="0 0 32 32">          <path d="M27.802 5.197c-2.925-3.194-7.13-5.197-11.803-5.197-8.837 0-16 7.163-16 16h3c0-7.18 5.82-13 13-13 3.844 0 7.298 1.669 9.678 4.322l-4.678 4.678h11v-11l-4.198 4.197z"></path>          <path d="M29 16c0 7.18-5.82 13-13 13-3.844 0-7.298-1.669-9.678-4.322l4.678-4.678h-11v11l4.197-4.197c2.925 3.194 7.13 5.197 11.803 5.197 8.837 0 16-7.163 16-16h-3z"></path>        </symbol>                  <symbol id="icon-check-def" viewBox="0 0 24 24">          <path d="M9 16.172l10.594-10.594 1.406 1.406-12 12-5.578-5.578 1.406-1.406z"></path>        </symbol>                    <symbol id="icon-exclamation-triangle-def" viewBox="0 0 28 28">            <path d="M16 21.484v-2.969c0-0.281-0.219-0.516-0.5-0.516h-3c-0.281 0-0.5 0.234-0.5 0.516v2.969c0 0.281 0.219 0.516 0.5 0.516h3c0.281 0 0.5-0.234 0.5-0.516zM15.969 15.641l0.281-7.172c0-0.094-0.047-0.219-0.156-0.297-0.094-0.078-0.234-0.172-0.375-0.172h-3.437c-0.141 0-0.281 0.094-0.375 0.172-0.109 0.078-0.156 0.234-0.156 0.328l0.266 7.141c0 0.203 0.234 0.359 0.531 0.359h2.891c0.281 0 0.516-0.156 0.531-0.359zM15.75 1.047l12 22c0.344 0.609 0.328 1.359-0.031 1.969s-1.016 0.984-1.719 0.984h-24c-0.703 0-1.359-0.375-1.719-0.984s-0.375-1.359-0.031-1.969l12-22c0.344-0.641 1.016-1.047 1.75-1.047s1.406 0.406 1.75 1.047z"></path>        </symbol>            </defs>  </svg>  <form style="clear:both" #formRef="ngForm">    <div [ngClass]="{\'has-error\': !!incorrectAnswer}">      <div>                <div class="spinner-box" *ngIf="!state || state === 1">         <div style="float:left; margin: 2px 0 1px 8px">            <svg class="lds-spinner" width="45px"  height="45px"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" style="background: none;"><g transform="rotate(0 50 50)">                <rect x="47" y="22" rx="9.4" ry="4.4" width="6" height="16" fill="#1d3f72">                  <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="-0.8888888888888888s" repeatCount="indefinite"></animate>                </rect>              </g><g transform="rotate(40 50 50)">                <rect x="47" y="22" rx="9.4" ry="4.4" width="6" height="16" fill="#1d3f72">                  <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="-0.7777777777777778s" repeatCount="indefinite"></animate>                </rect>              </g><g transform="rotate(80 50 50)">                <rect x="47" y="22" rx="9.4" ry="4.4" width="6" height="16" fill="#1d3f72">                  <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="-0.6666666666666666s" repeatCount="indefinite"></animate>                </rect>              </g><g transform="rotate(120 50 50)">                <rect x="47" y="22" rx="9.4" ry="4.4" width="6" height="16" fill="#1d3f72">                  <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="-0.5555555555555556s" repeatCount="indefinite"></animate>                </rect>              </g><g transform="rotate(160 50 50)">                <rect x="47" y="22" rx="9.4" ry="4.4" width="6" height="16" fill="#1d3f72">                  <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="-0.4444444444444444s" repeatCount="indefinite"></animate>                </rect>              </g><g transform="rotate(200 50 50)">                <rect x="47" y="22" rx="9.4" ry="4.4" width="6" height="16" fill="#1d3f72">                  <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="-0.3333333333333333s" repeatCount="indefinite"></animate>                </rect>              </g><g transform="rotate(240 50 50)">                <rect x="47" y="22" rx="9.4" ry="4.4" width="6" height="16" fill="#1d3f72">                  <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="-0.2222222222222222s" repeatCount="indefinite"></animate>                </rect>              </g><g transform="rotate(280 50 50)">                <rect x="47" y="22" rx="9.4" ry="4.4" width="6" height="16" fill="#1d3f72">                  <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="-0.1111111111111111s" repeatCount="indefinite"></animate>                </rect>              </g><g transform="rotate(320 50 50)">                <rect x="47" y="22" rx="9.4" ry="4.4" width="6" height="16" fill="#1d3f72">                  <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animate>                </rect>              </g></svg>         </div>         <div style="float:left; margin: 16px 0 1px 3px">            {{translatedMessages.loadingImage[language]}}         </div>         <div style="clear:both"></div>        </div>                <div [ngClass]="{\'captcha-box-visible\': state === 2, \'captcha-box-invisible\': state !== 2}">          <div>            <div style="float: left;" #image class="captcha-image"></div>            <audio #audioElement *ngIf="audio && audio.length > 0" id="audioElement" [src]="audio">                {{translatedMessages.browserNotSupportAudio[language]}}            </audio>            <div style="float: left; margin-top: 8px">              <a class="play-audio" href="javascript:void(0)" (click)="playAudio()" role="button">                <svg *ngIf="!fetchingAudioInProgress" class="icon-play"><use xlink:href="#icon-play-def"></use></svg>                                <svg *ngIf="fetchingAudioInProgress" class="lds-spinner" width="15px"  height="15px"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" style="background: none;"><g transform="rotate(0 50 50)">                  <rect x="45" y="9" rx="2.7" ry="0.54" width="10" height="22" fill="#1d3f72">                    <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="-0.8888888888888888s" repeatCount="indefinite"></animate>                  </rect>                </g><g transform="rotate(40 50 50)">                  <rect x="45" y="9" rx="2.7" ry="0.54" width="10" height="22" fill="#1d3f72">                    <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="-0.7777777777777778s" repeatCount="indefinite"></animate>                  </rect>                </g><g transform="rotate(80 50 50)">                  <rect x="45" y="9" rx="2.7" ry="0.54" width="10" height="22" fill="#1d3f72">                    <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="-0.6666666666666666s" repeatCount="indefinite"></animate>                  </rect>                </g><g transform="rotate(120 50 50)">                  <rect x="45" y="9" rx="2.7" ry="0.54" width="10" height="22" fill="#1d3f72">                    <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="-0.5555555555555556s" repeatCount="indefinite"></animate>                  </rect>                </g><g transform="rotate(160 50 50)">                  <rect x="45" y="9" rx="2.7" ry="0.54" width="10" height="22" fill="#1d3f72">                    <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="-0.4444444444444444s" repeatCount="indefinite"></animate>                  </rect>                </g><g transform="rotate(200 50 50)">                  <rect x="45" y="9" rx="2.7" ry="0.54" width="10" height="22" fill="#1d3f72">                    <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="-0.3333333333333333s" repeatCount="indefinite"></animate>                  </rect>                </g><g transform="rotate(240 50 50)">                  <rect x="45" y="9" rx="2.7" ry="0.54" width="10" height="22" fill="#1d3f72">                    <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="-0.2222222222222222s" repeatCount="indefinite"></animate>                  </rect>                </g><g transform="rotate(280 50 50)">                  <rect x="45" y="9" rx="2.7" ry="0.54" width="10" height="22" fill="#1d3f72">                    <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="-0.1111111111111111s" repeatCount="indefinite"></animate>                  </rect>                </g><g transform="rotate(320 50 50)">                  <rect x="45" y="9" rx="2.7" ry="0.54" width="10" height="22" fill="#1d3f72">                    <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animate>                  </rect>                </g></svg>                {{translatedMessages.playAudio[language]}}              </a>              <div style="clear:both;"></div>                            <a class="try-another-image" href="javascript:void(0)" (click)="retryFetchCaptcha()" role="button">                  <svg class="icon-loop icon-loop-def"><use xlink:href="#icon-loop-def"></use></svg>                                  {{translatedMessages.tryAnotherImg[language]}}              </a>            </div>          </div>          <div style="clear:both; margin-bottom: 8px;"></div>          <div style="float:left;">            <label for="answer">                {{userPromptMessage || translatedMessages.userPromptMessage[language]}}              <input id="answer" type="text"                #userAnswerRef = "ngModel"                [(ngModel)]="answer"                (input)="answerChanged($event)"                [ngClass]="{\'captcha-wrong-answer\': userAnswerRef.dirty && incorrectAnswer}"                name="answer"                maxlength="6"                required                autocorrect="off"                 autocomplete="off"                 autocapitalize="none">            </label>          </div>        </div>        <div style="clear:both;"></div>        <div style="float:left;">        <div class="error-captcha" *ngIf="state === 3" role="alert" aria-live="assertive">          <div style="float:left; margin-left: 5px;">            <svg class="icon-exclamation-triangle"><use xlink:href="#icon-exclamation-triangle-def"></use></svg>              <span> {{translatedMessages.errorRetrievingImg[language].substring(0,translatedMessages.errorRetrievingImg[language].indexOf(\'{\'))}}               <a href="javascript:void(0)" (click)="retryFetchCaptcha()">{{translatedMessages.errorRetrievingImg[language].substring(translatedMessages.errorRetrievingImg[language].lastIndexOf(\'{\')+1,translatedMessages.errorRetrievingImg[language].indexOf(\'}\'))}}</a>               {{translatedMessages.errorRetrievingImg[language].substring(translatedMessages.errorRetrievingImg[language].lastIndexOf(\'}\')+1)}}             </span>          </div>          <div style="clear:both"></div>                    <div style="float:left; margin-left: 25px;">              {{errorFetchingImg}}          </div>          <div style="clear:both"></div>        </div>                <div class="spinner-box" *ngIf="state == 4" role="alert" aria-live="assertive">          <span>{{translatedMessages.verifyingAnswer[language]}}</span>        </div>        <div class="error-captcha" *ngIf="state === 6"  role="alert" aria-live="assertive">          <svg class="icon-exclamation-triangle"><use xlink:href="#icon-exclamation-triangle-def"></use></svg>          <span>{{translatedMessages.errorVerifyingAnswer[language].substring(0,translatedMessages.errorVerifyingAnswer[language].indexOf(\'{\'))}}               <a href="javascript:void(0)" (click)="retryFetchCaptcha()">{{translatedMessages.errorVerifyingAnswer[language].substring(translatedMessages.errorVerifyingAnswer[language].lastIndexOf(\'{\')+1,translatedMessages.errorVerifyingAnswer[language].indexOf(\'}\'))}}</a>               {{translatedMessages.errorVerifyingAnswer[language].substring(translatedMessages.errorVerifyingAnswer[language].lastIndexOf(\'}\')+1)}}           </span>          <p>          </p>        </div>                <div class="captcha-error" style="margin-top: 2px" *ngIf="incorrectAnswer === true" role="alert" aria-live="assertive">          {{translatedMessages.incorrectAnswer[language]}}        </div>      </div>            </div>    </div>  </form>  <div class="confirm-correct-answer" style="float:left" *ngIf="state === 5" role="alert" aria-live="assertive">    <svg class="icon-check"><use xlink:href="#icon-check-def"></use></svg>    {{translatedMessages.correct[language]}} <span>{{successMessage || translatedMessages.successMessage[language]}}</span>  </div>  <div style="clear:both;"></div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="bcgov-captcha">  <svg style="position: absolute; width: 0; height: 0; overflow: hidden" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">    <defs>        <symbol id="icon-play-def" viewBox="0 0 32 32">            <path d="M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM16 29c-7.18 0-13-5.82-13-13s5.82-13 13-13 13 5.82 13 13-5.82 13-13 13zM12 9l12 7-12 7z"></path>        </symbol>        <symbol id="icon-loop-def" viewBox="0 0 32 32">          <path d="M27.802 5.197c-2.925-3.194-7.13-5.197-11.803-5.197-8.837 0-16 7.163-16 16h3c0-7.18 5.82-13 13-13 3.844 0 7.298 1.669 9.678 4.322l-4.678 4.678h11v-11l-4.198 4.197z"></path>          <path d="M29 16c0 7.18-5.82 13-13 13-3.844 0-7.298-1.669-9.678-4.322l4.678-4.678h-11v11l4.197-4.197c2.925 3.194 7.13 5.197 11.803 5.197 8.837 0 16-7.163 16-16h-3z"></path>        </symbol>        <symbol id="icon-check-def" viewBox="0 0 24 24">          <path d="M9 16.172l10.594-10.594 1.406 1.406-12 12-5.578-5.578 1.406-1.406z"></path>        </symbol>        <symbol id="icon-exclamation-triangle-def" viewBox="0 0 28 28">            <path d="M16 21.484v-2.969c0-0.281-0.219-0.516-0.5-0.516h-3c-0.281 0-0.5 0.234-0.5 0.516v2.969c0 0.281 0.219 0.516 0.5 0.516h3c0.281 0 0.5-0.234 0.5-0.516zM15.969 15.641l0.281-7.172c0-0.094-0.047-0.219-0.156-0.297-0.094-0.078-0.234-0.172-0.375-0.172h-3.437c-0.141 0-0.281 0.094-0.375 0.172-0.109 0.078-0.156 0.234-0.156 0.328l0.266 7.141c0 0.203 0.234 0.359 0.531 0.359h2.891c0.281 0 0.516-0.156 0.531-0.359zM15.75 1.047l12 22c0.344 0.609 0.328 1.359-0.031 1.969s-1.016 0.984-1.719 0.984h-24c-0.703 0-1.359-0.375-1.719-0.984s-0.375-1.359-0.031-1.969l12-22c0.344-0.641 1.016-1.047 1.75-1.047s1.406 0.406 1.75 1.047z"></path>        </symbol>    </defs>  </svg>  <form style="clear:both" #formRef="ngForm">    <div [ngClass]="{\'has-error\': !!incorrectAnswer}">      <div>        <div class="spinner-box" *ngIf="!state || state === 1">         <div style="float:left; margin: 2px 0 1px 8px">            <svg class="lds-spinner" width="45px"  height="45px"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" style="background: none;"><g transform="rotate(0 50 50)">                <rect x="47" y="22" rx="9.4" ry="4.4" width="6" height="16" fill="#1d3f72">                  <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="-0.8888888888888888s" repeatCount="indefinite"></animate>                </rect>              </g><g transform="rotate(40 50 50)">                <rect x="47" y="22" rx="9.4" ry="4.4" width="6" height="16" fill="#1d3f72">                  <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="-0.7777777777777778s" repeatCount="indefinite"></animate>                </rect>              </g><g transform="rotate(80 50 50)">                <rect x="47" y="22" rx="9.4" ry="4.4" width="6" height="16" fill="#1d3f72">                  <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="-0.6666666666666666s" repeatCount="indefinite"></animate>                </rect>              </g><g transform="rotate(120 50 50)">                <rect x="47" y="22" rx="9.4" ry="4.4" width="6" height="16" fill="#1d3f72">                  <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="-0.5555555555555556s" repeatCount="indefinite"></animate>                </rect>              </g><g transform="rotate(160 50 50)">                <rect x="47" y="22" rx="9.4" ry="4.4" width="6" height="16" fill="#1d3f72">                  <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="-0.4444444444444444s" repeatCount="indefinite"></animate>                </rect>              </g><g transform="rotate(200 50 50)">                <rect x="47" y="22" rx="9.4" ry="4.4" width="6" height="16" fill="#1d3f72">                  <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="-0.3333333333333333s" repeatCount="indefinite"></animate>                </rect>              </g><g transform="rotate(240 50 50)">                <rect x="47" y="22" rx="9.4" ry="4.4" width="6" height="16" fill="#1d3f72">                  <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="-0.2222222222222222s" repeatCount="indefinite"></animate>                </rect>              </g><g transform="rotate(280 50 50)">                <rect x="47" y="22" rx="9.4" ry="4.4" width="6" height="16" fill="#1d3f72">                  <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="-0.1111111111111111s" repeatCount="indefinite"></animate>                </rect>              </g><g transform="rotate(320 50 50)">                <rect x="47" y="22" rx="9.4" ry="4.4" width="6" height="16" fill="#1d3f72">                  <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animate>                </rect>              </g></svg>         </div>         <div style="float:left; margin: 16px 0 1px 3px">            {{translatedMessages.loadingImage[language]}}         </div>         <div style="clear:both"></div>        </div>        <div [ngClass]="{\'captcha-box-visible\': state === 2, \'captcha-box-invisible\': state !== 2}">          <div>            <div style="float: left;" #image class="captcha-image"></div>            <audio #audioElement *ngIf="audio && audio.length > 0" id="audioElement" [src]="audio">                {{translatedMessages.browserNotSupportAudio[language]}}            </audio>            <div style="float: left; margin-top: 8px">              <a class="play-audio" href="javascript:void(0)" (click)="playAudio()" role="button">                <svg *ngIf="!fetchingAudioInProgress" class="icon-play"><use xlink:href="#icon-play-def"></use></svg>                <svg *ngIf="fetchingAudioInProgress" class="lds-spinner" width="15px"  height="15px"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" style="background: none;"><g transform="rotate(0 50 50)">                  <rect x="45" y="9" rx="2.7" ry="0.54" width="10" height="22" fill="#1d3f72">                    <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="-0.8888888888888888s" repeatCount="indefinite"></animate>                  </rect>                </g><g transform="rotate(40 50 50)">                  <rect x="45" y="9" rx="2.7" ry="0.54" width="10" height="22" fill="#1d3f72">                    <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="-0.7777777777777778s" repeatCount="indefinite"></animate>                  </rect>                </g><g transform="rotate(80 50 50)">                  <rect x="45" y="9" rx="2.7" ry="0.54" width="10" height="22" fill="#1d3f72">                    <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="-0.6666666666666666s" repeatCount="indefinite"></animate>                  </rect>                </g><g transform="rotate(120 50 50)">                  <rect x="45" y="9" rx="2.7" ry="0.54" width="10" height="22" fill="#1d3f72">                    <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="-0.5555555555555556s" repeatCount="indefinite"></animate>                  </rect>                </g><g transform="rotate(160 50 50)">                  <rect x="45" y="9" rx="2.7" ry="0.54" width="10" height="22" fill="#1d3f72">                    <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="-0.4444444444444444s" repeatCount="indefinite"></animate>                  </rect>                </g><g transform="rotate(200 50 50)">                  <rect x="45" y="9" rx="2.7" ry="0.54" width="10" height="22" fill="#1d3f72">                    <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="-0.3333333333333333s" repeatCount="indefinite"></animate>                  </rect>                </g><g transform="rotate(240 50 50)">                  <rect x="45" y="9" rx="2.7" ry="0.54" width="10" height="22" fill="#1d3f72">                    <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="-0.2222222222222222s" repeatCount="indefinite"></animate>                  </rect>                </g><g transform="rotate(280 50 50)">                  <rect x="45" y="9" rx="2.7" ry="0.54" width="10" height="22" fill="#1d3f72">                    <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="-0.1111111111111111s" repeatCount="indefinite"></animate>                  </rect>                </g><g transform="rotate(320 50 50)">                  <rect x="45" y="9" rx="2.7" ry="0.54" width="10" height="22" fill="#1d3f72">                    <animate attributeName="opacity" values="1;0" times="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animate>                  </rect>                </g></svg>                {{translatedMessages.playAudio[language]}}              </a>              <div style="clear:both;"></div>              <a class="try-another-image" href="javascript:void(0)" (click)="retryFetchCaptcha()" role="button">                  <svg class="icon-loop icon-loop-def"><use xlink:href="#icon-loop-def"></use></svg>                  {{translatedMessages.tryAnotherImg[language]}}              </a>            </div>          </div>          <div style="clear:both; margin-bottom: 8px;"></div>          <div style="float:left;">            <label for="answer">                {{userPromptMessage || translatedMessages.userPromptMessage[language]}}              <input id="answer" type="text"                #userAnswerRef = "ngModel"                [(ngModel)]="answer"                (input)="answerChanged($event)"                (blur)=\'onBlur()\'                [ngClass]="{\'captcha-wrong-answer\': userAnswerRef.dirty && incorrectAnswer}"                name="answer"                maxlength="6"                required                autocorrect="off"                autocomplete="off"                autocapitalize="none">            </label>          </div>        </div>        <div style="clear:both;"></div>        <div style="float:left;">        <div class="error-captcha" *ngIf="state === 3" role="alert" aria-live="assertive">          <div style="float:left; margin-left: 5px;">            <svg class="icon-exclamation-triangle"><use xlink:href="#icon-exclamation-triangle-def"></use></svg>            <span> {{translatedMessages.errorRetrievingImg[language].substring(0,translatedMessages.errorRetrievingImg[language].indexOf(\'{\'))}}              <a href="javascript:void(0)" (click)="retryFetchCaptcha()">{{translatedMessages.errorRetrievingImg[language].substring(translatedMessages.errorRetrievingImg[language].lastIndexOf(\'{\')+1,translatedMessages.errorRetrievingImg[language].indexOf(\'}\'))}}</a>              {{translatedMessages.errorRetrievingImg[language].substring(translatedMessages.errorRetrievingImg[language].lastIndexOf(\'}\')+1)}}            </span>          </div>          <div style="clear:both"></div>          <div style="float:left; margin-left: 25px;">              {{errorFetchingImg}}          </div>          <div style="clear:both"></div>        </div>        <div class="spinner-box" *ngIf="state == 4" role="alert" aria-live="assertive">          <span>{{translatedMessages.verifyingAnswer[language]}}</span>        </div>        <div class="error-captcha" *ngIf="state === 6"  role="alert" aria-live="assertive">          <svg class="icon-exclamation-triangle"><use xlink:href="#icon-exclamation-triangle-def"></use></svg>          <span>{{translatedMessages.errorVerifyingAnswer[language].substring(0,translatedMessages.errorVerifyingAnswer[language].indexOf(\'{\'))}}              <a href="javascript:void(0)" (click)="retryFetchCaptcha()">{{translatedMessages.errorVerifyingAnswer[language].substring(translatedMessages.errorVerifyingAnswer[language].lastIndexOf(\'{\')+1,translatedMessages.errorVerifyingAnswer[language].indexOf(\'}\'))}}</a>              {{translatedMessages.errorVerifyingAnswer[language].substring(translatedMessages.errorVerifyingAnswer[language].lastIndexOf(\'}\')+1)}}          </span>          <p>          </p>        </div>        <div class="captcha-error" style="margin-top: 2px" *ngIf="incorrectAnswer === true" role="alert" aria-live="assertive">          {{translatedMessages.incorrectAnswer[language]}}        </div>        <div class="captcha-error" style="margin-top: 2px" *ngIf="state === 2 && !incorrectAnswer &&  controlDir?.touched && controlDir?.errors?.required" role="alert" aria-live="assertive">            Field is required.          </div>      </div>      </div>    </div>  </form>  <div class="confirm-correct-answer" style="float:left" *ngIf="state === 5" role="alert" aria-live="assertive">    <svg class="icon-check"><use xlink:href="#icon-check-def"></use></svg>    {{translatedMessages.correct[language]}} <span>{{successMessage || translatedMessages.successMessage[language]}}</span>  </div>  <div style="clear:both;"></div></div></div>'
     var COMPONENTS = [{'name': 'AccordionCommonComponent', 'selector': 'common-accordion'},{'name': 'AddressComponent', 'selector': 'common-address'},{'name': 'ButtonComponent', 'selector': 'common-button'},{'name': 'ButtonGroupComponent', 'selector': 'common-button-group'},{'name': 'CaptchaComponent', 'selector': 'common-captcha'},{'name': 'CheckboxComponent', 'selector': 'common-checkbox'},{'name': 'CityComponent', 'selector': 'common-city'},{'name': 'ConfirmTemplateComponent', 'selector': 'common-confirm-template'},{'name': 'ConsentModalComponent', 'selector': 'common-consent-modal'},{'name': 'CoreBreadcrumbComponent', 'selector': 'common-core-breadcrumb'},{'name': 'CountryComponent', 'selector': 'common-country'},{'name': 'DateComponent', 'selector': 'common-date'},{'name': 'DatepickerComponent', 'selector': 'common-datepicker'},{'name': 'DropdownComponent', 'selector': 'common-dropdown'},{'name': 'EmailComponent', 'selector': 'common-email'},{'name': 'ErrorContainerComponent', 'selector': 'common-error-container'},{'name': 'FileUploaderComponent', 'selector': 'common-file-uploader'},{'name': 'FormActionBarComponent', 'selector': 'common-form-action-bar'},{'name': 'FormSubmitBarComponent', 'selector': 'common-form-submit-bar'},{'name': 'FullNameComponent', 'selector': 'common-full-name'},{'name': 'HeaderComponent', 'selector': 'common-header'},{'name': 'NameComponent', 'selector': 'common-name'},{'name': 'PageFrameworkComponent', 'selector': 'common-page-framework'},{'name': 'PageSectionComponent', 'selector': 'common-page-section'},{'name': 'PasswordComponent', 'selector': 'common-password'},{'name': 'PhnComponent', 'selector': 'common-phn'},{'name': 'PhoneNumberComponent', 'selector': 'common-phone-number'},{'name': 'PostalCodeComponent', 'selector': 'common-postal-code'},{'name': 'ProvinceComponent', 'selector': 'common-province'},{'name': 'RadioComponent', 'selector': 'common-radio'},{'name': 'SampleModalComponent', 'selector': 'common-sample-modal'},{'name': 'SinComponent', 'selector': 'common-sin'},{'name': 'StreetComponent', 'selector': 'common-street'},{'name': 'ThumbnailComponent', 'selector': 'common-thumbnail'},{'name': 'ToggleComponent', 'selector': 'common-toggle'},{'name': 'WizardProgressBarComponent', 'selector': 'common-wizard-progress-bar'},{'name': 'XiconButtonComponent', 'selector': 'common-xicon-button'}];
     var DIRECTIVES = [{'name': 'DateFieldFormatDirective', 'selector': '[commonDateFieldFormat]'},{'name': 'DayValidationDirective', 'selector': '[commonDayValidation][ngModel]'},{'name': 'DuplicateCheckDirective', 'selector': '[commonDuplicateCheck]'},{'name': 'ValidateBcPostalDirective', 'selector': '[commonValidateBcPostal]'},{'name': 'ValidateCityDirective', 'selector': '[commonValidateCity]'},{'name': 'ValidateEmailDirective', 'selector': '[commonValidateEmail]'},{'name': 'ValidateNameDirective', 'selector': '[commonValidateName]'},{'name': 'ValidatePhnDirective', 'selector': '[commonValidatePhn]'},{'name': 'ValidatePhoneDirective', 'selector': '[commonValidatePhone]'},{'name': 'ValidatePostalcodeDirective', 'selector': '[commonValidatePostalcode]'},{'name': 'ValidateRegionDirective', 'selector': '[commonValidateRegion]'},{'name': 'ValidateSinDirective', 'selector': '[commonValidateSin]'},{'name': 'ValidateStreetDirective', 'selector': '[commonValidateStreet]'},{'name': 'YearValidateDirective', 'selector': '[commonYearValidate][ngModel]'}];
     var ACTUAL_COMPONENT = {'name': 'CaptchaComponent'};
