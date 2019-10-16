@@ -57,6 +57,7 @@ import { EmailComponent } from './components/email/email.component';
 import { ValidateEmailDirective } from './components/email/validate-email.directive';
 import { ValidatePhoneDirective } from './components/phone-number/validate-phone-number.directive';
 import { ConfirmTemplateComponent } from './components/confirm-template/confirm-template.component';
+import { GeocoderInputComponent } from './components/geocoder-input/geocoder-input.component';
 
 const componentList = [
   CoreBreadcrumbComponent,
@@ -95,6 +96,7 @@ const componentList = [
   SampleModalComponent,
   EmailComponent,
   ConfirmTemplateComponent,
+  GeocoderInputComponent,
 
   // Directives
   DayValidationDirective,
