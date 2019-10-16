@@ -73,6 +73,7 @@ export class AddressComponent extends Base
   @Input() disableGeocoder: boolean = false;
   @Input() labels: AddrLabelList;
   @Input() maxlengths: Maxlengths;
+  @Input() bcOnly: boolean = false;
 
   @Input()
   set address(val: Address) {
@@ -132,6 +133,8 @@ export class AddressComponent extends Base
   }
 
   ngOnInit() {
+
+    console.log( 'address: ', this.bcOnly );
 
     this.setLabels();
     this.setMaxlengths();
