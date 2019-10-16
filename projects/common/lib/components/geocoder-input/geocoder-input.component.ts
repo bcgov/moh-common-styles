@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ChangeDetectorRef, Output, EventEmitter, SimpleChanges, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectorRef, Output, EventEmitter, SimpleChanges, OnChanges, Optional, Self } from '@angular/core';
 import { Subject, Observable, of } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap, tap, catchError } from 'rxjs/operators';
 import { TypeaheadMatch } from 'ngx-bootstrap';
@@ -7,17 +7,39 @@ import { GeocoderService, GeoAddressResult } from '../../services/geocoder.servi
 import { CANADA } from '../country/country.component';
 import { BRITISH_COLUMBIA } from '../province/province.component';
 import { Address } from '../../models/address.model';
+import { NgControl, ControlValueAccessor } from '@angular/forms';
 
+
+/**
+ * For TemplateForms, pass in an Address and recieve an Address
+ * @example
+ *           <common-geocoder-input
+ *               label='Physical Address'
+ *               [(ngModel)]="myAddress">
+ *           </common-geocoder-input>
+ *
+ * @note
+ * For ReactiveForms, pass in a string and recieve a string.  If you need the
+ * Address object you can use (addressChange) in addition.
+ *
+ * @example
+ *           <common-geocoder-input
+ *              label='Physical Address'
+ *              formControlName="address"
+ *              (addressChange)="getAddressObject($event)">
+ *          </common-geocoder-input>
+ */
 @Component({
   selector: 'common-geocoder-input',
   templateUrl: './geocoder-input.component.html',
   styleUrls: ['./geocoder-input.component.scss']
 })
-export class GeocoderInputComponent extends Base implements OnInit, OnChanges {
+export class GeocoderInputComponent extends Base implements OnInit, OnChanges, ControlValueAccessor {
 
   @Input() label: string = 'Address Lookup';
   @Input() address: Address = new Address();
   @Output() addressChange = new EventEmitter<Address>();
+  @Input() maxlength: string = '255';
 
   /** The string in the box the user has typed */
   public search: string;
@@ -34,8 +56,14 @@ export class GeocoderInputComponent extends Base implements OnInit, OnChanges {
   /** The subject that triggers on user text input and gets typeaheadList$ to update.  */
   private searchText$ = new Subject<string>();
 
-  constructor(private geocoderService: GeocoderService, private cd: ChangeDetectorRef) {
+  _onChange = (_: any) => {};
+  _onTouched = (_?: any) => {};
+
+  constructor(@Optional() @Self() public controlDir: NgControl, private geocoderService: GeocoderService, private cd: ChangeDetectorRef) {
     super();
+    if ( controlDir ) {
+      controlDir.valueAccessor = this;
+    }
   }
 
   ngOnInit() {
@@ -50,12 +78,17 @@ export class GeocoderInputComponent extends Base implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes.address.currentValue._geocoderFullAddress) {
-      this.search = changes.address.currentValue._geocoderFullAddress;
-      this.isTypeaheadLoading = false;
-      this.hasNoResults = false;
-      this.selectedAddress = changes.address.currentValue;
-    }
+    if (changes &&
+      changes.address &&
+      changes.address.currentValue._geocoderFullAddress) {
+        const stripped = this.stripStringToMaxLength(changes.address.currentValue._geocoderFullAddress);
+
+        this.search = stripped;
+        this.isTypeaheadLoading = false;
+        this.hasNoResults = false;
+        this.selectedAddress = changes.address.currentValue;
+      }
+
   }
 
   onError(err): Observable<GeoAddressResult[]> {
@@ -87,22 +120,19 @@ export class GeocoderInputComponent extends Base implements OnInit, OnChanges {
   onSelect(event: TypeaheadMatch): void {
     const data: GeoAddressResult = event.item;
 
-
     const addr = new Address();
     addr.city = data.city;
-
     // GeoCoder is only for BC, Canada, values can be set.
     addr.country = CANADA; // Default country is Canda
     addr.province = BRITISH_COLUMBIA;  // Default province is BC
     addr.street = data.street;
-
-    // addr._geocoderFullAddress = data.fullAddress;
-
-    // Save and emit Address
+    // Save and emit Address for (addressChange)
     this.selectedAddress = addr;
-
-    // console.log( 'OnSelect (geoCoder): ', this.selectedAddress );
     this.addressChange.emit(this.selectedAddress);
+
+    // Output string to FormControl.
+    const stripped = this.stripStringToMaxLength(data.fullAddress);
+    this._onChange(stripped);
   }
 
   onKeyUp(event: KeyboardEvent): void {
@@ -116,6 +146,33 @@ export class GeocoderInputComponent extends Base implements OnInit, OnChanges {
     // Clear out selection
     this.selectedAddress = null;
     this.searchText$.next(this.search);
+  }
+
+  onBlur(event): void {
+    this._onTouched();
+    this._onChange(this.search);
+  }
+
+
+  writeValue( value: any ): void {
+    if ( value ) {
+      this.search = value;
+    }
+  }
+
+  // Register change function
+  registerOnChange( fn: any ): void {
+    this._onChange = fn;
+  }
+
+  // Register touched function
+  registerOnTouched( fn: any ): void {
+    this._onTouched = fn;
+  }
+
+  private stripStringToMaxLength(str: string){
+    const maxlength = parseInt(this.maxlength, 10);
+    return str.slice(0, maxlength);
   }
 
 }

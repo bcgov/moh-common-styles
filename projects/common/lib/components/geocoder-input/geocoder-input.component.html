@@ -1,7 +1,7 @@
 
 <label for="geocoder_{{label}}" class='text-nowrap'>{{label}}
   <span class="geocoder-status">
-    <ng-container *ngIf="isTypeaheadLoading; else statusContainer"> &mdash; Loading 
+    <ng-container *ngIf="isTypeaheadLoading; else statusContainer"> &mdash; Loading
       <i class="fa fa-spinner fa-pulse fa-fw"></i>
     </ng-container>
   </span>
@@ -20,6 +20,8 @@
        (typeaheadLoading)="onLoading($event)"
        (typeaheadOnSelect)="onSelect($event)"
        (typeaheadNoResults)="onNoResults($event)"
+       (blur)="onBlur($event)"
+       [attr.maxlength]='maxlength'
        typeaheadOptionField='fullAddress'
        typeaheadMinLength='3'
        autocomplete="off"
@@ -32,17 +34,17 @@
     <span> &mdash; Selected
         <i class="fa fa-check fa-fw text-success"></i>
     </span>
-</ng-template>        
+</ng-template>
 
 <ng-template #noResults>
     <span *ngIf="hasNoResults"> &mdash; No Results
         <i class="fa fa-times fa-fw text-warning"></i>
     </span>
-</ng-template>        
+</ng-template>
 
 
 <ng-template #error>
     <span *ngIf='hasError; else noResults'> &mdash; Error
         <i class="fa fa-exclamation-triangle fa-fw text-danger"></i>
     </span>
-</ng-template>   
+</ng-template>
