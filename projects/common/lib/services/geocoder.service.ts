@@ -3,6 +3,7 @@ import { AbstractHttpService } from './abstract-api-service';
 import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
+import { CANADA } from '../components/country/country.component';
 
 export interface GeoAddressResult {
     /** String from the API that includes street, city, province, and country. */
@@ -20,8 +21,8 @@ export interface GeoAddressResult {
 export class GeocoderService extends AbstractHttpService {
 
     protected _headers: HttpHeaders = new HttpHeaders();
-    private BASE_URL = 'https://geocoder.api.gov.bc.ca';
-    private ADDRESS_URL = `${this.BASE_URL}/addresses.json?`;
+    protected BASE_URL = 'https://geocoder.api.gov.bc.ca';
+    protected  ADDRESS_URL = `${this.BASE_URL}/addresses.json?`;
 
     constructor(protected http: HttpClient) {
         super(http);
@@ -49,7 +50,7 @@ export class GeocoderService extends AbstractHttpService {
      *
      * @param obj The response from ADDRESS_URL
      */
-    private processResponse(obj): GeoAddressResult[] {
+    protected processResponse(obj): GeoAddressResult[] {
         return obj.features.map(feature => {
             const props = feature.properties;
             const city = props.localityName;
@@ -58,7 +59,7 @@ export class GeocoderService extends AbstractHttpService {
             const cityIndex = props.fullAddress.indexOf(`, ${city}`);
             const street = props.fullAddress.slice(0, cityIndex);
             const province = props.provinceCode;
-            const country = 'CAN'; // Default to Canada
+            const country = CANADA; // ALWAYS return Canada
 
             return {
               fullAddress: props.fullAddress,
