@@ -58,6 +58,9 @@ import { ValidateEmailDirective } from './components/email/validate-email.direct
 import { ValidatePhoneDirective } from './components/phone-number/validate-phone-number.directive';
 import { ConfirmTemplateComponent } from './components/confirm-template/confirm-template.component';
 import { GeocoderInputComponent } from './components/geocoder-input/geocoder-input.component';
+import { ValidateDateDirective } from './components/ng-date/validate-date.directive';
+import { NgDateComponent } from './components/ng-date/ng-date.component';
+
 
 const componentList = [
   CoreBreadcrumbComponent,
@@ -97,6 +100,7 @@ const componentList = [
   EmailComponent,
   ConfirmTemplateComponent,
   GeocoderInputComponent,
+  NgDateComponent,
 
   // Directives
   DayValidationDirective,
@@ -113,6 +117,7 @@ const componentList = [
   ValidatePostalcodeDirective,
   ValidateEmailDirective,
   ValidatePhoneDirective,
+  ValidateDateDirective
 ];
 @NgModule({
   imports: [
@@ -128,7 +133,7 @@ const componentList = [
     AccordionModule.forRoot()
   ],
   declarations: [
-    componentList
+    componentList,
   ],
   exports: [
     componentList

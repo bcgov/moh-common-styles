@@ -1,0 +1,39 @@
+<fieldset>
+  <legend class="date--legend">{{label}}</legend>
+  <div class="form-group date-row">
+   <!-- <label class="visuallyhidden" for="{{monthLabelforId}}">month</label>
+    <ng-select [items]="_monthList"
+               [ngModel]="_date.month"
+               (ngModelChange)="onValueChange($event, 'month')"
+               (blur)="onBlur($event)"
+               [disabled]="disabled"
+               [required]="required"
+               labelForId="{{monthLabelforId}}"
+               [clearable]="false"
+               bindValue="idx"
+               bindLabel="name"
+               placeholder="month"></ng-select> -->
+
+    <label class="visuallyhidden" for="{{dayLabelforId}}">Day</label>
+    <input type="number"
+           class="form-control dayInput"
+           name="{{dayLabelforId}}"
+           placeholder="Day"
+           [(ngModel)]="_date.day"
+           (blur)="onBlur($event)"
+           [disabled]="disabled"
+           [required]="required"
+           min="1"
+           max="31">
+
+ <!--   <label class="visuallyhidden" for="{{yearLabelforId}}">Year</label>
+    <input type="number"
+          class="form-control yearInput"
+          name="{{yearLabelforId}}"
+          placeholder="Year"
+          [(ngModel)]="_date.year"
+          [disabled]="disabled"
+          [required]="required"
+          maxlength="4">-->
+  </div>
+</fieldset>
