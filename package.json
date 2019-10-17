@@ -1,6 +1,6 @@
 {
   "name": "moh-common-styles",
-  "version": "2.27.1",
+  "version": "2.27.2",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
