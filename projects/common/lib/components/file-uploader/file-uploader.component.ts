@@ -30,6 +30,11 @@ const sha1 = sha1_;
 import * as PDFJS_ from 'pdfjs-dist';
 const PDFJS: PDFJSStatic = (PDFJS_ as any);
 
+// const pdfjs = import('pdfjs-dist/build/pdf');
+// const pdfjsWorker = import('pdfjs-dist/build/pdf.worker.entry');
+import { pdfJsWorker } from 'pdfjs-dist/build/pdf.worker.entry';
+PDFJS.workerSrc=pdfJsWorker;
+
 export interface FileUploaderMsg {
     required: string;
 }
