@@ -7,33 +7,8 @@ const moment = moment_;
 
 // TODO: ControlValueAccessor
 // TODO: Remove moment
+// TODO: 
 
-
-/**
- * Component NPM package dependencies:
- * a) moment
- *
- * This component reports the following errors.
- *    required
- *    dayOutOfRange
- *    yearDistantPast
- *    yearDistantFuture
- *    noFutureDatesAllowed
- *    invalidValue
- *
- *  These messages can be changed by updated messages using the errorMessages interface/
- *  Ex. { required: 'This field is required', invalidValue: '{label} is invalid' }
- */
-
-export interface DateErrorMsg { // TODO: Remove - possible breaking change - currently datepicker uses it
-  required?: string;
-  dayOutOfRange?: string;
-  yearDistantPast?: string;
-  yearDistantFuture?: string;
-  noPastDatesAllowed?: string;
-  noFutureDatesAllowed?: string;
-  invalidValue?: string;
-}
 
 @Component({
   selector: 'common-date',
@@ -54,7 +29,7 @@ export class DateComponent extends Base implements OnInit, ControlValueAccessor 
   @Input() label: string = 'Date';
   /** Can be one of: "future", "past". "future" includes today, "past" does not. */
   @Input() restrictDate: 'future' | 'past' | 'any' = 'any';
-  @Input() errorMessages: ErrorMessage | DateErrorMsg;
+  @Input() errorMessages: ErrorMessage;
 
   /** @deprecated */
   @Input() required: boolean = true;
@@ -87,7 +62,9 @@ export class DateComponent extends Base implements OnInit, ControlValueAccessor 
               public form: NgForm,
               private cd: ChangeDetectorRef) {
     super();
+    console.log('dateComponent init');
     if (controlDir) {
+      console.log('dateComponent controLDir', controlDir);
       controlDir.valueAccessor = this;
     }
   }
@@ -100,19 +77,19 @@ export class DateComponent extends Base implements OnInit, ControlValueAccessor 
   }
 
   get month(): number {
-    if (this.date){
+    if (this.date) {
       return this.date.getMonth()
     }
   }
 
   get day(): number {
-    if (this.date){
+    if (this.date) {
       return this.date.getDate()
     }
   }
 
   get year(): number {
-    if (this.date){
+    if (this.date) {
       return this.date.getFullYear()
     }
   }
