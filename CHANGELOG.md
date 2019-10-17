@@ -2,6 +2,15 @@
 
 
 
+# [2.28.0](https://github.com/bcgov/moh-common-styles/compare/v2.27.2...v2.28.0) "moh-common-lib" (2019-10-17)
+
+
+### Bug Fixes
+
+* call _onChange to trigger form validations ([c91fef0](https://github.com/bcgov/moh-common-styles/commit/c91fef0))
+
+
+
 ## [2.27.2](https://github.com/bcgov/moh-common-styles/compare/v2.27.1...v2.27.2) "moh-common-lib" (2019-10-17)
 
 
