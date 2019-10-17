@@ -169,6 +169,11 @@ const sha1 &#x3D; sha1_;
 import * as PDFJS_ from &#x27;pdfjs-dist&#x27;;
 const PDFJS: PDFJSStatic &#x3D; (PDFJS_ as any);
 
+// const pdfjs &#x3D; import(&#x27;pdfjs-dist/build/pdf&#x27;);
+// const pdfjsWorker &#x3D; import(&#x27;pdfjs-dist/build/pdf.worker.entry&#x27;);
+import { pdfJsWorker } from &#x27;pdfjs-dist/build/pdf.worker.entry&#x27;;
+PDFJS.workerSrc&#x3D;pdfJsWorker;
+
 export interface FileUploaderMsg {
     required: string;
 }
