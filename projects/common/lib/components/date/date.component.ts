@@ -1,10 +1,13 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef, ChangeDetectorRef, forwardRef } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef, ChangeDetectorRef, forwardRef, Optional, Self } from '@angular/core';
 import { Base } from '../../models/base';
-import { SimpleDate } from '../../models/simple-date.interface';
-import { ControlContainer, NgForm, NgModel } from '@angular/forms';
+import { ControlContainer, NgForm, NgModel, ControlValueAccessor, NgControl } from '@angular/forms';
 import * as moment_ from 'moment';
 import { ErrorMessage, LabelReplacementTag, replaceLabelTag } from '../../models/error-message.interface';
 const moment = moment_;
+
+// TODO: ControlValueAccessor
+// TODO: Remove moment
+
 
 /**
  * Component NPM package dependencies:
@@ -36,27 +39,27 @@ export interface DateErrorMsg { // TODO: Remove - possible breaking change - cur
   selector: 'common-date',
   templateUrl: './date.component.html',
   styleUrls: ['./date.component.scss'],
-  /* Re-use the same ngForm that it's parent is using. The component will show
-   * up in its parents `this.form`, and will auto-update `this.form.valid`
-   */
-  viewProviders: [ { provide: ControlContainer, useExisting: forwardRef(() => NgForm ) } ]
 })
-export class DateComponent extends Base implements OnInit {
+export class DateComponent extends Base implements OnInit, ControlValueAccessor {
   // Exists for unit testing to validate errors set
   @ViewChild( 'monthRef' ) monthRef: NgModel;
   @ViewChild( 'dayRef' ) dayRef: NgModel;
   @ViewChild( 'yearRef') yearRef: NgModel;
 
-  @Input() useCurrentDate: boolean = false;
-  @Input() required: boolean = true;
+  @Input() date: Date;
+  @Output() dateChange: EventEmitter<Date> = new EventEmitter<Date>();
+
+
   @Input() disabled: boolean = false;
   @Input() label: string = 'Date';
-  @Input() date: SimpleDate;
   /** Can be one of: "future", "past". "future" includes today, "past" does not. */
   @Input() restrictDate: 'future' | 'past' | 'any' = 'any';
   @Input() errorMessages: ErrorMessage | DateErrorMsg;
 
-  @Output() dateChange: EventEmitter<SimpleDate> = new EventEmitter<SimpleDate>();
+  /** @deprecated */
+  @Input() required: boolean = true;
+  // @Input() useCurrentDate: boolean = false; // just pass in new Date()
+
 
   public monthList: string[] = [
     'January', 'February', 'March', 'April', 'May', 'June',
@@ -77,20 +80,40 @@ export class DateComponent extends Base implements OnInit {
     invalidValue: `Invalid ${LabelReplacementTag}.`
   };
 
-  constructor( public form: NgForm,
-               private cd: ChangeDetectorRef ) {
+  _onChange = (_: any) => {};
+  _onTouched = (_: any) => {};
+
+  constructor(@Optional() @Self() public controlDir: NgControl,
+              public form: NgForm,
+              private cd: ChangeDetectorRef) {
     super();
+    if (controlDir) {
+      controlDir.valueAccessor = this;
+    }
   }
+
+
 
   ngOnInit() {
 
     this.setErrorMsg();
+  }
 
-    if ( this.useCurrentDate ) {
-      // Set date to current date
-      this.date.month = moment().month();
-      this.date.day = moment().date();
-      this.date.year = moment().year();
+  get month(): number {
+    if (this.date){
+      return this.date.getMonth()
+    }
+  }
+
+  get day(): number {
+    if (this.date){
+      return this.date.getDate()
+    }
+  }
+
+  get year(): number {
+    if (this.date){
+      return this.date.getFullYear()
     }
   }
 
@@ -100,7 +123,8 @@ export class DateComponent extends Base implements OnInit {
 
     // console.log( 'monthRef: ', this.monthRef );
     if ( this.date ) {
-      this.date.month = month;
+      this.date.setMonth(month);
+      // this.date.month = month;
       this.triggerDayValidation();
       this.triggerYearValidation();
       this.dateChange.emit( this.date );
@@ -113,7 +137,9 @@ export class DateComponent extends Base implements OnInit {
 
     // console.log(  'dayRef: ', this.dayRef );
     if ( this.date ) {
-      this.date.day = day;
+      // this.date.day = day;
+      this.date.setDate(day);
+
       this.triggerYearValidation();
       this.dateChange.emit( this.date );
     }
@@ -124,7 +150,8 @@ export class DateComponent extends Base implements OnInit {
     const year = this.getNumericValue( value );
 
     if ( this.date ) {
-      this.date.year = year;
+      // this.date.year = year;
+      this.date.setFullYear(year);
       this.triggerDayValidation();
       this.dateChange.emit( this.date );
     }
@@ -166,5 +193,23 @@ export class DateComponent extends Base implements OnInit {
       Object.keys(this.errorMessages).map( x => this.defaultErrMsg[x] = this.errorMessages[x] );
     }
     Object.keys(this.defaultErrMsg).map( x => this.defaultErrMsg[x] = replaceLabelTag( this.defaultErrMsg[x] , this.label ) );
+  }
+
+
+
+  writeValue( value: Date ): void {
+    if ( value ) {
+      this.date = value;
+    }
+  }
+
+  // Register change function
+  registerOnChange( fn: any ): void {
+    this._onChange = fn;
+  }
+
+  // Register touched function
+  registerOnTouched( fn: any ): void {
+    this._onTouched = fn;
   }
 }

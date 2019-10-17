@@ -6,14 +6,15 @@
     <select class="form-control monthSelect"
             id="{{monthLabelforId}}"
             name="{{monthLabelforId}}"
-            [ngModel]="date?.month"
-            (ngModelChange)="setMonth($event)"
+            [value]="month"
+            (change)="setMonth($event)"
             [disabled]='disabled'
             #monthRef="ngModel"
+            ngModel
             [required]="required">
       <!-- We show the blank option so the user can clear out their data.-->
       <option value="null" label="-- month --" selected [disabled]='required'></option>
-      <option *ngFor="let month of monthList; let i = index;" [value]="i + 1">{{month}}</option>
+      <option *ngFor="let month of monthList; let i = index;" [value]="i">{{month}}</option>
     </select>
 
     <label class="visuallyhidden" for="{{dayLabelforId}}">Day</label>
@@ -22,9 +23,10 @@
            id="{{dayLabelforId}}"
            name="{{dayLabelforId}}"
            placeholder="Day"
-           [ngModel]="date?.day"
-           (ngModelChange)="setDay($event)"
+           [value]="day"
+           (change)="setDay($event)"
            #dayRef="ngModel"
+           ngModel
            [required]="required"
            commonDateFieldFormat
            commonDayValidation
@@ -40,9 +42,10 @@
            id="{{yearLabelforId}}"
            name="{{yearLabelforId}}"
            placeholder="Year"
-           [ngModel]="date?.year"
-           (ngModelChange)="setYear($event)"
+           [value]="year"
+           (change)="setYear($event)"
            #yearRef="ngModel"
+           ngModel
            [required]="required"
            commonDateFieldFormat
            [commonYearValidate]="restrictDate"
