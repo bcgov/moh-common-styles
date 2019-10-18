@@ -6,8 +6,8 @@
     <select class="form-control monthSelect"
             id="{{monthLabelforId}}"
             name="{{monthLabelforId}}"
-            [value]="month"
-            (change)="setMonth($event)"
+            [value]="_month"
+            (change)="setMonth($event.target.value)"
             [disabled]='disabled'
             #monthRef="ngModel"
             ngModel
@@ -23,8 +23,8 @@
            id="{{dayLabelforId}}"
            name="{{dayLabelforId}}"
            placeholder="Day"
-           [value]="day"
-           (change)="setDay($event)"
+           [value]="_day"
+           (change)="setDay($event.target.value)"
            #dayRef="ngModel"
            ngModel
            [required]="required"
@@ -42,8 +42,8 @@
            id="{{yearLabelforId}}"
            name="{{yearLabelforId}}"
            placeholder="Year"
-           [value]="year"
-           (change)="setYear($event)"
+           [value]="_year"
+           (change)="setYear($event.target.value)"
            #yearRef="ngModel"
            ngModel
            [required]="required"
