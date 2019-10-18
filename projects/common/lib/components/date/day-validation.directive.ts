@@ -4,7 +4,7 @@ import * as moment_ from 'moment';
 const moment = moment_;
 
 @Directive({
-  selector: '[commonDayValidation][ngModel]',
+  selector: '[commonDayValidation]',
   providers: [
     {provide: NG_VALIDATORS, useExisting: forwardRef(() => DayValidationDirective), multi: true}
   ]

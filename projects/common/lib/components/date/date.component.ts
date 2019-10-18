@@ -1,6 +1,6 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef, ChangeDetectorRef, forwardRef, Optional, Self } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef, ChangeDetectorRef, forwardRef, Optional, Self, Injector } from '@angular/core';
 import { Base } from '../../models/base';
-import { ControlContainer, NgForm, NgModel, ControlValueAccessor, NgControl } from '@angular/forms';
+import { ControlContainer, NgForm, NgModel, ControlValueAccessor, NgControl, ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
 import * as moment_ from 'moment';
 import { ErrorMessage, LabelReplacementTag, replaceLabelTag } from '../../models/error-message.interface';
 const moment = moment_;
@@ -8,6 +8,12 @@ const moment = moment_;
 // TODO: ControlValueAccessor
 // TODO: Remove moment
 // TODO:
+
+export const commonValidateDate: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
+
+  // Hardcoded for now just to see if it works.
+  return {noFutureDatesAllowed: true};
+};
 
 
 @Component({
@@ -65,6 +71,7 @@ export class DateComponent extends Base implements OnInit, ControlValueAccessor 
   _onTouched = (_: any) => {};
 
   constructor(@Optional() @Self() public controlDir: NgControl,
+              private injector: Injector,
               public form: NgForm,
               private cd: ChangeDetectorRef) {
     super();
@@ -78,6 +85,20 @@ export class DateComponent extends Base implements OnInit, ControlValueAccessor 
 
   ngOnInit() {
     this.setErrorMsg();
+
+
+    Promise.resolve().then(() => {
+      const hostControl = this.injector.get(NgControl, null);
+      console.log({hostControl});
+      if (hostControl) {
+        console.log('Setting validator');
+        // hostControl.control.setValidators(this.control.validator);
+        hostControl.control.setValidators(commonValidateDate);
+        hostControl.control.updateValueAndValidity();
+      }
+    });
+
+
   }
 
   // TODO: call setDisplayVariables on ngOnChanges if Input changes?
