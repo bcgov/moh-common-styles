@@ -4,7 +4,7 @@ import { Base } from './base';
 import { ControlValueAccessor } from '@angular/forms';
 
 // Class does not get exported - used internally
-export abstract class AbstractFormCntrl extends Base implements OnInit, ControlValueAccessor {
+export abstract class AbstractFormControl extends Base implements OnInit, ControlValueAccessor {
 
   // Default messages - must be defined in each component
   abstract _defaultErrMsg: ErrorMessage = {};
