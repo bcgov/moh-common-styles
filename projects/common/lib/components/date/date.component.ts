@@ -7,12 +7,15 @@ const moment = moment_;
 
 // TODO: ControlValueAccessor
 // TODO: Remove moment
-// TODO:
+// TODO: Remove SimpleDate
+// TODO: Write the "Private" validators for things like missing required fields
+// TODO: Add "public" / exportable validators that work directly on Date object for e.g. dateOutOfRange
 
 export const commonValidateDate: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
 
   // Hardcoded for now just to see if it works.
-  return {noFutureDatesAllowed: true};
+  // return {noFutureDatesAllowed: true};
+  return null;
 };
 
 
@@ -47,6 +50,12 @@ export class DateComponent extends Base implements OnInit, ControlValueAccessor 
   _year: string;
   _month: string;
   _day: string;
+  
+  // @Input() dateRangeStart
+  // @Input() dateRangeEnd
+  // errMsg: dateBeforeStart, dateAfterEnd
+  // combine: dayOutOfRange with yearDistantPast, yearDistantFuture
+  // leave noPastDatesAllowed / noFutureDatesAllowed and @Input() restrictDates alone.
 
   public monthList: string[] = [
     'January', 'February', 'March', 'April', 'May', 'June',
@@ -91,9 +100,10 @@ export class DateComponent extends Base implements OnInit, ControlValueAccessor 
       const hostControl = this.injector.get(NgControl, null);
       console.log({hostControl});
       if (hostControl) {
-        console.log('Setting validator');
         // hostControl.control.setValidators(this.control.validator);
-        hostControl.control.setValidators(commonValidateDate);
+        // hostControl.control.setValidators(commonValidateDate);
+        // TODO: Adam Document
+        hostControl.control.setValidators(this.validateDate.bind(this));
         hostControl.control.updateValueAndValidity();
       }
     });
@@ -128,7 +138,7 @@ export class DateComponent extends Base implements OnInit, ControlValueAccessor 
 
   setDay(value: string) {
     const day = this.getNumericValue( value );
-    console.log('set-day', {day, value});
+    // console.log('set-day', {day, value});
     this._day = value;
     if (this.date) {
       this.dateChange.emit( this.date );
@@ -145,7 +155,7 @@ export class DateComponent extends Base implements OnInit, ControlValueAccessor 
 
   setYear(value: string) {
     const year = this.getNumericValue( value );
-    console.log('set-year', {year, value});
+    // console.log('set-year', {year, value});
     this._year = value;
     if (this.date) {
       this.dateChange.emit( this.date );
@@ -162,6 +172,7 @@ export class DateComponent extends Base implements OnInit, ControlValueAccessor 
       console.log('CREATING DATE', {year, month, day});
 
       this.date = new Date(year, month, day);
+      
       this._onChange(this.date);
       this.dateChange.emit(this.date);
     } else {
@@ -169,10 +180,14 @@ export class DateComponent extends Base implements OnInit, ControlValueAccessor 
     }
   }
 
+  // TODO - May need to refactor this to get error logic working
+  // Only want to show errors (and thus call _onChange() after all inputs touched)
   private destroyDate() {
-    this.date = null;
-    this._onChange(null);
-    this.dateChange.emit(null);
+    if (this.date) {
+      this.date = null;
+      this._onChange(null);
+      this.dateChange.emit(null);
+    }
   }
 
   // Only create Date if all fields are filled.
@@ -188,71 +203,6 @@ export class DateComponent extends Base implements OnInit, ControlValueAccessor 
     }
   }
 
-  /** Set the month and notify caller of change */
-  // setMonth( value: string ): void {
-  //   const month = this.getNumericValue( value );
-
-  //   if ( this.date ) {
-  //     console.log('seMonth', month);
-
-  //     this.date.setMonth(month);
-  //     // TODO: TEST / VERIFY CAN REMOVE
-  //     // this.triggerDayValidation();
-  //     // this.triggerYearValidation();
-  //     this.dateChange.emit( this.date );
-  //   }
-  // }
-
-  // /** Set the day and notify caller of change */
-  // setDay( value: string ): void {
-  //   const day = this.getNumericValue( value );
-
-  //   if ( this.date ) {
-  //     console.log('seDay', day);
-  //     this.date.setDate(day);
-  //     // TODO: TEST / VERIFY CAN REMOVE
-  //     // this.triggerYearValidation();
-  //     this.dateChange.emit( this.date );
-  //   }
-  // }
-
-  // /** Set the year and notify caller of change */
-  // setYear( value: string ): void {
-  //   const year = this.getNumericValue( value );
-
-  //   if ( this.date ) {
-  //     console.log('setYear', year);
-  //     this.date.setFullYear(year);
-  //     // TODO: TEST / VERIFY CAN REMOVE
-  //     // this.triggerDayValidation();
-  //     this.dateChange.emit( this.date );
-  //   }
-  // }
-
-  // /**
-  //  * Force the `day` input to run it's directives again. Important in cases
-  //  * where user fills fields out of order, e.g. sets days to 31 then month to
-  //  * Februrary.
-  //  */
-  // private triggerDayValidation() {
-  //   // We have to wrap this in a timeout, otherwise it runs before Angular has updated the values
-  //   setTimeout( () => {
-  //     if ( this.form.controls[this.dayLabelforId] ) {
-  //       this.form.controls[this.dayLabelforId].updateValueAndValidity();
-  //       this.cd.detectChanges();
-  //     }
-  //   }, 0);
-  // }
-
-  // private triggerYearValidation() {
-  //   // We have to wrap this in a timeout, otherwise it runs before Angular has updated the values
-  //   setTimeout( () => {
-  //     if ( this.form.controls[this.yearLabelforId] ) {
-  //       this.form.controls[this.yearLabelforId].updateValueAndValidity();
-  //       this.cd.detectChanges();
-  //     }
-  //   }, 0);
-  // }
 
   /** Convert string to numeric value or null if not */
   private getNumericValue( value: string ): number | null {
@@ -291,4 +241,39 @@ export class DateComponent extends Base implements OnInit, ControlValueAccessor 
   registerOnTouched( fn: any ): void {
     this._onTouched = fn;
   }
+
+
+  private validateDate() {
+    const year = parseInt(this._year, 10);
+    const month = parseInt(this._month, 10);
+    const day = parseInt(this._day, 10);
+    console.log('validateDate', {year, month, day});
+
+    if (isNaN(year) || isNaN(month) || isNaN(day)) {
+      // return { invalidValue: true };
+      return { invalidValue: true };
+    }
+
+    // if (this.dateFieldIsEmpty(this._year)
+    //   || this.dateFieldIsEmpty(this._month)
+    //   || this.dateFieldIsEmpty(this._day)) {
+    //   return errObj;
+    // }
+
+    // TODO: Check that day exists in month (e.g. leap years, feb, etc)
+    if ( day > 35 || day < 1) {
+      return {dayOutOfRange: true};
+    }
+
+    // TODO: year distant future
+    // TODO: year distant past
+
+    return null;
+  }
+
+  // private dateFieldIsEmpty(field: string | null | undefined): boolean {
+  //   return typeof field === 'string' && field.length >= 1;
+  // }
+
+
 }
