@@ -19,7 +19,8 @@ import {
   NgControl,
   ValidatorFn,
   AbstractControl,
-  ValidationErrors
+  ValidationErrors,
+  FormControl
 } from '@angular/forms';
 import { ErrorMessage, LabelReplacementTag, replaceLabelTag } from '../../models/error-message.interface';
 
@@ -46,9 +47,9 @@ export const commonValidateDate: ValidatorFn = (control: AbstractControl): Valid
 })
 export class DateComponent extends Base implements OnInit, ControlValueAccessor {
   // Exists for unit testing to validate errors set
-  @ViewChild('monthRef') monthRef: NgModel;
-  @ViewChild('dayRef') dayRef: NgModel;
-  @ViewChild('yearRef') yearRef: NgModel;
+  // @ViewChild('monthRef') monthRef: NgModel;
+  // @ViewChild('dayRef') dayRef: NgModel;
+  // @ViewChild('yearRef') yearRef: NgModel;
 
   @Input() date: Date;
   @Output() dateChange: EventEmitter<Date> = new EventEmitter<Date>();
@@ -60,8 +61,8 @@ export class DateComponent extends Base implements OnInit, ControlValueAccessor 
   @Input() restrictDate: 'future' | 'past' | 'any' = 'any';
   @Input() errorMessages: ErrorMessage;
 
-  /** @deprecated */
-  @Input() required: boolean = true;
+  // /** @deprecated */
+  // @Input() required: boolean = true;
   // @Input() useCurrentDate: boolean = false; // just pass in new Date()
 
   // The actual values displayed to the user.  May not precisely match Date
@@ -70,6 +71,10 @@ export class DateComponent extends Base implements OnInit, ControlValueAccessor 
   _year: string;
   _month: string;
   _day: string;
+
+  dayTouched: boolean = false;
+  monthTouched: boolean = false;
+  yearTouched: boolean = false;
 
   // @Input() dateRangeStart
   // @Input() dateRangeEnd
@@ -120,18 +125,19 @@ export class DateComponent extends Base implements OnInit, ControlValueAccessor 
       const hostControl = this.injector.get(NgControl, null);
       console.log({ hostControl });
       if (hostControl) {
-        // hostControl.control.setValidators(this.control.validator);
-        // hostControl.control.setValidators(commonValidateDate);
         // TODO: Adam Document
-        hostControl.control.setValidators(this.validateDate.bind(this));
+        // get pre-existing validators, like Required, which may be set via Reactive forms.
+        const preExistingValidators = (hostControl.control as FormControl).validator;
+        // const allValidators = [preExistingValidators, this.validateDate.bind(this)];
+        const allValidators = [this.validateDate.bind(this), preExistingValidators];
+
+        hostControl.control.setValidators(allValidators);
         hostControl.control.updateValueAndValidity();
       }
     });
 
 
   }
-
-  // TODO: call setDisplayVariables on ngOnChanges if Input changes?
 
   get month(): number {
     if (this.date) {
@@ -141,8 +147,9 @@ export class DateComponent extends Base implements OnInit, ControlValueAccessor 
 
   setMonth(value: string): void {
     const month = this.getNumericValue(value);
-    console.log('set-month', { month, value });
+    // console.log('set-month', { month, value });
     this._month = value;
+    this.monthTouched = true;
     if (this.date) {
       this.dateChange.emit(this.date);
       this.date.setMonth(month);
@@ -160,6 +167,7 @@ export class DateComponent extends Base implements OnInit, ControlValueAccessor 
     const day = this.getNumericValue(value);
     // console.log('set-day', {day, value});
     this._day = value;
+    this.dayTouched = true;
     if (this.date) {
       this.dateChange.emit(this.date);
       this.date.setDate(day);
@@ -177,6 +185,7 @@ export class DateComponent extends Base implements OnInit, ControlValueAccessor 
     const year = this.getNumericValue(value);
     // console.log('set-year', {year, value});
     this._year = value;
+    this.yearTouched = true;
     if (this.date) {
       this.dateChange.emit(this.date);
       this.date.setFullYear(year);
@@ -195,6 +204,11 @@ export class DateComponent extends Base implements OnInit, ControlValueAccessor 
       this.dateChange.emit(this.date);
     } else {
       this.destroyDate();
+    }
+
+    // if all are touched, then emit an onTouched
+    if (this.monthTouched && this.dayTouched && this.yearTouched) {
+      
     }
   }
 
@@ -240,8 +254,12 @@ export class DateComponent extends Base implements OnInit, ControlValueAccessor 
     this._month = this.date.getMonth().toString();
     this._year = this.date.getFullYear().toString();
 
-    // TODO: VERIFY THIS FIXES ISSUE!
-    this.cd.detectChanges();
+    this.monthTouched = true;
+    this.yearTouched = true;
+    this.dayTouched = true;
+
+    // // TODO: VERIFY THIS FIXES ISSUE!
+    // this.cd.detectChanges();
   }
 
 
@@ -263,6 +281,24 @@ export class DateComponent extends Base implements OnInit, ControlValueAccessor 
     this._onTouched = fn;
   }
 
+  onBlurDay() {
+    this.dayTouched = true;
+    this.handleBlur();
+  }
+  onBlurYear() {
+    this.yearTouched = true;
+    this.handleBlur();
+  }
+  onBlurMonth() {
+    this.monthTouched = true;
+    this.handleBlur();
+  }
+  handleBlur() {
+    if (this.dayTouched && this.yearTouched && this.monthTouched) {
+      this._onTouched(this.date);
+    }
+  }
+
 
   private validateDate() {
     const year = parseInt(this._year, 10);
@@ -270,9 +306,27 @@ export class DateComponent extends Base implements OnInit, ControlValueAccessor 
     const day = parseInt(this._day, 10);
     console.log('validateDate', { year, month, day });
 
-    if (isNaN(year) || isNaN(month) || isNaN(day)) {
-      return { invalidValue: true };
+    // if they're all NaN, it means field is empty, so only return required if retured
+    const allNaN = isNaN(year) && isNaN(month) && isNaN(day);
+    const someNaN = isNaN(year) || isNaN(month) || isNaN(day);
+
+    // Fields are totally empty.
+    // COULD return `required` here, but should be controllable by parent.
+    if (allNaN) {
+      console.log('All NaN');
+      // TODO - return 'required' here but only if it's parent has set it to be required? urg.
     }
+
+    // Partially filled out
+    if (!allNaN && someNaN) {
+      return {invalidValue: true};
+    }
+
+    // // TODO - TEST WE CAN ADD REQUIRED VIA PARENT
+    // if (someNaN) {
+    //   // return { invalidValue: true };
+    //   // return {required: true};
+    // }
 
     // We can hardcode the day, since we're only interested in total days for that month.
     const daysInMonth = getDaysInMonth(new Date(year, month, 1));

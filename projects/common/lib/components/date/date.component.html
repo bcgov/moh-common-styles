@@ -8,12 +8,12 @@
             name="{{monthLabelforId}}"
             [value]="_month"
             (change)="setMonth($event.target.value)"
-            [disabled]='disabled'
-            #monthRef="ngModel"
-            ngModel
-            [required]="required">
+            (blur)="onBlurMonth()"
+            [disabled]='disabled'>
       <!-- We show the blank option so the user can clear out their data.-->
-      <option value="null" label="-- month --" selected [disabled]='required'></option>
+      <!-- <option value="null" label="-- month --" selected [disabled]='required'></option> -->
+      <!-- problem - toggling of the 'disabled' input here based on [required]? -->
+      <option value="null" label="-- month --" selected disabled></option>
       <option *ngFor="let month of monthList; let i = index;" [value]="i">{{month}}</option>
     </select>
 
@@ -25,11 +25,8 @@
            placeholder="Day"
            [value]="_day"
            (change)="setDay($event.target.value)"
-           #dayRef="ngModel"
-           ngModel
-           [required]="required"
+           (blur)="onBlurDay()"
            commonDateFieldFormat
-           
            [disabled]='disabled'
            maxlength="2"
            autocomplete="off"/>
@@ -42,13 +39,8 @@
            placeholder="Year"
            [value]="_year"
            (change)="setYear($event.target.value)"
-           #yearRef="ngModel"
-           ngModel
-           [required]="required"
+           (blur)="onBlurYear()"
            commonDateFieldFormat
-           [commonYearValidate]="restrictDate"
-           [selectedMonth]='monthRef.value'
-           [selectedDay]='dayRef.value'
            [disabled]='disabled'
            maxlength="4"
            autocomplete="off"/>
@@ -72,20 +64,20 @@
       <!-- TODO: Convert to Internal Validator function, use controlDir -->
       {{defaultErrMsg.dayOutOfRange}}
   </div>
-  <div *ngIf="yearRef?.errors?.yearDistantPast">
+  <div *ngIf="controlDir?.errors?.yearDistantPast">
         <!-- TODO: Decide if internal validator or going to base off Date() -->
       <!-- TODO: Convert to Internal Validator function, use controlDir (@Input() w/ default as threshold?) -->
       <!-- TODO: Alternatively, have this be an exportable validator off of Date? -->
       {{defaultErrMsg.yearDistantPast}}
   </div>
-  <div *ngIf="yearRef?.errors?.yearDistantFuture">
+  <div *ngIf="controlDir?.errors?.yearDistantFuture">
       <!-- TODO: Decide if internal validator or going to base off Date() -->
       {{defaultErrMsg.yearDistantFuture}}
   </div>
-  <div *ngIf="yearRef?.errors?.noPastDatesAllowed">
+  <div *ngIf="controlDir?.errors?.noPastDatesAllowed">
         {{defaultErrMsg.noPastDatesAllowed}}
   </div>
-  <div *ngIf="yearRef?.errors?.noFutureDatesAllowed">
+  <div *ngIf="controlDir?.errors?.noFutureDatesAllowed">
       {{defaultErrMsg.noFutureDatesAllowed}}
   </div>
   <!-- TODO: Add "dateOutOfRange -> pass in two dates, must be between" -->
