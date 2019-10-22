@@ -83,7 +83,7 @@
 
                     <tr>
                         <td class="col-md-3">Selector</td>
-                        <td class="col-md-9"><code>[commonDayValidation][ngModel]</code></td>
+                        <td class="col-md-9"><code>[commonDayValidation]</code></td>
                     </tr>
 
                 </tbody>
@@ -272,7 +272,7 @@ import * as moment_ from &#x27;moment&#x27;;
 const moment &#x3D; moment_;
 
 @Directive({
-  selector: &#x27;[commonDayValidation][ngModel]&#x27;,
+  selector: &#x27;[commonDayValidation]&#x27;,
   providers: [
     {provide: NG_VALIDATORS, useExisting: forwardRef(() &#x3D;&gt; DayValidationDirective), multi: true}
   ]

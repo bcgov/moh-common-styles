@@ -83,7 +83,7 @@
 
                     <tr>
                         <td class="col-md-3">Selector</td>
-                        <td class="col-md-9"><code>[commonYearValidate][ngModel]</code></td>
+                        <td class="col-md-9"><code>[commonYearValidate]</code></td>
                     </tr>
 
                 </tbody>
@@ -298,7 +298,7 @@ const moment &#x3D; moment_;
 // TODO:  Create a message structure to pass in error messages similar to password module.
 
 @Directive({
-  selector: &#x27;[commonYearValidate][ngModel]&#x27;,
+  selector: &#x27;[commonYearValidate]&#x27;,
   providers: [
     {provide: NG_VALIDATORS, useExisting: forwardRef(() &#x3D;&gt; YearValidateDirective), multi: true}
   ]
