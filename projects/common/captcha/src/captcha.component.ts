@@ -102,6 +102,7 @@ export class CaptchaComponent implements AfterViewInit, OnInit, OnChanges, Contr
     this.forceRefresh();
   }
   ngOnChanges(changes: SimpleChanges) {
+
     // when changing language, if audio is empty then no need to refetch
     if (!changes.language || !this.audio || this.audio.length === 0) {
       if (!(changes.reloadCaptcha && (true === changes.reloadCaptcha.previousValue
@@ -127,6 +128,7 @@ export class CaptchaComponent implements AfterViewInit, OnInit, OnChanges, Contr
       this.incorrectAnswer = null;
     }
     if (this.answer.length === 6) {
+      this._onChange(event); // have response trigger _onChange for custom form control
       this.state = CAPTCHA_STATE.VERIFYING_ANSWER;
       this.incorrectAnswer = null;
       this.dataService.verifyCaptcha(this.apiBaseUrl, this.nonce, this.answer, this.validation).subscribe(response => {
