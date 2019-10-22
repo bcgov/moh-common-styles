@@ -2,6 +2,15 @@
 
 
 
+# [3.0.0-rc.2](https://github.com/bcgov/moh-common-styles/compare/v3.0.0-rc.1...v3.0.0-rc.2) "moh-common-lib" (2019-10-22)
+
+
+### Bug Fixes
+
+* **Date:**  Setting `restrictDate` to "past" no longer includes today, matching previous behaviour ([8fc79af](https://github.com/bcgov/moh-common-styles/commit/8fc79af))
+
+
+
 # [3.0.0-rc.1](https://github.com/bcgov/moh-common-styles/compare/v3.0.0-rc.0...v3.0.0-rc.1) "moh-common-lib" (2019-10-22)
 
 
