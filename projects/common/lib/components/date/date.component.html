@@ -81,6 +81,9 @@
       {{defaultErrMsg.noFutureDatesAllowed}}
   </div>
   <!-- TODO: Add "dateOutOfRange -> pass in two dates, must be between" -->
+  <div *ngIf="controlDir?.errors?.invalidRange">
+        {{defaultErrMsg.invalidRange}}
+    </div>
   
   <!-- TODO: Add "dateOutOfRangeAfter" -->
 

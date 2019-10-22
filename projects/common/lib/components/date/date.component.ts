@@ -25,19 +25,17 @@ import {
 import { ErrorMessage, LabelReplacementTag, replaceLabelTag } from '../../models/error-message.interface';
 
 import getDaysInMonth from 'date-fns/getDaysInMonth';
+import isAfter from 'date-fns/isAfter';
+import isBefore from 'date-fns/isBefore';
+import startOfToday from 'date-fns/startOfToday';
+import addYears from 'date-fns/addYears';
+import subYears from 'date-fns/subYears';
+import { MoHCommonLibraryError } from '../../../helpers/library-errorr';
 
-// DONE: ControlValueAccessor
-// TODO: Remove moment
-// TODO: Remove SimpleDate
-// TODO: Write the "Private" validators for things like missing required fields
-// TODO: Add "public" / exportable validators that work directly on Date object for e.g. dateOutOfRange
 
-export const commonValidateDate: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
-
-  // Hardcoded for now just to see if it works.
-  // return {noFutureDatesAllowed: true};
-  return null;
-};
+const MAX_YEAR_RANGE = 150;
+const distantFuture = addYears(startOfToday(), MAX_YEAR_RANGE);
+const distantPast = subYears(startOfToday(), MAX_YEAR_RANGE);
 
 
 @Component({
@@ -46,11 +44,6 @@ export const commonValidateDate: ValidatorFn = (control: AbstractControl): Valid
   styleUrls: ['./date.component.scss'],
 })
 export class DateComponent extends Base implements OnInit, ControlValueAccessor {
-  // Exists for unit testing to validate errors set
-  // @ViewChild('monthRef') monthRef: NgModel;
-  // @ViewChild('dayRef') dayRef: NgModel;
-  // @ViewChild('yearRef') yearRef: NgModel;
-
   @Input() date: Date;
   @Output() dateChange: EventEmitter<Date> = new EventEmitter<Date>();
 
@@ -60,10 +53,6 @@ export class DateComponent extends Base implements OnInit, ControlValueAccessor 
   /** Can be one of: "future", "past". "future" includes today, "past" does not. */
   @Input() restrictDate: 'future' | 'past' | 'any' = 'any';
   @Input() errorMessages: ErrorMessage;
-
-  // /** @deprecated */
-  // @Input() required: boolean = true;
-  // @Input() useCurrentDate: boolean = false; // just pass in new Date()
 
   // The actual values displayed to the user.  May not precisely match Date
   // object, because these fields can be blank whereas a Date can never have a
@@ -76,11 +65,17 @@ export class DateComponent extends Base implements OnInit, ControlValueAccessor 
   monthTouched: boolean = false;
   yearTouched: boolean = false;
 
-  // @Input() dateRangeStart
-  // @Input() dateRangeEnd
-  // errMsg: dateBeforeStart, dateAfterEnd
-  // combine: dayOutOfRange with yearDistantPast, yearDistantFuture
-  // leave noPastDatesAllowed / noFutureDatesAllowed and @Input() restrictDates alone.
+
+  /**
+   * The earliest valid date that can be used.
+   * Do NOT combine with restrictDates, as they set the same underlying values.
+   */
+  @Input() dateRangeStart: Date;
+  /**
+   * The latest valid date that can be used.
+   * Do NOT combine with restrictDates, as they set the same underlying values.
+   */
+  @Input() dateRangeEnd: Date;
 
   public monthList: string[] = [
     'January', 'February', 'March', 'April', 'May', 'June',
@@ -98,7 +93,8 @@ export class DateComponent extends Base implements OnInit, ControlValueAccessor 
     yearDistantFuture: `Invalid ${LabelReplacementTag}.`,
     noPastDatesAllowed: `Invalid ${LabelReplacementTag}.`,
     noFutureDatesAllowed: `Invalid ${LabelReplacementTag}.`,
-    invalidValue: `Invalid ${LabelReplacementTag}.`
+    invalidValue: `Invalid ${LabelReplacementTag}.`,
+    invalidRange: `Invalid ${LabelReplacementTag}.`
   };
 
   _onChange = (_: any) => { };
@@ -119,23 +115,48 @@ export class DateComponent extends Base implements OnInit, ControlValueAccessor 
 
   ngOnInit() {
     this.setErrorMsg();
+    // Set to midnight, so we don't accidentally compare against hours/minutes/seconds
+    const today = startOfToday();
 
 
+    if (this.restrictDate !== 'any' && (this.dateRangeEnd || this.dateRangeStart)) {
+      const msg = `<common-date> - Invalid @Input() option configuration.
+You cannot use "[restrictDate]" in combination with either  "[dateRangeEnd]" or "[dateRangeStart]".
+You must use either [restrictDate] or the [dateRange*] inputs.
+
+    <common-date name='effectiveDate'
+        label="Effective Date"
+        [restrictDate]="'past'"   <<< problem, choose one
+        [dateRangeEnd]='today'    <<< problem, choose one
+        formControlName="effectiveDate"
+    ></common-date>
+
+  `;
+      throw new MoHCommonLibraryError(msg);
+    }
+
+    // Initialize date range logic
+    if (this.restrictDate === 'past') {
+      this.dateRangeEnd = today;
+      this.dateRangeStart = null;
+    } else if (this.restrictDate === 'future') {
+      this.dateRangeEnd = null;
+      this.dateRangeStart = today;
+    }
+
+
+    // Register validateSelf validator so that it will be added on component initialization.
+    // Makes the component a self validating component.
     Promise.resolve().then(() => {
       const hostControl = this.injector.get(NgControl, null);
-      console.log({ hostControl });
       if (hostControl) {
-        // TODO: Adam Document
-        // get pre-existing validators, like Required, which may be set via Reactive forms.
+        // get pre-existing validators, like Required (works for both reactive and template)
         const preExistingValidators = (hostControl.control as FormControl).validator;
-        // const allValidators = [preExistingValidators, this.validateDate.bind(this)];
-        const allValidators = [this.validateDate.bind(this), preExistingValidators];
-
+        const allValidators = [this.validateSelf.bind(this), preExistingValidators];
         hostControl.control.setValidators(allValidators);
         hostControl.control.updateValueAndValidity();
       }
     });
-
 
   }
 
@@ -193,27 +214,26 @@ export class DateComponent extends Base implements OnInit, ControlValueAccessor 
     this.processDate();
   }
 
+  /**
+   * Handles creating / destroying date and emitting changes based on user behaviour.
+   */
   private processDate() {
     if (this.canCreateDate()) {
       const year = this.getNumericValue(this._year);
       const month = this.getNumericValue(this._month);
       const day = this.getNumericValue(this._day);
-      console.log('CREATING DATE', { year, month, day });
+      // console.log('CREATING DATE', { year, month, day });
       this.date = new Date(year, month, day);
       this._onChange(this.date);
       this.dateChange.emit(this.date);
     } else {
       this.destroyDate();
     }
-
-    // if all are touched, then emit an onTouched
-    if (this.monthTouched && this.dayTouched && this.yearTouched) {
-      
-    }
   }
 
-  // TODO - May need to refactor this to get error logic working
-  // Only want to show errors (and thus call _onChange() after all inputs touched)
+  /**
+   * Destroys the internal Date object.  This should always be used instead of nulling out `this.date` directly.
+   */
   private destroyDate() {
     if (this.date) {
       this.date = null;
@@ -222,8 +242,9 @@ export class DateComponent extends Base implements OnInit, ControlValueAccessor 
     }
   }
 
-  // Only create Date if all fields are filled.
-  // Note: fields/date may still be invalid (e.g. 99 for day field)
+  /**
+   * Returns true if and only if the day/month/year fields are all filled out.
+   */
   private canCreateDate(): boolean {
 
     // special because "0" is valid (Jan)
@@ -257,9 +278,6 @@ export class DateComponent extends Base implements OnInit, ControlValueAccessor 
     this.monthTouched = true;
     this.yearTouched = true;
     this.dayTouched = true;
-
-    // // TODO: VERIFY THIS FIXES ISSUE!
-    // this.cd.detectChanges();
   }
 
 
@@ -299,34 +317,24 @@ export class DateComponent extends Base implements OnInit, ControlValueAccessor 
     }
   }
 
-
-  private validateDate() {
+  /**
+   * Validates the DateComponent instance itself, using internal private variables.
+   *
+   */
+  private validateSelf() {
     const year = parseInt(this._year, 10);
     const month = parseInt(this._month, 10);
     const day = parseInt(this._day, 10);
-    console.log('validateDate', { year, month, day });
+    // console.log('validateDate', { year, month, day });
 
-    // if they're all NaN, it means field is empty, so only return required if retured
-    const allNaN = isNaN(year) && isNaN(month) && isNaN(day);
-    const someNaN = isNaN(year) || isNaN(month) || isNaN(day);
+    // if they're all NaN, it means each field is empty
+    const allFieldsEmpty = isNaN(year) && isNaN(month) && isNaN(day);
+    const someFieldsEmpty = isNaN(year) || isNaN(month) || isNaN(day);
 
-    // Fields are totally empty.
-    // COULD return `required` here, but should be controllable by parent.
-    if (allNaN) {
-      console.log('All NaN');
-      // TODO - return 'required' here but only if it's parent has set it to be required? urg.
-    }
-
-    // Partially filled out
-    if (!allNaN && someNaN) {
+    // Partially filled out is always invalid
+    if (!allFieldsEmpty && someFieldsEmpty) {
       return {invalidValue: true};
     }
-
-    // // TODO - TEST WE CAN ADD REQUIRED VIA PARENT
-    // if (someNaN) {
-    //   // return { invalidValue: true };
-    //   // return {required: true};
-    // }
 
     // We can hardcode the day, since we're only interested in total days for that month.
     const daysInMonth = getDaysInMonth(new Date(year, month, 1));
@@ -334,23 +342,56 @@ export class DateComponent extends Base implements OnInit, ControlValueAccessor 
       return { dayOutOfRange: true };
     }
 
-    // TODO: year distant future
-    // TODO: year distant past
-    // TODO: date-fns
-    // TODO: create generic, exportable functions up-top and use them here.
+    const dateRangeResult = this.validateRange();
+    if (dateRangeResult) {
+      return dateRangeResult;
+    }
+
+    const distantDatesResult = this.validateDistantDates();
+    if (distantDatesResult) {
+      return distantDatesResult;
+    }
 
     return null;
   }
 
-  // private dateFieldIsEmpty(field: string | null | undefined): boolean {
-  //   return typeof field === 'string' && field.length >= 1;
-  // }
 
-  processDaysInMonth(year: number, month: number) {
-    // set year and month to actual values to test in obj, days will be 1.
-    const target = new Date(year, month, 1);
-    return getDaysInMonth(target);
+  // If you set restrictDate, it will return noFutureDatesAllowed / noPastDatesAllowed
+  // If you just set dateRangeStart / dateRangeEnd, you get invalidRange
+  private validateRange(): ValidationErrors | null {
+
+    if (this.dateRangeEnd && isAfter(this.date, this.dateRangeEnd)) {
+
+      if (this.restrictDate === 'past') {
+        return {noFutureDatesAllowed: true};
+      }
+
+      return {invalidRange: true};
+    }
+
+    if (this.dateRangeStart && isBefore(this.date, this.dateRangeStart)) {
+
+      if (this.restrictDate === 'future') {
+        return {noPastDatesAllowed: true};
+      }
+
+      return {invalidRange: true};
+    }
+
+    return null;
   }
+
+  private validateDistantDates(): ValidationErrors | null {
+
+    if (isAfter(this.date, distantFuture)) {
+      return {yearDistantFuture: true};
+    }
+
+    if (isBefore(this.date, distantPast)) {
+      return {yearDistantPast: true};
+    }
+
+    return null;
+  }
+
 }
-
-
