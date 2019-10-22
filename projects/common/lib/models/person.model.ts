@@ -1,7 +1,6 @@
-import * as moment_ from 'moment';
+
 import { Base } from './base';
-import { SimpleDate } from './simple-date.interface';
-const moment = moment_;
+import { format, startOfToday, differenceInYears } from 'date-fns';
 
 /**
  * Person, each project can extend this person class
@@ -17,36 +16,19 @@ export class Person extends Base {
 
   /** Format to display birthdate */
   public dobFormat = 'YYYY/MM/DD';
+  public apiDobFormat = 'YYYYMMDD';
 
-  // Initialize dob to nulls
-  public dateOfBirth: SimpleDate = { year: null, month: null, day: null };
+  // Initialize dob to nulls - To be removed
+  public dateOfBirth: Date;
 
   /** Returns DoB in YYYYMMDD format, used by API. */
   get dateOfBirthShort(): string {
-    return this.isDobEmpty() ? null :
-        moment( {
-          year: this.dateOfBirth.year,
-          month: this.dateOfBirth.month - 1,
-          day: this.dateOfBirth.day
-        }).format( 'YYYYMMDD' );
+    return this.dateOfBirth ? format( this.dateOfBirth, this.apiDobFormat ) : null;
   }
 
   /** Returns DoB in dobFormat (default: YYYY/MM/DD), for display purposes */
   get formatDateOfBirth(): string {
-    return this.isDobEmpty() ? null :
-        moment( {
-          year: this.dateOfBirth.year,
-          month: this.dateOfBirth.month - 1,
-          day: this.dateOfBirth.day
-        }).format( this.dobFormat );
-  }
-
-  /** Indicates whether or not the date of birth is empty */
-  isDobEmpty(): boolean {
-    return Object.keys( this.dateOfBirth )
-        .map( key => this.dateOfBirth[key] )
-        .filter( x => x ) // Filter out null/undefined
-        .length !== 3;
+    return this.dateOfBirth ? format( this.dateOfBirth, this.dobFormat ) : null;
   }
 
   /** Concatenates the first and last name together */
@@ -83,8 +65,7 @@ export class Person extends Base {
 
   /** Calculates the age from date of birth */
   getAge(): Number {
-    const dobDt = new Date( this.dateOfBirth.year, this.dateOfBirth.month, this.dateOfBirth.day );
-    return Math.ceil( moment( ).diff( dobDt, 'year', true ) );
+    return differenceInYears( this.dateOfBirth, startOfToday() );
   }
 
   /* Copy function */
@@ -92,8 +73,6 @@ export class Person extends Base {
     this.firstName = object.firstName;
     this.middleName = object.middleName;
     this.lastName = object.lastName;
-    this.dateOfBirth.month = object.dateOfBirth.month;
-    this.dateOfBirth.day = object.dateOfBirth.day;
-    this.dateOfBirth.year = object.dateOfBirth.year;
+    this.dateOfBirth = object.dateOfBirth;
   }
 }
