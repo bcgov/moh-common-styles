@@ -30,6 +30,7 @@ import isBefore from 'date-fns/isBefore';
 import startOfToday from 'date-fns/startOfToday';
 import addYears from 'date-fns/addYears';
 import subYears from 'date-fns/subYears';
+import subDays from 'date-fns/subDays';
 import { MoHCommonLibraryError } from '../../../helpers/library-errorr';
 
 
@@ -58,7 +59,7 @@ export class DateComponent extends Base implements OnInit, ControlValueAccessor 
   // object, because these fields can be blank whereas a Date can never have a
   // "blank" year for example. All are nullable stings of numbers "0" or "2".
   _year: string;
-  _month: string;
+  _month: string = 'null'; // this makes it so the blank option is selected in the input
   _day: string;
 
   dayTouched: boolean = false;
@@ -116,8 +117,6 @@ export class DateComponent extends Base implements OnInit, ControlValueAccessor 
   ngOnInit() {
     this.setErrorMsg();
     // Set to midnight, so we don't accidentally compare against hours/minutes/seconds
-    const today = startOfToday();
-
 
     if (this.restrictDate !== 'any' && (this.dateRangeEnd || this.dateRangeStart)) {
       const msg = `<common-date> - Invalid @Input() option configuration.
@@ -135,11 +134,15 @@ You must use either [restrictDate] or the [dateRange*] inputs.
       throw new MoHCommonLibraryError(msg);
     }
 
+    const today = startOfToday();
+    const yesterday = subDays(startOfToday(), 1);
     // Initialize date range logic
     if (this.restrictDate === 'past') {
-      this.dateRangeEnd = today;
+      // past does NOT allow for today
+      this.dateRangeEnd = yesterday;
       this.dateRangeStart = null;
     } else if (this.restrictDate === 'future') {
+      // future DOES allow for today
       this.dateRangeEnd = null;
       this.dateRangeStart = today;
     }
@@ -248,7 +251,7 @@ You must use either [restrictDate] or the [dateRange*] inputs.
   private canCreateDate(): boolean {
 
     // special because "0" is valid (Jan)
-    const monthCheck = typeof this._month === 'string'
+    const monthCheck = (typeof this._month === 'string' && this._month !== 'null')
       || typeof this._month === 'number';
 
     if (!!this._year && !!this._day && monthCheck) {
@@ -359,7 +362,6 @@ You must use either [restrictDate] or the [dateRange*] inputs.
   // If you set restrictDate, it will return noFutureDatesAllowed / noPastDatesAllowed
   // If you just set dateRangeStart / dateRangeEnd, you get invalidRange
   private validateRange(): ValidationErrors | null {
-
     if (this.dateRangeEnd && isAfter(this.date, this.dateRangeEnd)) {
 
       if (this.restrictDate === 'past') {
