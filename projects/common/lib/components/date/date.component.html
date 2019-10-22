@@ -1,5 +1,5 @@
 <fieldset>
-  <legend class="date--legend">{{label}} - TEST</legend>
+  <legend class="date--legend">{{label}}</legend>
   <div class="date-row">
 
     <label class="visuallyhidden" for="{{monthLabelforId}}">Month</label>
@@ -48,30 +48,18 @@
   </div>
 </fieldset>
 
-<!-- Error messages for component -->
-<!-- TODO: Remove messages to self in here -->
-<!-- TODO: Only show errors when all inputs are touched OR controldir touched. -->
-<!-- FIXME: Problem is now it shows 'Required' error after just touching first input. -->
-<!-- Change from controlDir to use the inputs? -->
-<!-- [displayError]="!disabled && (monthRef.touched || monthRef.dirty) && (dayRef.touched || dayRef.dirty) && (yearRef.touched || yearRef.dirty)"> -->
 <common-error-container
     [displayError]="!disabled && (controlDir?.touched || controlDir?.dirty)">
   <div *ngIf="controlDir?.errors?.required">
-      <!-- ARC: Converted to ControlDir as it's top-level -->
       {{defaultErrMsg.required}}
   </div>
   <div *ngIf="controlDir?.errors?.dayOutOfRange">
-      <!-- TODO: Convert to Internal Validator function, use controlDir -->
       {{defaultErrMsg.dayOutOfRange}}
   </div>
   <div *ngIf="controlDir?.errors?.yearDistantPast">
-        <!-- TODO: Decide if internal validator or going to base off Date() -->
-      <!-- TODO: Convert to Internal Validator function, use controlDir (@Input() w/ default as threshold?) -->
-      <!-- TODO: Alternatively, have this be an exportable validator off of Date? -->
       {{defaultErrMsg.yearDistantPast}}
   </div>
   <div *ngIf="controlDir?.errors?.yearDistantFuture">
-      <!-- TODO: Decide if internal validator or going to base off Date() -->
       {{defaultErrMsg.yearDistantFuture}}
   </div>
   <div *ngIf="controlDir?.errors?.noPastDatesAllowed">
@@ -80,15 +68,11 @@
   <div *ngIf="controlDir?.errors?.noFutureDatesAllowed">
       {{defaultErrMsg.noFutureDatesAllowed}}
   </div>
-  <!-- TODO: Add "dateOutOfRange -> pass in two dates, must be between" -->
   <div *ngIf="controlDir?.errors?.invalidRange">
         {{defaultErrMsg.invalidRange}}
     </div>
   
-  <!-- TODO: Add "dateOutOfRangeAfter" -->
-
   <!-- Case should not happen until something is not formatted correctly-->
-  <!-- <div *ngIf="(dayRef?.errors?.invalidValue || yearRef?.errors?.invalidValue)"> -->
   <div *ngIf="controlDir?.errors?.invalidValue">
       {{defaultErrMsg.invalidValue}}
   </div>
