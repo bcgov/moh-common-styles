@@ -2,6 +2,20 @@
 
 
 
+# [3.0.0-rc.1](https://github.com/bcgov/moh-common-styles/compare/v3.0.0-rc.0...v3.0.0-rc.1) "moh-common-lib" (2019-10-22)
+
+
+### Build
+
+* Add new command to build release candidates for v3 ([e89e6f3](https://github.com/bcgov/moh-common-styles/commit/e89e6f3))
+
+
+### Features
+
+* **Date:** DateComponent is NgControl ([51f2ea4](https://github.com/bcgov/moh-common-styles/commit/51f2ea4))
+
+
+
 # [3.0.0-rc.0](https://github.com/bcgov/moh-common-styles/compare/v2.28.0...v3.0.0-rc.0) "moh-common-lib" (2019-10-22)
 
 
