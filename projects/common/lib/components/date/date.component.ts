@@ -4,24 +4,15 @@ import {
   Input,
   Output,
   EventEmitter,
-  ViewChild,
-  ElementRef,
   ChangeDetectorRef,
-  forwardRef,
   Optional, Self, Injector
 } from '@angular/core';
 import { Base } from '../../models/base';
 import {
-  ControlContainer,
   NgForm,
-  NgModel,
   ControlValueAccessor,
   NgControl,
-  ValidatorFn,
-  AbstractControl,
-  ValidationErrors,
-  FormControl
-} from '@angular/forms';
+  ValidationErrors} from '@angular/forms';
 import { ErrorMessage, LabelReplacementTag, replaceLabelTag } from '../../models/error-message.interface';
 
 import getDaysInMonth from 'date-fns/getDaysInMonth';
@@ -102,17 +93,12 @@ export class DateComponent extends Base implements OnInit, ControlValueAccessor 
   _onTouched = (_: any) => { };
 
   constructor(@Optional() @Self() public controlDir: NgControl,
-    private injector: Injector,
-    public form: NgForm,
-    private cd: ChangeDetectorRef) {
+    public form: NgForm) {
     super();
     if (controlDir) {
       controlDir.valueAccessor = this;
     }
   }
-
-
-
 
   ngOnInit() {
     this.setErrorMsg();
@@ -151,13 +137,15 @@ You must use either [restrictDate] or the [dateRange*] inputs.
     // Register validateSelf validator so that it will be added on component initialization.
     // Makes the component a self validating component.
     Promise.resolve().then(() => {
-      const hostControl = this.injector.get(NgControl, null);
-      if (hostControl) {
-        // get pre-existing validators, like Required (works for both reactive and template)
-        const preExistingValidators = (hostControl.control as FormControl).validator;
-        const allValidators = [this.validateSelf.bind(this), preExistingValidators];
-        hostControl.control.setValidators(allValidators);
-        hostControl.control.updateValueAndValidity();
+
+      if (this.controlDir) {
+
+        const allValidators = [this.validateSelf.bind(this)];
+        if ( this.controlDir.control.validator ) {
+          allValidators.push( this.controlDir.control.validator );
+        }
+        this.controlDir.control.setValidators(allValidators);
+        this.controlDir.control.updateValueAndValidity();
       }
     });
 
