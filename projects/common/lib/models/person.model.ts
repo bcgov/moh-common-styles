@@ -15,8 +15,8 @@ export class Person extends Base {
   public lastName: string;
 
   /** Format to display birthdate */
-  public dobFormat = 'YYYY/MM/DD';
-  public apiDobFormat = 'YYYYMMDD';
+  public dobFormat = 'yyyy/MM/dd';
+  public apiDobFormat = 'yyyyMMdd';
 
   // Initialize dob to nulls - To be removed
   public dateOfBirth: Date;
