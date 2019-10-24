@@ -63,6 +63,25 @@ export class Person extends Base {
     }
   }
 
+  /** Returns the person's full name - first middle last name concatenated together */
+  get fullname() {
+    let _name = null;
+
+    if ( this.firstName ) {
+      _name = this.firstName;
+    }
+
+    if ( this.middleName ) {
+      _name = _name ? _name.concat( ' ' + this.middleName ) : this.middleName;
+    }
+
+    if ( this.lastName ) {
+      _name = _name ? _name.concat( ' ' + this.lastName ) : this.lastName;
+    }
+
+    return _name;
+  }
+
   /** Calculates the age from date of birth */
   getAge(): Number {
     return differenceInYears( this.dateOfBirth, startOfToday() );
