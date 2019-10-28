@@ -1,6 +1,7 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
+import { UUID } from 'angular2-uuid';
 
 
 /**
@@ -57,4 +58,9 @@ export abstract class AbstractHttpService {
 
   /** Handles all failed requests that throw either a server error (400/500) or a client error (e.g. lost internet). */
   protected abstract handleError(error: HttpErrorResponse);
+
+  /* Helper function for generating a unique UUID per request for logging. */
+  protected generateUUID() {
+    return UUID.UUID();
+  }
 }
