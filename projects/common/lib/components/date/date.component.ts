@@ -5,7 +5,7 @@ import {
   Output,
   EventEmitter,
   ChangeDetectorRef,
-  Optional, Self, Injector
+  Optional, Self, Injector, SimpleChanges, OnChanges
 } from '@angular/core';
 import { Base } from '../../models/base';
 import {
@@ -35,7 +35,7 @@ const distantPast = subYears(startOfToday(), MAX_YEAR_RANGE);
   templateUrl: './date.component.html',
   styleUrls: ['./date.component.scss'],
 })
-export class DateComponent extends Base implements OnInit, ControlValueAccessor {
+export class DateComponent extends Base implements OnInit, ControlValueAccessor, OnChanges {
   @Input() date: Date;
   @Output() dateChange: EventEmitter<Date> = new EventEmitter<Date>();
 
@@ -100,8 +100,26 @@ export class DateComponent extends Base implements OnInit, ControlValueAccessor 
     }
   }
 
+
+  ngOnChanges(changes: SimpleChanges){
+    if (changes['errorMessages']) {
+      this.setErrorMsg();
+    }
+
+
+    // todo: remove below comments
+    // Kristin -> make sure to pass in a fully new errorMessages object to trigger Angular's change detection.
+
+    // Doesn't work, modifies existing object.  Would have to manually call cd.detectChanges() afterwards.
+    // obj.errorMessage = 'newMessage';
+
+    // Works, creates new object literall
+    // obj = {
+    //   errorMessage: 'new'message';
+    // }
+  }
+
   ngOnInit() {
-    this.setErrorMsg();
     // Set to midnight, so we don't accidentally compare against hours/minutes/seconds
 
     if (this.restrictDate !== 'any' && (this.dateRangeEnd || this.dateRangeStart)) {
