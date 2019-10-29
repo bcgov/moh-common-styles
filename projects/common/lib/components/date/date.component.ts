@@ -35,7 +35,7 @@ const distantPast = subYears(startOfToday(), MAX_YEAR_RANGE);
   templateUrl: './date.component.html',
   styleUrls: ['./date.component.scss'],
 })
-export class DateComponent extends Base implements OnInit, ControlValueAccessor, OnChanges {
+export class DateComponent extends Base implements OnInit, ControlValueAccessor {
   @Input() date: Date;
   @Output() dateChange: EventEmitter<Date> = new EventEmitter<Date>();
 
