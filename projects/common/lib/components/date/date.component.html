@@ -6,14 +6,15 @@
     <select class="form-control monthSelect"
             id="{{monthLabelforId}}"
             name="{{monthLabelforId}}"
-            [ngModel]="date?.month"
-            (ngModelChange)="setMonth($event)"
-            [disabled]='disabled'
-            #monthRef="ngModel"
-            [required]="required">
+            [value]="_month"
+            (change)="setMonth($event.target.value)"
+            (blur)="onBlurMonth()"
+            [disabled]='disabled'>
       <!-- We show the blank option so the user can clear out their data.-->
-      <option value="null" label="-- month --" selected [disabled]='required'></option>
-      <option *ngFor="let month of monthList; let i = index;" [value]="i + 1">{{month}}</option>
+      <!-- <option value="null" label="-- month --" selected [disabled]='required'></option> -->
+      <!-- problem - toggling of the 'disabled' input here based on [required]? -->
+      <option value="null" label="-- month --" selected disabled></option>
+      <option *ngFor="let month of monthList; let i = index;" [value]="i">{{month}}</option>
     </select>
 
     <label class="visuallyhidden" for="{{dayLabelforId}}">Day</label>
@@ -22,14 +23,10 @@
            id="{{dayLabelforId}}"
            name="{{dayLabelforId}}"
            placeholder="Day"
-           [ngModel]="date?.day"
-           (ngModelChange)="setDay($event)"
-           #dayRef="ngModel"
-           [required]="required"
+           [value]="_day"
+           (change)="setDay($event.target.value)"
+           (blur)="onBlurDay()"
            commonDateFieldFormat
-           commonDayValidation
-           [selectedMonth]='monthRef.value'
-           [selectedYear]='yearRef.value'
            [disabled]='disabled'
            maxlength="2"
            autocomplete="off"/>
@@ -40,14 +37,10 @@
            id="{{yearLabelforId}}"
            name="{{yearLabelforId}}"
            placeholder="Year"
-           [ngModel]="date?.year"
-           (ngModelChange)="setYear($event)"
-           #yearRef="ngModel"
-           [required]="required"
+           [value]="_year"
+           (change)="setYear($event.target.value)"
+           (blur)="onBlurYear()"
            commonDateFieldFormat
-           [commonYearValidate]="restrictDate"
-           [selectedMonth]='monthRef.value'
-           [selectedDay]='dayRef.value'
            [disabled]='disabled'
            maxlength="4"
            autocomplete="off"/>
@@ -55,29 +48,32 @@
   </div>
 </fieldset>
 
-<!-- Error messages for component -->
 <common-error-container
-    [displayError]="!disabled && (monthRef.touched || monthRef.dirty) && (dayRef.touched || dayRef.dirty) && (yearRef.touched || yearRef.dirty)">
-  <div *ngIf="(monthRef?.errors?.required || dayRef?.errors?.required || yearRef?.errors?.required )">
+    [displayError]="!disabled && (controlDir?.touched || controlDir?.dirty)">
+  <div *ngIf="controlDir?.errors?.required">
       {{defaultErrMsg.required}}
   </div>
-  <div *ngIf="dayRef?.errors?.dayOutOfRange">
+  <div *ngIf="controlDir?.errors?.dayOutOfRange">
       {{defaultErrMsg.dayOutOfRange}}
   </div>
-  <div *ngIf="yearRef?.errors?.yearDistantPast">
+  <div *ngIf="controlDir?.errors?.yearDistantPast">
       {{defaultErrMsg.yearDistantPast}}
   </div>
-  <div *ngIf="yearRef?.errors?.yearDistantFuture">
+  <div *ngIf="controlDir?.errors?.yearDistantFuture">
       {{defaultErrMsg.yearDistantFuture}}
   </div>
-  <div *ngIf="yearRef?.errors?.noPastDatesAllowed">
+  <div *ngIf="controlDir?.errors?.noPastDatesAllowed">
         {{defaultErrMsg.noPastDatesAllowed}}
   </div>
-  <div *ngIf="yearRef?.errors?.noFutureDatesAllowed">
+  <div *ngIf="controlDir?.errors?.noFutureDatesAllowed">
       {{defaultErrMsg.noFutureDatesAllowed}}
   </div>
+  <div *ngIf="controlDir?.errors?.invalidRange">
+        {{defaultErrMsg.invalidRange}}
+    </div>
+  
   <!-- Case should not happen until something is not formatted correctly-->
-  <div *ngIf="(dayRef?.errors?.invalidValue || yearRef?.errors?.invalidValue)">
+  <div *ngIf="controlDir?.errors?.invalidValue">
       {{defaultErrMsg.invalidValue}}
   </div>
 </common-error-container>

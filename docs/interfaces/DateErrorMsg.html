@@ -65,7 +65,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>projects/common/lib/components/date/date.component.ts</code>
+            <code>projects/common/lib/components/datepicker/datepicker.component.ts</code>
         </p>
 
             <p class="comment">
@@ -388,12 +388,11 @@ a) moment</p>
     </div>
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef, ChangeDetectorRef, forwardRef } from &#x27;@angular/core&#x27;;
-import { Base } from &#x27;../../models/base&#x27;;
-import { SimpleDate } from &#x27;../../models/simple-date.interface&#x27;;
-import { ControlContainer, NgForm, NgModel } from &#x27;@angular/forms&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges, ViewChild, OnChanges, forwardRef } from &#x27;@angular/core&#x27;;
+import { INgxMyDpOptions, IMyDate, NgxMyDatePickerDirective } from &#x27;ngx-mydatepicker&#x27;;
 import * as moment_ from &#x27;moment&#x27;;
-import { ErrorMessage, LabelReplacementTag, replaceLabelTag } from &#x27;../../models/error-message.interface&#x27;;
+import { NgForm, ControlContainer, FormControl, NG_VALUE_ACCESSOR, ControlValueAccessor } from &#x27;@angular/forms&#x27;;
+import { Base } from &#x27;../../models/base&#x27;;
 const moment &#x3D; moment_;
 
 /**
@@ -422,141 +421,210 @@ export interface DateErrorMsg { // TODO: Remove - possible breaking change - cur
   invalidValue?: string;
 }
 
+
+/**
+ * PRIME datepicker component. Largely a wrapper for ngx-mydatepicker
+ * https://github.com/kekeh/ngx-mydatepicker
+ *
+ * NOTE - YOU MUST INCLUDE NGX-MYDATEPICKER IN YOUR PARENT APPLICATION TO USE
+ * THIS COMPONENT!  This is due to some poor implementation in ngx-mydatepicker.
+ * Make sure to use the same version that this library uses.
+ */
 @Component({
-  selector: &#x27;common-date&#x27;,
-  templateUrl: &#x27;./date.component.html&#x27;,
-  styleUrls: [&#x27;./date.component.scss&#x27;],
+  selector: &#x27;common-datepicker&#x27;,
+  templateUrl: &#x27;./datepicker.component.html&#x27;,
+  styleUrls: [&#x27;./datepicker.component.scss&#x27;],
   /* Re-use the same ngForm that it&#x27;s parent is using. The component will show
    * up in its parents &#x60;this.form&#x60;, and will auto-update &#x60;this.form.valid&#x60;
    */
-  viewProviders: [ { provide: ControlContainer, useExisting: forwardRef(() &#x3D;&gt; NgForm ) } ]
+  viewProviders: [ { provide: ControlContainer, useExisting: forwardRef(() &#x3D;&gt; NgForm ) } ],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      multi: true,
+      useExisting: forwardRef(() &#x3D;&gt; DatepickerComponent)
+    }
+  ]
 })
-export class DateComponent extends Base implements OnInit {
-  // Exists for unit testing to validate errors set
-  @ViewChild( &#x27;monthRef&#x27; ) monthRef: NgModel;
-  @ViewChild( &#x27;dayRef&#x27; ) dayRef: NgModel;
-  @ViewChild( &#x27;yearRef&#x27;) yearRef: NgModel;
+export class DatepickerComponent extends Base implements OnInit, OnChanges, ControlValueAccessor {
+  /** Component size can be reduced, see Datepickersizes for options */
+  @Input() size: DatepickerSizes &#x3D; DatepickerSizes.DEFAULT;
+  @Input() date: Date;
+  @Output() dateChange &#x3D; new EventEmitter&lt;Date&gt;();
+  @Input() disabled: boolean;
+  @Input() labelText: string;
 
-  @Input() useCurrentDate: boolean &#x3D; false;
-  @Input() required: boolean &#x3D; true;
-  @Input() disabled: boolean &#x3D; false;
-  @Input() label: string &#x3D; &#x27;Date&#x27;;
-  @Input() date: SimpleDate;
-  /** Can be one of: &quot;future&quot;, &quot;past&quot;. &quot;future&quot; includes today, &quot;past&quot; does not. */
-  @Input() restrictDate: &#x27;future&#x27; | &#x27;past&#x27; | &#x27;any&#x27; &#x3D; &#x27;any&#x27;;
-  @Input() errorMessages: ErrorMessage | DateErrorMsg;
+  @Input() required: boolean &#x3D; false;
 
-  @Output() dateChange: EventEmitter&lt;SimpleDate&gt; &#x3D; new EventEmitter&lt;SimpleDate&gt;();
 
-  public monthList: string[] &#x3D; [
-    &#x27;January&#x27;, &#x27;February&#x27;, &#x27;March&#x27;, &#x27;April&#x27;, &#x27;May&#x27;, &#x27;June&#x27;,
-    &#x27;July&#x27;, &#x27;August&#x27;, &#x27;September&#x27;, &#x27;October&#x27;, &#x27;November&#x27;, &#x27;December&#x27;
-  ];
+  /** Dates **before** disableUntil will not be valid selections.  Maps to a ngx-mydatepicker option, but we convert IMyDate to Date  */
+  @Input() disableUntil: Date;
 
-  monthLabelforId: string &#x3D; &#x27;month_&#x27; + this.objectId;
-  dayLabelforId: string &#x3D; &#x27;day_&#x27; + this.objectId;
-  yearLabelforId: string &#x3D; &#x27;year_&#x27; + this.objectId;
+  /** Dates **after** disableSince will not be valid selections.  Maps to a ngx-mydatepicker option, but we convert IMyDate to Date */
+  @Input() disableSince: Date;
 
-  defaultErrMsg: ErrorMessage &#x3D; {
-    required: &#x60;${LabelReplacementTag} is required.&#x60;,
-    dayOutOfRange: &#x60;Invalid ${LabelReplacementTag}.&#x60;,
-    yearDistantPast: &#x60;Invalid ${LabelReplacementTag}.&#x60;,
-    yearDistantFuture: &#x60;Invalid ${LabelReplacementTag}.&#x60;,
-    noPastDatesAllowed: &#x60;Invalid ${LabelReplacementTag}.&#x60;,
-    noFutureDatesAllowed: &#x60;Invalid ${LabelReplacementTag}.&#x60;,
-    invalidValue: &#x60;Invalid ${LabelReplacementTag}.&#x60;
-  };
+  /** Equivalent to setting disableBefore to tomorrow. */
+  @Input() onlyFutureDates: boolean;
 
-  constructor( public form: NgForm,
-               private cd: ChangeDetectorRef ) {
+  /**
+   * Control visibility of the clear &#x27;x&#x27; button on the mini datepicker.
+   *
+   * **&#x27;visible&#x27;** is default, button exists
+   *
+   * **&#x27;none&#x27;** means the element does not exist
+   *
+   * **&#x27;invisible&#x27;** means the element takes up space but is not visible / cannot be
+   * used.
+   *
+   * Invisible is useful when you want to make sure a datepicker is the same
+   * size as a visible one.
+   */
+  @Input() clearButton: &#x27;visible&#x27; | &#x27;invisible&#x27; | &#x27;none&#x27; &#x3D; &#x27;visible&#x27;;
+
+
+
+  /** Format for how to display the date to the user. */
+  @Input() dateFormat: string &#x3D; &#x27;yyyy/mm/dd&#x27;;
+
+  @Input() errorMessages: DateErrorMsg;
+
+  /** Datetime model used to interface with ngx-datepicker. */
+  // model: any;
+  model: any;
+
+  // Make enum accessible in HTML
+  DatepickerSizes: typeof DatepickerSizes &#x3D; DatepickerSizes;
+
+  @ViewChild(&#x27;dp&#x27;) ngxdp: NgxMyDatePickerDirective;
+
+  /** Default options for wrapped ngx-datepicker. */
+  datepickerOptions: INgxMyDpOptions;
+
+  public _onChange &#x3D; (_: any) &#x3D;&gt; {};
+  public _onTouched &#x3D; () &#x3D;&gt; {};
+
+  constructor() {
     super();
+   }
+
+  convertDateToSimpleDate(date: Date): IMyDate {
+    if (date &#x3D;&#x3D;&#x3D; null || date &#x3D;&#x3D;&#x3D; undefined) { return null; }
+    return {
+      year: date.getFullYear(),
+      month: date.getMonth() + 1,
+      day: date.getDate(),
+    };
+  }
+  convertSimpleDateToDate(date: IMyDate): Date {
+    // When ngx-mydatepicker is cleared, it returns {year: 0, month: 0, day: 0}
+    if (date.year &#x3D;&#x3D;&#x3D; 0) {
+      return null;
+    }
+    return new Date(date.year, date.month - 1, date.day);
+  }
+
+  isDate(x: any): x is Date {
+    if (!x) { return false; }
+    return x.getDate !&#x3D;&#x3D; undefined;
   }
 
   ngOnInit() {
+    if (!this.errorMessages) {
+      this.errorMessages &#x3D; {
+        required: this.labelText + &#x27; is required.&#x27;,
+        dayOutOfRange: &#x27;Invalid &#x27; + this.labelText + &#x27;.&#x27;,
+        yearDistantPast: &#x27;Invalid &#x27; + this.labelText + &#x27;.&#x27;,
+        yearDistantFuture: &#x27;Invalid &#x27; + this.labelText + &#x27;.&#x27;,
+        noFutureDatesAllowed: &#x27;Invalid &#x27; + this.labelText + &#x27;.&#x27;,
+        invalidValue: &#x27;Invalid &#x27; + this.labelText + &#x27;.&#x27;
+      };
+    }
 
-    this.setErrorMsg();
+    this.datepickerOptions &#x3D; {
+      dateFormat: this.dateFormat,
+      sunHighlight: false,
+      appendSelectorToBody: true,
+    };
 
-    if ( this.useCurrentDate ) {
-      // Set date to current date
-      this.date.month &#x3D; moment().month();
-      this.date.day &#x3D; moment().date();
-      this.date.year &#x3D; moment().year();
+    if (this.size &#x3D;&#x3D;&#x3D; DatepickerSizes.MINI) {
+      // Set width/height to 4/5 of default
+      this.datepickerOptions.selectorHeight &#x3D; &#x27;185px&#x27;;
+      this.datepickerOptions.selectorWidth &#x3D; &#x27;201px&#x27;;
+    }
+
+    if (this.isDate(this.disableSince)) {
+      this.datepickerOptions.disableSince &#x3D; this.convertDateToSimpleDate(this.disableSince);
+    }
+
+    if (this.isDate(this.disableUntil)) {
+      this.datepickerOptions.disableUntil &#x3D; this.convertDateToSimpleDate(this.disableSince);
+    }
+
+    if (this.onlyFutureDates) {
+      const today &#x3D; new Date();
+      this.datepickerOptions.disableUntil &#x3D; this.convertDateToSimpleDate(today);
+    }
+
+
+    if (this.date) {
+      // Even if jsdate winds up being undefined, even defining this.model will
+      // set the input as non-empty and it&#x27;ll satisfy the &#x27;required&#x27; validation.
+      // So, we only add the model if there&#x27;s actual data.
+      this.model &#x3D; {
+        jsdate: this.date
+      };
+    }
+
+
+  }
+
+
+  ngOnChanges(changes: SimpleChanges) {
+    // Parent component has passed in null, so we have to manually clear the input. This leads to 2 change detection cycles.
+    // We could refactor it down to one, but the performance hit is minimal for such a simple component.
+    if (this.date &#x3D;&#x3D;&#x3D; null) {
+      this.clearDate();
+      this._onChange(null);
+      this._onTouched();
     }
   }
 
-  /** Set the month and notify caller of change */
-  setMonth( value: string ): void {
-    const month &#x3D; this.getNumericValue( value );
-
-    // console.log( &#x27;monthRef: &#x27;, this.monthRef );
-    if ( this.date ) {
-      this.date.month &#x3D; month;
-      this.triggerDayValidation();
-      this.triggerYearValidation();
-      this.dateChange.emit( this.date );
+  onDateChanged(event): void {
+    if (event.jsdate || event.jsdate &#x3D;&#x3D;&#x3D; null) {
+      // Always emit a Date (or null)
+      this.dateChange.emit(event.jsdate);
+      this._onChange(event.jsdate);
+      this._onTouched();
     }
   }
 
-  /** Set the day and notify caller of change */
-  setDay( value: string ): void {
-    const day &#x3D; this.getNumericValue( value );
-
-    // console.log(  &#x27;dayRef: &#x27;, this.dayRef );
-    if ( this.date ) {
-      this.date.day &#x3D; day;
-      this.triggerYearValidation();
-      this.dateChange.emit( this.date );
+  clearDate() {
+    if (this.ngxdp) {
+      // We don&#x27;t need to emit here, because by changing date we&#x27;ll trigger onDateChanged automatically.
+      this.date &#x3D; null;
+      this.ngxdp.clearDate();
     }
   }
 
-  /** Set the year and notify caller of change */
-  setYear( value: string ): void {
-    const year &#x3D; this.getNumericValue( value );
-
-    if ( this.date ) {
-      this.date.year &#x3D; year;
-      this.triggerDayValidation();
-      this.dateChange.emit( this.date );
-    }
+  registerOnChange(fn: any): void {
+    this._onChange &#x3D; fn;
   }
 
-  /**
-   * Force the &#x60;day&#x60; input to run it&#x27;s directives again. Important in cases
-   * where user fills fields out of order, e.g. sets days to 31 then month to
-   * Februrary.
-   */
-  private triggerDayValidation() {
-    // We have to wrap this in a timeout, otherwise it runs before Angular has updated the values
-    setTimeout( () &#x3D;&gt; {
-      if ( this.form.controls[this.dayLabelforId] ) {
-        this.form.controls[this.dayLabelforId].updateValueAndValidity();
-        this.cd.detectChanges();
-      }
-    }, 0);
+  registerOnTouched(fn: any): void {
+    this._onTouched &#x3D; fn;
   }
 
-  private triggerYearValidation() {
-    // We have to wrap this in a timeout, otherwise it runs before Angular has updated the values
-    setTimeout( () &#x3D;&gt; {
-      if ( this.form.controls[this.yearLabelforId] ) {
-        this.form.controls[this.yearLabelforId].updateValueAndValidity();
-        this.cd.detectChanges();
-      }
-    }, 0);
+  writeValue(obj: any): void {
+    this.model &#x3D; {
+      jsdate: obj
+    };
   }
 
-  /** Convert string to numeric value or null if not */
-  private getNumericValue( value: string ): number | null {
-    const parsed &#x3D; parseInt( value, 10 );
-    return ( isNaN( parsed ) ? null : parsed );
-  }
+}
 
-  private setErrorMsg() {
-    if ( this.errorMessages ) {
-      Object.keys(this.errorMessages).map( x &#x3D;&gt; this.defaultErrMsg[x] &#x3D; this.errorMessages[x] );
-    }
-    Object.keys(this.defaultErrMsg).map( x &#x3D;&gt; this.defaultErrMsg[x] &#x3D; replaceLabelTag( this.defaultErrMsg[x] , this.label ) );
-  }
+export enum DatepickerSizes {
+  MINI &#x3D; &#x27;mini&#x27;,
+  DEFAULT &#x3D; &#x27;default&#x27;
 }
 </code></pre>
     </div>

@@ -6,7 +6,7 @@ const moment = moment_;
 // TODO:  Create a message structure to pass in error messages similar to password module.
 
 @Directive({
-  selector: '[commonYearValidate][ngModel]',
+  selector: '[commonYearValidate]',
   providers: [
     {provide: NG_VALIDATORS, useExisting: forwardRef(() => YearValidateDirective), multi: true}
   ]

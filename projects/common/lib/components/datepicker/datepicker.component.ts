@@ -2,9 +2,34 @@ import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges, ViewChil
 import { INgxMyDpOptions, IMyDate, NgxMyDatePickerDirective } from 'ngx-mydatepicker';
 import * as moment_ from 'moment';
 import { NgForm, ControlContainer, FormControl, NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
-import { DateErrorMsg } from '../date/date.component';
 import { Base } from '../../models/base';
 const moment = moment_;
+
+/**
+ * Component NPM package dependencies:
+ * a) moment
+ *
+ * This component reports the following errors.
+ *    required
+ *    dayOutOfRange
+ *    yearDistantPast
+ *    yearDistantFuture
+ *    noFutureDatesAllowed
+ *    invalidValue
+ *
+ *  These messages can be changed by updated messages using the errorMessages interface/
+ *  Ex. { required: 'This field is required', invalidValue: '{label} is invalid' }
+ */
+
+export interface DateErrorMsg { // TODO: Remove - possible breaking change - currently datepicker uses it
+  required?: string;
+  dayOutOfRange?: string;
+  yearDistantPast?: string;
+  yearDistantFuture?: string;
+  noPastDatesAllowed?: string;
+  noFutureDatesAllowed?: string;
+  invalidValue?: string;
+}
 
 
 /**

@@ -285,6 +285,7 @@ export class CountryComponent extends Base implements OnInit, ControlValueAccess
   @Input() useDropDownList: boolean = true;
   @Input() maxlen: string = '250';
   @Input() errorMessage: ErrorMessage;
+  @Input() placeholder: string = 'Please select a country';
 
   @Input()
   set value( val: string ) {

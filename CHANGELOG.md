@@ -1,4 +1,75 @@
-# Unreleased "moh-common-lib" (2019-10-17)
+# Unreleased "moh-common-lib" (2019-10-29)
+
+
+
+# [3.0.0-rc.6](https://github.com/bcgov/moh-common-styles/compare/v3.0.0-rc.5...v3.0.0-rc.6) "moh-common-lib" (2019-10-29)
+
+
+### Bug Fixes
+
+* **Date:** Remove ngOnChanges ([015602c](https://github.com/bcgov/moh-common-styles/commit/015602c))
+* added ngChanges to date to detect label changes, no longer can add question by default ([38c822b](https://github.com/bcgov/moh-common-styles/commit/38c822b))
+* added placeholder country & regexp for label ([61c0cdc](https://github.com/bcgov/moh-common-styles/commit/61c0cdc))
+
+
+
+# [3.0.0-rc.5](https://github.com/bcgov/moh-common-styles/compare/v3.0.0-rc.4...v3.0.0-rc.5) "moh-common-lib" (2019-10-28)
+
+
+### Features
+
+* added fullname to person.model ([28d9585](https://github.com/bcgov/moh-common-styles/commit/28d9585))
+* **AbstractAPI:** Has a generateUUID method. ([5362c67](https://github.com/bcgov/moh-common-styles/commit/5362c67))
+
+
+
+# [3.0.0-rc.4](https://github.com/bcgov/moh-common-styles/compare/v3.0.0-rc.3...v3.0.0-rc.4) "moh-common-lib" (2019-10-23)
+
+
+### Bug Fixes
+
+* Date format string modified to use format from date-fns module ([4bb54c0](https://github.com/bcgov/moh-common-styles/commit/4bb54c0))
+* Fixed date component to handle no validators on the control. ([5441be2](https://github.com/bcgov/moh-common-styles/commit/5441be2))
+
+
+
+# [3.0.0-rc.3](https://github.com/bcgov/moh-common-styles/compare/v3.0.0-rc.2...v3.0.0-rc.3) "moh-common-lib" (2019-10-22)
+
+
+
+# [3.0.0-rc.2](https://github.com/bcgov/moh-common-styles/compare/v3.0.0-rc.1...v3.0.0-rc.2) "moh-common-lib" (2019-10-22)
+
+
+### Bug Fixes
+
+* **Date:**  Setting `restrictDate` to "past" no longer includes today, matching previous behaviour ([8fc79af](https://github.com/bcgov/moh-common-styles/commit/8fc79af))
+
+
+
+# [3.0.0-rc.1](https://github.com/bcgov/moh-common-styles/compare/v3.0.0-rc.0...v3.0.0-rc.1) "moh-common-lib" (2019-10-22)
+
+
+### Build
+
+* Add new command to build release candidates for v3 ([e89e6f3](https://github.com/bcgov/moh-common-styles/commit/e89e6f3))
+
+
+### Features
+
+* **Date:** DateComponent is NgControl ([51f2ea4](https://github.com/bcgov/moh-common-styles/commit/51f2ea4))
+
+
+
+# [3.0.0-rc.0](https://github.com/bcgov/moh-common-styles/compare/v2.28.0...v3.0.0-rc.0) "moh-common-lib" (2019-10-22)
+
+
+
+# [2.28.0](https://github.com/bcgov/moh-common-styles/compare/v2.27.2...v2.28.0) "moh-common-lib" (2019-10-17)
+
+
+### Bug Fixes
+
+* call _onChange to trigger form validations ([c91fef0](https://github.com/bcgov/moh-common-styles/commit/c91fef0))
 
 
 

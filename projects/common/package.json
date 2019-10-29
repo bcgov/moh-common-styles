@@ -1,6 +1,6 @@
 {
    "name": "moh-common-lib",
-   "version": "2.27.2",
+   "version": "3.0.0-rc.6",
    "description": "A library of Angular components, services, and styles for B.C. Government Ministry of Health (MoH).",
    "keywords": [
       "bcgov",
@@ -17,6 +17,7 @@
       "@angular/core": "^6.0.0-rc.0 || >=6.0.0 <8.0.0",
       "@ng-select/ng-select": "^2.16.2",
       "bootstrap": "^4.0.0",
+      "date-fns": "^2.5.1",
       "moment": "^2.24.0",
       "blueimp-load-image": "^2.20.1",
       "ngx-mydatepicker": "2.4.5",

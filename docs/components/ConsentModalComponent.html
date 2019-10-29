@@ -267,6 +267,10 @@ this.consentModal.showFullSizeView();
                             </li>
                             <li>
                                     <span class="modifier">Protected</span>
+                                <a href="#generateUUID">generateUUID</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Protected</span>
                                 <a href="#get">get</a>
                             </li>
                             <li>
@@ -1277,6 +1281,53 @@ this alone.</p>
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="generateUUID"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Protected</span>
+                            generateUUID
+                        </b>
+                        <a href="#generateUUID"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>generateUUID()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Inherited from         <code><a href="../classes/AbstractHttpService.html" target="_self" >AbstractHttpService</a></code>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-line">Defined in         <code><a href="../classes/AbstractHttpService.html#source" target="_self" >AbstractHttpService:63</a></code>
+</div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="get"></a>
                     <span class="name">
                         <b>
@@ -1303,7 +1354,7 @@ this alone.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../classes/AbstractHttpService.html#source" target="_self" >AbstractHttpService:22</a></code>
+                        <div class="io-line">Defined in         <code><a href="../classes/AbstractHttpService.html#source" target="_self" >AbstractHttpService:23</a></code>
 </div>
                 </td>
             </tr>
@@ -1410,7 +1461,7 @@ this alone.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../classes/AbstractHttpService.html#source" target="_self" >AbstractHttpService:59</a></code>
+                        <div class="io-line">Defined in         <code><a href="../classes/AbstractHttpService.html#source" target="_self" >AbstractHttpService:60</a></code>
 </div>
                 </td>
             </tr>
@@ -1490,7 +1541,7 @@ this alone.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../classes/AbstractHttpService.html#source" target="_self" >AbstractHttpService:30</a></code>
+                        <div class="io-line">Defined in         <code><a href="../classes/AbstractHttpService.html#source" target="_self" >AbstractHttpService:31</a></code>
 </div>
                 </td>
             </tr>
@@ -1581,7 +1632,7 @@ this alone.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../classes/AbstractHttpService.html#source" target="_self" >AbstractHttpService:38</a></code>
+                        <div class="io-line">Defined in         <code><a href="../classes/AbstractHttpService.html#source" target="_self" >AbstractHttpService:39</a></code>
 </div>
                 </td>
             </tr>
@@ -1921,7 +1972,7 @@ this alone.</p>
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in         <code><a href="../classes/AbstractHttpService.html#source" target="_self" >AbstractHttpService:16</a></code>
+                                    <div class="io-line">Defined in         <code><a href="../classes/AbstractHttpService.html#source" target="_self" >AbstractHttpService:17</a></code>
 </div>
                             </td>
                         </tr>
@@ -1967,7 +2018,7 @@ this alone.</p>
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in         <code><a href="../classes/AbstractHttpService.html#source" target="_self" >AbstractHttpService:11</a></code>
+                                    <div class="io-line">Defined in         <code><a href="../classes/AbstractHttpService.html#source" target="_self" >AbstractHttpService:12</a></code>
 </div>
                             </td>
                         </tr>
@@ -2279,7 +2330,7 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
 <script>
         var COMPONENT_TEMPLATE = '<div><div bsModal #fullSizeViewModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"      data-keyboard="false"     aria-labelledby="myLargeModalLabel" aria-hidden="true"     [config]="{backdrop: \'static\', ignoreBackdropClick: true}">  <div class="modal-dialog" style="margin-top: 90px;">    <div class="modal-content">      <!--  Header -->      <div class="modal-header modal-header-primary">        <h2 id="myLargeModalLabel">{{maintenanceFlag == \'true\' ? \'Maintenance notice\' : title}}</h2>      </div>      <!--   Modal Body   -->      <div class="modal-body">        <div *ngIf="maintenanceFlag == \'true\'">          <h4>{{maintenanceMessage}}</h4>        </div>        <div *ngIf="maintenanceFlag != \'true\'">            <ng-content></ng-content>        <br>        <div *ngIf="maintenanceFlag != \'true\'">          <div class="form-check form-check-inline">            <input [ngModelOptions]="{standalone: true}" class="input-lg form-check-input" id="agree" type="checkbox"              [(ngModel)]="agreeCheck" (ngModelChange)=\'accept.emit($event);\'  >            <label class="form-check-label" for="agree"><strong>{{agreeLabel}}</strong></label>          </div>        </div>      </div>      <!-- Footer -->      <div *ngIf="maintenanceFlag != \'true\'" class="modal-footer">        <button [disabled]="isContinueDisabled()" class="btn btn-block btn-primary pull-left"                type="submit" (click)="continue()">{{continueButton}}</button>      </div>    </div>  </div></div></div>'
     var COMPONENTS = [{'name': 'AccordionCommonComponent', 'selector': 'common-accordion'},{'name': 'AddressComponent', 'selector': 'common-address'},{'name': 'ButtonComponent', 'selector': 'common-button'},{'name': 'ButtonGroupComponent', 'selector': 'common-button-group'},{'name': 'CaptchaComponent', 'selector': 'common-captcha'},{'name': 'CheckboxComponent', 'selector': 'common-checkbox'},{'name': 'CityComponent', 'selector': 'common-city'},{'name': 'ConfirmTemplateComponent', 'selector': 'common-confirm-template'},{'name': 'ConsentModalComponent', 'selector': 'common-consent-modal'},{'name': 'CoreBreadcrumbComponent', 'selector': 'common-core-breadcrumb'},{'name': 'CountryComponent', 'selector': 'common-country'},{'name': 'DateComponent', 'selector': 'common-date'},{'name': 'DatepickerComponent', 'selector': 'common-datepicker'},{'name': 'DropdownComponent', 'selector': 'common-dropdown'},{'name': 'EmailComponent', 'selector': 'common-email'},{'name': 'ErrorContainerComponent', 'selector': 'common-error-container'},{'name': 'FileUploaderComponent', 'selector': 'common-file-uploader'},{'name': 'FormActionBarComponent', 'selector': 'common-form-action-bar'},{'name': 'FormSubmitBarComponent', 'selector': 'common-form-submit-bar'},{'name': 'FullNameComponent', 'selector': 'common-full-name'},{'name': 'GeocoderInputComponent', 'selector': 'common-geocoder-input'},{'name': 'HeaderComponent', 'selector': 'common-header'},{'name': 'NameComponent', 'selector': 'common-name'},{'name': 'PageFrameworkComponent', 'selector': 'common-page-framework'},{'name': 'PageSectionComponent', 'selector': 'common-page-section'},{'name': 'PasswordComponent', 'selector': 'common-password'},{'name': 'PhnComponent', 'selector': 'common-phn'},{'name': 'PhoneNumberComponent', 'selector': 'common-phone-number'},{'name': 'PostalCodeComponent', 'selector': 'common-postal-code'},{'name': 'ProvinceComponent', 'selector': 'common-province'},{'name': 'RadioComponent', 'selector': 'common-radio'},{'name': 'SampleModalComponent', 'selector': 'common-sample-modal'},{'name': 'SinComponent', 'selector': 'common-sin'},{'name': 'StreetComponent', 'selector': 'common-street'},{'name': 'ThumbnailComponent', 'selector': 'common-thumbnail'},{'name': 'ToggleComponent', 'selector': 'common-toggle'},{'name': 'WizardProgressBarComponent', 'selector': 'common-wizard-progress-bar'},{'name': 'XiconButtonComponent', 'selector': 'common-xicon-button'}];
-    var DIRECTIVES = [{'name': 'DateFieldFormatDirective', 'selector': '[commonDateFieldFormat]'},{'name': 'DayValidationDirective', 'selector': '[commonDayValidation][ngModel]'},{'name': 'DuplicateCheckDirective', 'selector': '[commonDuplicateCheck]'},{'name': 'ValidateBcPostalDirective', 'selector': '[commonValidateBcPostal]'},{'name': 'ValidateCityDirective', 'selector': '[commonValidateCity]'},{'name': 'ValidateEmailDirective', 'selector': '[commonValidateEmail]'},{'name': 'ValidateNameDirective', 'selector': '[commonValidateName]'},{'name': 'ValidatePhnDirective', 'selector': '[commonValidatePhn]'},{'name': 'ValidatePhoneDirective', 'selector': '[commonValidatePhone]'},{'name': 'ValidatePostalcodeDirective', 'selector': '[commonValidatePostalcode]'},{'name': 'ValidateRegionDirective', 'selector': '[commonValidateRegion]'},{'name': 'ValidateSinDirective', 'selector': '[commonValidateSin]'},{'name': 'ValidateStreetDirective', 'selector': '[commonValidateStreet]'},{'name': 'YearValidateDirective', 'selector': '[commonYearValidate][ngModel]'}];
+    var DIRECTIVES = [{'name': 'DateFieldFormatDirective', 'selector': '[commonDateFieldFormat]'},{'name': 'DayValidationDirective', 'selector': '[commonDayValidation]'},{'name': 'DuplicateCheckDirective', 'selector': '[commonDuplicateCheck]'},{'name': 'ValidateBcPostalDirective', 'selector': '[commonValidateBcPostal]'},{'name': 'ValidateCityDirective', 'selector': '[commonValidateCity]'},{'name': 'ValidateEmailDirective', 'selector': '[commonValidateEmail]'},{'name': 'ValidateNameDirective', 'selector': '[commonValidateName]'},{'name': 'ValidatePhnDirective', 'selector': '[commonValidatePhn]'},{'name': 'ValidatePhoneDirective', 'selector': '[commonValidatePhone]'},{'name': 'ValidatePostalcodeDirective', 'selector': '[commonValidatePostalcode]'},{'name': 'ValidateRegionDirective', 'selector': '[commonValidateRegion]'},{'name': 'ValidateSinDirective', 'selector': '[commonValidateSin]'},{'name': 'ValidateStreetDirective', 'selector': '[commonValidateStreet]'},{'name': 'YearValidateDirective', 'selector': '[commonYearValidate]'}];
     var ACTUAL_COMPONENT = {'name': 'ConsentModalComponent'};
 </script>
 <script src="../js/tree.js"></script>

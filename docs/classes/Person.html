@@ -97,6 +97,10 @@ NPM package dependencies:
                         <ul class="index-list">
                             <li>
                                     <span class="modifier">Public</span>
+                                <a href="#apiDobFormat">apiDobFormat</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
                                 <a href="#dateOfBirth">dateOfBirth</a>
                             </li>
                             <li>
@@ -137,9 +141,6 @@ NPM package dependencies:
                             <li>
                                 <a href="#getAge">getAge</a>
                             </li>
-                            <li>
-                                <a href="#isDobEmpty">isDobEmpty</a>
-                            </li>
                         </ul>
                     </td>
                 </tr>
@@ -165,6 +166,9 @@ NPM package dependencies:
                                 <li>
                                     <a href="#name">name</a>
                                 </li>
+                                <li>
+                                    <a href="#fullname">fullname</a>
+                                </li>
                             </ul>
                         </td>
                     </tr>
@@ -182,6 +186,39 @@ NPM package dependencies:
             <tbody>
                 <tr>
                     <td class="col-md-4">
+                        <a name="apiDobFormat"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            apiDobFormat</b>
+                            <a href="#apiDobFormat"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>&#x27;yyyyMMdd&#x27;</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">projects/common/lib/models/person.model.ts:19</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
                         <a name="dateOfBirth"></a>
                         <span class="name">
                             <b>
@@ -193,13 +230,8 @@ NPM package dependencies:
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="../interfaces/SimpleDate.html" target="_self" >SimpleDate</a></code>
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank" >Date</a></code>
 
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Default value : </i><code>{ year: null, month: null, day: null }</code>
                         </td>
                     </tr>
                         <tr>
@@ -232,12 +264,12 @@ NPM package dependencies:
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Default value : </i><code>&#x27;YYYY/MM/DD&#x27;</code>
+                            <i>Default value : </i><code>&#x27;yyyy/MM/dd&#x27;</code>
                         </td>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">projects/common/lib/models/person.model.ts:19</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">projects/common/lib/models/person.model.ts:18</a></div>
                             </td>
                         </tr>
 
@@ -271,7 +303,7 @@ NPM package dependencies:
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">projects/common/lib/models/person.model.ts:14</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">projects/common/lib/models/person.model.ts:13</a></div>
                             </td>
                         </tr>
 
@@ -299,7 +331,7 @@ NPM package dependencies:
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">projects/common/lib/models/person.model.ts:16</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">projects/common/lib/models/person.model.ts:15</a></div>
                             </td>
                         </tr>
 
@@ -327,7 +359,7 @@ NPM package dependencies:
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">projects/common/lib/models/person.model.ts:15</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">projects/common/lib/models/person.model.ts:14</a></div>
                             </td>
                         </tr>
 
@@ -479,8 +511,8 @@ NPM package dependencies:
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="85"
-                            class="link-to-prism">projects/common/lib/models/person.model.ts:85</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="86"
+                            class="link-to-prism">projects/common/lib/models/person.model.ts:86</a></div>
                 </td>
             </tr>
 
@@ -492,47 +524,6 @@ NPM package dependencies:
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank" >Number</a></code>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="isDobEmpty"></a>
-                    <span class="name">
-                        <b>
-                            isDobEmpty
-                        </b>
-                        <a href="#isDobEmpty"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>isDobEmpty()</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="45"
-                            class="link-to-prism">projects/common/lib/models/person.model.ts:45</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Indicates whether or not the date of birth is empty </p>
-</div>
-
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
 
                     </div>
                 </td>
@@ -598,7 +589,7 @@ NPM package dependencies:
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">projects/common/lib/models/person.model.ts:35</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">projects/common/lib/models/person.model.ts:30</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -631,7 +622,7 @@ NPM package dependencies:
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">projects/common/lib/models/person.model.ts:53</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">projects/common/lib/models/person.model.ts:35</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -653,7 +644,7 @@ NPM package dependencies:
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">projects/common/lib/models/person.model.ts:71</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">projects/common/lib/models/person.model.ts:53</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -698,15 +689,42 @@ NOTE: Just for development with dummy data and unit tests</p>
                     </tr>
             </tbody>
         </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="fullname"></a>
+                        <span class="name"><b>fullname</b><a href="#fullname"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>fullname()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">projects/common/lib/models/person.model.ts:67</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Returns the person&#39;s full name - first middle last name concatenated together </p>
+</div>
+
+                        </td>
+                    </tr>
+
+            </tbody>
+        </table>
 </section>
     </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import * as moment_ from &#x27;moment&#x27;;
-import { Base } from &#x27;./base&#x27;;
-import { SimpleDate } from &#x27;./simple-date.interface&#x27;;
-const moment &#x3D; moment_;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Base } from &#x27;./base&#x27;;
+import { format, startOfToday, differenceInYears } from &#x27;date-fns&#x27;;
 
 /**
  * Person, each project can extend this person class
@@ -721,37 +739,20 @@ export class Person extends Base {
   public lastName: string;
 
   /** Format to display birthdate */
-  public dobFormat &#x3D; &#x27;YYYY/MM/DD&#x27;;
+  public dobFormat &#x3D; &#x27;yyyy/MM/dd&#x27;;
+  public apiDobFormat &#x3D; &#x27;yyyyMMdd&#x27;;
 
-  // Initialize dob to nulls
-  public dateOfBirth: SimpleDate &#x3D; { year: null, month: null, day: null };
+  // Initialize dob to nulls - To be removed
+  public dateOfBirth: Date;
 
   /** Returns DoB in YYYYMMDD format, used by API. */
   get dateOfBirthShort(): string {
-    return this.isDobEmpty() ? null :
-        moment( {
-          year: this.dateOfBirth.year,
-          month: this.dateOfBirth.month - 1,
-          day: this.dateOfBirth.day
-        }).format( &#x27;YYYYMMDD&#x27; );
+    return this.dateOfBirth ? format( this.dateOfBirth, this.apiDobFormat ) : null;
   }
 
   /** Returns DoB in dobFormat (default: YYYY/MM/DD), for display purposes */
   get formatDateOfBirth(): string {
-    return this.isDobEmpty() ? null :
-        moment( {
-          year: this.dateOfBirth.year,
-          month: this.dateOfBirth.month - 1,
-          day: this.dateOfBirth.day
-        }).format( this.dobFormat );
-  }
-
-  /** Indicates whether or not the date of birth is empty */
-  isDobEmpty(): boolean {
-    return Object.keys( this.dateOfBirth )
-        .map( key &#x3D;&gt; this.dateOfBirth[key] )
-        .filter( x &#x3D;&gt; x ) // Filter out null/undefined
-        .length !&#x3D;&#x3D; 3;
+    return this.dateOfBirth ? format( this.dateOfBirth, this.dobFormat ) : null;
   }
 
   /** Concatenates the first and last name together */
@@ -786,10 +787,28 @@ export class Person extends Base {
     }
   }
 
+  /** Returns the person&#x27;s full name - first middle last name concatenated together */
+  get fullname() {
+    let _name &#x3D; null;
+
+    if ( this.firstName ) {
+      _name &#x3D; this.firstName;
+    }
+
+    if ( this.middleName ) {
+      _name &#x3D; _name ? _name.concat( &#x27; &#x27; + this.middleName ) : this.middleName;
+    }
+
+    if ( this.lastName ) {
+      _name &#x3D; _name ? _name.concat( &#x27; &#x27; + this.lastName ) : this.lastName;
+    }
+
+    return _name;
+  }
+
   /** Calculates the age from date of birth */
   getAge(): Number {
-    const dobDt &#x3D; new Date( this.dateOfBirth.year, this.dateOfBirth.month, this.dateOfBirth.day );
-    return Math.ceil( moment( ).diff( dobDt, &#x27;year&#x27;, true ) );
+    return differenceInYears( this.dateOfBirth, startOfToday() );
   }
 
   /* Copy function */
@@ -797,9 +816,7 @@ export class Person extends Base {
     this.firstName &#x3D; object.firstName;
     this.middleName &#x3D; object.middleName;
     this.lastName &#x3D; object.lastName;
-    this.dateOfBirth.month &#x3D; object.dateOfBirth.month;
-    this.dateOfBirth.day &#x3D; object.dateOfBirth.day;
-    this.dateOfBirth.year &#x3D; object.dateOfBirth.year;
+    this.dateOfBirth &#x3D; object.dateOfBirth;
   }
 }
 </code></pre>
