@@ -6,14 +6,12 @@ import {
   EventEmitter,
   Optional, Self, SimpleChanges, OnChanges
 } from '@angular/core';
-import { Base } from '../../models/base';
 import {
   NgForm,
   ControlValueAccessor,
   NgControl,
   ValidationErrors} from '@angular/forms';
-import { ErrorMessage, LabelReplacementTag, replaceLabelTag } from '../../models/error-message.interface';
-
+import { ErrorMessage, LabelReplacementTag } from '../../models/error-message.interface';
 import getDaysInMonth from 'date-fns/getDaysInMonth';
 import isAfter from 'date-fns/isAfter';
 import isBefore from 'date-fns/isBefore';
@@ -22,6 +20,7 @@ import addYears from 'date-fns/addYears';
 import subYears from 'date-fns/subYears';
 import subDays from 'date-fns/subDays';
 import { MoHCommonLibraryError } from '../../../helpers/library-errorr';
+import { AbstractFormControl } from '../../models/abstract-form-control';
 
 
 const MAX_YEAR_RANGE = 150;
@@ -34,7 +33,7 @@ const distantPast = subYears(startOfToday(), MAX_YEAR_RANGE);
   templateUrl: './date.component.html',
   styleUrls: ['./date.component.scss'],
 })
-export class DateComponent extends Base implements OnInit, ControlValueAccessor, OnChanges {
+export class DateComponent extends AbstractFormControl implements OnInit, ControlValueAccessor, OnChanges {
   @Input() date: Date;
   @Output() dateChange: EventEmitter<Date> = new EventEmitter<Date>();
 
@@ -77,7 +76,8 @@ export class DateComponent extends Base implements OnInit, ControlValueAccessor,
   dayLabelforId: string = 'day_' + this.objectId;
   yearLabelforId: string = 'year_' + this.objectId;
 
-  defaultErrMsg: ErrorMessage = {
+  // Abstact variable defined
+  _defaultErrMsg: ErrorMessage = {
     required: `${LabelReplacementTag} is required.`,
     dayOutOfRange: `Invalid ${LabelReplacementTag}.`,
     yearDistantPast: `Invalid ${LabelReplacementTag}.`,
@@ -99,24 +99,20 @@ export class DateComponent extends Base implements OnInit, ControlValueAccessor,
     }
   }
 
-
   ngOnChanges(changes: SimpleChanges) {
 
+    /*
+     * Works, creates new object literall
+     * obj = {
+     *   errorMessage: 'new'message';
+     * }
+     *
+     * Doesn't work, modifies existing object.  Would have to manually call cd.detectChanges() afterwards.
+     * obj.errorMessage = 'newMessage';
+     */
     if (changes['errorMessages']) {
       this.setErrorMsg();
     }
-
-
-    // todo: remove below comments
-    // Kristin -> make sure to pass in a fully new errorMessages object to trigger Angular's change detection.
-
-    // Doesn't work, modifies existing object.  Would have to manually call cd.detectChanges() afterwards.
-    // obj.errorMessage = 'newMessage';
-
-    // Works, creates new object literall
-    // obj = {
-    //   errorMessage: 'new'message';
-    // }
   }
 
   ngOnInit() {
@@ -274,13 +270,6 @@ You must use either [restrictDate] or the [dateRange*] inputs.
     return (isNaN(parsed) ? null : parsed);
   }
 
-  private setErrorMsg() {
-
-    if (this.errorMessages) {
-      Object.keys(this.errorMessages).map(x => this.defaultErrMsg[x] = this.errorMessages[x]);
-    }
-    Object.keys(this.defaultErrMsg).map(x => this.defaultErrMsg[x] = replaceLabelTag(this.defaultErrMsg[x], this.label));
-  }
 
   private setDisplayVariables() {
     this._day = this.date.getDate().toString();
