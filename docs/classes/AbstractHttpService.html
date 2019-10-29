@@ -110,6 +110,10 @@
                         <ul class="index-list">
                             <li>
                                     <span class="modifier">Protected</span>
+                                <a href="#generateUUID">generateUUID</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Protected</span>
                                 <a href="#get">get</a>
                             </li>
                             <li>
@@ -162,7 +166,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">projects/common/lib/services/abstract-api-service.ts:11</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">projects/common/lib/services/abstract-api-service.ts:12</a></div>
                             </td>
                         </tr>
 
@@ -227,7 +231,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">projects/common/lib/services/abstract-api-service.ts:16</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">projects/common/lib/services/abstract-api-service.ts:17</a></div>
                             </td>
                         </tr>
 
@@ -266,7 +270,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">projects/common/lib/services/abstract-api-service.ts:11</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">projects/common/lib/services/abstract-api-service.ts:12</a></div>
                             </td>
                         </tr>
 
@@ -280,6 +284,47 @@
     <h3 id="methods">
         Methods
     </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="generateUUID"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Protected</span>
+                            generateUUID
+                        </b>
+                        <a href="#generateUUID"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>generateUUID()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="63"
+                            class="link-to-prism">projects/common/lib/services/abstract-api-service.ts:63</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
     <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -304,8 +349,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="22"
-                            class="link-to-prism">projects/common/lib/services/abstract-api-service.ts:22</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="23"
+                            class="link-to-prism">projects/common/lib/services/abstract-api-service.ts:23</a></div>
                 </td>
             </tr>
 
@@ -405,8 +450,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="59"
-                            class="link-to-prism">projects/common/lib/services/abstract-api-service.ts:59</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="60"
+                            class="link-to-prism">projects/common/lib/services/abstract-api-service.ts:60</a></div>
                 </td>
             </tr>
 
@@ -479,8 +524,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="30"
-                            class="link-to-prism">projects/common/lib/services/abstract-api-service.ts:30</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="31"
+                            class="link-to-prism">projects/common/lib/services/abstract-api-service.ts:31</a></div>
                 </td>
             </tr>
 
@@ -564,8 +609,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="38"
-                            class="link-to-prism">projects/common/lib/services/abstract-api-service.ts:38</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="39"
+                            class="link-to-prism">projects/common/lib/services/abstract-api-service.ts:39</a></div>
                 </td>
             </tr>
 
@@ -646,7 +691,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">projects/common/lib/services/abstract-api-service.ts:52</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">projects/common/lib/services/abstract-api-service.ts:53</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -671,6 +716,7 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from &#x27;@angular/common/http&#x27;;
 import { Observable } from &#x27;rxjs&#x27;;
 import { catchError, tap } from &#x27;rxjs/operators&#x27;;
+import { UUID } from &#x27;angular2-uuid&#x27;;
 
 
 /**
@@ -727,6 +773,11 @@ export abstract class AbstractHttpService {
 
   /** Handles all failed requests that throw either a server error (400/500) or a client error (e.g. lost internet). */
   protected abstract handleError(error: HttpErrorResponse);
+
+  /* Helper function for generating a unique UUID per request for logging. */
+  protected generateUUID() {
+    return UUID.UUID();
+  }
 }
 </code></pre>
     </div>
