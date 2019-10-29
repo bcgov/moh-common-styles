@@ -14,7 +14,10 @@ export interface ErrorMessage {
   [key: string]: string;
 }
 
+// To catch all occurances of the label tag in the message
+const regExpLabel = new RegExp( LabelReplacementTag, 'g' );
+
 // Function only used with library
 export function replaceLabelTag( str: string, value: string ) {
-  return str.replace( LabelReplacementTag, value );
+  return str.replace( regExpLabel, value );
 }

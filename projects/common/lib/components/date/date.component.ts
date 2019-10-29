@@ -100,8 +100,9 @@ export class DateComponent extends Base implements OnInit, ControlValueAccessor,
     }
   }
 
-
-  ngOnChanges(changes: SimpleChanges){
+/*
+  ngOnChanges(changes: SimpleChanges) {
+    console.log( 'date: on change: ', changes );
     if (changes['errorMessages']) {
       this.setErrorMsg();
     }
@@ -117,7 +118,7 @@ export class DateComponent extends Base implements OnInit, ControlValueAccessor,
     // obj = {
     //   errorMessage: 'new'message';
     // }
-  }
+  }*/
 
   ngOnInit() {
     // Set to midnight, so we don't accidentally compare against hours/minutes/seconds
