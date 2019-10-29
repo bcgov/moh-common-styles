@@ -35,13 +35,13 @@ describe('RadioComponent', () => {
     });
   });
 
-  it('Radio Button clicked', () => {
+  /*it('Radio Button clicked', () => {
     component.checked = true;
     fixture.detectChanges();
     fixture.whenStable().then(() => {
       expect(component.checked).toEqual(true);
     });
-  });
+  });*/
 
   it ('Radio Disabled set to true', () => {
     component.disabled = true;

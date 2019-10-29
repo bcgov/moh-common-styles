@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import {FormsModule, NgForm} from '@angular/forms';
 import { FullNameComponent } from './full-name.component';
-import {Person} from '../../../models/src/person.model';
+import { Person } from '../../models/person.model';
 
 describe('NameComponent', () => {
   let component: FullNameComponent;

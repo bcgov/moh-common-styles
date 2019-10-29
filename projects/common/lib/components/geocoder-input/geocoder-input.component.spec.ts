@@ -1,12 +1,13 @@
 import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 
 import { GeocoderInputComponent } from './geocoder-input.component';
-import { GeocoderService } from '../../geocoder.service';
 import { FormsModule } from '@angular/forms';
 import { TypeaheadModule } from 'ngx-bootstrap';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { of, throwError } from 'rxjs';
-import { Address } from '../../../../models/address.model';
+import { GeocoderService } from '../../services/geocoder.service';
+import { Address } from '../../models/address.model';
+
 
 describe('GeocoderInputComponent', () => {
   let component: GeocoderInputComponent;
@@ -72,10 +73,11 @@ describe('GeocoderInputComponent', () => {
       component.onSelect(typeaheadMatch);
     });
 
-    //Check for @Output emit, triggered via the .onSelect() above
+    // Check for @Output emit, triggered via the .onSelect() above
     component.addressChange.subscribe((address: Address) => {
       expect(address).toBeDefined('Address should be emitted after calling component.onSelect()');
-      expect(address._geocoderFullAddress).toBe(typeaheadMatch.item.fullAddress, 'Address _geocoderFullAddress should equal typeahead match ');
+      // tslint:disable-next-line: max-line-length
+      // expect(address._geocoderFullAddress).toBe(typeaheadMatch.item.fullAddress, 'Address _geocoderFullAddress should equal typeahead match ');
       expect(address.street).toBe(typeaheadMatch.item.street, 'Address street should match typeahead value');
       expect(address.city).toBe(typeaheadMatch.item.city, 'Address city should match typeahead value');
       expect(address.province).toBe(typeaheadMatch.item.province, 'Address province should match typeahead value');
