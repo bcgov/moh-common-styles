@@ -1,4 +1,15 @@
-# Unreleased "moh-common-lib" (2019-10-28)
+# Unreleased "moh-common-lib" (2019-10-29)
+
+
+
+# [3.0.0-rc.6](https://github.com/bcgov/moh-common-styles/compare/v3.0.0-rc.5...v3.0.0-rc.6) "moh-common-lib" (2019-10-29)
+
+
+### Bug Fixes
+
+* **Date:** Remove ngOnChanges ([015602c](https://github.com/bcgov/moh-common-styles/commit/015602c))
+* added ngChanges to date to detect label changes, no longer can add question by default ([38c822b](https://github.com/bcgov/moh-common-styles/commit/38c822b))
+* added placeholder country & regexp for label ([61c0cdc](https://github.com/bcgov/moh-common-styles/commit/61c0cdc))
 
 
 

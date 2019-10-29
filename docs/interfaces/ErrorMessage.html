@@ -157,9 +157,12 @@ export interface ErrorMessage {
   [key: string]: string;
 }
 
+// To catch all occurances of the label tag in the message
+const regExpLabel &#x3D; new RegExp( LabelReplacementTag, &#x27;g&#x27; );
+
 // Function only used with library
 export function replaceLabelTag( str: string, value: string ) {
-  return str.replace( LabelReplacementTag, value );
+  return str.replace( regExpLabel, value );
 }
 </code></pre>
     </div>

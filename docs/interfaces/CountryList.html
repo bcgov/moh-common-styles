@@ -463,6 +463,7 @@ export class CountryComponent extends Base implements OnInit, ControlValueAccess
   @Input() useDropDownList: boolean &#x3D; true;
   @Input() maxlen: string &#x3D; &#x27;250&#x27;;
   @Input() errorMessage: ErrorMessage;
+  @Input() placeholder: string &#x3D; &#x27;Please select a country&#x27;;
 
   @Input()
   set value( val: string ) {
