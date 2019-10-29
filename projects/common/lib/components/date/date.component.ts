@@ -4,8 +4,7 @@ import {
   Input,
   Output,
   EventEmitter,
-  ChangeDetectorRef,
-  Optional, Self, Injector, SimpleChanges, OnChanges
+  Optional, Self, SimpleChanges, OnChanges
 } from '@angular/core';
 import { Base } from '../../models/base';
 import {
@@ -35,7 +34,7 @@ const distantPast = subYears(startOfToday(), MAX_YEAR_RANGE);
   templateUrl: './date.component.html',
   styleUrls: ['./date.component.scss'],
 })
-export class DateComponent extends Base implements OnInit, ControlValueAccessor {
+export class DateComponent extends Base implements OnInit, ControlValueAccessor, OnChanges {
   @Input() date: Date;
   @Output() dateChange: EventEmitter<Date> = new EventEmitter<Date>();
 
@@ -100,9 +99,9 @@ export class DateComponent extends Base implements OnInit, ControlValueAccessor 
     }
   }
 
-/*
+
   ngOnChanges(changes: SimpleChanges) {
-    console.log( 'date: on change: ', changes );
+
     if (changes['errorMessages']) {
       this.setErrorMsg();
     }
@@ -118,9 +117,11 @@ export class DateComponent extends Base implements OnInit, ControlValueAccessor 
     // obj = {
     //   errorMessage: 'new'message';
     // }
-  }*/
+  }
 
   ngOnInit() {
+    this.setErrorMsg();
+
     // Set to midnight, so we don't accidentally compare against hours/minutes/seconds
 
     if (this.restrictDate !== 'any' && (this.dateRangeEnd || this.dateRangeStart)) {
@@ -274,6 +275,7 @@ You must use either [restrictDate] or the [dateRange*] inputs.
   }
 
   private setErrorMsg() {
+
     if (this.errorMessages) {
       Object.keys(this.errorMessages).map(x => this.defaultErrMsg[x] = this.errorMessages[x]);
     }
