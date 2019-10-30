@@ -2,6 +2,15 @@
 
 
 
+# [3.0.0-rc.9](https://github.com/bcgov/moh-common-styles/compare/v3.0.0-rc.8...v3.0.0-rc.9) "moh-common-lib" (2019-10-30)
+
+
+### Bug Fixes
+
+* **Date:** Remove debug label ([a7efeee](https://github.com/bcgov/moh-common-styles/commit/a7efeee))
+
+
+
 # [3.0.0-rc.8](https://github.com/bcgov/moh-common-styles/compare/v3.0.0-rc.7...v3.0.0-rc.8) "moh-common-lib" (2019-10-30)
 
 
