@@ -128,9 +128,7 @@ export class PhoneNumberComponent extends MaskModel implements ControlValueAcces
         .replace(')', '');
 
       const valid = stripped.length === phoneLength;
-
-      console.log('self validation', { valid, stripped, phoneLength });
-      return valid ? null : { required: true };
+      return valid ? null : { incompleteValue: true };
 
     }
     return null;

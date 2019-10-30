@@ -17,6 +17,9 @@
     <div *ngIf="controlDir?.errors?.required">
       {{label}} is required.
     </div>
+    <div *ngIf="controlDir?.errors?.incompleteValue">
+      {{label}} is an incomplete phone number.
+    </div>
   </common-error-container>
 </div>
 
