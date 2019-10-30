@@ -1,4 +1,42 @@
-# Unreleased "moh-common-lib" (2019-10-29)
+# Unreleased "moh-common-lib" (2019-10-30)
+
+
+
+# [3.0.0-rc.9](https://github.com/bcgov/moh-common-styles/compare/v3.0.0-rc.8...v3.0.0-rc.9) "moh-common-lib" (2019-10-30)
+
+
+### Bug Fixes
+
+* **Date:** Remove debug label ([a7efeee](https://github.com/bcgov/moh-common-styles/commit/a7efeee))
+
+
+
+# [3.0.0-rc.8](https://github.com/bcgov/moh-common-styles/compare/v3.0.0-rc.7...v3.0.0-rc.8) "moh-common-lib" (2019-10-30)
+
+
+### Bug Fixes
+
+* **Date:** Replace (chance) event with (blur) for IE ([61b54fd](https://github.com/bcgov/moh-common-styles/commit/61b54fd))
+
+
+
+# [3.0.0-rc.7](https://github.com/bcgov/moh-common-styles/compare/v3.0.0-rc.6...v3.0.0-rc.7) "moh-common-lib" (2019-10-29)
+
+
+### Bug Fixes
+
+* **PhoneNumber:** IE fix by changing event ([71eb531](https://github.com/bcgov/moh-common-styles/commit/71eb531))
+
+
+### Features
+
+* **PhoneNumber:** Add `allowInternational` flag to disable the "+1" ([108e46b](https://github.com/bcgov/moh-common-styles/commit/108e46b))
+* **PhoneNumber:** Now a self-validating component. ([6650ef8](https://github.com/bcgov/moh-common-styles/commit/6650ef8))
+
+
+### BREAKING CHANGES
+
+* **PhoneNumber:** Deleted commonValidatePhone directive
 
 
 

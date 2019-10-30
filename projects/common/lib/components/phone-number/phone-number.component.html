@@ -6,7 +6,7 @@
           name="phone_{{objectId}}"
           id="phone_{{objectId}}"
           [value]="phoneNumberString"
-          (change)="setPhoneNumber($event)"
+          (blur)="setPhoneNumber($event)"
           [placeholder]="placeholder "
           [textMask]="{mask: mask}"
           [required]="required"
