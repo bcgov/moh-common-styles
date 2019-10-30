@@ -29,10 +29,6 @@ import { AbstractFormControl } from '../../models/abstract-form-control';
   selector: 'common-phone-number',
   templateUrl: './phone-number.component.html',
   styleUrls: ['./phone-number.component.scss'],
-  /* @deprecate this ViewProvider as we're using ControlValueAccessor @Optional  */
-  viewProviders: [
-    { provide: ControlContainer, useExisting: forwardRef(() => NgForm) }
-  ]
 })
 
 export class PhoneNumberComponent extends AbstractFormControl implements OnInit {
