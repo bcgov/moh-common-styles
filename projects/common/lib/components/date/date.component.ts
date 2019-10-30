@@ -34,15 +34,14 @@ const distantPast = subYears(startOfToday(), MAX_YEAR_RANGE);
   styleUrls: ['./date.component.scss'],
 })
 export class DateComponent extends AbstractFormControl implements OnInit, ControlValueAccessor, OnChanges {
+
+  // Inputs for disabled & errorMessage are found in the AbstractFormControl class
   @Input() date: Date;
   @Output() dateChange: EventEmitter<Date> = new EventEmitter<Date>();
 
-
-  @Input() disabled: boolean = false;
   @Input() label: string = 'Date';
   /** Can be one of: "future", "past". "future" includes today, "past" does not. */
   @Input() restrictDate: 'future' | 'past' | 'any' = 'any';
-  @Input() errorMessages: ErrorMessage;
 
   // The actual values displayed to the user.  May not precisely match Date
   // object, because these fields can be blank whereas a Date can never have a
@@ -88,11 +87,8 @@ export class DateComponent extends AbstractFormControl implements OnInit, Contro
     invalidRange: `Invalid ${LabelReplacementTag}.`
   };
 
-  _onChange = (_: any) => { };
-  _onTouched = (_: any) => { };
-
-  constructor(@Optional() @Self() public controlDir: NgControl,
-    public form: NgForm) {
+  constructor( @Optional() @Self() public controlDir: NgControl,
+               public form: NgForm ) {
     super();
     if (controlDir) {
       controlDir.valueAccessor = this;
@@ -289,16 +285,6 @@ You must use either [restrictDate] or the [dateRange*] inputs.
       this.date = value;
       this.setDisplayVariables();
     }
-  }
-
-  // Register change function
-  registerOnChange(fn: any): void {
-    this._onChange = fn;
-  }
-
-  // Register touched function
-  registerOnTouched(fn: any): void {
-    this._onTouched = fn;
   }
 
   onBlurDay(value: string) {

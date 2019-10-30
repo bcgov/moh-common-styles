@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output, Optional, Self} from '@angular/core';
-import { NUMBER, SPACE } from '../../models/mask.model';
+import { NUMBER, SPACE } from '../../models/mask.constants';
 import { NgControl } from '@angular/forms';
 import { AbstractFormControl } from '../../models/abstract-form-control';
 import { LabelReplacementTag, ErrorMessage } from '../../models/error-message.interface';

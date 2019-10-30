@@ -21,7 +21,7 @@ export abstract class AbstractFormControl extends Base implements OnInit, Contro
 
   // Required for implementing ControlValueAccessor
   _onChange = (_: any) => {};
-  _onTouched = (_: any) => {};
+  _onTouched = (_?: any) => {};
 
 
   ngOnInit() {

@@ -5,23 +5,25 @@
           type="text"
           name="phone_{{objectId}}"
           id="phone_{{objectId}}"
-          [value]="phoneNumberString"
-          (blur)="setPhoneNumber($event)"
+          [ngModel]="phoneNumber"
+          (ngModelChange)="setPhoneNumber($event)"
+          (blur)="onBlur($event)"
           [placeholder]="placeholder "
           [textMask]="{mask: mask}"
           [required]="required"
           [disabled]="disabled"/>
-  <!-- Error messages for component -->
-  <common-error-container
-      [displayError]="!disabled && controlDir?.touched">
-    <div *ngIf="controlDir?.errors?.required">
-      {{label}} is required.
-    </div>
-    <div *ngIf="controlDir?.errors?.incompleteValue">
-      {{label}} is an incomplete phone number.
-    </div>
-  </common-error-container>
 </div>
+
+<!-- Error messages for component -->
+<common-error-container
+    [displayError]="!disabled && controlDir?.touched">
+  <div *ngIf="controlDir?.errors?.required">
+    {{_defaultErrMsg.required}}
+  </div>
+  <div *ngIf="controlDir?.errors?.incompleteValue">
+    {{_defaultErrMsg.incompleteValue}}
+  </div>
+</common-error-container>
 
 
 <ng-template #NoMask>
@@ -29,18 +31,10 @@
           type="text"
           name="phone_{{objectId}}"
           id="phone_{{objectId}}"
-          [value]="phoneNumberString"
-          (blur)="setPhoneNumber($event)"
+          [value]="phoneNumber"
+          (input)="setPhoneNumber($event.target.value)"
+          (blur)="onBlur($event)"
           [required]="required"
           [disabled]="disabled" />
-          <!-- Error messages for component -->
-  <div *ngIf="!disabled && controlDir?.touched"
-        role="alert"
-        class="error-container"
-        aria-live="assertive">
-    <div class="text-danger" *ngIf="controlDir?.errors?.required">
-      {{label}} is required.
-     </div>
-  </div>
 </ng-template>
 

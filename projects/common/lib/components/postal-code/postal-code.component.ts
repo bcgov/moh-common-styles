@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter, Optional, Self, OnInit } from '@angular/core';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
-import { LETTER, NUMBER, SPACE } from '../../models/mask.model';
+import { LETTER, NUMBER, SPACE } from '../../models/mask.constants';
 import { Base } from '../../models/base';
 import { ErrorMessage } from '../../../public_api';
 

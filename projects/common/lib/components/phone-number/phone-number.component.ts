@@ -9,9 +9,10 @@ import {
   OnInit
 } from '@angular/core';
 import { ControlContainer, NgForm, NgControl } from '@angular/forms';
-import { MaskModel, NUMBER, SPACE } from '../../models/mask.model';
+import { NUMBER, SPACE } from '../../models/mask.constants';
 
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ErrorMessage, LabelReplacementTag } from '../../models/error-message.interface';
+import { AbstractFormControl } from '../../models/abstract-form-control';
 /**
  * PhoneNumberComponent is a used to show the Phone number.
  *
@@ -34,7 +35,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   ]
 })
 
-export class PhoneNumberComponent extends MaskModel implements ControlValueAccessor, OnInit {
+export class PhoneNumberComponent extends AbstractFormControl implements OnInit {
 
   static PhoneNumberRegEx = '^[2-9]{1}\\d{2}[\\-]?\\d{3}[\\-]?\\d{4}$';
   @Input() displayMask: boolean = true;
@@ -43,21 +44,40 @@ export class PhoneNumberComponent extends MaskModel implements ControlValueAcces
 
   @Input() allowInternational: boolean = true;
 
+  // Setter/getter for when not used in form (ex. data dislayed but not edittable)
+  @Input()
+  set value( val: string ) {
+    if ( val !== undefined ) {
+      this.phoneNumber = val;
+    }
+  }
+  get value() {
+    return this.phoneNumber;
+  }
+
+  @Output() valueChange: EventEmitter<string> = new EventEmitter<string>();
+
   public phoneNumber: string = '';
 
-  public _onChange = (_: any) => { };
-  public _onTouched = () => { };
+  public mask: any;
+  public placeholder: string;
 
+  // Abstact variable defined
+  _defaultErrMsg: ErrorMessage = {
+    required: `${LabelReplacementTag} is required.`,
+    incompleteValue: `${LabelReplacementTag} is an incomplete phone number.`
+  };
 
   constructor(@Optional() @Self() public controlDir: NgControl) {
     super();
     if (controlDir) {
       controlDir.valueAccessor = this;
     }
-
   }
 
   ngOnInit() {
+    super.ngOnInit();
+
     const internationalPrefix = '+1';
     this.placeholder = '(555) 555-5555';
     this.mask = ['(', /[2-9]/, NUMBER, NUMBER, ')', SPACE, NUMBER, NUMBER, NUMBER, '-', NUMBER, NUMBER, NUMBER, NUMBER];
@@ -86,34 +106,26 @@ export class PhoneNumberComponent extends MaskModel implements ControlValueAcces
 
   }
 
-  get phoneNumberString(): string {
-    return this.phoneNumber ? this.phoneNumber : '';
-  }
-
-
-  setPhoneNumber(evt) {
-    const value = evt.target.value;
+  setPhoneNumber(value) {
+    console.log( 'setPhoneNumber: ', value );
+    // const value = evt.target.value;
     this.phoneNumber = value;
     this.valueChange.emit(this.phoneNumber);
     this._onChange(value);
-    this._onTouched();
   }
 
-  registerOnChange(fn: any): void {
-    this._onChange = fn;
+  onBlur( $event ) {
+    this._onTouched($event);
   }
 
-  registerOnTouched(fn: any): void {
-    this._onTouched = fn;
-  }
 
   writeValue(value: any): void {
-    this.value = value;
-    // phoneNumber is where the actual data is displayed to user for this
-    // component
-    this.phoneNumber = value;
+    if  (value !== undefined ) {
+      // phoneNumber is where the actual data is displayed to user for this
+      // component
+      this.phoneNumber = value;
+    }
   }
-
 
   private validateSelf() {
     const value = this.phoneNumber;
