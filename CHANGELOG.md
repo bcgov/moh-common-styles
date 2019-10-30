@@ -1,4 +1,13 @@
-# Unreleased "moh-common-lib" (2019-10-29)
+# Unreleased "moh-common-lib" (2019-10-30)
+
+
+
+# [3.0.0-rc.8](https://github.com/bcgov/moh-common-styles/compare/v3.0.0-rc.7...v3.0.0-rc.8) "moh-common-lib" (2019-10-30)
+
+
+### Bug Fixes
+
+* **Date:** Replace (chance) event with (blur) for IE ([61b54fd](https://github.com/bcgov/moh-common-styles/commit/61b54fd))
 
 
 
