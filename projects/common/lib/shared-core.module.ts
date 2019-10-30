@@ -54,6 +54,7 @@ import { EmailComponent } from './components/email/email.component';
 import { ValidateEmailDirective } from './components/email/validate-email.directive';
 import { ConfirmTemplateComponent } from './components/confirm-template/confirm-template.component';
 import { GeocoderInputComponent } from './components/geocoder-input/geocoder-input.component';
+import { DateFieldFormatDirective } from './components/date/date-field-format.directive';
 
 
 const componentList = [
@@ -107,6 +108,7 @@ const componentList = [
   ValidateRegionDirective,
   ValidatePostalcodeDirective,
   ValidateEmailDirective,
+  DateFieldFormatDirective
 ];
 @NgModule({
   imports: [
