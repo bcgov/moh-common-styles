@@ -1,5 +1,5 @@
 <fieldset>
-  <legend class="date--legend">{{label}}</legend>
+  <legend class="date--legend">{{label}} - TEST</legend>
   <div class="date-row">
 
     <label class="visuallyhidden" for="{{monthLabelforId}}">Month</label>
@@ -7,8 +7,7 @@
             id="{{monthLabelforId}}"
             name="{{monthLabelforId}}"
             [value]="_month"
-            (change)="setMonth($event.target.value)"
-            (blur)="onBlurMonth()"
+            (blur)="onBlurMonth($event.target.value)"
             [disabled]='disabled'>
       <!-- We show the blank option so the user can clear out their data.-->
       <!-- <option value="null" label="-- month --" selected [disabled]='required'></option> -->
@@ -24,8 +23,7 @@
            name="{{dayLabelforId}}"
            placeholder="Day"
            [value]="_day"
-           (change)="setDay($event.target.value)"
-           (blur)="onBlurDay()"
+           (blur)="onBlurDay($event.target.value)"
            commonDateFieldFormat
            [disabled]='disabled'
            maxlength="2"
@@ -38,8 +36,7 @@
            name="{{yearLabelforId}}"
            placeholder="Year"
            [value]="_year"
-           (change)="setYear($event.target.value)"
-           (blur)="onBlurYear()"
+           (blur)="onBlurYear($event.target.value)"
            commonDateFieldFormat
            [disabled]='disabled'
            maxlength="4"

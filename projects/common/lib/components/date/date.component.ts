@@ -196,6 +196,7 @@ You must use either [restrictDate] or the [dateRange*] inputs.
   }
 
   setDay(value: string) {
+    console.log('seDay', value, this.date);
     const day = this.getNumericValue(value);
     // console.log('set-day', {day, value});
     this._day = value;
@@ -311,17 +312,20 @@ You must use either [restrictDate] or the [dateRange*] inputs.
     this._onTouched = fn;
   }
 
-  onBlurDay() {
+  onBlurDay(value: string) {
     this.dayTouched = true;
     this.handleBlur();
+    this.setDay(value);
   }
-  onBlurYear() {
+  onBlurYear(value: string) {
     this.yearTouched = true;
     this.handleBlur();
+    this.setYear(value);
   }
-  onBlurMonth() {
+  onBlurMonth(value: string) {
     this.monthTouched = true;
     this.handleBlur();
+    this.setMonth(value);
   }
   handleBlur() {
     if (this.dayTouched && this.yearTouched && this.monthTouched) {
