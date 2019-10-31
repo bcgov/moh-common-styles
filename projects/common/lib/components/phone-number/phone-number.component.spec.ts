@@ -1,51 +1,172 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormsModule, NgForm} from '@angular/forms';
+import { ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
+import { FormsModule, NgForm, ReactiveFormsModule, FormBuilder, FormGroup } from '@angular/forms';
+import { PhoneNumberComponent } from './phone-number.component';
+import { Component, ViewChild, Type, OnInit } from '@angular/core';
+import { ErrorContainerComponent } from '../error-container/error-container.component';
+import { tickAndDetectChanges } from '../../../helpers/test-helpers';
 import { TextMaskModule } from 'angular2-text-mask';
 
-import { PhoneNumberComponent } from './phone-number.component';
+@Component({
+  template: ``,
+})
+class PhoneTestComponent {
+
+  @ViewChild(PhoneNumberComponent) phoneComponent: PhoneNumberComponent;
+  phone: string;
+
+  constructor() {}
+}
+
+@Component({
+  template: ``,
+})
+class PhoneReactTestComponent extends PhoneTestComponent implements OnInit {
+
+  form: FormGroup;
+
+  constructor( private fb: FormBuilder ) {
+    super();
+  }
+
+  ngOnInit() {
+    this.form = this.fb.group({
+      phoneNumber: [ this.phone ]
+    });
+  }
+}
 
 describe('PhoneNumberComponent', () => {
-  let component: PhoneNumberComponent;
-  let fixture: ComponentFixture<PhoneNumberComponent>;
-  let el;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ PhoneNumberComponent ],
-      imports: [ FormsModule, TextMaskModule ],
-      providers: [ NgForm ]
-    })
-    .compileComponents();
-  }));
+  describe('Custom controls - Reactive', () => {
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(PhoneNumberComponent);
-    component = fixture.componentInstance;
-    el = fixture.nativeElement;
-    fixture.detectChanges();
+    it('should create', fakeAsync(() => {
+      const fixture = createTestingModule( PhoneReactTestComponent,
+          `<form [formGroup]="form">
+            <common-phone-number name='phoneNumber' label='Phone Number'
+                                  formControlName='phoneNumber'></common-phone-number>
+          </form>`,
+          true
+          );
+
+      tickAndDetectChanges( fixture );
+      expect( fixture.componentInstance.phoneComponent ).toBeTruthy();
+      expect( fixture.nativeElement.querySelector('label').textContent ).toBe( 'Phone Number' );
+      expect( fixture.componentInstance.form.get('phoneNumber').hasError( 'required' )  ).toBeFalsy();
+    }));
+
+    it('should be disabled', fakeAsync(() => {
+      const fixture = createTestingModule( PhoneReactTestComponent,
+          `<form [formGroup]="form">
+            <common-phone-number name='phoneNumber' label='Phone Number'
+                                 formControlName='phoneNumber'></common-phone-number>
+          </form>`,
+          true
+          );
+
+      fixture.componentInstance.form.get('phoneNumber').disable();
+      tickAndDetectChanges( fixture );
+      expect( fixture.componentInstance.phoneComponent.disabled ).toBeTruthy();
+    }));
+
+    it('should be required', fakeAsync(() => {
+      const fixture = createTestingModule( PhoneReactTestComponent,
+          `<form [formGroup]="form">
+            <common-phone-number name='phoneNumber' label='Phone Number'
+                                 formControlName='phoneNumber' required></common-phone-number>
+          </form>`,
+          true
+          );
+
+      tickAndDetectChanges( fixture );
+      expect( fixture.componentInstance.form.get('phoneNumber').hasError( 'required' ) ).toBeTruthy();
+    }));
+
+    it('should be incomplete value error', fakeAsync(() => {
+      const fixture = createTestingModule( PhoneReactTestComponent,
+          `<form [formGroup]="form">
+            <common-phone-number name='phoneNumber' label='Phone Number'
+                                 formControlName='phoneNumber' required></common-phone-number>
+          </form>`,
+          true
+          );
+      const form = fixture.componentInstance.form;
+      form.get('phoneNumber').setValue( '23555552' );
+      tickAndDetectChanges( fixture );
+      expect( form.get('phoneNumber').hasError( 'incompleteValue' ) ).toBeTruthy();
+    }));
+
+    it('should display phone number (default allow international numbers)', fakeAsync(() => {
+      const fixture = createTestingModule( PhoneReactTestComponent,
+          `<form [formGroup]="form">
+            <common-phone-number name='phoneNumber' label='Phone Number'
+                                 formControlName='phoneNumber'></common-phone-number>
+          </form>`,
+          true
+          );
+
+      fixture.componentInstance.form.get('phoneNumber').setValue( '2355555252' );
+      tickAndDetectChanges( fixture );
+      expect( fixture.nativeElement.querySelector( 'input[type=text]'  ).value ).toEqual('+1 (235) 555-5252');
+    }));
+
+    it('should display phone number (not allow international numbers)', fakeAsync(() => {
+      const fixture = createTestingModule( PhoneReactTestComponent,
+          `<form [formGroup]="form">
+            <common-phone-number name='phoneNumber' label='Phone Number'
+                                 formControlName='phoneNumber' [allowInternational]='false'></common-phone-number>
+          </form>`,
+          true
+          );
+
+      fixture.componentInstance.form.get('phoneNumber').setValue( '2355555252' );
+      tickAndDetectChanges( fixture );
+      expect( fixture.nativeElement.querySelector( 'input[type=text]'  ).value ).toEqual('(235) 555-5252');
+    }));
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  describe('Custom controls - Template', () => {
+
+    it('should create', fakeAsync(() => {
+      const fixture = createTestingModule( PhoneTestComponent,
+          `<common-phone-number [(ngModel)]='phone' label='Phone Number'></common-phone-number>`
+          );
+
+      tickAndDetectChanges( fixture );
+      const component = fixture.componentInstance.phoneComponent;
+      expect( component ).toBeTruthy();
+      expect( fixture.nativeElement.querySelector('label').textContent ).toBe( 'Phone Number' );
+      expect( component.controlDir.hasError( 'required' ) ).toBeFalsy();
+    }));
   });
-
-
-  it ('Phone number label is displayed', () => {
-    component.label = 'Mobile';
-    fixture.detectChanges();
-    fixture.whenStable().then(() => {
-      expect(el.querySelector('label').textContent).toEqual('Mobile');
-    });
-  });
-
-  it ('Phone number value Input by the User', () => {
-    component.phoneNumber = '2355555252';
-    fixture.detectChanges();
-    fixture.whenStable().then(() => {
-      expect(el.querySelector('input[type=text]').value).toEqual('+1 (235) 555-5252');
-    });
-  });
-
-
-
 });
+
+
+function createTestingModule<T>(cmp: Type<T>, template: string, reactForm: boolean = false): ComponentFixture<T> {
+
+  const importComp: any = [ TextMaskModule, FormsModule ];
+  if ( reactForm ) {
+    importComp.push( ReactiveFormsModule );
+  }
+
+  TestBed.configureTestingModule({
+      declarations: [
+        cmp,
+        ErrorContainerComponent,
+        PhoneNumberComponent
+      ],
+      imports: [
+        importComp
+      ],
+      providers: [ NgForm ]
+    }).overrideComponent(cmp, {
+          set: {
+              template: template
+          }
+      });
+
+  TestBed.compileComponents();
+
+  const fixture = TestBed.createComponent(cmp);
+  fixture.detectChanges();
+  return fixture;
+}
