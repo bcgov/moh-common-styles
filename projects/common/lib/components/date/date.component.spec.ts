@@ -1,8 +1,9 @@
-import { async, ComponentFixture, TestBed, tick, fakeAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
 import { DateComponent } from './date.component';
 import { NgForm, FormsModule } from '@angular/forms';
 import { ErrorContainerComponent } from '../error-container/error-container.component';
 import { Component, ViewChild, Type } from '@angular/core';
+import { tickAndDetectChanges } from '../../../helpers/test-helpers';
 
 
 @Component({
@@ -33,9 +34,7 @@ describe('DateComponent', () => {
           );
 
       tickAndDetectChanges( fixture );
-      const instance = fixture.componentInstance.dateComponent;
-      instance.onBlurMonth();
-      expect( instance.controlDir.hasError( 'required' ) ).toBeTruthy();
+      expect( fixture.componentInstance.dateComponent.controlDir.hasError( 'required' ) ).toBeTruthy();
     }));
   });
 });
@@ -375,9 +374,4 @@ function createTestingModule<T>(cmp: Type<T>, template: string): ComponentFixtur
   const fixture = TestBed.createComponent(cmp);
   fixture.detectChanges();
   return fixture;
-}
-
-function tickAndDetectChanges(fixture: ComponentFixture<any>) {
-  fixture.detectChanges();
-  tick();
 }

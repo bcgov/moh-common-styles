@@ -205,7 +205,7 @@ export class FileUploaderComponent extends Base
             )),
             filesArrayFromDrop).pipe(
                 filter(files => {
-                    console.log('files');
+                    // console.log('files');
                     return !!files && files.length && files.length > 0;
                 }),
                 flatMap(

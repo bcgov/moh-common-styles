@@ -120,7 +120,7 @@ describe('PhoneNumberComponent', () => {
 
       fixture.componentInstance.form.get('phoneNumber').setValue( '2355555252' );
       tickAndDetectChanges( fixture );
-      expect( fixture.nativeElement.querySelector( 'input[type=text]'  ).value ).toEqual('(235) 555-5252');
+      expect( fixture.nativeElement.querySelector( 'input[type=text]' ).value ).toEqual('(235) 555-5252');
     }));
   });
 

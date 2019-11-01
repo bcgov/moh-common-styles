@@ -134,7 +134,7 @@ export class AddressComponent extends Base
 
   ngOnInit() {
 
-    console.log( 'address: ', this.bcOnly );
+    // console.log( 'address: ', this.bcOnly );
 
     this.setLabels();
     this.setMaxlengths();

@@ -1,7 +1,7 @@
 import { ErrorMessage, replaceLabelTag } from './error-message.interface';
 import { Input, OnInit } from '@angular/core';
 import { Base } from './base';
-import { ControlValueAccessor } from '@angular/forms';
+import { ControlValueAccessor, NgControl, ValidationErrors } from '@angular/forms';
 
 // Class does not get exported - used internally
 export abstract class AbstractFormControl extends Base implements OnInit, ControlValueAccessor {
@@ -16,7 +16,6 @@ export abstract class AbstractFormControl extends Base implements OnInit, Contro
 
   // Input to allow developers to change default messages
   @Input() errorMessage: ErrorMessage;
-
 
 
   // Required for implementing ControlValueAccessor
@@ -53,5 +52,28 @@ export abstract class AbstractFormControl extends Base implements OnInit, Contro
 
     // Replace label tags with label
     Object.keys(this._defaultErrMsg).map( x => this._defaultErrMsg[x] = replaceLabelTag( this._defaultErrMsg[x] , this.label ) );
+  }
+
+  /**
+   * Register self validating method
+   * @param control control directive
+   * @param fn function for validating self
+   */
+  protected registerValidation( ngControl: NgControl, fn: ValidationErrors ) {
+
+    // Register validateSelf validator so that it will be added on component initialization.
+    // Makes the component a self validating component.
+    Promise.resolve().then(() => {
+
+      if ( ngControl ) {
+
+        const allValidators = [fn.bind(this)];
+        if ( ngControl.control.validator ) {
+          allValidators.push( ngControl.control.validator );
+        }
+        ngControl.control.setValidators(allValidators);
+        ngControl.control.updateValueAndValidity();
+      }
+    });
   }
 }
