@@ -867,7 +867,7 @@
                 <td class="col-md-4">
 
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../miscellaneous/variables.html#require" target="_self" >{ required: boolean; }</a></code>
+                        <b>Returns : </b>    <code>{ incompleteValue: boolean; }</code>
 
                     </div>
                 </td>
@@ -1542,9 +1542,7 @@ export class PhoneNumberComponent extends MaskModel implements ControlValueAcces
         .replace(&#x27;)&#x27;, &#x27;&#x27;);
 
       const valid &#x3D; stripped.length &#x3D;&#x3D;&#x3D; phoneLength;
-
-      console.log(&#x27;self validation&#x27;, { valid, stripped, phoneLength });
-      return valid ? null : { required: true };
+      return valid ? null : { incompleteValue: true };
 
     }
     return null;
@@ -1574,6 +1572,9 @@ export class PhoneNumberComponent extends MaskModel implements ControlValueAcces
       [displayError]&#x3D;&quot;!disabled &amp;&amp; controlDir?.touched&quot;&gt;
     &lt;div *ngIf&#x3D;&quot;controlDir?.errors?.required&quot;&gt;
       {{label}} is required.
+    &lt;/div&gt;
+    &lt;div *ngIf&#x3D;&quot;controlDir?.errors?.incompleteValue&quot;&gt;
+      {{label}} is an incomplete phone number.
     &lt;/div&gt;
   &lt;/common-error-container&gt;
 &lt;/div&gt;
@@ -1628,7 +1629,7 @@ export class PhoneNumberComponent extends MaskModel implements ControlValueAcces
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><label for="phone_{{objectId}}" class="control-label">{{label}}</label><div *ngIf="displayMask; else NoMask">  <input class="form-control"          type="text"          name="phone_{{objectId}}"          id="phone_{{objectId}}"          [value]="phoneNumberString"          (blur)="setPhoneNumber($event)"          [placeholder]="placeholder "          [textMask]="{mask: mask}"          [required]="required"          [disabled]="disabled"/>  <!-- Error messages for component -->  <common-error-container      [displayError]="!disabled && controlDir?.touched">    <div *ngIf="controlDir?.errors?.required">      {{label}} is required.    </div>  </common-error-container></div><ng-template #NoMask>  <input class="form-control"          type="text"          name="phone_{{objectId}}"          id="phone_{{objectId}}"          [value]="phoneNumberString"          (blur)="setPhoneNumber($event)"          [required]="required"          [disabled]="disabled" />          <!-- Error messages for component -->  <div *ngIf="!disabled && controlDir?.touched"        role="alert"        class="error-container"        aria-live="assertive">    <div class="text-danger" *ngIf="controlDir?.errors?.required">      {{label}} is required.     </div>  </div></ng-template></div>'
+        var COMPONENT_TEMPLATE = '<div><label for="phone_{{objectId}}" class="control-label">{{label}}</label><div *ngIf="displayMask; else NoMask">  <input class="form-control"          type="text"          name="phone_{{objectId}}"          id="phone_{{objectId}}"          [value]="phoneNumberString"          (blur)="setPhoneNumber($event)"          [placeholder]="placeholder "          [textMask]="{mask: mask}"          [required]="required"          [disabled]="disabled"/>  <!-- Error messages for component -->  <common-error-container      [displayError]="!disabled && controlDir?.touched">    <div *ngIf="controlDir?.errors?.required">      {{label}} is required.    </div>    <div *ngIf="controlDir?.errors?.incompleteValue">      {{label}} is an incomplete phone number.    </div>  </common-error-container></div><ng-template #NoMask>  <input class="form-control"          type="text"          name="phone_{{objectId}}"          id="phone_{{objectId}}"          [value]="phoneNumberString"          (blur)="setPhoneNumber($event)"          [required]="required"          [disabled]="disabled" />          <!-- Error messages for component -->  <div *ngIf="!disabled && controlDir?.touched"        role="alert"        class="error-container"        aria-live="assertive">    <div class="text-danger" *ngIf="controlDir?.errors?.required">      {{label}} is required.     </div>  </div></ng-template></div>'
     var COMPONENTS = [{'name': 'AccordionCommonComponent', 'selector': 'common-accordion'},{'name': 'AddressComponent', 'selector': 'common-address'},{'name': 'ButtonComponent', 'selector': 'common-button'},{'name': 'ButtonGroupComponent', 'selector': 'common-button-group'},{'name': 'CaptchaComponent', 'selector': 'common-captcha'},{'name': 'CheckboxComponent', 'selector': 'common-checkbox'},{'name': 'CityComponent', 'selector': 'common-city'},{'name': 'ConfirmTemplateComponent', 'selector': 'common-confirm-template'},{'name': 'ConsentModalComponent', 'selector': 'common-consent-modal'},{'name': 'CoreBreadcrumbComponent', 'selector': 'common-core-breadcrumb'},{'name': 'CountryComponent', 'selector': 'common-country'},{'name': 'DateComponent', 'selector': 'common-date'},{'name': 'DatepickerComponent', 'selector': 'common-datepicker'},{'name': 'DropdownComponent', 'selector': 'common-dropdown'},{'name': 'EmailComponent', 'selector': 'common-email'},{'name': 'ErrorContainerComponent', 'selector': 'common-error-container'},{'name': 'FileUploaderComponent', 'selector': 'common-file-uploader'},{'name': 'FormActionBarComponent', 'selector': 'common-form-action-bar'},{'name': 'FormSubmitBarComponent', 'selector': 'common-form-submit-bar'},{'name': 'FullNameComponent', 'selector': 'common-full-name'},{'name': 'GeocoderInputComponent', 'selector': 'common-geocoder-input'},{'name': 'HeaderComponent', 'selector': 'common-header'},{'name': 'NameComponent', 'selector': 'common-name'},{'name': 'PageFrameworkComponent', 'selector': 'common-page-framework'},{'name': 'PageSectionComponent', 'selector': 'common-page-section'},{'name': 'PasswordComponent', 'selector': 'common-password'},{'name': 'PhnComponent', 'selector': 'common-phn'},{'name': 'PhoneNumberComponent', 'selector': 'common-phone-number'},{'name': 'PostalCodeComponent', 'selector': 'common-postal-code'},{'name': 'ProvinceComponent', 'selector': 'common-province'},{'name': 'RadioComponent', 'selector': 'common-radio'},{'name': 'SampleModalComponent', 'selector': 'common-sample-modal'},{'name': 'SinComponent', 'selector': 'common-sin'},{'name': 'StreetComponent', 'selector': 'common-street'},{'name': 'ThumbnailComponent', 'selector': 'common-thumbnail'},{'name': 'ToggleComponent', 'selector': 'common-toggle'},{'name': 'WizardProgressBarComponent', 'selector': 'common-wizard-progress-bar'},{'name': 'XiconButtonComponent', 'selector': 'common-xicon-button'}];
     var DIRECTIVES = [{'name': 'DateFieldFormatDirective', 'selector': '[commonDateFieldFormat]'},{'name': 'DayValidationDirective', 'selector': '[commonDayValidation]'},{'name': 'DuplicateCheckDirective', 'selector': '[commonDuplicateCheck]'},{'name': 'ValidateBcPostalDirective', 'selector': '[commonValidateBcPostal]'},{'name': 'ValidateCityDirective', 'selector': '[commonValidateCity]'},{'name': 'ValidateEmailDirective', 'selector': '[commonValidateEmail]'},{'name': 'ValidateNameDirective', 'selector': '[commonValidateName]'},{'name': 'ValidatePhnDirective', 'selector': '[commonValidatePhn]'},{'name': 'ValidatePostalcodeDirective', 'selector': '[commonValidatePostalcode]'},{'name': 'ValidateRegionDirective', 'selector': '[commonValidateRegion]'},{'name': 'ValidateSinDirective', 'selector': '[commonValidateSin]'},{'name': 'ValidateStreetDirective', 'selector': '[commonValidateStreet]'},{'name': 'YearValidateDirective', 'selector': '[commonYearValidate]'}];
     var ACTUAL_COMPONENT = {'name': 'PhoneNumberComponent'};
