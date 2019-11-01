@@ -85,11 +85,6 @@ export class RadioComponent extends AbstractFormControl implements OnInit {
     super.ngOnInit();
   }
 
-  isChecked( val: any ) {
-    console.log( 'isChecked - value: ', val.value, val.label, this._value );
-    return this._value === val.value;
-  }
-
   setStatus(evt: any) {
     console.log( 'setStatus: ', evt );
     this._value = evt;

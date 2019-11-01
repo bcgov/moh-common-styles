@@ -18,7 +18,8 @@ getTestBed().initTestEnvironment(
 );
 // Then we find all the tests.
 // const context = require.context('./lib/components/date', true, /\.spec\.ts$/);
-const context = require.context('./lib/components/phone-number', true, /\.spec\.ts$/);
+// const context = require.context('./lib/components/phone-number', true, /\.spec\.ts$/);
+const context = require.context('./lib/components/radio', true, /\.spec\.ts$/);
 // const context = require.context('./', true, /\.spec\.ts$/);
 // And load the modules.
 context.keys().map(context);

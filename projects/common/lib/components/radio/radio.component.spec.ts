@@ -146,6 +146,7 @@ describe('RadioComponent', () => {
 
       const radioChecked = fixture.nativeElement.querySelector('input[type=radio]:checked');
       expect( radioChecked ).toBeTruthy();
+      console.log( radioChecked.value );
     }));
   });
 });
