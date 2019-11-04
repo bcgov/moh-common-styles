@@ -86,7 +86,7 @@ export class RadioComponent extends AbstractFormControl implements OnInit {
   }
 
   setStatus(evt: any) {
-    console.log( 'setStatus: ', evt );
+    // console.log( 'setStatus: ', evt );
     this._value = evt;
 
     this._onChange(evt);
@@ -103,9 +103,9 @@ export class RadioComponent extends AbstractFormControl implements OnInit {
   }
 
   writeValue(value: any): void {
-    this.radioLabels.forEach( item => {
+    /*this.radioLabels.forEach( item => {
       console.log( item.label + ' (' + item.value + '): ', value );
-    });
+    });*/
     this._value = value;
   }
 }
