@@ -17,14 +17,9 @@
     </div>
   </div>
 
-  <!--TODO: to be removed - breaking change -->
-  <div *ngIf="showError && (value == undefined || value == null)">
-      <div class="text-danger">{{defaultErrorMessage}}</div>
-  </div>
-
   <common-error-container
       [displayError]="controlDir && !disabled && (controlDir.touched || controlDir.dirty) && controlDir?.errors">
-    <div  *ngIf="controlDir?.errors?.required">{{defaultErrorMessage}}</div>
+    <div  *ngIf="controlDir?.errors?.required">{{_defaultErrMsg.required}}</div>
   </common-error-container>
 </fieldset>
 
