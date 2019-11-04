@@ -322,8 +322,8 @@ You must use either [restrictDate] or the [dateRange*] inputs.
     const allFieldsEmpty = isNaN(year) && isNaN(month) && isNaN(day);
     const someFieldsEmpty = isNaN(year) || isNaN(month) || isNaN(day);
 
-    // Partially filled out is always invalid
-    if (!allFieldsEmpty && someFieldsEmpty) {
+    // Partially filled out is always invalid, if year is present it must be greater than zero
+    if (!allFieldsEmpty && someFieldsEmpty || (!isNaN( year) && year <= 0) ) {
       return {invalidValue: true};
     }
 
