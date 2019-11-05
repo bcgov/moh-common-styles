@@ -2,6 +2,15 @@
 
 
 
+# [3.0.0-rc.12](https://github.com/bcgov/moh-common-styles/compare/v3.0.0-rc.11...v3.0.0-rc.12) "moh-common-lib" (2019-11-05)
+
+
+### Bug Fixes
+
+* **GeocoderInput:** Now emits an onChange with null if it has no results. ([009d779](https://github.com/bcgov/moh-common-styles/commit/009d779))
+
+
+
 # [3.0.0-rc.11](https://github.com/bcgov/moh-common-styles/compare/v3.0.0-rc.10...v3.0.0-rc.11) "moh-common-lib" (2019-11-05)
 
 
