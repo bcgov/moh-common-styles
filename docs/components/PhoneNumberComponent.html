@@ -74,14 +74,13 @@
         <h3>Extends</h3>
     </p>
     <p class="comment">
-                <code><a href="../classes/MaskModel.html" target="_self" >MaskModel</a></code>
+                <code><a href="../classes/AbstractFormControl.html" target="_self" >AbstractFormControl</a></code>
     </p>
 
     <p class="comment">
         <h3>Implements</h3>
     </p>
     <p class="comment">
-                    <code><a href="https://angular.io/api/forms/ControlValueAccessor" target="_blank" >ControlValueAccessor</a></code>
                     <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
     </p>
 
@@ -128,14 +127,6 @@
                 <td class="col-md-9"><code>./phone-number.component.html</code></td>
             </tr>
 
-            <tr>
-                <td class="col-md-3">viewProviders</td>
-                <td class="col-md-9">
-                    <code>
-                                <code><a href="../classes/Container.html" target="_self" >{ provide: ControlContainer, useExisting: forwardRef(() &#x3D;&gt; NgForm) }</a></code>
-                    </code>
-                </td>
-            </tr>
 
 
 
@@ -160,16 +151,15 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#_onChange">_onChange</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#_onTouched">_onTouched</a>
+                                <a href="#_defaultErrMsg">_defaultErrMsg</a>
                             </li>
                             <li>
                                     <span class="modifier">Public</span>
                                 <a href="#controlDir">controlDir</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#mask">mask</a>
                             </li>
                             <li>
                                     <span class="modifier">Public</span>
@@ -181,11 +171,17 @@
                             </li>
                             <li>
                                     <span class="modifier">Public</span>
-                                <a href="#mask">mask</a>
+                                <a href="#placeholder">placeholder</a>
                             </li>
                             <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#placeholder">placeholder</a>
+                                    <span class="modifier">Abstract</span>
+                                <a href="#_defaultErrMsg">_defaultErrMsg</a>
+                            </li>
+                            <li>
+                                <a href="#_onChange">_onChange</a>
+                            </li>
+                            <li>
+                                <a href="#_onTouched">_onTouched</a>
                             </li>
                             <li>
                                     <span class="modifier">Public</span>
@@ -207,10 +203,7 @@
                                 <a href="#ngOnInit">ngOnInit</a>
                             </li>
                             <li>
-                                <a href="#registerOnChange">registerOnChange</a>
-                            </li>
-                            <li>
-                                <a href="#registerOnTouched">registerOnTouched</a>
+                                <a href="#onBlur">onBlur</a>
                             </li>
                             <li>
                                 <a href="#setPhoneNumber">setPhoneNumber</a>
@@ -223,10 +216,28 @@
                                 <a href="#writeValue">writeValue</a>
                             </li>
                             <li>
-                                <a href="#onUpdate">onUpdate</a>
+                                <a href="#ngOnInit">ngOnInit</a>
                             </li>
                             <li>
-                                <a href="#upperCasePipe">upperCasePipe</a>
+                                <a href="#registerOnChange">registerOnChange</a>
+                            </li>
+                            <li>
+                                <a href="#registerOnTouched">registerOnTouched</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Protected</span>
+                                <a href="#registerValidation">registerValidation</a>
+                            </li>
+                            <li>
+                                <a href="#setDisabledState">setDisabledState</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Protected</span>
+                                <a href="#setErrorMsg">setErrorMsg</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Abstract</span>
+                                <a href="#writeValue">writeValue</a>
                             </li>
                         </ul>
                     </td>
@@ -253,13 +264,16 @@
                                 <a href="#required">required</a>
                             </li>
                             <li>
+                                <a href="#value">value</a>
+                            </li>
+                            <li>
                                 <a href="#disabled">disabled</a>
                             </li>
                             <li>
-                                <a href="#required">required</a>
+                                <a href="#errorMessage">errorMessage</a>
                             </li>
                             <li>
-                                <a href="#value">value</a>
+                                <a href="#label">label</a>
                             </li>
                         </ul>
                     </td>
@@ -291,7 +305,7 @@
                         <td class="col-md-4">
                             <ul class="index-list">
                                 <li>
-                                    <a href="#phoneNumberString">phoneNumberString</a>
+                                    <a href="#value">value</a>
                                 </li>
                             </ul>
                         </td>
@@ -311,7 +325,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:49</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:65</a></div>
                             </td>
                         </tr>
 
@@ -372,7 +386,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:44</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:41</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -398,7 +412,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:40</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:37</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -424,7 +438,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:42</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:39</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -450,7 +464,28 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:41</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:38</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="value"></a>
+                        <b>value</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:45</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -476,13 +511,13 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4" colspan="2">
-                                    <div class="io-line">Inherited from         <code><a href="../classes/MaskModel.html" target="_self" >MaskModel</a></code>
+                                    <div class="io-line">Inherited from         <code><a href="../classes/AbstractFormControl.html" target="_self" >AbstractFormControl</a></code>
 </div>
                                 </td>
                             </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in         <code><a href="../classes/MaskModel.html#source" target="_self" >MaskModel:14</a></code>
+                                    <div class="io-line">Defined in         <code><a href="../classes/AbstractFormControl.html#source" target="_self" >AbstractFormControl:15</a></code>
 </div>
                             </td>
                         </tr>
@@ -492,30 +527,25 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="required"></a>
-                        <b>required</b>
+                        <a name="errorMessage"></a>
+                        <b>errorMessage</b>
                     </td>
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                        <i>Type : </i>        <code><a href="../interfaces/ErrorMessage.html" target="_self" >ErrorMessage</a></code>
 
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>true</code>
                     </td>
                 </tr>
                             <tr>
                                 <td class="col-md-4" colspan="2">
-                                    <div class="io-line">Inherited from         <code><a href="../classes/MaskModel.html" target="_self" >MaskModel</a></code>
+                                    <div class="io-line">Inherited from         <code><a href="../classes/AbstractFormControl.html" target="_self" >AbstractFormControl</a></code>
 </div>
                                 </td>
                             </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in         <code><a href="../classes/MaskModel.html#source" target="_self" >MaskModel:15</a></code>
+                                    <div class="io-line">Defined in         <code><a href="../classes/AbstractFormControl.html#source" target="_self" >AbstractFormControl:18</a></code>
 </div>
                             </td>
                         </tr>
@@ -525,8 +555,8 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="value"></a>
-                        <b>value</b>
+                        <a name="label"></a>
+                        <b>label</b>
                     </td>
                 </tr>
                 <tr>
@@ -537,13 +567,13 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4" colspan="2">
-                                    <div class="io-line">Inherited from         <code><a href="../classes/MaskModel.html" target="_self" >MaskModel</a></code>
+                                    <div class="io-line">Inherited from         <code><a href="../classes/AbstractFormControl.html" target="_self" >AbstractFormControl</a></code>
 </div>
                                 </td>
                             </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in         <code><a href="../classes/MaskModel.html#source" target="_self" >MaskModel:11</a></code>
+                                    <div class="io-line">Defined in         <code><a href="../classes/AbstractFormControl.html#source" target="_self" >AbstractFormControl:13</a></code>
 </div>
                             </td>
                         </tr>
@@ -566,16 +596,9 @@
 
                     </td>
                 </tr>
-                            <tr>
-                                <td class="col-md-4" colspan="2">
-                                    <div class="io-line">Inherited from         <code><a href="../classes/MaskModel.html" target="_self" >MaskModel</a></code>
-</div>
-                                </td>
-                            </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in         <code><a href="../classes/MaskModel.html#source" target="_self" >MaskModel:12</a></code>
-</div>
+                                    <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:54</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -610,8 +633,296 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="60"
-                            class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:60</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="74"
+                            class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:74</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onBlur"></a>
+                    <span class="name">
+                        <b>
+                            onBlur
+                        </b>
+                        <a href="#onBlur"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onBlur($event)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="113"
+                            class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:113</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>$event</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setPhoneNumber"></a>
+                    <span class="name">
+                        <b>
+                            setPhoneNumber
+                        </b>
+                        <a href="#setPhoneNumber"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setPhoneNumber(value)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="105"
+                            class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:105</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>value</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="validateSelf"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            validateSelf
+                        </b>
+                        <a href="#validateSelf"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>validateSelf()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="126"
+                            class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:126</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>{ incompleteValue: boolean; }</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="writeValue"></a>
+                    <span class="name">
+                        <b>
+                            writeValue
+                        </b>
+                        <a href="#writeValue"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>writeValue(value: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="118"
+                            class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:118</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>value</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <b>
+                            ngOnInit
+                        </b>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Inherited from         <code><a href="../classes/AbstractFormControl.html" target="_self" >AbstractFormControl</a></code>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-line">Defined in         <code><a href="../classes/AbstractFormControl.html#source" target="_self" >AbstractFormControl:26</a></code>
+</div>
                 </td>
             </tr>
 
@@ -649,8 +960,14 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="102"
-                            class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:102</a></div>
+                    <div class="io-line">Inherited from         <code><a href="../classes/AbstractFormControl.html" target="_self" >AbstractFormControl</a></code>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-line">Defined in         <code><a href="../classes/AbstractFormControl.html#source" target="_self" >AbstractFormControl:34</a></code>
+</div>
                 </td>
             </tr>
 
@@ -719,8 +1036,14 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="106"
-                            class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:106</a></div>
+                    <div class="io-line">Inherited from         <code><a href="../classes/AbstractFormControl.html" target="_self" >AbstractFormControl</a></code>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-line">Defined in         <code><a href="../classes/AbstractFormControl.html#source" target="_self" >AbstractFormControl:39</a></code>
+</div>
                 </td>
             </tr>
 
@@ -771,26 +1094,131 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="setPhoneNumber"></a>
+                    <a name="registerValidation"></a>
                     <span class="name">
                         <b>
-                            setPhoneNumber
+                            <span class="modifier">Protected</span>
+                            registerValidation
                         </b>
-                        <a href="#setPhoneNumber"><span class="icon ion-ios-link"></span></a>
+                        <a href="#registerValidation"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>setPhoneNumber(evt)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>registerValidation(ngControl: <a href="https://angular.io/api/forms/NgControl" target="_blank">NgControl</a>, fn: <a href="https://angular.io/api/forms/ValidationErrors" target="_blank">ValidationErrors</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="94"
-                            class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:94</a></div>
+                    <div class="io-line">Inherited from         <code><a href="../classes/AbstractFormControl.html" target="_self" >AbstractFormControl</a></code>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-line">Defined in         <code><a href="../classes/AbstractFormControl.html#source" target="_self" >AbstractFormControl:62</a></code>
+</div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Register self validating method</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ngControl</td>
+                                    <td>
+                                                <code><a href="https://angular.io/api/forms/NgControl" target="_blank" >NgControl</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>fn</td>
+                                    <td>
+                                                <code><a href="https://angular.io/api/forms/ValidationErrors" target="_blank" >ValidationErrors</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>function for validating self</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setDisabledState"></a>
+                    <span class="name">
+                        <b>
+                            setDisabledState
+                        </b>
+                        <a href="#setDisabledState"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setDisabledState(isDisabled: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Inherited from         <code><a href="../classes/AbstractFormControl.html" target="_self" >AbstractFormControl</a></code>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-line">Defined in         <code><a href="../classes/AbstractFormControl.html#source" target="_self" >AbstractFormControl:44</a></code>
+</div>
                 </td>
             </tr>
 
@@ -804,12 +1232,16 @@
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>evt</td>
+                                    <td>isDisabled</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                    </td>
 
                                     <td>
                                         No
@@ -837,28 +1269,34 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="validateSelf"></a>
+                    <a name="setErrorMsg"></a>
                     <span class="name">
                         <b>
-                            <span class="modifier">Private</span>
-                            validateSelf
+                            <span class="modifier">Protected</span>
+                            setErrorMsg
                         </b>
-                        <a href="#validateSelf"><span class="icon ion-ios-link"></span></a>
+                        <a href="#setErrorMsg"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>validateSelf()</code>
+                    <code>setErrorMsg()</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="118"
-                            class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:118</a></div>
+                    <div class="io-line">Inherited from         <code><a href="../classes/AbstractFormControl.html" target="_self" >AbstractFormControl</a></code>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-line">Defined in         <code><a href="../classes/AbstractFormControl.html#source" target="_self" >AbstractFormControl:48</a></code>
+</div>
                 </td>
             </tr>
 
@@ -867,7 +1305,7 @@
                 <td class="col-md-4">
 
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../miscellaneous/variables.html#require" target="_self" >{ required: boolean; }</a></code>
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
                     </div>
                 </td>
@@ -881,6 +1319,7 @@
                     <a name="writeValue"></a>
                     <span class="name">
                         <b>
+                            <span class="modifier">Abstract</span>
                             writeValue
                         </b>
                         <a href="#writeValue"><span class="icon ion-ios-link"></span></a>
@@ -889,15 +1328,22 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>writeValue(value: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>writeValue(value: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="110"
-                            class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:110</a></div>
+                    <div class="io-line">Inherited from         <code><a href="../classes/AbstractFormControl.html" target="_self" >AbstractFormControl</a></code>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-line">Defined in         <code><a href="../classes/AbstractFormControl.html#source" target="_self" >AbstractFormControl:31</a></code>
+</div>
                 </td>
             </tr>
 
@@ -944,162 +1390,6 @@
             </tr>
         </tbody>
     </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="onUpdate"></a>
-                    <span class="name">
-                        <b>
-                            onUpdate
-                        </b>
-                        <a href="#onUpdate"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>onUpdate(value: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Inherited from         <code><a href="../classes/MaskModel.html" target="_self" >MaskModel</a></code>
-</div>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../classes/MaskModel.html#source" target="_self" >MaskModel:34</a></code>
-</div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Updates the value</p>
-</div>
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>value</td>
-                                    <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="upperCasePipe"></a>
-                    <span class="name">
-                        <b>
-                            upperCasePipe
-                        </b>
-                        <a href="#upperCasePipe"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>upperCasePipe(text: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Inherited from         <code><a href="../classes/MaskModel.html" target="_self" >MaskModel</a></code>
-</div>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../classes/MaskModel.html#source" target="_self" >MaskModel:27</a></code>
-</div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Upper cases letters in string</p>
-</div>
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>text</td>
-                                    <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
 </section>
     <section>
     
@@ -1110,50 +1400,31 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="_onChange"></a>
+                        <a name="_defaultErrMsg"></a>
                         <span class="name">
                             <b>
-                                <span class="modifier">Public</span>
-                            _onChange</b>
-                            <a href="#_onChange"><span class="icon ion-ios-link"></span></a>
+                            _defaultErrMsg</b>
+                            <a href="#_defaultErrMsg"><span class="icon ion-ios-link"></span></a>
                         </span>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Default value : </i><code>() &#x3D;&gt; {...}</code>
+                            <i>Type : </i>        <code><a href="../interfaces/ErrorMessage.html" target="_self" >ErrorMessage</a></code>
+
                         </td>
                     </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:48</a></div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="_onTouched"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Public</span>
-                            _onTouched</b>
-                            <a href="#_onTouched"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Default value : </i><code>() &#x3D;&gt; {...}</code>
+                            <i>Default value : </i><code>{
+    required: &#x60;${LabelReplacementTag} is required.&#x60;,
+    incompleteValue: &#x60;${LabelReplacementTag} is an incomplete phone number.&#x60;
+  }</code>
                         </td>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:49</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:62</a></div>
                             </td>
                         </tr>
 
@@ -1190,7 +1461,35 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:52</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:67</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="mask"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            mask</b>
+                            <a href="#mask"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:58</a></div>
                             </td>
                         </tr>
 
@@ -1223,7 +1522,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:46</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:56</a></div>
                             </td>
                         </tr>
 
@@ -1256,42 +1555,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:39</a></div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="mask"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Public</span>
-                            mask</b>
-                            <a href="#mask"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-
-                        </td>
-                    </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Inherited from         <code><a href="../classes/MaskModel.html" target="_self" >MaskModel</a></code>
-</div>
-                                </td>
-                            </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in         <code><a href="../classes/MaskModel.html#source" target="_self" >MaskModel:17</a></code>
-</div>
+                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:36</a></div>
                             </td>
                         </tr>
 
@@ -1317,15 +1581,114 @@
 
                         </td>
                     </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:59</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_defaultErrMsg"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Abstract</span>
+                            _defaultErrMsg</b>
+                            <a href="#_defaultErrMsg"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../interfaces/ErrorMessage.html" target="_self" >ErrorMessage</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>{}</code>
+                        </td>
+                    </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Inherited from         <code><a href="../classes/MaskModel.html" target="_self" >MaskModel</a></code>
+                                    <div class="io-line">Inherited from         <code><a href="../classes/AbstractFormControl.html" target="_self" >AbstractFormControl</a></code>
 </div>
                                 </td>
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in         <code><a href="../classes/MaskModel.html#source" target="_self" >MaskModel:18</a></code>
+                                    <div class="io-line">Defined in         <code><a href="../classes/AbstractFormControl.html#source" target="_self" >AbstractFormControl:10</a></code>
+</div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_onChange"></a>
+                        <span class="name">
+                            <b>
+                            _onChange</b>
+                            <a href="#_onChange"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>() &#x3D;&gt; {...}</code>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Inherited from         <code><a href="../classes/AbstractFormControl.html" target="_self" >AbstractFormControl</a></code>
+</div>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in         <code><a href="../classes/AbstractFormControl.html#source" target="_self" >AbstractFormControl:22</a></code>
+</div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_onTouched"></a>
+                        <span class="name">
+                            <b>
+                            _onTouched</b>
+                            <a href="#_onTouched"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>() &#x3D;&gt; {...}</code>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Inherited from         <code><a href="../classes/AbstractFormControl.html" target="_self" >AbstractFormControl</a></code>
+</div>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in         <code><a href="../classes/AbstractFormControl.html#source" target="_self" >AbstractFormControl:23</a></code>
 </div>
                             </td>
                         </tr>
@@ -1389,22 +1752,69 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="phoneNumberString"></a>
-                        <span class="name"><b>phoneNumberString</b><a href="#phoneNumberString"><span class="icon ion-ios-link"></span></a></span>
+                        <a name="value"></a>
+                        <span class="name"><b>value</b><a href="#value"><span class="icon ion-ios-link"></span></a></span>
                     </td>
                 </tr>
 
                 <tr>
                     <td class="col-md-4">
-                        <span class="accessor"><b>get</b><code>phoneNumberString()</code></span>
+                        <span class="accessor"><b>get</b><code>value()</code></span>
                     </td>
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="89" class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:89</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:50</a></div>
                                 </td>
                             </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>set</b><code>value(val: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:45</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                        <td>Type</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                            <td>val</td>
+                                                    
+                                                            <td>
+                                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                            </td>
+                                                    
+                                                        <td>
+                                                                No
+                                                        </td>
+                                                        
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
             </tbody>
         </table>
 </section>
@@ -1423,9 +1833,10 @@
   OnInit
 } from &#x27;@angular/core&#x27;;
 import { ControlContainer, NgForm, NgControl } from &#x27;@angular/forms&#x27;;
-import { MaskModel, NUMBER, SPACE } from &#x27;../../models/mask.model&#x27;;
+import { NUMBER, SPACE } from &#x27;../../models/mask.constants&#x27;;
 
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from &#x27;@angular/forms&#x27;;
+import { ErrorMessage, LabelReplacementTag } from &#x27;../../models/error-message.interface&#x27;;
+import { AbstractFormControl } from &#x27;../../models/abstract-form-control&#x27;;
 /**
  * PhoneNumberComponent is a used to show the Phone number.
  *
@@ -1442,13 +1853,9 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from &#x27;@angular/forms&#x2
   selector: &#x27;common-phone-number&#x27;,
   templateUrl: &#x27;./phone-number.component.html&#x27;,
   styleUrls: [&#x27;./phone-number.component.scss&#x27;],
-  /* @deprecate this ViewProvider as we&#x27;re using ControlValueAccessor @Optional  */
-  viewProviders: [
-    { provide: ControlContainer, useExisting: forwardRef(() &#x3D;&gt; NgForm) }
-  ]
 })
 
-export class PhoneNumberComponent extends MaskModel implements ControlValueAccessor, OnInit {
+export class PhoneNumberComponent extends AbstractFormControl implements OnInit {
 
   static PhoneNumberRegEx &#x3D; &#x27;^[2-9]{1}\\d{2}[\\-]?\\d{3}[\\-]?\\d{4}$&#x27;;
   @Input() displayMask: boolean &#x3D; true;
@@ -1457,21 +1864,40 @@ export class PhoneNumberComponent extends MaskModel implements ControlValueAcces
 
   @Input() allowInternational: boolean &#x3D; true;
 
+  // Setter/getter for when not used in form (ex. data dislayed but not edittable)
+  @Input()
+  set value( val: string ) {
+    if ( val !&#x3D;&#x3D; undefined ) {
+      this.phoneNumber &#x3D; val;
+    }
+  }
+  get value() {
+    return this.phoneNumber;
+  }
+
+  @Output() valueChange: EventEmitter&lt;string&gt; &#x3D; new EventEmitter&lt;string&gt;();
+
   public phoneNumber: string &#x3D; &#x27;&#x27;;
 
-  public _onChange &#x3D; (_: any) &#x3D;&gt; { };
-  public _onTouched &#x3D; () &#x3D;&gt; { };
+  public mask: any;
+  public placeholder: string;
 
+  // Abstact variable defined
+  _defaultErrMsg: ErrorMessage &#x3D; {
+    required: &#x60;${LabelReplacementTag} is required.&#x60;,
+    incompleteValue: &#x60;${LabelReplacementTag} is an incomplete phone number.&#x60;
+  };
 
   constructor(@Optional() @Self() public controlDir: NgControl) {
     super();
     if (controlDir) {
       controlDir.valueAccessor &#x3D; this;
     }
-
   }
 
   ngOnInit() {
+    super.ngOnInit();
+
     const internationalPrefix &#x3D; &#x27;+1&#x27;;
     this.placeholder &#x3D; &#x27;(555) 555-5555&#x27;;
     this.mask &#x3D; [&#x27;(&#x27;, /[2-9]/, NUMBER, NUMBER, &#x27;)&#x27;, SPACE, NUMBER, NUMBER, NUMBER, &#x27;-&#x27;, NUMBER, NUMBER, NUMBER, NUMBER];
@@ -1500,34 +1926,26 @@ export class PhoneNumberComponent extends MaskModel implements ControlValueAcces
 
   }
 
-  get phoneNumberString(): string {
-    return this.phoneNumber ? this.phoneNumber : &#x27;&#x27;;
-  }
-
-
-  setPhoneNumber(evt) {
-    const value &#x3D; evt.target.value;
+  setPhoneNumber(value) {
+    console.log( &#x27;setPhoneNumber: &#x27;, value );
+    // const value &#x3D; evt.target.value;
     this.phoneNumber &#x3D; value;
     this.valueChange.emit(this.phoneNumber);
     this._onChange(value);
-    this._onTouched();
   }
 
-  registerOnChange(fn: any): void {
-    this._onChange &#x3D; fn;
+  onBlur( $event ) {
+    this._onTouched($event);
   }
 
-  registerOnTouched(fn: any): void {
-    this._onTouched &#x3D; fn;
-  }
 
   writeValue(value: any): void {
-    this.value &#x3D; value;
-    // phoneNumber is where the actual data is displayed to user for this
-    // component
-    this.phoneNumber &#x3D; value;
+    if  (value !&#x3D;&#x3D; undefined ) {
+      // phoneNumber is where the actual data is displayed to user for this
+      // component
+      this.phoneNumber &#x3D; value;
+    }
   }
-
 
   private validateSelf() {
     const value &#x3D; this.phoneNumber;
@@ -1542,9 +1960,7 @@ export class PhoneNumberComponent extends MaskModel implements ControlValueAcces
         .replace(&#x27;)&#x27;, &#x27;&#x27;);
 
       const valid &#x3D; stripped.length &#x3D;&#x3D;&#x3D; phoneLength;
-
-      console.log(&#x27;self validation&#x27;, { valid, stripped, phoneLength });
-      return valid ? null : { required: true };
+      return valid ? null : { incompleteValue: true };
 
     }
     return null;
@@ -1563,20 +1979,25 @@ export class PhoneNumberComponent extends MaskModel implements ControlValueAcces
           type&#x3D;&quot;text&quot;
           name&#x3D;&quot;phone_{{objectId}}&quot;
           id&#x3D;&quot;phone_{{objectId}}&quot;
-          [value]&#x3D;&quot;phoneNumberString&quot;
-          (blur)&#x3D;&quot;setPhoneNumber($event)&quot;
+          [ngModel]&#x3D;&quot;phoneNumber&quot;
+          (ngModelChange)&#x3D;&quot;setPhoneNumber($event)&quot;
+          (blur)&#x3D;&quot;onBlur($event)&quot;
           [placeholder]&#x3D;&quot;placeholder &quot;
           [textMask]&#x3D;&quot;{mask: mask}&quot;
           [required]&#x3D;&quot;required&quot;
           [disabled]&#x3D;&quot;disabled&quot;/&gt;
-  &lt;!-- Error messages for component --&gt;
-  &lt;common-error-container
-      [displayError]&#x3D;&quot;!disabled &amp;&amp; controlDir?.touched&quot;&gt;
-    &lt;div *ngIf&#x3D;&quot;controlDir?.errors?.required&quot;&gt;
-      {{label}} is required.
-    &lt;/div&gt;
-  &lt;/common-error-container&gt;
 &lt;/div&gt;
+
+&lt;!-- Error messages for component --&gt;
+&lt;common-error-container
+    [displayError]&#x3D;&quot;!disabled &amp;&amp; controlDir?.touched&quot;&gt;
+  &lt;div *ngIf&#x3D;&quot;controlDir?.errors?.required&quot;&gt;
+    {{_defaultErrMsg.required}}
+  &lt;/div&gt;
+  &lt;div *ngIf&#x3D;&quot;controlDir?.errors?.incompleteValue&quot;&gt;
+    {{_defaultErrMsg.incompleteValue}}
+  &lt;/div&gt;
+&lt;/common-error-container&gt;
 
 
 &lt;ng-template #NoMask&gt;
@@ -1584,19 +2005,11 @@ export class PhoneNumberComponent extends MaskModel implements ControlValueAcces
           type&#x3D;&quot;text&quot;
           name&#x3D;&quot;phone_{{objectId}}&quot;
           id&#x3D;&quot;phone_{{objectId}}&quot;
-          [value]&#x3D;&quot;phoneNumberString&quot;
-          (blur)&#x3D;&quot;setPhoneNumber($event)&quot;
+          [value]&#x3D;&quot;phoneNumber&quot;
+          (input)&#x3D;&quot;setPhoneNumber($event.target.value)&quot;
+          (blur)&#x3D;&quot;onBlur($event)&quot;
           [required]&#x3D;&quot;required&quot;
           [disabled]&#x3D;&quot;disabled&quot; /&gt;
-          &lt;!-- Error messages for component --&gt;
-  &lt;div *ngIf&#x3D;&quot;!disabled &amp;&amp; controlDir?.touched&quot;
-        role&#x3D;&quot;alert&quot;
-        class&#x3D;&quot;error-container&quot;
-        aria-live&#x3D;&quot;assertive&quot;&gt;
-    &lt;div class&#x3D;&quot;text-danger&quot; *ngIf&#x3D;&quot;controlDir?.errors?.required&quot;&gt;
-      {{label}} is required.
-     &lt;/div&gt;
-  &lt;/div&gt;
 &lt;/ng-template&gt;
 
 </code></pre>
@@ -1628,9 +2041,9 @@ export class PhoneNumberComponent extends MaskModel implements ControlValueAcces
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><label for="phone_{{objectId}}" class="control-label">{{label}}</label><div *ngIf="displayMask; else NoMask">  <input class="form-control"          type="text"          name="phone_{{objectId}}"          id="phone_{{objectId}}"          [value]="phoneNumberString"          (blur)="setPhoneNumber($event)"          [placeholder]="placeholder "          [textMask]="{mask: mask}"          [required]="required"          [disabled]="disabled"/>  <!-- Error messages for component -->  <common-error-container      [displayError]="!disabled && controlDir?.touched">    <div *ngIf="controlDir?.errors?.required">      {{label}} is required.    </div>  </common-error-container></div><ng-template #NoMask>  <input class="form-control"          type="text"          name="phone_{{objectId}}"          id="phone_{{objectId}}"          [value]="phoneNumberString"          (blur)="setPhoneNumber($event)"          [required]="required"          [disabled]="disabled" />          <!-- Error messages for component -->  <div *ngIf="!disabled && controlDir?.touched"        role="alert"        class="error-container"        aria-live="assertive">    <div class="text-danger" *ngIf="controlDir?.errors?.required">      {{label}} is required.     </div>  </div></ng-template></div>'
+        var COMPONENT_TEMPLATE = '<div><label for="phone_{{objectId}}" class="control-label">{{label}}</label><div *ngIf="displayMask; else NoMask">  <input class="form-control"          type="text"          name="phone_{{objectId}}"          id="phone_{{objectId}}"          [ngModel]="phoneNumber"          (ngModelChange)="setPhoneNumber($event)"          (blur)="onBlur($event)"          [placeholder]="placeholder "          [textMask]="{mask: mask}"          [required]="required"          [disabled]="disabled"/></div><!-- Error messages for component --><common-error-container    [displayError]="!disabled && controlDir?.touched">  <div *ngIf="controlDir?.errors?.required">    {{_defaultErrMsg.required}}  </div>  <div *ngIf="controlDir?.errors?.incompleteValue">    {{_defaultErrMsg.incompleteValue}}  </div></common-error-container><ng-template #NoMask>  <input class="form-control"          type="text"          name="phone_{{objectId}}"          id="phone_{{objectId}}"          [value]="phoneNumber"          (input)="setPhoneNumber($event.target.value)"          (blur)="onBlur($event)"          [required]="required"          [disabled]="disabled" /></ng-template></div>'
     var COMPONENTS = [{'name': 'AccordionCommonComponent', 'selector': 'common-accordion'},{'name': 'AddressComponent', 'selector': 'common-address'},{'name': 'ButtonComponent', 'selector': 'common-button'},{'name': 'ButtonGroupComponent', 'selector': 'common-button-group'},{'name': 'CaptchaComponent', 'selector': 'common-captcha'},{'name': 'CheckboxComponent', 'selector': 'common-checkbox'},{'name': 'CityComponent', 'selector': 'common-city'},{'name': 'ConfirmTemplateComponent', 'selector': 'common-confirm-template'},{'name': 'ConsentModalComponent', 'selector': 'common-consent-modal'},{'name': 'CoreBreadcrumbComponent', 'selector': 'common-core-breadcrumb'},{'name': 'CountryComponent', 'selector': 'common-country'},{'name': 'DateComponent', 'selector': 'common-date'},{'name': 'DatepickerComponent', 'selector': 'common-datepicker'},{'name': 'DropdownComponent', 'selector': 'common-dropdown'},{'name': 'EmailComponent', 'selector': 'common-email'},{'name': 'ErrorContainerComponent', 'selector': 'common-error-container'},{'name': 'FileUploaderComponent', 'selector': 'common-file-uploader'},{'name': 'FormActionBarComponent', 'selector': 'common-form-action-bar'},{'name': 'FormSubmitBarComponent', 'selector': 'common-form-submit-bar'},{'name': 'FullNameComponent', 'selector': 'common-full-name'},{'name': 'GeocoderInputComponent', 'selector': 'common-geocoder-input'},{'name': 'HeaderComponent', 'selector': 'common-header'},{'name': 'NameComponent', 'selector': 'common-name'},{'name': 'PageFrameworkComponent', 'selector': 'common-page-framework'},{'name': 'PageSectionComponent', 'selector': 'common-page-section'},{'name': 'PasswordComponent', 'selector': 'common-password'},{'name': 'PhnComponent', 'selector': 'common-phn'},{'name': 'PhoneNumberComponent', 'selector': 'common-phone-number'},{'name': 'PostalCodeComponent', 'selector': 'common-postal-code'},{'name': 'ProvinceComponent', 'selector': 'common-province'},{'name': 'RadioComponent', 'selector': 'common-radio'},{'name': 'SampleModalComponent', 'selector': 'common-sample-modal'},{'name': 'SinComponent', 'selector': 'common-sin'},{'name': 'StreetComponent', 'selector': 'common-street'},{'name': 'ThumbnailComponent', 'selector': 'common-thumbnail'},{'name': 'ToggleComponent', 'selector': 'common-toggle'},{'name': 'WizardProgressBarComponent', 'selector': 'common-wizard-progress-bar'},{'name': 'XiconButtonComponent', 'selector': 'common-xicon-button'}];
-    var DIRECTIVES = [{'name': 'DateFieldFormatDirective', 'selector': '[commonDateFieldFormat]'},{'name': 'DayValidationDirective', 'selector': '[commonDayValidation]'},{'name': 'DuplicateCheckDirective', 'selector': '[commonDuplicateCheck]'},{'name': 'ValidateBcPostalDirective', 'selector': '[commonValidateBcPostal]'},{'name': 'ValidateCityDirective', 'selector': '[commonValidateCity]'},{'name': 'ValidateEmailDirective', 'selector': '[commonValidateEmail]'},{'name': 'ValidateNameDirective', 'selector': '[commonValidateName]'},{'name': 'ValidatePhnDirective', 'selector': '[commonValidatePhn]'},{'name': 'ValidatePostalcodeDirective', 'selector': '[commonValidatePostalcode]'},{'name': 'ValidateRegionDirective', 'selector': '[commonValidateRegion]'},{'name': 'ValidateSinDirective', 'selector': '[commonValidateSin]'},{'name': 'ValidateStreetDirective', 'selector': '[commonValidateStreet]'},{'name': 'YearValidateDirective', 'selector': '[commonYearValidate]'}];
+    var DIRECTIVES = [{'name': 'DateFieldFormatDirective', 'selector': '[commonDateFieldFormat]'},{'name': 'DuplicateCheckDirective', 'selector': '[commonDuplicateCheck]'},{'name': 'ValidateBcPostalDirective', 'selector': '[commonValidateBcPostal]'},{'name': 'ValidateCityDirective', 'selector': '[commonValidateCity]'},{'name': 'ValidateEmailDirective', 'selector': '[commonValidateEmail]'},{'name': 'ValidateNameDirective', 'selector': '[commonValidateName]'},{'name': 'ValidatePhnDirective', 'selector': '[commonValidatePhn]'},{'name': 'ValidatePostalcodeDirective', 'selector': '[commonValidatePostalcode]'},{'name': 'ValidateRegionDirective', 'selector': '[commonValidateRegion]'},{'name': 'ValidateSinDirective', 'selector': '[commonValidateSin]'},{'name': 'ValidateStreetDirective', 'selector': '[commonValidateStreet]'}];
     var ACTUAL_COMPONENT = {'name': 'PhoneNumberComponent'};
 </script>
 <script src="../js/tree.js"></script>

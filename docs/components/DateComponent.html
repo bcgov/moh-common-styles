@@ -70,7 +70,7 @@
         <h3>Extends</h3>
     </p>
     <p class="comment">
-                <code><a href="../classes/Base.html" target="_self" >Base</a></code>
+                <code><a href="../classes/AbstractFormControl.html" target="_self" >AbstractFormControl</a></code>
     </p>
 
     <p class="comment">
@@ -142,13 +142,10 @@
                                 <a href="#_day">_day</a>
                             </li>
                             <li>
+                                <a href="#_defaultErrMsg">_defaultErrMsg</a>
+                            </li>
+                            <li>
                                 <a href="#_month">_month</a>
-                            </li>
-                            <li>
-                                <a href="#_onChange">_onChange</a>
-                            </li>
-                            <li>
-                                <a href="#_onTouched">_onTouched</a>
                             </li>
                             <li>
                                 <a href="#_year">_year</a>
@@ -162,9 +159,6 @@
                             </li>
                             <li>
                                 <a href="#dayTouched">dayTouched</a>
-                            </li>
-                            <li>
-                                <a href="#defaultErrMsg">defaultErrMsg</a>
                             </li>
                             <li>
                                     <span class="modifier">Public</span>
@@ -185,6 +179,16 @@
                             </li>
                             <li>
                                 <a href="#yearTouched">yearTouched</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Abstract</span>
+                                <a href="#_defaultErrMsg">_defaultErrMsg</a>
+                            </li>
+                            <li>
+                                <a href="#_onChange">_onChange</a>
+                            </li>
+                            <li>
+                                <a href="#_onTouched">_onTouched</a>
                             </li>
                             <li>
                                     <span class="modifier">Public</span>
@@ -237,21 +241,11 @@
                                 <a href="#processDate">processDate</a>
                             </li>
                             <li>
-                                <a href="#registerOnChange">registerOnChange</a>
-                            </li>
-                            <li>
-                                <a href="#registerOnTouched">registerOnTouched</a>
-                            </li>
-                            <li>
                                 <a href="#setDay">setDay</a>
                             </li>
                             <li>
                                     <span class="modifier">Private</span>
                                 <a href="#setDisplayVariables">setDisplayVariables</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Private</span>
-                                <a href="#setErrorMsg">setErrorMsg</a>
                             </li>
                             <li>
                                 <a href="#setMonth">setMonth</a>
@@ -272,6 +266,30 @@
                                 <a href="#validateSelf">validateSelf</a>
                             </li>
                             <li>
+                                <a href="#writeValue">writeValue</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#registerOnChange">registerOnChange</a>
+                            </li>
+                            <li>
+                                <a href="#registerOnTouched">registerOnTouched</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Protected</span>
+                                <a href="#registerValidation">registerValidation</a>
+                            </li>
+                            <li>
+                                <a href="#setDisabledState">setDisabledState</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Protected</span>
+                                <a href="#setErrorMsg">setErrorMsg</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Abstract</span>
                                 <a href="#writeValue">writeValue</a>
                             </li>
                         </ul>
@@ -296,16 +314,19 @@
                                 <a href="#dateRangeStart">dateRangeStart</a>
                             </li>
                             <li>
-                                <a href="#disabled">disabled</a>
-                            </li>
-                            <li>
-                                <a href="#errorMessages">errorMessages</a>
-                            </li>
-                            <li>
                                 <a href="#label">label</a>
                             </li>
                             <li>
                                 <a href="#restrictDate">restrictDate</a>
+                            </li>
+                            <li>
+                                <a href="#disabled">disabled</a>
+                            </li>
+                            <li>
+                                <a href="#errorMessage">errorMessage</a>
+                            </li>
+                            <li>
+                                <a href="#label">label</a>
                             </li>
                         </ul>
                     </td>
@@ -363,7 +384,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">projects/common/lib/components/date/date.component.ts:92</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">projects/common/lib/components/date/date.component.ts:88</a></div>
                             </td>
                         </tr>
 
@@ -431,7 +452,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">projects/common/lib/components/date/date.component.ts:38</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">projects/common/lib/components/date/date.component.ts:39</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -452,7 +473,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">projects/common/lib/components/date/date.component.ts:69</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">projects/common/lib/components/date/date.component.ts:67</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -480,7 +501,7 @@ Do NOT combine with restrictDates, as they set the same underlying values.</p>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">projects/common/lib/components/date/date.component.ts:64</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">projects/common/lib/components/date/date.component.ts:62</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -490,53 +511,6 @@ Do NOT combine with restrictDates, as they set the same underlying values.</p>
 </div>
                     </td>
                 </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="disabled"></a>
-                        <b>disabled</b>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>false</code>
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">projects/common/lib/components/date/date.component.ts:42</a></div>
-                            </td>
-                        </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="errorMessages"></a>
-                        <b>errorMessages</b>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="../interfaces/ErrorMessage.html" target="_self" >ErrorMessage</a></code>
-
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">projects/common/lib/components/date/date.component.ts:46</a></div>
-                            </td>
-                        </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
@@ -560,7 +534,7 @@ Do NOT combine with restrictDates, as they set the same underlying values.</p>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">projects/common/lib/components/date/date.component.ts:43</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">projects/common/lib/components/date/date.component.ts:42</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -586,7 +560,7 @@ Do NOT combine with restrictDates, as they set the same underlying values.</p>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">projects/common/lib/components/date/date.component.ts:45</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">projects/common/lib/components/date/date.component.ts:44</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -595,6 +569,95 @@ Do NOT combine with restrictDates, as they set the same underlying values.</p>
 </div>
                     </td>
                 </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="disabled"></a>
+                        <b>disabled</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4" colspan="2">
+                                    <div class="io-line">Inherited from         <code><a href="../classes/AbstractFormControl.html" target="_self" >AbstractFormControl</a></code>
+</div>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in         <code><a href="../classes/AbstractFormControl.html#source" target="_self" >AbstractFormControl:15</a></code>
+</div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="errorMessage"></a>
+                        <b>errorMessage</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/ErrorMessage.html" target="_self" >ErrorMessage</a></code>
+
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4" colspan="2">
+                                    <div class="io-line">Inherited from         <code><a href="../classes/AbstractFormControl.html" target="_self" >AbstractFormControl</a></code>
+</div>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in         <code><a href="../classes/AbstractFormControl.html#source" target="_self" >AbstractFormControl:18</a></code>
+</div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="label"></a>
+                        <b>label</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4" colspan="2">
+                                    <div class="io-line">Inherited from         <code><a href="../classes/AbstractFormControl.html" target="_self" >AbstractFormControl</a></code>
+</div>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in         <code><a href="../classes/AbstractFormControl.html#source" target="_self" >AbstractFormControl:13</a></code>
+</div>
+                            </td>
+                        </tr>
             </tbody>
         </table>
 </section>
@@ -616,7 +679,7 @@ Do NOT combine with restrictDates, as they set the same underlying values.</p>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">projects/common/lib/components/date/date.component.ts:39</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">projects/common/lib/components/date/date.component.ts:40</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -653,8 +716,8 @@ Do NOT combine with restrictDates, as they set the same underlying values.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="260"
-                            class="link-to-prism">projects/common/lib/components/date/date.component.ts:260</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="252"
+                            class="link-to-prism">projects/common/lib/components/date/date.component.ts:252</a></div>
                 </td>
             </tr>
 
@@ -696,8 +759,8 @@ Do NOT combine with restrictDates, as they set the same underlying values.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="249"
-                            class="link-to-prism">projects/common/lib/components/date/date.component.ts:249</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="241"
+                            class="link-to-prism">projects/common/lib/components/date/date.component.ts:241</a></div>
                 </td>
             </tr>
 
@@ -739,8 +802,8 @@ Do NOT combine with restrictDates, as they set the same underlying values.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="273"
-                            class="link-to-prism">projects/common/lib/components/date/date.component.ts:273</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="265"
+                            class="link-to-prism">projects/common/lib/components/date/date.component.ts:265</a></div>
                 </td>
             </tr>
 
@@ -811,8 +874,8 @@ Do NOT combine with restrictDates, as they set the same underlying values.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="330"
-                            class="link-to-prism">projects/common/lib/components/date/date.component.ts:330</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="305"
+                            class="link-to-prism">projects/common/lib/components/date/date.component.ts:305</a></div>
                 </td>
             </tr>
 
@@ -850,8 +913,8 @@ Do NOT combine with restrictDates, as they set the same underlying values.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="103"
-                            class="link-to-prism">projects/common/lib/components/date/date.component.ts:103</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="98"
+                            class="link-to-prism">projects/common/lib/components/date/date.component.ts:98</a></div>
                 </td>
             </tr>
 
@@ -920,8 +983,8 @@ Do NOT combine with restrictDates, as they set the same underlying values.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="122"
-                            class="link-to-prism">projects/common/lib/components/date/date.component.ts:122</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="114"
+                            class="link-to-prism">projects/common/lib/components/date/date.component.ts:114</a></div>
                 </td>
             </tr>
 
@@ -959,8 +1022,8 @@ Do NOT combine with restrictDates, as they set the same underlying values.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="315"
-                            class="link-to-prism">projects/common/lib/components/date/date.component.ts:315</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="290"
+                            class="link-to-prism">projects/common/lib/components/date/date.component.ts:290</a></div>
                 </td>
             </tr>
 
@@ -1029,8 +1092,8 @@ Do NOT combine with restrictDates, as they set the same underlying values.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="325"
-                            class="link-to-prism">projects/common/lib/components/date/date.component.ts:325</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="300"
+                            class="link-to-prism">projects/common/lib/components/date/date.component.ts:300</a></div>
                 </td>
             </tr>
 
@@ -1099,8 +1162,8 @@ Do NOT combine with restrictDates, as they set the same underlying values.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="320"
-                            class="link-to-prism">projects/common/lib/components/date/date.component.ts:320</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="295"
+                            class="link-to-prism">projects/common/lib/components/date/date.component.ts:295</a></div>
                 </td>
             </tr>
 
@@ -1171,8 +1234,8 @@ Do NOT combine with restrictDates, as they set the same underlying values.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="232"
-                            class="link-to-prism">projects/common/lib/components/date/date.component.ts:232</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="224"
+                            class="link-to-prism">projects/common/lib/components/date/date.component.ts:224</a></div>
                 </td>
             </tr>
 
@@ -1185,146 +1248,6 @@ Do NOT combine with restrictDates, as they set the same underlying values.</p>
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="registerOnChange"></a>
-                    <span class="name">
-                        <b>
-                            registerOnChange
-                        </b>
-                        <a href="#registerOnChange"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>registerOnChange(fn: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="306"
-                            class="link-to-prism">projects/common/lib/components/date/date.component.ts:306</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>fn</td>
-                                    <td>
-                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="registerOnTouched"></a>
-                    <span class="name">
-                        <b>
-                            registerOnTouched
-                        </b>
-                        <a href="#registerOnTouched"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>registerOnTouched(fn: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="311"
-                            class="link-to-prism">projects/common/lib/components/date/date.component.ts:311</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>fn</td>
-                                    <td>
-                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
                     </div>
                 </td>
             </tr>
@@ -1352,8 +1275,8 @@ Do NOT combine with restrictDates, as they set the same underlying values.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="198"
-                            class="link-to-prism">projects/common/lib/components/date/date.component.ts:198</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="190"
+                            class="link-to-prism">projects/common/lib/components/date/date.component.ts:190</a></div>
                 </td>
             </tr>
 
@@ -1424,49 +1347,8 @@ Do NOT combine with restrictDates, as they set the same underlying values.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="286"
-                            class="link-to-prism">projects/common/lib/components/date/date.component.ts:286</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="setErrorMsg"></a>
-                    <span class="name">
-                        <b>
-                            <span class="modifier">Private</span>
-                            setErrorMsg
-                        </b>
-                        <a href="#setErrorMsg"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>setErrorMsg()</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="278"
-                            class="link-to-prism">projects/common/lib/components/date/date.component.ts:278</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="271"
+                            class="link-to-prism">projects/common/lib/components/date/date.component.ts:271</a></div>
                 </td>
             </tr>
 
@@ -1504,8 +1386,8 @@ Do NOT combine with restrictDates, as they set the same underlying values.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="180"
-                            class="link-to-prism">projects/common/lib/components/date/date.component.ts:180</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="172"
+                            class="link-to-prism">projects/common/lib/components/date/date.component.ts:172</a></div>
                 </td>
             </tr>
 
@@ -1574,8 +1456,8 @@ Do NOT combine with restrictDates, as they set the same underlying values.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="217"
-                            class="link-to-prism">projects/common/lib/components/date/date.component.ts:217</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="209"
+                            class="link-to-prism">projects/common/lib/components/date/date.component.ts:209</a></div>
                 </td>
             </tr>
 
@@ -1646,8 +1528,8 @@ Do NOT combine with restrictDates, as they set the same underlying values.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="399"
-                            class="link-to-prism">projects/common/lib/components/date/date.component.ts:399</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="374"
+                            class="link-to-prism">projects/common/lib/components/date/date.component.ts:374</a></div>
                 </td>
             </tr>
 
@@ -1687,8 +1569,8 @@ Do NOT combine with restrictDates, as they set the same underlying values.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="377"
-                            class="link-to-prism">projects/common/lib/components/date/date.component.ts:377</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="352"
+                            class="link-to-prism">projects/common/lib/components/date/date.component.ts:352</a></div>
                 </td>
             </tr>
 
@@ -1728,8 +1610,8 @@ Do NOT combine with restrictDates, as they set the same underlying values.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="340"
-                            class="link-to-prism">projects/common/lib/components/date/date.component.ts:340</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="315"
+                            class="link-to-prism">projects/common/lib/components/date/date.component.ts:315</a></div>
                 </td>
             </tr>
 
@@ -1769,8 +1651,8 @@ Do NOT combine with restrictDates, as they set the same underlying values.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="298"
-                            class="link-to-prism">projects/common/lib/components/date/date.component.ts:298</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="283"
+                            class="link-to-prism">projects/common/lib/components/date/date.component.ts:283</a></div>
                 </td>
             </tr>
 
@@ -1793,6 +1675,503 @@ Do NOT combine with restrictDates, as they set the same underlying values.</p>
                                     <td>value</td>
                                     <td>
                                                 <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank" >Date</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <b>
+                            ngOnInit
+                        </b>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Inherited from         <code><a href="../classes/AbstractFormControl.html" target="_self" >AbstractFormControl</a></code>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-line">Defined in         <code><a href="../classes/AbstractFormControl.html#source" target="_self" >AbstractFormControl:26</a></code>
+</div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="registerOnChange"></a>
+                    <span class="name">
+                        <b>
+                            registerOnChange
+                        </b>
+                        <a href="#registerOnChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>registerOnChange(fn: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Inherited from         <code><a href="../classes/AbstractFormControl.html" target="_self" >AbstractFormControl</a></code>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-line">Defined in         <code><a href="../classes/AbstractFormControl.html#source" target="_self" >AbstractFormControl:34</a></code>
+</div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>fn</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="registerOnTouched"></a>
+                    <span class="name">
+                        <b>
+                            registerOnTouched
+                        </b>
+                        <a href="#registerOnTouched"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>registerOnTouched(fn: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Inherited from         <code><a href="../classes/AbstractFormControl.html" target="_self" >AbstractFormControl</a></code>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-line">Defined in         <code><a href="../classes/AbstractFormControl.html#source" target="_self" >AbstractFormControl:39</a></code>
+</div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>fn</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="registerValidation"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Protected</span>
+                            registerValidation
+                        </b>
+                        <a href="#registerValidation"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>registerValidation(ngControl: <a href="https://angular.io/api/forms/NgControl" target="_blank">NgControl</a>, fn: <a href="https://angular.io/api/forms/ValidationErrors" target="_blank">ValidationErrors</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Inherited from         <code><a href="../classes/AbstractFormControl.html" target="_self" >AbstractFormControl</a></code>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-line">Defined in         <code><a href="../classes/AbstractFormControl.html#source" target="_self" >AbstractFormControl:62</a></code>
+</div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Register self validating method</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ngControl</td>
+                                    <td>
+                                                <code><a href="https://angular.io/api/forms/NgControl" target="_blank" >NgControl</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>fn</td>
+                                    <td>
+                                                <code><a href="https://angular.io/api/forms/ValidationErrors" target="_blank" >ValidationErrors</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>function for validating self</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setDisabledState"></a>
+                    <span class="name">
+                        <b>
+                            setDisabledState
+                        </b>
+                        <a href="#setDisabledState"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setDisabledState(isDisabled: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Inherited from         <code><a href="../classes/AbstractFormControl.html" target="_self" >AbstractFormControl</a></code>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-line">Defined in         <code><a href="../classes/AbstractFormControl.html#source" target="_self" >AbstractFormControl:44</a></code>
+</div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>isDisabled</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setErrorMsg"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Protected</span>
+                            setErrorMsg
+                        </b>
+                        <a href="#setErrorMsg"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>setErrorMsg()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Inherited from         <code><a href="../classes/AbstractFormControl.html" target="_self" >AbstractFormControl</a></code>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-line">Defined in         <code><a href="../classes/AbstractFormControl.html#source" target="_self" >AbstractFormControl:48</a></code>
+</div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="writeValue"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Abstract</span>
+                            writeValue
+                        </b>
+                        <a href="#writeValue"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>writeValue(value: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Inherited from         <code><a href="../classes/AbstractFormControl.html" target="_self" >AbstractFormControl</a></code>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-line">Defined in         <code><a href="../classes/AbstractFormControl.html#source" target="_self" >AbstractFormControl:31</a></code>
+</div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>value</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
                                     </td>
 
                                     <td>
@@ -1843,7 +2222,48 @@ Do NOT combine with restrictDates, as they set the same underlying values.</p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">projects/common/lib/components/date/date.component.ts:53</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">projects/common/lib/components/date/date.component.ts:51</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_defaultErrMsg"></a>
+                        <span class="name">
+                            <b>
+                            _defaultErrMsg</b>
+                            <a href="#_defaultErrMsg"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../interfaces/ErrorMessage.html" target="_self" >ErrorMessage</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>{
+    required: &#x60;${LabelReplacementTag} is required.&#x60;,
+    dayOutOfRange: &#x60;Invalid ${LabelReplacementTag}.&#x60;,
+    yearDistantPast: &#x60;Invalid ${LabelReplacementTag}.&#x60;,
+    yearDistantFuture: &#x60;Invalid ${LabelReplacementTag}.&#x60;,
+    noPastDatesAllowed: &#x60;Invalid ${LabelReplacementTag}.&#x60;,
+    noFutureDatesAllowed: &#x60;Invalid ${LabelReplacementTag}.&#x60;,
+    invalidValue: &#x60;Invalid ${LabelReplacementTag}.&#x60;,
+    invalidRange: &#x60;Invalid ${LabelReplacementTag}.&#x60;
+  }</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">projects/common/lib/components/date/date.component.ts:79</a></div>
                             </td>
                         </tr>
 
@@ -1875,59 +2295,7 @@ Do NOT combine with restrictDates, as they set the same underlying values.</p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">projects/common/lib/components/date/date.component.ts:52</a></div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="_onChange"></a>
-                        <span class="name">
-                            <b>
-                            _onChange</b>
-                            <a href="#_onChange"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Default value : </i><code>() &#x3D;&gt; {...}</code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="91" class="link-to-prism">projects/common/lib/components/date/date.component.ts:91</a></div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="_onTouched"></a>
-                        <span class="name">
-                            <b>
-                            _onTouched</b>
-                            <a href="#_onTouched"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Default value : </i><code>() &#x3D;&gt; {...}</code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">projects/common/lib/components/date/date.component.ts:92</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">projects/common/lib/components/date/date.component.ts:50</a></div>
                             </td>
                         </tr>
 
@@ -1954,7 +2322,7 @@ Do NOT combine with restrictDates, as they set the same underlying values.</p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">projects/common/lib/components/date/date.component.ts:51</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">projects/common/lib/components/date/date.component.ts:49</a></div>
                             </td>
                         </tr>
 
@@ -1991,7 +2359,7 @@ Do NOT combine with restrictDates, as they set the same underlying values.</p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="94" class="link-to-prism">projects/common/lib/components/date/date.component.ts:94</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="90" class="link-to-prism">projects/common/lib/components/date/date.component.ts:90</a></div>
                             </td>
                         </tr>
 
@@ -2023,7 +2391,7 @@ Do NOT combine with restrictDates, as they set the same underlying values.</p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">projects/common/lib/components/date/date.component.ts:77</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">projects/common/lib/components/date/date.component.ts:75</a></div>
                             </td>
                         </tr>
 
@@ -2055,48 +2423,7 @@ Do NOT combine with restrictDates, as they set the same underlying values.</p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">projects/common/lib/components/date/date.component.ts:55</a></div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="defaultErrMsg"></a>
-                        <span class="name">
-                            <b>
-                            defaultErrMsg</b>
-                            <a href="#defaultErrMsg"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="../interfaces/ErrorMessage.html" target="_self" >ErrorMessage</a></code>
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Default value : </i><code>{
-    required: &#x60;${LabelReplacementTag} is required.&#x60;,
-    dayOutOfRange: &#x60;Invalid ${LabelReplacementTag}.&#x60;,
-    yearDistantPast: &#x60;Invalid ${LabelReplacementTag}.&#x60;,
-    yearDistantFuture: &#x60;Invalid ${LabelReplacementTag}.&#x60;,
-    noPastDatesAllowed: &#x60;Invalid ${LabelReplacementTag}.&#x60;,
-    noFutureDatesAllowed: &#x60;Invalid ${LabelReplacementTag}.&#x60;,
-    invalidValue: &#x60;Invalid ${LabelReplacementTag}.&#x60;,
-    invalidRange: &#x60;Invalid ${LabelReplacementTag}.&#x60;
-  }</code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">projects/common/lib/components/date/date.component.ts:80</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">projects/common/lib/components/date/date.component.ts:53</a></div>
                             </td>
                         </tr>
 
@@ -2124,7 +2451,7 @@ Do NOT combine with restrictDates, as they set the same underlying values.</p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="95" class="link-to-prism">projects/common/lib/components/date/date.component.ts:95</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="91" class="link-to-prism">projects/common/lib/components/date/date.component.ts:91</a></div>
                             </td>
                         </tr>
 
@@ -2156,7 +2483,7 @@ Do NOT combine with restrictDates, as they set the same underlying values.</p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">projects/common/lib/components/date/date.component.ts:76</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">projects/common/lib/components/date/date.component.ts:74</a></div>
                             </td>
                         </tr>
 
@@ -2192,7 +2519,7 @@ Do NOT combine with restrictDates, as they set the same underlying values.</p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">projects/common/lib/components/date/date.component.ts:71</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">projects/common/lib/components/date/date.component.ts:69</a></div>
                             </td>
                         </tr>
 
@@ -2224,7 +2551,7 @@ Do NOT combine with restrictDates, as they set the same underlying values.</p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">projects/common/lib/components/date/date.component.ts:56</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">projects/common/lib/components/date/date.component.ts:54</a></div>
                             </td>
                         </tr>
 
@@ -2256,7 +2583,7 @@ Do NOT combine with restrictDates, as they set the same underlying values.</p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">projects/common/lib/components/date/date.component.ts:78</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">projects/common/lib/components/date/date.component.ts:76</a></div>
                             </td>
                         </tr>
 
@@ -2288,7 +2615,113 @@ Do NOT combine with restrictDates, as they set the same underlying values.</p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">projects/common/lib/components/date/date.component.ts:57</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">projects/common/lib/components/date/date.component.ts:55</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_defaultErrMsg"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Abstract</span>
+                            _defaultErrMsg</b>
+                            <a href="#_defaultErrMsg"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../interfaces/ErrorMessage.html" target="_self" >ErrorMessage</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>{}</code>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Inherited from         <code><a href="../classes/AbstractFormControl.html" target="_self" >AbstractFormControl</a></code>
+</div>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in         <code><a href="../classes/AbstractFormControl.html#source" target="_self" >AbstractFormControl:10</a></code>
+</div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_onChange"></a>
+                        <span class="name">
+                            <b>
+                            _onChange</b>
+                            <a href="#_onChange"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>() &#x3D;&gt; {...}</code>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Inherited from         <code><a href="../classes/AbstractFormControl.html" target="_self" >AbstractFormControl</a></code>
+</div>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in         <code><a href="../classes/AbstractFormControl.html#source" target="_self" >AbstractFormControl:22</a></code>
+</div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_onTouched"></a>
+                        <span class="name">
+                            <b>
+                            _onTouched</b>
+                            <a href="#_onTouched"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>() &#x3D;&gt; {...}</code>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Inherited from         <code><a href="../classes/AbstractFormControl.html" target="_self" >AbstractFormControl</a></code>
+</div>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in         <code><a href="../classes/AbstractFormControl.html#source" target="_self" >AbstractFormControl:23</a></code>
+</div>
                             </td>
                         </tr>
 
@@ -2363,7 +2796,7 @@ Do NOT combine with restrictDates, as they set the same underlying values.</p>
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="174" class="link-to-prism">projects/common/lib/components/date/date.component.ts:174</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="166" class="link-to-prism">projects/common/lib/components/date/date.component.ts:166</a></div>
                                 </td>
                             </tr>
 
@@ -2385,7 +2818,7 @@ Do NOT combine with restrictDates, as they set the same underlying values.</p>
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="192" class="link-to-prism">projects/common/lib/components/date/date.component.ts:192</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="184" class="link-to-prism">projects/common/lib/components/date/date.component.ts:184</a></div>
                                 </td>
                             </tr>
 
@@ -2407,7 +2840,7 @@ Do NOT combine with restrictDates, as they set the same underlying values.</p>
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="211" class="link-to-prism">projects/common/lib/components/date/date.component.ts:211</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="203" class="link-to-prism">projects/common/lib/components/date/date.component.ts:203</a></div>
                                 </td>
                             </tr>
 
@@ -2433,14 +2866,12 @@ Do NOT combine with restrictDates, as they set the same underlying values.</p>
   EventEmitter,
   Optional, Self, SimpleChanges, OnChanges
 } from &#x27;@angular/core&#x27;;
-import { Base } from &#x27;../../models/base&#x27;;
 import {
   NgForm,
   ControlValueAccessor,
   NgControl,
   ValidationErrors} from &#x27;@angular/forms&#x27;;
-import { ErrorMessage, LabelReplacementTag, replaceLabelTag } from &#x27;../../models/error-message.interface&#x27;;
-
+import { ErrorMessage, LabelReplacementTag } from &#x27;../../models/error-message.interface&#x27;;
 import getDaysInMonth from &#x27;date-fns/getDaysInMonth&#x27;;
 import isAfter from &#x27;date-fns/isAfter&#x27;;
 import isBefore from &#x27;date-fns/isBefore&#x27;;
@@ -2449,6 +2880,7 @@ import addYears from &#x27;date-fns/addYears&#x27;;
 import subYears from &#x27;date-fns/subYears&#x27;;
 import subDays from &#x27;date-fns/subDays&#x27;;
 import { MoHCommonLibraryError } from &#x27;../../../helpers/library-errorr&#x27;;
+import { AbstractFormControl } from &#x27;../../models/abstract-form-control&#x27;;
 
 
 const MAX_YEAR_RANGE &#x3D; 150;
@@ -2461,16 +2893,15 @@ const distantPast &#x3D; subYears(startOfToday(), MAX_YEAR_RANGE);
   templateUrl: &#x27;./date.component.html&#x27;,
   styleUrls: [&#x27;./date.component.scss&#x27;],
 })
-export class DateComponent extends Base implements OnInit, ControlValueAccessor, OnChanges {
+export class DateComponent extends AbstractFormControl implements OnInit, ControlValueAccessor, OnChanges {
+
+  // Inputs for disabled &amp; errorMessage are found in the AbstractFormControl class
   @Input() date: Date;
   @Output() dateChange: EventEmitter&lt;Date&gt; &#x3D; new EventEmitter&lt;Date&gt;();
 
-
-  @Input() disabled: boolean &#x3D; false;
   @Input() label: string &#x3D; &#x27;Date&#x27;;
   /** Can be one of: &quot;future&quot;, &quot;past&quot;. &quot;future&quot; includes today, &quot;past&quot; does not. */
   @Input() restrictDate: &#x27;future&#x27; | &#x27;past&#x27; | &#x27;any&#x27; &#x3D; &#x27;any&#x27;;
-  @Input() errorMessages: ErrorMessage;
 
   // The actual values displayed to the user.  May not precisely match Date
   // object, because these fields can be blank whereas a Date can never have a
@@ -2504,7 +2935,8 @@ export class DateComponent extends Base implements OnInit, ControlValueAccessor,
   dayLabelforId: string &#x3D; &#x27;day_&#x27; + this.objectId;
   yearLabelforId: string &#x3D; &#x27;year_&#x27; + this.objectId;
 
-  defaultErrMsg: ErrorMessage &#x3D; {
+  // Abstact variable defined
+  _defaultErrMsg: ErrorMessage &#x3D; {
     required: &#x60;${LabelReplacementTag} is required.&#x60;,
     dayOutOfRange: &#x60;Invalid ${LabelReplacementTag}.&#x60;,
     yearDistantPast: &#x60;Invalid ${LabelReplacementTag}.&#x60;,
@@ -2515,35 +2947,28 @@ export class DateComponent extends Base implements OnInit, ControlValueAccessor,
     invalidRange: &#x60;Invalid ${LabelReplacementTag}.&#x60;
   };
 
-  _onChange &#x3D; (_: any) &#x3D;&gt; { };
-  _onTouched &#x3D; (_: any) &#x3D;&gt; { };
-
-  constructor(@Optional() @Self() public controlDir: NgControl,
-    public form: NgForm) {
+  constructor( @Optional() @Self() public controlDir: NgControl,
+               public form: NgForm ) {
     super();
     if (controlDir) {
       controlDir.valueAccessor &#x3D; this;
     }
   }
 
-
   ngOnChanges(changes: SimpleChanges) {
 
+    /*
+     * Works, creates new object literall
+     * obj &#x3D; {
+     *   errorMessage: &#x27;new&#x27;message&#x27;;
+     * }
+     *
+     * Doesn&#x27;t work, modifies existing object.  Would have to manually call cd.detectChanges() afterwards.
+     * obj.errorMessage &#x3D; &#x27;newMessage&#x27;;
+     */
     if (changes[&#x27;errorMessages&#x27;]) {
       this.setErrorMsg();
     }
-
-
-    // todo: remove below comments
-    // Kristin -&gt; make sure to pass in a fully new errorMessages object to trigger Angular&#x27;s change detection.
-
-    // Doesn&#x27;t work, modifies existing object.  Would have to manually call cd.detectChanges() afterwards.
-    // obj.errorMessage &#x3D; &#x27;newMessage&#x27;;
-
-    // Works, creates new object literall
-    // obj &#x3D; {
-    //   errorMessage: &#x27;new&#x27;message&#x27;;
-    // }
   }
 
   ngOnInit() {
@@ -2702,13 +3127,6 @@ You must use either [restrictDate] or the [dateRange*] inputs.
     return (isNaN(parsed) ? null : parsed);
   }
 
-  private setErrorMsg() {
-
-    if (this.errorMessages) {
-      Object.keys(this.errorMessages).map(x &#x3D;&gt; this.defaultErrMsg[x] &#x3D; this.errorMessages[x]);
-    }
-    Object.keys(this.defaultErrMsg).map(x &#x3D;&gt; this.defaultErrMsg[x] &#x3D; replaceLabelTag(this.defaultErrMsg[x], this.label));
-  }
 
   private setDisplayVariables() {
     this._day &#x3D; this.date.getDate().toString();
@@ -2727,16 +3145,6 @@ You must use either [restrictDate] or the [dateRange*] inputs.
       this.date &#x3D; value;
       this.setDisplayVariables();
     }
-  }
-
-  // Register change function
-  registerOnChange(fn: any): void {
-    this._onChange &#x3D; fn;
-  }
-
-  // Register touched function
-  registerOnTouched(fn: any): void {
-    this._onTouched &#x3D; fn;
   }
 
   onBlurDay(value: string) {
@@ -2774,8 +3182,8 @@ You must use either [restrictDate] or the [dateRange*] inputs.
     const allFieldsEmpty &#x3D; isNaN(year) &amp;&amp; isNaN(month) &amp;&amp; isNaN(day);
     const someFieldsEmpty &#x3D; isNaN(year) || isNaN(month) || isNaN(day);
 
-    // Partially filled out is always invalid
-    if (!allFieldsEmpty &amp;&amp; someFieldsEmpty) {
+    // Partially filled out is always invalid, if year is present it must be greater than zero
+    if (!allFieldsEmpty &amp;&amp; someFieldsEmpty || (!isNaN( year) &amp;&amp; year &lt;&#x3D; 0) ) {
       return {invalidValue: true};
     }
 
@@ -2891,30 +3299,30 @@ You must use either [restrictDate] or the [dateRange*] inputs.
 &lt;common-error-container
     [displayError]&#x3D;&quot;!disabled &amp;&amp; (controlDir?.touched || controlDir?.dirty)&quot;&gt;
   &lt;div *ngIf&#x3D;&quot;controlDir?.errors?.required&quot;&gt;
-      {{defaultErrMsg.required}}
+    {{_defaultErrMsg.required}}
   &lt;/div&gt;
   &lt;div *ngIf&#x3D;&quot;controlDir?.errors?.dayOutOfRange&quot;&gt;
-      {{defaultErrMsg.dayOutOfRange}}
+    {{_defaultErrMsg.dayOutOfRange}}
   &lt;/div&gt;
   &lt;div *ngIf&#x3D;&quot;controlDir?.errors?.yearDistantPast&quot;&gt;
-      {{defaultErrMsg.yearDistantPast}}
+    {{_defaultErrMsg.yearDistantPast}}
   &lt;/div&gt;
   &lt;div *ngIf&#x3D;&quot;controlDir?.errors?.yearDistantFuture&quot;&gt;
-      {{defaultErrMsg.yearDistantFuture}}
+    {{_defaultErrMsg.yearDistantFuture}}
   &lt;/div&gt;
   &lt;div *ngIf&#x3D;&quot;controlDir?.errors?.noPastDatesAllowed&quot;&gt;
-        {{defaultErrMsg.noPastDatesAllowed}}
+    {{_defaultErrMsg.noPastDatesAllowed}}
   &lt;/div&gt;
   &lt;div *ngIf&#x3D;&quot;controlDir?.errors?.noFutureDatesAllowed&quot;&gt;
-      {{defaultErrMsg.noFutureDatesAllowed}}
+     {{_defaultErrMsg.noFutureDatesAllowed}}
   &lt;/div&gt;
   &lt;div *ngIf&#x3D;&quot;controlDir?.errors?.invalidRange&quot;&gt;
-        {{defaultErrMsg.invalidRange}}
-    &lt;/div&gt;
-  
+    {{_defaultErrMsg.invalidRange}}
+  &lt;/div&gt;
+
   &lt;!-- Case should not happen until something is not formatted correctly--&gt;
   &lt;div *ngIf&#x3D;&quot;controlDir?.errors?.invalidValue&quot;&gt;
-      {{defaultErrMsg.invalidValue}}
+     {{_defaultErrMsg.invalidValue}}
   &lt;/div&gt;
 &lt;/common-error-container&gt;
 </code></pre>
@@ -2946,9 +3354,9 @@ You must use either [restrictDate] or the [dateRange*] inputs.
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><fieldset>  <legend class="date--legend">{{label}}</legend>  <div class="date-row">    <label class="visuallyhidden" for="{{monthLabelforId}}">Month</label>    <select class="form-control monthSelect"            id="{{monthLabelforId}}"            name="{{monthLabelforId}}"            [value]="_month"            (blur)="onBlurMonth($event.target.value)"            [disabled]=\'disabled\'>      <!-- We show the blank option so the user can clear out their data.-->      <!-- <option value="null" label="-- month --" selected [disabled]=\'required\'></option> -->      <!-- problem - toggling of the \'disabled\' input here based on [required]? -->      <option value="null" label="-- month --" selected disabled></option>      <option *ngFor="let month of monthList; let i = index;" [value]="i">{{month}}</option>    </select>    <label class="visuallyhidden" for="{{dayLabelforId}}">Day</label>    <input type="number"           class="form-control dayInput"           id="{{dayLabelforId}}"           name="{{dayLabelforId}}"           placeholder="Day"           [value]="_day"           (blur)="onBlurDay($event.target.value)"           commonDateFieldFormat           [disabled]=\'disabled\'           maxlength="2"           autocomplete="off"/>    <label class="visuallyhidden" for="{{yearLabelforId}}">Year</label>    <input type="number"           class="form-control yearInput"           id="{{yearLabelforId}}"           name="{{yearLabelforId}}"           placeholder="Year"           [value]="_year"           (blur)="onBlurYear($event.target.value)"           commonDateFieldFormat           [disabled]=\'disabled\'           maxlength="4"           autocomplete="off"/>  </div></fieldset><common-error-container    [displayError]="!disabled && (controlDir?.touched || controlDir?.dirty)">  <div *ngIf="controlDir?.errors?.required">      {{defaultErrMsg.required}}  </div>  <div *ngIf="controlDir?.errors?.dayOutOfRange">      {{defaultErrMsg.dayOutOfRange}}  </div>  <div *ngIf="controlDir?.errors?.yearDistantPast">      {{defaultErrMsg.yearDistantPast}}  </div>  <div *ngIf="controlDir?.errors?.yearDistantFuture">      {{defaultErrMsg.yearDistantFuture}}  </div>  <div *ngIf="controlDir?.errors?.noPastDatesAllowed">        {{defaultErrMsg.noPastDatesAllowed}}  </div>  <div *ngIf="controlDir?.errors?.noFutureDatesAllowed">      {{defaultErrMsg.noFutureDatesAllowed}}  </div>  <div *ngIf="controlDir?.errors?.invalidRange">        {{defaultErrMsg.invalidRange}}    </div>    <!-- Case should not happen until something is not formatted correctly-->  <div *ngIf="controlDir?.errors?.invalidValue">      {{defaultErrMsg.invalidValue}}  </div></common-error-container></div>'
+        var COMPONENT_TEMPLATE = '<div><fieldset>  <legend class="date--legend">{{label}}</legend>  <div class="date-row">    <label class="visuallyhidden" for="{{monthLabelforId}}">Month</label>    <select class="form-control monthSelect"            id="{{monthLabelforId}}"            name="{{monthLabelforId}}"            [value]="_month"            (blur)="onBlurMonth($event.target.value)"            [disabled]=\'disabled\'>      <!-- We show the blank option so the user can clear out their data.-->      <!-- <option value="null" label="-- month --" selected [disabled]=\'required\'></option> -->      <!-- problem - toggling of the \'disabled\' input here based on [required]? -->      <option value="null" label="-- month --" selected disabled></option>      <option *ngFor="let month of monthList; let i = index;" [value]="i">{{month}}</option>    </select>    <label class="visuallyhidden" for="{{dayLabelforId}}">Day</label>    <input type="number"           class="form-control dayInput"           id="{{dayLabelforId}}"           name="{{dayLabelforId}}"           placeholder="Day"           [value]="_day"           (blur)="onBlurDay($event.target.value)"           commonDateFieldFormat           [disabled]=\'disabled\'           maxlength="2"           autocomplete="off"/>    <label class="visuallyhidden" for="{{yearLabelforId}}">Year</label>    <input type="number"           class="form-control yearInput"           id="{{yearLabelforId}}"           name="{{yearLabelforId}}"           placeholder="Year"           [value]="_year"           (blur)="onBlurYear($event.target.value)"           commonDateFieldFormat           [disabled]=\'disabled\'           maxlength="4"           autocomplete="off"/>  </div></fieldset><common-error-container    [displayError]="!disabled && (controlDir?.touched || controlDir?.dirty)">  <div *ngIf="controlDir?.errors?.required">    {{_defaultErrMsg.required}}  </div>  <div *ngIf="controlDir?.errors?.dayOutOfRange">    {{_defaultErrMsg.dayOutOfRange}}  </div>  <div *ngIf="controlDir?.errors?.yearDistantPast">    {{_defaultErrMsg.yearDistantPast}}  </div>  <div *ngIf="controlDir?.errors?.yearDistantFuture">    {{_defaultErrMsg.yearDistantFuture}}  </div>  <div *ngIf="controlDir?.errors?.noPastDatesAllowed">    {{_defaultErrMsg.noPastDatesAllowed}}  </div>  <div *ngIf="controlDir?.errors?.noFutureDatesAllowed">     {{_defaultErrMsg.noFutureDatesAllowed}}  </div>  <div *ngIf="controlDir?.errors?.invalidRange">    {{_defaultErrMsg.invalidRange}}  </div>  <!-- Case should not happen until something is not formatted correctly-->  <div *ngIf="controlDir?.errors?.invalidValue">     {{_defaultErrMsg.invalidValue}}  </div></common-error-container></div>'
     var COMPONENTS = [{'name': 'AccordionCommonComponent', 'selector': 'common-accordion'},{'name': 'AddressComponent', 'selector': 'common-address'},{'name': 'ButtonComponent', 'selector': 'common-button'},{'name': 'ButtonGroupComponent', 'selector': 'common-button-group'},{'name': 'CaptchaComponent', 'selector': 'common-captcha'},{'name': 'CheckboxComponent', 'selector': 'common-checkbox'},{'name': 'CityComponent', 'selector': 'common-city'},{'name': 'ConfirmTemplateComponent', 'selector': 'common-confirm-template'},{'name': 'ConsentModalComponent', 'selector': 'common-consent-modal'},{'name': 'CoreBreadcrumbComponent', 'selector': 'common-core-breadcrumb'},{'name': 'CountryComponent', 'selector': 'common-country'},{'name': 'DateComponent', 'selector': 'common-date'},{'name': 'DatepickerComponent', 'selector': 'common-datepicker'},{'name': 'DropdownComponent', 'selector': 'common-dropdown'},{'name': 'EmailComponent', 'selector': 'common-email'},{'name': 'ErrorContainerComponent', 'selector': 'common-error-container'},{'name': 'FileUploaderComponent', 'selector': 'common-file-uploader'},{'name': 'FormActionBarComponent', 'selector': 'common-form-action-bar'},{'name': 'FormSubmitBarComponent', 'selector': 'common-form-submit-bar'},{'name': 'FullNameComponent', 'selector': 'common-full-name'},{'name': 'GeocoderInputComponent', 'selector': 'common-geocoder-input'},{'name': 'HeaderComponent', 'selector': 'common-header'},{'name': 'NameComponent', 'selector': 'common-name'},{'name': 'PageFrameworkComponent', 'selector': 'common-page-framework'},{'name': 'PageSectionComponent', 'selector': 'common-page-section'},{'name': 'PasswordComponent', 'selector': 'common-password'},{'name': 'PhnComponent', 'selector': 'common-phn'},{'name': 'PhoneNumberComponent', 'selector': 'common-phone-number'},{'name': 'PostalCodeComponent', 'selector': 'common-postal-code'},{'name': 'ProvinceComponent', 'selector': 'common-province'},{'name': 'RadioComponent', 'selector': 'common-radio'},{'name': 'SampleModalComponent', 'selector': 'common-sample-modal'},{'name': 'SinComponent', 'selector': 'common-sin'},{'name': 'StreetComponent', 'selector': 'common-street'},{'name': 'ThumbnailComponent', 'selector': 'common-thumbnail'},{'name': 'ToggleComponent', 'selector': 'common-toggle'},{'name': 'WizardProgressBarComponent', 'selector': 'common-wizard-progress-bar'},{'name': 'XiconButtonComponent', 'selector': 'common-xicon-button'}];
-    var DIRECTIVES = [{'name': 'DateFieldFormatDirective', 'selector': '[commonDateFieldFormat]'},{'name': 'DayValidationDirective', 'selector': '[commonDayValidation]'},{'name': 'DuplicateCheckDirective', 'selector': '[commonDuplicateCheck]'},{'name': 'ValidateBcPostalDirective', 'selector': '[commonValidateBcPostal]'},{'name': 'ValidateCityDirective', 'selector': '[commonValidateCity]'},{'name': 'ValidateEmailDirective', 'selector': '[commonValidateEmail]'},{'name': 'ValidateNameDirective', 'selector': '[commonValidateName]'},{'name': 'ValidatePhnDirective', 'selector': '[commonValidatePhn]'},{'name': 'ValidatePostalcodeDirective', 'selector': '[commonValidatePostalcode]'},{'name': 'ValidateRegionDirective', 'selector': '[commonValidateRegion]'},{'name': 'ValidateSinDirective', 'selector': '[commonValidateSin]'},{'name': 'ValidateStreetDirective', 'selector': '[commonValidateStreet]'},{'name': 'YearValidateDirective', 'selector': '[commonYearValidate]'}];
+    var DIRECTIVES = [{'name': 'DateFieldFormatDirective', 'selector': '[commonDateFieldFormat]'},{'name': 'DuplicateCheckDirective', 'selector': '[commonDuplicateCheck]'},{'name': 'ValidateBcPostalDirective', 'selector': '[commonValidateBcPostal]'},{'name': 'ValidateCityDirective', 'selector': '[commonValidateCity]'},{'name': 'ValidateEmailDirective', 'selector': '[commonValidateEmail]'},{'name': 'ValidateNameDirective', 'selector': '[commonValidateName]'},{'name': 'ValidatePhnDirective', 'selector': '[commonValidatePhn]'},{'name': 'ValidatePostalcodeDirective', 'selector': '[commonValidatePostalcode]'},{'name': 'ValidateRegionDirective', 'selector': '[commonValidateRegion]'},{'name': 'ValidateSinDirective', 'selector': '[commonValidateSin]'},{'name': 'ValidateStreetDirective', 'selector': '[commonValidateStreet]'}];
     var ACTUAL_COMPONENT = {'name': 'DateComponent'};
 </script>
 <script src="../js/tree.js"></script>

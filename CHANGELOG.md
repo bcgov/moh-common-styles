@@ -1,4 +1,28 @@
-# Unreleased "moh-common-lib" (2019-10-30)
+# Unreleased "moh-common-lib" (2019-11-05)
+
+
+
+# [3.0.0-rc.11](https://github.com/bcgov/moh-common-styles/compare/v3.0.0-rc.10...v3.0.0-rc.11) "moh-common-lib" (2019-11-05)
+
+
+### Bug Fixes
+
+* **FileUploader:** Fix a11y for danging aria label ([3f6a466](https://github.com/bcgov/moh-common-styles/commit/3f6a466))
+
+
+### Tests
+
+* Remove extra unnecessary tick() call. ([8248e61](https://github.com/bcgov/moh-common-styles/commit/8248e61))
+* Unit tests for phone/radio passing.  Also internal refactoring. ([14bce6e](https://github.com/bcgov/moh-common-styles/commit/14bce6e))
+
+
+
+# [3.0.0-rc.10](https://github.com/bcgov/moh-common-styles/compare/v3.0.0-rc.9...v3.0.0-rc.10) "moh-common-lib" (2019-11-01)
+
+
+### Features
+
+* **Phone:** Phone now has an 'incompleteValue' error and text. ([a1bd381](https://github.com/bcgov/moh-common-styles/commit/a1bd381))
 
 
 
