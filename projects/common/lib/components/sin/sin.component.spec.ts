@@ -10,7 +10,7 @@ import { By } from '@angular/platform-browser';
  * TODO: Complete tests - using ng-select (github) tests as guide for writing these tests
  */
 
-fdescribe('SinComponent', () => {
+describe('SinComponent', () => {
 
   it('should create', fakeAsync(() => {
     const fixture = createTestingModule(

@@ -6,14 +6,12 @@ import {
   EventEmitter,
   Optional, Self, SimpleChanges, OnChanges
 } from '@angular/core';
-import { Base } from '../../models/base';
 import {
   NgForm,
   ControlValueAccessor,
   NgControl,
   ValidationErrors} from '@angular/forms';
-import { ErrorMessage, LabelReplacementTag, replaceLabelTag } from '../../models/error-message.interface';
-
+import { ErrorMessage, LabelReplacementTag } from '../../models/error-message.interface';
 import getDaysInMonth from 'date-fns/getDaysInMonth';
 import isAfter from 'date-fns/isAfter';
 import isBefore from 'date-fns/isBefore';
@@ -22,6 +20,7 @@ import addYears from 'date-fns/addYears';
 import subYears from 'date-fns/subYears';
 import subDays from 'date-fns/subDays';
 import { MoHCommonLibraryError } from '../../../helpers/library-errorr';
+import { AbstractFormControl } from '../../models/abstract-form-control';
 
 
 const MAX_YEAR_RANGE = 150;
@@ -34,16 +33,15 @@ const distantPast = subYears(startOfToday(), MAX_YEAR_RANGE);
   templateUrl: './date.component.html',
   styleUrls: ['./date.component.scss'],
 })
-export class DateComponent extends Base implements OnInit, ControlValueAccessor, OnChanges {
+export class DateComponent extends AbstractFormControl implements OnInit, ControlValueAccessor, OnChanges {
+
+  // Inputs for disabled & errorMessage are found in the AbstractFormControl class
   @Input() date: Date;
   @Output() dateChange: EventEmitter<Date> = new EventEmitter<Date>();
 
-
-  @Input() disabled: boolean = false;
   @Input() label: string = 'Date';
   /** Can be one of: "future", "past". "future" includes today, "past" does not. */
   @Input() restrictDate: 'future' | 'past' | 'any' = 'any';
-  @Input() errorMessages: ErrorMessage;
 
   // The actual values displayed to the user.  May not precisely match Date
   // object, because these fields can be blank whereas a Date can never have a
@@ -77,7 +75,8 @@ export class DateComponent extends Base implements OnInit, ControlValueAccessor,
   dayLabelforId: string = 'day_' + this.objectId;
   yearLabelforId: string = 'year_' + this.objectId;
 
-  defaultErrMsg: ErrorMessage = {
+  // Abstact variable defined
+  _defaultErrMsg: ErrorMessage = {
     required: `${LabelReplacementTag} is required.`,
     dayOutOfRange: `Invalid ${LabelReplacementTag}.`,
     yearDistantPast: `Invalid ${LabelReplacementTag}.`,
@@ -88,35 +87,28 @@ export class DateComponent extends Base implements OnInit, ControlValueAccessor,
     invalidRange: `Invalid ${LabelReplacementTag}.`
   };
 
-  _onChange = (_: any) => { };
-  _onTouched = (_: any) => { };
-
-  constructor(@Optional() @Self() public controlDir: NgControl,
-    public form: NgForm) {
+  constructor( @Optional() @Self() public controlDir: NgControl,
+               public form: NgForm ) {
     super();
     if (controlDir) {
       controlDir.valueAccessor = this;
     }
   }
 
-
   ngOnChanges(changes: SimpleChanges) {
 
+    /*
+     * Works, creates new object literall
+     * obj = {
+     *   errorMessage: 'new'message';
+     * }
+     *
+     * Doesn't work, modifies existing object.  Would have to manually call cd.detectChanges() afterwards.
+     * obj.errorMessage = 'newMessage';
+     */
     if (changes['errorMessages']) {
       this.setErrorMsg();
     }
-
-
-    // todo: remove below comments
-    // Kristin -> make sure to pass in a fully new errorMessages object to trigger Angular's change detection.
-
-    // Doesn't work, modifies existing object.  Would have to manually call cd.detectChanges() afterwards.
-    // obj.errorMessage = 'newMessage';
-
-    // Works, creates new object literall
-    // obj = {
-    //   errorMessage: 'new'message';
-    // }
   }
 
   ngOnInit() {
@@ -275,13 +267,6 @@ You must use either [restrictDate] or the [dateRange*] inputs.
     return (isNaN(parsed) ? null : parsed);
   }
 
-  private setErrorMsg() {
-
-    if (this.errorMessages) {
-      Object.keys(this.errorMessages).map(x => this.defaultErrMsg[x] = this.errorMessages[x]);
-    }
-    Object.keys(this.defaultErrMsg).map(x => this.defaultErrMsg[x] = replaceLabelTag(this.defaultErrMsg[x], this.label));
-  }
 
   private setDisplayVariables() {
     this._day = this.date.getDate().toString();
@@ -300,16 +285,6 @@ You must use either [restrictDate] or the [dateRange*] inputs.
       this.date = value;
       this.setDisplayVariables();
     }
-  }
-
-  // Register change function
-  registerOnChange(fn: any): void {
-    this._onChange = fn;
-  }
-
-  // Register touched function
-  registerOnTouched(fn: any): void {
-    this._onTouched = fn;
   }
 
   onBlurDay(value: string) {
@@ -347,8 +322,8 @@ You must use either [restrictDate] or the [dateRange*] inputs.
     const allFieldsEmpty = isNaN(year) && isNaN(month) && isNaN(day);
     const someFieldsEmpty = isNaN(year) || isNaN(month) || isNaN(day);
 
-    // Partially filled out is always invalid
-    if (!allFieldsEmpty && someFieldsEmpty) {
+    // Partially filled out is always invalid, if year is present it must be greater than zero
+    if (!allFieldsEmpty && someFieldsEmpty || (!isNaN( year) && year <= 0) ) {
       return {invalidValue: true};
     }
 

@@ -1,20 +1,39 @@
 import { Component, EventEmitter, Input, Output, Optional, Self} from '@angular/core';
-import { Base } from '../../models/base';
-import { NUMBER, SPACE } from '../../models/mask.model';
-import { ControlValueAccessor, NgControl } from '@angular/forms';
+import { NUMBER, SPACE } from '../../models/mask.constants';
+import { NgControl } from '@angular/forms';
+import { AbstractFormControl } from '../../models/abstract-form-control';
+import { LabelReplacementTag, ErrorMessage } from '../../models/error-message.interface';
+
+/**
+ * This component reports the following errors.
+ *    required
+ *    invalid
+ *    duplicate
+ *
+ *  These messages can be changed by updated messages using the errorMessages interface
+ *  Ex. { required: 'This field is required', invalid: '{label} is invalid' }
+ */
 
 @Component({
   selector: 'common-sin',
   templateUrl: './sin.component.html',
   styleUrls: ['./sin.component.scss']
 })
-export class SinComponent extends Base implements ControlValueAccessor {
+export class SinComponent extends AbstractFormControl {
+
+  _defaultErrMsg: ErrorMessage = {
+    required: `${LabelReplacementTag} is required.`,
+    invalid: `${LabelReplacementTag} is invalid.`,
+    duplicate: `${LabelReplacementTag} was already used for another family member.`
+  };
+
+  sin: string = '';
+  mask: any;
 
   @Input() label: string = 'Social Insurance Number (SIN)';
-  @Input() maxlen: string = '15';
+  @Input() maxlength: string = '15';
   @Input() placeholder: string = '111 111 111';
   @Input() labelforId: string = 'sin_' + this.objectId;
-  @Input() disabled: boolean = false;
 
   @Input()
   set value( val: string ) {
@@ -31,13 +50,8 @@ export class SinComponent extends Base implements ControlValueAccessor {
   }
 
   @Output() valueChange: EventEmitter<string> = new EventEmitter<string>();
-  @Output() blurEvent: EventEmitter<any> = new EventEmitter<any>();
+  @Output() blur: EventEmitter<any> = new EventEmitter<any>();
 
-  sin: string = '';
-  mask: any;
-
-  _onChange = (_: any) => {};
-  _onTouched = (_: any) => {};
 
   constructor( @Optional() @Self() public controlDir: NgControl ) {
     super();
@@ -58,9 +72,9 @@ export class SinComponent extends Base implements ControlValueAccessor {
     }
   }
 
-  onBlurEvent( event: any ) {
+  onBlur( event: any ) {
     this._onTouched( event );
-    this.blurEvent.emit( event );
+    this.blur.emit( event );
   }
 
   writeValue( value: any ): void {

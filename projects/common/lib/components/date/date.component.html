@@ -48,29 +48,29 @@
 <common-error-container
     [displayError]="!disabled && (controlDir?.touched || controlDir?.dirty)">
   <div *ngIf="controlDir?.errors?.required">
-      {{defaultErrMsg.required}}
+    {{_defaultErrMsg.required}}
   </div>
   <div *ngIf="controlDir?.errors?.dayOutOfRange">
-      {{defaultErrMsg.dayOutOfRange}}
+    {{_defaultErrMsg.dayOutOfRange}}
   </div>
   <div *ngIf="controlDir?.errors?.yearDistantPast">
-      {{defaultErrMsg.yearDistantPast}}
+    {{_defaultErrMsg.yearDistantPast}}
   </div>
   <div *ngIf="controlDir?.errors?.yearDistantFuture">
-      {{defaultErrMsg.yearDistantFuture}}
+    {{_defaultErrMsg.yearDistantFuture}}
   </div>
   <div *ngIf="controlDir?.errors?.noPastDatesAllowed">
-        {{defaultErrMsg.noPastDatesAllowed}}
+    {{_defaultErrMsg.noPastDatesAllowed}}
   </div>
   <div *ngIf="controlDir?.errors?.noFutureDatesAllowed">
-      {{defaultErrMsg.noFutureDatesAllowed}}
+     {{_defaultErrMsg.noFutureDatesAllowed}}
   </div>
   <div *ngIf="controlDir?.errors?.invalidRange">
-        {{defaultErrMsg.invalidRange}}
-    </div>
-  
+    {{_defaultErrMsg.invalidRange}}
+  </div>
+
   <!-- Case should not happen until something is not formatted correctly-->
   <div *ngIf="controlDir?.errors?.invalidValue">
-      {{defaultErrMsg.invalidValue}}
+     {{_defaultErrMsg.invalidValue}}
   </div>
 </common-error-container>

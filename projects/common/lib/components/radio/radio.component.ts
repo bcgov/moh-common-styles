@@ -1,6 +1,7 @@
-import {Component, EventEmitter, Input, Output, Optional, Self, OnInit} from '@angular/core';
-import {Base} from '../../models/base';
-import {ControlValueAccessor, NgControl} from '@angular/forms';
+import {Component, EventEmitter, Input, Output, Optional, Self, OnInit, forwardRef} from '@angular/core';
+import { AbstractFormControl } from '../../models/abstract-form-control';
+import { LabelReplacementTag, ErrorMessage } from '../../models/error-message.interface';
+import { NgControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 /**
  * RadioComponent is a single radio which can be used to have multiple radios
@@ -38,22 +39,27 @@ import {ControlValueAccessor, NgControl} from '@angular/forms';
  * @export
  *
  */
+export interface IRadioItems {
+  label: string;
+  value: any;
+}
 @Component({
   selector: 'common-radio',
   templateUrl: './radio.component.html',
   styleUrls: ['./radio.component.scss']
 })
-export class RadioComponent extends Base implements OnInit, ControlValueAccessor {
+export class RadioComponent extends AbstractFormControl implements OnInit {
 
-  _value: string = '';
-  defaultErrorMessage: string = '';
+  _value: any = '';
+  _defaultErrMsg: ErrorMessage = {
+    required: `${LabelReplacementTag} is required.`
+  };
 
-  @Input() radioLabels: Array<{label: string, value: any}> = [
+  @Input() radioLabels: IRadioItems[] = [
     {label: 'No', value: false},
     {label: 'Yes', value: true}
   ];
 
-  @Input() disabled: boolean = false;
   @Input() label: string;
   @Input()
   set value( val: string ) {
@@ -62,16 +68,11 @@ export class RadioComponent extends Base implements OnInit, ControlValueAccessor
   get value() {
     return this._value;
   }
-  @Input() showError: boolean; // TODO: Remove - breaking change
-  @Input() errorMessageRequired: string;
+
   @Input() display: 'table-row-group' | 'inline-block'  = 'inline-block';
   @Input() instructionText: string;
-  // TODO: remove status change - breaking change
-  @Output() statusChange: EventEmitter<string> = new EventEmitter<any>();
-  @Output() valueChange: EventEmitter<string> = new EventEmitter<any>();
 
-  public _onChange = (_: any) => {};
-  public _onTouched = () => {};
+  @Output() valueChange: EventEmitter<string> = new EventEmitter<any>();
 
   constructor( @Optional() @Self() public controlDir: NgControl ) {
     super();
@@ -81,20 +82,15 @@ export class RadioComponent extends Base implements OnInit, ControlValueAccessor
   }
 
   ngOnInit() {
-    if ( this.errorMessageRequired ) {
-      this.defaultErrorMessage = this.errorMessageRequired;
-    } else {
-      this.defaultErrorMessage = (this.label ? this.label : 'Field' ) + ' is required.';
-    }
+    super.ngOnInit();
   }
 
-  setStatus(evt: string) {
-    this.value = evt;
-    this.statusChange.emit(evt);
-    this.valueChange.emit(evt);
+  setStatus(val: any) {
+    this._value = val;
 
-    this._onChange(evt);
+    this._onChange(val);
     this._onTouched();
+    this.valueChange.emit(val);
   }
 
   registerOnChange(fn: any): void {
@@ -106,10 +102,6 @@ export class RadioComponent extends Base implements OnInit, ControlValueAccessor
   }
 
   writeValue(value: any): void {
-    this.value = value;
-  }
-
-  setDisabledState(isDisabled: boolean): void {
-    this.disabled = isDisabled;
+    this._value = value;
   }
 }

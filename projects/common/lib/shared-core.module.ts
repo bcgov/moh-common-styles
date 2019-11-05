@@ -9,9 +9,6 @@ import { NgForm, FormsModule } from '@angular/forms';
 import { ProgressbarModule, ModalModule, TypeaheadModule } from 'ngx-bootstrap';
 import { RouterModule } from '@angular/router';
 import { DateComponent } from './components/date/date.component';
-import { DayValidationDirective } from './components/date/day-validation.directive';
-import { DateFieldFormatDirective } from './components/date/date-field-format.directive';
-import { YearValidateDirective } from './components/date/year-validate.directive';
 import { DatepickerComponent } from './components/datepicker/datepicker.component';
 import { NgxMyDatePickerModule } from 'ngx-mydatepicker';
 import { FileUploaderComponent } from './components/file-uploader/file-uploader.component';
@@ -57,6 +54,8 @@ import { EmailComponent } from './components/email/email.component';
 import { ValidateEmailDirective } from './components/email/validate-email.directive';
 import { ConfirmTemplateComponent } from './components/confirm-template/confirm-template.component';
 import { GeocoderInputComponent } from './components/geocoder-input/geocoder-input.component';
+import { DateFieldFormatDirective } from './components/date/date-field-format.directive';
+
 
 const componentList = [
   CoreBreadcrumbComponent,
@@ -97,10 +96,8 @@ const componentList = [
   ConfirmTemplateComponent,
   GeocoderInputComponent,
 
+
   // Directives
-  DayValidationDirective,
-  DateFieldFormatDirective,
-  YearValidateDirective,
   ValidateNameDirective,
   ValidateSinDirective,
   ValidatePhnDirective,
@@ -111,6 +108,7 @@ const componentList = [
   ValidateRegionDirective,
   ValidatePostalcodeDirective,
   ValidateEmailDirective,
+  DateFieldFormatDirective
 ];
 @NgModule({
   imports: [
@@ -126,7 +124,7 @@ const componentList = [
     AccordionModule.forRoot()
   ],
   declarations: [
-    componentList
+    componentList,
   ],
   exports: [
     componentList

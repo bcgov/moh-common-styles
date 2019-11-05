@@ -20,4 +20,4 @@ Breaking Changes for version 3.0.0:
   - [ ] Remove `clickEvent` output. Should be able to just use "click", which follows conventional Angular naming.
 - [ ] *street.component.ts*
   - [ ] Replace "maxlen" with "maxlength" across this and other components. Maxlength is more semantic / consistent.  Search for this in other places too.
-- [ ] *date.component.ts* - Should become a FormControl (NgControl)
+- [x] *date.component.ts* - Should become a FormControl (NgControl)
