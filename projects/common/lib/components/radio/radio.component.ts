@@ -85,13 +85,12 @@ export class RadioComponent extends AbstractFormControl implements OnInit {
     super.ngOnInit();
   }
 
-  setStatus(evt: any) {
-    // console.log( 'setStatus: ', evt );
-    this._value = evt;
+  setStatus(val: any) {
+    this._value = val;
 
-    this._onChange(evt);
+    this._onChange(val);
     this._onTouched();
-    this.valueChange.emit(evt);
+    this.valueChange.emit(val);
   }
 
   registerOnChange(fn: any): void {
@@ -103,9 +102,6 @@ export class RadioComponent extends AbstractFormControl implements OnInit {
   }
 
   writeValue(value: any): void {
-    /*this.radioLabels.forEach( item => {
-      console.log( item.label + ' (' + item.value + '): ', value );
-    });*/
     this._value = value;
   }
 }

@@ -1,10 +1,9 @@
 import { ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
 import { DateComponent } from './date.component';
-import { NgForm, FormsModule } from '@angular/forms';
+import { NgForm, FormsModule, FormGroup, FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { ErrorContainerComponent } from '../error-container/error-container.component';
-import { Component, ViewChild, Type } from '@angular/core';
+import { Component, ViewChild, Type, OnInit } from '@angular/core';
 import { tickAndDetectChanges } from '../../../helpers/test-helpers';
-
 
 @Component({
   template: ``,
@@ -12,12 +11,62 @@ import { tickAndDetectChanges } from '../../../helpers/test-helpers';
 class DateTestComponent {
 
   @ViewChild(DateComponent) dateComponent: DateComponent;
-  date: Date;
+  date1: Date;
+
+  defaultLabel: string = 'Date';
+
+  constructor() {}
+}
+
+class DateReactTestComponent extends DateTestComponent implements OnInit {
+
+  form: FormGroup;
+
+  constructor( private fb: FormBuilder ) {
+    super();
+  }
+
+  ngOnInit() {
+    this.form = this.fb.group({
+      date1: [ this.date1 ]
+    });
+  }
 }
 
 describe('DateComponent', () => {
 
-  describe('Custom controls', () => {
+  describe('Custom controls - Reactive', () => {
+
+    /* DateComponent Custom controls - Reactive
+     Error: Can't resolve all parameters for DateReactTestComponent: (?).*/
+    xit('should create', fakeAsync( () => {
+      const fixture = createTestingModule( DateReactTestComponent,
+        `<form [formGroup]='form'>
+          <common-date name='date1' formControlName='date1'></common-date>
+        </form>`,
+        true
+      );
+      const component = fixture.componentInstance;
+      const el = fixture.debugElement;
+      tickAndDetectChanges( fixture );
+      expect( component.dateComponent ).toBeTruthy();
+      expect( el.nativeElement.querySelector('legend').textContent ).toBe( this.defaultLabel );
+    }));
+  });
+
+  describe('Custom controls - Template', () => {
+
+    it('should create', fakeAsync(() => {
+      const fixture = createTestingModule( DateTestComponent,
+          `<common-date [(ngModel)]="date" disabled></common-date>`
+        );
+
+      const component = fixture.componentInstance;
+      const el = fixture.debugElement;
+      tickAndDetectChanges( fixture );
+      expect( component.dateComponent ).toBeTruthy();
+      expect( el.nativeElement.querySelector('legend').textContent ).toBe( this.defaultLabel );
+    }));
 
     it('should set control disabled', fakeAsync(() => {
       const fixture = createTestingModule( DateTestComponent,
@@ -36,9 +85,16 @@ describe('DateComponent', () => {
       tickAndDetectChanges( fixture );
       expect( fixture.componentInstance.dateComponent.controlDir.hasError( 'required' ) ).toBeTruthy();
     }));
+
+    xit('should set year zero invalid value error', fakeAsync(() => {
+      const fixture = createTestingModule( DateTestComponent,
+        `<common-date [(ngModel)]="date"></common-date>`
+      );
+      const component = fixture.componentInstance;
+
+    }));
   });
 });
-
 
 
 /*
@@ -64,18 +120,10 @@ describe('DateComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-
   beforeEach(() => {
     fixture = TestBed.createComponent(DateComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
   });
 
   it('should be required by default', () => {
@@ -351,7 +399,12 @@ xdescribe('DateComponent (Trigger validations)', () => {
  */
 
 
-function createTestingModule<T>(cmp: Type<T>, template: string): ComponentFixture<T> {
+function createTestingModule<T>(cmp: Type<T>, template: string, reactForm: boolean = false): ComponentFixture<T> {
+
+  const importComp: any = [ FormsModule ];
+  if ( reactForm ) {
+    importComp.push( ReactiveFormsModule );
+  }
 
   TestBed.configureTestingModule({
       declarations: [
@@ -360,7 +413,7 @@ function createTestingModule<T>(cmp: Type<T>, template: string): ComponentFixtur
         DateComponent
       ],
       imports: [
-        FormsModule
+        importComp
       ],
       providers: [ NgForm ]
     }).overrideComponent(cmp, {
