@@ -1,9 +1,10 @@
-import { ComponentFixture, TestBed, fakeAsync, ComponentFixtureAutoDetect } from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync, ComponentFixtureAutoDetect, async } from '@angular/core/testing';
 import {FormsModule, FormGroup, FormBuilder, ReactiveFormsModule} from '@angular/forms';
 import { RadioComponent } from './radio.component';
 import { QueryList, Component, ViewChildren, OnInit, Type } from '@angular/core';
 import { tickAndDetectChanges, getLegendContext } from '../../../helpers/test-helpers';
 import { ErrorContainerComponent } from '../error-container/error-container.component';
+import { BrowserModule } from '@angular/platform-browser';
 
 @Component({
   template: ``,
@@ -45,12 +46,12 @@ describe('RadioComponent', () => {
 
     it('should create', fakeAsync(() => {
       const fixture = createTestingModule( RadioReactTestComponent,
-          `<form [formGroup]="form">
-            <common-radio name='radioBtn1' label='{{radioLabel1}}'
-                          formControlName='radioBtn1'></common-radio>
-          </form>`,
-          true
-          );
+        `<form [formGroup]="form">
+          <common-radio name='radioBtn1' label='{{radioLabel1}}'
+                        formControlName='radioBtn1'></common-radio>
+        </form>`,
+        true
+      );
 
       const component = fixture.componentInstance;
       tickAndDetectChanges( fixture );
@@ -67,20 +68,23 @@ describe('RadioComponent', () => {
         </form>`,
         true
       );
+      fixture.whenStable().then( () => {
+        const component = fixture.componentInstance;
+        let radio = getRadioElment( fixture, 'radioBtn1', true );
 
-      const component = fixture.componentInstance;
+        radio.click();
+        tickAndDetectChanges( fixture );
+        let radioChecked = getCheckedElement( fixture );
+        expect( radioChecked.value ).toBe( 'true' );
+        expect( component.form.get( 'radioBtn1' ).value ).toBeTruthy();
 
-      component.form.get( 'radioBtn1' ).setValue( true );
-      tickAndDetectChanges( fixture );
-
-      let radioChecked = getCheckedElement( fixture );
-      expect( radioChecked.value ).toBe( 'true' );
-
-      component.form.get( 'radioBtn1' ).setValue( false );
-      tickAndDetectChanges( fixture );
-
-      radioChecked = getCheckedElement( fixture );
-      expect( radioChecked.value ).toBe( 'false' );
+        radio = getRadioElment( fixture, 'radioBtn1', false );
+        radio.click();
+        tickAndDetectChanges( fixture );
+        radioChecked = getCheckedElement( fixture );
+        expect( radioChecked.value ).toBe( 'false' );
+        expect( component.form.get( 'radioBtn1' ).value ).toBeFalsy();
+      });
     }));
   });
 
@@ -88,41 +92,44 @@ describe('RadioComponent', () => {
 
     it('should create', fakeAsync(() => {
       const fixture = createTestingModule( RadioTestComponent,
-          `<form>
-            <common-radio name='radioBtn1' [(ngModel)]='radio1'
-                          label='{{radioLabel1}}'></common-radio>
-           </form>`
-          );
+        `<form>
+          <common-radio name='radioBtn1' [(ngModel)]='radio1'
+                        label='{{radioLabel1}}'></common-radio>
+          </form>`
+      );
       const component = fixture.componentInstance;
       tickAndDetectChanges( fixture );
-
       expect( component.radioComponent ).toBeTruthy();
       expect( getLegendContext( fixture ) ).toBe( component.radioLabel1 );
       expect( component.radioComponent.first.controlDir.hasError( 'required' ) ).toBeFalsy();
     }));
 
-    it('should toggle radio button from true to false', fakeAsync(() => {
+    it('should toggle radio button from true to false (ngModel)', fakeAsync( () => {
       const fixture = createTestingModule( RadioTestComponent,
-          `<form>
-            <common-radio name='radioBtn1' [(ngModel)]='radio1'
-                          label='{{radioLabel1}}'></common-radio>
-           </form>`
-          );
+        `<form>
+          <common-radio name='radioBtn1' [(ngModel)]='radio1'true
+                        label='{{radioLabel1}}'></common-radio>
+          </form>`
+        );
 
-      let radio = fixture.nativeElement.querySelector( 'common-radio[name=radioBtn1] input[value=true]' );
+      fixture.whenStable().then( () => {
 
-      radio.click();
-      tickAndDetectChanges( fixture );
+        const component = fixture.componentInstance;
+        let radio = getRadioElment( fixture, 'radioBtn1', true );
 
-      let radioChecked = getCheckedElement( fixture );
-      expect( radioChecked.value ).toBe( 'true' );
+        radio.click();
+        tickAndDetectChanges( fixture );
+        let radioChecked = getCheckedElement( fixture );
+        expect( radioChecked.value ).toBe( 'true' );
+        expect( component.radio1 ).toBeTruthy();
 
-      radio = fixture.nativeElement.querySelector( 'common-radio[name=radioBtn1] input[value=false]' );
-      radio.click();
-      tickAndDetectChanges( fixture );
-
-      radioChecked = getCheckedElement( fixture );
-      expect( radioChecked.value ).toBe( 'false' );
+        radio = getRadioElment( fixture, 'radioBtn1', false );
+        radio.click();
+        tickAndDetectChanges( fixture );
+        radioChecked = getCheckedElement( fixture );
+        expect( radioChecked.value ).toBe( 'false' );
+        expect( component.radio1 ).toBeFalsy();
+      });
     }));
   });
 });
@@ -130,7 +137,7 @@ describe('RadioComponent', () => {
 
 function createTestingModule<T>(cmp: Type<T>, template: string, reactForm: boolean = false): ComponentFixture<T> {
 
-  const importComp: any = [ FormsModule ];
+  const importComp: any = [ BrowserModule, FormsModule ];
   if ( reactForm ) {
     importComp.push( ReactiveFormsModule );
   }
@@ -162,5 +169,10 @@ function createTestingModule<T>(cmp: Type<T>, template: string, reactForm: boole
 
 function getCheckedElement( fixture: ComponentFixture<any> ) {
   return fixture.nativeElement.querySelector( 'input[type=radio]:checked' );
+}
+
+function getRadioElment( fixture: ComponentFixture<any>, name: string, value: any ) {
+  const selector = 'common-radio[name=' + name + '] input[value=' + value + ']';
+  return fixture.nativeElement.querySelector( selector );
 }
 
