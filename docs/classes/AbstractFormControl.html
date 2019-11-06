@@ -522,8 +522,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="62"
-                            class="link-to-prism">projects/common/lib/models/abstract-form-control.ts:62</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="65"
+                            class="link-to-prism">projects/common/lib/models/abstract-form-control.ts:65</a></div>
                 </td>
             </tr>
 
@@ -902,12 +902,15 @@ export abstract class AbstractFormControl extends Base implements OnInit, Contro
   }
 
   protected setErrorMsg() {
+    // Some components have logic based off no label being submitted
+    const _label &#x3D; this.label ? this.label : &#x27;Field&#x27;;
+
     if ( this.errorMessage ) {
       Object.keys(this.errorMessage).map( x &#x3D;&gt; this._defaultErrMsg[x] &#x3D; this.errorMessage[x] );
     }
 
     // Replace label tags with label
-    Object.keys(this._defaultErrMsg).map( x &#x3D;&gt; this._defaultErrMsg[x] &#x3D; replaceLabelTag( this._defaultErrMsg[x] , this.label ) );
+    Object.keys(this._defaultErrMsg).map( x &#x3D;&gt; this._defaultErrMsg[x] &#x3D; replaceLabelTag( this._defaultErrMsg[x] , _label ) );
   }
 
   /**

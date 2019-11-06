@@ -1,4 +1,13 @@
-# Unreleased "moh-common-lib" (2019-11-05)
+# Unreleased "moh-common-lib" (2019-11-06)
+
+
+
+# [3.0.0-rc.13](https://github.com/bcgov/moh-common-styles/compare/v3.0.0-rc.12...v3.0.0-rc.13) "moh-common-lib" (2019-11-06)
+
+
+### Bug Fixes
+
+* check for label not passed in set default value as 'Field' ([655a0fd](https://github.com/bcgov/moh-common-styles/commit/655a0fd))
 
 
 
