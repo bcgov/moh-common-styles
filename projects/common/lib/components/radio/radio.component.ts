@@ -1,7 +1,7 @@
-import {Component, EventEmitter, Input, Output, Optional, Self, OnInit, forwardRef} from '@angular/core';
+import {Component, EventEmitter, Input, Output, Optional, Self, OnInit} from '@angular/core';
 import { AbstractFormControl } from '../../models/abstract-form-control';
 import { LabelReplacementTag, ErrorMessage } from '../../models/error-message.interface';
-import { NgControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { NgControl } from '@angular/forms';
 
 /**
  * RadioComponent is a single radio which can be used to have multiple radios
@@ -10,30 +10,30 @@ import { NgControl, NG_VALUE_ACCESSOR } from '@angular/forms';
  * To display radio in a vertical style use display="table-row-group" by default
  * it shows in horizontal or inline display, display='inline-block' You can
  * have many radio's and the number is based on the Radio label Value. For 3
- * radio buttons, radioLabels value should be passed in the below format
- *
- *
- *      [
- *             {
- *               "label": "Myself only",
- *               "value": "MyselfOnly"
- *             },
- *             {
- *               "label": "All members on my MSP account",
- *               "value": "AllMembers"
- *             },
- *             {
- *               "label": "One specific member on my MSP account",
- *               "value": "SpecificMember"
- *             }
- *      ];
- *
+ * radio buttons, radioLabels value is of type IRadioItems[].
+*
  * @example
  *        <common-radio #gender [value]="person.gender"
- *          label='Gender' display='table-row-group'
- *          [radioLabels]='[{"label": "Male", "value": "Male"},{ "label": "Female", "value": "Female"}]'
- *          (statusChange)="onChange.emit($event)"
- *          [showError]="showError">
+ *          label='Gender'
+ *          display='table-row-group'
+ *          [radioLabels]='[{label: "Male", value: "Male"},{label: "Female", value: "Female"}]'
+ *          (valueChange)="onChange.emit($event)">
+ *        </common-radio>
+ *
+ *  Reactive Form
+ *        <common-radio name='choice'
+ *          label='Do you live in Canada'
+ *          display='table-row-group'
+ *          [radioLabels]=='[{label: "No", value: false},{label: "Yes", value: true}]'
+ *          FormControlName='choice'>
+ *        </common-radio>
+ *
+ *  Template Form
+ *        <common-radio name='ageCategory'
+ *          [(ngModel)]="age"
+ *          label='How old are you?'
+ *          display='table-row-group'
+ *          [radioLabels]='[{label: "0-18 years", value: 0},{label: "19 years and older", value: 1}]'>
  *        </common-radio>
  *
  * @export
