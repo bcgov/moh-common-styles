@@ -14,6 +14,10 @@ export function getLegendContext( fixture: ComponentFixture<any> ) {
   return fixture.nativeElement.querySelector('legend').textContent;
 }
 
+export function getErrorContainer( fixture: ComponentFixture<any> ) {
+  return fixture.nativeElement.querySelector('common-error-container');
+}
+
 
 // Create test modules
 export function createTestingModule<T>( cmp: Type<T>,

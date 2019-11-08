@@ -5,7 +5,8 @@ import {PhnComponent} from './phn.component';
 import { Component, ViewChildren, QueryList, OnInit } from '@angular/core';
 import { ErrorContainerComponent } from '../error-container/error-container.component';
 import { RadioComponent } from '../radio/radio.component';
-import { createTestingModule, tickAndDetectChanges, getLegendContext } from '../../../helpers/test-helpers';
+import { createTestingModule, tickAndDetectChanges, getLegendContext, getErrorContainer } from '../../../helpers/test-helpers';
+import { By } from '@angular/platform-browser';
 
 @Component({
   template: ``,
@@ -71,37 +72,82 @@ describe('PhnComponent', () => {
 
   describe('Custom controls - Template', () => {
 
+    it('should create', fakeAsync(() => {
+      const fixture = createTestingModule( PhnTestComponent,
+        `<form>
+          <common-phn name='phn1' [(ngModel)]='phn1'></common-phn>
+         </form>`,
+         false,
+         directives,
+         importDirectives
+      );
+
+      const component = fixture.componentInstance;
+      tickAndDetectChanges( fixture );
+      const el = getElement( fixture, 'phn1');
+      const label = getLabel( fixture, el.id );
+
+      expect( component.phnComponent ).toBeTruthy();
+      expect( label.textContent ).toBe( component.defaultLabel );
+      expect( component.phnComponent.first.controlDir.hasError( 'required' ) ).toBeFalsy();
+    }));
+
+    it('should be required', fakeAsync(() => {
+      const fixture = createTestingModule( PhnTestComponent,
+        `<form>
+          <common-phn name='phn1' [(ngModel)]='phn1' required></common-phn>
+         </form>`,
+         false,
+         directives,
+         importDirectives
+      );
+
+      const component = fixture.componentInstance;
+      const el = getControl( fixture, 'phn1');
+      console.log( 'el: ', el );
+
+
+      tickAndDetectChanges( fixture );
+     // const error = getErrorContainer( fixture );
+     // console.log( 'error: ', error );
+      expect( component.phnComponent.first.controlDir.hasError( 'required' ) ).toBeTruthy();
+      // expect( error.textContent ).toContain( 'is required' );
+    }));
+
+
+    /*
+    it('should be invalid', fakeAsync(() => {
+      const fixture = createTestingModule( PhnTestComponent,
+        `<form>
+          <common-phn name='phn1' [(ngModel)]='phn1' required></common-phn>
+         </form>`,
+         false,
+         directives,
+         importDirectives
+      );
+
+      const component = fixture.componentInstance;
+      const control = getElement( fixture, 'phn1' );
+      control.dispatchEvent( new Event( '9999999999' ) );
+
+
+      tickAndDetectChanges( fixture );
+     // const error = getErrorContainer( fixture );
+     // console.log( 'error: ', error );
+      expect( component.phnComponent.first.controlDir.hasError( 'invalue' ) ).toBeTruthy();
+      // expect( error.textContent ).toContain( 'is required' );
+    })); */
+
+
   });
 
-
-
-  /*
-  let component: PhnComponent;
-  let fixture: ComponentFixture<PhnComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ PhnComponent ],
-      imports: [
-        FormsModule,
-        TextMaskModule
-      ]
-    })
-    .compileComponents();
-  }));
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(PhnComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-  */
 });
 
+
+function getControl( fixture: ComponentFixture<any>, name: string ) {
+  const selector = 'common-phn[name=' + name + ']';
+  return fixture.nativeElement.querySelector( selector );
+}
 
 function getElement( fixture: ComponentFixture<any>, name: string ) {
   const selector = 'common-phn[name=' + name + '] input';

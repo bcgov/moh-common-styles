@@ -47,7 +47,7 @@ export class PhnComponent extends AbstractFormControl implements OnInit, Control
     }
 
     this.mask =
-    [NUMBER, NUMBER, NUMBER, NUMBER, SPACE, NUMBER, NUMBER, NUMBER, SPACE, NUMBER, NUMBER, NUMBER];
+      [NUMBER, NUMBER, NUMBER, NUMBER, SPACE, NUMBER, NUMBER, NUMBER, SPACE, NUMBER, NUMBER, NUMBER];
   }
 
   ngOnInit() {
@@ -59,9 +59,9 @@ export class PhnComponent extends AbstractFormControl implements OnInit, Control
   onValueChange( value: any ) {
 
     if ( value !== this.phn ) { // IE fix when focus does not display required error
+      this.phn = value;
       this._onChange( value );
       this.valueChange.emit( value );
-      this.phn = value;
     }
   }
 
@@ -95,34 +95,19 @@ export class PhnComponent extends AbstractFormControl implements OnInit, Control
 
       // Clean up string
       const value = this.phn.trim();
-      console.log( 'validatePhn: trim phn = ', value );
-
       this.phn = value
-                  .replace( /^0+/g, '' ) // remove leading zeros
+                  .replace( /^0+/, '' ) // remove leading zeros
                   .replace(/_/g, '') // remove underlines
-                  .replace(/\s/g, '') // spaces
-
-      // Rip off leading zeros with a regex
-     // let regexp = new RegExp('^0+');
-     // this.phn = this.phn.replace(regexp, '');
-
-      // remove spaces
-     // regexp = new RegExp('[ ]', 'g');
-      //this.phn = this.phn.replace(regexp, '');
-
-
+                  .replace(/\s/g, ''); // spaces
 
       // Test for length
       if (this.phn.length !== 10) {
-        console.log( 'validatePhn: length not 10' );
         return { 'invalid': true };
       }
       // Look for a number that starts with 9 if BC only
       if (this.isBCPhn && this.phn[0] !== '9') {
-        console.log( 'validatePhn: is BC - not start with 9' );
         return { 'invalid': true };
       } else if (!this.isBCPhn && this.phn[0] === '9') { // Number cannot have 9
-        console.log( 'validatePhn: is not BC - starts with 9' );
         return { 'invalid': true };
       }
 
@@ -131,13 +116,11 @@ export class PhnComponent extends AbstractFormControl implements OnInit, Control
 
         // pull out char
         const char = this.phn.charAt(i);
-        console.log( 'validatePhn: get char', char );
 
         // parse the number
         const num = Number(char);
 
         if (Number.isNaN(num)) {
-          console.log( 'validatePhn: not a number', num );
           return { 'invalid': true };
         }
 
@@ -160,14 +143,12 @@ export class PhnComponent extends AbstractFormControl implements OnInit, Control
 
       // if the result is 10 or 11, it is an invalid PHN
       if (checkDigit === 10 || checkDigit === 11) {
-        console.log( 'validatePhn: checkDigit not valid', checkDigit );
         return { 'invalid': true };
       }
 
       // Compare against 10th digitfinalDigit
       const finalDigit = Number(this.phn.substring(9, 10));
       if (checkDigit !== finalDigit) {
-        console.log( 'validatePhn: checkDigit not equal finalDigit', checkDigit, finalDigit );
         return { 'invalid': true };
       }
     }

@@ -113,7 +113,7 @@ describe('RadioComponent', () => {
     it('should toggle radio button from true to false (ngModel)', fakeAsync( () => {
       const fixture = createTestingModule( RadioTestComponent,
         `<form>
-          <common-radio name='radioBtn1' [(ngModel)]='radio1'true
+          <common-radio name='radioBtn1' [(ngModel)]='radio1'
                         label='{{radioLabel1}}'></common-radio>
           </form>`,
           false,
