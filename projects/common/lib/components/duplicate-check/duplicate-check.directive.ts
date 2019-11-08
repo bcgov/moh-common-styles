@@ -16,10 +16,7 @@ function checkForDuplicates( control: AbstractControl,
 // TODO: Need to confirm this works with reactive forms
 export function commonDuplicateCheck( dupList: string[] ): ValidatorFn {
 
-  console.log( 'function commonDuplicateSin: param = ', dupList );
-
   return ( control: AbstractControl ): { [key: string]: boolean } | null => {
-    console.log( 'Control value = ', control.value );
     return checkForDuplicates( control, dupList );
   };
 }
