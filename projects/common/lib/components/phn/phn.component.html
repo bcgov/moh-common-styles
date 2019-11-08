@@ -5,7 +5,7 @@
        id="{{labelforId}}"
        [ngModel]="phn"
        (ngModelChange)="onValueChange($event)"
-       (blur)="onBlurEvent($event)"
+       (blur)="onBlur($event)"
        [placeholder]="placeholder"
        [textMask]="{mask: mask}"
        [disabled]="disabled"
@@ -16,12 +16,12 @@
   <common-error-container
     [displayError]="controlDir && !disabled && (controlDir.touched || controlDir.dirty) && controlDir?.errors">
     <div *ngIf="controlDir?.errors?.required">
-      {{label}} is required.
+      {{_defaultErrMsg.required}}
     </div>
     <div *ngIf="controlDir?.errors?.invalid">
-      {{label}} is invalid.
+      {{_defaultErrMsg.invalid}}
     </div>
     <div *ngIf="controlDir?.errors?.duplicate">
-      {{label}} was already used for another family member.
+      {{_defaultErrMsg.duplicate}}
     </div>
   </common-error-container>

@@ -1,10 +1,10 @@
 import { ComponentFixture, TestBed, fakeAsync, ComponentFixtureAutoDetect, async } from '@angular/core/testing';
 import {FormsModule, FormGroup, FormBuilder, ReactiveFormsModule} from '@angular/forms';
 import { RadioComponent } from './radio.component';
-import { QueryList, Component, ViewChildren, OnInit, Type } from '@angular/core';
-import { tickAndDetectChanges, getLegendContext } from '../../../helpers/test-helpers';
+import { QueryList, Component, ViewChildren, OnInit } from '@angular/core';
+import { tickAndDetectChanges, getLegendContext, createTestingModule } from '../../../helpers/test-helpers';
 import { ErrorContainerComponent } from '../error-container/error-container.component';
-import { BrowserModule } from '@angular/platform-browser';
+
 
 @Component({
   template: ``,
@@ -40,6 +40,8 @@ class RadioReactTestComponent extends RadioTestComponent implements OnInit {
   }
 }
 
+const directives: any[] = [ ErrorContainerComponent, RadioComponent ];
+
 describe('RadioComponent', () => {
 
   describe('Custom controls - Reactive', () => {
@@ -50,7 +52,8 @@ describe('RadioComponent', () => {
           <common-radio name='radioBtn1' label='{{radioLabel1}}'
                         formControlName='radioBtn1'></common-radio>
         </form>`,
-        true
+        true,
+        directives
       );
 
       const component = fixture.componentInstance;
@@ -66,7 +69,8 @@ describe('RadioComponent', () => {
           <common-radio name='radioBtn1' label='{{radioLabel1}}'
                         formControlName='radioBtn1'></common-radio>
         </form>`,
-        true
+        true,
+        directives
       );
       fixture.whenStable().then( () => {
         const component = fixture.componentInstance;
@@ -95,7 +99,9 @@ describe('RadioComponent', () => {
         `<form>
           <common-radio name='radioBtn1' [(ngModel)]='radio1'
                         label='{{radioLabel1}}'></common-radio>
-          </form>`
+          </form>`,
+          false,
+          directives
       );
       const component = fixture.componentInstance;
       tickAndDetectChanges( fixture );
@@ -109,7 +115,9 @@ describe('RadioComponent', () => {
         `<form>
           <common-radio name='radioBtn1' [(ngModel)]='radio1'true
                         label='{{radioLabel1}}'></common-radio>
-          </form>`
+          </form>`,
+          false,
+          directives
         );
 
       fixture.whenStable().then( () => {
@@ -133,39 +141,6 @@ describe('RadioComponent', () => {
     }));
   });
 });
-
-
-function createTestingModule<T>(cmp: Type<T>, template: string, reactForm: boolean = false): ComponentFixture<T> {
-
-  const importComp: any = [ BrowserModule, FormsModule ];
-  if ( reactForm ) {
-    importComp.push( ReactiveFormsModule );
-  }
-
-  TestBed.configureTestingModule({
-      declarations: [
-        cmp,
-        ErrorContainerComponent,
-        RadioComponent
-      ],
-      imports: [
-        importComp
-      ],
-      providers: [
-        { provide: ComponentFixtureAutoDetect, useValue: true }
-      ]
-    }).overrideComponent(cmp, {
-          set: {
-              template: template
-          }
-      });
-
-  TestBed.compileComponents();
-
-  const fixture = TestBed.createComponent(cmp);
-  // fixture.detectChanges();
-  return fixture;
-}
 
 function getCheckedElement( fixture: ComponentFixture<any> ) {
   return fixture.nativeElement.querySelector( 'input[type=radio]:checked' );
