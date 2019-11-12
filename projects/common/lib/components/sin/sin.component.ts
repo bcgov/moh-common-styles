@@ -1,6 +1,6 @@
-import { Component, EventEmitter, Input, Output, Optional, Self} from '@angular/core';
+import { Component, EventEmitter, Input, Output, Optional, Self, OnInit} from '@angular/core';
 import { NUMBER, SPACE } from '../../models/mask.constants';
-import { NgControl } from '@angular/forms';
+import { NgControl, ValidationErrors } from '@angular/forms';
 import { AbstractFormControl } from '../../models/abstract-form-control';
 import { LabelReplacementTag, ErrorMessage } from '../../models/error-message.interface';
 
@@ -19,7 +19,7 @@ import { LabelReplacementTag, ErrorMessage } from '../../models/error-message.in
   templateUrl: './sin.component.html',
   styleUrls: ['./sin.component.scss']
 })
-export class SinComponent extends AbstractFormControl {
+export class SinComponent extends AbstractFormControl implements OnInit {
 
   _defaultErrMsg: ErrorMessage = {
     required: `${LabelReplacementTag} is required.`,
@@ -40,18 +40,14 @@ export class SinComponent extends AbstractFormControl {
     console.log( 'set value: ', val );
     if ( val ) {
       this.sin = val;
-
-      console.log( 'value: ', this.sin );
     }
   }
   get value() {
-    console.log( 'get value: ', this.sin );
     return this.sin;
   }
 
   @Output() valueChange: EventEmitter<string> = new EventEmitter<string>();
   @Output() blur: EventEmitter<any> = new EventEmitter<any>();
-
 
   constructor( @Optional() @Self() public controlDir: NgControl ) {
     super();
@@ -61,6 +57,12 @@ export class SinComponent extends AbstractFormControl {
 
     this.mask =
     [NUMBER, NUMBER, NUMBER, SPACE, NUMBER, NUMBER, NUMBER, SPACE, NUMBER, NUMBER, NUMBER];
+  }
+
+  ngOnInit() {
+    super.ngOnInit();
+
+    this.registerValidation( this.controlDir, this.validateSelf );
   }
 
   onValueChange( value: any ) {
@@ -83,17 +85,70 @@ export class SinComponent extends AbstractFormControl {
     }
   }
 
-  // Register change functiong
-  registerOnChange( fn: any ): void {
-    this._onChange = fn;
-  }
+  private validateSelf(): ValidationErrors | null {
 
-  // Register touched function
-  registerOnTouched( fn: any ): void {
-    this._onTouched = fn;
-  }
+    const validateResult = this.validateSin();
+    if ( validateResult ) {
+      return validateResult;
+    }
+    return null;
+   }
 
-  setDisabledState(isDisabled: boolean): void {
-    this.disabled = isDisabled;
+   private validateSin(): ValidationErrors | null {
+
+    if ( this.sin && this.sin.trim().length > 0 ) {
+
+      // Init weights and other stuff
+      const weights: number[] = [1, 2, 1, 2, 1, 2, 1, 2, 1];
+      let sum = 0;
+
+      // Clean up string
+      const value = this.sin.trim();
+      this.sin = value
+                  .replace(/_/g, '') // remove underlines
+                  .replace(/\s/g, ''); // spaces
+
+      // Test for length
+      if (this.sin.length !== 9) {
+        return { 'invalid': true };
+      }
+
+      // Test for string of zeros
+      if ( this.sin === '000000000') {
+        return { 'invalid': true };
+      }
+
+      // Walk through each character
+      for (let i = 0; i < this.sin.length; i++) {
+
+        // pull out char
+        const char = this.sin.charAt(i);
+
+        // parse the number
+        const num = Number(char);
+        if (Number.isNaN(num)) {
+          return { 'invalid': true };
+        }
+
+        // multiply the value against the weight
+        let result = num * weights[i];
+
+        // If two digit result, substract 9
+        if (result > 9) {
+          result = result - 9;
+        }
+
+        // add it to our sum
+        sum += result;
+      }
+
+      // The sum must be divisible by 10
+      if (sum % 10 !== 0) {
+        return { 'invalid': true };
+      }
+
+    }
+
+    return null;
   }
 }

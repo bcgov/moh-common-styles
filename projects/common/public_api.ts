@@ -38,7 +38,6 @@ export * from './lib/services/abstract-pg-check.service';
 // Validators
 export { commonValidateName } from './lib/components/name/validate-name.directive';
 export { commonValidateBcPostal } from './lib/components/postal-code/validate-bc-postal.directive';
-export { commonValidateSin } from './lib/components/sin/validate-sin.directive';
 export { commonDuplicateCheck } from './lib/components/duplicate-check/duplicate-check.directive';
 export { commonValidateStreet } from './lib/components/street/validate-street.directive';
 export { commonValidateCity } from './lib/components/city/validate-city.directive';

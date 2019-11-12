@@ -3,7 +3,19 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { AbstractHttpService } from './abstract-api-service';
 import { throwError } from 'rxjs';
 import * as moment_ from 'moment';
-const moment = moment_;
+Formatconst moment = moment_;
+
+enum SeverityLevels {
+  INFO = 'info',
+  ERROR = 'error',
+}
+
+export interface CommonLogMessage {
+  /** The type of event being logged. */
+  event: string; // Should be subclasses into multiple string literals
+  // We allow any other properties/values in the interface
+  [key: string]: any;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -167,16 +179,4 @@ export class CommonLogger extends AbstractHttpService {
     this._headers = this._headers.set('tags', message);
   }
 
-}
-
-enum SeverityLevels {
-  INFO = 'info',
-  ERROR = 'error',
-}
-
-export interface CommonLogMessage {
-  /** The type of event being logged. */
-  event: string; // Should be subclasses into multiple string literals
-  // We allow any other properties/values in the interface
-  [key: string]: any;
 }
