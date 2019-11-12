@@ -52,14 +52,14 @@ describe('RadioComponent', () => {
           <common-radio name='radioBtn1' label='{{radioLabel1}}'
                         formControlName='radioBtn1'></common-radio>
         </form>`,
-        true,
-        directives
+        directives,
+        true
       );
 
       const component = fixture.componentInstance;
       tickAndDetectChanges( fixture );
       expect( component.radioComponent ).toBeTruthy();
-      expect( getLegendContext( fixture ) ).toBe( component.radioLabel1);
+      expect( getLegendContext( fixture , 'common-radio', 'radioBtn1') ).toBe( component.radioLabel1);
       expect( component.form.get('radioBtn1').hasError( 'required' )  ).toBeFalsy();
     }));
 
@@ -69,8 +69,8 @@ describe('RadioComponent', () => {
           <common-radio name='radioBtn1' label='{{radioLabel1}}'
                         formControlName='radioBtn1'></common-radio>
         </form>`,
-        true,
-        directives
+        directives,
+        true
       );
       fixture.whenStable().then( () => {
         const component = fixture.componentInstance;
@@ -100,13 +100,12 @@ describe('RadioComponent', () => {
           <common-radio name='radioBtn1' [(ngModel)]='radio1'
                         label='{{radioLabel1}}'></common-radio>
           </form>`,
-          false,
           directives
       );
       const component = fixture.componentInstance;
       tickAndDetectChanges( fixture );
       expect( component.radioComponent ).toBeTruthy();
-      expect( getLegendContext( fixture ) ).toBe( component.radioLabel1 );
+      expect( getLegendContext( fixture, 'common-radio', 'radioBtn1' ) ).toBe( component.radioLabel1 );
       expect( component.radioComponent.first.controlDir.hasError( 'required' ) ).toBeFalsy();
     }));
 
@@ -116,7 +115,6 @@ describe('RadioComponent', () => {
           <common-radio name='radioBtn1' [(ngModel)]='radio1'
                         label='{{radioLabel1}}'></common-radio>
           </form>`,
-          false,
           directives
         );
 

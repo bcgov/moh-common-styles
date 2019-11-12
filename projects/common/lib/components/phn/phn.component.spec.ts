@@ -4,7 +4,7 @@ import {TextMaskModule} from 'angular2-text-mask';
 import {PhnComponent} from './phn.component';
 import { Component, ViewChildren, QueryList, OnInit } from '@angular/core';
 import { ErrorContainerComponent } from '../error-container/error-container.component';
-import { createTestingModule, tickAndDetectChanges } from '../../../helpers/test-helpers';
+import { createTestingModule, tickAndDetectChanges, getInputElement, getLabel } from '../../../helpers/test-helpers';
 import { commonDuplicateCheck } from '../duplicate-check/duplicate-check.directive';
 
 @Component({
@@ -53,15 +53,15 @@ describe('PhnComponent', () => {
         `<form [formGroup]="form">
           <common-phn name='phn1' formControlName='phn1'></common-phn>
          </form>`,
-         true,
          directives,
+         true,
          importDirectives
       );
 
       const component = fixture.componentInstance;
       tickAndDetectChanges( fixture );
-      const el = getElement( fixture, 'phn1');
-      const label = getLabel( fixture, el.id );
+      const el = getInputElement( fixture, 'common-phn', 'phn1');
+      const label = getLabel( fixture, 'common-phn', el.id );
 
       expect( component.phnComponent ).toBeTruthy();
       expect( label.textContent ).toBe( component.defaultLabel );
@@ -73,8 +73,8 @@ describe('PhnComponent', () => {
         `<form [formGroup]="form">
           <common-phn name='phn1' formControlName='phn1' required></common-phn>
          </form>`,
-         true,
          directives,
+         true,
          importDirectives
       );
 
@@ -89,8 +89,8 @@ describe('PhnComponent', () => {
         `<form [formGroup]="form">
           <common-phn name='phn1' formControlName='phn1'></common-phn>
          </form>`,
-         true,
          directives,
+         true,
          importDirectives
       );
 
@@ -106,8 +106,8 @@ describe('PhnComponent', () => {
         `<form [formGroup]="form">
           <common-phn name='phn1' formControlName='phn1'></common-phn>
          </form>`,
-         true,
          directives,
+         true,
          importDirectives
       );
 
@@ -123,8 +123,8 @@ describe('PhnComponent', () => {
         `<form [formGroup]="form">
           <common-phn name='phn2' formControlName='phn2'></common-phn>
          </form>`,
-         true,
          directives,
+         true,
          importDirectives
       );
 
@@ -144,15 +144,15 @@ describe('PhnComponent', () => {
         `<form>
           <common-phn name='phn1' [(ngModel)]='phn1'></common-phn>
          </form>`,
-         false,
          directives,
+         false,
          importDirectives
       );
 
       const component = fixture.componentInstance;
       tickAndDetectChanges( fixture );
-      const el = getElement( fixture, 'phn1');
-      const label = getLabel( fixture, el.id );
+      const el = getInputElement( fixture, 'common-phn', 'phn1');
+      const label = getLabel( fixture, 'common-phn', el.id );
 
       expect( component.phnComponent ).toBeTruthy();
       expect( label.textContent ).toBe( component.defaultLabel );
@@ -164,8 +164,8 @@ describe('PhnComponent', () => {
         `<form>
           <common-phn name='phn1' [(ngModel)]='phn1' required></common-phn>
          </form>`,
-         false,
          directives,
+         false,
          importDirectives
       );
 
@@ -206,19 +206,3 @@ describe('PhnComponent', () => {
   });
 
 });
-
-
-function getControl( fixture: ComponentFixture<any>, name: string ) {
-  const selector = 'common-phn[name=' + name + ']';
-  return fixture.nativeElement.querySelector( selector );
-}
-
-function getElement( fixture: ComponentFixture<any>, name: string ) {
-  const selector = 'common-phn[name=' + name + '] input';
-  return fixture.nativeElement.querySelector( selector );
-}
-
-function getLabel( fixture: ComponentFixture<any>, name: string ) {
-  const selector = 'common-phn label[for=' + name + '] ';
-  return fixture.nativeElement.querySelector( selector );
-}

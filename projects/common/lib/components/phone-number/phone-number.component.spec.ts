@@ -1,9 +1,9 @@
-import { ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
-import { FormsModule, NgForm, ReactiveFormsModule, FormBuilder, FormGroup } from '@angular/forms';
+import { fakeAsync } from '@angular/core/testing';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { PhoneNumberComponent } from './phone-number.component';
-import { Component, ViewChild, Type, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { ErrorContainerComponent } from '../error-container/error-container.component';
-import { tickAndDetectChanges } from '../../../helpers/test-helpers';
+import { tickAndDetectChanges, createTestingModule } from '../../../helpers/test-helpers';
 import { TextMaskModule } from 'angular2-text-mask';
 
 @Component({
@@ -16,6 +16,9 @@ class PhoneTestComponent {
 
   constructor() {}
 }
+
+const directives: any[] = [ ErrorContainerComponent, PhoneNumberComponent ];
+const importDirectives: any[] = [ TextMaskModule ];
 
 @Component({
   template: ``,
@@ -45,8 +48,10 @@ describe('PhoneNumberComponent', () => {
             <common-phone-number name='phoneNumber' label='Phone Number'
                                   formControlName='phoneNumber'></common-phone-number>
           </form>`,
-          true
-          );
+          directives,
+          true,
+          importDirectives
+        );
 
       tickAndDetectChanges( fixture );
       expect( fixture.componentInstance.phoneComponent ).toBeTruthy();
@@ -60,8 +65,10 @@ describe('PhoneNumberComponent', () => {
             <common-phone-number name='phoneNumber' label='Phone Number'
                                  formControlName='phoneNumber'></common-phone-number>
           </form>`,
-          true
-          );
+          directives,
+          true,
+          importDirectives
+        );
 
       fixture.componentInstance.form.get('phoneNumber').disable();
       tickAndDetectChanges( fixture );
@@ -74,8 +81,10 @@ describe('PhoneNumberComponent', () => {
             <common-phone-number name='phoneNumber' label='Phone Number'
                                  formControlName='phoneNumber' required></common-phone-number>
           </form>`,
-          true
-          );
+          directives,
+          true,
+          importDirectives
+        );
 
       tickAndDetectChanges( fixture );
       expect( fixture.componentInstance.form.get('phoneNumber').hasError( 'required' ) ).toBeTruthy();
@@ -87,8 +96,10 @@ describe('PhoneNumberComponent', () => {
             <common-phone-number name='phoneNumber' label='Phone Number'
                                  formControlName='phoneNumber' required></common-phone-number>
           </form>`,
-          true
-          );
+          directives,
+          true,
+          importDirectives
+        );
       const form = fixture.componentInstance.form;
       form.get('phoneNumber').setValue( '23555552' );
       tickAndDetectChanges( fixture );
@@ -101,8 +112,10 @@ describe('PhoneNumberComponent', () => {
             <common-phone-number name='phoneNumber' label='Phone Number'
                                  formControlName='phoneNumber'></common-phone-number>
           </form>`,
-          true
-          );
+          directives,
+          true,
+          importDirectives
+        );
 
       fixture.componentInstance.form.get('phoneNumber').setValue( '2355555252' );
       tickAndDetectChanges( fixture );
@@ -115,8 +128,10 @@ describe('PhoneNumberComponent', () => {
             <common-phone-number name='phoneNumber' label='Phone Number'
                                  formControlName='phoneNumber' [allowInternational]='false'></common-phone-number>
           </form>`,
-          true
-          );
+          directives,
+          true,
+          importDirectives
+        );
 
       fixture.componentInstance.form.get('phoneNumber').setValue( '2355555252' );
       tickAndDetectChanges( fixture );
@@ -128,8 +143,15 @@ describe('PhoneNumberComponent', () => {
 
     it('should create', fakeAsync(() => {
       const fixture = createTestingModule( PhoneTestComponent,
-          `<common-phone-number [(ngModel)]='phone' label='Phone Number'></common-phone-number>`
-          );
+          `<form>
+            <common-phone-number name="phoneNumber"
+                                 [(ngModel)]='phone'
+                                 label='Phone Number'></common-phone-number>
+          </form>`,
+          directives,
+          false,
+          importDirectives
+        );
 
       tickAndDetectChanges( fixture );
       const component = fixture.componentInstance.phoneComponent;
@@ -139,34 +161,3 @@ describe('PhoneNumberComponent', () => {
     }));
   });
 });
-
-
-function createTestingModule<T>(cmp: Type<T>, template: string, reactForm: boolean = false): ComponentFixture<T> {
-
-  const importComp: any = [ TextMaskModule, FormsModule ];
-  if ( reactForm ) {
-    importComp.push( ReactiveFormsModule );
-  }
-
-  TestBed.configureTestingModule({
-      declarations: [
-        cmp,
-        ErrorContainerComponent,
-        PhoneNumberComponent
-      ],
-      imports: [
-        importComp
-      ],
-      providers: [ NgForm ]
-    }).overrideComponent(cmp, {
-          set: {
-              template: template
-          }
-      });
-
-  TestBed.compileComponents();
-
-  const fixture = TestBed.createComponent(cmp);
-  fixture.detectChanges();
-  return fixture;
-}

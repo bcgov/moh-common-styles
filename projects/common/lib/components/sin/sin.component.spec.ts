@@ -5,7 +5,7 @@ import { Type, ViewChild, Component, DebugElement, QueryList, ViewChildren, OnIn
 import { SharedCoreModule } from '../../shared-core.module';
 import { SinComponent } from './sin.component';
 import { By } from '@angular/platform-browser';
-import { tickAndDetectChanges, createTestingModule } from '../../../helpers/test-helpers';
+import { tickAndDetectChanges, createTestingModule, getInputElement, getLabel } from '../../../helpers/test-helpers';
 import { ErrorContainerComponent } from '../error-container/error-container.component';
 import { commonDuplicateCheck } from '../duplicate-check/duplicate-check.directive';
 
@@ -54,15 +54,15 @@ describe('SinComponent', () => {
         `<form [formGroup]="form">
           <common-sin name='sin1' formControlName='sin1'></common-sin>
          </form>`,
-         true,
          directives,
+         true,
          importDirectives
       );
 
       const component = fixture.componentInstance;
       tickAndDetectChanges( fixture );
-      const el = getElement( fixture, 'sin1');
-      const label = getLabel( fixture, el.id );
+      const el = getInputElement( fixture, 'common-sin', 'sin1');
+      const label = getLabel( fixture, 'common-sin', el.id );
 
       expect( component.sinComponent ).toBeTruthy();
       expect( label.textContent ).toBe( component.defaultLabel );
@@ -75,8 +75,8 @@ describe('SinComponent', () => {
         `<form [formGroup]="form">
           <common-sin name='sin1' formControlName='sin1' required></common-sin>
          </form>`,
-         true,
          directives,
+         true,
          importDirectives
       );
 
@@ -91,8 +91,8 @@ describe('SinComponent', () => {
         `<form [formGroup]="form">
           <common-sin name='sin1' formControlName='sin1'></common-sin>
          </form>`,
-         true,
          directives,
+         true,
          importDirectives
       );
 
@@ -108,11 +108,11 @@ describe('SinComponent', () => {
         `<form [formGroup]="form">
           <common-sin name='sin1' formControlName='sin1'></common-sin>
          </form>`,
-         true,
          directives,
+         true,
          importDirectives
       );
-      phnList
+
       const component = fixture.componentInstance;
       component.form.get( 'sin1' ).setValue( '123456782' );
       tickAndDetectChanges( fixture );
@@ -125,8 +125,8 @@ describe('SinComponent', () => {
         `<form [formGroup]="form">
           <common-sin name='sin2' formControlName='sin2'></common-sin>
          </form>`,
-         true,
          directives,
+         true,
          importDirectives
       );
 
@@ -146,15 +146,15 @@ describe('SinComponent', () => {
         `<form>
           <common-sin name='sin1' [(ngModel)]='sin1'></common-sin>
          </form>`,
-         false,
          directives,
+         false,
          importDirectives
       );
 
       const component = fixture.componentInstance;
       tickAndDetectChanges( fixture );
-      const el = getElement( fixture, 'sin1');
-      const label = getLabel( fixture, el.id );
+      const el = getInputElement( fixture, 'common-sin', 'sin1');
+      const label = getLabel( fixture, 'common-sin', el.id );
 
       expect( component.sinComponent ).toBeTruthy();
       expect( label.textContent ).toBe( component.defaultLabel );
@@ -198,15 +198,3 @@ function triggerKeyDownEvent(element: DebugElement, which: number, key = ''): vo
       preventDefault: () => { },
   });
 }
-
-
-function getElement( fixture: ComponentFixture<any>, name: string ) {
-  const selector = 'common-sin[name=' + name + '] input';
-  return fixture.nativeElement.querySelector( selector );
-}
-
-function getLabel( fixture: ComponentFixture<any>, name: string ) {
-  const selector = 'common-sin label[for=' + name + '] ';
-  return fixture.nativeElement.querySelector( selector );
-}
-
