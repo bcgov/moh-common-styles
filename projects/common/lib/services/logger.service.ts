@@ -3,7 +3,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { AbstractHttpService } from './abstract-api-service';
 import { throwError } from 'rxjs';
 import * as moment_ from 'moment';
-Formatconst moment = moment_;
+const moment = moment_;
 
 enum SeverityLevels {
   INFO = 'info',
