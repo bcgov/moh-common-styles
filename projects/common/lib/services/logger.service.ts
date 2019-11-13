@@ -10,6 +10,12 @@ enum SeverityLevels {
   ERROR = 'error',
 }
 
+export enum CommonLogEvents {
+  navigation = 'navigation',
+  error = 'error',
+  submission = 'submission'
+}
+
 export interface CommonLogMessage {
   /** The type of event being logged. */
   event: string; // Should be subclasses into multiple string literals
@@ -104,7 +110,7 @@ export class CommonLogger extends AbstractHttpService {
    */
   public logHttpError(error: HttpErrorResponse) {
     return this._logError({
-      event: 'error',
+      event: CommonLogEvents.error,
       message: error.message,
       errorName: error.name,
       statusText: error.statusText
@@ -163,6 +169,7 @@ export class CommonLogger extends AbstractHttpService {
     };
   }
 
+  // TODO: Remove moment dependency
   private setTimestamp() {
     this._headers = this._headers.set('timestamp', moment().toISOString());
   }
