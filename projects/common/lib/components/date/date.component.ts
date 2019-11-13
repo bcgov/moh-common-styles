@@ -7,7 +7,6 @@ import {
   Optional, Self, SimpleChanges, OnChanges
 } from '@angular/core';
 import {
-  NgForm,
   ControlValueAccessor,
   NgControl,
   ValidationErrors} from '@angular/forms';
@@ -21,6 +20,29 @@ import subYears from 'date-fns/subYears';
 import subDays from 'date-fns/subDays';
 import { MoHCommonLibraryError } from '../../../helpers/library-errorr';
 import { AbstractFormControl } from '../../models/abstract-form-control';
+import { compareAsc } from 'date-fns';
+
+/**
+ * DateComponent
+ * You cannot use "[restrictDate]" in combination with either  "[dateRangeEnd]" or "[dateRangeStart]".
+ * You must use either [restrictDate] or the [dateRange*] inputs.
+ *
+ * @example
+ *  To trigger 'no future dates allowed' using date ranges set the range end date to yesterday's date.
+ *    <common-date name='effectiveDate'
+ *       label="Effective Date"
+ *       [dateRangeEnd]='yesterday'
+ *       formControlName="effectiveDate"></common-date>
+ *'
+  *  To trigger 'no past dates allowed' using date ranges set the range start date to today's date.
+ *    <common-date name='effectiveDate'
+ *       label="Effective Date"
+ *       [dateRangeStart]="today"
+ *       formControlName="effectiveDate"></common-date>
+ *
+ * @export
+ *
+ */
 
 
 const MAX_YEAR_RANGE = 150;
@@ -33,7 +55,8 @@ const distantPast = subYears(startOfToday(), MAX_YEAR_RANGE);
   templateUrl: './date.component.html',
   styleUrls: ['./date.component.scss'],
 })
-export class DateComponent extends AbstractFormControl implements OnInit, ControlValueAccessor, OnChanges {
+export class DateComponent extends AbstractFormControl
+  implements OnInit, ControlValueAccessor, OnChanges {
 
   // Inputs for disabled & errorMessage are found in the AbstractFormControl class
   @Input() date: Date;
@@ -87,8 +110,10 @@ export class DateComponent extends AbstractFormControl implements OnInit, Contro
     invalidRange: `Invalid ${LabelReplacementTag}.`
   };
 
-  constructor( @Optional() @Self() public controlDir: NgControl,
-               public form: NgForm ) {
+  private today = startOfToday();
+  private yesterday = subDays(startOfToday(), 1);
+
+  constructor( @Optional() @Self() public controlDir: NgControl ) {
     super();
     if (controlDir) {
       controlDir.valueAccessor = this;
@@ -132,17 +157,15 @@ You must use either [restrictDate] or the [dateRange*] inputs.
       throw new MoHCommonLibraryError(msg);
     }
 
-    const today = startOfToday();
-    const yesterday = subDays(startOfToday(), 1);
     // Initialize date range logic
     if (this.restrictDate === 'past') {
       // past does NOT allow for today
-      this.dateRangeEnd = yesterday;
+      this.dateRangeEnd = this.yesterday;
       this.dateRangeStart = null;
     } else if (this.restrictDate === 'future') {
       // future DOES allow for today
       this.dateRangeEnd = null;
-      this.dateRangeStart = today;
+      this.dateRangeStart = this.today;
     }
 
 
@@ -278,8 +301,6 @@ You must use either [restrictDate] or the [dateRange*] inputs.
     this.dayTouched = true;
   }
 
-
-
   writeValue(value: Date): void {
     if (value) {
       this.date = value;
@@ -352,7 +373,8 @@ You must use either [restrictDate] or the [dateRange*] inputs.
   private validateRange(): ValidationErrors | null {
     if (this.dateRangeEnd && isAfter(this.date, this.dateRangeEnd)) {
 
-      if (this.restrictDate === 'past') {
+      if (this.restrictDate === 'past' ||
+          compareAsc(this.dateRangeEnd, this.yesterday) === 0) {
         return {noFutureDatesAllowed: true};
       }
 
@@ -361,7 +383,8 @@ You must use either [restrictDate] or the [dateRange*] inputs.
 
     if (this.dateRangeStart && isBefore(this.date, this.dateRangeStart)) {
 
-      if (this.restrictDate === 'future') {
+      if (this.restrictDate === 'future'  ||
+          compareAsc(this.dateRangeStart, this.today) === 0) {
         return {noPastDatesAllowed: true};
       }
 
