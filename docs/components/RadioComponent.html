@@ -1730,10 +1730,10 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {Component, EventEmitter, Input, Output, Optional, Self, OnInit, forwardRef} from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {Component, EventEmitter, Input, Output, Optional, Self, OnInit} from &#x27;@angular/core&#x27;;
 import { AbstractFormControl } from &#x27;../../models/abstract-form-control&#x27;;
 import { LabelReplacementTag, ErrorMessage } from &#x27;../../models/error-message.interface&#x27;;
-import { NgControl, NG_VALUE_ACCESSOR } from &#x27;@angular/forms&#x27;;
+import { NgControl } from &#x27;@angular/forms&#x27;;
 
 /**
  * RadioComponent is a single radio which can be used to have multiple radios
@@ -1742,30 +1742,30 @@ import { NgControl, NG_VALUE_ACCESSOR } from &#x27;@angular/forms&#x27;;
  * To display radio in a vertical style use display&#x3D;&quot;table-row-group&quot; by default
  * it shows in horizontal or inline display, display&#x3D;&#x27;inline-block&#x27; You can
  * have many radio&#x27;s and the number is based on the Radio label Value. For 3
- * radio buttons, radioLabels value should be passed in the below format
- *
- *
- *      [
- *             {
- *               &quot;label&quot;: &quot;Myself only&quot;,
- *               &quot;value&quot;: &quot;MyselfOnly&quot;
- *             },
- *             {
- *               &quot;label&quot;: &quot;All members on my MSP account&quot;,
- *               &quot;value&quot;: &quot;AllMembers&quot;
- *             },
- *             {
- *               &quot;label&quot;: &quot;One specific member on my MSP account&quot;,
- *               &quot;value&quot;: &quot;SpecificMember&quot;
- *             }
- *      ];
- *
+ * radio buttons, radioLabels value is of type IRadioItems[].
+*
  * @example
  *        &lt;common-radio #gender [value]&#x3D;&quot;person.gender&quot;
- *          label&#x3D;&#x27;Gender&#x27; display&#x3D;&#x27;table-row-group&#x27;
- *          [radioLabels]&#x3D;&#x27;[{&quot;label&quot;: &quot;Male&quot;, &quot;value&quot;: &quot;Male&quot;},{ &quot;label&quot;: &quot;Female&quot;, &quot;value&quot;: &quot;Female&quot;}]&#x27;
- *          (statusChange)&#x3D;&quot;onChange.emit($event)&quot;
- *          [showError]&#x3D;&quot;showError&quot;&gt;
+ *          label&#x3D;&#x27;Gender&#x27;
+ *          display&#x3D;&#x27;table-row-group&#x27;
+ *          [radioLabels]&#x3D;&#x27;[{label: &quot;Male&quot;, value: &quot;Male&quot;},{label: &quot;Female&quot;, value: &quot;Female&quot;}]&#x27;
+ *          (valueChange)&#x3D;&quot;onChange.emit($event)&quot;&gt;
+ *        &lt;/common-radio&gt;
+ *
+ *  Reactive Form
+ *        &lt;common-radio name&#x3D;&#x27;choice&#x27;
+ *          label&#x3D;&#x27;Do you live in Canada&#x27;
+ *          display&#x3D;&#x27;table-row-group&#x27;
+ *          [radioLabels]&#x3D;&#x3D;&#x27;[{label: &quot;No&quot;, value: false},{label: &quot;Yes&quot;, value: true}]&#x27;
+ *          FormControlName&#x3D;&#x27;choice&#x27;&gt;
+ *        &lt;/common-radio&gt;
+ *
+ *  Template Form
+ *        &lt;common-radio name&#x3D;&#x27;ageCategory&#x27;
+ *          [(ngModel)]&#x3D;&quot;age&quot;
+ *          label&#x3D;&#x27;How old are you?&#x27;
+ *          display&#x3D;&#x27;table-row-group&#x27;
+ *          [radioLabels]&#x3D;&#x27;[{label: &quot;0-18 years&quot;, value: 0},{label: &quot;19 years and older&quot;, value: 1}]&#x27;&gt;
  *        &lt;/common-radio&gt;
  *
  * @export
@@ -1907,7 +1907,7 @@ export class RadioComponent extends AbstractFormControl implements OnInit {
 <script>
         var COMPONENT_TEMPLATE = '<div><fieldset>  <legend *ngIf="label; else noLabel;" class="radio-box--legend" tabindex="-1">{{label}}</legend>  <div class="text-muted" *ngIf="instructionText; else noInstructionText;" >{{instructionText}}</div>  <div *ngFor="let val of radioLabels" [ngStyle]="{\'display\': display}" >    <div class="md-radio md-radio-inline">      <input type="radio"             name="selection__{{objectId}}"             id="{{val.value}}_{{objectId}}"             [disabled]="disabled"             [value]="val.value"             (click)="setStatus(val.value);"             [checked]="_value == val.value"             tabindex="0">      <label for="{{val.value}}_{{objectId}}">      {{val.label}}      </label>    </div>  </div>  <common-error-container      [displayError]="controlDir && !disabled && (controlDir.touched || controlDir.dirty) && controlDir?.errors">    <div  *ngIf="controlDir?.errors?.required">{{_defaultErrMsg.required}}</div>  </common-error-container></fieldset><ng-template #noLabel>  <legend class="radio-box--legend" tabindex="-1">    <ng-content></ng-content>  </legend></ng-template><ng-template #noInstructionText>    <ng-content></ng-content></ng-template></div>'
     var COMPONENTS = [{'name': 'AccordionCommonComponent', 'selector': 'common-accordion'},{'name': 'AddressComponent', 'selector': 'common-address'},{'name': 'ButtonComponent', 'selector': 'common-button'},{'name': 'ButtonGroupComponent', 'selector': 'common-button-group'},{'name': 'CaptchaComponent', 'selector': 'common-captcha'},{'name': 'CheckboxComponent', 'selector': 'common-checkbox'},{'name': 'CityComponent', 'selector': 'common-city'},{'name': 'ConfirmTemplateComponent', 'selector': 'common-confirm-template'},{'name': 'ConsentModalComponent', 'selector': 'common-consent-modal'},{'name': 'CoreBreadcrumbComponent', 'selector': 'common-core-breadcrumb'},{'name': 'CountryComponent', 'selector': 'common-country'},{'name': 'DateComponent', 'selector': 'common-date'},{'name': 'DatepickerComponent', 'selector': 'common-datepicker'},{'name': 'DropdownComponent', 'selector': 'common-dropdown'},{'name': 'EmailComponent', 'selector': 'common-email'},{'name': 'ErrorContainerComponent', 'selector': 'common-error-container'},{'name': 'FileUploaderComponent', 'selector': 'common-file-uploader'},{'name': 'FormActionBarComponent', 'selector': 'common-form-action-bar'},{'name': 'FormSubmitBarComponent', 'selector': 'common-form-submit-bar'},{'name': 'FullNameComponent', 'selector': 'common-full-name'},{'name': 'GeocoderInputComponent', 'selector': 'common-geocoder-input'},{'name': 'HeaderComponent', 'selector': 'common-header'},{'name': 'NameComponent', 'selector': 'common-name'},{'name': 'PageFrameworkComponent', 'selector': 'common-page-framework'},{'name': 'PageSectionComponent', 'selector': 'common-page-section'},{'name': 'PasswordComponent', 'selector': 'common-password'},{'name': 'PhnComponent', 'selector': 'common-phn'},{'name': 'PhoneNumberComponent', 'selector': 'common-phone-number'},{'name': 'PostalCodeComponent', 'selector': 'common-postal-code'},{'name': 'ProvinceComponent', 'selector': 'common-province'},{'name': 'RadioComponent', 'selector': 'common-radio'},{'name': 'SampleModalComponent', 'selector': 'common-sample-modal'},{'name': 'SinComponent', 'selector': 'common-sin'},{'name': 'StreetComponent', 'selector': 'common-street'},{'name': 'ThumbnailComponent', 'selector': 'common-thumbnail'},{'name': 'ToggleComponent', 'selector': 'common-toggle'},{'name': 'WizardProgressBarComponent', 'selector': 'common-wizard-progress-bar'},{'name': 'XiconButtonComponent', 'selector': 'common-xicon-button'}];
-    var DIRECTIVES = [{'name': 'DateFieldFormatDirective', 'selector': '[commonDateFieldFormat]'},{'name': 'DuplicateCheckDirective', 'selector': '[commonDuplicateCheck]'},{'name': 'ValidateBcPostalDirective', 'selector': '[commonValidateBcPostal]'},{'name': 'ValidateCityDirective', 'selector': '[commonValidateCity]'},{'name': 'ValidateEmailDirective', 'selector': '[commonValidateEmail]'},{'name': 'ValidateNameDirective', 'selector': '[commonValidateName]'},{'name': 'ValidatePhnDirective', 'selector': '[commonValidatePhn]'},{'name': 'ValidatePostalcodeDirective', 'selector': '[commonValidatePostalcode]'},{'name': 'ValidateRegionDirective', 'selector': '[commonValidateRegion]'},{'name': 'ValidateSinDirective', 'selector': '[commonValidateSin]'},{'name': 'ValidateStreetDirective', 'selector': '[commonValidateStreet]'}];
+    var DIRECTIVES = [{'name': 'DateFieldFormatDirective', 'selector': '[commonDateFieldFormat]'},{'name': 'DuplicateCheckDirective', 'selector': '[commonDuplicateCheck]'},{'name': 'ValidateBcPostalDirective', 'selector': '[commonValidateBcPostal]'},{'name': 'ValidateCityDirective', 'selector': '[commonValidateCity]'},{'name': 'ValidateEmailDirective', 'selector': '[commonValidateEmail]'},{'name': 'ValidateNameDirective', 'selector': '[commonValidateName]'},{'name': 'ValidatePostalcodeDirective', 'selector': '[commonValidatePostalcode]'},{'name': 'ValidateRegionDirective', 'selector': '[commonValidateRegion]'},{'name': 'ValidateStreetDirective', 'selector': '[commonValidateStreet]'}];
     var ACTUAL_COMPONENT = {'name': 'RadioComponent'};
 </script>
 <script src="../js/tree.js"></script>

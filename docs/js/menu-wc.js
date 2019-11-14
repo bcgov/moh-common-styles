@@ -133,13 +133,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/SharedCoreModule.html" data-type="entity-link">SharedCoreModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-SharedCoreModule-5dee0a91c63c2ae0ed1cca622a0de54c"' : 'data-target="#xs-components-links-module-SharedCoreModule-5dee0a91c63c2ae0ed1cca622a0de54c"' }>
+                                            'data-target="#components-links-module-SharedCoreModule-52a3787317477588456cd5884693a06d"' : 'data-target="#xs-components-links-module-SharedCoreModule-52a3787317477588456cd5884693a06d"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SharedCoreModule-5dee0a91c63c2ae0ed1cca622a0de54c"' :
-                                            'id="xs-components-links-module-SharedCoreModule-5dee0a91c63c2ae0ed1cca622a0de54c"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SharedCoreModule-52a3787317477588456cd5884693a06d"' :
+                                            'id="xs-components-links-module-SharedCoreModule-52a3787317477588456cd5884693a06d"' }>
                                             <li class="link">
                                                 <a href="components/AccordionCommonComponent.html"
                                                     data-type="entity-link" data-context="sub-entity" data-context-id="modules">AccordionCommonComponent</a>
@@ -292,13 +292,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     </li>
                                 <li class="chapter inner">
                                     <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                        'data-target="#directives-links-module-SharedCoreModule-5dee0a91c63c2ae0ed1cca622a0de54c"' : 'data-target="#xs-directives-links-module-SharedCoreModule-5dee0a91c63c2ae0ed1cca622a0de54c"' }>
+                                        'data-target="#directives-links-module-SharedCoreModule-52a3787317477588456cd5884693a06d"' : 'data-target="#xs-directives-links-module-SharedCoreModule-52a3787317477588456cd5884693a06d"' }>
                                         <span class="icon ion-md-code-working"></span>
                                         <span>Directives</span>
                                         <span class="icon ion-ios-arrow-down"></span>
                                     </div>
-                                    <ul class="links collapse" ${ isNormalMode ? 'id="directives-links-module-SharedCoreModule-5dee0a91c63c2ae0ed1cca622a0de54c"' :
-                                        'id="xs-directives-links-module-SharedCoreModule-5dee0a91c63c2ae0ed1cca622a0de54c"' }>
+                                    <ul class="links collapse" ${ isNormalMode ? 'id="directives-links-module-SharedCoreModule-52a3787317477588456cd5884693a06d"' :
+                                        'id="xs-directives-links-module-SharedCoreModule-52a3787317477588456cd5884693a06d"' }>
                                         <li class="link">
                                             <a href="directives/DateFieldFormatDirective.html"
                                                 data-type="entity-link" data-context="sub-entity" data-context-id="modules">DateFieldFormatDirective</a>
@@ -324,20 +324,12 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                                 data-type="entity-link" data-context="sub-entity" data-context-id="modules">ValidateNameDirective</a>
                                         </li>
                                         <li class="link">
-                                            <a href="directives/ValidatePhnDirective.html"
-                                                data-type="entity-link" data-context="sub-entity" data-context-id="modules">ValidatePhnDirective</a>
-                                        </li>
-                                        <li class="link">
                                             <a href="directives/ValidatePostalcodeDirective.html"
                                                 data-type="entity-link" data-context="sub-entity" data-context-id="modules">ValidatePostalcodeDirective</a>
                                         </li>
                                         <li class="link">
                                             <a href="directives/ValidateRegionDirective.html"
                                                 data-type="entity-link" data-context="sub-entity" data-context-id="modules">ValidateRegionDirective</a>
-                                        </li>
-                                        <li class="link">
-                                            <a href="directives/ValidateSinDirective.html"
-                                                data-type="entity-link" data-context="sub-entity" data-context-id="modules">ValidateSinDirective</a>
                                         </li>
                                         <li class="link">
                                             <a href="directives/ValidateStreetDirective.html"

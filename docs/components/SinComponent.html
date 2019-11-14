@@ -82,6 +82,12 @@
                 <code><a href="../classes/AbstractFormControl.html" target="_self" >AbstractFormControl</a></code>
     </p>
 
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
 
 
 <section>
@@ -179,19 +185,21 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                            <li>
                                 <a href="#onBlur">onBlur</a>
                             </li>
                             <li>
                                 <a href="#onValueChange">onValueChange</a>
                             </li>
                             <li>
-                                <a href="#registerOnChange">registerOnChange</a>
+                                    <span class="modifier">Private</span>
+                                <a href="#validateSelf">validateSelf</a>
                             </li>
                             <li>
-                                <a href="#registerOnTouched">registerOnTouched</a>
-                            </li>
-                            <li>
-                                <a href="#setDisabledState">setDisabledState</a>
+                                    <span class="modifier">Private</span>
+                                <a href="#validateSin">validateSin</a>
                             </li>
                             <li>
                                 <a href="#writeValue">writeValue</a>
@@ -309,7 +317,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">projects/common/lib/components/sin/sin.component.ts:53</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">projects/common/lib/components/sin/sin.component.ts:50</a></div>
                             </td>
                         </tr>
 
@@ -582,7 +590,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">projects/common/lib/components/sin/sin.component.ts:53</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">projects/common/lib/components/sin/sin.component.ts:50</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -603,7 +611,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">projects/common/lib/components/sin/sin.component.ts:52</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">projects/common/lib/components/sin/sin.component.ts:49</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -616,6 +624,45 @@
     <h3 id="methods">
         Methods
     </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <b>
+                            ngOnInit
+                        </b>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="62"
+                            class="link-to-prism">projects/common/lib/components/sin/sin.component.ts:62</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
     <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -638,8 +685,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="75"
-                            class="link-to-prism">projects/common/lib/components/sin/sin.component.ts:75</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="77"
+                            class="link-to-prism">projects/common/lib/components/sin/sin.component.ts:77</a></div>
                 </td>
             </tr>
 
@@ -708,8 +755,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="66"
-                            class="link-to-prism">projects/common/lib/components/sin/sin.component.ts:66</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="68"
+                            class="link-to-prism">projects/common/lib/components/sin/sin.component.ts:68</a></div>
                 </td>
             </tr>
 
@@ -760,26 +807,28 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="registerOnChange"></a>
+                    <a name="validateSelf"></a>
                     <span class="name">
                         <b>
-                            registerOnChange
+                            <span class="modifier">Private</span>
+                            validateSelf
                         </b>
-                        <a href="#registerOnChange"><span class="icon ion-ios-link"></span></a>
+                        <a href="#validateSelf"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>registerOnChange(fn: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>validateSelf()</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="87"
-                            class="link-to-prism">projects/common/lib/components/sin/sin.component.ts:87</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="88"
+                            class="link-to-prism">projects/common/lib/components/sin/sin.component.ts:88</a></div>
                 </td>
             </tr>
 
@@ -788,39 +837,8 @@
                 <td class="col-md-4">
 
                     <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>fn</td>
-                                    <td>
-                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-                                    </td>
+                        <b>Returns : </b>    <code>ValidationErrors | null</code>
 
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
                     </div>
                 </td>
             </tr>
@@ -830,96 +848,28 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="registerOnTouched"></a>
+                    <a name="validateSin"></a>
                     <span class="name">
                         <b>
-                            registerOnTouched
+                            <span class="modifier">Private</span>
+                            validateSin
                         </b>
-                        <a href="#registerOnTouched"><span class="icon ion-ios-link"></span></a>
+                        <a href="#validateSin"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>registerOnTouched(fn: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>validateSin()</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="92"
-                            class="link-to-prism">projects/common/lib/components/sin/sin.component.ts:92</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>fn</td>
-                                    <td>
-                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="setDisabledState"></a>
-                    <span class="name">
-                        <b>
-                            setDisabledState
-                        </b>
-                        <a href="#setDisabledState"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>setDisabledState(isDisabled: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="96"
-                            class="link-to-prism">projects/common/lib/components/sin/sin.component.ts:96</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="97"
+                            class="link-to-prism">projects/common/lib/components/sin/sin.component.ts:97</a></div>
                 </td>
             </tr>
 
@@ -928,39 +878,8 @@
                 <td class="col-md-4">
 
                     <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>isDisabled</td>
-                                    <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
-                                    </td>
+                        <b>Returns : </b>    <code>ValidationErrors | null</code>
 
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
                     </div>
                 </td>
             </tr>
@@ -988,8 +907,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="80"
-                            class="link-to-prism">projects/common/lib/components/sin/sin.component.ts:80</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="82"
+                            class="link-to-prism">projects/common/lib/components/sin/sin.component.ts:82</a></div>
                 </td>
             </tr>
 
@@ -1605,7 +1524,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">projects/common/lib/components/sin/sin.component.ts:56</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">projects/common/lib/components/sin/sin.component.ts:52</a></div>
                             </td>
                         </tr>
 
@@ -1845,7 +1764,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">projects/common/lib/components/sin/sin.component.ts:47</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">projects/common/lib/components/sin/sin.component.ts:45</a></div>
                                 </td>
                             </tr>
 
@@ -1903,9 +1822,9 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, EventEmitter, Input, Output, Optional, Self} from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, EventEmitter, Input, Output, Optional, Self, OnInit} from &#x27;@angular/core&#x27;;
 import { NUMBER, SPACE } from &#x27;../../models/mask.constants&#x27;;
-import { NgControl } from &#x27;@angular/forms&#x27;;
+import { NgControl, ValidationErrors } from &#x27;@angular/forms&#x27;;
 import { AbstractFormControl } from &#x27;../../models/abstract-form-control&#x27;;
 import { LabelReplacementTag, ErrorMessage } from &#x27;../../models/error-message.interface&#x27;;
 
@@ -1924,7 +1843,7 @@ import { LabelReplacementTag, ErrorMessage } from &#x27;../../models/error-messa
   templateUrl: &#x27;./sin.component.html&#x27;,
   styleUrls: [&#x27;./sin.component.scss&#x27;]
 })
-export class SinComponent extends AbstractFormControl {
+export class SinComponent extends AbstractFormControl implements OnInit {
 
   _defaultErrMsg: ErrorMessage &#x3D; {
     required: &#x60;${LabelReplacementTag} is required.&#x60;,
@@ -1945,18 +1864,14 @@ export class SinComponent extends AbstractFormControl {
     console.log( &#x27;set value: &#x27;, val );
     if ( val ) {
       this.sin &#x3D; val;
-
-      console.log( &#x27;value: &#x27;, this.sin );
     }
   }
   get value() {
-    console.log( &#x27;get value: &#x27;, this.sin );
     return this.sin;
   }
 
   @Output() valueChange: EventEmitter&lt;string&gt; &#x3D; new EventEmitter&lt;string&gt;();
   @Output() blur: EventEmitter&lt;any&gt; &#x3D; new EventEmitter&lt;any&gt;();
-
 
   constructor( @Optional() @Self() public controlDir: NgControl ) {
     super();
@@ -1966,6 +1881,12 @@ export class SinComponent extends AbstractFormControl {
 
     this.mask &#x3D;
     [NUMBER, NUMBER, NUMBER, SPACE, NUMBER, NUMBER, NUMBER, SPACE, NUMBER, NUMBER, NUMBER];
+  }
+
+  ngOnInit() {
+    super.ngOnInit();
+
+    this.registerValidation( this.controlDir, this.validateSelf );
   }
 
   onValueChange( value: any ) {
@@ -1988,18 +1909,71 @@ export class SinComponent extends AbstractFormControl {
     }
   }
 
-  // Register change functiong
-  registerOnChange( fn: any ): void {
-    this._onChange &#x3D; fn;
-  }
+  private validateSelf(): ValidationErrors | null {
 
-  // Register touched function
-  registerOnTouched( fn: any ): void {
-    this._onTouched &#x3D; fn;
-  }
+    const validateResult &#x3D; this.validateSin();
+    if ( validateResult ) {
+      return validateResult;
+    }
+    return null;
+   }
 
-  setDisabledState(isDisabled: boolean): void {
-    this.disabled &#x3D; isDisabled;
+   private validateSin(): ValidationErrors | null {
+
+    if ( this.sin &amp;&amp; this.sin.trim().length &gt; 0 ) {
+
+      // Init weights and other stuff
+      const weights: number[] &#x3D; [1, 2, 1, 2, 1, 2, 1, 2, 1];
+      let sum &#x3D; 0;
+
+      // Clean up string
+      const value &#x3D; this.sin.trim();
+      this.sin &#x3D; value
+                  .replace(/_/g, &#x27;&#x27;) // remove underlines
+                  .replace(/\s/g, &#x27;&#x27;); // spaces
+
+      // Test for length
+      if (this.sin.length !&#x3D;&#x3D; 9) {
+        return { &#x27;invalid&#x27;: true };
+      }
+
+      // Test for string of zeros
+      if ( this.sin &#x3D;&#x3D;&#x3D; &#x27;000000000&#x27;) {
+        return { &#x27;invalid&#x27;: true };
+      }
+
+      // Walk through each character
+      for (let i &#x3D; 0; i &lt; this.sin.length; i++) {
+
+        // pull out char
+        const char &#x3D; this.sin.charAt(i);
+
+        // parse the number
+        const num &#x3D; Number(char);
+        if (Number.isNaN(num)) {
+          return { &#x27;invalid&#x27;: true };
+        }
+
+        // multiply the value against the weight
+        let result &#x3D; num * weights[i];
+
+        // If two digit result, substract 9
+        if (result &gt; 9) {
+          result &#x3D; result - 9;
+        }
+
+        // add it to our sum
+        sum +&#x3D; result;
+      }
+
+      // The sum must be divisible by 10
+      if (sum % 10 !&#x3D;&#x3D; 0) {
+        return { &#x27;invalid&#x27;: true };
+      }
+
+    }
+
+    return null;
   }
 }
 </code></pre>
@@ -2066,7 +2040,7 @@ export class SinComponent extends AbstractFormControl {
 <script>
         var COMPONENT_TEMPLATE = '<div><label for="{{labelforId}}" class="control-label">{{label}}</label><input class="form-control"       spellcheck="false"       id="{{labelforId}}"       [ngModel]="sin"       (ngModelChange)="onValueChange($event)"       (blur)="onBlur($event)"       [placeholder]="placeholder"       [textMask]="{mask: mask}"       [disabled]="disabled"       [maxlength]="maxlength"       autocomplete="off"/>  <!-- Error messages for input -->  <common-error-container      [displayError]="controlDir && !disabled && (controlDir.touched || controlDir.dirty) && controlDir.errors">    <div *ngIf="controlDir.errors?.required">      {{_defaultErrMsg.required}}    </div>    <div *ngIf="controlDir.errors?.invalid">      {{_defaultErrMsg.invalid}}    </div>    <div *ngIf="controlDir.errors?.duplicate">      {{_defaultErrMsg.duplicate}}    </div>  </common-error-container></div>'
     var COMPONENTS = [{'name': 'AccordionCommonComponent', 'selector': 'common-accordion'},{'name': 'AddressComponent', 'selector': 'common-address'},{'name': 'ButtonComponent', 'selector': 'common-button'},{'name': 'ButtonGroupComponent', 'selector': 'common-button-group'},{'name': 'CaptchaComponent', 'selector': 'common-captcha'},{'name': 'CheckboxComponent', 'selector': 'common-checkbox'},{'name': 'CityComponent', 'selector': 'common-city'},{'name': 'ConfirmTemplateComponent', 'selector': 'common-confirm-template'},{'name': 'ConsentModalComponent', 'selector': 'common-consent-modal'},{'name': 'CoreBreadcrumbComponent', 'selector': 'common-core-breadcrumb'},{'name': 'CountryComponent', 'selector': 'common-country'},{'name': 'DateComponent', 'selector': 'common-date'},{'name': 'DatepickerComponent', 'selector': 'common-datepicker'},{'name': 'DropdownComponent', 'selector': 'common-dropdown'},{'name': 'EmailComponent', 'selector': 'common-email'},{'name': 'ErrorContainerComponent', 'selector': 'common-error-container'},{'name': 'FileUploaderComponent', 'selector': 'common-file-uploader'},{'name': 'FormActionBarComponent', 'selector': 'common-form-action-bar'},{'name': 'FormSubmitBarComponent', 'selector': 'common-form-submit-bar'},{'name': 'FullNameComponent', 'selector': 'common-full-name'},{'name': 'GeocoderInputComponent', 'selector': 'common-geocoder-input'},{'name': 'HeaderComponent', 'selector': 'common-header'},{'name': 'NameComponent', 'selector': 'common-name'},{'name': 'PageFrameworkComponent', 'selector': 'common-page-framework'},{'name': 'PageSectionComponent', 'selector': 'common-page-section'},{'name': 'PasswordComponent', 'selector': 'common-password'},{'name': 'PhnComponent', 'selector': 'common-phn'},{'name': 'PhoneNumberComponent', 'selector': 'common-phone-number'},{'name': 'PostalCodeComponent', 'selector': 'common-postal-code'},{'name': 'ProvinceComponent', 'selector': 'common-province'},{'name': 'RadioComponent', 'selector': 'common-radio'},{'name': 'SampleModalComponent', 'selector': 'common-sample-modal'},{'name': 'SinComponent', 'selector': 'common-sin'},{'name': 'StreetComponent', 'selector': 'common-street'},{'name': 'ThumbnailComponent', 'selector': 'common-thumbnail'},{'name': 'ToggleComponent', 'selector': 'common-toggle'},{'name': 'WizardProgressBarComponent', 'selector': 'common-wizard-progress-bar'},{'name': 'XiconButtonComponent', 'selector': 'common-xicon-button'}];
-    var DIRECTIVES = [{'name': 'DateFieldFormatDirective', 'selector': '[commonDateFieldFormat]'},{'name': 'DuplicateCheckDirective', 'selector': '[commonDuplicateCheck]'},{'name': 'ValidateBcPostalDirective', 'selector': '[commonValidateBcPostal]'},{'name': 'ValidateCityDirective', 'selector': '[commonValidateCity]'},{'name': 'ValidateEmailDirective', 'selector': '[commonValidateEmail]'},{'name': 'ValidateNameDirective', 'selector': '[commonValidateName]'},{'name': 'ValidatePhnDirective', 'selector': '[commonValidatePhn]'},{'name': 'ValidatePostalcodeDirective', 'selector': '[commonValidatePostalcode]'},{'name': 'ValidateRegionDirective', 'selector': '[commonValidateRegion]'},{'name': 'ValidateSinDirective', 'selector': '[commonValidateSin]'},{'name': 'ValidateStreetDirective', 'selector': '[commonValidateStreet]'}];
+    var DIRECTIVES = [{'name': 'DateFieldFormatDirective', 'selector': '[commonDateFieldFormat]'},{'name': 'DuplicateCheckDirective', 'selector': '[commonDuplicateCheck]'},{'name': 'ValidateBcPostalDirective', 'selector': '[commonValidateBcPostal]'},{'name': 'ValidateCityDirective', 'selector': '[commonValidateCity]'},{'name': 'ValidateEmailDirective', 'selector': '[commonValidateEmail]'},{'name': 'ValidateNameDirective', 'selector': '[commonValidateName]'},{'name': 'ValidatePostalcodeDirective', 'selector': '[commonValidatePostalcode]'},{'name': 'ValidateRegionDirective', 'selector': '[commonValidateRegion]'},{'name': 'ValidateStreetDirective', 'selector': '[commonValidateStreet]'}];
     var ACTUAL_COMPONENT = {'name': 'SinComponent'};
 </script>
 <script src="../js/tree.js"></script>

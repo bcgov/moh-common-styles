@@ -151,7 +151,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">projects/common/lib/components/duplicate-check/duplicate-check.directive.ts:35</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">projects/common/lib/components/duplicate-check/duplicate-check.directive.ts:32</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -187,8 +187,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="37"
-                            class="link-to-prism">projects/common/lib/components/duplicate-check/duplicate-check.directive.ts:37</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="34"
+                            class="link-to-prism">projects/common/lib/components/duplicate-check/duplicate-check.directive.ts:34</a></div>
                 </td>
             </tr>
 
@@ -260,10 +260,7 @@ function checkForDuplicates( control: AbstractControl,
 // TODO: Need to confirm this works with reactive forms
 export function commonDuplicateCheck( dupList: string[] ): ValidatorFn {
 
-  console.log( &#x27;function commonDuplicateSin: param &#x3D; &#x27;, dupList );
-
   return ( control: AbstractControl ): { [key: string]: boolean } | null &#x3D;&gt; {
-    console.log( &#x27;Control value &#x3D; &#x27;, control.value );
     return checkForDuplicates( control, dupList );
   };
 }

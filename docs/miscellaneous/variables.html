@@ -91,9 +91,6 @@
                             <a href="#commonValidateRegion" title="projects/common/lib/components/validate-region/validate-region.directive.ts"><b>commonValidateRegion</b>&nbsp;&nbsp;&nbsp;(projects/.../validate-region.directive.ts)</a>
                         </li>
                         <li>
-                            <a href="#commonValidateSin" title="projects/common/lib/components/sin/validate-sin.directive.ts"><b>commonValidateSin</b>&nbsp;&nbsp;&nbsp;(projects/.../validate-sin.directive.ts)</a>
-                        </li>
-                        <li>
                             <a href="#commonValidateStreet" title="projects/common/lib/components/street/validate-street.directive.ts"><b>commonValidateStreet</b>&nbsp;&nbsp;&nbsp;(projects/.../validate-street.directive.ts)</a>
                         </li>
                         <li>
@@ -1163,96 +1160,6 @@ header .nav-link {
             </tbody>
         </table>
 </section>
-    <h3>projects/common/lib/components/sin/validate-sin.directive.ts</h3>
-    <section>
-    <h3></h3>        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="commonValidateSin"></a>
-                        <span class="name">
-                            <b>
-                            commonValidateSin</b>
-                            <a href="#commonValidateSin"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="https://angular.io/api/forms/ValidatorFn" target="_blank" >ValidatorFn</a></code>
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Default value : </i><code>(control: AbstractControl): ValidationErrors | null &#x3D;&gt; {
-  let sin &#x3D; control.value;
-
-  // pre req checks
-  if (sin &#x3D;&#x3D;&#x3D; null || sin &#x3D;&#x3D;&#x3D; undefined || sin.length &lt; 1) {
-    return { &#x27;required&#x27;: true };
-  }
-
-  // Init weights and other stuff
-  const weights: number[] &#x3D; [1, 2, 1, 2, 1, 2, 1, 2, 1];
-  let sum &#x3D; 0;
-
-  // Clean up string
-  sin &#x3D; sin.trim();
-
-  // Rip off spaces a regex
-  const regexp &#x3D; new RegExp(&#x27;[ ]&#x27;, &#x27;g&#x27;);
-  sin &#x3D; sin.replace(regexp, &#x27;&#x27;);
-
-  // Test for length
-  if (sin.length !&#x3D;&#x3D; 9) {
-    return { &#x27;invalid&#x27;: true };
-  }
-
-  // Test for string of zeros
-  if ( sin &#x3D;&#x3D;&#x3D; &#x27;000000000&#x27;) {
-    return { &#x27;invalid&#x27;: true };
-  }
-
-  // Walk through each character
-  for (let i &#x3D; 0; i &lt; sin.length; i++) {
-
-    // pull out char
-    const char &#x3D; sin.charAt(i);
-
-    // parse the number
-    const num &#x3D; Number(char);
-    if (Number.isNaN(num)) {
-      return { &#x27;invalid&#x27;: true };
-    }
-
-    // multiply the value against the weight
-    let result &#x3D; num * weights[i];
-
-    // If two digit result, substract 9
-    if (result &gt; 9) {
-      result &#x3D; result - 9;
-    }
-
-    // add it to our sum
-    sum +&#x3D; result;
-  }
-
-  // The sum must be divisible by 10
-  if (sum % 10 !&#x3D;&#x3D; 0) {
-    return { &#x27;invalid&#x27;: true };
-  }
-
-  // All done!
-  return null;
-}</code>
-                        </td>
-                    </tr>
-
-
-            </tbody>
-        </table>
-</section>
     <h3>projects/common/lib/components/street/validate-street.directive.ts</h3>
     <section>
     <h3></h3>        <table class="table table-sm table-bordered">
@@ -1358,8 +1265,6 @@ header .nav-link {
 
   // Directives
   ValidateNameDirective,
-  ValidateSinDirective,
-  ValidatePhnDirective,
   DuplicateCheckDirective,
   ValidateBcPostalDirective,
   ValidateStreetDirective,
@@ -1392,7 +1297,7 @@ header .nav-link {
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Default value : </i><code>require.context(&#x27;./lib/components/radio&#x27;, true, /\.spec\.ts$/)</code>
+                            <i>Default value : </i><code>require.context(&#x27;./lib/components/street&#x27;, true, /\.spec\.ts$/)</code>
                         </td>
                     </tr>
 
@@ -1490,6 +1395,14 @@ header .nav-link {
                         </td>
                     </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>DateComponent
+You cannot use &quot;[restrictDate]&quot; in combination with either  &quot;[dateRangeEnd]&quot; or &quot;[dateRangeStart]&quot;.
+You must use either [restrictDate] or the [dateRange*] inputs.</p>
+</div>
+                    </td>
+                </tr>
 
             </tbody>
         </table>
