@@ -5,9 +5,9 @@
        id="{{labelforId}}"
        [value]="city"
        (change)="onValueChange($event.target.value)"
-       (blur)="onBlurEvent($event)"
+       (blur)="onBlur($event)"
        [disabled]="disabled"
-       [attr.maxlength]="maxlen"
+       [attr.maxlength]="maxlength"
        [placeholder]="placeholder"
        autocomplete="off"/>
 
@@ -15,9 +15,9 @@
 <common-error-container
     [displayError]="controlDir && !disabled && (controlDir.touched || controlDir.dirty) && controlDir.errors">
   <div *ngIf="controlDir.errors?.required">
-    {{label}} {{defaultErrMsg.required}}
+    {{_defaultErrMsg.required}}
   </div>
   <div *ngIf="controlDir.errors?.invalidChar">
-    {{label}} {{defaultErrMsg.invalidChar}}
+    {{_defaultErrMsg.invalidChar}}
   </div>
 </common-error-container>
