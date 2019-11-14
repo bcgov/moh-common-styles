@@ -1,13 +1,10 @@
 import { fakeAsync } from '@angular/core/testing';
 import { ProvinceComponent } from './province.component';
 import { NgSelectModule } from '@ng-select/ng-select';
-import { CommonModule } from '@angular/common';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ErrorContainerComponent } from '../error-container/error-container.component';
 import { Component, ViewChildren, QueryList, OnInit } from '@angular/core';
 import { createTestingModule, tickAndDetectChanges, getInputElement, getLabel } from '../../../helpers/test-helpers';
-
-
 
 @Component({
   template: ``

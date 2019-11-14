@@ -54,7 +54,7 @@ export function createTestingModule<T>( cmp: Type<T>,
         importDirectives
       ],
       providers: [
-        { provide: ComponentFixtureAutoDetect, useValue: true }
+        { provide: ComponentFixtureAutoDetect, useValue: true },
       ]
     }).overrideComponent(cmp, {
         set: {

@@ -21,9 +21,10 @@ getTestBed().initTestEnvironment(
 // const context = require.context('./lib/components/date', true, /\.spec\.ts$/);
 // const context = require.context('./lib/components/phn', true, /\.spec\.ts$/);
 // const context = require.context('./lib/components/phone-number', true, /\.spec\.ts$/);
-const context = require.context('./lib/components/province', true, /\.spec\.ts$/);
+// const context = require.context('./lib/components/province', true, /\.spec\.ts$/);
 // const context = require.context('./lib/components/radio', true, /\.spec\.ts$/);
 // const context = require.context('./lib/components/sin', true, /\.spec\.ts$/);
+const context = require.context('./lib/components/street', true, /\.spec\.ts$/);
 
 
 // const context = require.context('./', true, /\.spec\.ts$/);
