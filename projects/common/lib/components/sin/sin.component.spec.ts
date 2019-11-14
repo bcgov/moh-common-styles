@@ -1,10 +1,8 @@
-import { ComponentFixture, TestBed, tick, fakeAsync } from '@angular/core/testing';
-import { FormsModule, FormGroup, FormBuilder } from '@angular/forms';
+import { fakeAsync } from '@angular/core/testing';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { TextMaskModule } from 'angular2-text-mask';
-import { Type, ViewChild, Component, DebugElement, QueryList, ViewChildren, OnInit } from '@angular/core';
-import { SharedCoreModule } from '../../shared-core.module';
+import { Component, DebugElement, QueryList, ViewChildren, OnInit } from '@angular/core';
 import { SinComponent } from './sin.component';
-import { By } from '@angular/platform-browser';
 import { tickAndDetectChanges, createTestingModule, getInputElement, getLabel } from '../../../helpers/test-helpers';
 import { ErrorContainerComponent } from '../error-container/error-container.component';
 import { commonDuplicateCheck } from '../duplicate-check/duplicate-check.directive';
@@ -191,10 +189,4 @@ describe('SinComponent', () => {
 
 
 
-function triggerKeyDownEvent(element: DebugElement, which: number, key = ''): void {
-  element.triggerEventHandler('keydown', {
-      which: which,
-      key: key,
-      preventDefault: () => { },
-  });
-}
+

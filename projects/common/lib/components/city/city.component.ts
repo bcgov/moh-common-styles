@@ -45,7 +45,7 @@ export class CityComponent extends AbstractFormControl implements OnInit, Contro
   }
 
   ngOnInit() {
-    this.setErrorMsg();
+    super.ngOnInit();
   }
 
   onValueChange( value: string ) {
