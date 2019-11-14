@@ -2,7 +2,8 @@ import { Component, Input, Output, EventEmitter, Optional, Self, OnInit } from '
 import { Base } from '../../models/base';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { CANADA } from '../country/country.component';
-import { ErrorMessage } from '../../../public_api';
+import { AbstractFormControl } from '../../models/abstract-form-control';
+import { ErrorMessage, LabelReplacementTag } from '../../models/error-message.interface';
 
 export const BRITISH_COLUMBIA = 'BC';
 export interface ProvinceList {
@@ -37,17 +38,15 @@ export function getProvinceDescription( provinceCode: string ) {
   templateUrl: './province.component.html',
   styleUrls: ['./province.component.scss']
 })
-export class ProvinceComponent extends Base implements OnInit, ControlValueAccessor {
+export class ProvinceComponent extends AbstractFormControl implements OnInit {
 
   @Input() label: string = 'Province';
   @Input() provinceList: ProvinceList[] = PROVINCE_LIST;
   @Input() labelforId: string = 'province_' + this.objectId;
-  @Input() disabled: boolean = false;
   @Input() required: boolean = false;
   @Input() placeholder: string = 'Please select a province';
-  @Input() maxlen: string = '250';
+  @Input() maxlength: string = '250';
   @Input() useDropDownList: boolean = true;
-  @Input() errorMessage: ErrorMessage;
 
   @Input()
   set value( val: string ) {
@@ -60,18 +59,16 @@ export class ProvinceComponent extends Base implements OnInit, ControlValueAcces
   }
 
   @Output() valueChange: EventEmitter<string> = new EventEmitter<string>();
-  @Output() blurEvent: EventEmitter<any> = new EventEmitter<any>();
+  @Output() blur: EventEmitter<any> = new EventEmitter<any>();
 
   province: string;
 
-  defaultErrMsg: ErrorMessage = {
-    required: 'is required.',
-    invalidChar: 'must contain letters and may include special characters such as hyphens, ' +
+  _defaultErrMsg: ErrorMessage = {
+    required: LabelReplacementTag + ' is required.',
+    invalidChar: LabelReplacementTag + ' must contain letters and may include special characters such as hyphens, ' +
                  'periods, apostrophes and blank characters.'
   };
 
-  _onChange = (_: any) => {};
-  _onTouched = (_: any) => {};
 
   constructor( @Optional() @Self() public controlDir: NgControl ) {
     super();
@@ -81,7 +78,7 @@ export class ProvinceComponent extends Base implements OnInit, ControlValueAcces
   }
 
   ngOnInit() {
-    this.setErrorMsg();
+    super.ngOnInit();
   }
 
   onValueChange( value: any ) {
@@ -92,34 +89,14 @@ export class ProvinceComponent extends Base implements OnInit, ControlValueAcces
     }
   }
 
-  onBlurEvent( event: any ) {
+  onBlur( event: any ) {
     this._onTouched( event );
-    this.blurEvent.emit( event );
+    this.blur.emit( event );
   }
 
   writeValue( value: any ): void {
     if ( value !== undefined ) {
       this.province = value;
-    }
-  }
-
-  // Register change function
-  registerOnChange( fn: any ): void {
-    this._onChange = fn;
-  }
-
-  // Register touched function
-  registerOnTouched( fn: any ): void {
-    this._onTouched = fn;
-  }
-
-  setDisabledState(isDisabled: boolean): void {
-    this.disabled = isDisabled;
-  }
-
-  private setErrorMsg() {
-    if ( this.errorMessage ) {
-      Object.keys(this.errorMessage).map( x => this.defaultErrMsg[x] = this.errorMessage[x] );
     }
   }
 }

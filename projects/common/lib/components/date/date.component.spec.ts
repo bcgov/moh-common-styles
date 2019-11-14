@@ -1,23 +1,35 @@
-import { ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
+import { fakeAsync } from '@angular/core/testing';
 import { DateComponent } from './date.component';
-import { NgForm, FormsModule, FormGroup, FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ErrorContainerComponent } from '../error-container/error-container.component';
-import { Component, ViewChild, Type, OnInit } from '@angular/core';
-import { tickAndDetectChanges } from '../../../helpers/test-helpers';
+import { Component, ViewChild, OnInit, ViewChildren, QueryList } from '@angular/core';
+import { tickAndDetectChanges, createTestingModule, getLegendContext } from '../../../helpers/test-helpers';
+import { startOfToday, subDays, addDays } from 'date-fns';
 
 @Component({
   template: ``,
 })
 class DateTestComponent {
 
-  @ViewChild(DateComponent) dateComponent: DateComponent;
+  @ViewChildren(DateComponent) dateComponent: QueryList<DateComponent>;
+
   date1: Date;
+  date2: Date = addDays( new Date(), 5 );
+  date3: Date = subDays( new Date(), 5 );
 
   defaultLabel: string = 'Date';
+
+  today = startOfToday();
+  yesterday = subDays(this.today, 1 );
+  startRange = addDays( this.today, 4 );
+  startEnd = subDays( this.today, 5 );
 
   constructor() {}
 }
 
+@Component({
+  template: ``,
+})
 class DateReactTestComponent extends DateTestComponent implements OnInit {
 
   form: FormGroup;
@@ -28,29 +40,31 @@ class DateReactTestComponent extends DateTestComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.fb.group({
-      date1: [ this.date1 ]
+      date1: [ this.date1 ],
+      date2: [ {value: this.date2, disabled: true } ],
+      date3: [ this.date3, Validators.required ]
     });
   }
 }
+
+const directives: any[] = [ ErrorContainerComponent, DateComponent ];
 
 describe('DateComponent', () => {
 
   describe('Custom controls - Reactive', () => {
 
-    /* DateComponent Custom controls - Reactive
-     Error: Can't resolve all parameters for DateReactTestComponent: (?).*/
-    xit('should create', fakeAsync( () => {
+    it('should create', fakeAsync( () => {
       const fixture = createTestingModule( DateReactTestComponent,
-        `<form [formGroup]='form'>
-          <common-date name='date1' formControlName='date1'></common-date>
+        `<form [formGroup]="form">
+          <common-date name="date1" formControlName="date1"></common-date>
         </form>`,
+        directives,
         true
       );
       const component = fixture.componentInstance;
-      const el = fixture.debugElement;
       tickAndDetectChanges( fixture );
       expect( component.dateComponent ).toBeTruthy();
-      expect( el.nativeElement.querySelector('legend').textContent ).toBe( this.defaultLabel );
+      expect( getLegendContext( fixture, 'common-date', 'date1') ).toBe( component.defaultLabel );
     }));
   });
 
@@ -58,39 +72,93 @@ describe('DateComponent', () => {
 
     it('should create', fakeAsync(() => {
       const fixture = createTestingModule( DateTestComponent,
-          `<common-date [(ngModel)]="date" disabled></common-date>`
+          `<form>
+            <common-date name="date1" [(ngModel)]="date1"></common-date>
+          </form>`,
+          directives
         );
 
       const component = fixture.componentInstance;
-      const el = fixture.debugElement;
       tickAndDetectChanges( fixture );
       expect( component.dateComponent ).toBeTruthy();
-      expect( el.nativeElement.querySelector('legend').textContent ).toBe( this.defaultLabel );
+      expect( getLegendContext( fixture, 'common-date', 'date1') ).toBe( component.defaultLabel );
     }));
 
     it('should set control disabled', fakeAsync(() => {
       const fixture = createTestingModule( DateTestComponent,
-          `<common-date [(ngModel)]="date" disabled></common-date>`
+          `<form>
+            <common-date name="date1" [(ngModel)]="date1" disabled></common-date>
+          </form>`,
+          directives
           );
 
       tickAndDetectChanges( fixture );
-      expect( fixture.componentInstance.dateComponent.disabled ).toBeTruthy();
+      expect( fixture.componentInstance.dateComponent.first.disabled ).toBeTruthy();
     }));
 
     it('should set control required', fakeAsync(() => {
       const fixture = createTestingModule( DateTestComponent,
-          `<common-date [(ngModel)]="date" required></common-date>`
+          `<form>
+            <common-date name="date1" [(ngModel)]="date1" required></common-date>
+            </form>`,
+            directives
           );
 
       tickAndDetectChanges( fixture );
-      expect( fixture.componentInstance.dateComponent.controlDir.hasError( 'required' ) ).toBeTruthy();
+      expect( fixture.componentInstance.dateComponent.first.controlDir.hasError( 'required' ) ).toBeTruthy();
+    }));
+
+    it('should set control no future date', fakeAsync(() => {
+      const fixture = createTestingModule( DateTestComponent,
+          `<form>
+            <common-date name="date2" [(ngModel)]="date2"
+                         [dateRangeEnd]='yesterday'></common-date>
+            </form>`,
+            directives
+          );
+
+      tickAndDetectChanges( fixture );
+      expect( fixture.componentInstance.dateComponent.first.controlDir.hasError( 'noFutureDatesAllowed' ) ).toBeTruthy();
+    }));
+
+    it('should set control no past date', fakeAsync(() => {
+      const fixture = createTestingModule( DateTestComponent,
+          `<form>
+            <common-date name="date3" [(ngModel)]="date3"
+                         [dateRangeStart]='today'></common-date>
+            </form>`,
+            directives
+          );
+
+      tickAndDetectChanges( fixture );
+      expect( fixture.componentInstance.dateComponent.first.controlDir.hasError( 'noPastDatesAllowed' ) ).toBeTruthy();
+    }));
+
+    it('should set control outside range (2 date components)', fakeAsync(() => {
+      const fixture = createTestingModule( DateTestComponent,
+          `<form>
+            <common-date name="date2" [(ngModel)]="date2"
+                         [dateRangeStart]='startRange'
+                         [dateRangeEnd]='endRange'></common-date>
+            <common-date name="date3" [(ngModel)]="date3"
+                         [dateRangeStart]='startRange'
+                         [dateRangeEnd]='endRange'></common-date>
+            </form>`,
+            directives
+          );
+
+      tickAndDetectChanges( fixture );
+      expect( fixture.componentInstance.dateComponent.first.controlDir.hasError( 'invalidRange' ) ).toBeFalsy();
+      expect( fixture.componentInstance.dateComponent.last.controlDir.hasError( 'invalidRange' ) ).toBeTruthy();
     }));
 
     xit('should set year zero invalid value error', fakeAsync(() => {
       const fixture = createTestingModule( DateTestComponent,
-        `<common-date [(ngModel)]="date"></common-date>`
+        `<form>
+          <common-date name="date1" [(ngModel)]="date1"></common-date>
+        </form>`,
+        directives
       );
-      const component = fixture.componentInstance;
 
     }));
   });
@@ -397,34 +465,3 @@ xdescribe('DateComponent (Trigger validations)', () => {
 
 });
  */
-
-
-function createTestingModule<T>(cmp: Type<T>, template: string, reactForm: boolean = false): ComponentFixture<T> {
-
-  const importComp: any = [ FormsModule ];
-  if ( reactForm ) {
-    importComp.push( ReactiveFormsModule );
-  }
-
-  TestBed.configureTestingModule({
-      declarations: [
-        cmp,
-        ErrorContainerComponent,
-        DateComponent
-      ],
-      imports: [
-        importComp
-      ],
-      providers: [ NgForm ]
-    }).overrideComponent(cmp, {
-          set: {
-              template: template
-          }
-      });
-
-  TestBed.compileComponents();
-
-  const fixture = TestBed.createComponent(cmp);
-  fixture.detectChanges();
-  return fixture;
-}

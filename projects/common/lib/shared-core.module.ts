@@ -41,8 +41,6 @@ import { FullNameComponent } from './components/full-name/full-name.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ValidateBcPostalDirective } from './components/postal-code/validate-bc-postal.directive';
 import { XiconButtonComponent } from './components/xicon-button/xicon-button.component';
-import { ValidateSinDirective } from './components/sin/validate-sin.directive';
-import { ValidatePhnDirective } from './components/phn/validate-phn.directive';
 import { DuplicateCheckDirective } from './components/duplicate-check/duplicate-check.directive';
 import { ErrorContainerComponent } from './components/error-container/error-container.component';
 import { ValidateStreetDirective } from './components/street/validate-street.directive';
@@ -99,8 +97,6 @@ const componentList = [
 
   // Directives
   ValidateNameDirective,
-  ValidateSinDirective,
-  ValidatePhnDirective,
   DuplicateCheckDirective,
   ValidateBcPostalDirective,
   ValidateStreetDirective,

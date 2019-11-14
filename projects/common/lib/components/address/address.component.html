@@ -9,7 +9,7 @@
                      (selectEvent)="setAddress($event)"
                      [required]="isRequired"
                      [disabled]="readOnlyFields.address"
-                     [maxlen]="fieldMaxLenghts.address"
+                     [maxlength]="fieldMaxLenghts.address"
                      commonValidateStreet></common-street>
     </div>
     <div class="col-1"
@@ -35,7 +35,7 @@
                      name="street_line_2_{{objectId}}"
                      [useGeoCoder]='false'
                      [(ngModel)]='addr.addressLine2'
-                     [maxlen]="fieldMaxLenghts.address"
+                     [maxlength]="fieldMaxLenghts.address"
                      [disabled]="readOnlyFields.address"
                      commonValidateStreet></common-street>
     </div>
@@ -61,7 +61,7 @@
                      name="street_line_3_{{objectId}}"
                      [useGeoCoder]='false'
                      [(ngModel)]='addr.addressLine3'
-                     [maxlen]="fieldMaxLenghts.address"
+                     [maxlength]="fieldMaxLenghts.address"
                      [disabled]="readOnlyFields.address"
                      commonValidateStreet></common-street>
     </div>
@@ -84,7 +84,7 @@
                (ngModelChange)="setCity($event)"
                [required]="isRequired"
                [disabled]="readOnlyFields.city"
-               [maxlen]="fieldMaxLenghts.city"
+               [maxlength]="fieldMaxLenghts.city"
                commonValidateCity></common-city>
 </div>
 
@@ -98,7 +98,7 @@
                    [disabled]="readOnlyFields.province"
                    placeholder="{{ isCanada()? 'Select a Province': 'Select a State' }}"
                    [useDropDownList]="isCanada()"
-                   [maxlen]="fieldMaxLenghts.province"
+                   [maxlength]="fieldMaxLenghts.province"
                    commonValidateRegion></common-province>
 </div>
 

@@ -1,28 +1,26 @@
-import { Component, Input, Output, EventEmitter, Optional, Self, OnInit } from '@angular/core';
-import { Base } from '../../models/base';
-import { ControlValueAccessor, NgControl } from '@angular/forms';
+import { Component, Input, Output, EventEmitter, Optional, Self, OnInit, HostListener } from '@angular/core';
+import { NgControl } from '@angular/forms';
 import { Observable, Subject, of } from 'rxjs';
 import { GeoAddressResult, GeocoderService } from '../../services/geocoder.service';
 import { debounceTime, distinctUntilChanged, switchMap, catchError } from 'rxjs/operators';
 import { TypeaheadMatch } from 'ngx-bootstrap';
-import { ErrorMessage } from '../../../public_api';
+import { AbstractFormControl } from '../../models/abstract-form-control';
+import { ErrorMessage, LabelReplacementTag } from '../../models/error-message.interface';
+import { CANADA } from '../country/country.component';
+import { BRITISH_COLUMBIA } from '../province/province.component';
 
 @Component({
   selector: 'common-street',
   templateUrl: './street.component.html',
   styleUrls: ['./street.component.scss']
 })
-export class StreetComponent extends Base implements OnInit, ControlValueAccessor  {
+export class StreetComponent extends AbstractFormControl implements OnInit  {
 
   @Input() label: string = 'Full street address or rural route';
-  @Input() maxlen: string = '250';
-  // TODO - Replace maxlen with maxlength across this and all other components
-  // @Input() maxlength: string = '250';
+  @Input() maxlength: string = '250';
   @Input() labelforId: string = 'street_' + this.objectId;
-  @Input() disabled: boolean = false;
   @Input() useGeoCoder: boolean = false;
   @Input() placeholder: string = 'Street name';
-  @Input() errorMessage: ErrorMessage;
 
   @Input()
   set value( val: string ) {
@@ -35,8 +33,8 @@ export class StreetComponent extends Base implements OnInit, ControlValueAccesso
   }
 
   @Output() valueChange: EventEmitter<string> = new EventEmitter<string>();
-  @Output() blurEvent: EventEmitter<any> = new EventEmitter<any>();
-  @Output() selectEvent: EventEmitter<GeoAddressResult> = new EventEmitter<GeoAddressResult>();
+  @Output() blur: EventEmitter<any> = new EventEmitter<any>();
+  @Output() select: EventEmitter<GeoAddressResult> = new EventEmitter<GeoAddressResult>();
 
   street: string = '';
 
@@ -51,14 +49,12 @@ export class StreetComponent extends Base implements OnInit, ControlValueAccesso
   /** The subject that triggers on user text input and gets typeaheadList$ to update.  */
   private searchText$ = new Subject<string>();
 
-  defaultErrMsg: ErrorMessage = {
-    required: 'is required.',
-    invalidChar: 'must contain letters, and numbers and may include special characters such as hyphen, ' +
+  _defaultErrMsg: ErrorMessage = {
+    required:  LabelReplacementTag + ' is required.',
+    invalidChar: LabelReplacementTag + ' must contain letters, and numbers and may include special characters such as hyphen, ' +
                  'period, apostrophe, number sign, ampersand and blank characters.'
   };
 
-  _onChange = (_: any) => {};
-  _onTouched = (_: any) => {};
 
   constructor( @Optional() @Self() public controlDir: NgControl,
                private geocoderService: GeocoderService ) {
@@ -69,8 +65,9 @@ export class StreetComponent extends Base implements OnInit, ControlValueAccesso
   }
 
   ngOnInit() {
+    // console.log( 'GeoCoder: ', this.useGeoCoder );
 
-    this.setErrorMsg();
+    super.ngOnInit();
 
     // Set up for using GeoCoder
     this.typeaheadList$ = this.searchText$.pipe(
@@ -81,7 +78,7 @@ export class StreetComponent extends Base implements OnInit, ControlValueAccesso
         return this.geocoderService.lookup(searchPhrase);
       }),
       // tap(log => console.log('taplog', log)),
-      catchError(err => this.onError(err))
+      catchError(err => this.onError())
     );
   }
 
@@ -94,9 +91,9 @@ export class StreetComponent extends Base implements OnInit, ControlValueAccesso
     this.valueChange.emit( value );
   }
 
-  onBlurEvent( event: any ) {
+  onBlur( event: any ) {
     this._onTouched( event );
-    this.blurEvent.emit( event );
+    this.blur.emit( event );
   }
 
   writeValue( value: any ): void {
@@ -105,22 +102,9 @@ export class StreetComponent extends Base implements OnInit, ControlValueAccesso
     }
   }
 
-  // Register change function
-  registerOnChange( fn: any ): void {
-    this._onChange = fn;
-  }
-
-  // Register touched function
-  registerOnTouched( fn: any ): void {
-    this._onTouched = fn;
-  }
-
-  setDisabledState(isDisabled: boolean): void {
-    this.disabled = isDisabled;
-  }
-
-
+  // @HostListener('keyup', ['$event'])
   onKeyUp(event: KeyboardEvent): void {
+    console.log( 'onKeyUp: ', event );
     /**
      * Filter out 'enter' and other similar keyboard events that can trigger
      * when user is selecting a typeahead option instead of entering new text.
@@ -135,20 +119,20 @@ export class StreetComponent extends Base implements OnInit, ControlValueAccesso
     this.searchText$.next(this.search);
   }
 
-  onError(err: any): Observable<GeoAddressResult[]> {
+  onError(): Observable<GeoAddressResult[]> {
     // Empty array simulates no result response, nothing for typeahead to iterate over
     return of([]);
   }
 
   onSelect(event: TypeaheadMatch): void {
-    console.log( 'onSelect: ', event.item );
-    this.street = event.item.street;
-    this.selectEvent.emit( event.item );
+    // console.log( 'onSelect: ', event.item );
+    const data: GeoAddressResult = event.item;
+    this.street = data.street;
+
+    // Set to defaults in response
+    data.country = CANADA;
+    data.province = BRITISH_COLUMBIA;
+    this.select.emit( data );
   }
 
-  private setErrorMsg() {
-    if ( this.errorMessage ) {
-      Object.keys(this.errorMessage).map( x => this.defaultErrMsg[x] = this.errorMessage[x] );
-    }
-  }
 }
