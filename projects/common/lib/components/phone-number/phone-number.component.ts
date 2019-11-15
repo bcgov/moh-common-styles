@@ -61,7 +61,7 @@ export class PhoneNumberComponent extends AbstractFormControl implements OnInit 
   // Abstact variable defined
   _defaultErrMsg: ErrorMessage = {
     required: `${LabelReplacementTag} is required.`,
-    incompleteValue: `${LabelReplacementTag} is an incomplete phone number.`
+    incompleteValue: `${LabelReplacementTag} does not appear to be valid.`
   };
 
   constructor(@Optional() @Self() public controlDir: NgControl) {
