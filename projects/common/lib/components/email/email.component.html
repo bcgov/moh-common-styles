@@ -5,18 +5,17 @@
        id="{{labelforId}}"
        [value]="email"
        (change)="onValueChange( $event.target.value )"
-       (blur)="onBlurEvent( $event )"
+       (blur)="onBlur( $event )"
        [disabled]="disabled"
        [attr.maxlength]="maxlength"
-       commonValidateEmail
        autocomplete="off" />
 <!-- Error messages for component -->
 <common-error-container [displayError]="controlDir && !disabled && (controlDir.dirty || controlDir.touched) && controlDir?.errors">
   <div *ngIf="controlDir?.errors?.required">
-    {{label}} is required.
+    {{_defaultErrMsg.required}}
   </div>
-  <div *ngIf="controlDir?.errors?.invalidEmail && !controlDir?.errors?.required">
-    Invalid email format.
+  <div *ngIf="controlDir?.errors?.invalidEmail">
+    {{_defaultErrMsg.invalidEmail}}
   </div>
 </common-error-container>
 

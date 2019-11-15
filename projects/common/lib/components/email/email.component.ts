@@ -4,9 +4,12 @@ import {
   Optional,
   Self,
   Output,
-  EventEmitter } from '@angular/core';
-import { ControlValueAccessor, NgControl } from '@angular/forms';
+  EventEmitter,
+  OnInit} from '@angular/core';
+import { ControlValueAccessor, NgControl, ValidationErrors } from '@angular/forms';
 import { Base } from '../../models/base';
+import { AbstractFormControl } from '../../models/abstract-form-control';
+import { ErrorMessage, LabelReplacementTag } from '../../models/error-message.interface';
 
 /**
  * TODO DOCUMENT NEED TO USE NGMODEL FOR REQUIRED TO WORK. Also test with reactive forms to see if still nec
@@ -16,9 +19,8 @@ import { Base } from '../../models/base';
   templateUrl: './email.component.html',
   styleUrls: ['./email.component.scss']
 })
-export class EmailComponent extends Base implements ControlValueAccessor {
+export class EmailComponent extends AbstractFormControl implements OnInit {
 
-  @Input() disabled: boolean = false;
   @Input() label: string = 'Email';
   @Input() maxlength: string = '255';
   @Input() labelforId: string = 'email_' + this.objectId;
@@ -34,12 +36,16 @@ export class EmailComponent extends Base implements ControlValueAccessor {
   }
 
   @Output() valueChange: EventEmitter<string> = new EventEmitter<string>();
-  @Output() blurEvent: EventEmitter<any> = new EventEmitter<any>();
+  @Output() blur: EventEmitter<any> = new EventEmitter<any>();
 
-  public email: string = '';
+  email: string = '';
 
-  _onChange = (_: any) => {};
-  _onTouched = (_: any) => {};
+  _defaultErrMsg: ErrorMessage = {
+    required: `${LabelReplacementTag} is required.`,
+    invalidEmail: 'Invalid email format.'
+  };
+
+  private criteria: RegExp = /^(\S+)@(\S+)\.(\S+)$/;
 
   constructor( @Optional() @Self() public controlDir: NgControl ) {
     super();
@@ -48,14 +54,21 @@ export class EmailComponent extends Base implements ControlValueAccessor {
     }
   }
 
-  onValueChange( value: any ) {
-      this._onChange( value );
-      this.valueChange.emit( value );
+  ngOnInit() {
+    super.ngOnInit();
+
+    this.registerValidation( this.controlDir, this.validateSelf );
   }
 
-  onBlurEvent( event: any ) {
+  onValueChange( value: any ) {
+    this.email = value;
+    this._onChange( value );
+    this.valueChange.emit( value );
+  }
+
+  onBlur( event: any ) {
     this._onTouched( event );
-    this.blurEvent.emit( event.target.value );
+    this.blur.emit( event.target.value );
   }
 
   writeValue( value: any ): void {
@@ -64,21 +77,12 @@ export class EmailComponent extends Base implements ControlValueAccessor {
     }
   }
 
-  // Register change function
-  registerOnChange( fn: any ): void {
-    this._onChange = fn;
-  }
+  private validateSelf(): ValidationErrors | null {
 
-  // Register touched function
-  registerOnTouched( fn: any ): void {
-    this._onTouched = fn;
-  }
-
-  setDisabledState(isDisabled: boolean): void {
-    this.disabled = isDisabled;
-  }
-
-  get maxLenAsNumber(): number {
-    return Number.parseInt( this.maxlength, 10 );
+    if ( this.email ) {
+      const result = this.criteria.test( this.email );
+      return result ? null : { invalidEmail: true };
+    }
+    return null;
   }
 }
