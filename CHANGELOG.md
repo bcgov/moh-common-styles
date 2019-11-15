@@ -1,4 +1,13 @@
-# Unreleased "moh-common-lib" (2019-11-14)
+# Unreleased "moh-common-lib" (2019-11-15)
+
+
+
+# [3.0.0-rc.15](https://github.com/bcgov/moh-common-styles/compare/v3.0.0-rc.14...v3.0.0-rc.15) "moh-common-lib" (2019-11-15)
+
+
+### Code Refactoring
+
+* email component uses abstract control class and is self-validing, units tests started ([f21d329](https://github.com/bcgov/moh-common-styles/commit/f21d329))
 
 
 
