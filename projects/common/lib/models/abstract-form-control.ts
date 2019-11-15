@@ -46,8 +46,8 @@ export abstract class AbstractFormControl extends Base implements OnInit, Contro
   }
 
   protected setErrorMsg() {
-    // Some components have logic based off no label being submitted
-    const _label = this.label ? this.label : 'Field';
+    // Some components have logic based off no label being submitted - strip off '(optional)'
+    const _label = this.label ? this.label.replace( '(optional)' , '' ) : 'Field';
 
     if ( this.errorMessage ) {
       Object.keys(this.errorMessage).map( x => this._defaultErrMsg[x] = this.errorMessage[x] );
