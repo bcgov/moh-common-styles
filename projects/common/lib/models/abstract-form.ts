@@ -3,7 +3,8 @@ import { NgForm } from '@angular/forms';
 import { Router, Params } from '@angular/router';
 
 /**
- *
+ * TODO: Make interface for abstract form - this form is the template form implementation
+ * Need to create a reactive form implementation
  */
 export abstract class AbstractForm {
   /** Access to the form elements for validation */
