@@ -61,7 +61,7 @@ export class PhoneNumberComponent extends AbstractFormControl implements OnInit 
   // Abstact variable defined
   _defaultErrMsg: ErrorMessage = {
     required: `${LabelReplacementTag} is required.`,
-    incompleteValue: `${LabelReplacementTag} is an incomplete phone number.`
+    incompleteValue: `${LabelReplacementTag} does not appear to be valid.`
   };
 
   constructor(@Optional() @Self() public controlDir: NgControl) {
@@ -103,8 +103,7 @@ export class PhoneNumberComponent extends AbstractFormControl implements OnInit 
   }
 
   setPhoneNumber(value) {
-    console.log( 'setPhoneNumber: ', value );
-    // const value = evt.target.value;
+    // console.log( 'setPhoneNumber: ', value );
     this.phoneNumber = value;
     this.valueChange.emit(this.phoneNumber);
     this._onChange(value);
@@ -140,7 +139,5 @@ export class PhoneNumberComponent extends AbstractFormControl implements OnInit 
 
     }
     return null;
-
   }
-
 }

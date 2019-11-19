@@ -6,8 +6,7 @@ import {
   Output,
   EventEmitter,
   OnInit} from '@angular/core';
-import { ControlValueAccessor, NgControl, ValidationErrors } from '@angular/forms';
-import { Base } from '../../models/base';
+import { NgControl, ValidationErrors } from '@angular/forms';
 import { AbstractFormControl } from '../../models/abstract-form-control';
 import { ErrorMessage, LabelReplacementTag } from '../../models/error-message.interface';
 
@@ -42,7 +41,7 @@ export class EmailComponent extends AbstractFormControl implements OnInit {
 
   _defaultErrMsg: ErrorMessage = {
     required: `${LabelReplacementTag} is required.`,
-    invalidEmail: 'Invalid email format.'
+    invalidEmail: `${LabelReplacementTag} must be properly formatted (e.g. name@domain.com)`
   };
 
   private criteria: RegExp = /^(\S+)@(\S+)\.(\S+)$/;

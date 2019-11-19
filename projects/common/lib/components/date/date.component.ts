@@ -211,7 +211,7 @@ You must use either [restrictDate] or the [dateRange*] inputs.
   }
 
   setDay(value: string) {
-    console.log('seDay', value, this.date);
+   // console.log('seDay', value, this.date);
     const day = this.getNumericValue(value);
     // console.log('set-day', {day, value});
     this._day = value;
