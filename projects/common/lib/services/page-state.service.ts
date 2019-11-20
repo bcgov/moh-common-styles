@@ -18,7 +18,7 @@ export class CommonPageStateService {
   constructor() { }
 
   // Setter for applications who save data using a storage service
-  pageList( list: CommonPageList[] ) {
+  set pageList( list: CommonPageList[] ) {
     this._pageList = list;
   }
 
