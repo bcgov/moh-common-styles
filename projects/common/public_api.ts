@@ -31,9 +31,10 @@ export * from './lib/models/images.model';
 export * from './lib/services/abstract-api-service';
 export * from './lib/services/geocoder.service';
 export * from './lib/services/logger.service';
-export * from './lib/services/check-complete-base.service';
+export * from './lib/services/check-complete-base.service'; // TODO: depreciate - doesn't work correctly
 export * from './lib/services/route-guard.service';
 export * from './lib/services/abstract-pg-check.service';
+export * from './lib/services/page-state.service';
 
 // Validators
 export { commonValidateName } from './lib/components/name/validate-name.directive';
