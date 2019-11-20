@@ -672,8 +672,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="113"
-                            class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:113</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="112"
+                            class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:112</a></div>
                 </td>
             </tr>
 
@@ -806,8 +806,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="126"
-                            class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:126</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="125"
+                            class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:125</a></div>
                 </td>
             </tr>
 
@@ -845,8 +845,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="118"
-                            class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:118</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="117"
+                            class="link-to-prism">projects/common/lib/components/phone-number/phone-number.component.ts:117</a></div>
                 </td>
             </tr>
 
@@ -1418,7 +1418,7 @@
                         <td class="col-md-4">
                             <i>Default value : </i><code>{
     required: &#x60;${LabelReplacementTag} is required.&#x60;,
-    incompleteValue: &#x60;${LabelReplacementTag} is an incomplete phone number.&#x60;
+    incompleteValue: &#x60;${LabelReplacementTag} does not appear to be valid.&#x60;
   }</code>
                         </td>
                     </tr>
@@ -1885,7 +1885,7 @@ export class PhoneNumberComponent extends AbstractFormControl implements OnInit 
   // Abstact variable defined
   _defaultErrMsg: ErrorMessage &#x3D; {
     required: &#x60;${LabelReplacementTag} is required.&#x60;,
-    incompleteValue: &#x60;${LabelReplacementTag} is an incomplete phone number.&#x60;
+    incompleteValue: &#x60;${LabelReplacementTag} does not appear to be valid.&#x60;
   };
 
   constructor(@Optional() @Self() public controlDir: NgControl) {
@@ -1927,8 +1927,7 @@ export class PhoneNumberComponent extends AbstractFormControl implements OnInit 
   }
 
   setPhoneNumber(value) {
-    console.log( &#x27;setPhoneNumber: &#x27;, value );
-    // const value &#x3D; evt.target.value;
+    // console.log( &#x27;setPhoneNumber: &#x27;, value );
     this.phoneNumber &#x3D; value;
     this.valueChange.emit(this.phoneNumber);
     this._onChange(value);
@@ -1964,9 +1963,7 @@ export class PhoneNumberComponent extends AbstractFormControl implements OnInit 
 
     }
     return null;
-
   }
-
 }
 </code></pre>
     </div>

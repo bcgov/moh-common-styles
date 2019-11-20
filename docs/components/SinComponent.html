@@ -1892,9 +1892,9 @@ export class SinComponent extends AbstractFormControl implements OnInit {
   onValueChange( value: any ) {
 
     if ( value !&#x3D;&#x3D; this.sin ) { // IE fix when focus does not display required error
+      this.sin &#x3D; value;
       this._onChange( value );
       this.valueChange.emit( value );
-      this.sin &#x3D; value;
     }
   }
 

@@ -1,4 +1,15 @@
-# Unreleased "moh-common-lib" (2019-11-15)
+# Unreleased "moh-common-lib" (2019-11-20)
+
+
+
+# [3.0.0-rc.16](https://github.com/bcgov/moh-common-styles/compare/v3.0.0-rc.15...v3.0.0-rc.16) "moh-common-lib" (2019-11-20)
+
+
+### Bug Fixes
+
+* set sin value before call onChange ([7e270d8](https://github.com/bcgov/moh-common-styles/commit/7e270d8))
+* updated email error message, strip off (optional) from labels ([788c3d1](https://github.com/bcgov/moh-common-styles/commit/788c3d1))
+* updated phone error message ([f0202f2](https://github.com/bcgov/moh-common-styles/commit/f0202f2))
 
 
 
