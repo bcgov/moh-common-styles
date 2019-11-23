@@ -118,7 +118,7 @@ describe('PageStateService', () => {
     expect( Object.keys( pageList[0]).length ).toEqual( 5 );
   });
 
-  it('should set url complete', () => {
+  it('able to navigate to all URLs', () => {
 
     const ROUTES_LIST = {
       ROUTE_1: {
@@ -157,16 +157,16 @@ describe('PageStateService', () => {
     service.setPages( pages, ROUTES_LIST, addKeys );
 
     service.setPageComplete( ROUTES_LIST.ROUTE_1.fullpath );
-    expect( service.isPageComplete( ROUTES_LIST.ROUTE_1.fullpath ) ).toBeTruthy();
+    expect( service.canNavigateToPage( ROUTES_LIST.ROUTE_1.fullpath ) ).toBeTruthy();
 
     service.setPageComplete( ROUTES_LIST.ROUTE_2.fullpath );
-    expect( service.isPageComplete( ROUTES_LIST.ROUTE_2.fullpath ) ).toBeTruthy();
+    expect( service.canNavigateToPage( ROUTES_LIST.ROUTE_2.fullpath ) ).toBeTruthy();
 
     service.setPageComplete( ROUTES_LIST.ROUTE_3.fullpath );
-    expect( service.isPageComplete( ROUTES_LIST.ROUTE_3.fullpath ) ).toBeTruthy();
+    expect( service.canNavigateToPage( ROUTES_LIST.ROUTE_3.fullpath ) ).toBeTruthy();
   });
 
-  it('should set url incomplete including future pages', () => {
+  it('able to navigate to past, and present pages, but not future page', () => {
 
     const ROUTES_LIST = {
       ROUTE_1: {
@@ -208,13 +208,13 @@ describe('PageStateService', () => {
     service.setPageComplete( ROUTES_LIST.ROUTE_2.fullpath );
     service.setPageComplete( ROUTES_LIST.ROUTE_3.fullpath );
 
-    service.setPageIncomplete( ROUTES_LIST.ROUTE_2.fullpath );
-    expect( service.isPageComplete( ROUTES_LIST.ROUTE_1.fullpath ) ).toBeTruthy();
-    expect( service.isPageComplete( ROUTES_LIST.ROUTE_2.fullpath ) ).toBeFalsy();
-    expect( service.isPageComplete( ROUTES_LIST.ROUTE_3.fullpath ) ).toBeFalsy();
+    service.setPageIncomplete( ROUTES_LIST.ROUTE_2.fullpath );  // present page
+    expect( service.canNavigateToPage( ROUTES_LIST.ROUTE_1.fullpath ) ).toBeTruthy();
+    expect( service.canNavigateToPage( ROUTES_LIST.ROUTE_2.fullpath ) ).toBeTruthy();
+    expect( service.canNavigateToPage( ROUTES_LIST.ROUTE_3.fullpath ) ).toBeFalsy();
   });
 
-  it('should set all pages in list to incomplete', () => {
+  it('able to navigate to first page only', () => {
 
     const ROUTES_LIST = {
       ROUTE_1: {
@@ -257,12 +257,12 @@ describe('PageStateService', () => {
     service.setPageComplete( ROUTES_LIST.ROUTE_3.fullpath );
 
     service.clearCompletePages();
-    expect( service.isPageComplete( ROUTES_LIST.ROUTE_1.fullpath ) ).toBeFalsy();
-    expect( service.isPageComplete( ROUTES_LIST.ROUTE_2.fullpath ) ).toBeFalsy();
-    expect( service.isPageComplete( ROUTES_LIST.ROUTE_3.fullpath ) ).toBeFalsy();
+    expect( service.canNavigateToPage( ROUTES_LIST.ROUTE_1.fullpath ) ).toBeTruthy();
+    expect( service.canNavigateToPage( ROUTES_LIST.ROUTE_2.fullpath ) ).toBeFalsy();
+    expect( service.canNavigateToPage( ROUTES_LIST.ROUTE_3.fullpath ) ).toBeFalsy();
   });
 
-  it('should find index for url in page list', () => {
+  it('should find index for URL in page list', () => {
 
     const ROUTES_LIST = {
       ROUTE_1: {
