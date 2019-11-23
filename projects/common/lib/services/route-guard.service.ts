@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { AbstractPgCheckService } from './abstract-pg-check.service';
 
 /**
+ * @deprecated
  * Use this service to implement Route Guards in your application. This is for a
  * typical form flow, where the user must proceed sequentially from one page to
  * the next.
