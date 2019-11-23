@@ -1,5 +1,5 @@
 import { TestBed, tick } from '@angular/core/testing';
-import { CommonPageStateService, CommonPageList } from './page-state.service';
+import { PageStateService, PageList } from './page-state.service';
 import { Routes } from '@angular/router';
 import { Component } from '@angular/core';
 
@@ -38,7 +38,7 @@ describe('PageStateService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: CommonPageStateService = TestBed.get(CommonPageStateService);
+    const service: PageStateService = TestBed.get(PageStateService);
     expect(service).toBeTruthy();
   });
 
@@ -70,8 +70,8 @@ describe('PageStateService', () => {
         component: RouteThreeComponent
       }
     ];
-    let pageList: CommonPageList[] = [];
-    const service: CommonPageStateService = TestBed.get(CommonPageStateService);
+    let pageList: PageList[] = [];
+    const service: PageStateService = TestBed.get(PageStateService);
     pageList = service.setPages( pages, ROUTES_LIST );
     expect(pageList.length).toEqual( 3 );
     expect( Object.keys( pageList[0]).length ).toEqual( 3 );
@@ -111,8 +111,8 @@ describe('PageStateService', () => {
         component: RouteThreeComponent
       }
     ];
-    let pageList: CommonPageList[] = [];
-    const service: CommonPageStateService = TestBed.get(CommonPageStateService);
+    let pageList: PageList[] = [];
+    const service: PageStateService = TestBed.get(PageStateService);
     pageList = service.setPages( pages, ROUTES_LIST, addKeys );
     expect(pageList.length).toEqual( 3 );
     expect( Object.keys( pageList[0]).length ).toEqual( 5 );
@@ -153,7 +153,7 @@ describe('PageStateService', () => {
       }
     ];
 
-    const service: CommonPageStateService = TestBed.get(CommonPageStateService);
+    const service: PageStateService = TestBed.get(PageStateService);
     service.setPages( pages, ROUTES_LIST, addKeys );
 
     service.setPageComplete( ROUTES_LIST.ROUTE_1.fullpath );
@@ -201,7 +201,7 @@ describe('PageStateService', () => {
       }
     ];
 
-    const service: CommonPageStateService = TestBed.get(CommonPageStateService);
+    const service: PageStateService = TestBed.get(PageStateService);
     service.setPages( pages, ROUTES_LIST, addKeys );
 
     service.setPageComplete( ROUTES_LIST.ROUTE_1.fullpath );
@@ -249,7 +249,7 @@ describe('PageStateService', () => {
       }
     ];
 
-    const service: CommonPageStateService = TestBed.get(CommonPageStateService);
+    const service: PageStateService = TestBed.get(PageStateService);
     service.setPages( pages, ROUTES_LIST, addKeys );
 
     service.setPageComplete( ROUTES_LIST.ROUTE_1.fullpath );
@@ -297,7 +297,7 @@ describe('PageStateService', () => {
       }
     ];
 
-    const service: CommonPageStateService = TestBed.get(CommonPageStateService);
+    const service: PageStateService = TestBed.get(PageStateService);
     service.setPages( pages, ROUTES_LIST, addKeys );
 
     const idx = service.findIndex( ROUTES_LIST.ROUTE_2.fullpath );

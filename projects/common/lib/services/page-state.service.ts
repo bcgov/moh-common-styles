@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Route } from '@angular/router';
 
-export interface CommonPageList {
+export interface PageList {
   index: number;
   path: string;
   isComplete: boolean;
@@ -11,15 +11,15 @@ export interface CommonPageList {
 @Injectable({
   providedIn: 'root'
 })
-export class CommonPageStateService {
+export class PageStateService {
 
-  pageList: CommonPageList[] = [];
+  pageList: PageList[] = [];
 
   constructor() { }
 
   setPages( arr: Route[],
             routeListConst: any,
-            fn?: (x: any) => {[key: string]: any} ): CommonPageList[] {
+            fn?: (x: any) => {[key: string]: any} ): PageList[] {
 
     if ( this.pageList && !this.pageList.length ) {
 
@@ -60,7 +60,7 @@ export class CommonPageStateService {
     return idx;
   }
 
-  getPageAtIndex( idx: number ): CommonPageList  | null {
+  getPageAtIndex( idx: number ): PageList  | null {
     const index = idx - 1;
     if ( this.pageList && index >= 0 && this.pageList.length > index ) {
       return this.pageList[index];
