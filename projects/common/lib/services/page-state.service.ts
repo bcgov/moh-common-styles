@@ -92,10 +92,9 @@ export class PageStateService {
     let complete = false;
     const obj = this.pageList.find( x => path.includes(x.path) );
     if ( obj ) {
-      // Requirement to continue is the previous page must also be complete
+      // Can navigate to first play whether complete or not
       const prevIdx = obj.index - 1;
-      complete = (prevIdx === 0 ? obj.isComplete :
-        this.pageList[prevIdx - 1].isComplete );
+      complete = (prevIdx === 0 ? true : this.pageList[prevIdx - 1].isComplete );
     }
     return complete;
   }
