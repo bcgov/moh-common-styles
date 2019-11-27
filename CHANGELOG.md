@@ -1,4 +1,20 @@
-# Unreleased "moh-common-lib" (2019-11-20)
+# Unreleased "moh-common-lib" (2019-11-27)
+
+
+
+# [3.0.0-rc.17](https://github.com/bcgov/moh-common-styles/compare/v3.0.0-rc.16...v3.0.0-rc.17) "moh-common-lib" (2019-11-27)
+
+
+### Features
+
+* **FormActionBar:** Automatically call scrollToError on click. ([3ff09e0](https://github.com/bcgov/moh-common-styles/commit/3ff09e0))
+* **Helper:** Create scrollToError() function. ([7bf5025](https://github.com/bcgov/moh-common-styles/commit/7bf5025))
+
+
+### Styles
+
+* **FileUpload:** Reduce default size by removing a spacing element. ([322d58c](https://github.com/bcgov/moh-common-styles/commit/322d58c))
+* **PostalCode:** Remove placeholder ([f27b941](https://github.com/bcgov/moh-common-styles/commit/f27b941))
 
 
 
