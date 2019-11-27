@@ -25,9 +25,9 @@
   </div>
 
   <div *ngIf="fileControl?.touched" role="alert" class='error-container' aria-live="assertive">
-    <div class="text-danger" *ngIf="fileControl?.errors?.required">
+    <common-error-container [displayError]="fileControl?.errors?.required">
       {{errorMessages.required}}
-    </div>
+    </common-error-container>
   </div>
 
   <div class="preview-zone">
