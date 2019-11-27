@@ -6,7 +6,6 @@
        [ngModel]="postalCode"
        (ngModelChange)="onValueChange($event)"
        (blur)="onBlurEvent($event)"
-       [placeholder]="placeholder"
        [textMask]="{mask: mask, pipe: upperCasePipe}"
        [disabled]="disabled"
        autocomplete="off"/>
@@ -19,7 +18,7 @@
       {{label}} {{defaultErrMsg.required}}
     </div>
     <div *ngIf="controlDir?.errors?.pattern">
-      {{defaultErrMsg.pattern}} {{placeholder}}.
+      {{defaultErrMsg.pattern}}
     </div>
     <div *ngIf="controlDir?.errors?.invalidBCPostal">
       {{defaultErrMsg.invalidBCPostal}}

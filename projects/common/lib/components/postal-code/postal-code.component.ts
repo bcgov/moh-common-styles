@@ -15,7 +15,6 @@ export class PostalCodeComponent extends Base implements OnInit, ControlValueAcc
   @Input() label: string = 'Postal Code';
   @Input() displayMask: boolean = true;
   @Input() maxlen: string = '250';
-  @Input() placeholder: string = 'A1A 1A1';
   @Input() labelforId: string = 'postalCode_' + this.objectId;
   @Input() disabled: boolean = false;
   @Input() errorMessage: ErrorMessage;
@@ -41,7 +40,7 @@ export class PostalCodeComponent extends Base implements OnInit, ControlValueAcc
   defaultErrMsg: ErrorMessage = {
     required: 'is required.',
     invalidChar: 'must contain letters and/or numbers and may include blank characters.',
-    pattern: 'Must be in the format',
+    pattern: 'Must be in the format A1A 1A1',
     invalidBCPostal: 'Invalid postal code for British Columbia.'
   };
 
