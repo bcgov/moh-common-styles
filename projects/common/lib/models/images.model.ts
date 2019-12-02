@@ -28,10 +28,21 @@ export class CommonImage {
 
     uuid: string;
 
-    constructor() {
+    /**
+     * @param fileContent (optional) The base64 of an image. See `fileContent` property.
+     */
+    constructor(fileContent?: string) {
         this.uuid = UUID.UUID();
+        if (fileContent) {
+            this.fileContent = fileContent;
+        }
     }
 
+    /**
+     * The base64 content of an image.  Must already be base64 or some other stringable data-type.
+     * 
+     * You should be able to do <img src='myCommonImage.fileContent'> to render the image.
+     */
     fileContent: string;
     contentType: string;
     // number of bytes.
