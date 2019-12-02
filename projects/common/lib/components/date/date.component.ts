@@ -251,12 +251,12 @@ You must use either [restrictDate] or the [dateRange*] inputs.
       const day = this.getNumericValue(this._day);
       // console.log('CREATING DATE', { year, month, day });
 
-      // Date function appears to use setYear() so any year 0-99 results in yar 1900 to 1999
+      // Date function appears to use setYear() so any year 0-99 results in year 1900 to 1999
       // Set each field individually, use setFullYear() instead of setYear()
-      this.date  = new Date();
-      this.date .setFullYear( year );
-      this.date .setMonth( month );
-      this.date .setDate( day );
+      this.date = new Date();
+      this.date.setFullYear(year);
+      this.date.setMonth(month);
+      this.date.setDate(day);
       this._onChange(this.date);
       this.dateChange.emit(this.date);
     } else {
