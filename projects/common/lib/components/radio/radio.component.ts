@@ -42,6 +42,7 @@ import { NgControl } from '@angular/forms';
 export interface IRadioItems {
   label: string;
   value: any;
+  // TODO: Make value generic <T>
 }
 @Component({
   selector: 'common-radio',
