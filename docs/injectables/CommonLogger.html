@@ -174,6 +174,10 @@
                                     <span class="modifier">Protected</span>
                                 <a href="#setupRequest">setupRequest</a>
                             </li>
+                            <li>
+                                    <span class="modifier">Protected</span>
+                                <a href="#uploadAttachment">uploadAttachment</a>
+                            </li>
                         </ul>
                     </td>
                 </tr>
@@ -1081,7 +1085,7 @@ repurpose it to event type.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../classes/AbstractHttpService.html#source" target="_self" >AbstractHttpService:63</a></code>
+                        <div class="io-line">Defined in         <code><a href="../classes/AbstractHttpService.html#source" target="_self" >AbstractHttpService:64</a></code>
 </div>
                 </td>
             </tr>
@@ -1128,7 +1132,7 @@ repurpose it to event type.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../classes/AbstractHttpService.html#source" target="_self" >AbstractHttpService:23</a></code>
+                        <div class="io-line">Defined in         <code><a href="../classes/AbstractHttpService.html#source" target="_self" >AbstractHttpService:24</a></code>
 </div>
                 </td>
             </tr>
@@ -1235,7 +1239,7 @@ repurpose it to event type.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../classes/AbstractHttpService.html#source" target="_self" >AbstractHttpService:60</a></code>
+                        <div class="io-line">Defined in         <code><a href="../classes/AbstractHttpService.html#source" target="_self" >AbstractHttpService:61</a></code>
 </div>
                 </td>
             </tr>
@@ -1315,7 +1319,7 @@ repurpose it to event type.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../classes/AbstractHttpService.html#source" target="_self" >AbstractHttpService:31</a></code>
+                        <div class="io-line">Defined in         <code><a href="../classes/AbstractHttpService.html#source" target="_self" >AbstractHttpService:32</a></code>
 </div>
                 </td>
             </tr>
@@ -1406,7 +1410,7 @@ repurpose it to event type.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../classes/AbstractHttpService.html#source" target="_self" >AbstractHttpService:39</a></code>
+                        <div class="io-line">Defined in         <code><a href="../classes/AbstractHttpService.html#source" target="_self" >AbstractHttpService:40</a></code>
 </div>
                 </td>
             </tr>
@@ -1453,6 +1457,108 @@ repurpose it to event type.</p>
                     </div>
                     <div class="io-description">
                         <b>Returns : </b>    <code>Observable&lt;T&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="uploadAttachment"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Protected</span>
+                            uploadAttachment
+                        </b>
+                        <a href="#uploadAttachment"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>uploadAttachment(relativeUrl: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, attachment: <a href="../classes/CommonImage.html">CommonImage</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Inherited from         <code><a href="../classes/AbstractHttpService.html" target="_self" >AbstractHttpService</a></code>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-line">Defined in         <code><a href="../classes/AbstractHttpService.html#source" target="_self" >AbstractHttpService:75</a></code>
+</div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Uploads an individual attachment.  All you need to do is set the url.
+Note: urls often include UUIDs, so this must be an application decision.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>relativeUrl</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>URL to hit, must include UUIDs of application and CommonImage</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>attachment</td>
+                                    <td>
+                                                <code><a href="../classes/CommonImage.html" target="_self" >CommonImage</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>CommonImage to upload</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
                     </div>
                     <div class="io-description">
@@ -1580,7 +1686,7 @@ using the logger.  Fields include:</p>
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in         <code><a href="../classes/AbstractHttpService.html#source" target="_self" >AbstractHttpService:17</a></code>
+                                    <div class="io-line">Defined in         <code><a href="../classes/AbstractHttpService.html#source" target="_self" >AbstractHttpService:18</a></code>
 </div>
                             </td>
                         </tr>
@@ -1626,7 +1732,7 @@ using the logger.  Fields include:</p>
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in         <code><a href="../classes/AbstractHttpService.html#source" target="_self" >AbstractHttpService:12</a></code>
+                                    <div class="io-line">Defined in         <code><a href="../classes/AbstractHttpService.html#source" target="_self" >AbstractHttpService:13</a></code>
 </div>
                             </td>
                         </tr>

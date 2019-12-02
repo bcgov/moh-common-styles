@@ -1,4 +1,14 @@
-# Unreleased "moh-common-lib" (2019-11-27)
+# Unreleased "moh-common-lib" (2019-12-02)
+
+
+
+# [3.0.0-rc.18](https://github.com/bcgov/moh-common-styles/compare/v3.0.0-rc.17...v3.0.0-rc.18) "moh-common-lib" (2019-12-02)
+
+
+### Features
+
+* **AbstractHttpService:** Create `uploadAttachment` method ([bf0bcc2](https://github.com/bcgov/moh-common-styles/commit/bf0bcc2))
+* **CommonImage:** Can set `fileContent` via optional constructor param ([cd1cc3b](https://github.com/bcgov/moh-common-styles/commit/cd1cc3b))
 
 
 

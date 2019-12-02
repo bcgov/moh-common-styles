@@ -129,6 +129,10 @@
                                     <span class="modifier">Protected</span>
                                 <a href="#setupRequest">setupRequest</a>
                             </li>
+                            <li>
+                                    <span class="modifier">Protected</span>
+                                <a href="#uploadAttachment">uploadAttachment</a>
+                            </li>
                         </ul>
                     </td>
                 </tr>
@@ -166,7 +170,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">projects/common/lib/services/abstract-api-service.ts:12</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">projects/common/lib/services/abstract-api-service.ts:13</a></div>
                             </td>
                         </tr>
 
@@ -231,7 +235,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">projects/common/lib/services/abstract-api-service.ts:17</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">projects/common/lib/services/abstract-api-service.ts:18</a></div>
                             </td>
                         </tr>
 
@@ -270,7 +274,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">projects/common/lib/services/abstract-api-service.ts:12</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">projects/common/lib/services/abstract-api-service.ts:13</a></div>
                             </td>
                         </tr>
 
@@ -308,8 +312,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="63"
-                            class="link-to-prism">projects/common/lib/services/abstract-api-service.ts:63</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="64"
+                            class="link-to-prism">projects/common/lib/services/abstract-api-service.ts:64</a></div>
                 </td>
             </tr>
 
@@ -349,8 +353,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="23"
-                            class="link-to-prism">projects/common/lib/services/abstract-api-service.ts:23</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="24"
+                            class="link-to-prism">projects/common/lib/services/abstract-api-service.ts:24</a></div>
                 </td>
             </tr>
 
@@ -450,8 +454,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="60"
-                            class="link-to-prism">projects/common/lib/services/abstract-api-service.ts:60</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="61"
+                            class="link-to-prism">projects/common/lib/services/abstract-api-service.ts:61</a></div>
                 </td>
             </tr>
 
@@ -524,8 +528,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="31"
-                            class="link-to-prism">projects/common/lib/services/abstract-api-service.ts:31</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="32"
+                            class="link-to-prism">projects/common/lib/services/abstract-api-service.ts:32</a></div>
                 </td>
             </tr>
 
@@ -609,8 +613,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="39"
-                            class="link-to-prism">projects/common/lib/services/abstract-api-service.ts:39</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="40"
+                            class="link-to-prism">projects/common/lib/services/abstract-api-service.ts:40</a></div>
                 </td>
             </tr>
 
@@ -665,6 +669,102 @@
             </tr>
         </tbody>
     </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="uploadAttachment"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Protected</span>
+                            uploadAttachment
+                        </b>
+                        <a href="#uploadAttachment"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>uploadAttachment(relativeUrl: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, attachment: <a href="../classes/CommonImage.html">CommonImage</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="75"
+                            class="link-to-prism">projects/common/lib/services/abstract-api-service.ts:75</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Uploads an individual attachment.  All you need to do is set the url.
+Note: urls often include UUIDs, so this must be an application decision.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>relativeUrl</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>URL to hit, must include UUIDs of application and CommonImage</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>attachment</td>
+                                    <td>
+                                                <code><a href="../classes/CommonImage.html" target="_self" >CommonImage</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>CommonImage to upload</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </section>
 
 
@@ -691,7 +791,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">projects/common/lib/services/abstract-api-service.ts:53</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">projects/common/lib/services/abstract-api-service.ts:54</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -717,6 +817,7 @@
 import { Observable } from &#x27;rxjs&#x27;;
 import { catchError, tap } from &#x27;rxjs/operators&#x27;;
 import { UUID } from &#x27;angular2-uuid&#x27;;
+import { CommonImage } from &#x27;../models/images.model&#x27;;
 
 
 /**
@@ -778,6 +879,27 @@ export abstract class AbstractHttpService {
   protected generateUUID() {
     return UUID.UUID();
   }
+
+  /**
+   * Uploads an individual attachment.  All you need to do is set the url.
+   * Note: urls often include UUIDs, so this must be an application decision.
+   *
+   * @param relativeUrl URL to hit, must include UUIDs of application and CommonImage
+   * @param attachment CommonImage to upload
+   */
+  protected uploadAttachment(relativeUrl: string, attachment: CommonImage) {
+    const options &#x3D; {headers: this._headers, responseType: &#x27;text&#x27; as &#x27;text&#x27;};
+
+    const binary &#x3D; atob(attachment.fileContent.split(&#x27;,&#x27;)[1]);
+    const array &#x3D; [];
+    for (let i &#x3D; 0; i &lt; binary.length; i++) {
+        array.push(binary.charCodeAt(i));
+    }
+    const blob &#x3D; new Blob([new Uint8Array(array)], {type: attachment.contentType});
+
+    return this.http.post(relativeUrl, blob, options);
+  }
+
 }
 </code></pre>
     </div>
