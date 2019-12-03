@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Route } from '@angular/router';
+import { Route, Router } from '@angular/router';
 
 export interface PageList {
   index: number;
@@ -15,7 +15,7 @@ export class PageStateService {
 
   pageList: PageList[] = [];
 
-  constructor() { }
+  constructor( protected router: Router ) { }
 
   setPages( arr: Route[],
             routeListConst: any,
@@ -49,10 +49,10 @@ export class PageStateService {
   }
 
   // Returns index parameter value
-  findIndex( url: string ): number {
+  findIndex( url: string = null ): number {
     let idx = 0;
     if ( this.pageList ) {
-      const obj = this.pageList.find( x => url.includes(x.path) );
+      const obj = this._find(url ? url : this.router.url);
       if ( obj ) {
         idx = obj.index;
       }
@@ -68,8 +68,8 @@ export class PageStateService {
     return null;
   }
 
-  setPageIncomplete( path: string ) {
-    const obj = this.pageList.find( x => path.includes(x.path) );
+  setPageIncomplete( url: string = null ) {
+    const obj = this._find(url ? url : this.router.url);
     if ( obj ) {
       obj.isComplete = false;
       // Set future pages to not complete
@@ -81,16 +81,17 @@ export class PageStateService {
     }
   }
 
-  setPageComplete( path: string ) {
-    const obj = this.pageList.find( x => path.includes(x.path) );
+  setPageComplete( path: string = null ) {
+    const obj =  this._find(path ? path : this.router.url);
+    console.log( 'setPageComplete: ', this.router.url, obj );
     if ( obj ) {
       obj.isComplete = true;
     }
   }
 
-  canNavigateToPage( path: string ): boolean {
+  canNavigateToPage( path: string  = null): boolean {
     let complete = false;
-    const obj = this.pageList.find( x => path.includes(x.path) );
+    const obj =  this._find(path ? path : this.router.url);
     if ( obj ) {
       // Can navigate to first play whether complete or not
       const prevIdx = obj.index - 1;
@@ -103,5 +104,10 @@ export class PageStateService {
     this.pageList.map( x => {
         x.isComplete = false;
     });
+  }
+
+  // Find item in list
+  private _find( path: string ) {
+    return this.pageList.find( x => path.includes(x.path) || path.endsWith(x.path));
   }
 }

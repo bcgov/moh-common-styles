@@ -6,10 +6,7 @@ import { AbstractBaseForm } from './abstract-base-form';
 export abstract class AbstractReactForm extends AbstractBaseForm {
 
   /** Access to the form elements for validation */
-  form: FormGroup;
-
-  /** What happens when the user clicks the continue button. Generally navigating to another page. */
-  abstract continue(): void;
+  formGroup: FormGroup;
 
   /**
    * Constructor
@@ -25,24 +22,24 @@ export abstract class AbstractReactForm extends AbstractBaseForm {
   canContinue(): boolean {
 
     // Returns true if form is valid
-    return this.form.valid;
+    return this.formGroup.valid;
   }
 
   /** Runs the angular 'markAsTouched()' on all form inputs. */
-  protected markAllInputsTouched(forms: FormGroup | FormGroup[] = null): void {
+  protected markAllInputsTouched(fg: FormGroup | FormGroup[] = null): void {
 
     // Passed in parameter, set each as touched
-    if ( forms ) {
-      if ( Array.isArray( forms ) ) {
+    if ( fg ) {
+      if ( Array.isArray( fg ) ) {
         // For each form mark as touched to display errors
-        return forms.forEach( x => {
+        return fg.forEach( x => {
           x.markAsTouched();
         });
       }
       // Returns true if form is valid
-      forms.markAsTouched();
+      fg.markAsTouched();
     } else {
-      this.form.markAsTouched();
+      this.formGroup.markAsTouched();
     }
   }
 }
