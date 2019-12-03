@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, forwardRef } from '@angular/core';
 import { ControlContainer, NgForm } from '@angular/forms';
-import { scrollToError } from '../../../helpers/scrollToError';
+import { scrollToError } from '../../../helpers/scroll-helpers';
 
 @Component({
   selector: 'common-form-action-bar',

@@ -45,4 +45,4 @@ export { commonValidateRegion } from './lib/components/validate-region/validate-
 export { commonValidatePostalcode } from './lib/components/postal-code/validate-postalcode.directive';
 
 // Helpers
-export { scrollToError } from './helpers/scrollToError';
+export { scrollToError, scrollTo } from './helpers/scroll-helpers';
