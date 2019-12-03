@@ -20,6 +20,7 @@ export { ApiStatusCodes } from './lib/components/confirm-template/confirm-templa
 // Models
 export * from './lib/models/container';
 export { AbstractForm } from './lib/models/abstract-form';
+export { AbstractReactForm } from './lib/models/abstract-react-form';
 export { Address } from './lib/models/address.model';
 export { Base } from './lib/models/base';
 export { Person } from './lib/models/person.model';
