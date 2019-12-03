@@ -41,7 +41,7 @@
 
 <ol class="breadcrumb">
     <li>Guards</li>
-    <li>RouteGuardService</li>
+    <li>LoadPageGuardService</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -59,9 +59,27 @@
             <h3>File</h3>
             </p>
             <p class="comment">
-                <code>projects/common/lib/services/route-guard.service.ts</code>
+                <code>projects/common/lib/services/load-page-guard.service.ts</code>
             </p>
 
+                <p class="comment">
+                <h3>Description</h3>
+                </p>
+                <p class="comment">
+                    <p>Use this service to implement Load Page Route Guards in your application. This is for a
+typical form flow, where the user must proceed sequentially from one page to
+the next.</p>
+<p>To setup, you must:</p>
+<ol>
+<li>Create a service implementing the abstract methods in <code>AbstractPageGuardService</code></li>
+<li>Setup AbstractPageGuardService in NgModule providers, to <code>useExisting</code> the service from previous step.</li>
+<li>Add this LoadPageGuardService to same providers from previous step.</li>
+<li>Configure routes to use LoadPageGuardService - <code>canActivate</code> or <code>canActivateChild</code></li>
+<li>Have each &quot;page&quot; in the form call <code>setPageIncomplete()</code> or <code>setPageComplete()</code> (from the &quot;PageStateService&quot;)</li>
+</ol>
+<p>You must make sure to setup AbstractPageGuardService in NgModules correctly.</p>
+
+                </p>
 
 
 
@@ -74,8 +92,8 @@
 //registration.module.ts
 providers: [
 ...
-{ provide: AbstractPgCheckService, useExisting: RegistrationService },
-RouteGuardService
+{ provide: AbstractPageGuardService, useExisting: DefaultPageGuardService },
+LoadPageGuardService
 ]
 
 
@@ -83,7 +101,7 @@ RouteGuardService
 //registration-routing.modle.ts
 const routes: Routes = [{
 path: '',
-canActivateChild: [RouteGuardService] //or canActivate
+canActivateChild: [LoadPageGuardService] //or canActivate
 }
 ...
 ]
@@ -91,8 +109,8 @@ canActivateChild: [RouteGuardService] //or canActivate
 
 //STEP 5
 //example.component.ts
-ngOnInit() { this.setPageIncomplete(); }
-continue() { this.setPageComplete(); }</code></pre>
+ngOnInit() { this.pageService.setPageIncomplete(); }
+continue() { this.pageService.setPageComplete(); }</code></pre>
                             </div>
                 </div>
 
@@ -137,12 +155,12 @@ continue() { this.setPageComplete(); }</code></pre>
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, service: <a href="../injectables/AbstractPgCheckService.html">AbstractPgCheckService</a>)</code>
+<code>constructor(router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, service: <a href="../injectables/AbstractPageGuardService.html">AbstractPageGuardService</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">projects/common/lib/services/route-guard.service.ts:53</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">projects/common/lib/services/load-page-guard.service.ts:53</a></div>
                             </td>
                         </tr>
 
@@ -175,7 +193,7 @@ continue() { this.setPageComplete(); }</code></pre>
                                                         <td>service</td>
                                                   
                                                         <td>
-                                                                        <code><a href="../injectables/AbstractPgCheckService.html" target="_self" >AbstractPgCheckService</a></code>
+                                                                        <code><a href="../injectables/AbstractPageGuardService.html" target="_self" >AbstractPageGuardService</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -221,8 +239,8 @@ continue() { this.setPageComplete(); }</code></pre>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="74"
-                            class="link-to-prism">projects/common/lib/services/route-guard.service.ts:74</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="73"
+                            class="link-to-prism">projects/common/lib/services/load-page-guard.service.ts:73</a></div>
                 </td>
             </tr>
 
@@ -293,8 +311,8 @@ continue() { this.setPageComplete(); }</code></pre>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="59"
-                            class="link-to-prism">projects/common/lib/services/route-guard.service.ts:59</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="58"
+                            class="link-to-prism">projects/common/lib/services/load-page-guard.service.ts:58</a></div>
                 </td>
             </tr>
 
@@ -375,8 +393,8 @@ continue() { this.setPageComplete(); }</code></pre>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="67"
-                            class="link-to-prism">projects/common/lib/services/route-guard.service.ts:67</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="66"
+                            class="link-to-prism">projects/common/lib/services/load-page-guard.service.ts:66</a></div>
                 </td>
             </tr>
 
@@ -440,35 +458,35 @@ continue() { this.setPageComplete(); }</code></pre>
 
 
         <div class="tab-pane fade  tab-source-code" id="c-source">
-            <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable, InjectionToken, Injector } from &#x27;@angular/core&#x27;;
+            <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
 import { CanActivateChild, Router, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, CanActivate } from &#x27;@angular/router&#x27;;
 import { Observable } from &#x27;rxjs&#x27;;
-import { AbstractPgCheckService } from &#x27;./abstract-pg-check.service&#x27;;
+import { AbstractPageGuardService } from &#x27;./abstract-page-guard.service&#x27;;
+
 
 /**
- * @deprecated
- * Use this service to implement Route Guards in your application. This is for a
+ * Use this service to implement Load Page Route Guards in your application. This is for a
  * typical form flow, where the user must proceed sequentially from one page to
  * the next.
  *
  * To setup, you must:
  *
- * 1. Create a service implementing the abstract methods in &#x60;AbstractPgService&#x60; (&quot;RegistrationService&quot;)
- * 2. Setup AbstractPgCheckService in NgModule providers, to &#x60;useExisting&#x60; the service from previous step.
- * 3. Add this RouteGuardService to same providers from previous step.
- * 4. Configure routes to use RouteGuardService - &#x60;canActivate&#x60; or &#x60;canActivateChild&#x60;
- * 5. Have each &quot;page&quot; in the form call &#x60;setPageIncomplete()&#x60; or &#x60;setPageComplete()&#x60; (from the &quot;RegistrationService&quot;)
+ * 1. Create a service implementing the abstract methods in &#x60;AbstractPageGuardService&#x60;
+ * 2. Setup AbstractPageGuardService in NgModule providers, to &#x60;useExisting&#x60; the service from previous step.
+ * 3. Add this LoadPageGuardService to same providers from previous step.
+ * 4. Configure routes to use LoadPageGuardService - &#x60;canActivate&#x60; or &#x60;canActivateChild&#x60;
+ * 5. Have each &quot;page&quot; in the form call &#x60;setPageIncomplete()&#x60; or &#x60;setPageComplete()&#x60; (from the &quot;PageStateService&quot;)
  *
  *
- * You must make sure to setup AbstractPgCheckService in NgModules correctly.
+ * You must make sure to setup AbstractPageGuardService in NgModules correctly.
  *
  *  @example
  *                //STEP 2 + STEP 3
  *                //registration.module.ts
  *                providers: [
  *                        ...
- *                        { provide: AbstractPgCheckService, useExisting: RegistrationService },
- *                        RouteGuardService
+ *                        { provide: AbstractPageGuardService, useExisting: DefaultPageGuardService },
+ *                        LoadPageGuardService
  *                ]
  *
  *
@@ -476,7 +494,7 @@ import { AbstractPgCheckService } from &#x27;./abstract-pg-check.service&#x27;;
  *                //registration-routing.modle.ts
  *                const routes: Routes &#x3D; [{
  *                   path: &#x27;&#x27;,
- *                   canActivateChild: [RouteGuardService] //or canActivate
+ *                   canActivateChild: [LoadPageGuardService] //or canActivate
  *                  }
  *                   ...
  *                ]
@@ -484,18 +502,17 @@ import { AbstractPgCheckService } from &#x27;./abstract-pg-check.service&#x27;;
  *
  *                //STEP 5
  *                //example.component.ts
- *                ngOnInit() { this.setPageIncomplete(); }
- *                continue() { this.setPageComplete(); }
+ *                ngOnInit() { this.pageService.setPageIncomplete(); }
+ *                continue() { this.pageService.setPageComplete(); }
  *
  *
  */
 @Injectable({
   providedIn: &#x27;root&#x27;
 })
-export class RouteGuardService implements CanActivate, CanActivateChild {
+export class LoadPageGuardService implements CanActivate, CanActivateChild {
 
-  constructor(private router: Router,
-    private service: AbstractPgCheckService) {
+  constructor(private router: Router, private service: AbstractPageGuardService) {
   }
 
   canActivate(
@@ -520,21 +537,11 @@ export class RouteGuardService implements CanActivate, CanActivateChild {
     }
 
     /**
-     * Pre-requisite has not be completed
+     * Logic within method is specific to application
      */
-    if (false &#x3D;&#x3D;&#x3D; this.service.isPrerequisiteComplete()) {
-      this.router.navigate([this.service.getStartUrl()]);
-      return false;
-    }
-
-    if (false &#x3D;&#x3D;&#x3D; this.service.isPageComplete(pageUrl)) {
-      return false;
-    }
-
-    return true;
+    return this.service.canNavigateToUrl(pageUrl);
   }
 }
-
 </code></pre>
         </div>
 </div>
@@ -564,7 +571,7 @@ export class RouteGuardService implements CanActivate, CanActivateChild {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'guard';
-            var COMPODOC_CURRENT_PAGE_URL = 'RouteGuardService.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'LoadPageGuardService.html';
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

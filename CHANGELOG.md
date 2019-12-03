@@ -2,12 +2,24 @@
 
 
 
-# [3.0.0-rc.20](https://github.com/bcgov/moh-common-styles/compare/v3.0.0-rc.19...v3.0.0-rc.20) "moh-common-lib" (2019-12-03)
+# [3.0.0-rc.21](https://github.com/bcgov/moh-common-styles/compare/v3.0.0-rc.19...v3.0.0-rc.21) "moh-common-lib" (2019-12-03)
+
+
+### Bug Fixes
+
+* Scrolling compatibilty with IE 11 ([fd57808](https://github.com/bcgov/moh-common-styles/commit/fd57808))
+
+
+### Code Refactoring
+
+* common template & reactive form items in abstract base form, create abstract react form ([c4c9856](https://github.com/bcgov/moh-common-styles/commit/c4c9856))
+* rename files (fixed spelling on library-error file), added scrollTo() for browser compat ([23fe745](https://github.com/bcgov/moh-common-styles/commit/23fe745))
+* use scrollTo() rather than Window.scrollTo() ([e56ffdf](https://github.com/bcgov/moh-common-styles/commit/e56ffdf))
 
 
 ### Features
 
-* **CommonImage:** Make generic, add `toJSON()` method. Formatting. ([8a9392e](https://github.com/bcgov/moh-common-styles/commit/8a9392e))
+* **CommonImage:** Make generic, add `toJSON()` method. Formatting. ([2637a7a](https://github.com/bcgov/moh-common-styles/commit/2637a7a))
 
 
 
@@ -33,8 +45,24 @@
 # [3.0.0-rc.17](https://github.com/bcgov/moh-common-styles/compare/v3.0.0-rc.16...v3.0.0-rc.17) "moh-common-lib" (2019-11-27)
 
 
+### Bug Fixes
+
+* added set to setter in page-state service ([09c1a1b](https://github.com/bcgov/moh-common-styles/commit/09c1a1b))
+* first page can navigate to ([0803cae](https://github.com/bcgov/moh-common-styles/commit/0803cae))
+* first page can navigate to ([503b449](https://github.com/bcgov/moh-common-styles/commit/503b449))
+* page-state service renamt isPageComplete to canNavigateToPage, tests updated ([a33bb9d](https://github.com/bcgov/moh-common-styles/commit/a33bb9d))
+* page-state service renamt isPageComplete to canNavigateToPage, tests updated ([9e5d3aa](https://github.com/bcgov/moh-common-styles/commit/9e5d3aa))
+
+
+### Code Refactoring
+
+* created replacement for existing route components, marked as depreciated ([0881790](https://github.com/bcgov/moh-common-styles/commit/0881790))
+* created replacement for existing route components, marked as depreciated ([636c1d5](https://github.com/bcgov/moh-common-styles/commit/636c1d5))
+
+
 ### Features
 
+* Added page state service & unit tests ([cf47d9b](https://github.com/bcgov/moh-common-styles/commit/cf47d9b))
 * **FormActionBar:** Automatically call scrollToError on click. ([3ff09e0](https://github.com/bcgov/moh-common-styles/commit/3ff09e0))
 * **Helper:** Create scrollToError() function. ([7bf5025](https://github.com/bcgov/moh-common-styles/commit/7bf5025))
 
@@ -51,9 +79,15 @@
 
 ### Bug Fixes
 
+* added set to setter in page-state service ([3b207b9](https://github.com/bcgov/moh-common-styles/commit/3b207b9))
 * set sin value before call onChange ([7e270d8](https://github.com/bcgov/moh-common-styles/commit/7e270d8))
 * updated email error message, strip off (optional) from labels ([788c3d1](https://github.com/bcgov/moh-common-styles/commit/788c3d1))
 * updated phone error message ([f0202f2](https://github.com/bcgov/moh-common-styles/commit/f0202f2))
+
+
+### Features
+
+* Added page state service & unit tests ([7c7ca2f](https://github.com/bcgov/moh-common-styles/commit/7c7ca2f))
 
 
 

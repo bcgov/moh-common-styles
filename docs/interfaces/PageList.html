@@ -44,7 +44,7 @@
 
 <ol class="breadcrumb">
   <li>Interfaces</li>
-  <li>PageListInterface</li>
+  <li>PageList</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -62,16 +62,9 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>projects/common/lib/services/check-complete-base.service.ts</code>
+            <code>projects/common/lib/services/page-state.service.ts</code>
         </p>
 
-            <p class="comment">
-                <h3>Description</h3>
-            </p>
-            <p class="comment">
-                <p>Interface for used when checking completeness of item</p>
-
-            </p>
 
 
         <section>
@@ -87,10 +80,13 @@
                         <td class="col-md-4">
                             <ul class="index-list">
                                 <li>
+                                        <a href="#index">index</a>
+                                </li>
+                                <li>
                                         <a href="#isComplete">isComplete</a>
                                 </li>
                                 <li>
-                                        <a href="#route">route</a>
+                                        <a href="#path">path</a>
                                 </li>
                             </ul>
                         </td>
@@ -112,7 +108,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">projects/common/lib/services/check-complete-base.service.ts:16</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">projects/common/lib/services/page-state.service.ts:7</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -121,6 +117,35 @@
 
             <section>
                 <h3 id="inputs">Properties</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="index"></a>
+                                        <span class="name"><b>index</b><a href="#index"><span class="icon ion-ios-link"></span></a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>index:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
                     <table class="table table-sm table-bordered">
                         <tbody>
                                 <tr>
@@ -154,13 +179,13 @@
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="route"></a>
-                                        <span class="name"><b>route</b><a href="#route"><span class="icon ion-ios-link"></span></a></span>
+                                        <a name="path"></a>
+                                        <span class="name"><b>path</b><a href="#path"><span class="icon ion-ios-link"></span></a></span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>route:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                        <code>path:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 </code>
                                     </td>
                                 </tr>
@@ -184,118 +209,117 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Router } from &#x27;@angular/router&#x27;;
-import { AbstractPgCheckService } from &#x27;./abstract-pg-check.service&#x27;;
-import { Injectable } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
+import { Route, Router } from &#x27;@angular/router&#x27;;
 
-/* TODO: Revise - does not work quite correct when there is no landing page.
- * @depreciated
- */
-
-
-
-/**
- * Interface for used when checking completeness of item
- */
-export interface PageListInterface {
-  route: string;
+export interface PageList {
+  index: number;
+  path: string;
   isComplete: boolean;
   [key: string]: any;
 }
 
-/**
- * Extend this class when creating a service to create your custom Route Guard
- * logic.  This class should work as-is for simple use-cases.  For Route Guard
- * setup @see RouteGuardService.
- *
- * @see RouteGuardService
- */
 @Injectable({
   providedIn: &#x27;root&#x27;
 })
-export class CheckCompleteBaseService implements AbstractPgCheckService {
+export class PageStateService {
 
-  public pageCheckList: PageListInterface [] &#x3D; [];
+  pageList: PageList[] &#x3D; [];
 
-  private _startUrl: string &#x3D; &#x27;&#x27;;
-  private _bypassGuards: boolean &#x3D; false;
+  constructor( protected router: Router ) { }
 
-  constructor( protected router: Router ) {}
+  setPages( arr: Route[],
+            routeListConst: any,
+            fn?: (x: any) &#x3D;&gt; {[key: string]: any} ): PageList[] {
 
-  set startUrl( url: string ) {
-    this._startUrl &#x3D; url;
+    if ( this.pageList &amp;&amp; !this.pageList.length ) {
+
+      const routeConst &#x3D; Object.keys( routeListConst ).map( x &#x3D;&gt; routeListConst[x] );
+
+      let cnt &#x3D; 0;
+      this.pageList &#x3D; arr.filter((itm: any) &#x3D;&gt; !itm.redirectTo)
+        .map((itm: any) &#x3D;&gt; {
+          const val &#x3D; routeConst.find( x &#x3D;&gt; x.path &#x3D;&#x3D;&#x3D; itm.path );
+
+          cnt &#x3D; cnt + 1; // count for indices
+
+          // Page List to be returned
+          let obj &#x3D; {
+            index: cnt,
+            path: val.path,
+            isComplete: false,
+          };
+
+          if ( fn ) {
+            obj &#x3D; Object.assign( obj, fn( val ) );
+          }
+          return obj;
+        });
+    }
+    return this.pageList;
   }
 
-  set bypassGuards( bypass: boolean) {
-    this._bypassGuards &#x3D; bypass;
+  // Returns index parameter value
+  findIndex( url: string &#x3D; null ): number {
+    let idx &#x3D; 0;
+    if ( this.pageList ) {
+      const obj &#x3D; this._find(url ? url : this.router.url);
+      if ( obj ) {
+        idx &#x3D; obj.index;
+      }
+    }
+    return idx;
   }
 
-  public canBypassGuards(): boolean {
-    return this._bypassGuards;
+  getPageAtIndex( idx: number ): PageList  | null {
+    const index &#x3D; idx - 1;
+    if ( this.pageList &amp;&amp; index &gt;&#x3D; 0 &amp;&amp; this.pageList.length &gt; index ) {
+      return this.pageList[index];
+    }
+    return null;
   }
 
-  public getStartUrl(): string {
-    return this._startUrl;
-  }
-
-  /** Any prerequisites that need list of pages */
-  public isPrerequisiteComplete(): boolean {
-    return !this.isPageListEmpty();
-  }
-
-  /**
-   *  Sets page to not be completed, so applicants cannot complete application out of sequence
-   */
-  public setPageIncomplete(): void {
-    const idx &#x3D; this.getUrlIndex( this.router.url );
-    if ( !this.isPageListEmpty() ) { // Check guards could be turned off in dev environment
-      this.pageCheckList &#x3D; this.pageCheckList.map((item, index) &#x3D;&gt; {
-        if (index &gt;&#x3D; idx) {
-          item.isComplete &#x3D; false;
+  setPageIncomplete( url: string &#x3D; null ) {
+    const obj &#x3D; this._find(url ? url : this.router.url);
+    if ( obj ) {
+      obj.isComplete &#x3D; false;
+      // Set future pages to not complete
+      this.pageList.map( x &#x3D;&gt; {
+        if ( obj.index &lt; x.index &amp;&amp; x.isComplete ) {
+          x.isComplete &#x3D; false;
         }
-        return item;
       });
     }
   }
 
-  /**
-   * Sets the page to completed, allowing applicant to proceed to next page.
-   */
-  public setPageComplete(): void {
-    const idx &#x3D; this.getUrlIndex( this.router.url );
-    if ( !this.isPageListEmpty() ) { // Check guards could be turned in dev environment
-      this.pageCheckList[idx].isComplete &#x3D; true;
+  setPageComplete( path: string &#x3D; null ) {
+    const obj &#x3D;  this._find(path ? path : this.router.url);
+    console.log( &#x27;setPageComplete: &#x27;, this.router.url, obj );
+    if ( obj ) {
+      obj.isComplete &#x3D; true;
     }
   }
 
-  /**
-   * Indicates whether page has been completed or not.
-   */
-  public isPageComplete( url: string ): boolean {
-
-    const idx &#x3D; this.getUrlIndex( url );
-
-    // returns previous items isComplete value
-    return (idx - 1 &gt;&#x3D; 0) ? this.pageCheckList[idx - 1].isComplete : true;
+  canNavigateToPage( path: string  &#x3D; null): boolean {
+    let complete &#x3D; false;
+    const obj &#x3D;  this._find(path ? path : this.router.url);
+    if ( obj ) {
+      // Can navigate to first play whether complete or not
+      const prevIdx &#x3D; obj.index - 1;
+      complete &#x3D; (prevIdx &#x3D;&#x3D;&#x3D; 0 ? true : this.pageList[prevIdx - 1].isComplete );
+    }
+    return complete;
   }
 
-  /**
-   * Check for incomplete pages
-   */
-  public isComplete(): boolean {
-    const incompletePages &#x3D; this.pageCheckList.filter( x &#x3D;&gt; x.isComplete !&#x3D;&#x3D; true );
-    return (incompletePages.length !&#x3D;&#x3D; 0 ? false : true );
+  clearCompletePages() {
+    this.pageList.map( x &#x3D;&gt; {
+        x.isComplete &#x3D; false;
+    });
   }
 
-  /**
-   * Index of URL in the items list, -1 if not exist
-   */
-  protected getUrlIndex( url: string ): number {
-    return this.pageCheckList.findIndex( x &#x3D;&gt; url.includes( x.route ) );
-  }
-
-  protected isPageListEmpty() {
-    return ( this.pageCheckList.length &#x3D;&#x3D;&#x3D; 0 );
+  // Find item in list
+  private _find( path: string ) {
+    return this.pageList.find( x &#x3D;&gt; path.includes(x.path) || path.endsWith(x.path));
   }
 }
 </code></pre>
@@ -324,7 +348,7 @@ export class CheckCompleteBaseService implements AbstractPgCheckService {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
-            var COMPODOC_CURRENT_PAGE_URL = 'PageListInterface.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'PageList.html';
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

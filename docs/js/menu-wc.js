@@ -345,6 +345,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                         </div>
                         <ul class="links collapse" ${ isNormalMode ? 'id="classes-links"' : 'id="xs-classes-links"' }>
                             <li class="link">
+                                <a href="classes/AbstractBaseForm.html" data-type="entity-link">AbstractBaseForm</a>
+                            </li>
+                            <li class="link">
                                 <a href="classes/AbstractForm.html" data-type="entity-link">AbstractForm</a>
                             </li>
                             <li class="link">
@@ -352,6 +355,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="classes/AbstractHttpService.html" data-type="entity-link">AbstractHttpService</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/AbstractReactForm.html" data-type="entity-link">AbstractReactForm</a>
                             </li>
                             <li class="link">
                                 <a href="classes/AbstractTestPage.html" data-type="entity-link">AbstractTestPage</a>
@@ -391,6 +397,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </div>
                             <ul class="links collapse" ${ isNormalMode ? 'id="injectables-links"' : 'id="xs-injectables-links"' }>
                                 <li class="link">
+                                    <a href="injectables/AbstractPageGuardService.html" data-type="entity-link">AbstractPageGuardService</a>
+                                </li>
+                                <li class="link">
                                     <a href="injectables/AbstractPgCheckService.html" data-type="entity-link">AbstractPgCheckService</a>
                                 </li>
                                 <li class="link">
@@ -400,7 +409,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     <a href="injectables/CommonLogger.html" data-type="entity-link">CommonLogger</a>
                                 </li>
                                 <li class="link">
+                                    <a href="injectables/DefaultPageGuardService.html" data-type="entity-link">DefaultPageGuardService</a>
+                                </li>
+                                <li class="link">
                                     <a href="injectables/GeocoderService.html" data-type="entity-link">GeocoderService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="injectables/PageStateService.html" data-type="entity-link">PageStateService</a>
                                 </li>
                             </ul>
                         </li>
@@ -412,6 +427,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             <span class="icon ion-ios-arrow-down"></span>
                         </div>
                         <ul class="links collapse" ${ isNormalMode ? 'id="guards-links"' : 'id="xs-guards-links"' }>
+                            <li class="link">
+                                <a href="guards/LoadPageGuardService.html" data-type="entity-link">LoadPageGuardService</a>
+                            </li>
                             <li class="link">
                                 <a href="guards/RouteGuardService.html" data-type="entity-link">RouteGuardService</a>
                             </li>
@@ -463,6 +481,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="interfaces/Maxlengths.html" data-type="entity-link">Maxlengths</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/PageList.html" data-type="entity-link">PageList</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/PageListInterface.html" data-type="entity-link">PageListInterface</a>

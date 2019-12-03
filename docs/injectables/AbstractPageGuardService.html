@@ -39,7 +39,7 @@
 
 <ol class="breadcrumb">
   <li>Injectables</li>
-  <li>AbstractPgCheckService</li>
+  <li>AbstractPageGuardService</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -57,9 +57,20 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>projects/common/lib/services/abstract-pg-check.service.ts</code>
+            <code>projects/common/lib/services/abstract-page-guard.service.ts</code>
         </p>
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>The abstract class for our route guard service.  You MUST setup the NgModule
+to provide your application&#39;s service in place of AbstractGuardService.</p>
+<p>Your application&#39;s load page guard service can do whatever it wants as long as it
+implements these methods.</p>
+<p>More information on setup can be found in @see LoadPageGuardService.</p>
+
+            </p>
 
 
             <p class="comment">
@@ -67,11 +78,10 @@
             </p>
             <div class="io-description">
                         <div>
-                            <pre class="line-numbers"><code class="language-html">//registration.module.ts
-providers: [
-...
-{ provide: AbstractPgCheckService, useExisting: RegistrationService },
-RouteGuardService
+                            <pre class="line-numbers"><code class="language-html">providers: [
+         ...
+         { provide: AbstractPageGuardService, useExisting: EnrolService },
+         LoadPageGuardService
 ]</code></pre>
                         </div>
             </div>
@@ -97,17 +107,7 @@ RouteGuardService
                             <li>
                                     <span class="modifier">Public</span>
                                     <span class="modifier">Abstract</span>
-                                <a href="#getStartUrl">getStartUrl</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Public</span>
-                                    <span class="modifier">Abstract</span>
-                                <a href="#isPageComplete">isPageComplete</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Public</span>
-                                    <span class="modifier">Abstract</span>
-                                <a href="#isPrerequisiteComplete">isPrerequisiteComplete</a>
+                                <a href="#canNavigateToUrl">canNavigateToUrl</a>
                             </li>
                         </ul>
                     </td>
@@ -152,8 +152,8 @@ RouteGuardService
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="25"
-                            class="link-to-prism">projects/common/lib/services/abstract-pg-check.service.ts:25</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="24"
+                            class="link-to-prism">projects/common/lib/services/abstract-page-guard.service.ts:24</a></div>
                 </td>
             </tr>
 
@@ -173,71 +173,29 @@ RouteGuardService
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="getStartUrl"></a>
+                    <a name="canNavigateToUrl"></a>
                     <span class="name">
                         <b>
                             <span class="modifier">Public</span>
                             <span class="modifier">Abstract</span>
-                            getStartUrl
+                            canNavigateToUrl
                         </b>
-                        <a href="#getStartUrl"><span class="icon ion-ios-link"></span></a>
+                        <a href="#canNavigateToUrl"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>getStartUrl()</code>
+                    <code>canNavigateToUrl(url: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="28"
-                            class="link-to-prism">projects/common/lib/services/abstract-pg-check.service.ts:28</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="isPageComplete"></a>
-                    <span class="name">
-                        <b>
-                            <span class="modifier">Public</span>
-                            <span class="modifier">Abstract</span>
-                            isPageComplete
-                        </b>
-                        <a href="#isPageComplete"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>isPageComplete(url: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="26"
-                            class="link-to-prism">projects/common/lib/services/abstract-pg-check.service.ts:26</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="25"
+                            class="link-to-prism">projects/common/lib/services/abstract-page-guard.service.ts:25</a></div>
                 </td>
             </tr>
 
@@ -284,48 +242,6 @@ RouteGuardService
             </tr>
         </tbody>
     </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="isPrerequisiteComplete"></a>
-                    <span class="name">
-                        <b>
-                            <span class="modifier">Public</span>
-                            <span class="modifier">Abstract</span>
-                            isPrerequisiteComplete
-                        </b>
-                        <a href="#isPrerequisiteComplete"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>isPrerequisiteComplete()</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="27"
-                            class="link-to-prism">projects/common/lib/services/abstract-pg-check.service.ts:27</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
 </section>
 
     </div>
@@ -335,31 +251,28 @@ RouteGuardService
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
 
 /**
- * @deprecated
  * The abstract class for our route guard service.  You MUST setup the NgModule
- * to provide your application&#x27;s service in place of AbstractPgCheckService.
+ * to provide your application&#x27;s service in place of AbstractGuardService.
  *
- * Your application&#x27;s route guard service can do whatever it wants as long as it
+ * Your application&#x27;s load page guard service can do whatever it wants as long as it
  * implements these methods.
  *
- * More information on setup can be found in @see RouteGuardService.
+ * More information on setup can be found in @see LoadPageGuardService.
  *
  *  @example
- *                //registration.module.ts
+ *
  *                providers: [
  *                        ...
- *                        { provide: AbstractPgCheckService, useExisting: RegistrationService },
- *                        RouteGuardService
+ *                        { provide: AbstractPageGuardService, useExisting: EnrolService },
+ *                        LoadPageGuardService
  *                ]
  *
  */
 @Injectable()
-export abstract class AbstractPgCheckService {
+export abstract class AbstractPageGuardService {
 
   public abstract canBypassGuards(): boolean;
-  public abstract isPageComplete( url: string ): boolean;
-  public abstract isPrerequisiteComplete(): boolean;
-  public abstract getStartUrl(): string;
+  public abstract canNavigateToUrl( url: string ): boolean;
 }
 </code></pre>
     </div>
@@ -393,7 +306,7 @@ export abstract class AbstractPgCheckService {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
-            var COMPODOC_CURRENT_PAGE_URL = 'AbstractPgCheckService.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'AbstractPageGuardService.html';
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>
