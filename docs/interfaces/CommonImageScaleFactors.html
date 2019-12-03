@@ -133,8 +133,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="56"
-                            class="link-to-prism">projects/common/lib/models/images.model.ts:56</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="67"
+                            class="link-to-prism">projects/common/lib/models/images.model.ts:67</a></div>
                 </td>
             </tr>
 
@@ -278,10 +278,21 @@ export class CommonImage {
 
     uuid: string;
 
-    constructor() {
+    /**
+     * @param fileContent (optional) The base64 of an image. See &#x60;fileContent&#x60; property.
+     */
+    constructor(fileContent?: string) {
         this.uuid &#x3D; UUID.UUID();
+        if (fileContent) {
+            this.fileContent &#x3D; fileContent;
+        }
     }
 
+    /**
+     * The base64 content of an image.  Must already be base64 or some other stringable data-type.
+     * 
+     * You should be able to do &lt;img src&#x3D;&#x27;myCommonImage.fileContent&#x27;&gt; to render the image.
+     */
     fileContent: string;
     contentType: string;
     // number of bytes.

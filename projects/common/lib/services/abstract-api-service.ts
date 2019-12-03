@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular
 import { Observable } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { UUID } from 'angular2-uuid';
+import { CommonImage } from '../models/images.model';
 
 
 /**
@@ -63,4 +64,25 @@ export abstract class AbstractHttpService {
   protected generateUUID() {
     return UUID.UUID();
   }
+
+  /**
+   * Uploads an individual attachment.  All you need to do is set the url.
+   * Note: urls often include UUIDs, so this must be an application decision.
+   *
+   * @param relativeUrl URL to hit, must include UUIDs of application and CommonImage
+   * @param attachment CommonImage to upload
+   */
+  protected uploadAttachment(relativeUrl: string, attachment: CommonImage) {
+    const options = {headers: this._headers, responseType: 'text' as 'text'};
+
+    const binary = atob(attachment.fileContent.split(',')[1]);
+    const array = [];
+    for (let i = 0; i < binary.length; i++) {
+        array.push(binary.charCodeAt(i));
+    }
+    const blob = new Blob([new Uint8Array(array)], {type: attachment.contentType});
+
+    return this.http.post(relativeUrl, blob, options);
+  }
+
 }

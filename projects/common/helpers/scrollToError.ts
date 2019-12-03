@@ -5,6 +5,10 @@ export function scrollToError(yOffset = -75) {
     const el = document.querySelector('common-error-container .text-danger');
     if (el) {
         const top = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
-        window.scrollTo({top, behavior: 'smooth'});
+        /**
+         * IE does not support ScrollToOptions (behavior, top, left), but does support
+         * scrollTo() with parameters for x and y coorindiates.
+         */
+        window.scrollTo(0, top);
     }
 }
