@@ -2,7 +2,10 @@ import { Router } from '@angular/router';
 import { AbstractPgCheckService } from './abstract-pg-check.service';
 import { Injectable } from '@angular/core';
 
-// TODO: Revise - does not work quite correct when there is no landing page.
+/* TODO: Revise - does not work quite correct when there is no landing page.
+ * @depreciated
+ */
+
 
 
 /**
