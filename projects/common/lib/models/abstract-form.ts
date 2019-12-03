@@ -38,7 +38,7 @@ export abstract class AbstractForm {
 
     this.router.navigate([url], { queryParams: queryParams })
       .then((data) => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        scrollTo ();
       });
   }
 
