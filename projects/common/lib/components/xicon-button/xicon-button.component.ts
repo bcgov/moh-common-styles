@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
-import { MoHCommonLibraryError } from '../../../helpers/library-errorr';
+import { MoHCommonLibraryError } from '../../../helpers/library-error';
 
 @Component({
   selector: 'common-xicon-button',

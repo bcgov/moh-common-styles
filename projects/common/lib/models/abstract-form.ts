@@ -1,21 +1,28 @@
 import { ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
-import { AbstractBaseForm } from './abstract-base-form';
+import { Router, Params } from '@angular/router';
 
-export abstract class AbstractForm extends AbstractBaseForm {
-
+/**
+ * TODO: Make interface for abstract form - this form is the template form implementation
+ * Need to create a reactive form implementation
+ */
+export abstract class AbstractForm {
   /** Access to the form elements for validation */
   @ViewChild('formRef') form: NgForm;
 
+  /** Disables all inputs (todo: not implemented) */
+  disabled: boolean;
+  /** Show or hide the loading spinner as required, should be passed to form action bar. */
+  loading: boolean = false;
   /** What happens when the user clicks the continue button. Generally navigating to another page. */
   abstract continue(): void;
+
 
   /**
    * Constructor
    */
   constructor(protected router: Router) {
-    super(router);
+    this.router = router;
   }
 
   /**
@@ -32,4 +39,5 @@ export abstract class AbstractForm extends AbstractBaseForm {
       this.form.form.get(x).markAsTouched();
     });
   }
+
 }
