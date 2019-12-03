@@ -429,6 +429,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="interfaces/AddrLabelList.html" data-type="entity-link">AddrLabelList</a>
                             </li>
                             <li class="link">
+                                <a href="interfaces/CommonAttachmentJson.html" data-type="entity-link">CommonAttachmentJson</a>
+                            </li>
+                            <li class="link">
                                 <a href="interfaces/CommonImageScaleFactors.html" data-type="entity-link">CommonImageScaleFactors</a>
                             </li>
                             <li class="link">

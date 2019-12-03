@@ -1,4 +1,13 @@
-# Unreleased "moh-common-lib" (2019-12-02)
+# Unreleased "moh-common-lib" (2019-12-03)
+
+
+
+# [3.0.0-rc.20](https://github.com/bcgov/moh-common-styles/compare/v3.0.0-rc.19...v3.0.0-rc.20) "moh-common-lib" (2019-12-03)
+
+
+### Features
+
+* **CommonImage:** Make generic, add `toJSON()` method. Formatting. ([8a9392e](https://github.com/bcgov/moh-common-styles/commit/8a9392e))
 
 
 
