@@ -168,10 +168,11 @@ You must use either [restrictDate] or the [dateRange*] inputs.
       this.dateRangeStart = this.today;
     }
 
+    this.registerValidation( this.controlDir, this.validateSelf );
 
     // Register validateSelf validator so that it will be added on component initialization.
     // Makes the component a self validating component.
-    Promise.resolve().then(() => {
+   /* Promise.resolve().then(() => {
 
       if (this.controlDir) {
 
@@ -182,7 +183,7 @@ You must use either [restrictDate] or the [dateRange*] inputs.
         this.controlDir.control.setValidators(allValidators);
         this.controlDir.control.updateValueAndValidity();
       }
-    });
+    });*/
 
   }
 
@@ -343,7 +344,7 @@ You must use either [restrictDate] or the [dateRange*] inputs.
     const year = parseInt(this._year, 10);
     const month = parseInt(this._month, 10);
     const day = parseInt(this._day, 10);
-    // console.log('validateDate', { year, month, day });
+    console.log('validateDate', { year, month, day });
 
     // if they're all NaN, it means each field is empty
     const allFieldsEmpty = isNaN(year) && isNaN(month) && isNaN(day);

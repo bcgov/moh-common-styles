@@ -5,7 +5,7 @@ import { FormActionBarComponent } from './components/form-action-bar/form-action
 import { PageFrameworkComponent } from './components/page-framework/page-framework.component';
 import { PasswordComponent } from './components/password/password.component';
 import { WizardProgressBarComponent } from './components/wizard-progress-bar/wizard-progress-bar.component';
-import { NgForm, FormsModule } from '@angular/forms';
+import { NgForm, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProgressbarModule, ModalModule, TypeaheadModule } from 'ngx-bootstrap';
 import { RouterModule } from '@angular/router';
 import { DateComponent } from './components/date/date.component';
@@ -108,6 +108,7 @@ const componentList = [
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     ProgressbarModule.forRoot(),
     RouterModule,
     NgxMyDatePickerModule.forRoot(),

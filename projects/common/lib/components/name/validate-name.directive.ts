@@ -1,7 +1,10 @@
 import { Directive } from '@angular/core';
 import { NG_VALIDATORS, Validator, AbstractControl, ValidatorFn, ValidationErrors } from '@angular/forms';
 
-
+/**
+ * @deprecated
+ * @param control
+ */
 export const commonValidateName: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
    /**
    * Valid characters for name
@@ -15,6 +18,9 @@ export const commonValidateName: ValidatorFn = (control: AbstractControl): Valid
 };
 
 
+/**
+ * @deprecated
+ */
 @Directive({
   selector: '[commonValidateName]',
   providers: [

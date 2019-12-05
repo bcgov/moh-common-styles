@@ -45,7 +45,7 @@ export * from './lib/services/default-page-guard.service';
 
 
 // Validators
-export { commonValidateName } from './lib/components/name/validate-name.directive';
+export { commonValidateName } from './lib/components/name/validate-name.directive'; // TODO: remove - name component self validates
 export { commonValidateBcPostal } from './lib/components/postal-code/validate-bc-postal.directive';
 export { commonDuplicateCheck } from './lib/components/duplicate-check/duplicate-check.directive';
 export { commonValidateStreet } from './lib/components/street/validate-street.directive';

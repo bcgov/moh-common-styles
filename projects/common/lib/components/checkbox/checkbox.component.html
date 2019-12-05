@@ -6,16 +6,10 @@
       id="checkbox_{{objectId}}"
       [ngModel]="data"
       (ngModelChange)="setCheckboxVal($event);"
-      [disabled]="disabled"
-      [required]="required">
+      [disabled]="disabled">
 <label for="checkbox_{{objectId}}" class="form-check-label">{{label}}</label>
-
-<!--TODO: remove - breaking change -->
-<div *ngIf='showError && (data === undefined || data === null)'>
-    <div class="text-danger">{{defaultErrorMessage}}</div>
-</div>
 
 <common-error-container
   [displayError]="controlDir && !disabled && (controlDir.touched || controlDir.dirty) && controlDir?.errors">
-  <div *ngIf="controlDir?.errors?.required">{{defaultErrorMessage}}</div>
+  <div *ngIf="controlDir?.errors?.required">{{_defaultErrMsg.required}}</div>
 </common-error-container>

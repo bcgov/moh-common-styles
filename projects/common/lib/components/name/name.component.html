@@ -5,24 +5,19 @@
        id="{{labelforId}}"
        [value]="nameStr"
        (change)="onValueChange( $event.target.value )"
-       (blur)="onBlurEvent( $event )"
+       (blur)="onBlur( $event )"
        [disabled]="disabled"
-       [attr.maxlength]="maxlen"
+       [attr.maxlength]="maxlength"
        autocomplete="off" />
 <!-- Error messages for component -->
 <common-error-container [displayError]="controlDir && !disabled && (controlDir.dirty || controlDir.touched) && controlDir?.errors">
   <div *ngIf="controlDir?.errors?.required">
-    {{label}} is required.
+    {{_defaultErrMsg.required}}
+  </div>
+  <div *ngIf="controlDir?.errors?.invalid">
+    {{_defaultErrMsg.invalid}}
   </div>
   <div *ngIf="controlDir?.errors?.invalidChar">
-    <div *ngIf="maxLenAsNumber > 1; else initInvalid;">
-        {{label}} must begin with a letter and cannot include special characters except hyphens,
-        periods, apostrophes and blank characters.
-    </div>
+    {{_defaultErrMsg.invalidChar}}
   </div>
 </common-error-container>
-
-<ng-template #initInvalid>
-  {{label}} must be with a letter.
-</ng-template>
-

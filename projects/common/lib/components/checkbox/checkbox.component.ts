@@ -1,6 +1,8 @@
 import { forwardRef, Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef, Optional, Self} from '@angular/core';
 import { Base } from '../../models/base';
 import { ControlContainer, ControlValueAccessor, NgForm, NG_VALUE_ACCESSOR, NgControl } from '@angular/forms';
+import { AbstractFormControl } from '../../models/abstract-form-control';
+import { ErrorMessage, LabelReplacementTag } from '../../models/error-message.interface';
 /**
  * Checkbox component is a input checkbox
  *
@@ -20,31 +22,22 @@ import { ControlContainer, ControlValueAccessor, NgForm, NG_VALUE_ACCESSOR, NgCo
 @Component({
   selector: 'common-checkbox',
   templateUrl: './checkbox.component.html',
-  styleUrls: ['./checkbox.component.scss'],
-
-  // TODO: Remove to make custom form control -- possible breaking change
-  viewProviders: [
-    { provide: ControlContainer, useExisting: forwardRef(() => NgForm ) }
-  ]
+  styleUrls: ['./checkbox.component.scss']
 })
-export class CheckboxComponent extends Base implements  OnInit, ControlValueAccessor {
+export class CheckboxComponent extends AbstractFormControl implements OnInit, ControlValueAccessor {
   defaultErrorMessage: string = '';
 
   /**
    * You can bind to [(data)] OR you can use [(ngModel)] but don't use both.
    */
   @Input() data: boolean = false;
-  @Input() required: boolean = false;  // TODO: Remove - breaking change
-  @Input() disabled: boolean = false;
   @Input() label: string = 'Default Checkbox';
-  @Input() errorMessageRequired: string;
-  @Input() showError: boolean;
   @Output() dataChange: EventEmitter<boolean> = new EventEmitter<boolean>();
   @ViewChild('checkbox') checkbox: ElementRef;
 
-
-  public _onChange = (_: any) => {};
-  public _onTouched = () => {};
+  _defaultErrMsg: ErrorMessage = {
+    required: `${LabelReplacementTag} is required.`,
+  };
 
   constructor( @Optional() @Self() public controlDir: NgControl ) {
     super();
@@ -54,11 +47,7 @@ export class CheckboxComponent extends Base implements  OnInit, ControlValueAcce
   }
 
   ngOnInit() {
-    if ( this.errorMessageRequired ) {
-      this.defaultErrorMessage = this.errorMessageRequired;
-    } else {
-      this.defaultErrorMessage = this.label + ' is required.';
-    }
+    super.ngOnInit();
   }
 
   setCheckboxVal(event: boolean) {
@@ -72,15 +61,9 @@ export class CheckboxComponent extends Base implements  OnInit, ControlValueAcce
     this.checkbox.nativeElement.focus();
   }
 
-  registerOnChange(fn: any): void {
-    this._onChange = fn;
-  }
-
-  registerOnTouched(fn: any): void {
-    this._onTouched = fn;
-  }
-
   writeValue(value: any): void {
-    this.data = value;
+    if ( value !== undefined || value === null ) {
+      this.data = value;
+    }
   }
 }

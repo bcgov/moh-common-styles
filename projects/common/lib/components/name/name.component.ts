@@ -4,9 +4,11 @@ import {
   Optional,
   Self,
   Output,
-  EventEmitter } from '@angular/core';
-import { ControlValueAccessor, NgControl } from '@angular/forms';
-import { Base } from '../../models/base';
+  EventEmitter,
+  OnInit} from '@angular/core';
+import { ControlValueAccessor, NgControl, ValidationErrors } from '@angular/forms';
+import { AbstractFormControl } from '../../models/abstract-form-control';
+import { LabelReplacementTag, ErrorMessage } from '../../models/error-message.interface';
 
 /**
  * TODO DOCUMENT NEED TO USE NGMODEL FOR REQUIRED TO WORK. Also test with reactive forms to see if still nec
@@ -16,11 +18,11 @@ import { Base } from '../../models/base';
   templateUrl: './name.component.html',
   styleUrls: ['./name.component.scss']
 })
-export class NameComponent extends Base implements ControlValueAccessor {
+export class NameComponent extends AbstractFormControl implements OnInit, ControlValueAccessor {
 
   @Input() disabled: boolean = false;
   @Input() label: string = 'Name';
-  @Input() maxlen: string = '255';
+  @Input() maxlength: string = '255';
   @Input() labelforId: string = 'name_' + this.objectId;
 
   @Input()
@@ -34,12 +36,17 @@ export class NameComponent extends Base implements ControlValueAccessor {
   }
 
   @Output() valueChange: EventEmitter<string> = new EventEmitter<string>();
-  @Output() blurEvent: EventEmitter<any> = new EventEmitter<any>();
+  @Output() blur: EventEmitter<any> = new EventEmitter<any>();
 
   public nameStr: string = '';
 
-  _onChange = (_: any) => {};
-  _onTouched = (_: any) => {};
+  _defaultErrMsg: ErrorMessage = {
+    required: `${LabelReplacementTag} is required.`,
+    invalid: LabelReplacementTag + ' must begin with a letter and cannot include special ' +
+      'characters except hyphens, periods, apostrophes and blank characters.',
+    invalidChar: `${LabelReplacementTag} must be a letter.` // for Initials when maxlength is 1
+  };
+
 
   constructor( @Optional() @Self() public controlDir: NgControl ) {
     super();
@@ -48,14 +55,20 @@ export class NameComponent extends Base implements ControlValueAccessor {
     }
   }
 
+  ngOnInit() {
+    super.ngOnInit();
+
+    this.registerValidation( this.controlDir, this.validateSelf );
+  }
+
   onValueChange( value: any ) {
       this._onChange( value );
       this.valueChange.emit( value );
   }
 
-  onBlurEvent( event: any ) {
+  onBlur( event: any ) {
     this._onTouched( event );
-    this.blurEvent.emit( event.target.value );
+    this.blur.emit( event.target.value );
   }
 
   writeValue( value: any ): void {
@@ -64,21 +77,27 @@ export class NameComponent extends Base implements ControlValueAccessor {
     }
   }
 
-  // Register change function
-  registerOnChange( fn: any ): void {
-    this._onChange = fn;
-  }
-
-  // Register touched function
-  registerOnTouched( fn: any ): void {
-    this._onTouched = fn;
-  }
-
-  setDisabledState(isDisabled: boolean): void {
-    this.disabled = isDisabled;
-  }
-
   get maxLenAsNumber(): number {
-    return Number.parseInt( this.maxlen, 10 );
+    return Number.parseInt( this.maxlength, 10 );
   }
+
+  private validateSelf(): ValidationErrors | null {
+
+    const maxlen = Number.parseInt( this.maxlength, 10 );
+
+    if ( this.nameStr ) {
+      if ( maxlen > 1 ) {
+        // Valid characters for name
+        const criteria: RegExp = RegExp( '^[a-zA-Z][a-zA-Z\-.\' ]*$' );
+        return criteria.test( this.nameStr ) ? null : { 'invalid': true };
+      } else {
+
+        // Only letters for initials
+        const letters: RegExp = RegExp( '[a-zA-Z]*$' );
+        return letters.test( this.nameStr ) ? null : { 'invalidChar': true };
+      }
+    }
+    return null;
+   }
+
 }
