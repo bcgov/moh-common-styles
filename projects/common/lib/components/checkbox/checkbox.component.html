@@ -6,7 +6,8 @@
       id="checkbox_{{objectId}}"
       [ngModel]="data"
       (ngModelChange)="setCheckboxVal($event);"
-      [disabled]="disabled">
+      [disabled]="disabled"
+      [required]="required">
 <label for="checkbox_{{objectId}}" class="form-check-label">{{label}}</label>
 
 <common-error-container

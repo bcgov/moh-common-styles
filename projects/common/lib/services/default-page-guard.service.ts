@@ -43,16 +43,20 @@ export class DefaultPageGuardService implements AbstractPageGuardService {
 
     const startUrl = this.injector.get( START_PAGE_URL );
     const _startUrl = startUrl ? startUrl : this.startPageUrl;
+    const containStartUrl: boolean = url.includes( _startUrl );
 
     console.log( 'canNavigateToUrl: injected value = ', startUrl, url );
 
     // Empty list allow navigation to first page
-    if (this.pageStateService.pageList.length === 0 && url.includes( _startUrl ) ) {
-      return true;
-    }
+    if ( this.pageStateService.pageListIsClear() ) {
 
-    if ( this.pageStateService.pageList.filter( x => x.isComplete === true ).length === 0 ) {
-      this.pageStateService.navigateToPage( _startUrl );
+      // Trying to navigate to start page
+      if ( containStartUrl ) {
+        return true;
+      }
+
+      // Redirect to start page
+      this.pageStateService.navigateByUrl( _startUrl );
       return false;
     }
 
