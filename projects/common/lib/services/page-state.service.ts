@@ -106,6 +106,11 @@ export class PageStateService {
     });
   }
 
+  // Navigate to specified page
+  navigateToPage( url: string ) {
+    this.router.navigate([url]).then((data) =>  scrollTo() );
+  }
+
   // Find item in list
   private _find( path: string ) {
     return this.pageList.find( x => path.includes(x.path) || path.endsWith(x.path));
