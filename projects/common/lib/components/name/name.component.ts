@@ -62,8 +62,9 @@ export class NameComponent extends AbstractFormControl implements OnInit, Contro
   }
 
   onValueChange( value: any ) {
-      this._onChange( value );
-      this.valueChange.emit( value );
+    this.nameStr = value;
+    this._onChange( value );
+    this.valueChange.emit( value );
   }
 
   onBlur( event: any ) {
@@ -84,6 +85,8 @@ export class NameComponent extends AbstractFormControl implements OnInit, Contro
   private validateSelf(): ValidationErrors | null {
 
     const maxlen = Number.parseInt( this.maxlength, 10 );
+
+    console.log( 'name validate self: ', this.nameStr );
 
     if ( this.nameStr ) {
       if ( maxlen > 1 ) {
