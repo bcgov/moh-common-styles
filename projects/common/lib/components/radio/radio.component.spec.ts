@@ -1,5 +1,5 @@
-import { ComponentFixture, TestBed, fakeAsync, ComponentFixtureAutoDetect, async } from '@angular/core/testing';
-import {FormsModule, FormGroup, FormBuilder, ReactiveFormsModule} from '@angular/forms';
+import { ComponentFixture, fakeAsync } from '@angular/core/testing';
+import {FormGroup, FormBuilder} from '@angular/forms';
 import { RadioComponent } from './radio.component';
 import { QueryList, Component, ViewChildren, OnInit } from '@angular/core';
 import { tickAndDetectChanges, getLegendContext, createTestingModule } from '../../../helpers/test-helpers';

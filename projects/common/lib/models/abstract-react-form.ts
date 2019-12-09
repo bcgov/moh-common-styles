@@ -33,13 +33,22 @@ export abstract class AbstractReactForm extends AbstractBaseForm {
       if ( Array.isArray( fg ) ) {
         // For each form mark as touched to display errors
         return fg.forEach( x => {
-          x.markAsTouched();
+          this._markAllAsTouched( x );
         });
       }
       // Returns true if form is valid
-      fg.markAsTouched();
+      this._markAllAsTouched( fg );
     } else {
-      this.formGroup.markAsTouched();
+      this._markAllAsTouched( this.formGroup );
+    }
+  }
+
+  // Temporary until libray forms updated to version.
+  private _markAllAsTouched(fg: FormGroup) {
+    const controls: Array<string> = Object.keys(fg.controls);
+
+    for (const control of controls) {
+      fg.controls[control].markAsTouched();
     }
   }
 }
