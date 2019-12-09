@@ -107,6 +107,12 @@
                                 <a href="#getPageAtIndex">getPageAtIndex</a>
                             </li>
                             <li>
+                                <a href="#navigateByUrl">navigateByUrl</a>
+                            </li>
+                            <li>
+                                <a href="#pageListIsClear">pageListIsClear</a>
+                            </li>
+                            <li>
                                 <a href="#setPageComplete">setPageComplete</a>
                             </li>
                             <li>
@@ -205,8 +211,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="110"
-                            class="link-to-prism">projects/common/lib/services/page-state.service.ts:110</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="125"
+                            class="link-to-prism">projects/common/lib/services/page-state.service.ts:125</a></div>
                 </td>
             </tr>
 
@@ -505,6 +511,115 @@
                     </div>
                     <div class="io-description">
                         
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="navigateByUrl"></a>
+                    <span class="name">
+                        <b>
+                            navigateByUrl
+                        </b>
+                        <a href="#navigateByUrl"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>navigateByUrl(path: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="120"
+                            class="link-to-prism">projects/common/lib/services/page-state.service.ts:120</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>path</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="pageListIsClear"></a>
+                    <span class="name">
+                        <b>
+                            pageListIsClear
+                        </b>
+                        <a href="#pageListIsClear"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>pageListIsClear()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="110"
+                            class="link-to-prism">projects/common/lib/services/page-state.service.ts:110</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
                     </div>
                 </td>
             </tr>
@@ -887,7 +1002,7 @@ export class PageStateService {
     }
   }
 
-  canNavigateToPage( path: string  &#x3D; null): boolean {
+  canNavigateToPage( path: string  &#x3D; null ): boolean {
     let complete &#x3D; false;
     const obj &#x3D;  this._find(path ? path : this.router.url);
     if ( obj ) {
@@ -902,6 +1017,21 @@ export class PageStateService {
     this.pageList.map( x &#x3D;&gt; {
         x.isComplete &#x3D; false;
     });
+  }
+
+
+  pageListIsClear(): boolean {
+    let isClear &#x3D; true;
+    if ( this.pageList.length &gt; 0 ) {
+      isClear &#x3D; this.pageList.every( x  &#x3D;&gt; x.isComplete &#x3D;&#x3D;&#x3D; false );
+    }
+    return isClear;
+  }
+
+
+  // Redirect
+  navigateByUrl( path: string ) {
+    this.router.navigateByUrl( path );
   }
 
   // Find item in list

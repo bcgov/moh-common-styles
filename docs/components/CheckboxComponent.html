@@ -74,7 +74,7 @@
         <h3>Extends</h3>
     </p>
     <p class="comment">
-                <code><a href="../classes/Base.html" target="_self" >Base</a></code>
+                <code><a href="../classes/AbstractFormControl.html" target="_self" >AbstractFormControl</a></code>
     </p>
 
     <p class="comment">
@@ -132,14 +132,6 @@ errorMessageRequired = 'Opt in should be selected'
                 <td class="col-md-9"><code>./checkbox.component.html</code></td>
             </tr>
 
-            <tr>
-                <td class="col-md-3">viewProviders</td>
-                <td class="col-md-9">
-                    <code>
-                                <code><a href="../classes/Container.html" target="_self" >{ provide: ControlContainer, useExisting: forwardRef(() &#x3D;&gt; NgForm) }</a></code>
-                    </code>
-                </td>
-            </tr>
 
 
 
@@ -164,12 +156,7 @@ errorMessageRequired = 'Opt in should be selected'
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#_onChange">_onChange</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#_onTouched">_onTouched</a>
+                                <a href="#_defaultErrMsg">_defaultErrMsg</a>
                             </li>
                             <li>
                                 <a href="#checkbox">checkbox</a>
@@ -180,6 +167,16 @@ errorMessageRequired = 'Opt in should be selected'
                             </li>
                             <li>
                                 <a href="#defaultErrorMessage">defaultErrorMessage</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Abstract</span>
+                                <a href="#_defaultErrMsg">_defaultErrMsg</a>
+                            </li>
+                            <li>
+                                <a href="#_onChange">_onChange</a>
+                            </li>
+                            <li>
+                                <a href="#_onTouched">_onTouched</a>
                             </li>
                             <li>
                                     <span class="modifier">Public</span>
@@ -204,15 +201,33 @@ errorMessageRequired = 'Opt in should be selected'
                                 <a href="#ngOnInit">ngOnInit</a>
                             </li>
                             <li>
+                                <a href="#setCheckboxVal">setCheckboxVal</a>
+                            </li>
+                            <li>
+                                <a href="#writeValue">writeValue</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                            <li>
                                 <a href="#registerOnChange">registerOnChange</a>
                             </li>
                             <li>
                                 <a href="#registerOnTouched">registerOnTouched</a>
                             </li>
                             <li>
-                                <a href="#setCheckboxVal">setCheckboxVal</a>
+                                    <span class="modifier">Protected</span>
+                                <a href="#registerValidation">registerValidation</a>
                             </li>
                             <li>
+                                <a href="#setDisabledState">setDisabledState</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Protected</span>
+                                <a href="#setErrorMsg">setErrorMsg</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Abstract</span>
                                 <a href="#writeValue">writeValue</a>
                             </li>
                         </ul>
@@ -231,19 +246,19 @@ errorMessageRequired = 'Opt in should be selected'
                                 <a href="#data">data</a>
                             </li>
                             <li>
-                                <a href="#disabled">disabled</a>
-                            </li>
-                            <li>
-                                <a href="#errorMessageRequired">errorMessageRequired</a>
-                            </li>
-                            <li>
                                 <a href="#label">label</a>
                             </li>
                             <li>
                                 <a href="#required">required</a>
                             </li>
                             <li>
-                                <a href="#showError">showError</a>
+                                <a href="#disabled">disabled</a>
+                            </li>
+                            <li>
+                                <a href="#errorMessage">errorMessage</a>
+                            </li>
+                            <li>
+                                <a href="#label">label</a>
                             </li>
                         </ul>
                     </td>
@@ -281,7 +296,7 @@ errorMessageRequired = 'Opt in should be selected'
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">projects/common/lib/components/checkbox/checkbox.component.ts:47</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">projects/common/lib/components/checkbox/checkbox.component.ts:40</a></div>
                             </td>
                         </tr>
 
@@ -342,7 +357,7 @@ errorMessageRequired = 'Opt in should be selected'
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">projects/common/lib/components/checkbox/checkbox.component.ts:36</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">projects/common/lib/components/checkbox/checkbox.component.ts:32</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -351,53 +366,6 @@ errorMessageRequired = 'Opt in should be selected'
 </div>
                     </td>
                 </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="disabled"></a>
-                        <b>disabled</b>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>false</code>
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">projects/common/lib/components/checkbox/checkbox.component.ts:38</a></div>
-                            </td>
-                        </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="errorMessageRequired"></a>
-                        <b>errorMessageRequired</b>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">projects/common/lib/components/checkbox/checkbox.component.ts:40</a></div>
-                            </td>
-                        </tr>
             </tbody>
         </table>
         <table class="table table-sm table-bordered">
@@ -421,7 +389,7 @@ errorMessageRequired = 'Opt in should be selected'
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">projects/common/lib/components/checkbox/checkbox.component.ts:39</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">projects/common/lib/components/checkbox/checkbox.component.ts:33</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -447,7 +415,7 @@ errorMessageRequired = 'Opt in should be selected'
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">projects/common/lib/components/checkbox/checkbox.component.ts:37</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">projects/common/lib/components/checkbox/checkbox.component.ts:34</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -456,8 +424,8 @@ errorMessageRequired = 'Opt in should be selected'
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="showError"></a>
-                        <b>showError</b>
+                        <a name="disabled"></a>
+                        <b>disabled</b>
                     </td>
                 </tr>
                 <tr>
@@ -466,9 +434,77 @@ errorMessageRequired = 'Opt in should be selected'
 
                     </td>
                 </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4" colspan="2">
+                                    <div class="io-line">Inherited from         <code><a href="../classes/AbstractFormControl.html" target="_self" >AbstractFormControl</a></code>
+</div>
+                                </td>
+                            </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">projects/common/lib/components/checkbox/checkbox.component.ts:41</a></div>
+                                    <div class="io-line">Defined in         <code><a href="../classes/AbstractFormControl.html#source" target="_self" >AbstractFormControl:15</a></code>
+</div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="errorMessage"></a>
+                        <b>errorMessage</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/ErrorMessage.html" target="_self" >ErrorMessage</a></code>
+
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4" colspan="2">
+                                    <div class="io-line">Inherited from         <code><a href="../classes/AbstractFormControl.html" target="_self" >AbstractFormControl</a></code>
+</div>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in         <code><a href="../classes/AbstractFormControl.html#source" target="_self" >AbstractFormControl:18</a></code>
+</div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="label"></a>
+                        <b>label</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4" colspan="2">
+                                    <div class="io-line">Inherited from         <code><a href="../classes/AbstractFormControl.html" target="_self" >AbstractFormControl</a></code>
+</div>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in         <code><a href="../classes/AbstractFormControl.html#source" target="_self" >AbstractFormControl:13</a></code>
+</div>
                             </td>
                         </tr>
             </tbody>
@@ -492,7 +528,7 @@ errorMessageRequired = 'Opt in should be selected'
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">projects/common/lib/components/checkbox/checkbox.component.ts:42</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">projects/common/lib/components/checkbox/checkbox.component.ts:35</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -527,8 +563,8 @@ errorMessageRequired = 'Opt in should be selected'
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="71"
-                            class="link-to-prism">projects/common/lib/components/checkbox/checkbox.component.ts:71</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="60"
+                            class="link-to-prism">projects/common/lib/components/checkbox/checkbox.component.ts:60</a></div>
                 </td>
             </tr>
 
@@ -566,8 +602,8 @@ errorMessageRequired = 'Opt in should be selected'
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="56"
-                            class="link-to-prism">projects/common/lib/components/checkbox/checkbox.component.ts:56</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="49"
+                            class="link-to-prism">projects/common/lib/components/checkbox/checkbox.component.ts:49</a></div>
                 </td>
             </tr>
 
@@ -578,146 +614,6 @@ errorMessageRequired = 'Opt in should be selected'
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="registerOnChange"></a>
-                    <span class="name">
-                        <b>
-                            registerOnChange
-                        </b>
-                        <a href="#registerOnChange"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>registerOnChange(fn: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="75"
-                            class="link-to-prism">projects/common/lib/components/checkbox/checkbox.component.ts:75</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>fn</td>
-                                    <td>
-                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="registerOnTouched"></a>
-                    <span class="name">
-                        <b>
-                            registerOnTouched
-                        </b>
-                        <a href="#registerOnTouched"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>registerOnTouched(fn: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="79"
-                            class="link-to-prism">projects/common/lib/components/checkbox/checkbox.component.ts:79</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>fn</td>
-                                    <td>
-                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
                     </div>
                 </td>
             </tr>
@@ -745,8 +641,8 @@ errorMessageRequired = 'Opt in should be selected'
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="64"
-                            class="link-to-prism">projects/common/lib/components/checkbox/checkbox.component.ts:64</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="53"
+                            class="link-to-prism">projects/common/lib/components/checkbox/checkbox.component.ts:53</a></div>
                 </td>
             </tr>
 
@@ -815,8 +711,505 @@ errorMessageRequired = 'Opt in should be selected'
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="83"
-                            class="link-to-prism">projects/common/lib/components/checkbox/checkbox.component.ts:83</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="64"
+                            class="link-to-prism">projects/common/lib/components/checkbox/checkbox.component.ts:64</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>value</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <b>
+                            ngOnInit
+                        </b>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Inherited from         <code><a href="../classes/AbstractFormControl.html" target="_self" >AbstractFormControl</a></code>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-line">Defined in         <code><a href="../classes/AbstractFormControl.html#source" target="_self" >AbstractFormControl:26</a></code>
+</div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="registerOnChange"></a>
+                    <span class="name">
+                        <b>
+                            registerOnChange
+                        </b>
+                        <a href="#registerOnChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>registerOnChange(fn: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Inherited from         <code><a href="../classes/AbstractFormControl.html" target="_self" >AbstractFormControl</a></code>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-line">Defined in         <code><a href="../classes/AbstractFormControl.html#source" target="_self" >AbstractFormControl:34</a></code>
+</div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>fn</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="registerOnTouched"></a>
+                    <span class="name">
+                        <b>
+                            registerOnTouched
+                        </b>
+                        <a href="#registerOnTouched"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>registerOnTouched(fn: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Inherited from         <code><a href="../classes/AbstractFormControl.html" target="_self" >AbstractFormControl</a></code>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-line">Defined in         <code><a href="../classes/AbstractFormControl.html#source" target="_self" >AbstractFormControl:39</a></code>
+</div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>fn</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="registerValidation"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Protected</span>
+                            registerValidation
+                        </b>
+                        <a href="#registerValidation"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>registerValidation(ngControl: <a href="https://angular.io/api/forms/NgControl" target="_blank">NgControl</a>, fn: <a href="https://angular.io/api/forms/ValidationErrors" target="_blank">ValidationErrors</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Inherited from         <code><a href="../classes/AbstractFormControl.html" target="_self" >AbstractFormControl</a></code>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-line">Defined in         <code><a href="../classes/AbstractFormControl.html#source" target="_self" >AbstractFormControl:65</a></code>
+</div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Register self validating method</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ngControl</td>
+                                    <td>
+                                                <code><a href="https://angular.io/api/forms/NgControl" target="_blank" >NgControl</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>fn</td>
+                                    <td>
+                                                <code><a href="https://angular.io/api/forms/ValidationErrors" target="_blank" >ValidationErrors</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>function for validating self</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setDisabledState"></a>
+                    <span class="name">
+                        <b>
+                            setDisabledState
+                        </b>
+                        <a href="#setDisabledState"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setDisabledState(isDisabled: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Inherited from         <code><a href="../classes/AbstractFormControl.html" target="_self" >AbstractFormControl</a></code>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-line">Defined in         <code><a href="../classes/AbstractFormControl.html#source" target="_self" >AbstractFormControl:44</a></code>
+</div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>isDisabled</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setErrorMsg"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Protected</span>
+                            setErrorMsg
+                        </b>
+                        <a href="#setErrorMsg"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>setErrorMsg()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Inherited from         <code><a href="../classes/AbstractFormControl.html" target="_self" >AbstractFormControl</a></code>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-line">Defined in         <code><a href="../classes/AbstractFormControl.html#source" target="_self" >AbstractFormControl:48</a></code>
+</div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="writeValue"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Abstract</span>
+                            writeValue
+                        </b>
+                        <a href="#writeValue"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>writeValue(value: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Inherited from         <code><a href="../classes/AbstractFormControl.html" target="_self" >AbstractFormControl</a></code>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-line">Defined in         <code><a href="../classes/AbstractFormControl.html#source" target="_self" >AbstractFormControl:31</a></code>
+</div>
                 </td>
             </tr>
 
@@ -873,50 +1266,30 @@ errorMessageRequired = 'Opt in should be selected'
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="_onChange"></a>
+                        <a name="_defaultErrMsg"></a>
                         <span class="name">
                             <b>
-                                <span class="modifier">Public</span>
-                            _onChange</b>
-                            <a href="#_onChange"><span class="icon ion-ios-link"></span></a>
+                            _defaultErrMsg</b>
+                            <a href="#_defaultErrMsg"><span class="icon ion-ios-link"></span></a>
                         </span>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Default value : </i><code>() &#x3D;&gt; {...}</code>
+                            <i>Type : </i>        <code><a href="../interfaces/ErrorMessage.html" target="_self" >ErrorMessage</a></code>
+
                         </td>
                     </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">projects/common/lib/components/checkbox/checkbox.component.ts:46</a></div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="_onTouched"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Public</span>
-                            _onTouched</b>
-                            <a href="#_onTouched"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Default value : </i><code>() &#x3D;&gt; {...}</code>
+                            <i>Default value : </i><code>{
+    required: &#x60;${LabelReplacementTag} is required.&#x60;,
+  }</code>
                         </td>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">projects/common/lib/components/checkbox/checkbox.component.ts:47</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">projects/common/lib/components/checkbox/checkbox.component.ts:38</a></div>
                             </td>
                         </tr>
 
@@ -952,7 +1325,7 @@ errorMessageRequired = 'Opt in should be selected'
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">projects/common/lib/components/checkbox/checkbox.component.ts:43</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">projects/common/lib/components/checkbox/checkbox.component.ts:36</a></div>
                             </td>
                         </tr>
 
@@ -989,7 +1362,7 @@ errorMessageRequired = 'Opt in should be selected'
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">projects/common/lib/components/checkbox/checkbox.component.ts:49</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">projects/common/lib/components/checkbox/checkbox.component.ts:42</a></div>
                             </td>
                         </tr>
 
@@ -1021,7 +1394,113 @@ errorMessageRequired = 'Opt in should be selected'
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">projects/common/lib/components/checkbox/checkbox.component.ts:31</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">projects/common/lib/components/checkbox/checkbox.component.ts:27</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_defaultErrMsg"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Abstract</span>
+                            _defaultErrMsg</b>
+                            <a href="#_defaultErrMsg"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../interfaces/ErrorMessage.html" target="_self" >ErrorMessage</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>{}</code>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Inherited from         <code><a href="../classes/AbstractFormControl.html" target="_self" >AbstractFormControl</a></code>
+</div>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in         <code><a href="../classes/AbstractFormControl.html#source" target="_self" >AbstractFormControl:10</a></code>
+</div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_onChange"></a>
+                        <span class="name">
+                            <b>
+                            _onChange</b>
+                            <a href="#_onChange"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>() &#x3D;&gt; {...}</code>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Inherited from         <code><a href="../classes/AbstractFormControl.html" target="_self" >AbstractFormControl</a></code>
+</div>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in         <code><a href="../classes/AbstractFormControl.html#source" target="_self" >AbstractFormControl:22</a></code>
+</div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_onTouched"></a>
+                        <span class="name">
+                            <b>
+                            _onTouched</b>
+                            <a href="#_onTouched"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>() &#x3D;&gt; {...}</code>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Inherited from         <code><a href="../classes/AbstractFormControl.html" target="_self" >AbstractFormControl</a></code>
+</div>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in         <code><a href="../classes/AbstractFormControl.html#source" target="_self" >AbstractFormControl:23</a></code>
+</div>
                             </td>
                         </tr>
 
@@ -1080,9 +1559,10 @@ errorMessageRequired = 'Opt in should be selected'
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { forwardRef, Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef, Optional, Self} from &#x27;@angular/core&#x27;;
-import { Base } from &#x27;../../models/base&#x27;;
-import { ControlContainer, ControlValueAccessor, NgForm, NG_VALUE_ACCESSOR, NgControl } from &#x27;@angular/forms&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef, Optional, Self} from &#x27;@angular/core&#x27;;
+import { ControlValueAccessor, NgControl } from &#x27;@angular/forms&#x27;;
+import { AbstractFormControl } from &#x27;../../models/abstract-form-control&#x27;;
+import { ErrorMessage, LabelReplacementTag } from &#x27;../../models/error-message.interface&#x27;;
 /**
  * Checkbox component is a input checkbox
  *
@@ -1102,31 +1582,23 @@ import { ControlContainer, ControlValueAccessor, NgForm, NG_VALUE_ACCESSOR, NgCo
 @Component({
   selector: &#x27;common-checkbox&#x27;,
   templateUrl: &#x27;./checkbox.component.html&#x27;,
-  styleUrls: [&#x27;./checkbox.component.scss&#x27;],
-
-  // TODO: Remove to make custom form control -- possible breaking change
-  viewProviders: [
-    { provide: ControlContainer, useExisting: forwardRef(() &#x3D;&gt; NgForm ) }
-  ]
+  styleUrls: [&#x27;./checkbox.component.scss&#x27;]
 })
-export class CheckboxComponent extends Base implements  OnInit, ControlValueAccessor {
+export class CheckboxComponent extends AbstractFormControl implements OnInit, ControlValueAccessor {
   defaultErrorMessage: string &#x3D; &#x27;&#x27;;
 
   /**
    * You can bind to [(data)] OR you can use [(ngModel)] but don&#x27;t use both.
    */
   @Input() data: boolean &#x3D; false;
-  @Input() required: boolean &#x3D; false;  // TODO: Remove - breaking change
-  @Input() disabled: boolean &#x3D; false;
   @Input() label: string &#x3D; &#x27;Default Checkbox&#x27;;
-  @Input() errorMessageRequired: string;
-  @Input() showError: boolean;
+  @Input() required: boolean &#x3D; false;  // TOBE removed duing MSP stablization - then update MSP to use form control version
   @Output() dataChange: EventEmitter&lt;boolean&gt; &#x3D; new EventEmitter&lt;boolean&gt;();
   @ViewChild(&#x27;checkbox&#x27;) checkbox: ElementRef;
 
-
-  public _onChange &#x3D; (_: any) &#x3D;&gt; {};
-  public _onTouched &#x3D; () &#x3D;&gt; {};
+  _defaultErrMsg: ErrorMessage &#x3D; {
+    required: &#x60;${LabelReplacementTag} is required.&#x60;,
+  };
 
   constructor( @Optional() @Self() public controlDir: NgControl ) {
     super();
@@ -1136,11 +1608,7 @@ export class CheckboxComponent extends Base implements  OnInit, ControlValueAcce
   }
 
   ngOnInit() {
-    if ( this.errorMessageRequired ) {
-      this.defaultErrorMessage &#x3D; this.errorMessageRequired;
-    } else {
-      this.defaultErrorMessage &#x3D; this.label + &#x27; is required.&#x27;;
-    }
+    super.ngOnInit();
   }
 
   setCheckboxVal(event: boolean) {
@@ -1154,16 +1622,10 @@ export class CheckboxComponent extends Base implements  OnInit, ControlValueAcce
     this.checkbox.nativeElement.focus();
   }
 
-  registerOnChange(fn: any): void {
-    this._onChange &#x3D; fn;
-  }
-
-  registerOnTouched(fn: any): void {
-    this._onTouched &#x3D; fn;
-  }
-
   writeValue(value: any): void {
-    this.data &#x3D; value;
+    if ( value !&#x3D;&#x3D; undefined || value &#x3D;&#x3D;&#x3D; null ) {
+      this.data &#x3D; value;
+    }
   }
 }
 </code></pre>
@@ -1182,14 +1644,9 @@ export class CheckboxComponent extends Base implements  OnInit, ControlValueAcce
       [required]&#x3D;&quot;required&quot;&gt;
 &lt;label for&#x3D;&quot;checkbox_{{objectId}}&quot; class&#x3D;&quot;form-check-label&quot;&gt;{{label}}&lt;/label&gt;
 
-&lt;!--TODO: remove - breaking change --&gt;
-&lt;div *ngIf&#x3D;&#x27;showError &amp;&amp; (data &#x3D;&#x3D;&#x3D; undefined || data &#x3D;&#x3D;&#x3D; null)&#x27;&gt;
-    &lt;div class&#x3D;&quot;text-danger&quot;&gt;{{defaultErrorMessage}}&lt;/div&gt;
-&lt;/div&gt;
-
 &lt;common-error-container
   [displayError]&#x3D;&quot;controlDir &amp;&amp; !disabled &amp;&amp; (controlDir.touched || controlDir.dirty) &amp;&amp; controlDir?.errors&quot;&gt;
-  &lt;div *ngIf&#x3D;&quot;controlDir?.errors?.required&quot;&gt;{{defaultErrorMessage}}&lt;/div&gt;
+  &lt;div *ngIf&#x3D;&quot;controlDir?.errors?.required&quot;&gt;{{_defaultErrMsg.required}}&lt;/div&gt;
 &lt;/common-error-container&gt;
 </code></pre>
     </div>
@@ -1220,7 +1677,7 @@ export class CheckboxComponent extends Base implements  OnInit, ControlValueAcce
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><input #checkbox      type="checkbox"      class="input-lg form-check-input"      name="checkbox_{{objectId}}"      id="checkbox_{{objectId}}"      [ngModel]="data"      (ngModelChange)="setCheckboxVal($event);"      [disabled]="disabled"      [required]="required"><label for="checkbox_{{objectId}}" class="form-check-label">{{label}}</label><!--TODO: remove - breaking change --><div *ngIf=\'showError && (data === undefined || data === null)\'>    <div class="text-danger">{{defaultErrorMessage}}</div></div><common-error-container  [displayError]="controlDir && !disabled && (controlDir.touched || controlDir.dirty) && controlDir?.errors">  <div *ngIf="controlDir?.errors?.required">{{defaultErrorMessage}}</div></common-error-container></div>'
+        var COMPONENT_TEMPLATE = '<div><input #checkbox      type="checkbox"      class="input-lg form-check-input"      name="checkbox_{{objectId}}"      id="checkbox_{{objectId}}"      [ngModel]="data"      (ngModelChange)="setCheckboxVal($event);"      [disabled]="disabled"      [required]="required"><label for="checkbox_{{objectId}}" class="form-check-label">{{label}}</label><common-error-container  [displayError]="controlDir && !disabled && (controlDir.touched || controlDir.dirty) && controlDir?.errors">  <div *ngIf="controlDir?.errors?.required">{{_defaultErrMsg.required}}</div></common-error-container></div>'
     var COMPONENTS = [{'name': 'AccordionCommonComponent', 'selector': 'common-accordion'},{'name': 'AddressComponent', 'selector': 'common-address'},{'name': 'ButtonComponent', 'selector': 'common-button'},{'name': 'ButtonGroupComponent', 'selector': 'common-button-group'},{'name': 'CaptchaComponent', 'selector': 'common-captcha'},{'name': 'CheckboxComponent', 'selector': 'common-checkbox'},{'name': 'CityComponent', 'selector': 'common-city'},{'name': 'ConfirmTemplateComponent', 'selector': 'common-confirm-template'},{'name': 'ConsentModalComponent', 'selector': 'common-consent-modal'},{'name': 'CoreBreadcrumbComponent', 'selector': 'common-core-breadcrumb'},{'name': 'CountryComponent', 'selector': 'common-country'},{'name': 'DateComponent', 'selector': 'common-date'},{'name': 'DatepickerComponent', 'selector': 'common-datepicker'},{'name': 'DropdownComponent', 'selector': 'common-dropdown'},{'name': 'EmailComponent', 'selector': 'common-email'},{'name': 'ErrorContainerComponent', 'selector': 'common-error-container'},{'name': 'FileUploaderComponent', 'selector': 'common-file-uploader'},{'name': 'FormActionBarComponent', 'selector': 'common-form-action-bar'},{'name': 'FormSubmitBarComponent', 'selector': 'common-form-submit-bar'},{'name': 'FullNameComponent', 'selector': 'common-full-name'},{'name': 'GeocoderInputComponent', 'selector': 'common-geocoder-input'},{'name': 'HeaderComponent', 'selector': 'common-header'},{'name': 'NameComponent', 'selector': 'common-name'},{'name': 'PageFrameworkComponent', 'selector': 'common-page-framework'},{'name': 'PageSectionComponent', 'selector': 'common-page-section'},{'name': 'PasswordComponent', 'selector': 'common-password'},{'name': 'PhnComponent', 'selector': 'common-phn'},{'name': 'PhoneNumberComponent', 'selector': 'common-phone-number'},{'name': 'PostalCodeComponent', 'selector': 'common-postal-code'},{'name': 'ProvinceComponent', 'selector': 'common-province'},{'name': 'RadioComponent', 'selector': 'common-radio'},{'name': 'SampleModalComponent', 'selector': 'common-sample-modal'},{'name': 'SinComponent', 'selector': 'common-sin'},{'name': 'StreetComponent', 'selector': 'common-street'},{'name': 'ThumbnailComponent', 'selector': 'common-thumbnail'},{'name': 'ToggleComponent', 'selector': 'common-toggle'},{'name': 'WizardProgressBarComponent', 'selector': 'common-wizard-progress-bar'},{'name': 'XiconButtonComponent', 'selector': 'common-xicon-button'}];
     var DIRECTIVES = [{'name': 'DateFieldFormatDirective', 'selector': '[commonDateFieldFormat]'},{'name': 'DuplicateCheckDirective', 'selector': '[commonDuplicateCheck]'},{'name': 'ValidateBcPostalDirective', 'selector': '[commonValidateBcPostal]'},{'name': 'ValidateCityDirective', 'selector': '[commonValidateCity]'},{'name': 'ValidateNameDirective', 'selector': '[commonValidateName]'},{'name': 'ValidatePostalcodeDirective', 'selector': '[commonValidatePostalcode]'},{'name': 'ValidateRegionDirective', 'selector': '[commonValidateRegion]'},{'name': 'ValidateStreetDirective', 'selector': '[commonValidateStreet]'}];
     var ACTUAL_COMPONENT = {'name': 'CheckboxComponent'};

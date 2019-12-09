@@ -64,7 +64,7 @@
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>Default page guard servicd</p>
+                <p>Default page guard service, ByPassGuards &amp; StartPageUrl are injected only if not extending service</p>
 
             </p>
 
@@ -75,7 +75,10 @@
             <div class="io-description">
                         <div>
                             <pre class="line-numbers"><code class="language-html">providers: [
-         ...
+          ...
+         { provide: ByPassGuards, useValue: environment.bypassGuards },
+         { provide: StartPageUrl, useValue: CREATE_FACILITY_PAGES.HOME.fullpath },
+         DefaultPageGuardService
          { provide: AbstractPageGuardService, useExisting: DefaultPageGuardService },
          LoadPageGuardService
 ]</code></pre>
@@ -95,8 +98,10 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                    <span class="modifier">Private</span>
-                                <a href="#_bypassGuards">_bypassGuards</a>
+                                <a href="#bypassGuards">bypassGuards</a>
+                            </li>
+                            <li>
+                                <a href="#startPageUrl">startPageUrl</a>
                             </li>
                         </ul>
                     </td>
@@ -126,20 +131,6 @@
 
 
 
-                    <tr>
-                        <td class="col-md-4">
-                            <h6><b>Accessors</b></h6>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <ul class="index-list">
-                                <li>
-                                    <a href="#bypassGuards">bypassGuards</a>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
         </tbody>
     </table>
 </section>
@@ -150,12 +141,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(pageStateService: <a href="../injectables/PageStateService.html">PageStateService</a>)</code>
+<code>constructor(pageStateService: <a href="../injectables/PageStateService.html">PageStateService</a>, injector: <a href="https://angular.io/api/core/Injector" target="_blank">Injector</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">projects/common/lib/services/default-page-guard.service.ts:22</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">projects/common/lib/services/default-page-guard.service.ts:30</a></div>
                             </td>
                         </tr>
 
@@ -177,6 +168,18 @@
                                                   
                                                         <td>
                                                                         <code><a href="../injectables/PageStateService.html" target="_self" >PageStateService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>injector</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/core/Injector" target="_blank" >Injector</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -222,8 +225,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="30"
-                            class="link-to-prism">projects/common/lib/services/default-page-guard.service.ts:30</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="34"
+                            class="link-to-prism">projects/common/lib/services/default-page-guard.service.ts:34</a></div>
                 </td>
             </tr>
 
@@ -263,8 +266,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="34"
-                            class="link-to-prism">projects/common/lib/services/default-page-guard.service.ts:34</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="42"
+                            class="link-to-prism">projects/common/lib/services/default-page-guard.service.ts:42</a></div>
                 </td>
             </tr>
 
@@ -321,12 +324,11 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="_bypassGuards"></a>
+                        <a name="bypassGuards"></a>
                         <span class="name">
                             <b>
-                                <span class="modifier">Private</span>
-                            _bypassGuards</b>
-                            <a href="#_bypassGuards"><span class="icon ion-ios-link"></span></a>
+                            bypassGuards</b>
+                            <a href="#bypassGuards"><span class="icon ion-ios-link"></span></a>
                         </span>
                     </td>
                 </tr>
@@ -343,7 +345,39 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">projects/common/lib/services/default-page-guard.service.ts:22</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">projects/common/lib/services/default-page-guard.service.ts:29</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="startPageUrl"></a>
+                        <span class="name">
+                            <b>
+                            startPageUrl</b>
+                            <a href="#startPageUrl"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>&#x27;&#x27;</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">projects/common/lib/services/default-page-guard.service.ts:30</a></div>
                             </td>
                         </tr>
 
@@ -352,108 +386,72 @@
         </table>
 </section>
 
-            <section>
-    <h3 id="accessors">
-        Accessors
-    </h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="bypassGuards"></a>
-                        <span class="name"><b>bypassGuards</b><a href="#bypassGuards"><span class="icon ion-ios-link"></span></a></span>
-                    </td>
-                </tr>
-
-
-                <tr>
-                    <td class="col-md-4">
-                        <span class="accessor"><b>set</b><code>bypassGuards(bypass: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code></span>
-                    </td>
-                </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">projects/common/lib/services/default-page-guard.service.ts:26</a></div>
-                                </td>
-                            </tr>
-                    <tr>
-                        <td class="col-md-4">
-
-                                <div class="io-description">
-                                        <b>Parameters :</b>
-                                        <table class="params">
-                                            <thead>
-                                                <tr>
-                                                    <td>Name</td>
-                                                        <td>Type</td>
-                                                    <td>Optional</td>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                    <tr>
-                                                            <td>bypass</td>
-                                                    
-                                                            <td>
-                                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
-                                                            </td>
-                                                    
-                                                        <td>
-                                                                No
-                                                        </td>
-                                                        
-                                                    </tr>
-                                            </tbody>
-                                        </table>
-                                </div>
-                                <div>
-                                </div>
-                                <div class="io-description">
-                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                                </div>
-                        </td>
-                    </tr>
-            </tbody>
-        </table>
-</section>
     </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable, InjectionToken, Injector } from &#x27;@angular/core&#x27;;
 import { PageStateService } from &#x27;./page-state.service&#x27;;
 import { AbstractPageGuardService } from &#x27;./abstract-page-guard.service&#x27;;
 
+export const START_PAGE_URL &#x3D; new InjectionToken&lt;string&gt;( &#x27;StartPageUrl&#x27; );
+export const BYPASS_GUARDS &#x3D; new InjectionToken&lt;boolean&gt;( &#x27;ByPassGuards&#x27; );
+
 /**
- * Default page guard servicd
+ * Default page guard service, ByPassGuards &amp; StartPageUrl are injected only if not extending service
  *
  *  @example
  *
  *                providers: [
- *                        ...
+ *                         ...
+ *                        { provide: ByPassGuards, useValue: environment.bypassGuards },
+ *                        { provide: StartPageUrl, useValue: CREATE_FACILITY_PAGES.HOME.fullpath },
+ *                        DefaultPageGuardService
  *                        { provide: AbstractPageGuardService, useExisting: DefaultPageGuardService },
  *                        LoadPageGuardService
  *                ]
  *
+
  */
 @Injectable({
   providedIn: &#x27;root&#x27;
 })
 export class DefaultPageGuardService implements AbstractPageGuardService {
 
-  private _bypassGuards: boolean &#x3D; false;
+  bypassGuards: boolean &#x3D; false;
+  startPageUrl: string &#x3D; &#x27;&#x27;;
 
-  constructor( private pageStateService: PageStateService ) {}
-
-  set bypassGuards( bypass: boolean) {
-    this._bypassGuards &#x3D; bypass;
-  }
+  constructor( private pageStateService: PageStateService, private injector: Injector ) {}
 
   public canBypassGuards(): boolean {
-    return this._bypassGuards;
+
+    const bypass &#x3D; this.injector.get( BYPASS_GUARDS );
+    console.log( &#x27;canBypassGuards: injected value &#x3D; &#x27;, bypass );
+
+    return bypass ? bypass : this.bypassGuards;
   }
 
   public canNavigateToUrl( url: string ): boolean {
+
+    const startUrl &#x3D; this.injector.get( START_PAGE_URL );
+    const _startUrl &#x3D; startUrl ? startUrl : this.startPageUrl;
+    const containStartUrl: boolean &#x3D; url.includes( _startUrl );
+
+    console.log( &#x27;canNavigateToUrl: injected value &#x3D; &#x27;, startUrl, url );
+
+    // Empty list allow navigation to first page
+    if ( this.pageStateService.pageListIsClear() ) {
+
+      // Trying to navigate to start page
+      if ( containStartUrl ) {
+        return true;
+      }
+
+      // Redirect to start page
+      this.pageStateService.navigateByUrl( _startUrl );
+      return false;
+    }
+
     return this.pageStateService.canNavigateToPage( url );
   }
 }

@@ -108,6 +108,10 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_markAllAsTouched">_markAllAsTouched</a>
+                            </li>
+                            <li>
                                 <a href="#canContinue">canContinue</a>
                             </li>
                             <li>
@@ -319,6 +323,78 @@
     <h3 id="methods">
         Methods
     </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_markAllAsTouched"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            _markAllAsTouched
+                        </b>
+                        <a href="#_markAllAsTouched"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_markAllAsTouched(fg: <a href="https://angular.io/api/forms/FormGroup" target="_blank">FormGroup</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="47"
+                            class="link-to-prism">projects/common/lib/models/abstract-react-form.ts:47</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>fg</td>
+                                    <td>
+                                                <code><a href="https://angular.io/api/forms/FormGroup" target="_blank" >FormGroup</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
     <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -674,13 +750,22 @@ export abstract class AbstractReactForm extends AbstractBaseForm {
       if ( Array.isArray( fg ) ) {
         // For each form mark as touched to display errors
         return fg.forEach( x &#x3D;&gt; {
-          x.markAsTouched();
+          this._markAllAsTouched( x );
         });
       }
       // Returns true if form is valid
-      fg.markAsTouched();
+      this._markAllAsTouched( fg );
     } else {
-      this.formGroup.markAsTouched();
+      this._markAllAsTouched( this.formGroup );
+    }
+  }
+
+  // Temporary until libray forms updated to version.
+  private _markAllAsTouched(fg: FormGroup) {
+    const controls: Array&lt;string&gt; &#x3D; Object.keys(fg.controls);
+
+    for (const control of controls) {
+      fg.controls[control].markAsTouched();
     }
   }
 }

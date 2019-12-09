@@ -67,6 +67,11 @@
                             <code><a href="https://angular.io/api/forms/Validator" target="_blank" >Validator</a></code>
             </p>
 
+            <p class="comment">
+                <h3>Example</h3>
+            </p>
+            <div class="io-description">
+            </div>
 
         <section>
             <h3>Metadata</h3>
@@ -150,8 +155,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="26"
-                            class="link-to-prism">projects/common/lib/components/name/validate-name.directive.ts:26</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="32"
+                            class="link-to-prism">projects/common/lib/components/name/validate-name.directive.ts:32</a></div>
                 </td>
             </tr>
 
@@ -208,7 +213,10 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Directive } from &#x27;@angular/core&#x27;;
 import { NG_VALIDATORS, Validator, AbstractControl, ValidatorFn, ValidationErrors } from &#x27;@angular/forms&#x27;;
 
-
+/**
+ * @deprecated
+ * @param control
+ */
 export const commonValidateName: ValidatorFn &#x3D; (control: AbstractControl): ValidationErrors | null &#x3D;&gt; {
    /**
    * Valid characters for name
@@ -222,6 +230,9 @@ export const commonValidateName: ValidatorFn &#x3D; (control: AbstractControl): 
 };
 
 
+/**
+ * @deprecated
+ */
 @Directive({
   selector: &#x27;[commonValidateName]&#x27;,
   providers: [

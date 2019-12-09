@@ -1,4 +1,24 @@
-# Unreleased "moh-common-lib" (2019-12-03)
+# Unreleased "moh-common-lib" (2019-12-09)
+
+
+
+# [3.0.0-rc.22](https://github.com/bcgov/moh-common-styles/compare/v3.0.0-rc.21...v3.0.0-rc.22) "moh-common-lib" (2019-12-09)
+
+
+### Bug Fixes
+
+* default page guard working  when navigates to start url when list empty or all pages false ([57b73dd](https://github.com/bcgov/moh-common-styles/commit/57b73dd))
+* self validating - set value in nameStr variable before call onchange ([7e674de](https://github.com/bcgov/moh-common-styles/commit/7e674de))
+
+
+### Code Refactoring
+
+* checkbox to use abstract control class, date uses registerValidation(), cleanup ([0b0ffca](https://github.com/bcgov/moh-common-styles/commit/0b0ffca))
+
+
+### Features
+
+* inject start url & bypass values for default page guard service ([f5e3e0d](https://github.com/bcgov/moh-common-styles/commit/f5e3e0d))
 
 
 

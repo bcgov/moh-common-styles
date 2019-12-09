@@ -300,7 +300,7 @@ export class PageStateService {
     }
   }
 
-  canNavigateToPage( path: string  &#x3D; null): boolean {
+  canNavigateToPage( path: string  &#x3D; null ): boolean {
     let complete &#x3D; false;
     const obj &#x3D;  this._find(path ? path : this.router.url);
     if ( obj ) {
@@ -315,6 +315,21 @@ export class PageStateService {
     this.pageList.map( x &#x3D;&gt; {
         x.isComplete &#x3D; false;
     });
+  }
+
+
+  pageListIsClear(): boolean {
+    let isClear &#x3D; true;
+    if ( this.pageList.length &gt; 0 ) {
+      isClear &#x3D; this.pageList.every( x  &#x3D;&gt; x.isComplete &#x3D;&#x3D;&#x3D; false );
+    }
+    return isClear;
+  }
+
+
+  // Redirect
+  navigateByUrl( path: string ) {
+    this.router.navigateByUrl( path );
   }
 
   // Find item in list
