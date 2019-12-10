@@ -581,7 +581,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
                     </div>
                     <div class="io-description">
@@ -918,11 +918,12 @@ export abstract class AbstractFormControl extends Base implements OnInit, Contro
    * @param control control directive
    * @param fn function for validating self
    */
-  protected registerValidation( ngControl: NgControl, fn: ValidationErrors ) {
+  protected registerValidation( ngControl: NgControl, fn: ValidationErrors) {
 
     // Register validateSelf validator so that it will be added on component initialization.
     // Makes the component a self validating component.
-    Promise.resolve().then(() &#x3D;&gt; {
+
+    return Promise.resolve().then(() &#x3D;&gt; {
 
       if ( ngControl ) {
 
@@ -932,6 +933,7 @@ export abstract class AbstractFormControl extends Base implements OnInit, Contro
         }
         ngControl.control.setValidators(allValidators);
         ngControl.control.updateValueAndValidity();
+        return ngControl;
       }
     });
   }

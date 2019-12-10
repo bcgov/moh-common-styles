@@ -1,4 +1,13 @@
-# Unreleased "moh-common-lib" (2019-12-09)
+# Unreleased "moh-common-lib" (2019-12-10)
+
+
+
+# [3.0.0-rc.23](https://github.com/bcgov/moh-common-styles/compare/v3.0.0-rc.22...v3.0.0-rc.23) "moh-common-lib" (2019-12-10)
+
+
+### Bug Fixes
+
+* **Date:** Allows clearing of field conditional on RequiredValidator ([7a5b7bc](https://github.com/bcgov/moh-common-styles/commit/7a5b7bc))
 
 
 
