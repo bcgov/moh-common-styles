@@ -62,11 +62,12 @@ export abstract class AbstractFormControl extends Base implements OnInit, Contro
    * @param control control directive
    * @param fn function for validating self
    */
-  protected registerValidation( ngControl: NgControl, fn: ValidationErrors ) {
+  protected registerValidation( ngControl: NgControl, fn: ValidationErrors) {
 
     // Register validateSelf validator so that it will be added on component initialization.
     // Makes the component a self validating component.
-    Promise.resolve().then(() => {
+
+    return Promise.resolve().then(() => {
 
       if ( ngControl ) {
 
@@ -76,6 +77,7 @@ export abstract class AbstractFormControl extends Base implements OnInit, Contro
         }
         ngControl.control.setValidators(allValidators);
         ngControl.control.updateValueAndValidity();
+        return ngControl;
       }
     });
   }

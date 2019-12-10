@@ -4,12 +4,13 @@ import {
   Input,
   Output,
   EventEmitter,
-  Optional, Self, SimpleChanges, OnChanges
+  Optional, Self, SimpleChanges, OnChanges, Inject
 } from '@angular/core';
 import {
   ControlValueAccessor,
   NgControl,
-  ValidationErrors} from '@angular/forms';
+  ValidationErrors,
+  NG_VALIDATORS} from '@angular/forms';
 import { ErrorMessage, LabelReplacementTag } from '../../models/error-message.interface';
 import getDaysInMonth from 'date-fns/getDaysInMonth';
 import isAfter from 'date-fns/isAfter';
@@ -112,8 +113,10 @@ export class DateComponent extends AbstractFormControl
 
   private today = startOfToday();
   private yesterday = subDays(startOfToday(), 1);
+  public isRequired: boolean;
 
-  constructor( @Optional() @Self() public controlDir: NgControl ) {
+  constructor( @Optional() @Self() public controlDir: NgControl,
+               @Optional() @Inject(NG_VALIDATORS) private injectedValidators: any[] ) {
     super();
     if (controlDir) {
       controlDir.valueAccessor = this;
@@ -168,22 +171,20 @@ You must use either [restrictDate] or the [dateRange*] inputs.
       this.dateRangeStart = this.today;
     }
 
-    this.registerValidation( this.controlDir, this.validateSelf );
-
-    // Register validateSelf validator so that it will be added on component initialization.
-    // Makes the component a self validating component.
-   /* Promise.resolve().then(() => {
-
-      if (this.controlDir) {
-
-        const allValidators = [this.validateSelf.bind(this)];
-        if ( this.controlDir.control.validator ) {
-          allValidators.push( this.controlDir.control.validator );
+    this.registerValidation( this.controlDir, this.validateSelf )
+      .then(_ => {
+        if (this.injectedValidators && this.injectedValidators.length){
+          // TODO: Potentially move to AbstractFormControl
+          // Inspect the validator functions for one that has a {required: true}
+          // property. Importantly, we are inspecting the validator function
+          // itself and NOT the current state of the NgControl.
+          this.isRequired = this.injectedValidators
+            .filter(x => x.required)
+            .length >= 1;
         }
-        this.controlDir.control.setValidators(allValidators);
-        this.controlDir.control.updateValueAndValidity();
-      }
-    });*/
+
+      });
+
 
   }
 
