@@ -2,6 +2,7 @@ import { ErrorMessage, replaceLabelTag } from './error-message.interface';
 import { Input, OnInit } from '@angular/core';
 import { Base } from './base';
 import { ControlValueAccessor, NgControl, ValidationErrors } from '@angular/forms';
+import { MoHCommonLibraryError } from '../../helpers/library-error';
 
 // Class does not get exported - used internally
 export abstract class AbstractFormControl extends Base implements OnInit, ControlValueAccessor {
@@ -46,6 +47,8 @@ export abstract class AbstractFormControl extends Base implements OnInit, Contro
   }
 
   protected setErrorMsg() {
+    this.validateLabel();
+
     // Some components have logic based off no label being submitted - strip off '(optional)'
     const _label = this.label ? this.label.replace( '(optional)' , '' ) : 'Field';
 
@@ -80,5 +83,13 @@ export abstract class AbstractFormControl extends Base implements OnInit, Contro
         return ngControl;
       }
     });
+  }
+
+  private validateLabel() {
+    const labelType = typeof this.label;
+    if (labelType !== 'string') {
+      const typeMsg = `<AbstractFormControl> Invalid input provided to [label].  Label must be a string and you provided a ${labelType}`;
+      throw new MoHCommonLibraryError(typeMsg);
+    }
   }
 }

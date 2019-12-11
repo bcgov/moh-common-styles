@@ -1,4 +1,18 @@
-# Unreleased "moh-common-lib" (2019-12-10)
+# Unreleased "moh-common-lib" (2019-12-11)
+
+
+
+# [3.0.0-rc.24](https://github.com/bcgov/moh-common-styles/compare/v3.0.0-rc.23...v3.0.0-rc.24) "moh-common-lib" (2019-12-11)
+
+
+### Bug Fixes
+
+* **FormActionBar:** Added vendor prefixes for position: sticky ([92c2dc4](https://github.com/bcgov/moh-common-styles/commit/92c2dc4))
+
+
+### Code Refactoring
+
+* **AbstractFormControl:** Throws error when provided invalid label type ([7567a75](https://github.com/bcgov/moh-common-styles/commit/7567a75))
 
 
 
