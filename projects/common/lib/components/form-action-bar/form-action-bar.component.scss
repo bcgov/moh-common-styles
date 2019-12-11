@@ -12,6 +12,9 @@
     // back to default positioning (static). We do not use position: fixed, as
     // that leads this bar to overlap the page footer.
     position: -webkit-sticky;
+    position: -moz-sticky;
+    position: -ms-sticky;
+    position: -o-sticky;
     position: sticky;
     bottom: 0;
     z-index: 10;
