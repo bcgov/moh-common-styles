@@ -160,17 +160,82 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Route } from &#x27;@angular/router&#x27;;
+import { ContainerService, DefaultSubmitLabel } from &#x27;../services/container.service&#x27;;
+import { Subscription } from &#x27;rxjs&#x27;;
 
 export interface WizardProgressItem {
   title: string;
   route: string;
 }
 
+/**
+ * Container class contains the basic functionality for containers.
+ *
+ * @example
+ *  Example of how to use Container
+ *
+ *      export class RegistrationContainerComponent extends Container
+ *                   implements AfterViewInit, OnDestroy {
+ *
+ *        constructor( private headerService: HeaderService,
+ *                     private pageStateService: PageStateService,
+ *                     protected  containerService: ContainerService) {
+ *          super( containerService );
+ *          this.setProgressSteps(pages);
+ *          this.pageStateService.setPages( pages, PRACTITIONER_REGISTRATION_PAGES );
+ *          this.headerService.setTitle(&#x27;Practitioner Assignment to Medical Services Plan Facility for Business Cost Premium&#x27;);
+ *        }
+ *
+ *        ngAfterViewInit() {
+ *          this.subscribeFormBar();
+ *        }
+ *
+ *        ngOnDestroy() {
+ *          this.unsubscribeFormBar();
+ *        }
+ *        ...
+ *      }
+ *
+ * html would be:
+ *
+ *    &lt;common-core-breadcrumb&gt;
+ *      &lt;common-wizard-progress-bar center [progressSteps]&#x3D;&quot;progressSteps&quot;&gt;&lt;/common-wizard-progress-bar&gt;
+ *    &lt;/common-core-breadcrumb&gt;
+ *    &lt;common-page-framework layout&#x3D;&quot;blank&quot;&gt;
+ *      &lt;router-outlet&gt;&lt;/router-outlet&gt;
+ *    &lt;/common-page-framework&gt;
+ *    &lt;common-form-action-bar (btnClick)&#x3D;&quot;continue()&quot;            &lt;&#x3D; function within Container
+ *                            [submitLabel]&#x3D;&quot;submitLabel&quot;        &lt;&#x3D; variable within Container
+ *                            [isLoading]&#x3D;&quot;isLoading&quot;            &lt;&#x3D; variable within Container
+ *                            [defaultColor]&#x3D;&quot;useDefaultColor&quot;   &lt;&#x3D; variable within Container
+ *                            widthOption&#x3D;&#x27;extra-width-mobile-only&#x27;&gt;&lt;/common-form-action-bar&gt;
+ *
+ * @export
+ *
+ */
+
 /** Base functionality for container that is used to display bread crumbs */
 export class Container {
 
   /** Route items for the stepper */
   progressSteps: WizardProgressItem[];
+
+  /** Observables for form bar */
+  useDefaultColor: boolean &#x3D; true;
+  submitLabel: string &#x3D; DefaultSubmitLabel;
+  isLoading: boolean &#x3D; false;
+
+  private _subscriptions: Subscription[];
+
+  constructor( protected containerService?: ContainerService ) {
+  }
+
+  /**
+   * Use when form bar is part of the container
+   */
+  continue() {
+    this.containerService.submitButtonClicked();
+  }
 
   /**
    * Converts a lower case string of a route in a user readable title.  e.g.
@@ -181,15 +246,53 @@ export class Container {
   }
 
   protected setProgressSteps( pageRoutes: Route[] ): void {
-        // Interface for wizard progress items
-        this.progressSteps &#x3D; pageRoutes.map(page &#x3D;&gt; {
-          if (page.path !&#x3D;&#x3D; &#x27;&#x27;) {
-            return {
-              title: this.convertRouteToTitle(page.path),
-              route: page.path
-            };
-          }
-        }).filter(x &#x3D;&gt; x);
+    // Interface for wizard progress items
+    this.progressSteps &#x3D; pageRoutes.map(page &#x3D;&gt; {
+      if (page.path !&#x3D;&#x3D; &#x27;&#x27;) {
+        return {
+          title: this.convertRouteToTitle(page.path),
+          route: page.path
+        };
+      }
+    }).filter(x &#x3D;&gt; x);
+  }
+
+  /**
+   * Subscribe to form bar observables - Called in the AfterViewInit
+   * Use when form bar is part of the container
+   */
+  protected subscribeFormBar() {
+    if ( this.containerService ) {
+
+      this._subscriptions &#x3D; [
+        this.containerService.$useDefaultColor
+        .subscribe(
+          (async (defaultColor) &#x3D;&gt; {
+            this.useDefaultColor &#x3D; await defaultColor;
+            console.log( &#x27;defaultColor: &#x27;, this.useDefaultColor );
+        })),
+        this.containerService.$submitLabel
+        .subscribe(
+          (async (label) &#x3D;&gt; {
+            this.submitLabel &#x3D; await label;
+            console.log( &#x27;button label: &#x27;, this.submitLabel );
+        })),
+        this.containerService.$isLoading
+        .subscribe(
+          (async (isLoading) &#x3D;&gt; {
+            this.isLoading &#x3D; await isLoading;
+            console.log( &#x27;isLoading: &#x27;, this.isLoading );
+        }))
+      ];
+    }
+  }
+
+  /**
+   * Unsubscribe to form bar observables  - Called in the onDestroy()
+   * Use when form bar is part of the container
+   */
+  protected unsubscribeFormBar() {
+    this._subscriptions.forEach( x &#x3D;&gt; x.unsubscribe() );
   }
 }
 </code></pre>
