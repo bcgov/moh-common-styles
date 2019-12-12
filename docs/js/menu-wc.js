@@ -409,6 +409,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     <a href="injectables/CommonLogger.html" data-type="entity-link">CommonLogger</a>
                                 </li>
                                 <li class="link">
+                                    <a href="injectables/ContainerService.html" data-type="entity-link">ContainerService</a>
+                                </li>
+                                <li class="link">
                                     <a href="injectables/DefaultPageGuardService.html" data-type="entity-link">DefaultPageGuardService</a>
                                 </li>
                                 <li class="link">
