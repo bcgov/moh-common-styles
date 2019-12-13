@@ -87,7 +87,8 @@ export abstract class AbstractFormControl extends Base implements OnInit, Contro
 
   private validateLabel() {
     const labelType = typeof this.label;
-    if (labelType !== 'string') {
+    // If labelType is falsy, do not throw the error, since we have a backup label in case it's falsy.
+    if (labelType !== 'string' && this.label) {
       const typeMsg = `<AbstractFormControl> Invalid input provided to [label].  Label must be a string and you provided a ${labelType}`;
       throw new MoHCommonLibraryError(typeMsg);
     }
