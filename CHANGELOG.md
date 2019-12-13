@@ -1,4 +1,13 @@
-# Unreleased "moh-common-lib" (2019-12-12)
+# Unreleased "moh-common-lib" (2019-12-13)
+
+
+
+# [3.0.0-rc.26](https://github.com/bcgov/moh-common-styles/compare/v3.0.0-rc.25...v3.0.0-rc.26) "moh-common-lib" (2019-12-13)
+
+
+### Bug Fixes
+
+* **AbsractFormControl:**  Doesn't throw error on falsy/undefined label ([df5bd4d](https://github.com/bcgov/moh-common-styles/commit/df5bd4d))
 
 
 
