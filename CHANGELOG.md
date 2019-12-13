@@ -2,6 +2,10 @@
 
 
 
+# [3.0.0-rc.27](https://github.com/bcgov/moh-common-styles/compare/v3.0.0-rc.26...v3.0.0-rc.27) "moh-common-lib" (2019-12-13)
+
+
+
 # [3.0.0-rc.26](https://github.com/bcgov/moh-common-styles/compare/v3.0.0-rc.25...v3.0.0-rc.26) "moh-common-lib" (2019-12-13)
 
 
