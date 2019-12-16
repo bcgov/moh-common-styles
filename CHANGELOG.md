@@ -1,4 +1,13 @@
-# Unreleased "moh-common-lib" (2019-12-13)
+# Unreleased "moh-common-lib" (2019-12-16)
+
+
+
+# [3.0.0-rc.28](https://github.com/bcgov/moh-common-styles/compare/v3.0.0-rc.27...v3.0.0-rc.28) "moh-common-lib" (2019-12-16)
+
+
+### Features
+
+* exported abstract-form-control so it can be used in projects ([73247f2](https://github.com/bcgov/moh-common-styles/commit/73247f2))
 
 
 
@@ -21,6 +30,7 @@
 ### Features
 
 * added container service, modified container to use service ([716da42](https://github.com/bcgov/moh-common-styles/commit/716da42))
+* exported abstract-form-control so it can be used in projects ([20fa6ea](https://github.com/bcgov/moh-common-styles/commit/20fa6ea))
 * **FormActionBar:** Now can include arbitrary buttons in ng-content. ([85d3767](https://github.com/bcgov/moh-common-styles/commit/85d3767))
 
 
