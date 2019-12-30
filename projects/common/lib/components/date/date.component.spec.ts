@@ -66,6 +66,36 @@ describe('DateComponent', () => {
       expect( component.dateComponent ).toBeTruthy();
       expect( getLegendContext( fixture, 'common-date', 'date1') ).toBe( component.defaultLabel );
     }));
+
+    it('should remove invalidValue error when all fields are reset.', fakeAsync(() => {
+      const fixture = createTestingModule( DateReactTestComponent,
+        `<form [formGroup]="form">
+          <common-date name="date1" formControlName="date1"></common-date>
+        </form>`,
+        directives,
+        true
+      );
+      const component = fixture.componentInstance;
+      tickAndDetectChanges( fixture );
+      expect( component.dateComponent ).toBeTruthy();
+      //expect( getLegendContext( fixture, 'common-date', 'date1') ).toBe( component.defaultLabel );
+      component.dateComponent.first.onBlurDay('2');
+      component.dateComponent.first.onBlurMonth('2');
+      component.dateComponent.first.onBlurYear('2020');
+      tickAndDetectChanges( fixture );
+      expect(component.dateComponent.first._day).toBe('2');
+      expect(component.dateComponent.first._month).toBe('2');
+      expect(component.dateComponent.first._year).toBe('2020');
+      expect(component.dateComponent.first.date).not.toBe(undefined);
+      expect(component.dateComponent.first.date).not.toBe(null);
+      component.dateComponent.first.onBlurYear('');
+      expect(component.dateComponent.first._year).toBe('');
+      expect(component.dateComponent.first.date).toBe(null);
+      expect(component.dateComponent.first.controlDir.errors.invalidValue).toEqual(true);
+      component.dateComponent.first.onBlurMonth('null');
+      component.dateComponent.first.onBlurDay('');
+      expect(component.dateComponent.first.controlDir.errors).toEqual(null);
+    }));
   });
 
   describe('Custom controls - Template', () => {
