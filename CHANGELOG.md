@@ -1,4 +1,16 @@
-# Unreleased "moh-common-lib" (2019-12-16)
+# Unreleased "moh-common-lib" (2020-01-02)
+
+
+
+# [3.0.0-rc.29](https://github.com/bcgov/moh-common-styles/compare/v3.0.0-rc.28...v3.0.0-rc.29) "moh-common-lib" (2020-01-02)
+
+
+### Bug Fixes
+
+* **DateComponent:** Added unit test. ([22fd6aa](https://github.com/bcgov/moh-common-styles/commit/22fd6aa))
+* **DateComponent:** Empty date field trigger validation. ([d302941](https://github.com/bcgov/moh-common-styles/commit/d302941))
+* **DateComponent:** Moved _onChange call into destroyDate method. ([dae52b0](https://github.com/bcgov/moh-common-styles/commit/dae52b0))
+* **HeaderComponent:** BCP-197 Accessibility. ([a79007f](https://github.com/bcgov/moh-common-styles/commit/a79007f))
 
 
 
@@ -718,12 +730,16 @@
 
 
 
-# [2.3.0](https://github.com/bcgov/moh-common-styles/compare/v2.2.0...v2.3.0) "moh-common-lib" (2019-07-25)
+# [2.3.0](https://github.com/bcgov/moh-common-styles/compare/2.0.0...v2.3.0) "moh-common-lib" (2019-07-25)
 
 
 ### Features
 
 * **Address:** Now has default country/prov behaviour built in ([8361a0e](https://github.com/bcgov/moh-common-styles/commit/8361a0e))
+
+
+
+# [2.0.0](https://github.com/bcgov/moh-common-styles/compare/v2.2.0...2.0.0) "moh-common-lib" (2019-07-25)
 
 
 

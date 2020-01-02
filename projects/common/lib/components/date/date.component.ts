@@ -275,6 +275,10 @@ You must use either [restrictDate] or the [dateRange*] inputs.
       this._onChange(null);
       this.dateChange.emit(null);
     }
+    // Trigger validator for emptying fields use case. This is to remove the 'Invalid date' error.
+    if (!this._year && !this._day && this._month === 'null') {
+      this._onChange(this.date);
+    }
   }
 
   /**
