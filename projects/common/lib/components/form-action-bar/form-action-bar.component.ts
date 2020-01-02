@@ -6,6 +6,7 @@ import { scrollToError } from '../../../helpers/scroll-helpers';
   selector: 'common-form-action-bar',
   templateUrl: './form-action-bar.component.html',
   styleUrls: ['./form-action-bar.component.scss'],
+  // TODO: Figure out why this is required.
   viewProviders: [ { provide: ControlContainer, useExisting: forwardRef(() => NgForm ) } ]
 })
 export class FormActionBarComponent implements OnInit {
