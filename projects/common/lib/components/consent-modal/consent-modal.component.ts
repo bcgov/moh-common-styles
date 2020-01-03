@@ -29,6 +29,10 @@ export interface ISpaEnvResponse {
   SPA_ENV_MSP_MAINTENANCE_MESSAGE: string;
   SPA_ENV_ACL_MAINTENANCE_FLAG: string;
   SPA_ENV_ACL_MAINTENANCE_MESSAGE: string;
+  SPA_ENV_SB_MAINTENANCE_FLAG: string;
+  SPA_ENV_SB_MAINTENANCE_MESSAGE: string;
+  SPA_ENV_PA_MAINTENANCE_FLAG: string;
+  SPA_ENV_PA_MAINTENANCE_MESSAGE: string;
   SPA_ENV_PACUTOFF_MAINTENANCE_START: string;
   SPA_ENV_NOW: string;
   SPA_ENV_PACUTOFF_MAINTENANCE_END: string;
@@ -112,7 +116,12 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
 
 
     // tslint:disable-next-line:max-line-length
-    private _applicationHeaderMap: Map<string, string> = new Map([['ACL', '{"SPA_ENV_MSP_ACL_MAINTENANCE_FLAG":"","SPA_ENV_MSP_ACL_MAINTENANCE_MESSAGE":""}'], ['MSP', '{"SPA_ENV_MSP_MAINTENANCE_FLAG":"","SPA_ENV_MSP_MAINTENANCE_MESSAGE":""}'], ['PA', '{"SPA_ENV_PACUTOFF_MAINTENANCE_START":"","SPA_ENV_PACUTOFF_MAINTENANCE_END":"","SPA_ENV_NOW":""}']]);
+    private _applicationHeaderMap: Map<string, string> = new Map([
+      ['ACL', '{"SPA_ENV_MSP_ACL_MAINTENANCE_FLAG":"","SPA_ENV_MSP_ACL_MAINTENANCE_MESSAGE":""}'],
+      ['MSP', '{"SPA_ENV_MSP_MAINTENANCE_FLAG":"","SPA_ENV_MSP_MAINTENANCE_MESSAGE":""}'],
+      ['PA', '{"SPA_ENV_PACUTOFF_MAINTENANCE_START":"","SPA_ENV_PACUTOFF_MAINTENANCE_END":"","SPA_ENV_NOW":"","SPA_ENV_PA_MAINTENANCE_FLAG":"","SPA_ENV_MSP_PA_MAINTENANCE_MESSAGE":""}'],
+      ['SB', '{"SPA_ENV_MSP_SB_MAINTENANCE_FLAG":"","SPA_ENV_MSP_SB_MAINTENANCE_MESSAGE":""}'],
+    ]);
     agreeCheck: boolean = false;
 
     public _onChange = (_: any) => {};
@@ -187,6 +196,12 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
                     } else if (this.spaEnvRes.SPA_ENV_MSP_MAINTENANCE_FLAG === 'true') {
                         this.maintenanceFlag = 'true';
                         this.maintenanceMessage =  this.spaEnvRes.SPA_ENV_MSP_MAINTENANCE_MESSAGE;
+                    } else if (this.spaEnvRes.SPA_ENV_PA_MAINTENANCE_FLAG === 'true') {
+                        this.maintenanceFlag = 'true';
+                        this.maintenanceMessage = this.spaEnvRes.SPA_ENV_PA_MAINTENANCE_MESSAGE;
+                    } else if (this.spaEnvRes.SPA_ENV_SB_MAINTENANCE_FLAG === 'true') {
+                        this.maintenanceFlag = 'true';
+                        this.maintenanceMessage = this.spaEnvRes.SPA_ENV_SB_MAINTENANCE_MESSAGE;
                     }
                     if (this.spaEnvRes.SPA_ENV_PACUTOFF_MAINTENANCE_START) {
                         this.cutOffDate.emit(this.spaEnvRes);
