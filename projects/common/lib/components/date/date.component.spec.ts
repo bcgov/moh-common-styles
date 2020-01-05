@@ -1,10 +1,18 @@
-import { fakeAsync } from '@angular/core/testing';
+import { fakeAsync, tick } from '@angular/core/testing';
 import { DateComponent } from './date.component';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ErrorContainerComponent } from '../error-container/error-container.component';
-import { Component, ViewChild, OnInit, ViewChildren, QueryList } from '@angular/core';
-import { tickAndDetectChanges, createTestingModule, getLegendContext } from '../../../helpers/test-helpers';
-import { startOfToday, subDays, addDays } from 'date-fns';
+import { Component, OnInit, ViewChildren, QueryList, DebugElement } from '@angular/core';
+import {
+  tickAndDetectChanges,
+  createTestingModule,
+  getLegendContext,
+  getDebugElement,
+  getInputDebugElement,
+  setInput,
+  getSelectDebugElement,
+  setSelect} from '../../../helpers/test-helpers';
+import { startOfToday, subDays, addDays, subYears, addYears } from 'date-fns';
 
 @Component({
   template: ``,
@@ -20,11 +28,12 @@ class DateTestComponent {
   defaultLabel: string = 'Date';
 
   today = startOfToday();
-  yesterday = subDays(this.today, 1 );
+  tomorrow = addDays( this.today, 1 );
   startRange = addDays( this.today, 4 );
   startEnd = subDays( this.today, 5 );
 
   constructor() {}
+
 }
 
 @Component({
@@ -47,11 +56,23 @@ class DateReactTestComponent extends DateTestComponent implements OnInit {
   }
 }
 
+// Set date
+function setDate( de: DebugElement, dt: Date ) {
+  const yearInput = getInputDebugElement( de, de.componentInstance.yearLabelforId );
+  const dayInput = getInputDebugElement( de, de.componentInstance.dayLabelforId );
+  const monthInput = getSelectDebugElement( de, de.componentInstance.monthLabelforId );
+
+  setInput( yearInput, dt.getFullYear() );
+  setInput( dayInput, dt.getDate() );
+  setSelect( monthInput, dt.getMonth() );
+}
+
 const directives: any[] = [ ErrorContainerComponent, DateComponent ];
 
 describe('DateComponent', () => {
 
   describe('Custom controls - Reactive', () => {
+    // TODO: Build reactive form tests
 
     it('should create', fakeAsync( () => {
       const fixture = createTestingModule( DateReactTestComponent,
@@ -67,7 +88,8 @@ describe('DateComponent', () => {
       expect( getLegendContext( fixture, 'common-date', 'date1') ).toBe( component.defaultLabel );
     }));
 
-    it('should remove invalidValue error when all fields are reset.', fakeAsync(() => {
+    // TODO: Revisit - not quite correct
+    xit('should remove invalidValue error when all fields are reset.', fakeAsync(() => {
       const fixture = createTestingModule( DateReactTestComponent,
         `<form [formGroup]="form">
           <common-date name="date1" formControlName="date1"></common-date>
@@ -78,7 +100,6 @@ describe('DateComponent', () => {
       const component = fixture.componentInstance;
       tickAndDetectChanges( fixture );
       expect( component.dateComponent ).toBeTruthy();
-      //expect( getLegendContext( fixture, 'common-date', 'date1') ).toBe( component.defaultLabel );
       component.dateComponent.first.onBlurDay('2');
       component.dateComponent.first.onBlurMonth('2');
       component.dateComponent.first.onBlurYear('2020');
@@ -136,13 +157,14 @@ describe('DateComponent', () => {
 
       tickAndDetectChanges( fixture );
       expect( fixture.componentInstance.dateComponent.first.controlDir.hasError( 'required' ) ).toBeTruthy();
+      expect( fixture.componentInstance.dateComponent.first.controlDir.hasError( 'invalidValue' ) ).toBeFalsy();
     }));
 
     it('should set control no future date', fakeAsync(() => {
       const fixture = createTestingModule( DateTestComponent,
           `<form>
             <common-date name="date2" [(ngModel)]="date2"
-                         [dateRangeEnd]='yesterday'></common-date>
+                         [dateRangeEnd]='today'></common-date>
             </form>`,
             directives
           );
@@ -155,7 +177,7 @@ describe('DateComponent', () => {
       const fixture = createTestingModule( DateTestComponent,
           `<form>
             <common-date name="date3" [(ngModel)]="date3"
-                         [dateRangeStart]='today'></common-date>
+                         [dateRangeStart]='tomorrow'></common-date>
             </form>`,
             directives
           );
@@ -182,7 +204,7 @@ describe('DateComponent', () => {
       expect( fixture.componentInstance.dateComponent.last.controlDir.hasError( 'invalidRange' ) ).toBeTruthy();
     }));
 
-    xit('should set year zero invalid value error', fakeAsync(() => {
+    it('should set year zero invalid value error', fakeAsync(() => {
       const fixture = createTestingModule( DateTestComponent,
         `<form>
           <common-date name="date1" [(ngModel)]="date1"></common-date>
@@ -190,308 +212,229 @@ describe('DateComponent', () => {
         directives
       );
 
-    }));
-  });
-});
+      const date1 = getDebugElement( fixture, 'common-date', 'date1' );
+      const yearInput = getInputDebugElement( date1, date1.componentInstance.yearLabelforId );
+      setInput( yearInput, 0 );
+      tickAndDetectChanges( fixture );
 
-
-/*
-describe('DateComponent', () => {
-  let component: DateComponent;
-  let fixture: ComponentFixture<DateComponent>;
-  let elmt: DebugElement;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [
-        ErrorContainerComponent,
-        DateComponent
-      ],
-      providers: [ NgForm ]
-    })
-    .compileComponents();
-  }));
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(DateComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(DateComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should be required by default', () => {
-    expect(component.required).toBe(true);
-  });
-
-  it('should be not use current date by default', () => {
-    expect(component.useCurrentDate).toBe(false);
-  });
-
-  it('should be enabled by default', () => {
-    expect(component.disabled).toBe(false);
-  });
-
-  it('should allow any dates range by default', () => {
-    expect(component.restrictDate).toBe('any');
-  });
-
-  it('should display text  label for component', () => {
-    component.label = 'This a test';
-    fixture.detectChanges();
-
-    const legendText = fixture.nativeElement.querySelector('legend');
-    expect( legendText.textContent).toContain('This a test');
-  });
-
-  it('should detect incomplete dates', () => {
-    fixture.whenStable().then( () => {
-      expect(component.monthRef.errors.required).toBe(true);
-      expect(component.dayRef.errors.required).toBe(true);
-      expect(component.yearRef.errors.required).toBe(true);
-    });
-  });
-
-  it('should allow incomplete dates when optional', () => {
-    component.required = false;
-    fixture.detectChanges();
-    fixture.whenStable().then( () => {
-      expect(component.monthRef.errors).toBeNull();
-      expect(component.dayRef.errors).toBeNull();
-      expect(component.yearRef.errors).toBeNull();
-    });
-  });
-})*/
-
-/*
-describe('DateComponent (using current date)', () => {
-  let component: DateComponent;
-  let fixture: ComponentFixture<DateComponent>;
-  const form = new NgForm( null, null);
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [
-        DateComponent,
-        DateFieldFormatDirective,
-        YearValidateDirective,
-        DayValidationDirective
-      ],
-      imports: [ FormsModule ],
-      providers: [ NgForm ]
-    })
-    .compileComponents();
-  }));
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(DateComponent);
-    component = fixture.componentInstance;
-    component.date = { month: null, day: null, year: null };
-    component.useCurrentDate = true;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-
-  it('should set current date', () => {
-    const todayDate = {month: moment().month(), day: moment().date(), year: moment().year()};
-    expect(component.date.month).toEqual(todayDate.month);
-    expect(component.date.day).toEqual(todayDate.day);
-    expect(component.date.year).toEqual(todayDate.year);
-  });
-
-  it('should reject todays date when restricted to past dates', () => {
-    component.restrictDate = 'past';
-    fixture.detectChanges();
-    fixture.whenStable().then(()  => {
-      expect(component.yearRef.errors.noFutureDatesAllowed).toBe(true);
-    });
-  });
-
-  it('should accept todays date when restricted to future dates', () => {
-    component.restrictDate = 'future';
-    fixture.detectChanges();
-    fixture.whenStable().then(()  => {
-      expect(component.yearRef.errors).toBeNull();
-    });
-  });
-
-  it('should reject past dates when restricted to future dates', () => {
-    component.restrictDate = 'future';
-    component.date.year -= 1;
-    fixture.detectChanges();
-    fixture.whenStable().then(() => {
-      expect(component.yearRef.errors.noPastDatesAllowed).toBe(true);
-    });
-  });
-
-  it('should reject dates when too far in the past', () => {
-    component.date.year -= 151;
-    fixture.detectChanges();
-    fixture.whenStable().then(() => {
-      expect(component.yearRef.errors.yearDistantPast).toBe(true);
-    });
-  });
-
-  it('should reject dates when too far in the future', () => {
-    component.date.year += 151;
-    fixture.detectChanges();
-    fixture.whenStable().then(() => {
-      expect(component.yearRef.errors.yearDistantFuture).toBe(true);
-    });
-  });
-
-  it('should reject dates when day is out of range', () => {
-    component.date.day = 40;
-    fixture.detectChanges();
-    fixture.whenStable().then(() => {
-      expect(component.dayRef.errors.dayOutOfRange).toBe(true);
-    });
-  });
-});
-// TODO: Figure out why when more than one test controls do not get created on
-//       first test...
-xdescribe('DateComponent (Trigger validations)', () => {
-    let component: DateComponent;
-    let fixture: ComponentFixture<DateComponent>;
-    let form: NgForm;
-
-    beforeEach(async(() => {
-      TestBed.configureTestingModule({
-        declarations: [
-          DateComponent,
-          DateFieldFormatDirective,
-          YearValidateDirective,
-          DayValidationDirective
-        ],
-        imports: [ FormsModule ],
-        providers: [ NgForm ]
-      })
-      .compileComponents();
+      expect( date1.componentInstance.controlDir.hasError( 'invalidValue' ) ).toBeTruthy();
     }));
 
-    beforeEach(() => {
-      form = new NgForm( null, null);
-      fixture = TestBed.createComponent(DateComponent);
-      component = fixture.componentInstance;
-    });
+    it('should set clear error when set to null', fakeAsync(() => {
+      const fixture = createTestingModule( DateTestComponent,
+        `<form>
+          <common-date name="date1" [(ngModel)]="date1"></common-date>
+        </form>`,
+        directives
+      );
 
-    it('should trigger day validation when month changes', () => {
-      component.date = { month: 1, day: 30, year: 1999 };
-      fixture.detectChanges();
-      expect(component.dayRef.errors).toBeNull();
+      const date1 = getDebugElement( fixture, 'common-date', 'date1' );
+      const yearInput = getInputDebugElement( date1, date1.componentInstance.yearLabelforId );
 
-      component.setMonth('2');
-      fixture.detectChanges();
-      fixture.whenStable().then(() => {
-        setTimeout( () => {
-          console.log( '1b. dayRef.errors: ', component.dayRef.errors );
-          expect(component.dayRef.errors.dayOutOfRange).toBe(true);
-        }, 30);
-      });
-    });
+      setInput( yearInput, 0 );
+      tickAndDetectChanges( fixture );
 
-    it('should trigger day validation when year changes', () => {
+      expect( date1.componentInstance.controlDir.hasError( 'invalidValue' ) ).toBeTruthy();
 
-      component.date = { month: 2, day: 29, year: 2000 };
-      fixture.detectChanges();
-      expect(component.dayRef.errors).toBeNull();
+      setInput( yearInput, null );
+      tickAndDetectChanges( fixture );
+      expect( date1.componentInstance.controlDir.hasError( 'invalidValue' ) ).toBeFalsy();
+    }));
 
-      component.setYear('2001');
-      fixture.detectChanges();
-      fixture.whenStable().then(() => {
-        setTimeout( () => {
-          console.log( '2. dayRef.errors: ', component.dayRef.errors );
-          expect(component.dayRef.errors.dayOutOfRange).toBe(true);
-        }, 30);
-      });
-    });
+    it('should accept past dates when restrictDate=past', fakeAsync(() => {
+      const fixture = createTestingModule( DateTestComponent,
+          `<form>
+            <common-date name="date1" [(ngModel)]="date1"
+                         restrictDate='past'></common-date>
+            </form>`,
+            directives
+          );
+
+      const date1 = getDebugElement( fixture, 'common-date', 'date1' );
+      const dt = subDays( startOfToday(), 1 );
+
+      setDate( date1,  dt );
+
+      tickAndDetectChanges( fixture );
+      expect( date1.componentInstance.controlDir.hasError( 'noFutureDatesAllowed' ) ).toBeFalsy();
+    }));
+
+    it('should not accept future dates when restrictDate=past', fakeAsync(() => {
+      const fixture = createTestingModule( DateTestComponent,
+          `<form>
+            <common-date name="date1" [(ngModel)]="date1"
+                         restrictDate='past'></common-date>
+            </form>`,
+            directives
+          );
+
+      const date1 = getDebugElement( fixture, 'common-date', 'date1' );
+      const dt = addDays( startOfToday(), 1 );
+
+      setDate( date1,  dt );
+
+      tickAndDetectChanges( fixture );
+      expect( date1.componentInstance.controlDir.hasError( 'noFutureDatesAllowed' ) ).toBeTruthy();
+    }));
+
+
+    it('should accept today for past date', fakeAsync(() => {
+      const fixture = createTestingModule( DateTestComponent,
+          `<form>
+            <common-date name="date1" [(ngModel)]="date1"
+                         [dateRangeEnd]='today'></common-date>
+            </form>`,
+            directives
+          );
+
+      const date1 = getDebugElement( fixture, 'common-date', 'date1' );
+      const dt = startOfToday();
+
+      setDate( date1,  dt );
+
+      tickAndDetectChanges( fixture );
+      expect( date1.componentInstance.controlDir.hasError( 'noFutureDatesAllowed' ) ).toBeFalsy();
+    }));
+
+    it('should not accept today for future date', fakeAsync(() => {
+      const fixture = createTestingModule( DateTestComponent,
+          `<form>
+            <common-date name="date1" [(ngModel)]="date1"
+                         [dateRangeStart]='tomorrow'></common-date>
+            </form>`,
+            directives
+          );
+
+      const date1 = getDebugElement( fixture, 'common-date', 'date1' );
+      const dt = startOfToday();
+
+      setDate( date1,  dt );
+
+      tickAndDetectChanges( fixture );
+      expect( date1.componentInstance.controlDir.hasError( 'noPastDatesAllowed' ) ).toBeTruthy();
+    }));
+
+    it('should accept tomorrow for future date', fakeAsync(() => {
+      const fixture = createTestingModule( DateTestComponent,
+          `<form>
+            <common-date name="date1" [(ngModel)]="date1"
+                         [dateRangeStart]='tomorrow'></common-date>
+            </form>`,
+            directives
+          );
+
+      const date1 = getDebugElement( fixture, 'common-date', 'date1' );
+      const dt = addDays( startOfToday(), 1 );
+
+      setDate( date1,  dt );
+
+      tickAndDetectChanges( fixture );
+      expect( date1.componentInstance.controlDir.hasError( 'noPastDatesAllowed' ) ).toBeFalsy();
+    }));
+
+    it('should accept future dates when restrictDate=future', fakeAsync(() => {
+      const fixture = createTestingModule( DateTestComponent,
+          `<form>
+            <common-date name="date1" [(ngModel)]="date1"
+                         restrictDate='future'></common-date>
+            </form>`,
+            directives
+          );
+
+      const date1 = getDebugElement( fixture, 'common-date', 'date1' );
+      const dt = addDays( startOfToday(), 2 );
+
+      setDate( date1,  dt );
+
+      tickAndDetectChanges( fixture );
+      expect( date1.componentInstance.controlDir.hasError( 'noPastDatesAllowed' ) ).toBeFalsy();
+    }));
+
+    it('should not accept past dates when restrictDate=future', fakeAsync(() => {
+      const fixture = createTestingModule( DateTestComponent,
+          `<form>
+            <common-date name="date1" [(ngModel)]="date1"
+                         restrictDate='future'></common-date>
+            </form>`,
+            directives
+          );
+
+      const date1 = getDebugElement( fixture, 'common-date', 'date1' );
+      const dt = startOfToday();
+
+      setDate( date1,  dt );
+
+      tickAndDetectChanges( fixture );
+      expect( date1.componentInstance.controlDir.hasError( 'noPastDatesAllowed' ) ).toBeTruthy();
+    }));
+
+    it('should accept past dates 150 years ago', fakeAsync(() => {
+      const fixture = createTestingModule( DateTestComponent,
+          `<form>
+            <common-date name="date1" [(ngModel)]="date1"></common-date>
+            </form>`,
+            directives
+          );
+
+      const date1 = getDebugElement( fixture, 'common-date', 'date1' );
+      const dt = subYears(startOfToday(), 150);
+
+      setDate( date1,  dt );
+
+      tickAndDetectChanges( fixture );
+      expect( date1.componentInstance.controlDir.hasError( 'yearDistantPast' ) ).toBeFalsy();
+    }));
+
+    it('should not accept past dates more than 150 years ago', fakeAsync(() => {
+      const fixture = createTestingModule( DateTestComponent,
+          `<form>
+            <common-date name="date1" [(ngModel)]="date1"></common-date>
+            </form>`,
+            directives
+          );
+
+      const date1 = getDebugElement( fixture, 'common-date', 'date1' );
+      const dt = subYears(subDays( startOfToday(), 1 ), 150);
+
+      setDate( date1,  dt );
+
+      tickAndDetectChanges( fixture );
+      expect( date1.componentInstance.controlDir.hasError( 'yearDistantPast' ) ).toBeTruthy();
+    }));
+
+    it('should accept future dates 150 years in future', fakeAsync(() => {
+      const fixture = createTestingModule( DateTestComponent,
+          `<form>
+            <common-date name="date1" [(ngModel)]="date1"></common-date>
+            </form>`,
+            directives
+          );
+
+      const date1 = getDebugElement( fixture, 'common-date', 'date1' );
+      const dt = addYears(startOfToday(), 150);
+
+      setDate( date1,  dt );
+
+      tickAndDetectChanges( fixture );
+      expect( date1.componentInstance.controlDir.hasError( 'yearDistantFuture' ) ).toBeFalsy();
+    }));
+
+    it('should not accept future dates more than 150 years in future', fakeAsync(() => {
+      const fixture = createTestingModule( DateTestComponent,
+          `<form>
+            <common-date name="date1" [(ngModel)]="date1"></common-date>
+            </form>`,
+            directives
+          );
+
+      const date1 = getDebugElement( fixture, 'common-date', 'date1' );
+      const dt = addYears(addDays( startOfToday(), 1 ), 150);
+
+      setDate( date1,  dt );
+
+      tickAndDetectChanges( fixture );
+      expect( date1.componentInstance.controlDir.hasError( 'yearDistantFuture' ) ).toBeTruthy();
+    }));
+
   });
-
-
-
-  xit('should detect incomplete dates', () => {
-    expect(component.isValid()).toBe(false);
-    component.setDayValueOnModel('1');
-    fixture.detectChanges();
-    component.setMonthValueOnModel('1');
-    expect(component.isValid()).toBe(false);
-  });
-
-  xit('should pass validation when completely empty if not required', () => {
-    component.required = false;
-    expect(component.isValid()).toBe(true);
-    component.setDayValueOnModel('1');
-    expect(component.isValid()).toBe(false);
-  });
-
-
-  xit('should accept future dates when restricted to future dates', async(() => {
-    component.restrictDate = 'future';
-    component.setToToday();
-    component.setYearValueOnModel(component.date.year + 1 + '');
-    fixture.detectChanges();
-    fixture.whenStable().then(() => {
-      expect(component.isValid()).toBe(true);
-    });
-
-  }));
-
-  xit('should reject past dates when restricted to future dates', async(() => {
-    component.restrictDate = 'future';
-    component.setToToday();
-    component.setYearValueOnModel(component.date.year - 10 + '');
-    fixture.detectChanges();
-    fixture.whenStable().then(() => {
-      expect(component.isValid()).toBe(false);
-    });
-
-  }));
-
-
-
-  xit('should accept past dates when restricted to past dates.', async(() => {
-    component.restrictDate = 'past';
-    component.setToToday();
-    component.setYearValueOnModel(component.date.year - 10 + '');
-    fixture.detectChanges();
-    fixture.whenStable().then(() => {
-      expect(component.isValid()).toBe(true);
-    });
-  }));
-
-
-  xit('should accept todays date when restricted to future dates', async(() => {
-    component.restrictDate = 'future';
-    component.setToToday();
-    fixture.detectChanges();
-    fixture.whenStable().then(() => {
-      expect(component.isValid()).toBe(true);
-    });
-  }));
-
-  xit('should reject todays date when restricted to past dates', async(() => {
-    component.restrictDate = 'past';
-    component.setToToday();
-    fixture.detectChanges();
-    fixture.whenStable().then(() => {
-      expect(component.isValid()).toBe(false);
-    });
-  }));
-
-  xit('should display text for component', () => {
-    component.label = 'This a test';
-    fixture.detectChanges();
-
-    const legendText = fixture.nativeElement.querySelector('legend');
-    expect( legendText.textContent).toContain('This a test');
-  });
-
 });
- */

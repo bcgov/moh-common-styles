@@ -19,7 +19,7 @@ getTestBed().initTestEnvironment(
 // Then we find all the tests.
 // Note: Unit tests that have been started (not completed)
 // const context = require.context('./lib/components/city', true, /\.spec\.ts$/);
-// const context = require.context('./lib/components/date', true, /\.spec\.ts$/);
+const context = require.context('./lib/components/date', true, /\.spec\.ts$/);
 // const context = require.context('./lib/components/email', true, /\.spec\.ts$/);
 // const context = require.context('./lib/components/phn', true, /\.spec\.ts$/);
 // const context = require.context('./lib/components/phone-number', true, /\.spec\.ts$/);
@@ -28,7 +28,7 @@ getTestBed().initTestEnvironment(
 // const context = require.context('./lib/components/sin', true, /\.spec\.ts$/);
 // const context = require.context('./lib/components/street', true, /\.spec\.ts$/);
 
-const context = require.context('./lib/services', true, /\.spec\.ts$/);
+// const context = require.context('./lib/services', true, /\.spec\.ts$/);
 
 
 // const context = require.context('./', true, /\.spec\.ts$/);
