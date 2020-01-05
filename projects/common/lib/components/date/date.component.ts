@@ -112,10 +112,10 @@ export class DateComponent extends AbstractFormControl
   yearLabelforId: string = 'year_' + this.objectId;
 
   // Abstact variable defined
-  _defaultErrMsg: ErrorMessage = {  // private yesterday = subDays(startOfToday(), 1);  // private yesterday = subDays(startOfToday(), 1);
+  _defaultErrMsg: ErrorMessage = {
     required: `${LabelReplacementTag} is required.`,
     dayOutOfRange: `Invalid ${LabelReplacementTag}.`,
-    yearDistantPast: `Invalid ${LabelReplacementTag}  // private yesterday = subDays(startOfToday(), 1);`,
+    yearDistantPast: `Invalid ${LabelReplacementTag}`,
     yearDistantFuture: `Invalid ${LabelReplacementTag}.`,
     noPastDatesAllowed: `Invalid ${LabelReplacementTag}.`,
     noFutureDatesAllowed: `Invalid ${LabelReplacementTag}.`,
