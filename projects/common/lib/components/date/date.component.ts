@@ -115,7 +115,7 @@ export class DateComponent extends AbstractFormControl
   _defaultErrMsg: ErrorMessage = {
     required: `${LabelReplacementTag} is required.`,
     dayOutOfRange: `Invalid ${LabelReplacementTag}.`,
-    yearDistantPast: `Invalid ${LabelReplacementTag}`,
+    yearDistantPast: `Invalid ${LabelReplacementTag}.`,
     yearDistantFuture: `Invalid ${LabelReplacementTag}.`,
     noPastDatesAllowed: `Invalid ${LabelReplacementTag}.`,
     noFutureDatesAllowed: `Invalid ${LabelReplacementTag}.`,
@@ -266,11 +266,10 @@ You must use either [restrictDate] or the [dateRange*] inputs.
       // Set each field individually, use setFullYear() instead of setYear()
       // Set time on date to 00:00:00 for comparing later
       this.date = startOfDay(new Date());
-      this.date.setFullYear(year);
       this.date.setMonth(month);
       this.date.setFullYear(year); // To correct year when value has less than 4 characters
-
       this.date.setDate(day);
+
       this._onChange(this.date);
       this.dateChange.emit(this.date);
     } else {
