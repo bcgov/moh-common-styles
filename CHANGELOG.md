@@ -1,4 +1,19 @@
-# Unreleased "moh-common-lib" (2020-01-02)
+# Unreleased "moh-common-lib" (2020-01-06)
+
+
+
+# [3.0.0-rc.30](https://github.com/bcgov/moh-common-styles/compare/v3.0.0-rc.29...v3.0.0-rc.30) "moh-common-lib" (2020-01-06)
+
+
+### Bug Fixes
+
+* logic for accepting past/future dates, set errors, unit tests ([2f4836b](https://github.com/bcgov/moh-common-styles/commit/2f4836b))
+* **ConsentModalComponent:** Added SUPPBEN environment variables case. ([f01339b](https://github.com/bcgov/moh-common-styles/commit/f01339b))
+
+
+### Features
+
+* **ConsentModalComponent:** Added maintenance flags for PA and SB. ([e5b3cfa](https://github.com/bcgov/moh-common-styles/commit/e5b3cfa))
 
 
 

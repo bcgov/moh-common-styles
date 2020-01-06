@@ -1909,9 +1909,6 @@ export class NameComponent extends AbstractFormControl implements OnInit, Contro
   private validateSelf(): ValidationErrors | null {
 
     const maxlen &#x3D; Number.parseInt( this.maxlength, 10 );
-
-    console.log( &#x27;name validate self: &#x27;, this.nameStr );
-
     if ( this.nameStr ) {
       if ( maxlen &gt; 1 ) {
         // Valid characters for name

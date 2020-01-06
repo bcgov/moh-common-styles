@@ -269,19 +269,19 @@ export class Container {
         .subscribe(
           (async (defaultColor) &#x3D;&gt; {
             this.useDefaultColor &#x3D; await defaultColor;
-            console.log( &#x27;defaultColor: &#x27;, this.useDefaultColor );
+            // console.log( &#x27;defaultColor: &#x27;, this.useDefaultColor );
         })),
         this.containerService.$submitLabel
         .subscribe(
           (async (label) &#x3D;&gt; {
             this.submitLabel &#x3D; await label;
-            console.log( &#x27;button label: &#x27;, this.submitLabel );
+            // console.log( &#x27;button label: &#x27;, this.submitLabel );
         })),
         this.containerService.$isLoading
         .subscribe(
           (async (isLoading) &#x3D;&gt; {
             this.isLoading &#x3D; await isLoading;
-            console.log( &#x27;isLoading: &#x27;, this.isLoading );
+            // console.log( &#x27;isLoading: &#x27;, this.isLoading );
         }))
       ];
     }
