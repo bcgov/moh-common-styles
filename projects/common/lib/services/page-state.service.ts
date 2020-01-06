@@ -83,7 +83,6 @@ export class PageStateService {
 
   setPageComplete( path: string = null ) {
     const obj =  this._find(path ? path : this.router.url);
-    console.log( 'setPageComplete: ', this.router.url, obj );
     if ( obj ) {
       obj.isComplete = true;
     }

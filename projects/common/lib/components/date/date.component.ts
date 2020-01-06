@@ -18,10 +18,9 @@ import isBefore from 'date-fns/isBefore';
 import startOfToday from 'date-fns/startOfToday';
 import addYears from 'date-fns/addYears';
 import subYears from 'date-fns/subYears';
-import subDays from 'date-fns/subDays';
 import { MoHCommonLibraryError } from '../../../helpers/library-error';
 import { AbstractFormControl } from '../../models/abstract-form-control';
-import { compareAsc } from 'date-fns';
+import { compareAsc, startOfDay, addDays } from 'date-fns';
 
 /**
  * DateComponent
@@ -40,7 +39,7 @@ import { compareAsc } from 'date-fns';
  *       label="Effective Date"
  *       [dateRangeStart]="today"
  *       formControlName="effectiveDate"></common-date>
- *
+ *  // private yesterday = subDays(startOfToday(), 1);
  * @export
  *
  */
@@ -78,17 +77,30 @@ export class DateComponent extends AbstractFormControl
   monthTouched: boolean = false;
   yearTouched: boolean = false;
 
+  _dateRangeStart: Date = null;
+  _dateRangeEnd: Date = null;
+
 
   /**
    * The earliest valid date that can be used.
    * Do NOT combine with restrictDates, as they set the same underlying values.
    */
-  @Input() dateRangeStart: Date;
+  @Input()
+  set dateRangeStart(dt: Date) {
+    // Set time on date to 00:00:00 for comparing later
+    this._dateRangeStart = dt ? startOfDay(dt) : null;
+    // console.log( 'set dateRangeStart: ', dt, this._dateRangeStart );
+  }
   /**
    * The latest valid date that can be used.
    * Do NOT combine with restrictDates, as they set the same underlying values.
    */
-  @Input() dateRangeEnd: Date;
+  @Input()
+  set dateRangeEnd(dt: Date) {
+    // Set time on date to 00:00:00 for comparing later
+    this._dateRangeEnd = dt ? startOfDay(dt) : null;
+    // console.log( 'set dateRangeEnd: ', dt, this._dateRangeEnd );
+  }
 
   public monthList: string[] = [
     'January', 'February', 'March', 'April', 'May', 'June',
@@ -112,7 +124,7 @@ export class DateComponent extends AbstractFormControl
   };
 
   private today = startOfToday();
-  private yesterday = subDays(startOfToday(), 1);
+  private tomorrow = addDays( this.today, 1 );
   public isRequired: boolean;
 
   constructor( @Optional() @Self() public controlDir: NgControl,
@@ -144,7 +156,7 @@ export class DateComponent extends AbstractFormControl
 
     // Set to midnight, so we don't accidentally compare against hours/minutes/seconds
 
-    if (this.restrictDate !== 'any' && (this.dateRangeEnd || this.dateRangeStart)) {
+    if (this.restrictDate !== 'any' && (this._dateRangeEnd || this._dateRangeStart)) {
       const msg = `<common-date> - Invalid @Input() option configuration.
 You cannot use "[restrictDate]" in combination with either  "[dateRangeEnd]" or "[dateRangeStart]".
 You must use either [restrictDate] or the [dateRange*] inputs.
@@ -162,18 +174,18 @@ You must use either [restrictDate] or the [dateRange*] inputs.
 
     // Initialize date range logic
     if (this.restrictDate === 'past') {
-      // past does NOT allow for today
-      this.dateRangeEnd = this.yesterday;
-      this.dateRangeStart = null;
+      // past does allow for today
+      this._dateRangeEnd = this.today;
+      this._dateRangeStart = null;
     } else if (this.restrictDate === 'future') {
-      // future DOES allow for today
-      this.dateRangeEnd = null;
-      this.dateRangeStart = this.today;
+      // future does NOT allow for today
+      this._dateRangeEnd = null;
+      this._dateRangeStart = this.tomorrow;
     }
 
     this.registerValidation( this.controlDir, this.validateSelf )
       .then(_ => {
-        if (this.injectedValidators && this.injectedValidators.length){
+        if (this.injectedValidators && this.injectedValidators.length) {
           // TODO: Potentially move to AbstractFormControl
           // Inspect the validator functions for one that has a {required: true}
           // property. Importantly, we are inspecting the validator function
@@ -182,10 +194,7 @@ You must use either [restrictDate] or the [dateRange*] inputs.
             .filter(x => x.required)
             .length >= 1;
         }
-
       });
-
-
   }
 
   get month(): number {
@@ -255,10 +264,12 @@ You must use either [restrictDate] or the [dateRange*] inputs.
 
       // Date function appears to use setYear() so any year 0-99 results in year 1900 to 1999
       // Set each field individually, use setFullYear() instead of setYear()
-      this.date = new Date();
-      this.date.setFullYear(year);
+      // Set time on date to 00:00:00 for comparing later
+      this.date = startOfDay(new Date());
       this.date.setMonth(month);
+      this.date.setFullYear(year); // To correct year when value has less than 4 characters
       this.date.setDate(day);
+
       this._onChange(this.date);
       this.dateChange.emit(this.date);
     } else {
@@ -349,14 +360,15 @@ You must use either [restrictDate] or the [dateRange*] inputs.
     const year = parseInt(this._year, 10);
     const month = parseInt(this._month, 10);
     const day = parseInt(this._day, 10);
-    console.log('validateDate', { year, month, day });
+    // console.log('validateDate', { year, month, day });
 
-    // if they're all NaN, it means each field is empty
-    const allFieldsEmpty = isNaN(year) && isNaN(month) && isNaN(day);
-    const someFieldsEmpty = isNaN(year) || isNaN(month) || isNaN(day);
+    // Nothing empty fields - nothing to validate
+    if ( isNaN(year) && isNaN(month) && isNaN(day) ) {
+      return null;
+    }
 
     // Partially filled out is always invalid, if year is present it must be greater than zero
-    if (!allFieldsEmpty && someFieldsEmpty || (!isNaN( year) && year <= 0) ) {
+    if ( isNaN(year) || isNaN(month) || isNaN(day) || (!isNaN( year) && year <= 0) ) {
       return {invalidValue: true};
     }
 
@@ -383,20 +395,25 @@ You must use either [restrictDate] or the [dateRange*] inputs.
   // If you set restrictDate, it will return noFutureDatesAllowed / noPastDatesAllowed
   // If you just set dateRangeStart / dateRangeEnd, you get invalidRange
   private validateRange(): ValidationErrors | null {
-    if (this.dateRangeEnd && isAfter(this.date, this.dateRangeEnd)) {
+
+    if (this._dateRangeEnd && isAfter(this.date, this._dateRangeEnd)) {
+      // console.log( 'isAfter(this.date, this.dateRangeEnd): ',
+       // isAfter(this.date, this._dateRangeEnd) , this.date, this._dateRangeEnd);
 
       if (this.restrictDate === 'past' ||
-          compareAsc(this.dateRangeEnd, this.yesterday) === 0) {
+          compareAsc(this._dateRangeEnd, this.today) === 0) {
         return {noFutureDatesAllowed: true};
       }
 
       return {invalidRange: true};
     }
 
-    if (this.dateRangeStart && isBefore(this.date, this.dateRangeStart)) {
+    if (this._dateRangeStart && isBefore(this.date, this._dateRangeStart)) {
 
+      // console.log( 'isBefore(this.date, this.dateRangeStart): ',
+      //   isBefore(this.date, this._dateRangeStart) , this.date, this._dateRangeStart);
       if (this.restrictDate === 'future'  ||
-          compareAsc(this.dateRangeStart, this.today) === 0) {
+          compareAsc(this._dateRangeStart, this.tomorrow) === 0) {
         return {noPastDatesAllowed: true};
       }
 

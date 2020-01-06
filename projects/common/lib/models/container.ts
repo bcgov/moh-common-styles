@@ -108,19 +108,19 @@ export class Container {
         .subscribe(
           (async (defaultColor) => {
             this.useDefaultColor = await defaultColor;
-            console.log( 'defaultColor: ', this.useDefaultColor );
+            // console.log( 'defaultColor: ', this.useDefaultColor );
         })),
         this.containerService.$submitLabel
         .subscribe(
           (async (label) => {
             this.submitLabel = await label;
-            console.log( 'button label: ', this.submitLabel );
+            // console.log( 'button label: ', this.submitLabel );
         })),
         this.containerService.$isLoading
         .subscribe(
           (async (isLoading) => {
             this.isLoading = await isLoading;
-            console.log( 'isLoading: ', this.isLoading );
+            // console.log( 'isLoading: ', this.isLoading );
         }))
       ];
     }
