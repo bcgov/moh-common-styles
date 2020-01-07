@@ -31,6 +31,8 @@ export interface ISpaEnvResponse {
   SPA_ENV_ACL_MAINTENANCE_MESSAGE: string;
   SPA_ENV_SUPPBEN_MAINTENANCE_FLAG: string;
   SPA_ENV_SUPPBEN_MAINTENANCE_MESSAGE: string;
+  SPA_ENV_SUPPBEN_MAINTENANCE_START: string;
+  SPA_ENV_SUPPBEN_MAINTENANCE_END: string;
   SPA_ENV_PACUTOFF_MAINTENANCE_FLAG: string;
   SPA_ENV_PACUTOFF_MAINTENANCE_MESSAGE: string;
   SPA_ENV_PACUTOFF_MAINTENANCE_START: string;
@@ -205,6 +207,8 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
                         this.maintenanceMessage = this.spaEnvRes.SPA_ENV_SUPPBEN_MAINTENANCE_MESSAGE;
                     }
                     if (this.spaEnvRes.SPA_ENV_PACUTOFF_MAINTENANCE_START) {
+                        this.cutOffDate.emit(this.spaEnvRes);
+                    } else if (this.spaEnvRes.SPA_ENV_SUPPBEN_MAINTENANCE_START) {
                         this.cutOffDate.emit(this.spaEnvRes);
                     }
 
