@@ -122,7 +122,7 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
       ['ACL', '{"SPA_ENV_ACL_MAINTENANCE_FLAG":"","SPA_ENV_ACL_MAINTENANCE_MESSAGE":""}'],
       ['MSP', '{"SPA_ENV_MSP_MAINTENANCE_FLAG":"","SPA_ENV_MSP_MAINTENANCE_MESSAGE":""}'],
       ['PA', '{"SPA_ENV_PACUTOFF_MAINTENANCE_START":"","SPA_ENV_PACUTOFF_MAINTENANCE_END":"","SPA_ENV_NOW":"","SPA_ENV_PACUTOFF_MAINTENANCE_FLAG":"","SPA_ENV_PACUTOFF_MAINTENANCE_MESSAGE":""}'],
-      ['SUPPBEN', '{"SPA_ENV_SUPPBEN_MAINTENANCE_START":"","SPA_ENV_SUPPBEN_MAINTENANCE_END":"","SPA_ENV_NOW":"","SPA_ENV_SUPPBEN_MAINTENANCE_FLAG":"","SPA_ENV_SUPPBEN_MAINTENANCE_MESSAGE":""}'],
+      ['SUPPBEN', '{"SPA_ENV_SUPPBEN_MAINTENANCE_START":"","SPA_ENV_SUPPBEN_MAINTENANCE_END":"","SPA_ENV_NOW":"","SPA_ENV_SUPPBEN_MAINTENANCE_FLAG":"","SPA_ENV_SUPPBEN_MAINTENANCE_MESSAGE":"","SPA_ENV_PACUTOFF_MAINTENANCE_START":"","SPA_ENV_PACUTOFF_MAINTENANCE_END":""}'],
     ]);
     agreeCheck: boolean = false;
 
@@ -207,8 +207,6 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
                         this.maintenanceMessage = this.spaEnvRes.SPA_ENV_SUPPBEN_MAINTENANCE_MESSAGE;
                     }
                     if (this.spaEnvRes.SPA_ENV_PACUTOFF_MAINTENANCE_START) {
-                        this.cutOffDate.emit(this.spaEnvRes);
-                    } else if (this.spaEnvRes.SPA_ENV_SUPPBEN_MAINTENANCE_START) {
                         this.cutOffDate.emit(this.spaEnvRes);
                     }
 
