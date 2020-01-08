@@ -1,4 +1,15 @@
-# Unreleased "moh-common-lib" (2020-01-06)
+# Unreleased "moh-common-lib" (2020-01-08)
+
+
+
+# [3.0.0-rc.31](https://github.com/bcgov/moh-common-styles/compare/v3.0.0-rc.30...v3.0.0-rc.31) "moh-common-lib" (2020-01-08)
+
+
+### Bug Fixes
+
+* **ConsentModalComponent:** Added keys to interface. ([95b1122](https://github.com/bcgov/moh-common-styles/commit/95b1122))
+* **ConsentModalComponent:** Added required PACUTOFF env variables. ([abad941](https://github.com/bcgov/moh-common-styles/commit/abad941))
+* **ConsentModalComponent:** Update SUPPBEN to return maintenance flags. ([fd32157](https://github.com/bcgov/moh-common-styles/commit/fd32157))
 
 
 
