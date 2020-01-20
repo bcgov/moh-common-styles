@@ -1540,8 +1540,8 @@ Do NOT combine with restrictDates, as they set the same underlying values.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="426"
-                            class="link-to-prism">projects/common/lib/components/date/date.component.ts:426</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="428"
+                            class="link-to-prism">projects/common/lib/components/date/date.component.ts:428</a></div>
                 </td>
             </tr>
 
@@ -3299,7 +3299,7 @@ export class DateComponent extends AbstractFormControl
      * Doesn&#x27;t work, modifies existing object.  Would have to manually call cd.detectChanges() afterwards.
      * obj.errorMessage &#x3D; &#x27;newMessage&#x27;;
      */
-    if (changes[&#x27;errorMessages&#x27;]) {
+    if (changes[&#x27;errorMessage&#x27;]) {
       this.setErrorMsg();
     }
   }
@@ -3549,7 +3549,9 @@ You must use either [restrictDate] or the [dateRange*] inputs.
   // If you just set dateRangeStart / dateRangeEnd, you get invalidRange
   private validateRange(): ValidationErrors | null {
 
-    if (this._dateRangeEnd &amp;&amp; isAfter(this.date, this._dateRangeEnd)) {
+    const _dt &#x3D; startOfDay( this.date );
+
+    if (this._dateRangeEnd &amp;&amp; isAfter(_dt, this._dateRangeEnd)) {
       // console.log( &#x27;isAfter(this.date, this.dateRangeEnd): &#x27;,
        // isAfter(this.date, this._dateRangeEnd) , this.date, this._dateRangeEnd);
 
@@ -3561,7 +3563,7 @@ You must use either [restrictDate] or the [dateRange*] inputs.
       return {invalidRange: true};
     }
 
-    if (this._dateRangeStart &amp;&amp; isBefore(this.date, this._dateRangeStart)) {
+    if (this._dateRangeStart &amp;&amp; isBefore(_dt, this._dateRangeStart)) {
 
       // console.log( &#x27;isBefore(this.date, this.dateRangeStart): &#x27;,
       //   isBefore(this.date, this._dateRangeStart) , this.date, this._dateRangeStart);
@@ -3580,11 +3582,13 @@ You must use either [restrictDate] or the [dateRange*] inputs.
 
     // console.log( &#x27;validateDistantDates: &#x27;, distantFuture, distantPast, this.date );
 
-    if (isAfter(this.date, distantFuture)) {
+    // Null end range only allow 150 years in future
+    if (!this._dateRangeEnd &amp;&amp; isAfter(this.date, distantFuture)) {
       return {yearDistantFuture: true};
     }
 
-    if (isBefore(this.date, distantPast)) {
+    // Null start range only allow 150 years in past
+    if (!this._dateRangeStart &amp;&amp; isBefore(this.date, distantPast)) {
       return {yearDistantPast: true};
     }
 

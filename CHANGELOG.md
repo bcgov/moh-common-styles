@@ -1,4 +1,14 @@
-# [3.0.0](https://github.com/bcgov/moh-common-styles/compare/v3.0.0-rc.31...v3.0.0) "moh-common-lib" (2020-01-08)
+# Unreleased "moh-common-lib" (2020-01-20)
+
+
+
+## [3.0.1](https://github.com/bcgov/moh-common-styles/compare/v3.0.0-rc.31...v3.0.1) "moh-common-lib" (2020-01-20)
+
+
+### Bug Fixes
+
+* date messages on change, 150 years ([4e9852b](https://github.com/bcgov/moh-common-styles/commit/4e9852b))
+* security updates ([20aa812](https://github.com/bcgov/moh-common-styles/commit/20aa812))
 
 
 
