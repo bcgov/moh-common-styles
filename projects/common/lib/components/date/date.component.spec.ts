@@ -11,7 +11,8 @@ import {
   getInputDebugElement,
   setInput,
   getSelectDebugElement,
-  setSelect} from '../../../helpers/test-helpers';
+  setSelect,
+  getErrorContainer} from '../../../helpers/test-helpers';
 import { startOfToday, subDays, addDays, subYears, addYears } from 'date-fns';
 
 @Component({
@@ -29,8 +30,14 @@ class DateTestComponent {
 
   today = startOfToday();
   tomorrow = addDays( this.today, 1 );
-  startRange = addDays( this.today, 4 );
-  startEnd = subDays( this.today, 5 );
+  startRange = subDays( this.today, 4 );
+  endRange = addDays( this.today, 5 );
+
+
+  defaultInvalidErrorMsg = 'This is a test.';
+  errorMessage = {
+    invalidRange: this.defaultInvalidErrorMsg
+  };
 
   constructor() {}
 
@@ -199,9 +206,15 @@ describe('DateComponent', () => {
             directives
           );
 
+      const date2 = getDebugElement( fixture, 'common-date', 'date2' );
+      const date3 = getDebugElement( fixture, 'common-date', 'date3' );
+
+      setDate( date2, fixture.componentInstance.date2 );
+      setDate( date3, fixture.componentInstance.date3 );
       tickAndDetectChanges( fixture );
-      expect( fixture.componentInstance.dateComponent.first.controlDir.hasError( 'invalidRange' ) ).toBeFalsy();
-      expect( fixture.componentInstance.dateComponent.last.controlDir.hasError( 'invalidRange' ) ).toBeTruthy();
+
+      expect( date2.componentInstance.controlDir.hasError( 'invalidRange' ) ).toBeFalsy();
+      expect( date3.componentInstance.controlDir.hasError( 'invalidRange' ) ).toBeTruthy();
     }));
 
     it('should set year zero invalid value error', fakeAsync(() => {
@@ -434,6 +447,89 @@ describe('DateComponent', () => {
 
       tickAndDetectChanges( fixture );
       expect( date1.componentInstance.controlDir.hasError( 'yearDistantFuture' ) ).toBeTruthy();
+    }));
+
+    it('should display difference error message for invalid range', fakeAsync(() => {
+
+      const fixture = createTestingModule( DateTestComponent,
+        `<form>
+          <common-date name="date2" [(ngModel)]="date2"
+                        [dateRangeStart]='startRange'
+                        [dateRangeEnd]='endRange'
+                        [errorMessage]='errorMessage'></common-date>
+          </form>`,
+          directives
+        );
+
+      tickAndDetectChanges( fixture );
+
+      const date2 = getDebugElement( fixture, 'common-date', 'date2' );
+      const dt = subDays( startOfToday(), 10);
+      setDate( date2,  dt );
+
+      tickAndDetectChanges( fixture );
+
+      expect( date2.componentInstance.controlDir.hasError( 'invalidRange' ) ).toBeTruthy();
+
+      let errorMsg = getErrorContainer( fixture );
+      expect( errorMsg.textContent).toContain( fixture.componentInstance.defaultInvalidErrorMsg );
+      fixture.componentInstance.errorMessage = {invalidRange: 'This is a different test message.'};
+
+      tickAndDetectChanges( fixture );
+      errorMsg = getErrorContainer( fixture );
+      expect( errorMsg.textContent).toContain( 'This is a different test message.' );
+    }));
+
+    it('should allow more than 150 in the future when endRange set', fakeAsync(() => {
+
+      const fixture = createTestingModule( DateTestComponent,
+        `<form>
+          <common-date name="date2" [(ngModel)]="date2"
+                        [dateRangeStart]='startRange'
+                        [dateRangeEnd]='endRange'
+                        [errorMessage]='errorMessage'></common-date>
+          </form>`,
+          directives
+        );
+
+      fixture.componentInstance.endRange = addYears( fixture.componentInstance.today, 160 );
+
+      tickAndDetectChanges( fixture );
+
+      const date2 = getDebugElement( fixture, 'common-date', 'date2' );
+      const dt = addYears( startOfToday(), 155 );
+      setDate( date2,  dt );
+
+      tickAndDetectChanges( fixture );
+
+      expect( date2.componentInstance.controlDir.hasError( 'yearDistantFuture' ) ).toBeFalsy();
+      expect( date2.componentInstance.controlDir.errors ).toBeNull();
+    }));
+
+    it('should allow more than 150 in the past when endRange set', fakeAsync(() => {
+
+      const fixture = createTestingModule( DateTestComponent,
+        `<form>
+          <common-date name="date2" [(ngModel)]="date2"
+                        [dateRangeStart]='startRange'
+                        [dateRangeEnd]='endRange'
+                        [errorMessage]='errorMessage'></common-date>
+          </form>`,
+          directives
+        );
+
+      fixture.componentInstance.startRange = subYears( fixture.componentInstance.today, 160 );
+
+      tickAndDetectChanges( fixture );
+
+      const date2 = getDebugElement( fixture, 'common-date', 'date2' );
+      const dt = subYears( startOfToday(), 155 );
+      setDate( date2,  dt );
+
+      tickAndDetectChanges( fixture );
+
+      expect( date2.componentInstance.controlDir.hasError( 'yearDistantPast' ) ).toBeFalsy();
+      expect( date2.componentInstance.controlDir.errors ).toBeNull();
     }));
 
   });

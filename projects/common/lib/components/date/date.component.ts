@@ -146,7 +146,7 @@ export class DateComponent extends AbstractFormControl
      * Doesn't work, modifies existing object.  Would have to manually call cd.detectChanges() afterwards.
      * obj.errorMessage = 'newMessage';
      */
-    if (changes['errorMessages']) {
+    if (changes['errorMessage']) {
       this.setErrorMsg();
     }
   }
@@ -396,7 +396,9 @@ You must use either [restrictDate] or the [dateRange*] inputs.
   // If you just set dateRangeStart / dateRangeEnd, you get invalidRange
   private validateRange(): ValidationErrors | null {
 
-    if (this._dateRangeEnd && isAfter(this.date, this._dateRangeEnd)) {
+    const _dt = startOfDay( this.date );
+
+    if (this._dateRangeEnd && isAfter(_dt, this._dateRangeEnd)) {
       // console.log( 'isAfter(this.date, this.dateRangeEnd): ',
        // isAfter(this.date, this._dateRangeEnd) , this.date, this._dateRangeEnd);
 
@@ -408,7 +410,7 @@ You must use either [restrictDate] or the [dateRange*] inputs.
       return {invalidRange: true};
     }
 
-    if (this._dateRangeStart && isBefore(this.date, this._dateRangeStart)) {
+    if (this._dateRangeStart && isBefore(_dt, this._dateRangeStart)) {
 
       // console.log( 'isBefore(this.date, this.dateRangeStart): ',
       //   isBefore(this.date, this._dateRangeStart) , this.date, this._dateRangeStart);
@@ -427,11 +429,13 @@ You must use either [restrictDate] or the [dateRange*] inputs.
 
     // console.log( 'validateDistantDates: ', distantFuture, distantPast, this.date );
 
-    if (isAfter(this.date, distantFuture)) {
+    // Null end range only allow 150 years in future
+    if (!this._dateRangeEnd && isAfter(this.date, distantFuture)) {
       return {yearDistantFuture: true};
     }
 
-    if (isBefore(this.date, distantPast)) {
+    // Null start range only allow 150 years in past
+    if (!this._dateRangeStart && isBefore(this.date, distantPast)) {
       return {yearDistantPast: true};
     }
 
