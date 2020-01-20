@@ -27,10 +27,9 @@ export function getInputElement( fixture: ComponentFixture<any>, componentHtml: 
   return fixture.nativeElement.querySelector( selector );
 }
 
-/*
 export function getErrorContainer( fixture: ComponentFixture<any> ) {
   return fixture.nativeElement.querySelector('common-error-container');
-}*/
+}
 
 
 // Create test modules
