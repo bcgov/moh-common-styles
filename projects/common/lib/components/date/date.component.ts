@@ -39,7 +39,14 @@ import { compareAsc, startOfDay, addDays } from 'date-fns';
  *       label="Effective Date"
  *       [dateRangeStart]="today"
  *       formControlName="effectiveDate"></common-date>
- *  // private yesterday = subDays(startOfToday(), 1);
+ *
+ *  To allow instructions under label.
+ *    <common-date name='effectiveDate'
+ *       label="Effective Date"
+ *       [dateRangeEnd]='yesterday'
+ *       formControlName="effectiveDate">
+ *      <p>This is a test.</p>
+ *    </common-date>
  * @export
  *
  */

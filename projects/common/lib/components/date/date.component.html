@@ -1,7 +1,7 @@
 <fieldset>
   <legend class="date--legend">{{label}}</legend>
+  <ng-container *ngTemplateOutlet="instructionText"></ng-container>
   <div class="date-row">
-
     <label class="visuallyhidden" for="{{monthLabelforId}}">Month</label>
     <select class="form-control monthSelect"
             id="{{monthLabelforId}}"
@@ -72,3 +72,7 @@
      {{_defaultErrMsg.invalidValue}}
   </div>
 </common-error-container>
+
+<ng-template #instructionText>
+  <ng-content></ng-content>
+</ng-template>
