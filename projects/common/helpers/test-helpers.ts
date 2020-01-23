@@ -9,6 +9,8 @@ export function tickAndDetectChanges(fixture: ComponentFixture<any>) {
   fixture.detectChanges();
 }
 
+
+/** TODO: Look at these functions - consider replacing with *Debug* versions */
 // Retreive HTML elment information
 export function getLegendContext( fixture: ComponentFixture<any>, componentHtml: string, name: string ) {
   const selector = componentHtml + '[name=' + name + '] legend';
@@ -25,10 +27,6 @@ export function getLabel( fixture: ComponentFixture<any>, componentHtml: string,
 export function getInputElement( fixture: ComponentFixture<any>, componentHtml: string, name: string, inputName: string = null ) {
   const selector = componentHtml + '[name=' + name + '] ' + ( inputName ? 'input[name=' + inputName + ']' :  'input' );
   return fixture.nativeElement.querySelector( selector );
-}
-
-export function getErrorContainer( fixture: ComponentFixture<any> ) {
-  return fixture.nativeElement.querySelector('common-error-container');
 }
 
 
@@ -68,8 +66,9 @@ export function createTestingModule<T>( cmp: Type<T>,
 }
 
 
-export function getDebugElement( fixture: ComponentFixture<any>, componentHtml: string, name: string ) {
-  return fixture.debugElement.query( By.css( componentHtml + '[name=' + name + '] ' ) );
+export function getDebugElement( fixture: ComponentFixture<any>, componentHtml: string, name: string = null ) {
+  const _selector =  name ? componentHtml + '[name=' + name + ']' : componentHtml;
+  return fixture.debugElement.query( By.css( _selector ) );
 }
 
 export function getInputDebugElement( de: DebugElement, name: string ) {
@@ -80,21 +79,27 @@ export function getSelectDebugElement( de: DebugElement, name: string ) {
   return de.nativeElement.querySelector( 'select[name=' + name + ']' );
 }
 
-export function setInput( el: any, value: any ) {
+export function getDebugLegend( de: DebugElement ) {
+  const _de = de.nativeElement.querySelector( 'legend' );
+  return _de ? _de.textContent : null;
+}
 
+export function getDebugInlineError( de: DebugElement ) {
+  const _de = de.nativeElement.querySelector( 'common-error-container' );
+  // console.log( '_de: ', _de );
+  return _de ? _de.textContent : null;
+}
+
+export function setInput( el: any, value: any ) {
+  el.focus();
   el.value = value;
   el.dispatchEvent(new Event('blur'));
 }
 
 // Value of the option
 export function setSelect( el: any, value: any ) {
+  el.focus();
   el.value = value;
   el.dispatchEvent(new Event('blur'));
 }
 
-
-/*
-TODO: Remove if not required
-export function triggerTabEvent( de: DebugElement ) {
-  de.triggerEventHandler('keydown', { which: 9, key: ''});
-}*/

@@ -50,7 +50,7 @@ export abstract class AbstractFormControl extends Base implements OnInit, Contro
     this.validateLabel();
 
     // Some components have logic based off no label being submitted - strip off '(optional)'
-    const _label = this.label ? this.label.replace( '(optional)' , '' ) : 'Field';
+    const _label = this.label ? this.label.replace( /\s*\(.*?\)\s*/g, '' ) : 'Field';
 
     if ( this.errorMessage ) {
       Object.keys(this.errorMessage).map( x => this._defaultErrMsg[x] = this.errorMessage[x] );
