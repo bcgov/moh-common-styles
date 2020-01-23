@@ -72,7 +72,13 @@ export function getDebugElement( fixture: ComponentFixture<any>, componentHtml: 
 }
 
 export function getInputDebugElement( de: DebugElement, name: string ) {
-  return de.nativeElement.querySelector( 'input[name=' + name + ']' );
+  let _de = de.nativeElement.querySelector( 'input[name=' + name + ']' );
+  if ( !_de ) {
+
+   // Inputs that use 'value' instead of 'ngModel'
+    _de =  de.nativeElement.querySelector( 'input[id=' + name + ']' );
+  }
+  return _de;
 }
 
 export function getSelectDebugElement( de: DebugElement, name: string ) {
@@ -90,9 +96,16 @@ export function getDebugInlineError( de: DebugElement ) {
   return _de ? _de.textContent : null;
 }
 
+export function getDebugLabel(  de: DebugElement, name: string ) {
+  const _de = de.nativeElement.querySelector( ' label[for=' + name + '] ' );
+ //  console.log( '_de: ', _de );
+  return _de ? _de.textContent : null;
+}
+
 export function setInput( el: any, value: any ) {
   el.focus();
   el.value = value;
+  el.dispatchEvent(new Event('change'));
   el.dispatchEvent(new Event('blur'));
 }
 

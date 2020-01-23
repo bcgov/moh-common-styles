@@ -2,7 +2,13 @@ import { EmailComponent } from './email.component';
 import { ErrorContainerComponent } from '../error-container/error-container.component';
 import { Component, ViewChildren, QueryList, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { createTestingModule, tickAndDetectChanges, getInputElement, getLabel } from '../../../helpers/test-helpers';
+import { createTestingModule,
+  tickAndDetectChanges,
+  getDebugElement,
+  getDebugLabel,
+  setInput,
+  getInputDebugElement,
+  getDebugInlineError} from '../../../helpers/test-helpers';
 import { fakeAsync } from '@angular/core/testing';
 
 @Component({
@@ -52,12 +58,11 @@ describe('EmailComponent', () => {
       );
 
       const component = fixture.componentInstance;
+      const de = getDebugElement( fixture, 'common-email', 'email1');
       tickAndDetectChanges( fixture );
-      const el = getInputElement( fixture, 'common-email', 'email1');
-      const label = getLabel( fixture, 'common-email', el.id );
 
-      expect( component.emailComponent ).toBeTruthy();
-      expect( label.textContent ).toBe( component.defaultLabel );
+      expect( de ).toBeTruthy();
+      expect( getDebugLabel( de, de.componentInstance.labelforId ) ).toBe( component.defaultLabel );
       expect( component.form.get('email1').hasError( 'required' )  ).toBeFalsy();
     }));
 
@@ -71,12 +76,13 @@ describe('EmailComponent', () => {
       );
 
       const component = fixture.componentInstance;
+      const de = getDebugElement( fixture, 'common-email', 'email2');
       tickAndDetectChanges( fixture );
-      expect( component.emailComponent ).toBeTruthy();
+      expect( de ).toBeTruthy();
       expect( component.form.get('email2').hasError( 'required' )  ).toBeTruthy();
     }));
 
-    it('should be invalid', fakeAsync(() => {
+    it('should be invalid when format is incorrect', fakeAsync(() => {
       const fixture = createTestingModule( EmailReactTestComponent,
         `<form [formGroup]="form">
           <common-email name='email1' formControlName='email1'></common-email>
@@ -85,14 +91,19 @@ describe('EmailComponent', () => {
          true
       );
 
-      const component = fixture.componentInstance;
-      component.form.get( 'email1' ).setValue( '234is@kjest' );
+      const de = getDebugElement( fixture, 'common-email', 'email1');
+      const input = getInputDebugElement( de, de.componentInstance.labelforId );
+
+      setInput( input, '234is@jest' );
       tickAndDetectChanges( fixture );
-      expect( component.emailComponent ).toBeTruthy();
-      expect( component.form.get('email1').hasError( 'invalidEmail' ) ).toBeTruthy();
+      fixture.whenStable().then( () => {
+        expect( de ).toBeTruthy();
+        // console.log( 'errors: ', de.componentInstance.controlDir.errors );
+        expect( de.componentInstance.controlDir.hasError( 'invalidEmail' ) ).toBeTruthy();
+      });
     }));
 
-    it('should be valid', fakeAsync(() => {
+    it('should be valid when format is correct', fakeAsync(() => {
       const fixture = createTestingModule( EmailReactTestComponent,
         `<form [formGroup]="form">
           <common-email name='email1' formControlName='email1'></common-email>
@@ -102,10 +113,13 @@ describe('EmailComponent', () => {
       );
 
       const component = fixture.componentInstance;
-      component.form.get( 'email1' ).setValue( 'test@test.com' );
+      const de = getDebugElement( fixture, 'common-email', 'email1');
+      const input = getInputDebugElement( de, de.componentInstance.labelforId );
+      setInput( input, 'test@test.com' );
+
       tickAndDetectChanges( fixture );
-      expect( component.emailComponent ).toBeTruthy();
-      expect( component.form.get('email1').valid  ).toBeTruthy();
+      expect( de ).toBeTruthy();
+      expect( de.componentInstance.controlDir.hasError( 'invalidEmail' )   ).toBeFalsy();
     }));
 
   });
@@ -121,13 +135,13 @@ describe('EmailComponent', () => {
       );
 
       const component = fixture.componentInstance;
+      const de = getDebugElement( fixture, 'common-email', 'email1');
       tickAndDetectChanges( fixture );
-      const el = getInputElement( fixture, 'common-email', 'email1');
-      const label = getLabel( fixture, 'common-email', el.id );
 
-      expect( component.emailComponent ).toBeTruthy();
-      expect( label.textContent ).toBe( component.defaultLabel );
-      expect( component.emailComponent.first.controlDir.hasError( 'required' ) ).toBeFalsy();
+      expect( de ).toBeTruthy();
+      expect( getDebugLabel( de, de.componentInstance.labelforId ) ).toBe( component.defaultLabel );
+
+      expect( de.componentInstance.controlDir.hasError( 'required' ) ).toBeFalsy();
     }));
 
     it('should be required', fakeAsync(() => {
@@ -138,16 +152,14 @@ describe('EmailComponent', () => {
          directives
       );
 
-      const component = fixture.componentInstance;
+      const de = getDebugElement( fixture, 'common-email', 'email1');
       tickAndDetectChanges( fixture );
-      const el = getInputElement( fixture, 'common-email', 'email1');
 
-      expect( component.emailComponent ).toBeTruthy();
-      expect( component.emailComponent.first.controlDir.hasError( 'required' ) ).toBeTruthy();
+      expect( de ).toBeTruthy();
+      expect( de.componentInstance.controlDir.hasError( 'required' ) ).toBeTruthy();
     }));
 
-    // TODO: Figure out why value is not being set
-    xit('should be invalid', fakeAsync(() => {
+    it('should be invalid when format is incorrect', fakeAsync(() => {
       const fixture = createTestingModule( EmailTestComponent,
         `<form>
           <common-email name='email1' [(ngModel)]='email1'></common-email>
@@ -155,20 +167,17 @@ describe('EmailComponent', () => {
          directives
       );
 
-      const component = fixture.componentInstance;
-      tickAndDetectChanges( fixture );
-      const el = getInputElement( fixture, 'common-email', 'email1');
-      el.value = 'testlklsd@ksdlkd';
-      el.dispatchEvent( new Event( 'input' ) );
+      const de = getDebugElement( fixture, 'common-email', 'email1');
+      const input = getInputDebugElement( de, de.componentInstance.labelforId );
+      setInput( input, 'testlklsd@ksdlkd' );
 
       tickAndDetectChanges( fixture );
       fixture.whenStable().then( () => {
-        expect( component.emailComponent.first.controlDir.hasError( 'invalidEmail' ) ).toBeTruthy();
+        expect( de.componentInstance.controlDir.hasError( 'invalidEmail' ) ).toBeTruthy();
       });
     }));
 
-    // TODO: Figure out why value is not being set
-    xit('should be valid', fakeAsync(() => {
+    it('should be valid when format is correct', fakeAsync(() => {
       const fixture = createTestingModule( EmailTestComponent,
         `<form>
           <common-email name='email1' [(ngModel)]='email1'></common-email>
@@ -176,18 +185,34 @@ describe('EmailComponent', () => {
          directives
       );
 
-      const component = fixture.componentInstance;
-      tickAndDetectChanges( fixture );
-      const el = getInputElement( fixture, 'common-email', 'email1');
-      console.log( 'el: ', el );
-      el.value = 'testlklsd@test.com';
-      el.dispatchEvent( new Event( 'input' ) );
+      const de = getDebugElement( fixture, 'common-email', 'email1');
+      const input = getInputDebugElement( de, de.componentInstance.labelforId );
+      setInput( input, 'ttestlklsd@test.com' );
 
       tickAndDetectChanges( fixture );
       fixture.whenStable().then( () => {
-        console.log( 'value: ', component.email1 );
-        expect( component.emailComponent.first.controlDir.hasError( 'invalidEmail' ) ).toBeFalsy();
+        expect( de.componentInstance.controlDir.hasError( 'invalidEmail' ) ).toBeFalsy();
       });
     }));
+
+    it('should be invalid where non-printable ascii characters are present', fakeAsync(() => {
+      const fixture = createTestingModule( EmailTestComponent,
+        `<form>
+          <common-email name='email1' [(ngModel)]='email1'></common-email>
+         </form>`,
+         directives
+      );
+
+      const de = getDebugElement( fixture, 'common-email', 'email1');
+      const input = getInputDebugElement( de, de.componentInstance.labelforId );
+      const nonPrintable = String.fromCharCode(0x00E4, 0x00F4);
+      setInput( input, 'testlklsd' + nonPrintable  + '@ksdlkd.com' );
+
+      tickAndDetectChanges( fixture );
+      fixture.whenStable().then( () => {
+        expect( de.componentInstance.controlDir.hasError( 'invalidChars' ) ).toBeTruthy();
+      });
+    }));
+
   });
 });
