@@ -226,8 +226,6 @@ You must use either [restrictDate] or the [dateRange*] inputs.
    */
   private processDate() {
 
-    this._onTouched(this.date);
-
     if (this.canCreateDate()) {
       const year = this.getNumericValue(this._year);
       const month = this.getNumericValue(this._month);
@@ -242,24 +240,19 @@ You must use either [restrictDate] or the [dateRange*] inputs.
       this.date.setFullYear(year); // To correct year when value has less than 4 characters
       this.date.setDate(day);
 
-      this._triggerOnChange(this.date);
     } else {
-      this.destroyDate();
-    }
-  }
+      // Trigger validator for emptying fields use case. This is to remove the 'Invalid date' error.
+      if (this.date ||
+        (!this._year && !this._day && this._month === 'null')) {
 
-  /**
-   * Destroys the internal Date object.  This should always be used instead of nulling out `this.date` directly.
-   */
-  private destroyDate() {
-
-    // Trigger validator for emptying fields use case. This is to remove the 'Invalid date' error.
-    if (this.date ||
-       (!this._year && !this._day && this._month === 'null')) {
-      this.date = null;
+        // Destroys the internal Date object.
+        this.date = null;
+      }
     }
 
-    this._triggerOnChange(this.date);
+    this._onChange(this.date);
+    this._onTouched(this.date);
+    this.dateChange.emit(this.date);
   }
 
   /**
@@ -274,6 +267,7 @@ You must use either [restrictDate] or the [dateRange*] inputs.
     if (!!this._year && !!this._day && monthCheck) {
       return true;
     }
+    return false;
   }
 
   private _triggerOnChange( dt: Date ) {
