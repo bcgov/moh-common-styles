@@ -41,10 +41,12 @@ export class EmailComponent extends AbstractFormControl implements OnInit {
 
   _defaultErrMsg: ErrorMessage = {
     required: `${LabelReplacementTag} is required.`,
-    invalidEmail: `${LabelReplacementTag} must be properly formatted (e.g. name@domain.com)`
+    invalidEmail: `${LabelReplacementTag} must be properly formatted (e.g. name@domain.com)`,
+    invalidChars: `${LabelReplacementTag} contains invalid characters.`
   };
 
-  private criteria: RegExp = /^(\S+)@(\S+)\.(\S+)$/;
+  private _formatCriteria: RegExp = /^(\S+)@(\S+)\.(\S+)$/;
+  private _asciiPrintable: RegExp = /^[^ -~]+$/;
 
   constructor( @Optional() @Self() public controlDir: NgControl ) {
     super();
@@ -79,8 +81,16 @@ export class EmailComponent extends AbstractFormControl implements OnInit {
   private validateSelf(): ValidationErrors | null {
 
     if ( this.email ) {
-      const result = this.criteria.test( this.email );
-      return result ? null : { invalidEmail: true };
+
+      // console.log( 'email: ', this.email );
+      let result = this._formatCriteria.test( this.email );
+      // console.log( 'formatCriteria: ', result );
+      if ( result ) {
+        result = this._asciiPrintable.test( this.email );
+        // console.log( 'asciiPrintable: ', result );
+        return result ? null : { invalidChars: true };
+      }
+      return { invalidEmail: true };
     }
     return null;
   }
