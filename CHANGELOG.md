@@ -1,4 +1,20 @@
-# Unreleased "moh-common-lib" (2020-01-20)
+# Unreleased "moh-common-lib" (2020-01-23)
+
+
+
+## [3.0.2](https://github.com/bcgov/moh-common-styles/compare/v3.0.1...v3.0.2) "moh-common-lib" (2020-01-23)
+
+
+### Bug Fixes
+
+*  first field touched error appear, remove bracket info from labels for error msg ([bcd3cad](https://github.com/bcgov/moh-common-styles/commit/bcd3cad))
+* angular-devkit/build-angular updated so unit tests run ([23644b4](https://github.com/bcgov/moh-common-styles/commit/23644b4))
+
+
+### Features
+
+* Able to add instructions under date label ([0ac8cb8](https://github.com/bcgov/moh-common-styles/commit/0ac8cb8))
+* added check for printable ascii characters  for emaill, updated unit tests ([fda99be](https://github.com/bcgov/moh-common-styles/commit/fda99be))
 
 
 

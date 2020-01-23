@@ -141,15 +141,19 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_asciiPrintable">_asciiPrintable</a>
+                            </li>
+                            <li>
                                 <a href="#_defaultErrMsg">_defaultErrMsg</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_formatCriteria">_formatCriteria</a>
                             </li>
                             <li>
                                     <span class="modifier">Public</span>
                                 <a href="#controlDir">controlDir</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Private</span>
-                                <a href="#criteria">criteria</a>
                             </li>
                             <li>
                                 <a href="#email">email</a>
@@ -310,7 +314,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">projects/common/lib/components/email/email.component.ts:47</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">projects/common/lib/components/email/email.component.ts:49</a></div>
                             </td>
                         </tr>
 
@@ -613,8 +617,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="56"
-                            class="link-to-prism">projects/common/lib/components/email/email.component.ts:56</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="58"
+                            class="link-to-prism">projects/common/lib/components/email/email.component.ts:58</a></div>
                 </td>
             </tr>
 
@@ -652,8 +656,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="68"
-                            class="link-to-prism">projects/common/lib/components/email/email.component.ts:68</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="70"
+                            class="link-to-prism">projects/common/lib/components/email/email.component.ts:70</a></div>
                 </td>
             </tr>
 
@@ -722,8 +726,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="62"
-                            class="link-to-prism">projects/common/lib/components/email/email.component.ts:62</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="64"
+                            class="link-to-prism">projects/common/lib/components/email/email.component.ts:64</a></div>
                 </td>
             </tr>
 
@@ -794,8 +798,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="79"
-                            class="link-to-prism">projects/common/lib/components/email/email.component.ts:79</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="81"
+                            class="link-to-prism">projects/common/lib/components/email/email.component.ts:81</a></div>
                 </td>
             </tr>
 
@@ -833,8 +837,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="73"
-                            class="link-to-prism">projects/common/lib/components/email/email.component.ts:73</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="75"
+                            class="link-to-prism">projects/common/lib/components/email/email.component.ts:75</a></div>
                 </td>
             </tr>
 
@@ -1435,6 +1439,39 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
+                        <a name="_asciiPrintable"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            _asciiPrintable</b>
+                            <a href="#_asciiPrintable"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>RegExp</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>/^[^ -~]+$/</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">projects/common/lib/components/email/email.component.ts:49</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
                         <a name="_defaultErrMsg"></a>
                         <span class="name">
                             <b>
@@ -1453,13 +1490,47 @@
                         <td class="col-md-4">
                             <i>Default value : </i><code>{
     required: &#x60;${LabelReplacementTag} is required.&#x60;,
-    invalidEmail: &#x60;${LabelReplacementTag} must be properly formatted (e.g. name@domain.com)&#x60;
+    invalidEmail: &#x60;${LabelReplacementTag} must be properly formatted (e.g. name@domain.com)&#x60;,
+    invalidChars: &#x60;${LabelReplacementTag} contains invalid characters.&#x60;
   }</code>
                         </td>
                     </tr>
                         <tr>
                             <td class="col-md-4">
                                     <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">projects/common/lib/components/email/email.component.ts:42</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_formatCriteria"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            _formatCriteria</b>
+                            <a href="#_formatCriteria"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>RegExp</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>/^(\S+)@(\S+)\.(\S+)$/</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">projects/common/lib/components/email/email.component.ts:48</a></div>
                             </td>
                         </tr>
 
@@ -1496,40 +1567,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">projects/common/lib/components/email/email.component.ts:49</a></div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="criteria"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Private</span>
-                            criteria</b>
-                            <a href="#criteria"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>    <code>RegExp</code>
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Default value : </i><code>/^(\S+)@(\S+)\.(\S+)$/</code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">projects/common/lib/components/email/email.component.ts:47</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">projects/common/lib/components/email/email.component.ts:51</a></div>
                             </td>
                         </tr>
 
@@ -1843,10 +1881,12 @@ export class EmailComponent extends AbstractFormControl implements OnInit {
 
   _defaultErrMsg: ErrorMessage &#x3D; {
     required: &#x60;${LabelReplacementTag} is required.&#x60;,
-    invalidEmail: &#x60;${LabelReplacementTag} must be properly formatted (e.g. name@domain.com)&#x60;
+    invalidEmail: &#x60;${LabelReplacementTag} must be properly formatted (e.g. name@domain.com)&#x60;,
+    invalidChars: &#x60;${LabelReplacementTag} contains invalid characters.&#x60;
   };
 
-  private criteria: RegExp &#x3D; /^(\S+)@(\S+)\.(\S+)$/;
+  private _formatCriteria: RegExp &#x3D; /^(\S+)@(\S+)\.(\S+)$/;
+  private _asciiPrintable: RegExp &#x3D; /^[^ -~]+$/;
 
   constructor( @Optional() @Self() public controlDir: NgControl ) {
     super();
@@ -1881,8 +1921,16 @@ export class EmailComponent extends AbstractFormControl implements OnInit {
   private validateSelf(): ValidationErrors | null {
 
     if ( this.email ) {
-      const result &#x3D; this.criteria.test( this.email );
-      return result ? null : { invalidEmail: true };
+
+      // console.log( &#x27;email: &#x27;, this.email );
+      let result &#x3D; this._formatCriteria.test( this.email );
+      // console.log( &#x27;formatCriteria: &#x27;, result );
+      if ( result ) {
+        result &#x3D; this._asciiPrintable.test( this.email );
+        // console.log( &#x27;asciiPrintable: &#x27;, result );
+        return result ? null : { invalidChars: true };
+      }
+      return { invalidEmail: true };
     }
     return null;
   }
@@ -1909,6 +1957,9 @@ export class EmailComponent extends AbstractFormControl implements OnInit {
   &lt;/div&gt;
   &lt;div *ngIf&#x3D;&quot;controlDir?.errors?.invalidEmail&quot;&gt;
     {{_defaultErrMsg.invalidEmail}}
+  &lt;/div&gt;
+  &lt;div *ngIf&#x3D;&quot;controlDir?.errors?.invalidChars&quot;&gt;
+    {{_defaultErrMsg.invalidChars}}
   &lt;/div&gt;
 &lt;/common-error-container&gt;
 
@@ -1941,7 +1992,7 @@ export class EmailComponent extends AbstractFormControl implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><label for="{{labelforId}}" class="control-label">{{label}}</label><input type="text"       class="form-control"       id="{{labelforId}}"       [value]="email"       (change)="onValueChange( $event.target.value )"       (blur)="onBlur( $event )"       [disabled]="disabled"       [attr.maxlength]="maxlength"       autocomplete="off" /><!-- Error messages for component --><common-error-container [displayError]="controlDir && !disabled && (controlDir.dirty || controlDir.touched) && controlDir?.errors">  <div *ngIf="controlDir?.errors?.required">    {{_defaultErrMsg.required}}  </div>  <div *ngIf="controlDir?.errors?.invalidEmail">    {{_defaultErrMsg.invalidEmail}}  </div></common-error-container></div>'
+        var COMPONENT_TEMPLATE = '<div><label for="{{labelforId}}" class="control-label">{{label}}</label><input type="text"       class="form-control"       id="{{labelforId}}"       [value]="email"       (change)="onValueChange( $event.target.value )"       (blur)="onBlur( $event )"       [disabled]="disabled"       [attr.maxlength]="maxlength"       autocomplete="off" /><!-- Error messages for component --><common-error-container [displayError]="controlDir && !disabled && (controlDir.dirty || controlDir.touched) && controlDir?.errors">  <div *ngIf="controlDir?.errors?.required">    {{_defaultErrMsg.required}}  </div>  <div *ngIf="controlDir?.errors?.invalidEmail">    {{_defaultErrMsg.invalidEmail}}  </div>  <div *ngIf="controlDir?.errors?.invalidChars">    {{_defaultErrMsg.invalidChars}}  </div></common-error-container></div>'
     var COMPONENTS = [{'name': 'AccordionCommonComponent', 'selector': 'common-accordion'},{'name': 'AddressComponent', 'selector': 'common-address'},{'name': 'ButtonComponent', 'selector': 'common-button'},{'name': 'ButtonGroupComponent', 'selector': 'common-button-group'},{'name': 'CaptchaComponent', 'selector': 'common-captcha'},{'name': 'CheckboxComponent', 'selector': 'common-checkbox'},{'name': 'CityComponent', 'selector': 'common-city'},{'name': 'ConfirmTemplateComponent', 'selector': 'common-confirm-template'},{'name': 'ConsentModalComponent', 'selector': 'common-consent-modal'},{'name': 'CoreBreadcrumbComponent', 'selector': 'common-core-breadcrumb'},{'name': 'CountryComponent', 'selector': 'common-country'},{'name': 'DateComponent', 'selector': 'common-date'},{'name': 'DatepickerComponent', 'selector': 'common-datepicker'},{'name': 'DropdownComponent', 'selector': 'common-dropdown'},{'name': 'EmailComponent', 'selector': 'common-email'},{'name': 'ErrorContainerComponent', 'selector': 'common-error-container'},{'name': 'FileUploaderComponent', 'selector': 'common-file-uploader'},{'name': 'FormActionBarComponent', 'selector': 'common-form-action-bar'},{'name': 'FormSubmitBarComponent', 'selector': 'common-form-submit-bar'},{'name': 'FullNameComponent', 'selector': 'common-full-name'},{'name': 'GeocoderInputComponent', 'selector': 'common-geocoder-input'},{'name': 'HeaderComponent', 'selector': 'common-header'},{'name': 'NameComponent', 'selector': 'common-name'},{'name': 'PageFrameworkComponent', 'selector': 'common-page-framework'},{'name': 'PageSectionComponent', 'selector': 'common-page-section'},{'name': 'PasswordComponent', 'selector': 'common-password'},{'name': 'PhnComponent', 'selector': 'common-phn'},{'name': 'PhoneNumberComponent', 'selector': 'common-phone-number'},{'name': 'PostalCodeComponent', 'selector': 'common-postal-code'},{'name': 'ProvinceComponent', 'selector': 'common-province'},{'name': 'RadioComponent', 'selector': 'common-radio'},{'name': 'SampleModalComponent', 'selector': 'common-sample-modal'},{'name': 'SinComponent', 'selector': 'common-sin'},{'name': 'StreetComponent', 'selector': 'common-street'},{'name': 'ThumbnailComponent', 'selector': 'common-thumbnail'},{'name': 'ToggleComponent', 'selector': 'common-toggle'},{'name': 'WizardProgressBarComponent', 'selector': 'common-wizard-progress-bar'},{'name': 'XiconButtonComponent', 'selector': 'common-xicon-button'}];
     var DIRECTIVES = [{'name': 'DateFieldFormatDirective', 'selector': '[commonDateFieldFormat]'},{'name': 'DuplicateCheckDirective', 'selector': '[commonDuplicateCheck]'},{'name': 'ValidateBcPostalDirective', 'selector': '[commonValidateBcPostal]'},{'name': 'ValidateCityDirective', 'selector': '[commonValidateCity]'},{'name': 'ValidateNameDirective', 'selector': '[commonValidateName]'},{'name': 'ValidatePostalcodeDirective', 'selector': '[commonValidatePostalcode]'},{'name': 'ValidateRegionDirective', 'selector': '[commonValidateRegion]'},{'name': 'ValidateStreetDirective', 'selector': '[commonValidateStreet]'}];
     var ACTUAL_COMPONENT = {'name': 'EmailComponent'};
