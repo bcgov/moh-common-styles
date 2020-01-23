@@ -1,7 +1,7 @@
 <fieldset>
   <legend class="date--legend">{{label}}</legend>
+  <ng-container *ngTemplateOutlet="instructionText"></ng-container>
   <div class="date-row">
-
     <label class="visuallyhidden" for="{{monthLabelforId}}">Month</label>
     <select class="form-control monthSelect"
             id="{{monthLabelforId}}"
@@ -45,9 +45,17 @@
 
 <common-error-container
     [displayError]="!disabled && (controlDir?.touched || controlDir?.dirty) && controlDir.errors">
-  <div *ngIf="controlDir?.errors?.required">
+  <div *ngIf="controlDir?.errors?.required; else ComponentErrors">
     {{_defaultErrMsg.required}}
   </div>
+</common-error-container>
+
+<ng-template #instructionText>
+  <ng-content></ng-content>
+</ng-template>
+
+<!--Errors triggered by self-validation within component-->
+<ng-template #ComponentErrors>
   <div *ngIf="controlDir?.errors?.dayOutOfRange">
     {{_defaultErrMsg.dayOutOfRange}}
   </div>
@@ -71,4 +79,4 @@
   <div *ngIf="controlDir?.errors?.invalidValue">
      {{_defaultErrMsg.invalidValue}}
   </div>
-</common-error-container>
+</ng-template>

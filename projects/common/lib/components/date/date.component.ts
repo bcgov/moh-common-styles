@@ -39,7 +39,14 @@ import { compareAsc, startOfDay, addDays } from 'date-fns';
  *       label="Effective Date"
  *       [dateRangeStart]="today"
  *       formControlName="effectiveDate"></common-date>
- *  // private yesterday = subDays(startOfToday(), 1);
+ *
+ *  To allow instructions under label.
+ *    <common-date name='effectiveDate'
+ *       label="Effective Date"
+ *       [dateRangeEnd]='yesterday'
+ *       formControlName="effectiveDate">
+ *      <p>This is a test.</p>
+ *    </common-date>
  * @export
  *
  */
@@ -73,13 +80,10 @@ export class DateComponent extends AbstractFormControl
   _month: string = 'null'; // this makes it so the blank option is selected in the input
   _day: string;
 
-  dayTouched: boolean = false;
-  monthTouched: boolean = false;
-  yearTouched: boolean = false;
 
+  // variables for date ranges
   _dateRangeStart: Date = null;
   _dateRangeEnd: Date = null;
-
 
   /**
    * The earliest valid date that can be used.
@@ -125,10 +129,10 @@ export class DateComponent extends AbstractFormControl
 
   private today = startOfToday();
   private tomorrow = addDays( this.today, 1 );
-  public isRequired: boolean;
+  public isRequired: boolean; // TODO: remove if not required - value does not get set when using Reactive forms
 
   constructor( @Optional() @Self() public controlDir: NgControl,
-               @Optional() @Inject(NG_VALIDATORS) private injectedValidators: any[] ) {
+               @Optional() @Self() @Inject(NG_VALIDATORS) private injectedValidators: any[] ) {
     super();
     if (controlDir) {
       controlDir.valueAccessor = this;
@@ -189,10 +193,12 @@ You must use either [restrictDate] or the [dateRange*] inputs.
           // TODO: Potentially move to AbstractFormControl
           // Inspect the validator functions for one that has a {required: true}
           // property. Importantly, we are inspecting the validator function
-          // itself and NOT the current state of the NgControl.
+          // itself and NOT the current state of the NgControl. -- Does not work for reactive forms
           this.isRequired = this.injectedValidators
             .filter(x => x.required)
             .length >= 1;
+
+          // console.log( 'isRequired: ', this.isRequired );
         }
       });
   }
@@ -203,35 +209,10 @@ You must use either [restrictDate] or the [dateRange*] inputs.
     }
   }
 
-  setMonth(value: string): void {
-    const month = this.getNumericValue(value);
-    // console.log('set-month', { month, value });
-    this._month = value;
-    this.monthTouched = true;
-    if (this.date) {
-      this.dateChange.emit(this.date);
-      this.date.setMonth(month);
-    }
-    this.processDate();
-  }
-
   get day(): number {
     if (this.date) {
       return this.date.getDate();
     }
-  }
-
-  setDay(value: string) {
-   // console.log('seDay', value, this.date);
-    const day = this.getNumericValue(value);
-    // console.log('set-day', {day, value});
-    this._day = value;
-    this.dayTouched = true;
-    if (this.date) {
-      this.dateChange.emit(this.date);
-      this.date.setDate(day);
-    }
-    this.processDate();
   }
 
   get year(): number {
@@ -240,22 +221,11 @@ You must use either [restrictDate] or the [dateRange*] inputs.
     }
   }
 
-  setYear(value: string) {
-    const year = this.getNumericValue(value);
-    // console.log('set-year', {year, value});
-    this._year = value;
-    this.yearTouched = true;
-    if (this.date) {
-      this.dateChange.emit(this.date);
-      this.date.setFullYear(year);
-    }
-    this.processDate();
-  }
-
   /**
    * Handles creating / destroying date and emitting changes based on user behaviour.
    */
   private processDate() {
+
     if (this.canCreateDate()) {
       const year = this.getNumericValue(this._year);
       const month = this.getNumericValue(this._month);
@@ -270,26 +240,19 @@ You must use either [restrictDate] or the [dateRange*] inputs.
       this.date.setFullYear(year); // To correct year when value has less than 4 characters
       this.date.setDate(day);
 
-      this._onChange(this.date);
-      this.dateChange.emit(this.date);
     } else {
-      this.destroyDate();
-    }
-  }
+      // Trigger validator for emptying fields use case. This is to remove the 'Invalid date' error.
+      if (this.date ||
+        (!this._year && !this._day && this._month === 'null')) {
 
-  /**
-   * Destroys the internal Date object.  This should always be used instead of nulling out `this.date` directly.
-   */
-  private destroyDate() {
-    if (this.date) {
-      this.date = null;
-      this._onChange(null);
-      this.dateChange.emit(null);
+        // Destroys the internal Date object.
+        this.date = null;
+      }
     }
-    // Trigger validator for emptying fields use case. This is to remove the 'Invalid date' error.
-    if (!this._year && !this._day && this._month === 'null') {
-      this._onChange(this.date);
-    }
+
+    this._onChange(this.date);
+    this._onTouched(this.date);
+    this.dateChange.emit(this.date);
   }
 
   /**
@@ -304,8 +267,13 @@ You must use either [restrictDate] or the [dateRange*] inputs.
     if (!!this._year && !!this._day && monthCheck) {
       return true;
     }
+    return false;
   }
 
+  private _triggerOnChange( dt: Date ) {
+    this._onChange(dt);
+    this.dateChange.emit(dt);
+  }
 
   /** Convert string to numeric value or null if not */
   private getNumericValue(value: string): number | null {
@@ -318,10 +286,6 @@ You must use either [restrictDate] or the [dateRange*] inputs.
     this._day = this.date.getDate().toString();
     this._month = this.date.getMonth().toString();
     this._year = this.date.getFullYear().toString();
-
-    this.monthTouched = true;
-    this.yearTouched = true;
-    this.dayTouched = true;
   }
 
   writeValue(value: Date): void {
@@ -332,24 +296,16 @@ You must use either [restrictDate] or the [dateRange*] inputs.
   }
 
   onBlurDay(value: string) {
-    this.dayTouched = true;
-    this.handleBlur();
-    this.setDay(value);
+    this._day = value;
+    this.processDate();
   }
   onBlurYear(value: string) {
-    this.yearTouched = true;
-    this.handleBlur();
-    this.setYear(value);
+    this._year = value;
+    this.processDate();
   }
   onBlurMonth(value: string) {
-    this.monthTouched = true;
-    this.handleBlur();
-    this.setMonth(value);
-  }
-  handleBlur() {
-    if (this.dayTouched && this.yearTouched && this.monthTouched) {
-      this._onTouched(this.date);
-    }
+    this._month = value;
+    this.processDate();
   }
 
   /**
@@ -362,7 +318,7 @@ You must use either [restrictDate] or the [dateRange*] inputs.
     const day = parseInt(this._day, 10);
     // console.log('validateDate', { year, month, day });
 
-    // Nothing empty fields - nothing to validate
+    // Nothing empty fields - nothing to validate OR have required error
     if ( isNaN(year) && isNaN(month) && isNaN(day) ) {
       return null;
     }

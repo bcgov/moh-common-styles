@@ -1,4 +1,4 @@
-import { fakeAsync, tick } from '@angular/core/testing';
+import { fakeAsync } from '@angular/core/testing';
 import { DateComponent } from './date.component';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ErrorContainerComponent } from '../error-container/error-container.component';
@@ -6,13 +6,13 @@ import { Component, OnInit, ViewChildren, QueryList, DebugElement } from '@angul
 import {
   tickAndDetectChanges,
   createTestingModule,
-  getLegendContext,
   getDebugElement,
   getInputDebugElement,
   setInput,
   getSelectDebugElement,
   setSelect,
-  getErrorContainer} from '../../../helpers/test-helpers';
+  getDebugLegend,
+  getDebugInlineError} from '../../../helpers/test-helpers';
 import { startOfToday, subDays, addDays, subYears, addYears } from 'date-fns';
 
 @Component({
@@ -27,6 +27,7 @@ class DateTestComponent {
   date3: Date = subDays( new Date(), 5 );
 
   defaultLabel: string = 'Date';
+  label2: string = 'New cancellation date for existing attachment (if applicable)';
 
   today = startOfToday();
   tomorrow = addDays( this.today, 1 );
@@ -90,13 +91,48 @@ describe('DateComponent', () => {
         true
       );
       const component = fixture.componentInstance;
+      const de = getDebugElement( fixture, 'common-date', 'date1' );
       tickAndDetectChanges( fixture );
       expect( component.dateComponent ).toBeTruthy();
-      expect( getLegendContext( fixture, 'common-date', 'date1') ).toBe( component.defaultLabel );
+      expect( getDebugLegend( de ) ).toBe( component.defaultLabel );
     }));
 
-    // TODO: Revisit - not quite correct
-    xit('should remove invalidValue error when all fields are reset.', fakeAsync(() => {
+    it('should set control disabled', fakeAsync(() => {
+      const fixture = createTestingModule( DateReactTestComponent,
+        `<form [formGroup]="form">
+          <common-date name="date2" formControlName="date2"></common-date>
+        </form>`,
+        directives,
+        true
+      );
+
+      const de = getDebugElement( fixture, 'common-date', 'date2' );
+      tickAndDetectChanges( fixture );
+      expect( de.componentInstance.disabled ).toBeTruthy();
+    }));
+
+    it('should set control required', fakeAsync(() => {
+      const fixture = createTestingModule( DateReactTestComponent,
+        `<form [formGroup]="form">
+          <common-date name="date3" formControlName="date3"></common-date>
+        </form>`,
+        directives,
+        true
+      );
+
+      const de = getDebugElement( fixture, 'common-date', 'date3' );
+      const dayInput = getInputDebugElement( de, de.componentInstance.dayLabelforId );
+      setInput( dayInput, '' );
+      tickAndDetectChanges( fixture );
+
+      // console.log( 'errors: ', de.componentInstance.controlDir.errors );
+      expect( de.componentInstance.controlDir.hasError( 'required' ) ).toBeTruthy();
+      const errorMessage = getDebugInlineError( de );
+      expect( errorMessage ).toContain( 'is required' );
+      expect( errorMessage ).not.toContain( 'Invalid' );
+    }));
+
+    it('should remove invalidValue error when all fields are reset.', fakeAsync(() => {
       const fixture = createTestingModule( DateReactTestComponent,
         `<form [formGroup]="form">
           <common-date name="date1" formControlName="date1"></common-date>
@@ -104,26 +140,67 @@ describe('DateComponent', () => {
         directives,
         true
       );
-      const component = fixture.componentInstance;
+
+      const de = getDebugElement( fixture, 'common-date', 'date1' );
+      const yearInput = getInputDebugElement( de, de.componentInstance.yearLabelforId );
+      const dayInput = getInputDebugElement( de, de.componentInstance.dayLabelforId );
+      const monthInput = getSelectDebugElement( de, de.componentInstance.monthLabelforId );
+
+      setInput( yearInput, 2020 );
+      setInput( dayInput, 2 );
+      setSelect( monthInput, 2 );
+
       tickAndDetectChanges( fixture );
-      expect( component.dateComponent ).toBeTruthy();
-      component.dateComponent.first.onBlurDay('2');
-      component.dateComponent.first.onBlurMonth('2');
-      component.dateComponent.first.onBlurYear('2020');
+
+      expect( de.componentInstance._day ).toBe( '2' );
+      expect( de.componentInstance._month ).toBe( '2' );
+      expect( de.componentInstance._year ).toBe( '2020' );
+      expect( de.componentInstance.date ).not.toBeNull();
+      expect( de.componentInstance.date ).not.toBeUndefined();
+
+      setInput( yearInput, '' );
       tickAndDetectChanges( fixture );
-      expect(component.dateComponent.first._day).toBe('2');
-      expect(component.dateComponent.first._month).toBe('2');
-      expect(component.dateComponent.first._year).toBe('2020');
-      expect(component.dateComponent.first.date).not.toBe(undefined);
-      expect(component.dateComponent.first.date).not.toBe(null);
-      component.dateComponent.first.onBlurYear('');
-      expect(component.dateComponent.first._year).toBe('');
-      expect(component.dateComponent.first.date).toBe(null);
-      expect(component.dateComponent.first.controlDir.errors.invalidValue).toEqual(true);
-      component.dateComponent.first.onBlurMonth('null');
-      component.dateComponent.first.onBlurDay('');
-      expect(component.dateComponent.first.controlDir.errors).toEqual(null);
+
+      expect( de.componentInstance._year ).toBe( '' );
+      expect( de.componentInstance.date ).toBeNull();
+      expect( de.componentInstance.controlDir.hasError( 'invalidValue' ) ).toBeTruthy();
+
+      setInput( dayInput, '' );
+      setSelect( monthInput, null );
+      tickAndDetectChanges( fixture );
+
+      expect( de.componentInstance._day ).toBe( '' );
+      expect( de.componentInstance._month ).toBe( 'null' );
+      tickAndDetectChanges( fixture );
+
+      expect( de.componentInstance.controlDir.hasError( 'invalidValue' ) ).toBeFalsy();
     }));
+
+    it('should report error invalid date when optional and only month and year are populated', fakeAsync(() => {
+
+      const fixture = createTestingModule( DateReactTestComponent,
+        `<form [formGroup]="form">
+          <common-date name="date1" formControlName="date1"></common-date>
+        </form>`,
+        directives,
+        true
+      );
+
+      const de = getDebugElement( fixture, 'common-date', 'date1' );
+      const dayInput = getInputDebugElement( de, de.componentInstance.dayLabelforId );
+      const monthInput = getSelectDebugElement( de, de.componentInstance.monthLabelforId );
+      setInput( dayInput, '2' );
+      setSelect( monthInput, '4' );
+      tickAndDetectChanges( fixture );
+
+      // console.log( 'errors: ', de.componentInstance.controlDir.errors );
+      expect( de.componentInstance.controlDir.hasError( 'invalidValue' ) ).toBeTruthy();
+      const errorMessage = getDebugInlineError( de );
+      // console.log( 'error message: ', errorMessage );
+      expect( errorMessage ).toContain( 'Invalid' );
+
+    }));
+
   });
 
   describe('Custom controls - Template', () => {
@@ -137,9 +214,10 @@ describe('DateComponent', () => {
         );
 
       const component = fixture.componentInstance;
+      const de = getDebugElement( fixture, 'common-date', 'date1' );
       tickAndDetectChanges( fixture );
-      expect( component.dateComponent ).toBeTruthy();
-      expect( getLegendContext( fixture, 'common-date', 'date1') ).toBe( component.defaultLabel );
+      expect( de ).toBeTruthy();
+      expect( getDebugLegend( de ) ).toBe( component.defaultLabel );
     }));
 
     it('should set control disabled', fakeAsync(() => {
@@ -148,10 +226,11 @@ describe('DateComponent', () => {
             <common-date name="date1" [(ngModel)]="date1" disabled></common-date>
           </form>`,
           directives
-          );
+        );
 
+      const de = getDebugElement( fixture, 'common-date', 'date1' );
       tickAndDetectChanges( fixture );
-      expect( fixture.componentInstance.dateComponent.first.disabled ).toBeTruthy();
+      expect( de.componentInstance.disabled ).toBeTruthy();
     }));
 
     it('should set control required', fakeAsync(() => {
@@ -162,9 +241,10 @@ describe('DateComponent', () => {
             directives
           );
 
+      const de = getDebugElement( fixture, 'common-date', 'date1' );
       tickAndDetectChanges( fixture );
-      expect( fixture.componentInstance.dateComponent.first.controlDir.hasError( 'required' ) ).toBeTruthy();
-      expect( fixture.componentInstance.dateComponent.first.controlDir.hasError( 'invalidValue' ) ).toBeFalsy();
+      // console.log( 'errors: ', de.componentInstance.controlDir.errors );
+      expect( de.componentInstance.controlDir.hasError( 'required' ) ).toBeTruthy();
     }));
 
     it('should set control no future date', fakeAsync(() => {
@@ -176,8 +256,9 @@ describe('DateComponent', () => {
             directives
           );
 
+      const de = getDebugElement( fixture, 'common-date', 'date2' );
       tickAndDetectChanges( fixture );
-      expect( fixture.componentInstance.dateComponent.first.controlDir.hasError( 'noFutureDatesAllowed' ) ).toBeTruthy();
+      expect( de.componentInstance.controlDir.hasError( 'noFutureDatesAllowed' ) ).toBeTruthy();
     }));
 
     it('should set control no past date', fakeAsync(() => {
@@ -189,8 +270,9 @@ describe('DateComponent', () => {
             directives
           );
 
+      const de = getDebugElement( fixture, 'common-date', 'date3' );
       tickAndDetectChanges( fixture );
-      expect( fixture.componentInstance.dateComponent.first.controlDir.hasError( 'noPastDatesAllowed' ) ).toBeTruthy();
+      expect( de.componentInstance.controlDir.hasError( 'noPastDatesAllowed' ) ).toBeTruthy();
     }));
 
     it('should set control outside range (2 date components)', fakeAsync(() => {
@@ -471,13 +553,13 @@ describe('DateComponent', () => {
 
       expect( date2.componentInstance.controlDir.hasError( 'invalidRange' ) ).toBeTruthy();
 
-      let errorMsg = getErrorContainer( fixture );
-      expect( errorMsg.textContent).toContain( fixture.componentInstance.defaultInvalidErrorMsg );
+      let errorMsg = getDebugInlineError( date2 );
+      expect( errorMsg ).toContain( fixture.componentInstance.defaultInvalidErrorMsg );
       fixture.componentInstance.errorMessage = {invalidRange: 'This is a different test message.'};
 
       tickAndDetectChanges( fixture );
-      errorMsg = getErrorContainer( fixture );
-      expect( errorMsg.textContent).toContain( 'This is a different test message.' );
+      errorMsg = getDebugInlineError( date2 );
+      expect( errorMsg ).toContain( 'This is a different test message.' );
     }));
 
     it('should allow more than 150 in the future when endRange set', fakeAsync(() => {
@@ -506,7 +588,7 @@ describe('DateComponent', () => {
       expect( date2.componentInstance.controlDir.errors ).toBeNull();
     }));
 
-    it('should allow more than 150 in the past when endRange set', fakeAsync(() => {
+    it('should allow more than 150 in the past when startRange set', fakeAsync(() => {
 
       const fixture = createTestingModule( DateTestComponent,
         `<form>
@@ -530,6 +612,98 @@ describe('DateComponent', () => {
 
       expect( date2.componentInstance.controlDir.hasError( 'yearDistantPast' ) ).toBeFalsy();
       expect( date2.componentInstance.controlDir.errors ).toBeNull();
+    }));
+
+    it('should report error invalid date when optional and only day and year are populated', fakeAsync(() => {
+
+      const fixture = createTestingModule( DateTestComponent,
+        `<form>
+          <common-date name="date1" [(ngModel)]="date1"></common-date>
+          </form>`,
+          directives
+        );
+
+      const de = getDebugElement( fixture, 'common-date', 'date1' );
+      const dayInput = getInputDebugElement( de, de.componentInstance.dayLabelforId );
+      const yearInput = getInputDebugElement( de, de.componentInstance.yearLabelforId );
+      setInput( dayInput, 2 );
+      setInput( yearInput, 2019 );
+      tickAndDetectChanges( fixture );
+
+      // console.log( 'errors: ', de.componentInstance.controlDir.errors );
+      expect( de.componentInstance.controlDir.hasError( 'invalidValue' ) ).toBeTruthy();
+
+    }));
+
+    it('should report error required when mandatory and only day and year are populated', fakeAsync(() => {
+
+      const fixture = createTestingModule( DateTestComponent,
+        `<form>
+          <common-date name="date1" [(ngModel)]="date1" required></common-date>
+          </form>`,
+          directives
+        );
+
+      const de = getDebugElement( fixture, 'common-date', 'date1' );
+      const dayInput = getInputDebugElement( de, de.componentInstance.dayLabelforId );
+      const monthInput = getSelectDebugElement( de, de.componentInstance.monthLabelforId );
+      const yearInput = getInputDebugElement( de, de.componentInstance.yearLabelforId );
+      setInput( dayInput, 2 );
+      setInput( yearInput, 2020 );
+
+      tickAndDetectChanges( fixture );
+
+      // console.log( 'errors: ', de.componentInstance.controlDir.errors );
+      expect( de.componentInstance.controlDir.hasError( 'required' ) ).toBeTruthy();
+
+      setSelect( monthInput, '4' );
+      tickAndDetectChanges( fixture );
+
+     // console.log( 'errors: ', de.componentInstance.controlDir.errors );
+      expect( de.componentInstance.controlDir.hasError( 'required' ) ).toBeFalsy();
+
+      setInput( yearInput, null );
+      tickAndDetectChanges( fixture );
+
+      // console.log( 'errors: ', de.componentInstance.controlDir.errors );
+      expect( de.componentInstance.controlDir.hasError( 'required' ) ).toBeTruthy();
+      const errorMessage = getDebugInlineError( de );
+      expect( errorMessage ).toContain( 'is required' );
+      expect( errorMessage ).not.toContain( 'Invalid' );
+    }));
+
+    it('should strip information inside brackets from label', fakeAsync(() => {
+      const fixture = createTestingModule( DateTestComponent,
+          `<form>
+            <common-date name="date1" [(ngModel)]="date1" [label]="label2" required></common-date>
+            </form>`,
+            directives
+          );
+
+      const de = getDebugElement( fixture, 'common-date', 'date1' );
+      const label = getDebugLegend( de );
+
+      tickAndDetectChanges( fixture );
+      // console.log( 'label: ', label );
+      expect( label  ).toContain( fixture.componentInstance.label2 );
+
+      const dayInput = getInputDebugElement( de, de.componentInstance.dayLabelforId );
+      const monthInput = getSelectDebugElement( de, de.componentInstance.monthLabelforId );
+      const yearInput = getInputDebugElement( de, de.componentInstance.yearLabelforId );
+      setInput( dayInput, 2 );
+      setInput( yearInput, 2020 );
+      tickAndDetectChanges( fixture );
+
+      fixture.whenStable().then( () => {
+
+        // console.log( 'errors: ', de.componentInstance.controlDir.errors );
+        expect( de.componentInstance.controlDir.hasError( 'required' ) ).toBeTruthy();
+
+        const errorMessage = getDebugInlineError( de );
+        // console.log( 'error message: ', errorMessage );
+        expect( errorMessage ).not.toContain( '(if applicable)' );
+      });
+
     }));
 
   });
