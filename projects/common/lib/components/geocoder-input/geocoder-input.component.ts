@@ -104,8 +104,14 @@ export class GeocoderInputComponent extends Base implements OnInit, OnChanges, C
   // Note - this will fire after an onError as well
   onNoResults(val: boolean): void {
 
-    //  No results return address passed into component
-    this._onChange(this.address);
+    //  No results return what was typed into the search string
+    this._onChange(this.search);
+    // Build Address string with only street
+    const addr = new Address();
+    addr.street = this.search;
+    // Emit Address object with street only
+    this.addressChange.emit(addr);
+
 
     // If we have results, the error has resolved (e.g. network has re-connected)
     if (val === false) {
@@ -174,7 +180,7 @@ export class GeocoderInputComponent extends Base implements OnInit, OnChanges, C
     this._onTouched = fn;
   }
 
-  private stripStringToMaxLength(str: string){
+  private stripStringToMaxLength(str: string) {
     const maxlength = parseInt(this.maxlength, 10);
     return str.slice(0, maxlength);
   }
