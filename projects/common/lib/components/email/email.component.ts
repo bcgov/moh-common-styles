@@ -42,7 +42,7 @@ export class EmailComponent extends AbstractFormControl implements OnInit {
   _defaultErrMsg: ErrorMessage = {
     required: `${LabelReplacementTag} is required.`,
     invalidEmail: `${LabelReplacementTag} must be properly formatted (e.g. name@domain.com)`,
-    invalidChars: `${LabelReplacementTag} must contain letter, numbers and/or symbols(e.g. #, @, !).`
+    invalidChars: `${LabelReplacementTag} must contain letters, numbers and/or symbols(e.g. #, @, !).`
   };
 
   private _formatCriteria: RegExp = /^(\S+)@(\S+)\.(\S+)$/;
