@@ -103,8 +103,10 @@ export class GeocoderInputComponent extends Base implements OnInit, OnChanges, C
 
   // Note - this will fire after an onError as well
   onNoResults(val: boolean): void {
-    this._onChange(null);
-    
+
+    //  No results return address passed into component
+    this._onChange(this.address);
+
     // If we have results, the error has resolved (e.g. network has re-connected)
     if (val === false) {
       this.hasError = false;
