@@ -2,11 +2,12 @@
 
 
 
-## [3.0.4](https://github.com/bcgov/moh-common-styles/compare/v3.0.3...v3.0.4) "moh-common-lib" (2020-01-26)
+## [3.0.5](https://github.com/bcgov/moh-common-styles/compare/v3.0.3...v3.0.5) "moh-common-lib" (2020-01-26)
 
 
 ### Bug Fixes
 
+* email validatiion fix ([](https://github.com/bcgov/moh-common-styles/commit/f6e614f))
 * email validation for printable ascii characters ([](https://github.com/bcgov/moh-common-styles/commit/68eab18))
 
 

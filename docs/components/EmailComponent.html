@@ -1456,7 +1456,7 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Default value : </i><code>/^[^ -~]+$/</code>
+                            <i>Default value : </i><code>/^[ -~]+$/</code>
                         </td>
                     </tr>
                         <tr>
@@ -1886,7 +1886,7 @@ export class EmailComponent extends AbstractFormControl implements OnInit {
   };
 
   private _formatCriteria: RegExp &#x3D; /^(\S+)@(\S+)\.(\S+)$/;
-  private _asciiPrintable: RegExp &#x3D; /^[^ -~]+$/;
+  private _asciiPrintable: RegExp &#x3D; /^[ -~]+$/;
 
   constructor( @Optional() @Self() public controlDir: NgControl ) {
     super();
