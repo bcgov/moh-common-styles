@@ -1,4 +1,17 @@
-# Unreleased "moh-common-lib" (2020-01-23)
+# Unreleased "moh-common-lib" (2020-01-26)
+
+
+
+## [3.0.3](https://github.com/bcgov/moh-common-styles/compare/v3.0.2...v3.0.3) "moh-common-lib" (2020-01-26)
+
+
+### Bug Fixes
+
+* geocoder input - return data typed in if no results returned ([ccdfcb2](https://github.com/bcgov/moh-common-styles/commit/ccdfcb2))
+* geocoder input , input//output is string, select returns Address structure ([df6babe](https://github.com/bcgov/moh-common-styles/commit/df6babe))
+* return address passed in, rather than null ([98d3b63](https://github.com/bcgov/moh-common-styles/commit/98d3b63))
+* type in email error message ([d63ff2d](https://github.com/bcgov/moh-common-styles/commit/d63ff2d))
+* updated wording to email invalid character message ([eea4886](https://github.com/bcgov/moh-common-styles/commit/eea4886))
 
 
 

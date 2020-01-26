@@ -1491,7 +1491,7 @@
                             <i>Default value : </i><code>{
     required: &#x60;${LabelReplacementTag} is required.&#x60;,
     invalidEmail: &#x60;${LabelReplacementTag} must be properly formatted (e.g. name@domain.com)&#x60;,
-    invalidChars: &#x60;${LabelReplacementTag} contains invalid characters.&#x60;
+    invalidChars: &#x60;${LabelReplacementTag} must contain letters, numbers and/or symbols(e.g. #, @, !).&#x60;
   }</code>
                         </td>
                     </tr>
@@ -1882,7 +1882,7 @@ export class EmailComponent extends AbstractFormControl implements OnInit {
   _defaultErrMsg: ErrorMessage &#x3D; {
     required: &#x60;${LabelReplacementTag} is required.&#x60;,
     invalidEmail: &#x60;${LabelReplacementTag} must be properly formatted (e.g. name@domain.com)&#x60;,
-    invalidChars: &#x60;${LabelReplacementTag} contains invalid characters.&#x60;
+    invalidChars: &#x60;${LabelReplacementTag} must contain letters, numbers and/or symbols(e.g. #, @, !).&#x60;
   };
 
   private _formatCriteria: RegExp &#x3D; /^(\S+)@(\S+)\.(\S+)$/;
