@@ -20,13 +20,13 @@ import { NgControl, ControlValueAccessor } from '@angular/forms';
  *
  * @note
  * For ReactiveForms, pass in a string and recieve a string.  If you need the
- * Address object you can use (addressChange) in addition.
+ * Address object you can use (select) in addition.
  *
  * @example
  *           <common-geocoder-input
  *              label='Physical Address'
  *              formControlName="address"
- *              (addressChange)="getAddressObject($event)">
+ *              (select)="getAddressObject($event)">
  *          </common-geocoder-input>
  */
 @Component({
@@ -34,11 +34,13 @@ import { NgControl, ControlValueAccessor } from '@angular/forms';
   templateUrl: './geocoder-input.component.html',
   styleUrls: ['./geocoder-input.component.scss']
 })
-export class GeocoderInputComponent extends Base implements OnInit, OnChanges, ControlValueAccessor {
+export class GeocoderInputComponent extends Base implements OnInit, ControlValueAccessor {
 
   @Input() label: string = 'Address Lookup';
-  @Input() address: Address = new Address();
-  @Output() addressChange = new EventEmitter<Address>();
+  @Input() address: string;
+  @Output() addressChange: EventEmitter<string> = new EventEmitter<string>();
+  @Output() select: EventEmitter<Address> = new EventEmitter<Address>();
+
   @Input() maxlength: string = '255';
 
   /** The string in the box the user has typed */
@@ -50,7 +52,7 @@ export class GeocoderInputComponent extends Base implements OnInit, OnChanges, C
   public hasError: boolean = false;
 
   /** Similar to this.address, but we can null it when user is searching for new addresses */
-  public selectedAddress: Address;
+  public selectedAddress: boolean = false;
   /** The list of results, from API, that is passed to the typeahead list */
   public typeaheadList$: Observable<GeoAddressResult[]>; // Result from GeoCoderService address lookup
   /** The subject that triggers on user text input and gets typeaheadList$ to update.  */
@@ -77,71 +79,49 @@ export class GeocoderInputComponent extends Base implements OnInit, OnChanges, C
 
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes &&
-      changes.address &&
-      changes.address.currentValue._geocoderFullAddress) {
-        const stripped = this.stripStringToMaxLength(changes.address.currentValue._geocoderFullAddress);
-
-        this.search = stripped;
-        this.isTypeaheadLoading = false;
-        this.hasNoResults = false;
-        this.selectedAddress = changes.address.currentValue;
-      }
-
-  }
-
   onError(err): Observable<GeoAddressResult[]> {
+
     this.hasError = true;
     // Empty array simulates no result response, nothing for typeahead to iterate over
     return of([]);
   }
 
   onLoading(val: boolean): void {
+    // console.log( 'onLoading - geocoder' , val );
     this.isTypeaheadLoading = val;
   }
 
   // Note - this will fire after an onError as well
   onNoResults(val: boolean): void {
 
-    //  No results return what was typed into the search string
-    this._onChange(this.search);
-    // Build Address string with only street
-    const addr = new Address();
-    addr.street = this.search;
-    // Emit Address object with street only
-    this.addressChange.emit(addr);
-
+   //  console.log( 'No results - geocoder' , val );
 
     // If we have results, the error has resolved (e.g. network has re-connected)
     if (val === false) {
       this.hasError = false;
     }
 
-    // If we have no search text, hide the no results errors
-    if (this.search.length === 0) {
-      this.hasNoResults = false;
-      return;
-    }
-
     this.hasNoResults = val;
   }
 
   onSelect(event: TypeaheadMatch): void {
+
+    // console.log( 'onSelect: ', event );
     const data: GeoAddressResult = event.item;
+
+    // Output string to FormControl. If street is more than the max length shorten
+    const stripped = this.stripStringToMaxLength(data.street);
 
     const addr = new Address();
     addr.city = data.city;
     // GeoCoder is only for BC, Canada, values can be set.
     addr.country = CANADA; // Default country is Canda
     addr.province = BRITISH_COLUMBIA;  // Default province is BC
-    addr.street = data.street;
-    // Save and emit Address for (addressChange)
-    this.selectedAddress = addr;
-    this.addressChange.emit(this.selectedAddress);
+    addr.street = stripped;
+    // Save and emit Address for (select)
+    this.selectedAddress = true;
+    this.select.emit(addr);
 
-    // Output string to FormControl.
-    const stripped = this.stripStringToMaxLength(data.fullAddress);
     this._onChange(stripped);
   }
 
@@ -154,7 +134,7 @@ export class GeocoderInputComponent extends Base implements OnInit, OnChanges, C
       return;
     }
     // Clear out selection
-    this.selectedAddress = null;
+    this.selectedAddress = false;
     this.searchText$.next(this.search);
   }
 
@@ -165,7 +145,7 @@ export class GeocoderInputComponent extends Base implements OnInit, OnChanges, C
 
 
   writeValue( value: any ): void {
-    if ( value ) {
+    if ( value  !== undefined ) {
       this.search = value;
     }
   }
