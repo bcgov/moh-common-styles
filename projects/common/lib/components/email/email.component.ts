@@ -46,7 +46,7 @@ export class EmailComponent extends AbstractFormControl implements OnInit {
   };
 
   private _formatCriteria: RegExp = /^(\S+)@(\S+)\.(\S+)$/;
-  private _asciiPrintable: RegExp = /^[^ -~]+$/;
+  private _asciiPrintable: RegExp = /^[ -~]+$/;
 
   constructor( @Optional() @Self() public controlDir: NgControl ) {
     super();
