@@ -39,6 +39,7 @@ $md-radio-ripple-size: 15px;
     width: 0; // Keeps the input focusable
     height: 0;
     opacity: 0; // necessary for FireFox where width/height doesn't work
+    display: none; // necessary for FireFox where width/height doesn't work
 
     &:checked+label:before {
       border-color: $md-radio-checked-color;
@@ -62,7 +63,7 @@ $md-radio-ripple-size: 15px;
 
   label {
     display: inline-block;
-    height: $md-radio-size;
+    height: auto;
     position: relative;
     padding: 0 ($md-radio-size + 10px);
     margin-bottom: 0;
