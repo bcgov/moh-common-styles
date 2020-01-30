@@ -1,4 +1,14 @@
-# Unreleased "moh-common-lib" (2020-01-28)
+# Unreleased "moh-common-lib" (2020-01-30)
+
+
+
+## [3.0.7](https://github.com/bcgov/moh-common-styles/compare/v3.0.6...v3.0.7) "moh-common-lib" (2020-01-30)
+
+
+### Bug Fixes
+
+* BCP-265: fixed scroll when navigate. ([b53a126](https://github.com/bcgov/moh-common-styles/commit/b53a126))
+* RadioComponent fix height limitation. ([5a93887](https://github.com/bcgov/moh-common-styles/commit/5a93887))
 
 
 
