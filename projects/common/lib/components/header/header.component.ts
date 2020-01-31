@@ -20,6 +20,7 @@ export class HeaderComponent implements OnInit {
   @Input() serviceName: string = '';
   @Input() urlBaseName: string = '';
   @Input() logoSrc: string = 'assets/gov3_bc_logo.png';
+  @Input() shouldShowPrintLogo: boolean = false;
   @Input() printLogoSrc: string = 'assets/logo_print.png';
 
   public skipLinkPath;
