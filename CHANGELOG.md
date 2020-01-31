@@ -2,6 +2,15 @@
 
 
 
+## [3.0.10](https://github.com/bcgov/moh-common-styles/compare/v3.0.9...v3.0.10) "moh-common-lib" (2020-01-31)
+
+
+### Bug Fixes
+
+* HeaderComponent: Added print logo flag. ([fabd0cf](https://github.com/bcgov/moh-common-styles/commit/fabd0cf))
+
+
+
 ## [3.0.9](https://github.com/bcgov/moh-common-styles/compare/v3.0.8...v3.0.9) "moh-common-lib" (2020-01-31)
 
 
