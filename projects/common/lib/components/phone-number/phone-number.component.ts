@@ -40,6 +40,9 @@ export class PhoneNumberComponent extends AbstractFormControl implements OnInit 
 
   @Input() allowInternational: boolean = true;
 
+  // TODO: Remove once all project using library remove placeholders -- Temporary solution
+  @Input() enablePlaceHolder: boolean = true;
+
   // Setter/getter for when not used in form (ex. data dislayed but not edittable)
   @Input()
   set value( val: string ) {
@@ -75,11 +78,13 @@ export class PhoneNumberComponent extends AbstractFormControl implements OnInit 
     super.ngOnInit();
 
     const internationalPrefix = '+1';
-    this.placeholder = '(555) 555-5555';
+    this.placeholder = this.enablePlaceHolder ? '(555) 555-5555' : '';
     this.mask = ['(', /[2-9]/, NUMBER, NUMBER, ')', SPACE, NUMBER, NUMBER, NUMBER, '-', NUMBER, NUMBER, NUMBER, NUMBER];
 
     if (this.allowInternational) {
-      this.placeholder = `${internationalPrefix} ${this.placeholder}`;
+      if ( this.placeholder ) {
+        this.placeholder = `${internationalPrefix} ${this.placeholder}`;
+      }
       const prefixArrayOfChar = internationalPrefix.split(''); // ['+', '1']
       this.mask = [...prefixArrayOfChar, SPACE, ...this.mask];
     }
