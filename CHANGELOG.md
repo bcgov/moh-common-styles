@@ -2,6 +2,16 @@
 
 
 
+## [3.0.9](https://github.com/bcgov/moh-common-styles/compare/v3.0.8...v3.0.9) "moh-common-lib" (2020-01-31)
+
+
+### Bug Fixes
+
+* Added back the setFullYear method usage. ([403de87](https://github.com/bcgov/moh-common-styles/commit/403de87))
+* DateComponent: Fixed 31st rollover bug. ([95e5eab](https://github.com/bcgov/moh-common-styles/commit/95e5eab))
+
+
+
 ## [3.0.8](https://github.com/bcgov/moh-common-styles/compare/v3.0.7...v3.0.8) "moh-common-lib" (2020-01-31)
 
 
