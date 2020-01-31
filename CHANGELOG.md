@@ -1,4 +1,13 @@
-# Unreleased "moh-common-lib" (2020-01-30)
+# Unreleased "moh-common-lib" (2020-01-31)
+
+
+
+## [3.0.8](https://github.com/bcgov/moh-common-styles/compare/v3.0.7...v3.0.8) "moh-common-lib" (2020-01-31)
+
+
+### Features
+
+* added input to disable placeholder for phone number ([b53f6e2](https://github.com/bcgov/moh-common-styles/commit/b53f6e2))
 
 
 
