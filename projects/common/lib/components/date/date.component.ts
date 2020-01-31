@@ -235,10 +235,8 @@ You must use either [restrictDate] or the [dateRange*] inputs.
       // Date function appears to use setYear() so any year 0-99 results in year 1900 to 1999
       // Set each field individually, use setFullYear() instead of setYear()
       // Set time on date to 00:00:00 for comparing later
-      this.date = startOfDay(new Date());
-      this.date.setMonth(month);
-      this.date.setFullYear(year); // To correct year when value has less than 4 characters
-      this.date.setDate(day);
+      this.date = startOfDay(new Date(year, month, day));
+      this.date.setFullYear(year);
 
     } else {
       // Trigger validator for emptying fields use case. This is to remove the 'Invalid date' error.
