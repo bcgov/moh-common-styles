@@ -706,5 +706,30 @@ describe('DateComponent', () => {
 
     }));
 
+
+    it('should not error skip a month when submitting on a 31st day.', fakeAsync(() => {
+      jasmine.clock().mockDate(new Date(2020, 0, 31));
+
+      const fixture = createTestingModule(DateReactTestComponent,
+        `<form [formGroup]="form">
+          <common-date name="date1" formControlName="date1"></common-date>
+        </form>`,
+        directives,
+        true
+      );
+      const component = fixture.componentInstance;
+      const de = getDebugElement(fixture, 'common-date', 'date1');
+      tickAndDetectChanges(fixture);
+      
+      const dayInput = getInputDebugElement(de, de.componentInstance.dayLabelforId);
+      const yearInput = getInputDebugElement(de, de.componentInstance.yearLabelforId);
+      const monthInput = getSelectDebugElement(de, de.componentInstance.monthLabelforId);
+
+      setSelect(monthInput, 3);
+      setInput(dayInput, 3);
+      setInput(yearInput, 2020);
+      
+      expect(component.form.controls.date1.value.getMonth()).toEqual(3);
+    }));
   });
 });
