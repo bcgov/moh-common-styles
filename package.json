@@ -16,6 +16,7 @@
     "package": "npm run package:nodocs && npm run docs",
     "test": "ng test",
     "test:lib": "ng test --project=moh-common-lib",
+    "test-ci:lib": "ng test --project=moh-common-lib --karma-config=projects/common/karma.ci.conf.js",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "docs": "npx compodoc -p projects/common/tsconfig.lib.json",
