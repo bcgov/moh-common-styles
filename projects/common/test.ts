@@ -18,19 +18,22 @@ getTestBed().initTestEnvironment(
 );
 // Then we find all the tests.
 // Note: Unit tests that have been started (not completed)
-// const context = require.context('./lib/components/city', true, /\.spec\.ts$/);
-// const context = require.context('./lib/components/date', true, /\.spec\.ts$/);
-const context = require.context('./lib/components/email', true, /\.spec\.ts$/);
-// const context = require.context('./lib/components/phn', true, /\.spec\.ts$/);
-// const context = require.context('./lib/components/phone-number', true, /\.spec\.ts$/);
-// const context = require.context('./lib/components/province', true, /\.spec\.ts$/);
-// const context = require.context('./lib/components/radio', true, /\.spec\.ts$/);
-// const context = require.context('./lib/components/sin', true, /\.spec\.ts$/);
-// const context = require.context('./lib/components/street', true, /\.spec\.ts$/);
-
-// const context = require.context('./lib/services', true, /\.spec\.ts$/);
+[
+  require.context('./lib/components/city', true, /\.spec\.ts$/),
+  require.context('./lib/components/date', true, /\.spec\.ts$/),
+  require.context('./lib/components/email', true, /\.spec\.ts$/),
+  require.context('./lib/components/phn', true, /\.spec\.ts$/),
+  require.context('./lib/components/phone-number', true, /\.spec\.ts$/),
+  require.context('./lib/components/province', true, /\.spec\.ts$/),
+  require.context('./lib/components/radio', true, /\.spec\.ts$/),
+  require.context('./lib/components/sin', true, /\.spec\.ts$/),
+  require.context('./lib/components/street', true, /\.spec\.ts$/),
+  require.context('./lib/services', true, /\.spec\.ts$/),
+].forEach((context) => {
+  // And load the modules.
+  context.keys().map(context);
+});
 
 
 // const context = require.context('./', true, /\.spec\.ts$/);
-// And load the modules.
-context.keys().map(context);
+// context.keys().map(context);
