@@ -61,9 +61,9 @@ export class GeocoderService extends AbstractHttpService {
             const country = CANADA; // ALWAYS return Canada
 
             return {
-              fullAddress: props.fullAddress,
+              fullAddress: props.fullAddress.replace('--', '-'),
               city,
-              street,
+              street: street.replace('--', '-'),
               province,
               country
             };
