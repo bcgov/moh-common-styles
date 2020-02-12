@@ -1,3 +1,4 @@
+// Contains information licensed under the Open Government Licence  British Columbia.
 import { Injectable } from '@angular/core';
 import { AbstractHttpService } from './abstract-api-service';
 import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular/common/http';
@@ -28,15 +29,13 @@ export class GeocoderService extends AbstractHttpService {
         super(http);
     }
 
-    // https://geocoder.api.gov.bc.ca/addresses.json?minScore=50&maxResults=5&echo=false&brief=true&autoComplete=true&addressString=784+Hock
+    // https://github.com/bcgov/api-specs/blob/master/geocoder/geocoder-developer-guide.md
     lookup(address: string): Observable<GeoAddressResult[]> {
         const params = new HttpParams()
             .set('minScore', '50')
             .set('maxResults', '10')
-            .set('echo', 'false')
-            .set('brief', 'false') // API splits address string up into sub-attributes, like city  / street name
-            .set('autoComplete', 'true')
-            .set('matchPrecisionNot', 'LOCALITY,STREET')
+            .set('echo', 'true')
+            .set('interpolation', 'adaptive')
             .set('addressString', address);
 
         return this.get(this.ADDRESS_URL, params).pipe(map(this.processResponse));
