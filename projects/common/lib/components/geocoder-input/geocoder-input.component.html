@@ -17,6 +17,8 @@
        [(ngModel)]='search'
        (keyup)='onKeyUp($event)'
        [typeahead]='typeaheadList$'
+       [typeaheadIsFirstItemActive]="false"
+       [typeaheadSelectFirstItem]="false"
        (typeaheadLoading)="onLoading($event)"
        (typeaheadOnSelect)="onSelect($event)"
        (typeaheadNoResults)="onNoResults($event)"
