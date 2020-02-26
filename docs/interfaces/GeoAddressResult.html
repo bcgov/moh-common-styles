@@ -291,15 +291,13 @@ export class GeocoderService extends AbstractHttpService {
         super(http);
     }
 
-    // https://geocoder.api.gov.bc.ca/addresses.json?minScore&#x3D;50&amp;maxResults&#x3D;5&amp;echo&#x3D;false&amp;brief&#x3D;true&amp;autoComplete&#x3D;true&amp;addressString&#x3D;784+Hock
+    // https://github.com/bcgov/api-specs/blob/master/geocoder/geocoder-developer-guide.md
     lookup(address: string): Observable&lt;GeoAddressResult[]&gt; {
         const params &#x3D; new HttpParams()
             .set(&#x27;minScore&#x27;, &#x27;50&#x27;)
             .set(&#x27;maxResults&#x27;, &#x27;10&#x27;)
-            .set(&#x27;echo&#x27;, &#x27;false&#x27;)
-            .set(&#x27;brief&#x27;, &#x27;false&#x27;) // API splits address string up into sub-attributes, like city  / street name
-            .set(&#x27;autoComplete&#x27;, &#x27;true&#x27;)
-            .set(&#x27;matchPrecisionNot&#x27;, &#x27;LOCALITY,STREET&#x27;)
+            .set(&#x27;echo&#x27;, &#x27;true&#x27;)
+            .set(&#x27;interpolation&#x27;, &#x27;adaptive&#x27;)
             .set(&#x27;addressString&#x27;, address);
 
         return this.get(this.ADDRESS_URL, params).pipe(map(this.processResponse));
@@ -325,9 +323,9 @@ export class GeocoderService extends AbstractHttpService {
             const country &#x3D; CANADA; // ALWAYS return Canada
 
             return {
-              fullAddress: props.fullAddress,
+              fullAddress: props.fullAddress.replace(&#x27;--&#x27;, &#x27;-&#x27;),
               city,
-              street,
+              street: street.replace(&#x27;--&#x27;, &#x27;-&#x27;),
               province,
               country
             };
@@ -344,6 +342,7 @@ export class GeocoderService extends AbstractHttpService {
 </div>
 
 
+                   
 
 
 
@@ -366,6 +365,7 @@ export class GeocoderService extends AbstractHttpService {
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
             var COMPODOC_CURRENT_PAGE_URL = 'GeoAddressResult.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

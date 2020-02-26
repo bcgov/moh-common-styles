@@ -1,4 +1,24 @@
-# Unreleased "moh-common-lib" (2020-01-31)
+# Unreleased "moh-common-lib" (2020-02-26)
+
+
+
+## [3.0.11](https://github.com/bcgov/moh-common-styles/compare/v3.0.10...v3.0.11) "moh-common-lib" (2020-02-26)
+
+
+### Bug Fixes
+
+* Fixed tab selection for geocoder. ([e29adc8](https://github.com/bcgov/moh-common-styles/commit/e29adc8))
+* Geocoder replace '--' with '-' in street name. ([8cec483](https://github.com/bcgov/moh-common-styles/commit/8cec483))
+* Modified parameters for geocoder api ([fda6abf](https://github.com/bcgov/moh-common-styles/commit/fda6abf))
+
+
+### Features
+
+* Added another unit test for GeocoderService. ([c8107a7](https://github.com/bcgov/moh-common-styles/commit/c8107a7))
+* Added unit tests for GeocoderService. ([ab4688c](https://github.com/bcgov/moh-common-styles/commit/ab4688c))
+* Run all unit tests. ([c574ba0](https://github.com/bcgov/moh-common-styles/commit/c574ba0))
+* Unit test CI workflow. ([7faf3d5](https://github.com/bcgov/moh-common-styles/commit/7faf3d5))
+* unit test for date component. ([b61e2b8](https://github.com/bcgov/moh-common-styles/commit/b61e2b8))
 
 
 

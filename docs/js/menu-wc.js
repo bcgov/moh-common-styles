@@ -49,11 +49,11 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <span class="icon ion-ios-paper"></span>TODO
                             </a>
                         </li>
-                        <li class="link">
-                            <a href="dependencies.html" data-type="chapter-link">
-                                <span class="icon ion-ios-list"></span>Dependencies
-                            </a>
-                        </li>
+                                <li class="link">
+                                    <a href="dependencies.html" data-type="chapter-link">
+                                        <span class="icon ion-ios-list"></span>Dependencies
+                                    </a>
+                                </li>
                     </ul>
                 </li>
                     <li class="chapter additional">
@@ -63,7 +63,7 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             <span>Additional documentation</span>
                             <span class="icon ion-ios-arrow-down"></span>
                         </div>
-                        <ul class="links collapse" ${ isNormalMode ? 'id="additional-pages"' : 'id="xs-additional-pages"' }>
+                        <ul class="links collapse " ${ isNormalMode ? 'id="additional-pages"' : 'id="xs-additional-pages"' }>
                                     <li class="link ">
                                         <a href="additional-documentation/getting-started.html" data-type="entity-link" data-context-id="additional">Getting Started</a>
                                     </li>
@@ -92,10 +92,10 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 'data-target="#modules-links"' : 'data-target="#xs-modules-links"' }>
                                 <span class="icon ion-ios-archive"></span>
                                 <span class="link-name">Modules</span>
-                                <span class="icon ion-ios-arrow-down"></span>
+                                <span class="icon ion-ios-arrow-up"></span>
                             </div>
                         </a>
-                        <ul class="links collapse" ${ isNormalMode ? 'id="modules-links"' : 'id="xs-modules-links"' }>
+                        <ul class="links collapse in" ${ isNormalMode ? 'id="modules-links"' : 'id="xs-modules-links"' }>
                             <li class="link">
                                 <a href="modules/CaptchaModule.html" data-type="entity-link">CaptchaModule</a>
                                     <li class="chapter inner">
@@ -103,7 +103,7 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                             'data-target="#components-links-module-CaptchaModule-88369f69b35bd84d2283ca48fcc4cfff"' : 'data-target="#xs-components-links-module-CaptchaModule-88369f69b35bd84d2283ca48fcc4cfff"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
-                                            <span class="icon ion-ios-arrow-down"></span>
+                                            <span class="icon ion-ios-arrow-up"></span>
                                         </div>
                                         <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-CaptchaModule-88369f69b35bd84d2283ca48fcc4cfff"' :
                                             'id="xs-components-links-module-CaptchaModule-88369f69b35bd84d2283ca48fcc4cfff"' }>
@@ -136,7 +136,7 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                             'data-target="#components-links-module-SharedCoreModule-a786cf1f2165afd6c97ca98bc36ba4c7"' : 'data-target="#xs-components-links-module-SharedCoreModule-a786cf1f2165afd6c97ca98bc36ba4c7"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
-                                            <span class="icon ion-ios-arrow-down"></span>
+                                            <span class="icon ion-ios-arrow-up"></span>
                                         </div>
                                         <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SharedCoreModule-a786cf1f2165afd6c97ca98bc36ba4c7"' :
                                             'id="xs-components-links-module-SharedCoreModule-a786cf1f2165afd6c97ca98bc36ba4c7"' }>
@@ -343,7 +343,7 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             <span>Classes</span>
                             <span class="icon ion-ios-arrow-down"></span>
                         </div>
-                        <ul class="links collapse" ${ isNormalMode ? 'id="classes-links"' : 'id="xs-classes-links"' }>
+                        <ul class="links collapse " ${ isNormalMode ? 'id="classes-links"' : 'id="xs-classes-links"' }>
                             <li class="link">
                                 <a href="classes/AbstractBaseForm.html" data-type="entity-link">AbstractBaseForm</a>
                             </li>
@@ -395,7 +395,7 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <span>Injectables</span>
                                 <span class="icon ion-ios-arrow-down"></span>
                             </div>
-                            <ul class="links collapse" ${ isNormalMode ? 'id="injectables-links"' : 'id="xs-injectables-links"' }>
+                            <ul class="links collapse " ${ isNormalMode ? 'id="injectables-links"' : 'id="xs-injectables-links"' }>
                                 <li class="link">
                                     <a href="injectables/AbstractPageGuardService.html" data-type="entity-link">AbstractPageGuardService</a>
                                 </li>
@@ -429,7 +429,7 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             <span>Guards</span>
                             <span class="icon ion-ios-arrow-down"></span>
                         </div>
-                        <ul class="links collapse" ${ isNormalMode ? 'id="guards-links"' : 'id="xs-guards-links"' }>
+                        <ul class="links collapse " ${ isNormalMode ? 'id="guards-links"' : 'id="xs-guards-links"' }>
                             <li class="link">
                                 <a href="guards/LoadPageGuardService.html" data-type="entity-link">LoadPageGuardService</a>
                             </li>
@@ -445,7 +445,7 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             <span>Interfaces</span>
                             <span class="icon ion-ios-arrow-down"></span>
                         </div>
-                        <ul class="links collapse" ${ isNormalMode ? ' id="interfaces-links"' : 'id="xs-interfaces-links"' }>
+                        <ul class="links collapse " ${ isNormalMode ? ' id="interfaces-links"' : 'id="xs-interfaces-links"' }>
                             <li class="link">
                                 <a href="interfaces/AddrLabelList.html" data-type="entity-link">AddrLabelList</a>
                             </li>
@@ -518,7 +518,7 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             <span>Miscellaneous</span>
                             <span class="icon ion-ios-arrow-down"></span>
                         </div>
-                        <ul class="links collapse" ${ isNormalMode ? 'id="miscellaneous-links"' : 'id="xs-miscellaneous-links"' }>
+                        <ul class="links collapse " ${ isNormalMode ? 'id="miscellaneous-links"' : 'id="xs-miscellaneous-links"' }>
                             <li class="link">
                                 <a href="miscellaneous/enumerations.html" data-type="entity-link">Enums</a>
                             </li>
