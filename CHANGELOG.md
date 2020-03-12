@@ -1,4 +1,13 @@
-# Unreleased "moh-common-lib" (2020-02-26)
+# Unreleased "moh-common-lib" (2020-03-12)
+
+
+
+## [3.0.12](https://github.com/bcgov/moh-common-styles/compare/v3.0.11...v3.0.12) "moh-common-lib" (2020-03-12)
+
+
+### Bug Fixes
+
+* **HeaderComponent:** Removed role attribute from header. ([16020e0](https://github.com/bcgov/moh-common-styles/commit/16020e0))
 
 
 
