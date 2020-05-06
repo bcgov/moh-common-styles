@@ -1,4 +1,13 @@
-# Unreleased "moh-common-lib" (2020-03-12)
+# Unreleased "moh-common-lib" (2020-05-06)
+
+
+
+## [3.0.13](https://github.com/bcgov/moh-common-styles/compare/v3.0.12...v3.0.13) "moh-common-lib" (2020-05-06)
+
+
+### Bug Fixes
+
+* Fixed error container for phone number component (#102) ([22c21ef](https://github.com/bcgov/moh-common-styles/commit/22c21ef)), closes [#102](https://github.com/bcgov/moh-common-styles/issues/102)
 
 
 
