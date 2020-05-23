@@ -68,7 +68,7 @@ export class WizardProgressBarComponent implements OnInit, OnDestroy {
   }
 
   getActiveIndex(url): number {
-    return this.progressSteps.findIndex(x => url.includes(x.route));
+    return this.progressSteps.findIndex(x => url.endsWith(x.route));
   }
 
    /**
