@@ -11,7 +11,7 @@ import { ControlContainer, ControlValueAccessor, NgForm, NG_VALUE_ACCESSOR } fro
 import { Base } from '../../models/base';
 import { GeoAddressResult } from '../../services/geocoder.service';
 import { Address } from '../../models/address.model';
-import { CountryList, CANADA, UNITED_STATES, COUNTRY_LIST } from '../country/country.component';
+import { CountryList, CANADA, COUNTRY_LIST } from '../country/country.component';
 import { ProvinceList, BRITISH_COLUMBIA, PROVINCE_LIST } from '../province/province.component';
 
 export interface AddrLabelList {
@@ -47,7 +47,6 @@ export interface ReadOnlyFields {
 @Component({
   selector: 'common-address',
   templateUrl: './address.component.html',
-  styleUrls: ['./address.component.scss'],
   /* Re-use the same ngForm that it's parent is using. The component will show
    * up in its parents `this.form`, and will auto-update `this.form.valid`
    */

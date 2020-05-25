@@ -1,5 +1,3 @@
-import { ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { Router, Params } from '@angular/router';
 import { scrollTo } from '../../helpers/scroll-helpers';
 
@@ -25,7 +23,7 @@ export abstract class AbstractBaseForm {
   protected navigate(url: string, queryParams?: Params ) {
 
     this.router.navigate([url], { queryParams: queryParams })
-      .then((data) => {
+      .then(() => {
         scrollTo();
       });
   }

@@ -1,5 +1,5 @@
 import { forwardRef, Component, OnInit, ViewChild, EventEmitter, Input, Output, ElementRef } from '@angular/core';
-import { ControlContainer, NgForm, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlContainer, NgForm } from '@angular/forms';
 
 /**
  * Button Component is a button which can be used across the application to have
@@ -24,7 +24,6 @@ import { ControlContainer, NgForm, NG_VALUE_ACCESSOR } from '@angular/forms';
 @Component({
   selector: 'common-button',
   templateUrl: './button.component.html',
-  styleUrls: ['./button.component.scss'],
   viewProviders: [
     { provide: ControlContainer, useExisting: forwardRef(() => NgForm ) }
   ]

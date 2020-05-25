@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, Optional, Self, OnInit, HostListener } from '@angular/core';
+import { Component, Input, Output, EventEmitter, Optional, Self, OnInit } from '@angular/core';
 import { NgControl } from '@angular/forms';
 import { Observable, Subject, of } from 'rxjs';
 import { GeoAddressResult, GeocoderService } from '../../services/geocoder.service';
@@ -12,7 +12,6 @@ import { BRITISH_COLUMBIA } from '../province/province.component';
 @Component({
   selector: 'common-street',
   templateUrl: './street.component.html',
-  styleUrls: ['./street.component.scss']
 })
 export class StreetComponent extends AbstractFormControl implements OnInit  {
 
@@ -78,7 +77,7 @@ export class StreetComponent extends AbstractFormControl implements OnInit  {
         return this.geocoderService.lookup(searchPhrase);
       }),
       // tap(log => console.log('taplog', log)),
-      catchError(err => this.onError())
+      catchError(() => this.onError())
     );
   }
 

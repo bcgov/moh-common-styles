@@ -7,7 +7,6 @@ import { ErrorMessage, LabelReplacementTag } from '../../models/error-message.in
 @Component({
   selector: 'common-city',
   templateUrl: './city.component.html',
-  styleUrls: ['./city.component.scss']
 })
 export class CityComponent extends AbstractFormControl implements OnInit, ControlValueAccessor  {
 

@@ -1,4 +1,4 @@
-import { Injectable, InjectionToken, Injector } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { CanActivateChild, Router, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, CanActivate } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AbstractPgCheckService } from './abstract-pg-check.service';
