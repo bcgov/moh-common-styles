@@ -119,10 +119,6 @@ to button colour stylings.</li>
                 <td class="col-md-9"><code>common-button</code></td>
             </tr>
 
-            <tr>
-                <td class="col-md-3">styleUrls</td>
-                <td class="col-md-9"><code>./button.component.scss</code></td>
-            </tr>
 
 
 
@@ -240,7 +236,7 @@ to button colour stylings.</li>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">projects/common/lib/components/button/button.component.ts:40</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">projects/common/lib/components/button/button.component.ts:39</a></div>
                             </td>
                         </tr>
 
@@ -271,7 +267,7 @@ to button colour stylings.</li>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">projects/common/lib/components/button/button.component.ts:36</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">projects/common/lib/components/button/button.component.ts:35</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -297,7 +293,7 @@ to button colour stylings.</li>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">projects/common/lib/components/button/button.component.ts:37</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">projects/common/lib/components/button/button.component.ts:36</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -323,7 +319,7 @@ to button colour stylings.</li>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">projects/common/lib/components/button/button.component.ts:38</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">projects/common/lib/components/button/button.component.ts:37</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -347,7 +343,7 @@ to button colour stylings.</li>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">projects/common/lib/components/button/button.component.ts:39</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">projects/common/lib/components/button/button.component.ts:38</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -382,8 +378,8 @@ to button colour stylings.</li>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="44"
-                            class="link-to-prism">projects/common/lib/components/button/button.component.ts:44</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="43"
+                            class="link-to-prism">projects/common/lib/components/button/button.component.ts:43</a></div>
                 </td>
             </tr>
 
@@ -421,8 +417,8 @@ to button colour stylings.</li>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="47"
-                            class="link-to-prism">projects/common/lib/components/button/button.component.ts:47</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="46"
+                            class="link-to-prism">projects/common/lib/components/button/button.component.ts:46</a></div>
                 </td>
             </tr>
 
@@ -500,7 +496,7 @@ to button colour stylings.</li>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">projects/common/lib/components/button/button.component.ts:40</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">projects/common/lib/components/button/button.component.ts:39</a></div>
                             </td>
                         </tr>
 
@@ -514,7 +510,7 @@ to button colour stylings.</li>
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { forwardRef, Component, OnInit, ViewChild, EventEmitter, Input, Output, ElementRef } from &#x27;@angular/core&#x27;;
-import { ControlContainer, NgForm, NG_VALUE_ACCESSOR } from &#x27;@angular/forms&#x27;;
+import { ControlContainer, NgForm } from &#x27;@angular/forms&#x27;;
 
 /**
  * Button Component is a button which can be used across the application to have
@@ -539,7 +535,6 @@ import { ControlContainer, NgForm, NG_VALUE_ACCESSOR } from &#x27;@angular/forms
 @Component({
   selector: &#x27;common-button&#x27;,
   templateUrl: &#x27;./button.component.html&#x27;,
-  styleUrls: [&#x27;./button.component.scss&#x27;],
   viewProviders: [
     { provide: ControlContainer, useExisting: forwardRef(() &#x3D;&gt; NgForm ) }
   ]

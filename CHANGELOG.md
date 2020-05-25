@@ -1,4 +1,18 @@
-# Unreleased "moh-common-lib" (2020-05-06)
+# Unreleased "moh-common-lib" (2020-05-25)
+
+
+
+## [3.0.14](https://github.com/bcgov/moh-common-styles/compare/v3.0.13...v3.0.14) "moh-common-lib" (2020-05-25)
+
+
+### Bug Fixes
+
+* **stepper:** replace includes with endsWith resolve find route name in url base ([6e83c50](https://github.com/bcgov/moh-common-styles/commit/6e83c50))
+
+
+### Code Refactoring
+
+* code cleanup - remove unused variables, files ([706d0b8](https://github.com/bcgov/moh-common-styles/commit/706d0b8))
 
 
 
@@ -890,12 +904,16 @@
 
 
 
-# [2.3.0](https://github.com/bcgov/moh-common-styles/compare/v2.2.0...v2.3.0) "moh-common-lib" (2019-07-25)
+# [2.3.0](https://github.com/bcgov/moh-common-styles/compare/2.0.0...v2.3.0) "moh-common-lib" (2019-07-25)
 
 
 ### Features
 
 * **Address:** Now has default country/prov behaviour built in ([8361a0e](https://github.com/bcgov/moh-common-styles/commit/8361a0e))
+
+
+
+# [2.0.0](https://github.com/bcgov/moh-common-styles/compare/v2.2.0...2.0.0) "moh-common-lib" (2019-07-25)
 
 
 

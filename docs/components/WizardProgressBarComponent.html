@@ -342,7 +342,7 @@
                 <td class="col-md-4">
 
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank" >Number</a></code>
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 
                     </div>
                 </td>
@@ -739,7 +739,7 @@ export class WizardProgressBarComponent implements OnInit, OnDestroy {
     this.routerEvents$.unsubscribe();
   }
 
-  calculateProgressPercentage(): Number {
+  calculateProgressPercentage(): number {
     const denominator &#x3D; this.progressSteps.length;
     const numerator &#x3D; this.activeIndex + 1;
 
@@ -755,7 +755,7 @@ export class WizardProgressBarComponent implements OnInit, OnDestroy {
   }
 
   getActiveIndex(url): number {
-    return this.progressSteps.findIndex(x &#x3D;&gt; url.includes(x.route));
+    return this.progressSteps.findIndex(x &#x3D;&gt; url.endsWith(x.route));
   }
 
    /**

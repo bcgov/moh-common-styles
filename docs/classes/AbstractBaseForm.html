@@ -133,7 +133,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">projects/common/lib/models/abstract-base-form.ts:15</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">projects/common/lib/models/abstract-base-form.ts:13</a></div>
                             </td>
                         </tr>
 
@@ -198,7 +198,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">projects/common/lib/models/abstract-base-form.ts:9</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">projects/common/lib/models/abstract-base-form.ts:7</a></div>
                             </td>
                         </tr>
 
@@ -236,7 +236,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">projects/common/lib/models/abstract-base-form.ts:11</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">projects/common/lib/models/abstract-base-form.ts:9</a></div>
                             </td>
                         </tr>
 
@@ -280,8 +280,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="15"
-                            class="link-to-prism">projects/common/lib/models/abstract-base-form.ts:15</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="13"
+                            class="link-to-prism">projects/common/lib/models/abstract-base-form.ts:13</a></div>
                 </td>
             </tr>
 
@@ -323,8 +323,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="13"
-                            class="link-to-prism">projects/common/lib/models/abstract-base-form.ts:13</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="11"
+                            class="link-to-prism">projects/common/lib/models/abstract-base-form.ts:11</a></div>
                 </td>
             </tr>
 
@@ -366,8 +366,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="25"
-                            class="link-to-prism">projects/common/lib/models/abstract-base-form.ts:25</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="23"
+                            class="link-to-prism">projects/common/lib/models/abstract-base-form.ts:23</a></div>
                 </td>
             </tr>
 
@@ -438,9 +438,7 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ViewChild } from &#x27;@angular/core&#x27;;
-import { NgForm } from &#x27;@angular/forms&#x27;;
-import { Router, Params } from &#x27;@angular/router&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Router, Params } from &#x27;@angular/router&#x27;;
 import { scrollTo } from &#x27;../../helpers/scroll-helpers&#x27;;
 
 export abstract class AbstractBaseForm {
@@ -465,7 +463,7 @@ export abstract class AbstractBaseForm {
   protected navigate(url: string, queryParams?: Params ) {
 
     this.router.navigate([url], { queryParams: queryParams })
-      .then((data) &#x3D;&gt; {
+      .then(() &#x3D;&gt; {
         scrollTo();
       });
   }
