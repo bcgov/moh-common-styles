@@ -7,8 +7,7 @@ import { createTestingModule,
   getDebugElement,
   getDebugLabel,
   setInput,
-  getInputDebugElement,
-  getDebugInlineError} from '../../../helpers/test-helpers';
+  getInputDebugElement} from '../../../helpers/test-helpers';
 import { fakeAsync } from '@angular/core/testing';
 
 @Component({
@@ -112,7 +111,6 @@ describe('EmailComponent', () => {
          true
       );
 
-      const component = fixture.componentInstance;
       const de = getDebugElement( fixture, 'common-email', 'email1');
       const input = getInputDebugElement( de, de.componentInstance.labelforId );
       setInput( input, 'test@test.com' );

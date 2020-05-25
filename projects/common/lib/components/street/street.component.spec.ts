@@ -6,7 +6,7 @@ import { Component, ViewChildren, QueryList, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { fakeAsync } from '@angular/core/testing';
 import { createTestingModule, tickAndDetectChanges, getInputElement, getLabel } from '../../../helpers/test-helpers';
-import { GeoAddressResult, GeocoderService } from '../../services/geocoder.service';
+import { GeoAddressResult } from '../../services/geocoder.service';
 @Component({
   template: ``
 })

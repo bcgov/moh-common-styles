@@ -1,5 +1,4 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
-import { AccordionComponent } from 'ngx-bootstrap';
+import { Component, OnInit, Input } from '@angular/core';
 /**
  * AccordionComponent is a
  *

@@ -52,7 +52,7 @@ export class WizardProgressBarComponent implements OnInit, OnDestroy {
     this.routerEvents$.unsubscribe();
   }
 
-  calculateProgressPercentage(): Number {
+  calculateProgressPercentage(): number {
     const denominator = this.progressSteps.length;
     const numerator = this.activeIndex + 1;
 
@@ -68,7 +68,7 @@ export class WizardProgressBarComponent implements OnInit, OnDestroy {
   }
 
   getActiveIndex(url): number {
-    return this.progressSteps.findIndex(x => url.includes(x.route));
+    return this.progressSteps.findIndex(x => url.endsWith(x.route));
   }
 
    /**

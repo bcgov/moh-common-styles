@@ -83,7 +83,7 @@ export class Person extends Base {
   }
 
   /** Calculates the age from date of birth */
-  getAge(): Number {
+  getAge(): number {
     return differenceInYears( this.dateOfBirth, startOfToday() );
   }
 

@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
+import { fakeAsync } from '@angular/core/testing';
 import { CityComponent } from './city.component';
 import { Component, ViewChildren, QueryList, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';

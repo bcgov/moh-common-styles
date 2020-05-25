@@ -1,9 +1,9 @@
-import { TestBed, inject } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { PageStateService, PageList } from './page-state.service';
 import { Component } from '@angular/core';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { Routes, Router } from '@angular/router';
+import { Routes } from '@angular/router';
 
 class MockRouter {
   navigateByUrl(url: string) { return url; }
@@ -76,7 +76,6 @@ function addKeys( x: any ): {[key: string]: any} {
 describe('PageStateService', () => {
 
   let service: PageStateService;
-  let router: Router;
   let pageList: PageList[];
 
   beforeEach(() => {
@@ -94,7 +93,6 @@ describe('PageStateService', () => {
     });
 
     service = TestBed.get(PageStateService);
-    router = TestBed.get(Router);
     pageList = [];
   });
 

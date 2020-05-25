@@ -273,7 +273,6 @@ export function getCountryDescription( countryCode: string ) {
 @Component({
   selector: 'common-country',
   templateUrl: './country.component.html',
-  styleUrls: ['./country.component.scss']
 })
 export class CountryComponent extends Base implements OnInit, ControlValueAccessor {
 

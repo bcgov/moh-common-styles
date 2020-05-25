@@ -688,7 +688,6 @@ describe('DateComponent', () => {
       expect( label  ).toContain( fixture.componentInstance.label2 );
 
       const dayInput = getInputDebugElement( de, de.componentInstance.dayLabelforId );
-      const monthInput = getSelectDebugElement( de, de.componentInstance.monthLabelforId );
       const yearInput = getInputDebugElement( de, de.componentInstance.yearLabelforId );
       setInput( dayInput, 2 );
       setInput( yearInput, 2020 );
@@ -720,7 +719,7 @@ describe('DateComponent', () => {
       const component = fixture.componentInstance;
       const de = getDebugElement(fixture, 'common-date', 'date1');
       tickAndDetectChanges(fixture);
-      
+
       const dayInput = getInputDebugElement(de, de.componentInstance.dayLabelforId);
       const yearInput = getInputDebugElement(de, de.componentInstance.yearLabelforId);
       const monthInput = getSelectDebugElement(de, de.componentInstance.monthLabelforId);
@@ -728,7 +727,7 @@ describe('DateComponent', () => {
       setSelect(monthInput, 3);
       setInput(dayInput, 3);
       setInput(yearInput, 2020);
-      
+
       expect(component.form.controls.date1.value.getMonth()).toEqual(3);
     }));
   });
