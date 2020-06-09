@@ -8,12 +8,6 @@ import {map, filter, flatMap, scan, delay, retryWhen} from 'rxjs/operators';
 import { CommonImage, CommonImageError, CommonImageProcessingError,
 CommonImageScaleFactors, CommonImageScaleFactorsImpl } from '../../models/images.model';
 import { Base } from '../../models/base';
-// import {ApplicationBase} from '../../model/application-base.model';
-
-// const loadImage = require('blueimp-load-image');
-// const sha1 = require('sha1');
-
-import * as loadImage_ from 'blueimp-load-image';
 import * as sha1_ from 'sha1';
 const sha1 = sha1_;
 
