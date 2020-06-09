@@ -1,4 +1,4 @@
-import { AfterContentInit, ChangeDetectorRef, Component,
+import { AfterContentInit, Component,
     ElementRef, EventEmitter, Input, NgZone, OnChanges,
     OnInit, Output, SimpleChanges, ViewChild, forwardRef, ViewEncapsulation } from '@angular/core';
 import { NgForm, ControlContainer } from '@angular/forms';
@@ -7,12 +7,6 @@ import { Observable ,  Observer, fromEvent, merge } from 'rxjs';
 import {map, filter, flatMap, scan, delay, retryWhen} from 'rxjs/operators';
 import { CommonImage, CommonImageError, CommonImageProcessingError,
 CommonImageScaleFactors, CommonImageScaleFactorsImpl } from '../../models/images.model';
-// import { MspLogService } from '../../service/log.service';
-// import { MspDataService } from '../../service/msp-data.service';
-// import { BaseComponent } from '../base.component';
-// import { LogEntry } from '../logging/log-entry.model';
-// import {Person} from '../../model/application.model';
-import {Router} from '@angular/router';
 import { Base } from '../../models/base';
 // import {ApplicationBase} from '../../model/application-base.model';
 
@@ -20,7 +14,6 @@ import { Base } from '../../models/base';
 // const sha1 = require('sha1');
 
 import * as loadImage_ from 'blueimp-load-image';
-const loadImage = loadImage_;
 import * as sha1_ from 'sha1';
 const sha1 = sha1_;
 
@@ -31,7 +24,7 @@ const PDFJS: PDFJSStatic = (PDFJS_ as any);
 // const pdfjs = import('pdfjs-dist/build/pdf');
 // const pdfjsWorker = import('pdfjs-dist/build/pdf.worker.entry');
 import { pdfJsWorker } from 'pdfjs-dist/build/pdf.worker.entry';
-PDFJS.workerSrc=pdfJsWorker;
+PDFJS.workerSrc = pdfJsWorker;
 
 export interface FileUploaderMsg {
     required: string;
@@ -342,7 +335,7 @@ export class FileUploaderComponent extends Base
        let pageNumber = Math.max(...self.images.map(function(o) {return o.attachmentOrder; }), 0) + 1 ;
 
         // Create our observer
-        const fileObservable = Observable.create((observer: Observer<CommonImage>) => {
+        const fileObservable = new Observable((observer: Observer<CommonImage>) => {
             scaleFactors = scaleFactors.scaleDown(reductionScaleFactor);
             for (let fileIndex = 0; fileIndex < fileList.length; fileIndex++) {
                 const file = fileList[fileIndex];
@@ -375,9 +368,9 @@ export class FileUploaderComponent extends Base
                         // this.logService.log({name: file.name + 'is successfully split into ' + images.length + ' images',
                             // UUID: self.dataService.getMspUuid()}, 'File_Upload');
 
-                        images.map((image) => {
+                        images.forEach((image) => {
                             image.name = pdfFile.name;
-                            this.resizeImage( image, self, scaleFactors, observer, pageNumber , true); // index starts from zero
+                            this.resizeImage( image, pageNumber , true); // index starts from zero
                             pageNumber = pageNumber + 1  ;
                         });
                     }, (error: string) => {
@@ -390,7 +383,7 @@ export class FileUploaderComponent extends Base
                     // Load image into img element to read natural height and width
                     this.readImage(file, pageNumber , (image: HTMLImageElement , imageFile: File , nextPageNumber: number)  => {
                             image.id = imageFile.name; // .name deprecated, changed image.name to image.id
-                            this.resizeImage(image, self, scaleFactors, observer , nextPageNumber );
+                            this.resizeImage(image, nextPageNumber );
                         },
 
                         // can be ignored for bug, the log line is never called
@@ -408,10 +401,9 @@ export class FileUploaderComponent extends Base
     }
 
 
-    private resizeImage( image: HTMLImageElement, self: this, scaleFactors: CommonImageScaleFactors, observer: Observer<CommonImage>, pageNumber: number = 0 , isPdf: boolean = false) {
+    private resizeImage( image: HTMLImageElement, pageNumber: number = 0 , isPdf: boolean = false) {
 // While it's still in an image, get it's height and width
         const mspImage: CommonImage = new CommonImage();
-        const reader: FileReader = new FileReader();
         console.log('image.name:' + image.id); // .name deprecated, changed image.name to image.id
         // Copy file properties
         mspImage.name = image.id ;
