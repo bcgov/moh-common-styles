@@ -1,9 +1,7 @@
 import { AfterContentInit, ChangeDetectorRef, Component,
-    ContentChild, ElementRef, EventEmitter, Input, NgZone, OnChanges,
-    OnInit, Output, SimpleChanges, ViewChild, forwardRef, AfterViewInit, ViewEncapsulation } from '@angular/core';
+    ElementRef, EventEmitter, Input, NgZone, OnChanges,
+    OnInit, Output, SimpleChanges, ViewChild, forwardRef, ViewEncapsulation } from '@angular/core';
 import { NgForm, ControlContainer } from '@angular/forms';
-import * as moment from 'moment';
-import { ModalDirective} from 'ngx-bootstrap';
 import { PDFJSStatic } from 'pdfjs-dist';
 import { Observable ,  Observer, fromEvent, merge } from 'rxjs';
 import {map, filter, flatMap, scan, delay, retryWhen} from 'rxjs/operators';
@@ -52,7 +50,6 @@ export interface FileUploaderMsg {
 export class FileUploaderComponent extends Base
     implements OnInit, OnChanges, AfterContentInit {
     noIdImage: Boolean = false;
-    private appConstants;
     @ViewChild('dropZone') dropZone: ElementRef;
     @ViewChild('browseFileRef') browseFileRef: ElementRef;
     // @ViewChild('captureFileRef') captureFileRef: ElementRef;
@@ -77,7 +74,6 @@ export class FileUploaderComponent extends Base
                 // private dataService: MspDataService,
                 // private logService: MspLogService,
                 private zone: NgZone,
-                private cd: ChangeDetectorRef , private router: Router,
                 private controlContainer: ControlContainer) {
         super();
         // this.application = this.getApplicationType();
@@ -176,7 +172,7 @@ export class FileUploaderComponent extends Base
         /**
          * Must cancel the dragover event in order for the drop event to work.
          */
-        dragOverStream.pipe(map(evt => {
+        dragOverStream.pipe(map(() => {
             return event;
         })).subscribe(evt => {
             // console.log('Cancel dragover event.');
@@ -273,7 +269,7 @@ export class FileUploaderComponent extends Base
                         }
                         this.handleError(CommonImageError.CannotOpen, error.image);
                     } else if (CommonImageError.CannotOpenPDF === error.errorCode) {
-                        this.handleError(CommonImageError.CannotOpenPDF, error.image, error.errorDescription);
+                        this.handleError(CommonImageError.CannotOpenPDF, error.image);
                     } else {
                         throw error;
                     }
@@ -308,7 +304,7 @@ export class FileUploaderComponent extends Base
                 event.preventDefault();
                 return event;
             })
-        ).subscribe( (event) => { this.browseFileRef.nativeElement.click(); });
+        ).subscribe( () => { this.browseFileRef.nativeElement.click(); });
     }
 
 
@@ -347,7 +343,6 @@ export class FileUploaderComponent extends Base
 
         // Create our observer
         const fileObservable = Observable.create((observer: Observer<CommonImage>) => {
-            const mspImages = [];
             scaleFactors = scaleFactors.scaleDown(reductionScaleFactor);
             for (let fileIndex = 0; fileIndex < fileList.length; fileIndex++) {
                 const file = fileList[fileIndex];
@@ -380,7 +375,7 @@ export class FileUploaderComponent extends Base
                         // this.logService.log({name: file.name + 'is successfully split into ' + images.length + ' images',
                             // UUID: self.dataService.getMspUuid()}, 'File_Upload');
 
-                        images.map((image, index) => {
+                        images.map((image) => {
                             image.name = pdfFile.name;
                             this.resizeImage( image, self, scaleFactors, observer, pageNumber , true); // index starts from zero
                             pageNumber = pageNumber + 1  ;
@@ -440,86 +435,6 @@ export class FileUploaderComponent extends Base
         // Scale the image by loading into a canvas
 
         console.log('Start scaling down the image using blueimp-load-image lib: ');
-        const scaledImage = loadImage(
-            image.src, // NOTE: we pass the File ref here again even though its already read because we need the XIFF metadata
-            function (canvas: HTMLCanvasElement, metadata: any) {
-
-                // Canvas may be an Event when errors happens
-                if (canvas instanceof Event) {
-                    self.handleError(CommonImageError.WrongType, mspImage);
-                    self.resetInputFields();
-                    return;
-                }
-                // Convert to blob to get size
-                canvas.toBlob((blob: Blob) => {
-                        // Copy the blob properties
-                        mspImage.size = blob.size;
-
-                        // log image info (but only for the first time before any scaling)
-                        // if (s
-
-                        const fileName = mspImage.name;
-                        const nBytes = mspImage.size;
-                        let fileSize = '';
-                        let fileSizeUnit = '';
-                        let sOutput: string = nBytes + ' bytes';
-                        // optional code for multiples approximation
-                        for (let aMultiples = ['KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB', 'YiB'],
-                                 nMultiple = 0, nApprox = nBytes / 1024; nApprox > 1; nApprox /= 1024, nMultiple++) {
-
-                            sOutput = nApprox.toFixed(3) + ' ' + aMultiples[nMultiple] + ' (' + nBytes + ' bytes)';
-                            fileSize = nApprox.toFixed(0);
-                            fileSizeUnit = aMultiples[nMultiple];
-                            mspImage.sizeUnit = fileSizeUnit;
-                        }
-
-                        console.log(`File ${fileName} is scaled down to: ${sOutput}`);
-                        mspImage.sizeTxt = sOutput;
-
-                        // call reader with new transformed image
-                        reader.onload = function (evt: any) {
-
-                            mspImage.fileContent = evt.target.result;
-                            mspImage.id = sha1(mspImage.fileContent);
-
-                            // keep scaling down the image until the image size is
-                            // under max image size
-
-                            /** previously in appConstants */
-                            const maxSizeBytes = 1048576;
-                            if (mspImage.size > maxSizeBytes) {
-
-                                console.log('File size after scaling down: %d, max file size allowed: %d',
-                                    mspImage.size, maxSizeBytes);
-
-                                const imageTooBigError: CommonImageProcessingError =
-                                    new CommonImageProcessingError(CommonImageError.TooBig);
-
-                                imageTooBigError.maxSizeAllowed = maxSizeBytes;
-                                imageTooBigError.commonImage = mspImage;
-
-                                observer.error(imageTooBigError);
-                            } else {
-                                // log image info
-                                //   self.logImageInfo("msp_file-uploader_after_resize_attributes", self.dataService.getMspUuid(), mspImage);
-                                observer.next(mspImage);
-                            }
-                        };
-                        reader.readAsDataURL(blob);
-                    },
-
-                    // What mime type to make the blob as and jpeg quality
-                    'image/jpeg', 0.5);
-            },
-            {
-                maxWidth: 2600 * scaleFactors.widthFactor,
-                maxHeight: 3300 * scaleFactors.heightFactor,
-                contain: true,
-                canvas: true,
-                meta: true,
-                orientation: true
-            }
-        );
     }
 
     /**
@@ -544,7 +459,7 @@ export class FileUploaderComponent extends Base
 
             return errors.pipe(scan(
                 // return errors.pipe(
-                (acc, error: any, index) => {
+                (acc, error: any) => {
                     // console.log('Error encountered: %o', error);;
 
                     /**
@@ -620,7 +535,7 @@ export class FileUploaderComponent extends Base
         const canvas = document.createElement('canvas');
         const imgElsArray: HTMLImageElement[] = [];
         const ctx = canvas.getContext('2d');
-        reader.onload = function (progressEvt: ProgressEvent) {
+        reader.onload = function () {
 
             const docInitParams = {data: reader.result};
             // TODO - The 'as any' was added when porting to common library from MSP
@@ -711,7 +626,7 @@ export class FileUploaderComponent extends Base
         }
     }
 
-    handleError(error: CommonImageError, mspImage: CommonImage, errorDescription?: string) {
+    handleError(error: CommonImageError, mspImage: CommonImage) {
 
         if (!mspImage) {
             mspImage = new CommonImage();
@@ -754,41 +669,6 @@ export class FileUploaderComponent extends Base
         }
     }
 
-    /**
-     * Log image attributes
-     * @param mspImage
-     */
-    private logImageInfo(title: string, applicationId: string, mspImage: CommonImage, additionalInfo?: string) {
-
-        // TODO!
-        // // create log entry
-        // const log: LogEntry = new LogEntry();
-        // log.applicationId = applicationId;
-        // const now = moment();
-        // log.mspTimestamp = now.toISOString();
-        // log.applicationPhase = title + ':  mspImageId: ' + mspImage.id
-        //     + '  mspImageUuid: ' + mspImage.uuid
-        //     + '  mspImageSize: ' + mspImage.size
-        //     + '  mspImageWidth: ' + mspImage.naturalWidth
-        //     + '  mspImageHeight: ' + mspImage.naturalHeight
-        //     + '  mspImageContentType: ' + mspImage.contentType
-        //     + (additionalInfo ? '  ' + additionalInfo : '');
-
-        // // send it while subscribing to response
-        // this.logService.logIt(log, title).subscribe(
-        //     (response) => {
-        //         // console.log('log rest service response: ');
-        //         // console.log(response);
-        //     },
-        //     (error) => {
-        //         console.log('HTTP error response from logging service: ');
-        //         console.log(error);
-        //     },
-        //     () => {
-        //         // console.log('log rest service completed!');
-        //     }
-        // );
-    }
 
 
 

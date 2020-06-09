@@ -33,7 +33,6 @@
             "tsConfig": "projects/common/tsconfig.spec.json",
             "karmaConfig": "projects/common/karma.conf.js",
             "styles": [
-              "src/styles.scss"
             ],
             "stylePreprocessorOptions": {
               "includePaths": [
