@@ -19,7 +19,7 @@
       "bootstrap": "^4.0.0",
       "date-fns": "^2.5.1",
       "moment": "^2.24.0",
-      "blueimp-load-image": "^2.20.1",
+      "blueimp-load-image": ">=2.20.1 < 5.13.0",
       "ngx-mydatepicker": "2.4.5",
       "pdfjs-dist": "^2.0.550",
       "sha1": "^1.1.1",
