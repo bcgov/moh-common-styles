@@ -183,7 +183,7 @@ export abstract class AbstractTestPage {
    * Counts the number of options inside a dropdown box
    * @param refNameVal
    */
-  countLength(refNameVal: string){
+  countLength(refNameVal: string) {
       return $$(`select[ng-reflect-name^="${refNameVal}"] option`);
   }
 }

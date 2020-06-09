@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, HostListener, OnChanges, Directive, forwardRef } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, HostListener, OnChanges, forwardRef } from '@angular/core';
 import { Base } from '../../models/base';
 import { ControlContainer, NgForm } from '@angular/forms';
 import * as zxcvbn_ from 'zxcvbn';
@@ -133,8 +133,8 @@ export class PasswordComponent extends Base implements OnInit, OnChanges {
   }
 
   onInputBlur($event) {
-    console.log( 'onBlur: ', event );
-    this.blurEvent.emit( event );
+    console.log( 'onBlur: ', $event );
+    this.blurEvent.emit( $event );
   }
 
   // Prevent user from pasting data into the text box
