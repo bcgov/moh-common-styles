@@ -531,7 +531,6 @@ export class FileUploaderComponent extends Base
 
             const fileName = mspImage.name;
             const nBytes = mspImage.size;
-            let fileSize = '';
             let fileSizeUnit = '';
             let sOutput: string = nBytes + ' bytes';
             // optional code for multiples approximation
@@ -558,7 +557,6 @@ export class FileUploaderComponent extends Base
                 ' (' +
                 nBytes +
                 ' bytes)';
-              fileSize = nApprox.toFixed(0);
               fileSizeUnit = aMultiples[nMultiple];
               mspImage.sizeUnit = fileSizeUnit;
             }
