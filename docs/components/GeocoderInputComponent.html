@@ -302,7 +302,7 @@ formControlName=&quot;address&quot;
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(controlDir: <a href="https://angular.io/api/forms/NgControl" target="_blank">NgControl</a>, geocoderService: <a href="../injectables/GeocoderService.html">GeocoderService</a>, cd: <a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank">ChangeDetectorRef</a>)</code>
+<code>constructor(controlDir: <a href="https://angular.io/api/forms/NgControl" target="_blank">NgControl</a>, geocoderService: <a href="../injectables/GeocoderService.html">GeocoderService</a>)</code>
                     </td>
                 </tr>
                         <tr>
@@ -341,18 +341,6 @@ formControlName=&quot;address&quot;
                                                   
                                                         <td>
                                                                         <code><a href="../injectables/GeocoderService.html" target="_self" >GeocoderService</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>cd</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank" >ChangeDetectorRef</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -551,7 +539,7 @@ formControlName=&quot;address&quot;
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>onBlur(event)</code>
+<code>onBlur()</code>
                 </td>
             </tr>
 
@@ -568,35 +556,8 @@ formControlName=&quot;address&quot;
                 <td class="col-md-4">
 
                     <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>event</td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
-                    </div>
-                    <div class="io-description">
-                        
                     </div>
                 </td>
             </tr>
@@ -617,7 +578,7 @@ formControlName=&quot;address&quot;
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>onError(err)</code>
+<code>onError()</code>
                 </td>
             </tr>
 
@@ -634,35 +595,8 @@ formControlName=&quot;address&quot;
                 <td class="col-md-4">
 
                     <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>err</td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
                         <b>Returns : </b>        <code><a href="../interfaces/GeoAddressResult.html" target="_self" >Observable&lt;GeoAddressResult[]&gt;</a></code>
 
-                    </div>
-                    <div class="io-description">
-                        
                     </div>
                 </td>
             </tr>
@@ -1628,9 +1562,9 @@ formControlName=&quot;address&quot;
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, Input, ChangeDetectorRef, Output, EventEmitter, SimpleChanges, OnChanges, Optional, Self } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, Input, Output, EventEmitter, Optional, Self } from &#x27;@angular/core&#x27;;
 import { Subject, Observable, of } from &#x27;rxjs&#x27;;
-import { debounceTime, distinctUntilChanged, switchMap, tap, catchError } from &#x27;rxjs/operators&#x27;;
+import { debounceTime, distinctUntilChanged, switchMap, catchError } from &#x27;rxjs/operators&#x27;;
 import { TypeaheadMatch } from &#x27;ngx-bootstrap&#x27;;
 import { Base } from &#x27;../../models/base&#x27;;
 import { GeocoderService, GeoAddressResult } from &#x27;../../services/geocoder.service&#x27;;
@@ -1691,7 +1625,7 @@ export class GeocoderInputComponent extends Base implements OnInit, ControlValue
   _onChange &#x3D; (_: any) &#x3D;&gt; {};
   _onTouched &#x3D; (_?: any) &#x3D;&gt; {};
 
-  constructor(@Optional() @Self() public controlDir: NgControl, private geocoderService: GeocoderService, private cd: ChangeDetectorRef) {
+  constructor(@Optional() @Self() public controlDir: NgControl, private geocoderService: GeocoderService) {
     super();
     if ( controlDir ) {
       controlDir.valueAccessor &#x3D; this;
@@ -1704,12 +1638,12 @@ export class GeocoderInputComponent extends Base implements OnInit, ControlValue
       distinctUntilChanged(),
       // Trigger the network request, get results
       switchMap(searchPhrase &#x3D;&gt; this.geocoderService.lookup(searchPhrase)),
-      catchError(err &#x3D;&gt; this.onError(err))
+      catchError(() &#x3D;&gt; this.onError())
     );
 
   }
 
-  onError(err): Observable&lt;GeoAddressResult[]&gt; {
+  onError(): Observable&lt;GeoAddressResult[]&gt; {
 
     this.hasError &#x3D; true;
     // Empty array simulates no result response, nothing for typeahead to iterate over
@@ -1768,7 +1702,7 @@ export class GeocoderInputComponent extends Base implements OnInit, ControlValue
     this.searchText$.next(this.search);
   }
 
-  onBlur(event): void {
+  onBlur(): void {
     this._onTouched();
     this._onChange(this.search);
   }
@@ -1824,7 +1758,7 @@ export class GeocoderInputComponent extends Base implements OnInit, ControlValue
        (typeaheadLoading)&#x3D;&quot;onLoading($event)&quot;
        (typeaheadOnSelect)&#x3D;&quot;onSelect($event)&quot;
        (typeaheadNoResults)&#x3D;&quot;onNoResults($event)&quot;
-       (blur)&#x3D;&quot;onBlur($event)&quot;
+       (blur)&#x3D;&quot;onBlur()&quot;
        [attr.maxlength]&#x3D;&#x27;maxlength&#x27;
        typeaheadOptionField&#x3D;&#x27;fullAddress&#x27;
        typeaheadMinLength&#x3D;&#x27;3&#x27;
@@ -1881,7 +1815,7 @@ export class GeocoderInputComponent extends Base implements OnInit, ControlValue
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><label for="geocoder_{{label}}" class=\'text-nowrap\'>{{label}}  <span class="geocoder-status">    <ng-container *ngIf="isTypeaheadLoading; else statusContainer"> &mdash; Loading      <i class="fa fa-spinner fa-pulse fa-fw"></i>    </ng-container>  </span>  <ng-template #statusContainer>    <ng-template *ngIf="selectedAddress; then addressSelected; else error;"></ng-template>  </ng-template></label><input class="form-control"       type="text"       id="geocoder_{{label}}"       name="geocoder_{{label}}"       [(ngModel)]=\'search\'       (keyup)=\'onKeyUp($event)\'       [typeahead]=\'typeaheadList$\'       [typeaheadIsFirstItemActive]="false"       [typeaheadSelectFirstItem]="false"       (typeaheadLoading)="onLoading($event)"       (typeaheadOnSelect)="onSelect($event)"       (typeaheadNoResults)="onNoResults($event)"       (blur)="onBlur($event)"       [attr.maxlength]=\'maxlength\'       typeaheadOptionField=\'fullAddress\'       typeaheadMinLength=\'3\'       autocomplete="off"       spellcheck="false"        />        <!-- Intentionally using \'nope\' for autocomplete as it is invalid and forces false - https://developer.mozilla.org/en-US/docs/Web/Security/Securing_your_site/Turning_off_form_autocompletion --><ng-template #addressSelected>    <span> &mdash; Selected        <i class="fa fa-check fa-fw text-success"></i>    </span></ng-template><ng-template #noResults>    <span *ngIf="hasNoResults"> &mdash; No Results        <i class="fa fa-times fa-fw text-warning"></i>    </span></ng-template><ng-template #error>    <span *ngIf=\'hasError; else noResults\'> &mdash; Error        <i class="fa fa-exclamation-triangle fa-fw text-danger"></i>    </span></ng-template></div>'
+        var COMPONENT_TEMPLATE = '<div><label for="geocoder_{{label}}" class=\'text-nowrap\'>{{label}}  <span class="geocoder-status">    <ng-container *ngIf="isTypeaheadLoading; else statusContainer"> &mdash; Loading      <i class="fa fa-spinner fa-pulse fa-fw"></i>    </ng-container>  </span>  <ng-template #statusContainer>    <ng-template *ngIf="selectedAddress; then addressSelected; else error;"></ng-template>  </ng-template></label><input class="form-control"       type="text"       id="geocoder_{{label}}"       name="geocoder_{{label}}"       [(ngModel)]=\'search\'       (keyup)=\'onKeyUp($event)\'       [typeahead]=\'typeaheadList$\'       [typeaheadIsFirstItemActive]="false"       [typeaheadSelectFirstItem]="false"       (typeaheadLoading)="onLoading($event)"       (typeaheadOnSelect)="onSelect($event)"       (typeaheadNoResults)="onNoResults($event)"       (blur)="onBlur()"       [attr.maxlength]=\'maxlength\'       typeaheadOptionField=\'fullAddress\'       typeaheadMinLength=\'3\'       autocomplete="off"       spellcheck="false"        />        <!-- Intentionally using \'nope\' for autocomplete as it is invalid and forces false - https://developer.mozilla.org/en-US/docs/Web/Security/Securing_your_site/Turning_off_form_autocompletion --><ng-template #addressSelected>    <span> &mdash; Selected        <i class="fa fa-check fa-fw text-success"></i>    </span></ng-template><ng-template #noResults>    <span *ngIf="hasNoResults"> &mdash; No Results        <i class="fa fa-times fa-fw text-warning"></i>    </span></ng-template><ng-template #error>    <span *ngIf=\'hasError; else noResults\'> &mdash; Error        <i class="fa fa-exclamation-triangle fa-fw text-danger"></i>    </span></ng-template></div>'
     var COMPONENTS = [{'name': 'AccordionCommonComponent', 'selector': 'common-accordion'},{'name': 'AddressComponent', 'selector': 'common-address'},{'name': 'ButtonComponent', 'selector': 'common-button'},{'name': 'ButtonGroupComponent', 'selector': 'common-button-group'},{'name': 'CaptchaComponent', 'selector': 'common-captcha'},{'name': 'CheckboxComponent', 'selector': 'common-checkbox'},{'name': 'CityComponent', 'selector': 'common-city'},{'name': 'ConfirmTemplateComponent', 'selector': 'common-confirm-template'},{'name': 'ConsentModalComponent', 'selector': 'common-consent-modal'},{'name': 'CoreBreadcrumbComponent', 'selector': 'common-core-breadcrumb'},{'name': 'CountryComponent', 'selector': 'common-country'},{'name': 'DateComponent', 'selector': 'common-date'},{'name': 'DatepickerComponent', 'selector': 'common-datepicker'},{'name': 'DropdownComponent', 'selector': 'common-dropdown'},{'name': 'EmailComponent', 'selector': 'common-email'},{'name': 'ErrorContainerComponent', 'selector': 'common-error-container'},{'name': 'FileUploaderComponent', 'selector': 'common-file-uploader'},{'name': 'FormActionBarComponent', 'selector': 'common-form-action-bar'},{'name': 'FormSubmitBarComponent', 'selector': 'common-form-submit-bar'},{'name': 'FullNameComponent', 'selector': 'common-full-name'},{'name': 'GeocoderInputComponent', 'selector': 'common-geocoder-input'},{'name': 'HeaderComponent', 'selector': 'common-header'},{'name': 'NameComponent', 'selector': 'common-name'},{'name': 'PageFrameworkComponent', 'selector': 'common-page-framework'},{'name': 'PageSectionComponent', 'selector': 'common-page-section'},{'name': 'PasswordComponent', 'selector': 'common-password'},{'name': 'PhnComponent', 'selector': 'common-phn'},{'name': 'PhoneNumberComponent', 'selector': 'common-phone-number'},{'name': 'PostalCodeComponent', 'selector': 'common-postal-code'},{'name': 'ProvinceComponent', 'selector': 'common-province'},{'name': 'RadioComponent', 'selector': 'common-radio'},{'name': 'SampleModalComponent', 'selector': 'common-sample-modal'},{'name': 'SinComponent', 'selector': 'common-sin'},{'name': 'StreetComponent', 'selector': 'common-street'},{'name': 'ThumbnailComponent', 'selector': 'common-thumbnail'},{'name': 'ToggleComponent', 'selector': 'common-toggle'},{'name': 'WizardProgressBarComponent', 'selector': 'common-wizard-progress-bar'},{'name': 'XiconButtonComponent', 'selector': 'common-xicon-button'}];
     var DIRECTIVES = [{'name': 'DateFieldFormatDirective', 'selector': '[commonDateFieldFormat]'},{'name': 'DuplicateCheckDirective', 'selector': '[commonDuplicateCheck]'},{'name': 'ValidateBcPostalDirective', 'selector': '[commonValidateBcPostal]'},{'name': 'ValidateCityDirective', 'selector': '[commonValidateCity]'},{'name': 'ValidateNameDirective', 'selector': '[commonValidateName]'},{'name': 'ValidatePostalcodeDirective', 'selector': '[commonValidatePostalcode]'},{'name': 'ValidateRegionDirective', 'selector': '[commonValidateRegion]'},{'name': 'ValidateStreetDirective', 'selector': '[commonValidateStreet]'}];
     var ACTUAL_COMPONENT = {'name': 'GeocoderInputComponent'};
