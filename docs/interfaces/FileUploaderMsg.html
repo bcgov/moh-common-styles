@@ -137,148 +137,155 @@
     </div>
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { AfterContentInit, ChangeDetectorRef, Component,
-    ContentChild, ElementRef, EventEmitter, Input, NgZone, OnChanges,
-    OnInit, Output, SimpleChanges, ViewChild, forwardRef, AfterViewInit, ViewEncapsulation } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  AfterContentInit,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  NgZone,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges,
+  ViewChild,
+  forwardRef,
+  ViewEncapsulation,
+} from &#x27;@angular/core&#x27;;
 import { NgForm, ControlContainer } from &#x27;@angular/forms&#x27;;
-import * as moment from &#x27;moment&#x27;;
-import { ModalDirective} from &#x27;ngx-bootstrap&#x27;;
 import { PDFJSStatic } from &#x27;pdfjs-dist&#x27;;
-import { Observable ,  Observer, fromEvent, merge } from &#x27;rxjs&#x27;;
-import {map, filter, flatMap, scan, delay, retryWhen} from &#x27;rxjs/operators&#x27;;
-import { CommonImage, CommonImageError, CommonImageProcessingError,
-CommonImageScaleFactors, CommonImageScaleFactorsImpl } from &#x27;../../models/images.model&#x27;;
-// import { MspLogService } from &#x27;../../service/log.service&#x27;;
-// import { MspDataService } from &#x27;../../service/msp-data.service&#x27;;
-// import { BaseComponent } from &#x27;../base.component&#x27;;
-// import { LogEntry } from &#x27;../logging/log-entry.model&#x27;;
-// import {Person} from &#x27;../../model/application.model&#x27;;
-import {Router} from &#x27;@angular/router&#x27;;
+import { Observable, Observer, fromEvent, merge } from &#x27;rxjs&#x27;;
+import { map, filter, flatMap, scan, delay, retryWhen } from &#x27;rxjs/operators&#x27;;
+import {
+  CommonImage,
+  CommonImageError,
+  CommonImageProcessingError,
+  CommonImageScaleFactors,
+  CommonImageScaleFactorsImpl,
+} from &#x27;../../models/images.model&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
 import { Base } from &#x27;../../models/base&#x27;;
-// import {ApplicationBase} from &#x27;../../model/application-base.model&#x27;;
-
-// const loadImage &#x3D; require(&#x27;blueimp-load-image&#x27;);
-// const sha1 &#x3D; require(&#x27;sha1&#x27;);
 
 import * as loadImage_ from &#x27;blueimp-load-image&#x27;;
 const loadImage &#x3D; loadImage_;
 import * as sha1_ from &#x27;sha1&#x27;;
 const sha1 &#x3D; sha1_;
 
-// const PDFJS: PDFJSStatic &#x3D; require(&#x27;pdfjs-dist&#x27;);
 import * as PDFJS_ from &#x27;pdfjs-dist&#x27;;
-const PDFJS: PDFJSStatic &#x3D; (PDFJS_ as any);
+const PDFJS: PDFJSStatic &#x3D; PDFJS_ as any;
 
-// const pdfjs &#x3D; import(&#x27;pdfjs-dist/build/pdf&#x27;);
-// const pdfjsWorker &#x3D; import(&#x27;pdfjs-dist/build/pdf.worker.entry&#x27;);
 import { pdfJsWorker } from &#x27;pdfjs-dist/build/pdf.worker.entry&#x27;;
-PDFJS.workerSrc&#x3D;pdfJsWorker;
+PDFJS.workerSrc &#x3D; pdfJsWorker;
 
 export interface FileUploaderMsg {
-    required: string;
+  required: string;
 }
 
 // TODO - Remove this and fix tslint issues
-/* tslint:disable:max-line-length*/
-
 @Component({
-    selector: &#x27;common-file-uploader&#x27;,
-    templateUrl: &#x27;./file-uploader.component.html&#x27;,
-    styleUrls: [&#x27;./file-uploader.component.scss&#x27;],
-    encapsulation: ViewEncapsulation.None,
-    viewProviders: [ { provide: ControlContainer, useExisting: forwardRef(() &#x3D;&gt; NgForm ) } ]
+  selector: &#x27;common-file-uploader&#x27;,
+  templateUrl: &#x27;./file-uploader.component.html&#x27;,
+  styleUrls: [&#x27;./file-uploader.component.scss&#x27;],
+  encapsulation: ViewEncapsulation.None,
+  viewProviders: [
+    { provide: ControlContainer, useExisting: forwardRef(() &#x3D;&gt; NgForm) },
+  ],
 })
 export class FileUploaderComponent extends Base
-    implements OnInit, OnChanges, AfterContentInit {
-    noIdImage: Boolean &#x3D; false;
-    private appConstants;
-    @ViewChild(&#x27;dropZone&#x27;) dropZone: ElementRef;
-    @ViewChild(&#x27;browseFileRef&#x27;) browseFileRef: ElementRef;
-    // @ViewChild(&#x27;captureFileRef&#x27;) captureFileRef: ElementRef;
-    @ViewChild(&#x27;imagePlaceholderRef&#x27;) imagePlaceholderRef: ElementRef;
-    @ViewChild(&#x27;selectFileLabel&#x27;) selectFileLabelRef: ElementRef;
+  implements OnInit, OnChanges, AfterContentInit {
+  noIdImage: Boolean &#x3D; false;
+  @ViewChild(&#x27;dropZone&#x27;) dropZone: ElementRef;
+  @ViewChild(&#x27;browseFileRef&#x27;) browseFileRef: ElementRef;
+  // @ViewChild(&#x27;captureFileRef&#x27;) captureFileRef: ElementRef;
+  @ViewChild(&#x27;imagePlaceholderRef&#x27;) imagePlaceholderRef: ElementRef;
+  @ViewChild(&#x27;selectFileLabel&#x27;) selectFileLabelRef: ElementRef;
 
-    // @ContentChild(&#x27;uploadInstruction&#x27;) uploadInstructionRef: ElementRef;
-    @Input() images: Array&lt;CommonImage&gt; &#x3D; new Array&lt;CommonImage&gt;(0);
-    @Output() imagesChange: EventEmitter&lt;Array&lt;CommonImage&gt;&gt; &#x3D; new EventEmitter&lt;Array&lt;CommonImage&gt;&gt;();
-    @Input() id: string;
-    @Input() showError: boolean;
-    @Input() required: boolean &#x3D; false;
-    @Input() instructionText: string &#x3D; &#x27;Please upload required ID documents.&#x27;;
-    @Input() errorMessages: FileUploaderMsg &#x3D; {required: &#x27;File is required.&#x27;};
+  // @ContentChild(&#x27;uploadInstruction&#x27;) uploadInstructionRef: ElementRef;
+  @Input() images: Array&lt;CommonImage&gt; &#x3D; new Array&lt;CommonImage&gt;(0);
+  @Output() imagesChange: EventEmitter&lt;Array&lt;CommonImage&gt;&gt; &#x3D; new EventEmitter&lt;
+    Array&lt;CommonImage&gt;
+  &gt;();
+  @Input() id: string;
+  @Input() showError: boolean;
+  @Input() required: boolean &#x3D; false;
+  @Input() instructionText: string &#x3D; &#x27;Please upload required ID documents.&#x27;;
+  @Input() errorMessages: FileUploaderMsg &#x3D; { required: &#x27;File is required.&#x27; };
 
-    @ViewChild(&#x27;canvas&#x27;) canvas: ElementRef;
+  @ViewChild(&#x27;canvas&#x27;) canvas: ElementRef;
 
+  @Output() errorDocument: EventEmitter&lt;CommonImage&gt; &#x3D; new EventEmitter&lt;
+    CommonImage
+  &gt;();
 
-    @Output() errorDocument: EventEmitter&lt;CommonImage&gt; &#x3D; new EventEmitter&lt;CommonImage&gt;();
+  constructor(
+    // private dataService: MspDataService,
+    // private logService: MspLogService,
+    private zone: NgZone,
+    private cd: ChangeDetectorRef,
+    private router: Router,
+    private controlContainer: ControlContainer
+  ) {
+    super();
+    // this.application &#x3D; this.getApplicationType();
+  }
 
-    constructor(
-                // private dataService: MspDataService,
-                // private logService: MspLogService,
-                private zone: NgZone,
-                private cd: ChangeDetectorRef , private router: Router,
-                private controlContainer: ControlContainer) {
-        super();
-        // this.application &#x3D; this.getApplicationType();
-    }
+  /**
+   * This is created as a workaround to access the form control that binds to
+   * the input[type&#x3D;&#x27;file&#x27;]. We can&#x27;t access it via the template name bindings
+   * as that isn&#x27;t working, so instead we access the parent form and then find
+   * the input by name.
+   */
+  get fileControl() {
+    const INPUT_NAME &#x3D; &#x60;fileUploadBrowse-${this.id}&#x60;;
+    // note - should be &quot;this.controlContainer as NgForm&quot; here, which works,
+    // but fails on compiliation due to secondary entries
+    return (this.controlContainer as any).controls[INPUT_NAME];
+  }
 
-    /**
-     * This is created as a workaround to access the form control that binds to
-     * the input[type&#x3D;&#x27;file&#x27;]. We can&#x27;t access it via the template name bindings
-     * as that isn&#x27;t working, so instead we access the parent form and then find
-     * the input by name.
-     */
-    get fileControl() {
-        const INPUT_NAME &#x3D; &#x60;fileUploadBrowse-${this.id}&#x60;;
-        // note - should be &quot;this.controlContainer as NgForm&quot; here, which works,
-        // but fails on compiliation due to secondary entries
-        return (this.controlContainer as any).controls[INPUT_NAME];
-    }
-
-    /**
-     * Return true if file already exists in the list; false otherwise.
-     */
-    static checkImageExists(file: CommonImage, imageList: Array&lt;CommonImage&gt;) {
-        if (!imageList || imageList.length &lt; 1) {
-            return false;
-        } else {
-
-            const sha1Sum &#x3D; sha1(file.fileContent);
-            for (let i &#x3D; imageList.length - 1; i &gt;&#x3D; 0; i--) {
-                // console.log(&#x60;compare  ${imageList[i].id} with ${sha1Sum}, result ${imageList[i].id &#x3D;&#x3D;&#x3D; sha1Sum}&#x60;);
-                if (imageList[i].id &#x3D;&#x3D;&#x3D; sha1Sum) {
-                    console.log(&#x60;This file ${file.name} has already been uploaded.&#x60;);
-                    return true;
-                }
-            }
-            return false;
+  /**
+   * Return true if file already exists in the list; false otherwise.
+   */
+  static checkImageExists(file: CommonImage, imageList: Array&lt;CommonImage&gt;) {
+    if (!imageList || imageList.length &lt; 1) {
+      return false;
+    } else {
+      const sha1Sum &#x3D; sha1(file.fileContent);
+      for (let i &#x3D; imageList.length - 1; i &gt;&#x3D; 0; i--) {
+        // console.log(&#x60;compare  ${imageList[i].id} with ${sha1Sum}, result ${imageList[i].id &#x3D;&#x3D;&#x3D; sha1Sum}&#x60;);
+        if (imageList[i].id &#x3D;&#x3D;&#x3D; sha1Sum) {
+          console.log(&#x60;This file ${file.name} has already been uploaded.&#x60;);
+          return true;
         }
+      }
+      return false;
     }
+  }
 
-    /**
-     * A special method to force the rendering of this component.  This is a workaround
-     * because for some unknown reason, AngularJS2 change detector does not detect the
-     * change of the images Array.
-     */
-    forceRender() {
-        this.zone.run(() &#x3D;&gt; {
-        });
+  /**
+   * A special method to force the rendering of this component.  This is a workaround
+   * because for some unknown reason, AngularJS2 change detector does not detect the
+   * change of the images Array.
+   */
+  forceRender() {
+    this.zone.run(() &#x3D;&gt; {});
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (
+      changes[&#x27;images&#x27;] &amp;&amp;
+      changes[&#x27;images&#x27;].currentValue &amp;&amp;
+      changes[&#x27;images&#x27;].currentValue.length &#x3D;&#x3D;&#x3D; 0 &amp;&amp;
+      changes[&#x27;images&#x27;].previousValue &amp;&amp;
+      changes[&#x27;images&#x27;].previousValue.length &gt; 0
+    ) {
+      this.noIdImage &#x3D; true;
+    } else {
+      this.noIdImage &#x3D; false;
     }
+  }
 
-
-    ngOnChanges(changes: SimpleChanges): void {
-        if (changes[&#x27;images&#x27;] &amp;&amp; (
-            (changes[&#x27;images&#x27;].currentValue &amp;&amp; changes[&#x27;images&#x27;].currentValue.length &#x3D;&#x3D;&#x3D; 0)
-            &amp;&amp; changes[&#x27;images&#x27;].previousValue
-            &amp;&amp; changes[&#x27;images&#x27;].previousValue.length &gt; 0)
-        ) {
-            this.noIdImage &#x3D; true;
-        } else {
-            this.noIdImage &#x3D; false;
-        }
-    }
-
-    /*
+  /*
      System processing steps
 
      1. User clicks browse or drag-n-drops an file
@@ -306,653 +313,753 @@ export class FileUploaderComponent extends Base
 
      */
 
-    ngOnInit(): void {
-
-
-        const dragOverStream &#x3D;
-            fromEvent&lt;DragEvent&gt;(this.dropZone.nativeElement, &#x27;dragover&#x27;);
-
-        /**
-         * Must cancel the dragover event in order for the drop event to work.
-         */
-        dragOverStream.pipe(map(evt &#x3D;&gt; {
-            return event;
-        })).subscribe(evt &#x3D;&gt; {
-            // console.log(&#x27;Cancel dragover event.&#x27;);
-            evt.preventDefault();
-        });
-
-        const dropStream &#x3D; fromEvent&lt;DragEvent&gt;(this.dropZone.nativeElement, &#x27;drop&#x27;);
-        const filesArrayFromDrop &#x3D; dropStream.pipe(
-            map(
-                function (event) {
-                    event.preventDefault();
-                    return event.dataTransfer.files;
-                }
-            ));
-
-        const browseFileStream &#x3D; fromEvent&lt;Event&gt;(this.browseFileRef.nativeElement, &#x27;change&#x27;);
-        // const captureFileStream &#x3D; fromEvent&lt;Event&gt;(this.captureFileRef.nativeElement, &#x27;change&#x27;);
-
-        merge(merge(browseFileStream).pipe(
-            map(
-                (event) &#x3D;&gt; {
-                    event.preventDefault();
-                    return event.target[&#x27;files&#x27;];
-
-                }
-            )),
-            filesArrayFromDrop).pipe(
-                filter(files &#x3D;&gt; {
-                    // console.log(&#x27;files&#x27;);
-                    return !!files &amp;&amp; files.length &amp;&amp; files.length &gt; 0;
-                }),
-                flatMap(
-                    (fileList: FileList) &#x3D;&gt; {
-
-                        return this.observableFromFiles(fileList, new CommonImageScaleFactorsImpl(1, 1));
-                    }
-                ),
-                filter(
-                    (mspImage: CommonImage) &#x3D;&gt; {
-
-                        const imageExists &#x3D; FileUploaderComponent.checkImageExists(mspImage, this.images);
-                        if (imageExists) {
-                            this.handleError(CommonImageError.AlreadyExists, mspImage);
-                            this.resetInputFields();
-                        }
-                        return !imageExists;
-                    }
-                ),
-                // TODO - Is this necessary? Can likely be removed as it&#x27;s exactly identical to the preceding.
-                filter((mspImage: CommonImage) &#x3D;&gt; {
-
-                    const imageExists &#x3D; FileUploaderComponent.checkImageExists(mspImage, this.images);
-                        if (imageExists) {
-                            this.handleError(CommonImageError.AlreadyExists, mspImage);
-                            this.resetInputFields();
-                        }
-                        return !imageExists;
-                    }
-                ),
-                filter((mspImage: CommonImage) &#x3D;&gt; {
-
-                    const imageSizeOk &#x3D; this.checkImageDimensions(mspImage);
-                        if (!imageSizeOk) {
-                            this.handleError(CommonImageError.TooSmall, mspImage);
-                            this.resetInputFields();
-                        }
-                        return imageSizeOk;
-                    }
-                )
-            ).subscribe(
-            (file: CommonImage) &#x3D;&gt; {
-
-                this.handleImageFile(file);
-                this.resetInputFields();
-            },
-
-            (error) &#x3D;&gt; {
-                console.log(&#x27;Error in loading image: %o&#x27;, error);
-
-                /**
-                 * Handle the error if the image is gigantic that after
-                 * 100 times of scaling down by 30% on each step, the image
-                 * is still over 1 MB.
-                 */
-                if (error.errorCode) {
-                    if (CommonImageError.TooBig &#x3D;&#x3D;&#x3D; error.errorCode) {
-                        this.handleError(CommonImageError.TooBig, error.image);
-                    } else if (CommonImageError.CannotOpen &#x3D;&#x3D;&#x3D; error.errorCode) {
-                        if (!error.image) {
-                            error.image &#x3D; new CommonImage();
-                            if (error.rawImageFile) {
-                                error.image.name &#x3D; error.rawImageFile.name;
-                            }
-                        }
-                        this.handleError(CommonImageError.CannotOpen, error.image);
-                    } else if (CommonImageError.CannotOpenPDF &#x3D;&#x3D;&#x3D; error.errorCode) {
-                        this.handleError(CommonImageError.CannotOpenPDF, error.image, error.errorDescription);
-                    } else {
-                        throw error;
-                    }
-                }
-
-
-            },
-            () &#x3D;&gt; {
-                console.log(&#x27;completed loading image&#x27;);
-            }
-        );
-    }
-
-    test(var1) {
-        console.log(var1);
-    }
-
-    ngAfterContentInit() {
-
-        const imagePlaceholderEnterKeyStream &#x3D; merge(
-            fromEvent&lt;Event&gt;(this.imagePlaceholderRef.nativeElement, &#x27;keyup&#x27;),
-            fromEvent&lt;Event&gt;(this.selectFileLabelRef.nativeElement, &#x27;keyup&#x27;),
-            // fromEvent&lt;Event&gt;(this.uploadInstructionRef.nativeElement, &#x27;keyup&#x27;)
-        ).pipe(filter((evt: KeyboardEvent) &#x3D;&gt; evt.key &#x3D;&#x3D;&#x3D; &#x27;Enter&#x27;));
-
-        merge(
-            fromEvent&lt;Event&gt;(this.imagePlaceholderRef.nativeElement, &#x27;click&#x27;),
-            // fromEvent&lt;Event&gt;(this.uploadInstructionRef.nativeElement, &#x27;click&#x27;),
-            imagePlaceholderEnterKeyStream
-        ).pipe(
-            map((event) &#x3D;&gt; {
-                event.preventDefault();
-                return event;
-            })
-        ).subscribe( (event) &#x3D;&gt; { this.browseFileRef.nativeElement.click(); });
-    }
-
-
-    /** Opens the file upload dialog from the browser. */
-    openFileDialog() {
-        console.log(&#x27;opening file dialog&#x27;);
-        this.browseFileRef.nativeElement.click();
-    }
+  ngOnInit(): void {
+    const dragOverStream &#x3D; fromEvent&lt;DragEvent&gt;(
+      this.dropZone.nativeElement,
+      &#x27;dragover&#x27;
+    );
 
     /**
-     * Solve size in this equation: size * 0.8to-the-power-of30 &lt; 1MB, size
-     * will be the max image size this application can accept and scale down
-     * to under 1MB. In this case: size &lt; 807 MB
-     *
-     * 30 is the number of retries. the value for maxRetry passed to retryStrategy
-     * function.
-     *
-     * If: size * 0.8to-the-power-of40 &lt; 1MB, then size &lt; 1262 MB.
-     *
-     * Note: 0.8 is the self.appConstants.images.reductionScaleFactor defined in global.js
-     *
-     *
-     * @param file
-     * @param scaleFactors
+     * Must cancel the dragover event in order for the drop event to work.
      */
-    observableFromFiles(fileList: FileList, scaleFactors: CommonImageScaleFactors) {
-        /** Previously this was set in appConstants, but that&#x27;s removed from the common lib. */
-        const reductionScaleFactor &#x3D; 0.8;
+    dragOverStream
+      .pipe(
+        map((evt) &#x3D;&gt; {
+          return event;
+        })
+      )
+      .subscribe((evt) &#x3D;&gt; {
+        // console.log(&#x27;Cancel dragover event.&#x27;);
+        evt.preventDefault();
+      });
 
-        console.log(&#x27;obserablveFromFiles&#x27;);
+    const dropStream &#x3D; fromEvent&lt;DragEvent&gt;(
+      this.dropZone.nativeElement,
+      &#x27;drop&#x27;
+    );
+    const filesArrayFromDrop &#x3D; dropStream.pipe(
+      map(function (event) {
+        event.preventDefault();
+        return event.dataTransfer.files;
+      })
+    );
 
-        // Init
-        const self &#x3D; this;
-    //    let  pageNumber &#x3D; Math.max(...self.images.concat( self.application.getAllImages()).map(function(o) {return o.attachmentOrder; }), 0) + 1 ;
-       let pageNumber &#x3D; Math.max(...self.images.map(function(o) {return o.attachmentOrder; }), 0) + 1 ;
+    const browseFileStream &#x3D; fromEvent&lt;Event&gt;(
+      this.browseFileRef.nativeElement,
+      &#x27;change&#x27;
+    );
+    // const captureFileStream &#x3D; fromEvent&lt;Event&gt;(this.captureFileRef.nativeElement, &#x27;change&#x27;);
 
-        // Create our observer
-        const fileObservable &#x3D; Observable.create((observer: Observer&lt;CommonImage&gt;) &#x3D;&gt; {
-            const mspImages &#x3D; [];
-            scaleFactors &#x3D; scaleFactors.scaleDown(reductionScaleFactor);
-            for (let fileIndex &#x3D; 0; fileIndex &lt; fileList.length; fileIndex++) {
-                const file &#x3D; fileList[fileIndex];
-                console.log(&#x27;Start processing file &#x27; + fileIndex + &#x27; of &#x27; + fileList.length + &#x27; %s of size %s bytes %s type&#x27;, file.name, file.size, file.type);
+    merge(
+      merge(browseFileStream).pipe(
+        map((event) &#x3D;&gt; {
+          event.preventDefault();
+          return event.target[&#x27;files&#x27;];
+        })
+      ),
+      filesArrayFromDrop
+    )
+      .pipe(
+        filter((files) &#x3D;&gt; {
+          // console.log(&#x27;files&#x27;);
+          return !!files &amp;&amp; files.length &amp;&amp; files.length &gt; 0;
+        }),
+        flatMap((fileList: FileList) &#x3D;&gt; {
+          return this.observableFromFiles(
+            fileList,
+            new CommonImageScaleFactorsImpl(1, 1)
+          );
+        }),
+        filter((mspImage: CommonImage) &#x3D;&gt; {
+          const imageExists &#x3D; FileUploaderComponent.checkImageExists(
+            mspImage,
+            this.images
+          );
+          if (imageExists) {
+            this.handleError(CommonImageError.AlreadyExists, mspImage);
+            this.resetInputFields();
+          }
+          return !imageExists;
+        }),
+        // TODO - Is this necessary? Can likely be removed as it&#x27;s exactly identical to the preceding.
+        filter((mspImage: CommonImage) &#x3D;&gt; {
+          const imageExists &#x3D; FileUploaderComponent.checkImageExists(
+            mspImage,
+            this.images
+          );
+          if (imageExists) {
+            this.handleError(CommonImageError.AlreadyExists, mspImage);
+            this.resetInputFields();
+          }
+          return !imageExists;
+        }),
+        filter((mspImage: CommonImage) &#x3D;&gt; {
+          const imageSizeOk &#x3D; this.checkImageDimensions(mspImage);
+          if (!imageSizeOk) {
+            this.handleError(CommonImageError.TooSmall, mspImage);
+            this.resetInputFields();
+          }
+          return imageSizeOk;
+        })
+      )
+      .subscribe(
+        (file: CommonImage) &#x3D;&gt; {
+          this.handleImageFile(file);
+          this.resetInputFields();
+        },
 
+        (error) &#x3D;&gt; {
+          console.log(&#x27;Error in loading image: %o&#x27;, error);
 
-                /* Previously set in appConstants */
-                const pdfScaleFactor &#x3D; 2.0;
-
-                // let mspImage: MspImage &#x3D; new MspImage();
-                // let reader: FileReader &#x3D; new FileReader();
-
-                // // Copy file properties
-                // mspImage.name &#x3D; file.name;
-                if (file.type &#x3D;&#x3D;&#x3D; &#x27;application/pdf&#x27;) {
-                    // this.logService.log({name: file.name + &#x27; Received in Upload&#x27;,
-                    //     UUID: self.dataService.getMspUuid()}, &#x27;File_Upload&#x27;);
-
-                    /**
-                     *  Page number logic :
-                     *      Images - Assign current page number whichever is available..so get the current page number , pass it to call back [reserve it] and increment
-                     *      PDF    -  we dont know how many pages..so cant get current number and keep it since it can be multiple pages... so start assigning later point
-                     *      when PDF is totally read..
-                     *
-                     *  */
-
-                    this.readPDF(file, pdfScaleFactor, (images: HTMLImageElement[] , pdfFile: File) &#x3D;&gt; {
-
-
-                        // this.logService.log({name: file.name + &#x27;is successfully split into &#x27; + images.length + &#x27; images&#x27;,
-                            // UUID: self.dataService.getMspUuid()}, &#x27;File_Upload&#x27;);
-
-                        images.map((image, index) &#x3D;&gt; {
-                            image.name &#x3D; pdfFile.name;
-                            this.resizeImage( image, self, scaleFactors, observer, pageNumber , true); // index starts from zero
-                            pageNumber &#x3D; pageNumber + 1  ;
-                        });
-                    }, (error: string) &#x3D;&gt; {
-                        console.log(&#x27;error&#x27; + JSON.stringify(error));
-                        const imageReadError: CommonImageProcessingError &#x3D;
-                            new CommonImageProcessingError(CommonImageError.CannotOpenPDF, error);
-                        observer.error(imageReadError);
-                    });
-                } else {
-                    // Load image into img element to read natural height and width
-                    this.readImage(file, pageNumber , (image: HTMLImageElement , imageFile: File , nextPageNumber: number)  &#x3D;&gt; {
-                            image.id &#x3D; imageFile.name; // .name deprecated, changed image.name to image.id
-                            this.resizeImage(image, self, scaleFactors, observer , nextPageNumber );
-                        },
-
-                        // can be ignored for bug, the log line is never called
-                        (error: CommonImageProcessingError) &#x3D;&gt; {
-                            console.log(&#x27;error&#x27; + JSON.stringify(error));
-                            observer.error(error);
-                        });
-                    pageNumber &#x3D; pageNumber + 1  ;
+          /**
+           * Handle the error if the image is gigantic that after
+           * 100 times of scaling down by 30% on each step, the image
+           * is still over 1 MB.
+           */
+          if (error.errorCode) {
+            if (CommonImageError.TooBig &#x3D;&#x3D;&#x3D; error.errorCode) {
+              this.handleError(CommonImageError.TooBig, error.image);
+            } else if (CommonImageError.CannotOpen &#x3D;&#x3D;&#x3D; error.errorCode) {
+              if (!error.image) {
+                error.image &#x3D; new CommonImage();
+                if (error.rawImageFile) {
+                  error.image.name &#x3D; error.rawImageFile.name;
                 }
+              }
+              this.handleError(CommonImageError.CannotOpen, error.image);
+            } else if (CommonImageError.CannotOpenPDF &#x3D;&#x3D;&#x3D; error.errorCode) {
+              this.handleError(
+                CommonImageError.CannotOpenPDF,
+                error.image,
+                error.errorDescription
+              );
+            } else {
+              throw error;
             }
-
-            // retryWhen is potential issue!
-        }).pipe(retryWhen(this.retryStrategy(32)));
-        return fileObservable;
-    }
-
-
-    private resizeImage( image: HTMLImageElement, self: this, scaleFactors: CommonImageScaleFactors, observer: Observer&lt;CommonImage&gt;, pageNumber: number &#x3D; 0 , isPdf: boolean &#x3D; false) {
-// While it&#x27;s still in an image, get it&#x27;s height and width
-        const mspImage: CommonImage &#x3D; new CommonImage();
-        const reader: FileReader &#x3D; new FileReader();
-        console.log(&#x27;image.name:&#x27; + image.id); // .name deprecated, changed image.name to image.id
-        // Copy file properties
-        mspImage.name &#x3D; image.id ;
-        if (isPdf) {
-            mspImage.name &#x3D; image.name + &#x27;-page&#x27; + pageNumber;  // Just give name to pdf
+          }
+        },
+        () &#x3D;&gt; {
+          console.log(&#x27;completed loading image&#x27;);
         }
-        // Temporary so we don&#x27;t have duplicate file names. TODO: Improve.
-        //   mspImage.name +&#x3D; Math.ceil(Math.random()*100);
-        mspImage.attachmentOrder &#x3D; pageNumber ;
+      );
+  }
 
+  test(var1) {
+    console.log(var1);
+  }
 
-        mspImage.naturalWidth &#x3D; image.naturalWidth;
-        mspImage.naturalHeight &#x3D; image.naturalHeight;
+  ngAfterContentInit() {
+    const imagePlaceholderEnterKeyStream &#x3D; merge(
+      fromEvent&lt;Event&gt;(this.imagePlaceholderRef.nativeElement, &#x27;keyup&#x27;),
+      fromEvent&lt;Event&gt;(this.selectFileLabelRef.nativeElement, &#x27;keyup&#x27;)
+      // fromEvent&lt;Event&gt;(this.uploadInstructionRef.nativeElement, &#x27;keyup&#x27;)
+    ).pipe(filter((evt: KeyboardEvent) &#x3D;&gt; evt.key &#x3D;&#x3D;&#x3D; &#x27;Enter&#x27;));
 
-        console.log(&#x60;image file natural height and width:
+    merge(
+      fromEvent&lt;Event&gt;(this.imagePlaceholderRef.nativeElement, &#x27;click&#x27;),
+      // fromEvent&lt;Event&gt;(this.uploadInstructionRef.nativeElement, &#x27;click&#x27;),
+      imagePlaceholderEnterKeyStream
+    )
+      .pipe(
+        map((event) &#x3D;&gt; {
+          event.preventDefault();
+          return event;
+        })
+      )
+      .subscribe((event) &#x3D;&gt; {
+        this.browseFileRef.nativeElement.click();
+      });
+  }
+
+  /** Opens the file upload dialog from the browser. */
+  openFileDialog() {
+    console.log(&#x27;opening file dialog&#x27;);
+    this.browseFileRef.nativeElement.click();
+  }
+
+  /**
+   * Solve size in this equation: size * 0.8to-the-power-of30 &lt; 1MB, size
+   * will be the max image size this application can accept and scale down
+   * to under 1MB. In this case: size &lt; 807 MB
+   *
+   * 30 is the number of retries. the value for maxRetry passed to retryStrategy
+   * function.
+   *
+   * If: size * 0.8to-the-power-of40 &lt; 1MB, then size &lt; 1262 MB.
+   *
+   * Note: 0.8 is the self.appConstants.images.reductionScaleFactor defined in global.js
+   *
+   *
+   * @param file
+   * @param scaleFactors
+   */
+  observableFromFiles(
+    fileList: FileList,
+    scaleFactors: CommonImageScaleFactors
+  ) {
+    /** Previously this was set in appConstants, but that&#x27;s removed from the common lib. */
+    const reductionScaleFactor &#x3D; 0.8;
+
+    console.log(&#x27;obserablveFromFiles&#x27;);
+
+    // Init
+    const self &#x3D; this;
+    /* let  pageNumber &#x3D; Math.max(...self.images.concat( self.application.getAllImages()).map(function(o) {
+      return o.attachmentOrder;
+    }), 0) + 1 ;*/
+    let pageNumber &#x3D;
+      Math.max(
+        ...self.images.map(function (o) {
+          return o.attachmentOrder;
+        }),
+        0
+      ) + 1;
+
+    // Create our observer
+    const fileObservable &#x3D; new Observable((observer: Observer&lt;CommonImage&gt;) &#x3D;&gt; {
+      scaleFactors &#x3D; scaleFactors.scaleDown(reductionScaleFactor);
+      for (let fileIndex &#x3D; 0; fileIndex &lt; fileList.length; fileIndex++) {
+        const file &#x3D; fileList[fileIndex];
+        console.log(
+          &#x27;Start processing file &#x27; +
+            fileIndex +
+            &#x27; of &#x27; +
+            fileList.length +
+            &#x27; %s of size %s bytes %s type&#x27;,
+          file.name,
+          file.size,
+          file.type
+        );
+
+        /* Previously set in appConstants */
+        const pdfScaleFactor &#x3D; 2.0;
+
+        // let mspImage: MspImage &#x3D; new MspImage();
+        // let reader: FileReader &#x3D; new FileReader();
+
+        // // Copy file properties
+        // mspImage.name &#x3D; file.name;
+        if (file.type &#x3D;&#x3D;&#x3D; &#x27;application/pdf&#x27;) {
+          // this.logService.log({name: file.name + &#x27; Received in Upload&#x27;,
+          //     UUID: self.dataService.getMspUuid()}, &#x27;File_Upload&#x27;);
+
+          /**
+           *  Page number logic :
+           *      Images - Assign current page number whichever is available..so get the current page number,
+           *      pass it to call back [reserve it] and increment
+           *      PDF    -  we dont know how many pages..so cant get current number and keep it since it can
+           *      be multiple pages... so start assigning later point
+           *      when PDF is totally read..
+           *
+           *  */
+
+          this.readPDF(
+            file,
+            pdfScaleFactor,
+            (images: HTMLImageElement[], pdfFile: File) &#x3D;&gt; {
+              // this.logService.log({name: file.name + &#x27;is successfully split into &#x27; + images.length + &#x27; images&#x27;,
+              // UUID: self.dataService.getMspUuid()}, &#x27;File_Upload&#x27;);
+
+              images.forEach((image, index) &#x3D;&gt; {
+                image.name &#x3D; pdfFile.name;
+                this.resizeImage(
+                  image,
+                  self,
+                  scaleFactors,
+                  observer,
+                  pageNumber,
+                  true
+                ); // index starts from zero
+                pageNumber &#x3D; pageNumber + 1;
+              });
+            },
+            (error: string) &#x3D;&gt; {
+              console.log(&#x27;error&#x27; + JSON.stringify(error));
+              const imageReadError: CommonImageProcessingError &#x3D; new CommonImageProcessingError(
+                CommonImageError.CannotOpenPDF,
+                error
+              );
+              observer.error(imageReadError);
+            }
+          );
+        } else {
+          // Load image into img element to read natural height and width
+          this.readImage(
+            file,
+            pageNumber,
+            (
+              image: HTMLImageElement,
+              imageFile: File,
+              nextPageNumber: number
+            ) &#x3D;&gt; {
+              image.id &#x3D; imageFile.name; // .name deprecated, changed image.name to image.id
+              this.resizeImage(
+                image,
+                self,
+                scaleFactors,
+                observer,
+                nextPageNumber
+              );
+            },
+
+            // can be ignored for bug, the log line is never called
+            (error: CommonImageProcessingError) &#x3D;&gt; {
+              console.log(&#x27;error&#x27; + JSON.stringify(error));
+              observer.error(error);
+            }
+          );
+          pageNumber &#x3D; pageNumber + 1;
+        }
+      }
+
+      // retryWhen is potential issue!
+    }).pipe(retryWhen(this.retryStrategy(32)));
+    return fileObservable;
+  }
+
+  private resizeImage(
+    image: HTMLImageElement,
+    self: this,
+    scaleFactors: CommonImageScaleFactors,
+    observer: Observer&lt;CommonImage&gt;,
+    pageNumber: number &#x3D; 0,
+    isPdf: boolean &#x3D; false
+  ) {
+    // While it&#x27;s still in an image, get it&#x27;s height and width
+    const mspImage: CommonImage &#x3D; new CommonImage();
+    const reader: FileReader &#x3D; new FileReader();
+    console.log(&#x27;image.name:&#x27; + image.id); // .name deprecated, changed image.name to image.id
+    // Copy file properties
+    mspImage.name &#x3D; image.id;
+    if (isPdf) {
+      mspImage.name &#x3D; image.name + &#x27;-page&#x27; + pageNumber; // Just give name to pdf
+    }
+    // Temporary so we don&#x27;t have duplicate file names. TODO: Improve.
+    //   mspImage.name +&#x3D; Math.ceil(Math.random()*100);
+    mspImage.attachmentOrder &#x3D; pageNumber;
+
+    mspImage.naturalWidth &#x3D; image.naturalWidth;
+    mspImage.naturalHeight &#x3D; image.naturalHeight;
+
+    console.log(&#x60;image file natural height and width:
             ${mspImage.naturalHeight} x ${mspImage.naturalWidth}&#x60;);
 
-        // Canvas will force the change to a JPEG
-        mspImage.contentType &#x3D; &#x27;image/jpeg&#x27;; // previously in appConstants
+    // Canvas will force the change to a JPEG
+    mspImage.contentType &#x3D; &#x27;image/jpeg&#x27;; // previously in appConstants
 
-        // Scale the image by loading into a canvas
+    // Scale the image by loading into a canvas
 
-        console.log(&#x27;Start scaling down the image using blueimp-load-image lib: &#x27;);
-        const scaledImage &#x3D; loadImage(
-            image.src, // NOTE: we pass the File ref here again even though its already read because we need the XIFF metadata
-            function (canvas: HTMLCanvasElement, metadata: any) {
+    console.log(&#x27;Start scaling down the image using blueimp-load-image lib: &#x27;);
+    loadImage(
+      image.src, // NOTE: we pass the File ref here again even though its already read because we need the XIFF metadata
+      function (canvas: HTMLCanvasElement, metadata: any) {
+        // Canvas may be an Event when errors happens
+        if (canvas instanceof Event) {
+          self.handleError(CommonImageError.WrongType, mspImage);
+          self.resetInputFields();
+          return;
+        }
+        // Convert to blob to get size
+        canvas.toBlob(
+          (blob: Blob) &#x3D;&gt; {
+            // Copy the blob properties
+            mspImage.size &#x3D; blob.size;
 
-                // Canvas may be an Event when errors happens
-                if (canvas instanceof Event) {
-                    self.handleError(CommonImageError.WrongType, mspImage);
-                    self.resetInputFields();
-                    return;
-                }
-                // Convert to blob to get size
-                canvas.toBlob((blob: Blob) &#x3D;&gt; {
-                        // Copy the blob properties
-                        mspImage.size &#x3D; blob.size;
+            // log image info (but only for the first time before any scaling)
+            // if (s
 
-                        // log image info (but only for the first time before any scaling)
-                        // if (s
-
-                        const fileName &#x3D; mspImage.name;
-                        const nBytes &#x3D; mspImage.size;
-                        let fileSize &#x3D; &#x27;&#x27;;
-                        let fileSizeUnit &#x3D; &#x27;&#x27;;
-                        let sOutput: string &#x3D; nBytes + &#x27; bytes&#x27;;
-                        // optional code for multiples approximation
-                        for (let aMultiples &#x3D; [&#x27;KiB&#x27;, &#x27;MiB&#x27;, &#x27;GiB&#x27;, &#x27;TiB&#x27;, &#x27;PiB&#x27;, &#x27;EiB&#x27;, &#x27;ZiB&#x27;, &#x27;YiB&#x27;],
-                                 nMultiple &#x3D; 0, nApprox &#x3D; nBytes / 1024; nApprox &gt; 1; nApprox /&#x3D; 1024, nMultiple++) {
-
-                            sOutput &#x3D; nApprox.toFixed(3) + &#x27; &#x27; + aMultiples[nMultiple] + &#x27; (&#x27; + nBytes + &#x27; bytes)&#x27;;
-                            fileSize &#x3D; nApprox.toFixed(0);
-                            fileSizeUnit &#x3D; aMultiples[nMultiple];
-                            mspImage.sizeUnit &#x3D; fileSizeUnit;
-                        }
-
-                        console.log(&#x60;File ${fileName} is scaled down to: ${sOutput}&#x60;);
-                        mspImage.sizeTxt &#x3D; sOutput;
-
-                        // call reader with new transformed image
-                        reader.onload &#x3D; function (evt: any) {
-
-                            mspImage.fileContent &#x3D; evt.target.result;
-                            mspImage.id &#x3D; sha1(mspImage.fileContent);
-
-                            // keep scaling down the image until the image size is
-                            // under max image size
-
-                            /** previously in appConstants */
-                            const maxSizeBytes &#x3D; 1048576;
-                            if (mspImage.size &gt; maxSizeBytes) {
-
-                                console.log(&#x27;File size after scaling down: %d, max file size allowed: %d&#x27;,
-                                    mspImage.size, maxSizeBytes);
-
-                                const imageTooBigError: CommonImageProcessingError &#x3D;
-                                    new CommonImageProcessingError(CommonImageError.TooBig);
-
-                                imageTooBigError.maxSizeAllowed &#x3D; maxSizeBytes;
-                                imageTooBigError.commonImage &#x3D; mspImage;
-
-                                observer.error(imageTooBigError);
-                            } else {
-                                // log image info
-                                //   self.logImageInfo(&quot;msp_file-uploader_after_resize_attributes&quot;, self.dataService.getMspUuid(), mspImage);
-                                observer.next(mspImage);
-                            }
-                        };
-                        reader.readAsDataURL(blob);
-                    },
-
-                    // What mime type to make the blob as and jpeg quality
-                    &#x27;image/jpeg&#x27;, 0.5);
-            },
-            {
-                maxWidth: 2600 * scaleFactors.widthFactor,
-                maxHeight: 3300 * scaleFactors.heightFactor,
-                contain: true,
-                canvas: true,
-                meta: true,
-                orientation: true
+            const fileName &#x3D; mspImage.name;
+            const nBytes &#x3D; mspImage.size;
+            let fileSizeUnit &#x3D; &#x27;&#x27;;
+            let sOutput: string &#x3D; nBytes + &#x27; bytes&#x27;;
+            // optional code for multiples approximation
+            for (
+              let aMultiples &#x3D; [
+                  &#x27;KiB&#x27;,
+                  &#x27;MiB&#x27;,
+                  &#x27;GiB&#x27;,
+                  &#x27;TiB&#x27;,
+                  &#x27;PiB&#x27;,
+                  &#x27;EiB&#x27;,
+                  &#x27;ZiB&#x27;,
+                  &#x27;YiB&#x27;,
+                ],
+                nMultiple &#x3D; 0,
+                nApprox &#x3D; nBytes / 1024;
+              nApprox &gt; 1;
+              nApprox /&#x3D; 1024, nMultiple++
+            ) {
+              sOutput &#x3D;
+                nApprox.toFixed(3) +
+                &#x27; &#x27; +
+                aMultiples[nMultiple] +
+                &#x27; (&#x27; +
+                nBytes +
+                &#x27; bytes)&#x27;;
+              fileSizeUnit &#x3D; aMultiples[nMultiple];
+              mspImage.sizeUnit &#x3D; fileSizeUnit;
             }
-        );
-    }
 
-    /**
-     * Max retry scaling down for maxRetry times.
-     */
-    retryStrategy(maxRetry: number) {
-        return function (errors: Observable&lt;CommonImageProcessingError&gt;) {
+            console.log(&#x60;File ${fileName} is scaled down to: ${sOutput}&#x60;);
+            mspImage.sizeTxt &#x3D; sOutput;
 
-            /**Done: COMPLETE THIS! For some reason can&#x27;t get scan() to work, types always malformed.*/
+            // call reader with new transformed image
+            reader.onload &#x3D; function (evt: any) {
+              mspImage.fileContent &#x3D; evt.target.result;
+              mspImage.id &#x3D; sha1(mspImage.fileContent);
 
-            // return errors.pipe(
-            //     // scan((acc, curr) &#x3D;&gt; {acc + curr}, 0)
-            //     scan((acc, error, index) &#x3D;&gt; {
-            //         return acc + error;
-            //     }, 0)
-            // );
+              // keep scaling down the image until the image size is
+              // under max image size
 
-            // Done: Unsure if we have to re-implement this line. It causes errors, but simply removing it may not be appropriate.
-            // NOTE: RxJS-compat might be saving us here and &quot;fixing&quot; the errors. See if errors return when we remove rxjs-compat.
-            // return errors.pipe(scan((acc, curr) &#x3D;&gt; acc + curr, 0))
+              /** previously in appConstants */
+              const maxSizeBytes &#x3D; 1048576;
+              if (mspImage.size &gt; maxSizeBytes) {
+                console.log(
+                  &#x27;File size after scaling down: %d, max file size allowed: %d&#x27;,
+                  mspImage.size,
+                  maxSizeBytes
+                );
 
+                const imageTooBigError: CommonImageProcessingError &#x3D; new CommonImageProcessingError(
+                  CommonImageError.TooBig
+                );
 
-            return errors.pipe(scan(
-                // return errors.pipe(
-                (acc, error: any, index) &#x3D;&gt; {
-                    // console.log(&#x27;Error encountered: %o&#x27;, error);;
+                imageTooBigError.maxSizeAllowed &#x3D; maxSizeBytes;
+                imageTooBigError.commonImage &#x3D; mspImage;
 
-                    /**
-                     * If the error is about file too big and we have not reach max retry
-                     * yet, theyt keep going to scaling down.
-                     */
-                    if (acc &lt; maxRetry &amp;&amp; error.errorCode &#x3D;&#x3D;&#x3D; CommonImageError.TooBig) {
-                        // console.log(&#x27;Progressively scaling down the image, step %d.&#x27;, index);
-                        return acc + 1;
-                    } else {
-                        /**
-                         * For either conditions terminate the retry, propogate
-                         * the error.
-                         *
-                         * 1. errors such as CannotRead or any other unknown errors
-                         * not listed in MspImageError enum
-                         * 2. Exceeded maxRetry
-                         *
-                         */
-                        console.log(&#x27;Re-throw this image process error: %o&#x27;, error);
-                        throw error;
-                    }
-                }, 0
-            ), delay(2));
-        };
-    }
-
-    private readImage(imageFile: File, nextPageNumber: number ,
-                      callback: (image: HTMLImageElement, imageFile: File , nextPageNumber: number) &#x3D;&gt; void,
-                      invalidImageHanlder: (error: CommonImageProcessingError) &#x3D;&gt; void) {
-        const reader &#x3D; new FileReader();
-
-        reader.onload &#x3D; function (progressEvt: ProgressEvent) {
-
-            console.log(&#x27;loading image into an img tag: %o&#x27;, progressEvt);
-            // Load into an image element
-            const imgEl: HTMLImageElement &#x3D; document.createElement(&#x27;img&#x27;);
-            imgEl.src &#x3D; (reader.result as string);
-
-            // Wait for onload so all properties are populated
-            imgEl.onload &#x3D; (args) &#x3D;&gt; {
-                console.log(&#x27;Completed image loading into an img tag: %o&#x27;, args);
-                return callback(imgEl, imageFile, nextPageNumber);
+                observer.error(imageTooBigError);
+              } else {
+                // log image info
+                //   self.logImageInfo(&quot;msp_file-uploader_after_resize_attributes&quot;, self.dataService.getMspUuid(), mspImage);
+                observer.next(mspImage);
+              }
             };
+            reader.readAsDataURL(blob);
+          },
 
-            imgEl.onerror &#x3D;
-                (args) &#x3D;&gt; {
+          // What mime type to make the blob as and jpeg quality
+          &#x27;image/jpeg&#x27;,
+          0.5
+        );
+      },
+      {
+        maxWidth: 2600 * scaleFactors.widthFactor,
+        maxHeight: 3300 * scaleFactors.heightFactor,
+        contain: true,
+        canvas: true,
+        meta: true,
+        orientation: true,
+      }
+    );
+  }
 
-                    // log it to the console
-                    console.log(&#x27;This image cannot be opened/read, it is probably an invalid image. %o&#x27;, args);
+  /**
+   * Max retry scaling down for maxRetry times.
+   */
+  retryStrategy(maxRetry: number) {
+    return function (errors: Observable&lt;CommonImageProcessingError&gt;) {
+      /**Done: COMPLETE THIS! For some reason can&#x27;t get scan() to work, types always malformed.*/
 
-                    // throw new Error(&#x27;This image cannot be opened/read&#x27;);
-                    const imageReadError: CommonImageProcessingError &#x3D;
-                        new CommonImageProcessingError(CommonImageError.CannotOpen);
+      // return errors.pipe(
+      //     // scan((acc, curr) &#x3D;&gt; {acc + curr}, 0)
+      //     scan((acc, error, index) &#x3D;&gt; {
+      //         return acc + error;
+      //     }, 0)
+      // );
 
-                    imageReadError.rawImageFile &#x3D; imageFile;
+      // Done: Unsure if we have to re-implement this line. It causes errors, but simply removing it may not be appropriate.
+      // NOTE: RxJS-compat might be saving us here and &quot;fixing&quot; the errors. See if errors return when we remove rxjs-compat.
+      // return errors.pipe(scan((acc, curr) &#x3D;&gt; acc + curr, 0))
 
-                    return invalidImageHanlder(imageReadError);
+      return errors.pipe(
+        scan(
+          // return errors.pipe(
+          (acc, error: any, index) &#x3D;&gt; {
+            // console.log(&#x27;Error encountered: %o&#x27;, error);;
+
+            /**
+             * If the error is about file too big and we have not reach max retry
+             * yet, theyt keep going to scaling down.
+             */
+            if (acc &lt; maxRetry &amp;&amp; error.errorCode &#x3D;&#x3D;&#x3D; CommonImageError.TooBig) {
+              // console.log(&#x27;Progressively scaling down the image, step %d.&#x27;, index);
+              return acc + 1;
+            } else {
+              /**
+               * For either conditions terminate the retry, propogate
+               * the error.
+               *
+               * 1. errors such as CannotRead or any other unknown errors
+               * not listed in MspImageError enum
+               * 2. Exceeded maxRetry
+               *
+               */
+              console.log(&#x27;Re-throw this image process error: %o&#x27;, error);
+              throw error;
+            }
+          },
+          0
+        ),
+        delay(2)
+      );
+    };
+  }
+
+  private readImage(
+    imageFile: File,
+    nextPageNumber: number,
+    callback: (
+      image: HTMLImageElement,
+      imageFile: File,
+      nextPageNumber: number
+    ) &#x3D;&gt; void,
+    invalidImageHanlder: (error: CommonImageProcessingError) &#x3D;&gt; void
+  ) {
+    const reader &#x3D; new FileReader();
+
+    reader.onload &#x3D; function (progressEvt: ProgressEvent) {
+      console.log(&#x27;loading image into an img tag: %o&#x27;, progressEvt);
+      // Load into an image element
+      const imgEl: HTMLImageElement &#x3D; document.createElement(&#x27;img&#x27;);
+      imgEl.src &#x3D; reader.result as string;
+
+      // Wait for onload so all properties are populated
+      imgEl.onload &#x3D; (args) &#x3D;&gt; {
+        console.log(&#x27;Completed image loading into an img tag: %o&#x27;, args);
+        return callback(imgEl, imageFile, nextPageNumber);
+      };
+
+      imgEl.onerror &#x3D; (args) &#x3D;&gt; {
+        // log it to the console
+        console.log(
+          &#x27;This image cannot be opened/read, it is probably an invalid image. %o&#x27;,
+          args
+        );
+
+        // throw new Error(&#x27;This image cannot be opened/read&#x27;);
+        const imageReadError: CommonImageProcessingError &#x3D; new CommonImageProcessingError(
+          CommonImageError.CannotOpen
+        );
+
+        imageReadError.rawImageFile &#x3D; imageFile;
+
+        return invalidImageHanlder(imageReadError);
+      };
+    };
+
+    reader.readAsDataURL(imageFile);
+  }
+
+  private readPDF(
+    pdfFile: File,
+    pdfScaleFactor: number,
+    callback: (image: HTMLImageElement[], pdfFile: File) &#x3D;&gt; void,
+    error: (errorReason: any) &#x3D;&gt; void
+  ) {
+    PDFJS.disableWorker &#x3D; true;
+    PDFJS.disableStream &#x3D; true;
+
+    const reader &#x3D; new FileReader();
+    let currentPage &#x3D; 1;
+    const canvas &#x3D; document.createElement(&#x27;canvas&#x27;);
+    const imgElsArray: HTMLImageElement[] &#x3D; [];
+    const ctx &#x3D; canvas.getContext(&#x27;2d&#x27;);
+    reader.onload &#x3D; function (progressEvt: ProgressEvent) {
+      const docInitParams &#x3D; { data: reader.result };
+      // TODO - The &#x27;as any&#x27; was added when porting to common library from MSP
+      PDFJS.getDocument(docInitParams as any).then(
+        (pdfdoc) &#x3D;&gt; {
+          const numPages &#x3D; pdfdoc.numPages;
+          if (currentPage &lt;&#x3D; pdfdoc.numPages) {
+            getPage();
+          }
+
+          function getPage() {
+            pdfdoc.getPage(currentPage).then(
+              function (page) {
+                const viewport &#x3D; page.getViewport(pdfScaleFactor);
+
+                canvas.height &#x3D; viewport.height;
+                canvas.width &#x3D; viewport.width;
+
+                const renderContext &#x3D; {
+                  canvasContext: ctx,
+                  viewport: viewport,
                 };
-        };
 
-        reader.readAsDataURL(imageFile);
-    }
-
-    private readPDF(pdfFile: File, pdfScaleFactor: number,
-                    callback: (image: HTMLImageElement[], pdfFile: File) &#x3D;&gt; void, error: (errorReason: any) &#x3D;&gt; void) {
-
-        PDFJS.disableWorker &#x3D; true;
-        PDFJS.disableStream &#x3D; true;
-
-        const reader &#x3D; new FileReader();
-        let currentPage &#x3D; 1;
-        const canvas &#x3D; document.createElement(&#x27;canvas&#x27;);
-        const imgElsArray: HTMLImageElement[] &#x3D; [];
-        const ctx &#x3D; canvas.getContext(&#x27;2d&#x27;);
-        reader.onload &#x3D; function (progressEvt: ProgressEvent) {
-
-            const docInitParams &#x3D; {data: reader.result};
-            // TODO - The &#x27;as any&#x27; was added when porting to common library from MSP
-            PDFJS.getDocument((docInitParams as any)).then((pdfdoc) &#x3D;&gt; {
-                const numPages &#x3D; pdfdoc.numPages;
-                if (currentPage &lt;&#x3D; pdfdoc.numPages) { getPage(); }
-
-                function getPage() {
-                    pdfdoc.getPage(currentPage).then(function (page) {
-                        const viewport &#x3D; page.getViewport(pdfScaleFactor);
-
-                        canvas.height &#x3D; viewport.height;
-                        canvas.width &#x3D; viewport.width;
-
-                        const renderContext &#x3D; {
-                            canvasContext: ctx,
-                            viewport: viewport
-                        };
-
-                        page.render(renderContext).then(function () {
-                            const imgEl: HTMLImageElement &#x3D; document.createElement(&#x27;img&#x27;);
-                            imgEl.src &#x3D; canvas.toDataURL();
-                            imgElsArray.push(imgEl);
-                            if (currentPage &lt; numPages) {
-                                currentPage++;
-                                getPage();
-                            } else {
-                                callback(imgElsArray, pdfFile);
-                            }
-
-                        });
-                    }, function (errorReason: string) {
-                        error(errorReason);
-
-                    });
-                }
-            }, function (errorReason: string) {
+                page.render(renderContext).then(function () {
+                  const imgEl: HTMLImageElement &#x3D; document.createElement(&#x27;img&#x27;);
+                  imgEl.src &#x3D; canvas.toDataURL();
+                  imgElsArray.push(imgEl);
+                  if (currentPage &lt; numPages) {
+                    currentPage++;
+                    getPage();
+                  } else {
+                    callback(imgElsArray, pdfFile);
+                  }
+                });
+              },
+              function (errorReason: string) {
                 error(errorReason);
-            });
-
-        };
-        reader.readAsArrayBuffer(pdfFile);
-
-    }
-
-
-    /**
-     * Non reversible image filter to take an existing canvas and make it gray scale
-     * @param canvas
-     */
-    makeGrayScale(canvas: HTMLCanvasElement): void {
-        const context &#x3D; canvas.getContext(&#x27;2d&#x27;);
-
-        const imageData &#x3D; context.getImageData(0, 0, canvas.width, canvas.height);
-        const data &#x3D; imageData.data;
-
-        for (let i &#x3D; 0; i &lt; data.length; i +&#x3D; 4) {
-            const brightness &#x3D; 0.34 * data[i] + 0.5 * data[i + 1] + 0.16 * data[i + 2];
-            // red
-            data[i] &#x3D; brightness;
-            // green
-            data[i + 1] &#x3D; brightness;
-            // blue
-            data[i + 2] &#x3D; brightness;
+              }
+            );
+          }
+        },
+        function (errorReason: string) {
+          error(errorReason);
         }
+      );
+    };
+    reader.readAsArrayBuffer(pdfFile);
+  }
 
-        // overwrite original image
-        context.putImageData(imageData, 0, 0);
+  /**
+   * Non reversible image filter to take an existing canvas and make it gray scale
+   * @param canvas
+   */
+  makeGrayScale(canvas: HTMLCanvasElement): void {
+    const context &#x3D; canvas.getContext(&#x27;2d&#x27;);
+
+    const imageData &#x3D; context.getImageData(0, 0, canvas.width, canvas.height);
+    const data &#x3D; imageData.data;
+
+    for (let i &#x3D; 0; i &lt; data.length; i +&#x3D; 4) {
+      const brightness &#x3D;
+        0.34 * data[i] + 0.5 * data[i + 1] + 0.16 * data[i + 2];
+      // red
+      data[i] &#x3D; brightness;
+      // green
+      data[i + 1] &#x3D; brightness;
+      // blue
+      data[i + 2] &#x3D; brightness;
     }
 
+    // overwrite original image
+    context.putImageData(imageData, 0, 0);
+  }
 
-    handleImageFile(mspImage: CommonImage) {
-        console.log(&#x27;image size (bytes) after compression: &#x27; + mspImage.size);
-        if (this.images.length &gt;&#x3D; 50) {
+  handleImageFile(mspImage: CommonImage) {
+    console.log(&#x27;image size (bytes) after compression: &#x27; + mspImage.size);
+    if (this.images.length &gt;&#x3D; 50) {
+      // log it
+      // this.logImageInfo(&#x27;msp_file-uploader_error&#x27;, this.dataService.getMspUuid(),
+      //     mspImage, &#x60;Number of image files exceeds max of ${50}&#x60;);
 
-            // log it
-            // this.logImageInfo(&#x27;msp_file-uploader_error&#x27;, this.dataService.getMspUuid(),
-            //     mspImage, &#x60;Number of image files exceeds max of ${50}&#x60;);
-
-            // log to console
-            console.log(&#x60;Max number of image file you can upload is ${50}.
+      // log to console
+      console.log(&#x60;Max number of image file you can upload is ${50}.
       This file ${mspImage.name} was not uploaded.&#x60;);
-        } else {
-            this.images.push(mspImage);
-            this.imagesChange.emit(this.images);
-            this.showError &#x3D; false;
-            this.noIdImage &#x3D; false;
-        }
+    } else {
+      this.images.push(mspImage);
+      this.imagesChange.emit(this.images);
+      this.showError &#x3D; false;
+      this.noIdImage &#x3D; false;
+    }
+  }
+
+  handleError(
+    error: CommonImageError,
+    mspImage: CommonImage,
+    errorDescription?: string
+  ) {
+    if (!mspImage) {
+      mspImage &#x3D; new CommonImage();
+    }
+    // just add the error to mspImage
+    mspImage.error &#x3D; error;
+
+    // log the error
+    if (error !&#x3D;&#x3D; CommonImageError.PDFnotSupported) {
+      // this.logImageInfo(&#x27;msp_file-uploader_error&#x27;, this.dataService.getMspUuid(), mspImage,
+      //     &#x27;  mspImageFile: &#x27; + mspImage.name + &#x27;  mspErrorNum: &#x27; + error + &#x27;  mspError: &#x27; +
+      //     error + &#x27;-&#x27; + errorDescription);
     }
 
-    handleError(error: CommonImageError, mspImage: CommonImage, errorDescription?: string) {
+    // console.log(&quot;error with image: &quot;, mspImage);
+    this.errorDocument.emit(mspImage);
+  }
 
-        if (!mspImage) {
-            mspImage &#x3D; new CommonImage();
-        }
-        // just add the error to mspImage
-        mspImage.error &#x3D; error;
+  /**
+   * Reset input fields so that user can delete a file and
+   * immediately upload that file again.
+   */
+  resetInputFields() {
+    // let brosweFileInputElement &#x3D; this.browseFileRef.nativeElement;
+    // let captureFileInputElement &#x3D; this.captureFileRef.nativeElement;
+    this.browseFileRef.nativeElement.value &#x3D; &#x27;&#x27;;
+    // this.captureFileRef.nativeElement.value &#x3D; &#x27;&#x27;;
+  }
 
-        // log the error
-        if (error !&#x3D;&#x3D; CommonImageError.PDFnotSupported) {
-            // this.logImageInfo(&#x27;msp_file-uploader_error&#x27;, this.dataService.getMspUuid(), mspImage,
-            //     &#x27;  mspImageFile: &#x27; + mspImage.name + &#x27;  mspErrorNum: &#x27; + error + &#x27;  mspError: &#x27; +
-            //     error + &#x27;-&#x27; + errorDescription);
-        }
+  deleteImage(mspImage: CommonImage) {
+    this.resetInputFields();
+    this.images &#x3D; this.images.filter((x) &#x3D;&gt; x.uuid !&#x3D;&#x3D; mspImage.uuid);
+    this.imagesChange.emit(this.images);
 
-        // console.log(&quot;error with image: &quot;, mspImage);
-        this.errorDocument.emit(mspImage);
+    // If there are no images yet, we have to reset the input so it triggers &#x27;required&#x27;.
+    if (this.required &amp;&amp; this.images.length &lt;&#x3D; 0) {
+      console.log(&#x27;No images, resetting input&#x27;);
+      // this.fileControl.value &#x3D; &#x27;&#x27;;
+      this.fileControl.setErrors({ required: true });
     }
+  }
 
-    /**
-     * Reset input fields so that user can delete a file and
-     * immediately upload that file again.
-     */
-    resetInputFields() {
-        // let brosweFileInputElement &#x3D; this.browseFileRef.nativeElement;
-        // let captureFileInputElement &#x3D; this.captureFileRef.nativeElement;
-        this.browseFileRef.nativeElement.value &#x3D; &#x27;&#x27;;
-        // this.captureFileRef.nativeElement.value &#x3D; &#x27;&#x27;;
+  /**
+   * Log image attributes
+   * @param mspImage
+   */
+  private logImageInfo(
+    title: string,
+    applicationId: string,
+    mspImage: CommonImage,
+    additionalInfo?: string
+  ) {
+    // TODO!
+    // // create log entry
+    // const log: LogEntry &#x3D; new LogEntry();
+    // log.applicationId &#x3D; applicationId;
+    // const now &#x3D; moment();
+    // log.mspTimestamp &#x3D; now.toISOString();
+    // log.applicationPhase &#x3D; title + &#x27;:  mspImageId: &#x27; + mspImage.id
+    //     + &#x27;  mspImageUuid: &#x27; + mspImage.uuid
+    //     + &#x27;  mspImageSize: &#x27; + mspImage.size
+    //     + &#x27;  mspImageWidth: &#x27; + mspImage.naturalWidth
+    //     + &#x27;  mspImageHeight: &#x27; + mspImage.naturalHeight
+    //     + &#x27;  mspImageContentType: &#x27; + mspImage.contentType
+    //     + (additionalInfo ? &#x27;  &#x27; + additionalInfo : &#x27;&#x27;);
+    // // send it while subscribing to response
+    // this.logService.logIt(log, title).subscribe(
+    //     (response) &#x3D;&gt; {
+    //         // console.log(&#x27;log rest service response: &#x27;);
+    //         // console.log(response);
+    //     },
+    //     (error) &#x3D;&gt; {
+    //         console.log(&#x27;HTTP error response from logging service: &#x27;);
+    //         console.log(error);
+    //     },
+    //     () &#x3D;&gt; {
+    //         // console.log(&#x27;log rest service completed!&#x27;);
+    //     }
+    // );
+  }
+
+  /**
+   * Return true if the image size is within range
+   * @param file
+   */
+  checkImageDimensions(file: CommonImage): boolean {
+    if (file.naturalHeight &lt; 0 || file.naturalWidth &lt; 0) {
+      return false;
     }
+    return true;
+  }
 
-    deleteImage(mspImage: CommonImage) {
-        this.resetInputFields();
-        this.images &#x3D; this.images.filter(x &#x3D;&gt; x.uuid !&#x3D;&#x3D; mspImage.uuid);
-        this.imagesChange.emit(this.images);
-
-        // If there are no images yet, we have to reset the input so it triggers &#x27;required&#x27;.
-        if ( this.required &amp;&amp; this.images.length &lt;&#x3D; 0 ) {
-            console.log(&#x27;No images, resetting input&#x27;);
-            // this.fileControl.value &#x3D; &#x27;&#x27;;
-            this.fileControl.setErrors({&#x27;required&#x27;: true});
-        }
+  isValid(): boolean {
+    console.log(&#x27;isValid&#x27;, this.images);
+    if (this.required) {
+      return this.images &amp;&amp; this.images.length &gt; 0;
     }
-
-    /**
-     * Log image attributes
-     * @param mspImage
-     */
-    private logImageInfo(title: string, applicationId: string, mspImage: CommonImage, additionalInfo?: string) {
-
-        // TODO!
-        // // create log entry
-        // const log: LogEntry &#x3D; new LogEntry();
-        // log.applicationId &#x3D; applicationId;
-        // const now &#x3D; moment();
-        // log.mspTimestamp &#x3D; now.toISOString();
-        // log.applicationPhase &#x3D; title + &#x27;:  mspImageId: &#x27; + mspImage.id
-        //     + &#x27;  mspImageUuid: &#x27; + mspImage.uuid
-        //     + &#x27;  mspImageSize: &#x27; + mspImage.size
-        //     + &#x27;  mspImageWidth: &#x27; + mspImage.naturalWidth
-        //     + &#x27;  mspImageHeight: &#x27; + mspImage.naturalHeight
-        //     + &#x27;  mspImageContentType: &#x27; + mspImage.contentType
-        //     + (additionalInfo ? &#x27;  &#x27; + additionalInfo : &#x27;&#x27;);
-
-        // // send it while subscribing to response
-        // this.logService.logIt(log, title).subscribe(
-        //     (response) &#x3D;&gt; {
-        //         // console.log(&#x27;log rest service response: &#x27;);
-        //         // console.log(response);
-        //     },
-        //     (error) &#x3D;&gt; {
-        //         console.log(&#x27;HTTP error response from logging service: &#x27;);
-        //         console.log(error);
-        //     },
-        //     () &#x3D;&gt; {
-        //         // console.log(&#x27;log rest service completed!&#x27;);
-        //     }
-        // );
-    }
-
-
-
-    /**
-     * Return true if the image size is within range
-     * @param file
-     */
-    checkImageDimensions(file: CommonImage): boolean {
-        if (file.naturalHeight &lt; 0 ||
-            file.naturalWidth &lt; 0 ) {
-            return false;
-        }
-        return true;
-    }
-
-    isValid(): boolean {
-        console.log(&#x27;isValid&#x27;, this.images);
-        if (this.required) {
-            return this.images &amp;&amp; this.images.length &gt; 0;
-        }
-        return true;
-    }
-
+    return true;
+  }
 }
-
 </code></pre>
     </div>
 </div>
