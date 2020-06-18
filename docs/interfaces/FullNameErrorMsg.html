@@ -171,10 +171,11 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {forwardRef, Component, Input, Output, EventEmitter, OnInit} from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {forwardRef, Component, Input, Output, EventEmitter, ViewChild, ChangeDetectorRef, OnInit} from &#x27;@angular/core&#x27;;
 import {Person} from &#x27;../../models/person.model&#x27;;
 import {Base} from &#x27;../../models/base&#x27;;
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from &#x27;@angular/forms&#x27;;
+import {debounceTime} from &#x27;rxjs/operators&#x27;;
+import { ControlContainer, ControlValueAccessor, NgForm, NG_VALUE_ACCESSOR } from &#x27;@angular/forms&#x27;;
 
 
 export interface FullNameErrorMsg {

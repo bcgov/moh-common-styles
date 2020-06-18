@@ -41,7 +41,7 @@ export class CommonImage<T = any> {
 
   /**
    * The base64 content of an image.  Must already be base64 or some other stringable data-type.
-   *
+   * 
    * You should be able to do <img src='myCommonImage.fileContent'> to render the image.
    */
   fileContent: string;

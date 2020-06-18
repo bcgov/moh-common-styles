@@ -390,8 +390,10 @@ a) moment</p>
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges, ViewChild, OnChanges, forwardRef } from &#x27;@angular/core&#x27;;
 import { INgxMyDpOptions, IMyDate, NgxMyDatePickerDirective } from &#x27;ngx-mydatepicker&#x27;;
-import { NgForm, ControlContainer, NG_VALUE_ACCESSOR, ControlValueAccessor } from &#x27;@angular/forms&#x27;;
+import * as moment_ from &#x27;moment&#x27;;
+import { NgForm, ControlContainer, FormControl, NG_VALUE_ACCESSOR, ControlValueAccessor } from &#x27;@angular/forms&#x27;;
 import { Base } from &#x27;../../models/base&#x27;;
+const moment &#x3D; moment_;
 
 /**
  * Component NPM package dependencies:
