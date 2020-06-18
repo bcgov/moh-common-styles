@@ -1,6 +1,6 @@
-import { Component, OnInit, Input, Output, EventEmitter, Optional, Self } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectorRef, Output, EventEmitter, SimpleChanges, OnChanges, Optional, Self } from '@angular/core';
 import { Subject, Observable, of } from 'rxjs';
-import { debounceTime, distinctUntilChanged, switchMap, catchError } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, switchMap, tap, catchError } from 'rxjs/operators';
 import { TypeaheadMatch } from 'ngx-bootstrap';
 import { Base } from '../../models/base';
 import { GeocoderService, GeoAddressResult } from '../../services/geocoder.service';
@@ -61,7 +61,7 @@ export class GeocoderInputComponent extends Base implements OnInit, ControlValue
   _onChange = (_: any) => {};
   _onTouched = (_?: any) => {};
 
-  constructor(@Optional() @Self() public controlDir: NgControl, private geocoderService: GeocoderService) {
+  constructor(@Optional() @Self() public controlDir: NgControl, private geocoderService: GeocoderService, private cd: ChangeDetectorRef) {
     super();
     if ( controlDir ) {
       controlDir.valueAccessor = this;
@@ -74,12 +74,12 @@ export class GeocoderInputComponent extends Base implements OnInit, ControlValue
       distinctUntilChanged(),
       // Trigger the network request, get results
       switchMap(searchPhrase => this.geocoderService.lookup(searchPhrase)),
-      catchError(() => this.onError())
+      catchError(err => this.onError(err))
     );
 
   }
 
-  onError(): Observable<GeoAddressResult[]> {
+  onError(err): Observable<GeoAddressResult[]> {
 
     this.hasError = true;
     // Empty array simulates no result response, nothing for typeahead to iterate over
@@ -138,7 +138,7 @@ export class GeocoderInputComponent extends Base implements OnInit, ControlValue
     this.searchText$.next(this.search);
   }
 
-  onBlur(): void {
+  onBlur(event): void {
     this._onTouched();
     this._onChange(this.search);
   }

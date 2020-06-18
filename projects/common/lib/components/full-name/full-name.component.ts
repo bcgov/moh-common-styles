@@ -1,7 +1,8 @@
-import {forwardRef, Component, Input, Output, EventEmitter, OnInit} from '@angular/core';
+import {forwardRef, Component, Input, Output, EventEmitter, ViewChild, ChangeDetectorRef, OnInit} from '@angular/core';
 import {Person} from '../../models/person.model';
 import {Base} from '../../models/base';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import {debounceTime} from 'rxjs/operators';
+import { ControlContainer, ControlValueAccessor, NgForm, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 
 export interface FullNameErrorMsg {

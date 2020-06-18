@@ -4,6 +4,7 @@ import { FileUploaderComponent } from './file-uploader.component';
 import {ThumbnailComponent} from '../thumbnail/thumbnail.component';
 import {ModalModule} from 'ngx-bootstrap';
 import { RouterTestingModule } from '@angular/router/testing';
+import * as moment from 'moment';
 import {HttpClientModule} from '@angular/common/http';
 
 

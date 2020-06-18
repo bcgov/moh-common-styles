@@ -105,7 +105,6 @@ export function getDebugLabel(  de: DebugElement, name: string ) {
 export function setInput( el: any, value: any ) {
   el.focus();
   el.value = value;
-  el.dispatchEvent(new Event('input'));
   el.dispatchEvent(new Event('change'));
   el.dispatchEvent(new Event('blur'));
 }
@@ -114,7 +113,6 @@ export function setInput( el: any, value: any ) {
 export function setSelect( el: any, value: any ) {
   el.focus();
   el.value = value;
-  el.dispatchEvent(new Event('input'));
   el.dispatchEvent(new Event('blur'));
 }
 

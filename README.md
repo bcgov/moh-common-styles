@@ -39,4 +39,7 @@ You can read more at the [Getting Started Guide](https://bcgov.github.io/moh-com
 
 This library and the documentation are still very young and there are bound to be growing pains.
 
-If you find any mistakes with either this documentation or the underlying library please submit an [Issue on GitHub](https://github.com/bcgov/moh-common-styles/issues). Thanks
+If you find any mistakes with either this documentation or the underlying library please submit an [Issue on GitHub](https://github.com/bcgov/moh-common-styles/issues). Or if you're able you can ask me in person.  Thanks
+
+\- _Adam Coard_
+

@@ -1,13 +1,14 @@
 import {
   Component,
   Input,
+  forwardRef,
   Output,
   EventEmitter,
   Optional,
   Self,
   OnInit
 } from '@angular/core';
-import { NgControl } from '@angular/forms';
+import { ControlContainer, NgForm, NgControl } from '@angular/forms';
 import { NUMBER, SPACE } from '../../models/mask.constants';
 
 import { ErrorMessage, LabelReplacementTag } from '../../models/error-message.interface';
