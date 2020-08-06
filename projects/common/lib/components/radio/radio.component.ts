@@ -63,7 +63,7 @@ export class RadioComponent extends AbstractFormControl implements OnInit {
 
   @Input() label: string;
   @Input()
-  set value( val: string ) {
+  set value( val: any ) {
     this._value = val;
   }
   get value() {
@@ -73,7 +73,7 @@ export class RadioComponent extends AbstractFormControl implements OnInit {
   @Input() display: 'table-row-group' | 'inline-block'  = 'inline-block';
   @Input() instructionText: string;
 
-  @Output() valueChange: EventEmitter<string> = new EventEmitter<any>();
+  @Output() valueChange: EventEmitter<any> = new EventEmitter<any>();
 
   constructor( @Optional() @Self() public controlDir: NgControl ) {
     super();
