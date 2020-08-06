@@ -13,12 +13,6 @@ import { NgControl } from '@angular/forms';
  * radio buttons, radioLabels value is of type IRadioItems[].
 *
  * @example
- *        <common-radio #gender [value]="person.gender"
- *          label='Gender'
- *          display='table-row-group'
- *          [radioLabels]='[{label: "Male", value: "Male"},{label: "Female", value: "Female"}]'
- *          (valueChange)="onChange.emit($event)">
- *        </common-radio>
  *
  *  Reactive Form
  *        <common-radio name='choice'
