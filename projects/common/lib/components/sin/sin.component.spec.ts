@@ -1,9 +1,9 @@
 import { fakeAsync } from '@angular/core/testing';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { TextMaskModule } from 'angular2-text-mask';
-import { Component, DebugElement, QueryList, ViewChildren, OnInit } from '@angular/core';
+import { Component, QueryList, ViewChildren, OnInit } from '@angular/core';
 import { SinComponent } from './sin.component';
-import { tickAndDetectChanges, createTestingModule, getInputElement, getLabel } from '../../../helpers/test-helpers';
+import { tickAndDetectChanges, createTestingModule, getDebugElement, getDebugLabel } from '../../../helpers/test-helpers';
 import { ErrorContainerComponent } from '../error-container/error-container.component';
 import { commonDuplicateCheck } from '../duplicate-check/duplicate-check.directive';
 
@@ -59,11 +59,11 @@ describe('SinComponent', () => {
 
       const component = fixture.componentInstance;
       tickAndDetectChanges( fixture );
-      const el = getInputElement( fixture, 'common-sin', 'sin1');
-      const label = getLabel( fixture, 'common-sin', el.id );
+      const de = getDebugElement( fixture, 'common-sin', 'sin1');
+      const label = getDebugLabel( de, de.componentInstance.labelforId );
 
       expect( component.sinComponent ).toBeTruthy();
-      expect( label.textContent ).toBe( component.defaultLabel );
+      expect( label ).toBe( component.defaultLabel );
       expect( component.form.get('sin1').hasError( 'required' )  ).toBeFalsy();
     }));
 
@@ -151,11 +151,11 @@ describe('SinComponent', () => {
 
       const component = fixture.componentInstance;
       tickAndDetectChanges( fixture );
-      const el = getInputElement( fixture, 'common-sin', 'sin1');
-      const label = getLabel( fixture, 'common-sin', el.id );
+      const de = getDebugElement( fixture, 'common-sin', 'sin1');
+      const label = getDebugLabel( de, de.componentInstance.labelforId );
 
       expect( component.sinComponent ).toBeTruthy();
-      expect( label.textContent ).toBe( component.defaultLabel );
+      expect( label ).toBe( component.defaultLabel );
       expect( component.sinComponent.first.controlDir.hasError( 'required' ) ).toBeFalsy();
     }));
 

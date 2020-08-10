@@ -4,7 +4,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ErrorContainerComponent } from '../error-container/error-container.component';
 import { Component, ViewChildren, QueryList, OnInit } from '@angular/core';
-import { createTestingModule, tickAndDetectChanges, getInputElement, getLabel } from '../../../helpers/test-helpers';
+import { createTestingModule, tickAndDetectChanges, getDebugElement, getDebugLabel } from '../../../helpers/test-helpers';
 
 @Component({
   template: ``
@@ -57,11 +57,11 @@ describe('ProvinceComponent', () => {
 
       const component = fixture.componentInstance;
       tickAndDetectChanges( fixture );
-      const el = getInputElement( fixture, 'common-province', 'province1');
-      const label = getLabel( fixture, 'common-province', el.id );
+      const de = getDebugElement( fixture, 'common-province', 'province1');
+      const label = getDebugLabel( de, de.componentInstance.labelforId );
 
       expect( component.provinceComponent ).toBeTruthy();
-      expect( label.textContent ).toBe( component.defaultLabel );
+      expect( label ).toBe( component.defaultLabel );
       expect( component.form.get('province1').hasError( 'required' )  ).toBeFalsy();
     }));
 
@@ -81,11 +81,11 @@ describe('ProvinceComponent', () => {
 
       const component = fixture.componentInstance;
       tickAndDetectChanges( fixture );
-      const el = getInputElement( fixture, 'common-province', 'province1');
-      const label = getLabel( fixture, 'common-province', el.id );
+      const de = getDebugElement( fixture, 'common-province', 'province1' );
+      const label = getDebugLabel( de, de.componentInstance.labelforId );
 
       expect( component.provinceComponent ).toBeTruthy();
-      expect( label.textContent ).toBe( component.defaultLabel );
+      expect( label ).toBe( component.defaultLabel );
       expect( component.provinceComponent.first.controlDir.hasError( 'required' ) ).toBeFalsy();
     }));
 
