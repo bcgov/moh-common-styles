@@ -1,8 +1,11 @@
-import { ComponentFixture, fakeAsync } from '@angular/core/testing';
-import {FormGroup, FormBuilder} from '@angular/forms';
-import { RadioComponent } from './radio.component';
-import { QueryList, Component, ViewChildren, OnInit } from '@angular/core';
-import { tickAndDetectChanges, getLegendContext, createTestingModule } from '../../../helpers/test-helpers';
+import { fakeAsync } from '@angular/core/testing';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { RadioComponent, IRadioItems } from './radio.component';
+import { Component, OnInit, DebugElement } from '@angular/core';
+import { tickAndDetectChanges,
+  createTestingModule,
+  getDebugLegend,
+  getDebugElement} from '../../../helpers/test-helpers';
 import { ErrorContainerComponent } from '../error-container/error-container.component';
 
 
@@ -11,12 +14,30 @@ import { ErrorContainerComponent } from '../error-container/error-container.comp
 })
 class RadioTestComponent {
 
-  @ViewChildren(RadioComponent) radioComponent: QueryList<RadioComponent>;
   radio1: boolean;
-  radio2: boolean;
+  radio2: number;
+  radio3: string;
+  radio4: boolean;
 
   radioLabel1: string = 'Where you born in Canada?';
-  radioLabel2: string = 'Where you born in Europe?';
+
+  radioLabel2: string = 'Which is a prime number?';
+  radioButton2: IRadioItems[] = [
+    {label: 'Zero', value: 0},
+    {label: 'One', value: 1},
+    {label: 'Two', value: 2}
+  ];
+
+  radioLabel3: string = 'Which color is your favorite?';
+  radioButton3: IRadioItems[] = [
+    {label: 'Green', value: 'green'},
+    {label: 'Red', value: 'red'},
+    {label: 'Yellow', value: 'yellow'},
+    {label: 'Pink', value: 'pink'},
+    {label: 'Blue', value: 'blue'}
+  ];
+
+  radioLabel4: string = 'Do you attend post-secondary school?';
 
   constructor() {}
 }
@@ -34,9 +55,18 @@ class RadioReactTestComponent extends RadioTestComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.fb.group({
-      radioBtn1: [ this.radio1 ],
-      radioBtn2: [ this.radio2 ]
+      radioBtn1: [ this.radio1 ], // boolean
+      radioBtn2: [ this.radio2 ], // number
+      radioBtn3: [ this.radio3 ], // string
+      radioBtn4: [ this.radio4 ], // boolean
     });
+  }
+
+  setBtnRequired( btnName: string ) {
+    const fld = this.form.controls[btnName];
+
+    fld.setValidators( Validators.required );
+    fld.updateValueAndValidity();
   }
 }
 
@@ -49,47 +79,151 @@ describe('RadioComponent', () => {
     it('should create', fakeAsync(() => {
       const fixture = createTestingModule( RadioReactTestComponent,
         `<form [formGroup]="form">
-          <common-radio name='radioBtn1' label='{{radioLabel1}}'
-                        formControlName='radioBtn1'></common-radio>
+            <common-radio name='radioBtn1' label='{{radioLabel1}}'
+                         formControlName='radioBtn1'></common-radio>
         </form>`,
         directives,
         true
       );
 
-      const component = fixture.componentInstance;
       tickAndDetectChanges( fixture );
-      expect( component.radioComponent ).toBeTruthy();
-      expect( getLegendContext( fixture , 'common-radio', 'radioBtn1') ).toBe( component.radioLabel1);
-      expect( component.form.get('radioBtn1').hasError( 'required' )  ).toBeFalsy();
+
+      const de = getDebugElement( fixture, 'common-radio', 'radioBtn1' );
+      expect( de ).toBeTruthy();
+      expect( getDebugLegend( de ) ).toBe( fixture.componentInstance.radioLabel1 );
+      expect( getRadioBtnLabel( de, false )).toBe( 'No' );
+      expect( getRadioBtnLabel( de, true )).toBe( 'Yes' );
     }));
 
-    it('should toggle radio button from true to false', fakeAsync(() => {
+
+    it('should create multiple radio components (string, boolean, number)', fakeAsync(() => {
+
+      const fixture = createTestingModule( RadioReactTestComponent,
+        `<form [formGroup]="form">
+
+          <common-radio name='radioBtn1' label='{{radioLabel1}}'
+                        formControlName='radioBtn1'></common-radio>
+
+          <common-radio name='radioBtn2' label='{{radioLabel2}}' [radioLabels]='radioButton2'
+                        formControlName='radioBtn2'></common-radio>
+
+          <common-radio name='radioBtn3' label='{{radioLabel3}}' [radioLabels]='radioButton3'
+                        formControlName='radioBtn3'></common-radio>
+
+          <common-radio name='radioBtn4' label='{{radioLabel4}}'
+                        formControlName='radioBtn4'></common-radio>
+        </form>`,
+        directives,
+        true
+      );
+
+      tickAndDetectChanges( fixture );
+
+      const de1 = getDebugElement( fixture, 'common-radio', 'radioBtn1' );
+      const de2 = getDebugElement( fixture, 'common-radio', 'radioBtn2' );
+      const de3 = getDebugElement( fixture, 'common-radio', 'radioBtn3' );
+      const de4 = getDebugElement( fixture, 'common-radio', 'radioBtn4' );
+
+      expect( de1 ).toBeTruthy();
+      expect( de2 ).toBeTruthy();
+      expect( de3 ).toBeTruthy();
+      expect( de4 ).toBeTruthy();
+      expect( getDebugLegend( de1 ) ).toBe( fixture.componentInstance.radioLabel1 );
+      expect( getDebugLegend( de2 ) ).toBe( fixture.componentInstance.radioLabel2 );
+      expect( getDebugLegend( de3 ) ).toBe( fixture.componentInstance.radioLabel3 );
+      expect( getDebugLegend( de4 ) ).toBe( fixture.componentInstance.radioLabel4 );
+
+      fixture.componentInstance.radioButton2.forEach( element => {
+        expect( getRadioBtnLabel( de2, element.value )).toBe( element.label );
+      });
+
+      fixture.componentInstance.radioButton3.forEach( element => {
+        expect( getRadioBtnLabel( de3, element.value )).toBe( element.label );
+      });
+    }));
+
+
+    it('should have error required', fakeAsync(() => {
+      const fixture = createTestingModule( RadioReactTestComponent,
+        `<form [formGroup]="form">
+          <common-radio name='radioBtn4' label='{{radioLabel4}}'
+                        formControlName='radioBtn4'></common-radio>
+        </form>`,
+        directives,
+        true
+      );
+
+      fixture.componentInstance.setBtnRequired('radioBtn4');
+      tickAndDetectChanges( fixture );
+
+      const de = getDebugElement( fixture, 'common-radio', 'radioBtn4' );
+      expect( de.componentInstance.controlDir.hasError( 'required' ) ).toBeTruthy();
+    }));
+
+    it('should not have error required', fakeAsync(() => {
+      const fixture = createTestingModule( RadioReactTestComponent,
+        `<form [formGroup]="form">
+          <common-radio name='radioBtn4' label='{{radioLabel4}}'
+                        formControlName='radioBtn4'></common-radio>
+        </form>`,
+        directives,
+        true
+      );
+      fixture.componentInstance.setBtnRequired('radioBtn4');
+      tickAndDetectChanges( fixture );
+
+      const de =  getDebugElement( fixture, 'common-radio', 'radioBtn4' );
+      expect( de.componentInstance.controlDir.hasError( 'required' ) ).toBeTruthy();
+      clickValue( de, true );
+
+      tickAndDetectChanges( fixture );
+
+      expect( getCheckedValue( de ) ).toBe( 'true' );
+      expect( de.componentInstance.controlDir.hasError( 'required' ) ).toBeFalsy();
+    }));
+
+    it('should toggle radio button options', fakeAsync(() => {
       const fixture = createTestingModule( RadioReactTestComponent,
         `<form [formGroup]="form">
           <common-radio name='radioBtn1' label='{{radioLabel1}}'
                         formControlName='radioBtn1'></common-radio>
+
+          <common-radio name='radioBtn2' label='{{radioLabel2}}' [radioLabels]='radioButton2'
+                        formControlName='radioBtn2'></common-radio>
+
+          <common-radio name='radioBtn3' label='{{radioLabel3}}' [radioLabels]='radioButton3'
+                        formControlName='radioBtn3'></common-radio>
         </form>`,
+
         directives,
         true
       );
       fixture.whenStable().then( () => {
-        const component = fixture.componentInstance;
-        let radio = getRadioElment( fixture, 'radioBtn1', true );
+        const de1 =  getDebugElement( fixture, 'common-radio', 'radioBtn1' );
+        const de2 =  getDebugElement( fixture, 'common-radio', 'radioBtn2' );
+        const de3 =  getDebugElement( fixture, 'common-radio', 'radioBtn3' );
 
-        radio.click();
-        tickAndDetectChanges( fixture );
-        let radioChecked = getCheckedElement( fixture );
-        expect( radioChecked.value ).toBe( 'true' );
-        expect( component.form.get( 'radioBtn1' ).value ).toBeTruthy();
+        clickValue( de1, true );
+        clickValue( de2, 0 );
+        clickValue( de3, 'blue' );
 
-        radio = getRadioElment( fixture, 'radioBtn1', false );
-        radio.click();
         tickAndDetectChanges( fixture );
-        radioChecked = getCheckedElement( fixture );
-        expect( radioChecked.value ).toBe( 'false' );
-        expect( component.form.get( 'radioBtn1' ).value ).toBeFalsy();
+        expect( getCheckedValue( de1 ) ).toBe( 'true' );
+        expect( getCheckedValue( de2 ) ).toBe( '0' );
+        expect( getCheckedValue( de3 ) ).toBe( 'blue' );
+
+        clickValue( de1, false );
+        clickValue( de2, 2 );
+        clickValue( de3, 'pink' );
+
+        tickAndDetectChanges( fixture );
+
+        expect( getCheckedValue( de1 ) ).toBe( 'false' );
+        expect( getCheckedValue( de2 ) ).toBe( '2' );
+        expect( getCheckedValue( de3 ) ).toBe( 'pink' );
       });
     }));
+
   });
 
   describe('Custom controls - Template', () => {
@@ -102,50 +236,119 @@ describe('RadioComponent', () => {
           </form>`,
           directives
       );
-      const component = fixture.componentInstance;
+
       tickAndDetectChanges( fixture );
-      expect( component.radioComponent ).toBeTruthy();
-      expect( getLegendContext( fixture, 'common-radio', 'radioBtn1' ) ).toBe( component.radioLabel1 );
-      expect( component.radioComponent.first.controlDir.hasError( 'required' ) ).toBeFalsy();
+
+      const de = getDebugElement( fixture, 'common-radio', 'radioBtn1' );
+      expect( de ).toBeTruthy();
+      expect( getDebugLegend( de ) ).toBe( fixture.componentInstance.radioLabel1 );
+      expect( getRadioBtnLabel( de, false )).toBe( 'No' );
+      expect( getRadioBtnLabel( de, true )).toBe( 'Yes' );
     }));
 
-    it('should toggle radio button from true to false (ngModel)', fakeAsync( () => {
+    it('should toggle radio button options', fakeAsync( () => {
       const fixture = createTestingModule( RadioTestComponent,
         `<form>
           <common-radio name='radioBtn1' [(ngModel)]='radio1'
                         label='{{radioLabel1}}'></common-radio>
+
+          <common-radio name='radioBtn2' label='{{radioLabel2}}'
+                        [radioLabels]='radioButton2'></common-radio>
+
+          <common-radio name='radioBtn3' label='{{radioLabel3}}'
+                        [radioLabels]='radioButton3'></common-radio>
           </form>`,
           directives
         );
 
       fixture.whenStable().then( () => {
+        const de1 =  getDebugElement( fixture, 'common-radio', 'radioBtn1' );
+        clickValue( de1, false );
 
-        const component = fixture.componentInstance;
-        let radio = getRadioElment( fixture, 'radioBtn1', true );
+        const de2 =  getDebugElement( fixture, 'common-radio', 'radioBtn2' );
+        clickValue( de2, 1 );
 
-        radio.click();
+        const de3 =  getDebugElement( fixture, 'common-radio', 'radioBtn3' );
+        clickValue( de3, 'yellow' );
+
         tickAndDetectChanges( fixture );
-        let radioChecked = getCheckedElement( fixture );
-        expect( radioChecked.value ).toBe( 'true' );
-        expect( component.radio1 ).toBeTruthy();
 
-        radio = getRadioElment( fixture, 'radioBtn1', false );
-        radio.click();
+        expect( getCheckedValue( de1 ) ).toBe( 'false' );
+        clickValue( de1, true );
+
+        expect( getCheckedValue( de2 ) ).toBe( '1' );
+        clickValue( de2, 0 );
+
+        expect( getCheckedValue( de3 ) ).toBe( 'yellow' );
+        clickValue( de3, 'green' );
+
         tickAndDetectChanges( fixture );
-        radioChecked = getCheckedElement( fixture );
-        expect( radioChecked.value ).toBe( 'false' );
-        expect( component.radio1 ).toBeFalsy();
+
+        expect( getCheckedValue( de1 ) ).toBe( 'true' );
+        expect( getCheckedValue( de2 )).toBe( '0' );
+        expect( getCheckedValue( de3 ) ).toBe( 'green' );
       });
+    }));
+
+    it('should have error required', fakeAsync(() => {
+      const fixture = createTestingModule( RadioTestComponent,
+        `<form>
+          <common-radio name='radioBtn2' [(ngModel)]='radio2'
+                        label='{{radioLabel2}}' required></common-radio>
+          </form>`,
+          directives
+        );
+
+        fixture.whenStable().then( () => {
+          const de =  getDebugElement( fixture, 'common-radio', 'radioBtn2' );
+          expect( de.componentInstance.controlDir.hasError( 'required' ) ).toBeTruthy();
+        });
+    }));
+
+    it('should not have error required', fakeAsync(() => {
+      const fixture = createTestingModule( RadioTestComponent,
+        `<form>
+          <common-radio name='radioBtn2' [(ngModel)]='radio2'
+                        label='{{radioLabel2}}' required></common-radio>
+          </form>`,
+          directives
+        );
+
+        fixture.whenStable().then( () => {
+          const de =  getDebugElement( fixture, 'common-radio', 'radioBtn2' );
+          expect( de.componentInstance.controlDir.hasError( 'required' ) ).toBeTruthy();
+
+          clickValue( de, false );
+          tickAndDetectChanges( fixture );
+
+          expect( getCheckedValue( de ) ).toBe( 'false' );
+          expect( de.componentInstance.controlDir.hasError( 'required' ) ).toBeFalsy();
+        });
     }));
   });
 });
 
-function getCheckedElement( fixture: ComponentFixture<any> ) {
-  return fixture.nativeElement.querySelector( 'input[type=radio]:checked' );
+
+// Helper functions for tests
+function clickValue( de: DebugElement, value: any ) {
+  const el = de.nativeElement.querySelector( 'input[value=\"' + value + '\"]' );
+  if ( el ) {
+    el.focus();
+    el.click();
+  }
 }
 
-function getRadioElment( fixture: ComponentFixture<any>, name: string, value: any ) {
-  const selector = 'common-radio[name=' + name + '] input[value=' + value + ']';
-  return fixture.nativeElement.querySelector( selector );
+function getCheckedValue( de: DebugElement ) {
+  const el =  de.nativeElement.querySelector( 'input[type=radio]:checked' );
+  return el ? el.value : null;
+}
+
+function getRadioBtnLabel( de: DebugElement, value: any ) {
+  const el = de.nativeElement.querySelector( 'input[value=\"' + value + '\"]' );
+  if ( el ) {
+    const _label = de.nativeElement.querySelector( ' label[for=\"' + el.id + '\"] ' );
+    return _label ? String(_label.textContent).trim() : null;
+  }
+  return null;
 }
 

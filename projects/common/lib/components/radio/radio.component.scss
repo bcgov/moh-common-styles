@@ -30,28 +30,31 @@ $md-radio-ripple-size: 15px;
 .md-radio {
   margin: 16px 0;
 
-  &.md-radio-inline {
-    display: inline-block;
-  }
+  display: block;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 
   input[type="radio"] {
-    // hides the input while keeping it focusable. `display:none` messes with focus
-    width: 0; // Keeps the input focusable
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
     height: 0;
-    opacity: 0; // necessary for FireFox where width/height doesn't work
-    display: none; // necessary for FireFox where width/height doesn't work
+    width: 0;
 
-    &:checked+label:before {
+    &:checked + label:before {
       border-color: $md-radio-checked-color;
       animation: ripple 0.2s linear forwards;
     }
 
-    &:checked+label:after {
+    &:checked + label:after {
       transform: scale(1);
     }
 
 
-    
     // Custom focus styles from material to match radio
     // https://material.angular.io/components/radio/examples
     // This is for a11y and tab focus as well as mouse focus.
@@ -98,13 +101,3 @@ $md-radio-ripple-size: 15px;
   }
 }
 
-
-
-// // *************************************
-
-// // *************************************
-// *,
-// *:before,
-// *:after {
-//   box-sizing: border-box;
-// }

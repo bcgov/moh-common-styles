@@ -13,12 +13,6 @@ import { NgControl } from '@angular/forms';
  * radio buttons, radioLabels value is of type IRadioItems[].
 *
  * @example
- *        <common-radio #gender [value]="person.gender"
- *          label='Gender'
- *          display='table-row-group'
- *          [radioLabels]='[{label: "Male", value: "Male"},{label: "Female", value: "Female"}]'
- *          (valueChange)="onChange.emit($event)">
- *        </common-radio>
  *
  *  Reactive Form
  *        <common-radio name='choice'
@@ -63,7 +57,7 @@ export class RadioComponent extends AbstractFormControl implements OnInit {
 
   @Input() label: string;
   @Input()
-  set value( val: string ) {
+  set value( val: any ) {
     this._value = val;
   }
   get value() {
@@ -73,7 +67,7 @@ export class RadioComponent extends AbstractFormControl implements OnInit {
   @Input() display: 'table-row-group' | 'inline-block'  = 'inline-block';
   @Input() instructionText: string;
 
-  @Output() valueChange: EventEmitter<string> = new EventEmitter<any>();
+  @Output() valueChange: EventEmitter<any> = new EventEmitter<any>();
 
   constructor( @Optional() @Self() public controlDir: NgControl ) {
     super();

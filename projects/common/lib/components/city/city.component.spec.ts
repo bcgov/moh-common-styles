@@ -2,7 +2,7 @@ import { fakeAsync } from '@angular/core/testing';
 import { CityComponent } from './city.component';
 import { Component, ViewChildren, QueryList, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { tickAndDetectChanges, getInputElement, getLabel, createTestingModule } from '../../../helpers/test-helpers';
+import { tickAndDetectChanges, createTestingModule, getDebugElement, getDebugLabel } from '../../../helpers/test-helpers';
 import { ErrorContainerComponent } from '../error-container/error-container.component';
 
 
@@ -55,11 +55,11 @@ describe('CityComponent', () => {
 
       const component = fixture.componentInstance;
       tickAndDetectChanges( fixture );
-      const el = getInputElement( fixture, 'common-city', 'city1');
-      const label = getLabel( fixture, 'common-city', el.id );
+      const de = getDebugElement( fixture, 'common-city', 'city1');
+      const label = getDebugLabel( de, de.componentInstance.labelforId );
 
       expect( component.cityComponent ).toBeTruthy();
-      expect( label.textContent ).toBe( component.defaultLabel );
+      expect( label ).toBe( component.defaultLabel );
       expect( component.form.get('city1').hasError( 'required' )  ).toBeFalsy();
       }));
 
@@ -93,11 +93,11 @@ describe('CityComponent', () => {
 
       const component = fixture.componentInstance;
       tickAndDetectChanges( fixture );
-      const el = getInputElement( fixture, 'common-city', 'city1');
-      const label = getLabel( fixture, 'common-city', el.id );
+      const de = getDebugElement( fixture, 'common-city', 'city1');
+      const label = getDebugLabel( de, de.componentInstance.labelforId );
 
       expect( component.cityComponent ).toBeTruthy();
-      expect( label.textContent ).toBe( component.defaultLabel );
+      expect( label ).toBe( component.defaultLabel );
       expect( component.cityComponent.first.controlDir.hasError( 'required' ) ).toBeFalsy();
     }));
   });

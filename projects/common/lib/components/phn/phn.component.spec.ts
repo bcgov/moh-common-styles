@@ -1,10 +1,10 @@
-import { ComponentFixture, fakeAsync } from '@angular/core/testing';
+import { fakeAsync } from '@angular/core/testing';
 import {FormGroup, FormBuilder} from '@angular/forms';
 import {TextMaskModule} from 'angular2-text-mask';
 import {PhnComponent} from './phn.component';
 import { Component, ViewChildren, QueryList, OnInit } from '@angular/core';
 import { ErrorContainerComponent } from '../error-container/error-container.component';
-import { createTestingModule, tickAndDetectChanges, getInputElement, getLabel } from '../../../helpers/test-helpers';
+import { createTestingModule, tickAndDetectChanges, getDebugElement, getDebugLabel } from '../../../helpers/test-helpers';
 import { commonDuplicateCheck } from '../duplicate-check/duplicate-check.directive';
 
 @Component({
@@ -60,11 +60,11 @@ describe('PhnComponent', () => {
 
       const component = fixture.componentInstance;
       tickAndDetectChanges( fixture );
-      const el = getInputElement( fixture, 'common-phn', 'phn1');
-      const label = getLabel( fixture, 'common-phn', el.id );
+      const de = getDebugElement( fixture, 'common-phn', 'phn1' );
+      const label = getDebugLabel( de, de.componentInstance.labelforId );
 
       expect( component.phnComponent ).toBeTruthy();
-      expect( label.textContent ).toBe( component.defaultLabel );
+      expect( label ).toBe( component.defaultLabel );
       expect( component.form.get('phn1').hasError( 'required' )  ).toBeFalsy();
     }));
 
@@ -151,11 +151,11 @@ describe('PhnComponent', () => {
 
       const component = fixture.componentInstance;
       tickAndDetectChanges( fixture );
-      const el = getInputElement( fixture, 'common-phn', 'phn1');
-      const label = getLabel( fixture, 'common-phn', el.id );
+      const de = getDebugElement( fixture, 'common-phn', 'phn1' );
+      const label = getDebugLabel( de, de.componentInstance.labelforId );
 
       expect( component.phnComponent ).toBeTruthy();
-      expect( label.textContent ).toBe( component.defaultLabel );
+      expect( label ).toBe( component.defaultLabel );
       expect( component.phnComponent.first.controlDir.hasError( 'required' ) ).toBeFalsy();
     }));
 
