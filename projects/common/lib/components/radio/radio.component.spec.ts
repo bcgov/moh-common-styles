@@ -87,8 +87,6 @@ describe('RadioComponent', () => {
         true
       );
 
-      tickAndDetectChanges( fixture );
-
       const de = getDebugElement( fixture, 'common-radio', 'radioBtn1' );
       expect( de ).toBeTruthy();
       expect( getDebugLegend( de ) ).toBe( fixture.componentInstance.radioLabel1 );

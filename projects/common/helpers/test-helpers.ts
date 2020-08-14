@@ -78,8 +78,9 @@ export function getDebugLabel( de: DebugElement, name: string ): string {
   return _de ? _de.nativeElement.textContent : null;
 }
 
-export function setInput( de: DebugElement, value: any ) {
-  const el = de.nativeElement;
+export function setInput( de: DebugElement, value: any, labelName: string = null ) {
+  const input = getInputDebugElement( de, (labelName ? labelName : de.componentInstance.labelforId ) );
+  const el = input.nativeElement;
   el.focus();
   el.value = value;
   el.dispatchEvent(new Event('input'));
@@ -88,9 +89,12 @@ export function setInput( de: DebugElement, value: any ) {
 }
 
 // Value of the option
-export function setSelect( de: DebugElement, value: any ) {
-  const el = de.nativeElement;
+export function setSelect( de: DebugElement, value: any, labelName: string = null ) {
+  const select = getSelectDebugElement( de, (labelName ? labelName : de.componentInstance.labelforId ) );
+  const el = select.nativeElement;
   el.focus();
   el.value = value;
+  el.dispatchEvent(new Event('change'));
   el.dispatchEvent(new Event('blur'));
 }
+

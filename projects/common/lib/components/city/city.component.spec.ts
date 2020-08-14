@@ -1,8 +1,8 @@
 import { fakeAsync } from '@angular/core/testing';
 import { CityComponent } from './city.component';
 import { Component, ViewChildren, QueryList, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
-import { tickAndDetectChanges, createTestingModule, getDebugElement, getDebugLabel } from '../../../helpers/test-helpers';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { tickAndDetectChanges, createTestingModule, getDebugElement, getDebugLabel, setInput } from '../../../helpers/test-helpers';
 import { ErrorContainerComponent } from '../error-container/error-container.component';
 
 
@@ -33,8 +33,14 @@ class CityReactTestComponent extends CityTestComponent implements OnInit {
     this.form = this.fb.group({
       city1: [ this.city1 ],
       city2: [ this.city2 ]
-
     });
+  }
+
+  setCityRequired( phnFldName: string ) {
+    const fld = this.form.controls[phnFldName];
+
+    fld.setValidators( Validators.required );
+    fld.updateValueAndValidity();
   }
 }
 
@@ -53,53 +59,91 @@ describe('CityComponent', () => {
          true
       );
 
-      const component = fixture.componentInstance;
-      tickAndDetectChanges( fixture );
-      const de = getDebugElement( fixture, 'common-city', 'city1');
-      const label = getDebugLabel( de, de.componentInstance.labelforId );
+        const de = getDebugElement( fixture, 'common-city', 'city1');
+        const label = getDebugLabel( de, de.componentInstance.labelforId );
 
-      expect( component.cityComponent ).toBeTruthy();
-      expect( label ).toBe( component.defaultLabel );
-      expect( component.form.get('city1').hasError( 'required' )  ).toBeFalsy();
+        expect( de ).toBeTruthy();
+        expect( label ).toBe( fixture.componentInstance.defaultLabel );
       }));
 
       it('should be required', fakeAsync(() => {
         const fixture = createTestingModule( CityReactTestComponent,
           `<form [formGroup]="form">
-            <common-city name='city2' formControlName='city2' required></common-city>
+            <common-city name='city1' formControlName='city1'></common-city>
            </form>`,
            directives,
            true
         );
 
-        const component = fixture.componentInstance;
+        fixture.componentInstance.setCityRequired( 'city1') ;
         tickAndDetectChanges( fixture );
 
-        expect( component.cityComponent ).toBeTruthy();
-        expect( component.form.get('city2').hasError( 'required' )  ).toBeTruthy();
-        }));
+        const de = getDebugElement( fixture, 'common-city', 'city1');
+        const label = getDebugLabel( de, de.componentInstance.labelforId );
 
-  });
+        expect( de ).toBeTruthy();
+        expect( de.componentInstance.controlDir.hasError( 'required' ) ).toBeTruthy();
+      }));
+
+      it('should not have required error', fakeAsync(() => {
+        const fixture = createTestingModule( CityReactTestComponent,
+          `<form [formGroup]="form">
+            <common-city name='city1' formControlName='city1'></common-city>
+           </form>`,
+           directives,
+           true
+        );
+
+        fixture.componentInstance.setCityRequired( 'city1' ) ;
+        tickAndDetectChanges( fixture );
+
+        const de = getDebugElement( fixture, 'common-city', 'city1');
+        setInput( de, 'My City' );
+
+        tickAndDetectChanges( fixture );
+        expect( de.componentInstance.controlDir.hasError( 'required' ) ).toBeFalsy();
+      }));
+
+    });
 
   describe('Custom controls - Template', () => {
 
     it('should create', fakeAsync(() => {
       const fixture = createTestingModule( CityTestComponent,
         `<form>
-          <common-city name='city1' [(ngModel)]='city1'></common-city>
+          <common-city name='city2' [(ngModel)]='city2'></common-city>
          </form>`,
          directives
       );
 
-      const component = fixture.componentInstance;
-      tickAndDetectChanges( fixture );
-      const de = getDebugElement( fixture, 'common-city', 'city1');
-      const label = getDebugLabel( de, de.componentInstance.labelforId );
+      fixture.whenStable().then( () => {
+        const de = getDebugElement( fixture, 'common-city', 'city2');
+        const label = getDebugLabel( de, de.componentInstance.labelforId );
 
-      expect( component.cityComponent ).toBeTruthy();
-      expect( label ).toBe( component.defaultLabel );
-      expect( component.cityComponent.first.controlDir.hasError( 'required' ) ).toBeFalsy();
+        expect( de ).toBeTruthy();
+        expect( label ).toBe( fixture.componentInstance.defaultLabel );
+      });
     }));
+
+    it('should be required', fakeAsync(() => {
+      const fixture = createTestingModule( CityTestComponent,
+        `<form>
+          <common-city name='city2' [(ngModel)]='city2' required></common-city>
+         </form>`,
+         directives
+      );
+
+      fixture.whenStable().then( () => {
+        const de = getDebugElement( fixture, 'common-city', 'city2');
+        const label = getDebugLabel( de, de.componentInstance.labelforId );
+
+        expect( de ).toBeTruthy();
+        expect( label ).toBe( fixture.componentInstance.defaultLabel );
+        expect( de.componentInstance.controlDir.hasError( 'required' ) ).toBeTruthy();
+      });
+    }));
+
   });
 
 });
+

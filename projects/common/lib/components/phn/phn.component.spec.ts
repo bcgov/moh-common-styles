@@ -1,15 +1,15 @@
 import { fakeAsync } from '@angular/core/testing';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { TextMaskModule } from 'angular2-text-mask';
 import { PhnComponent } from './phn.component';
-import { Component, ViewChildren, QueryList, OnInit, DebugElement } from '@angular/core';
+import { Component, ViewChildren, QueryList, OnInit } from '@angular/core';
 import { ErrorContainerComponent } from '../error-container/error-container.component';
 import { createTestingModule,
   tickAndDetectChanges,
   getDebugElement,
   getDebugLabel,
   setInput,
-  getInputDebugElement } from '../../../helpers/test-helpers';
+ } from '../../../helpers/test-helpers';
 
 @Component({
   template: ``,
@@ -40,8 +40,14 @@ class PhnReactTestComponent extends PhnTestComponent implements OnInit {
     this.form = this.fb.group({
       phn1: [ this.phn1 ],
       phn2: [ this.phn2 ]
-
     });
+  }
+
+  setPhnRequired( phnFldName: string ) {
+    const fld = this.form.controls[phnFldName];
+
+    fld.setValidators( Validators.required );
+    fld.updateValueAndValidity();
   }
 }
 
@@ -67,18 +73,20 @@ describe('PhnComponent', () => {
 
       expect( de ).toBeTruthy();
       expect( label ).toBe( fixture.componentInstance.defaultLabel );
-      expect( de.componentInstance.controlDir.hasError( 'required' ) ).toBeFalsy();
     }));
 
     it('should be required', fakeAsync(() => {
       const fixture = createTestingModule( PhnReactTestComponent,
         `<form [formGroup]="form">
-          <common-phn name='phn1' formControlName='phn1' required></common-phn>
+          <common-phn name='phn1' formControlName='phn1'></common-phn>
          </form>`,
          directives,
          true,
          importDirectives
       );
+
+      fixture.componentInstance.setPhnRequired( 'phn1') ;
+      tickAndDetectChanges( fixture );
 
       const de = getDebugElement( fixture, 'common-phn', 'phn1' );
       expect( de ).toBeTruthy();
@@ -96,7 +104,7 @@ describe('PhnComponent', () => {
       );
 
       const de = getDebugElement( fixture, 'common-phn', 'phn1' );
-      setPhn( de, '9999999999' );
+      setInput( de, '9999999999' );
 
       tickAndDetectChanges( fixture );
       expect( de.componentInstance.controlDir.hasError( 'invalid' ) ).toBeTruthy();
@@ -113,7 +121,7 @@ describe('PhnComponent', () => {
       );
 
       const de = getDebugElement( fixture, 'common-phn', 'phn1' );
-      setPhn( de, '9999999998' );
+      setInput( de, '9999999998' );
 
       tickAndDetectChanges( fixture );
       expect( de.componentInstance.controlDir.hasError( 'invalid' ) ).toBeFalsy();
@@ -131,10 +139,10 @@ describe('PhnComponent', () => {
       );
 
       const de1 = getDebugElement( fixture, 'common-phn', 'phn1' );
-      setPhn( de1, '9999999999' );
+      setInput( de1, '9999999999' );
 
       const de2 = getDebugElement( fixture, 'common-phn', 'phn2' );
-      setPhn( de2, '9999999998' );
+      setInput( de2, '9999999998' );
 
       tickAndDetectChanges( fixture );
       expect( de1.componentInstance.controlDir.hasError( 'invalid' ) ).toBeTruthy();
@@ -159,7 +167,6 @@ describe('PhnComponent', () => {
 
       expect( de ).toBeTruthy();
       expect( label ).toBe( fixture.componentInstance.defaultLabel );
-      expect( de.componentInstance.controlDir.hasError( 'required' ) ).toBeFalsy();
     }));
 
     it('should be required', fakeAsync(() => {
@@ -191,7 +198,7 @@ describe('PhnComponent', () => {
 
       fixture.whenStable().then( () => {
         const de = getDebugElement( fixture, 'common-phn', 'phn2' );
-        setPhn( de, '9999999999' );
+        setInput( de, '9999999999' );
 
         tickAndDetectChanges( fixture );
 
@@ -211,7 +218,7 @@ describe('PhnComponent', () => {
 
       fixture.whenStable().then( () => {
         const de = getDebugElement( fixture, 'common-phn', 'phn2' );
-        setPhn( de, '9999999998' );
+        setInput( de, '9999999998' );
 
         tickAndDetectChanges( fixture );
         expect( de.componentInstance.controlDir.hasError( 'invalid' ) ).toBeFalsy();
@@ -231,10 +238,10 @@ describe('PhnComponent', () => {
 
       fixture.whenStable().then( () => {
         const de1 = getDebugElement( fixture, 'common-phn', 'phn1' );
-        setPhn( de1, '9999999998' );
+        setInput( de1, '9999999998' );
 
         const de2 = getDebugElement( fixture, 'common-phn', 'phn2' );
-        setPhn( de2, '9999999999' );
+        setInput( de2, '9999999999' );
 
         tickAndDetectChanges( fixture );
         expect( de1.componentInstance.controlDir.hasError( 'invalid' ) ).toBeFalsy();
@@ -246,7 +253,4 @@ describe('PhnComponent', () => {
 });
 
 
-function setPhn( de: DebugElement, value: string ) {
-  const input = getInputDebugElement( de, de.componentInstance.labelforId );
-  setInput( input, value );
-}
+
