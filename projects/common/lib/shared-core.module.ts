@@ -52,6 +52,7 @@ import { EmailComponent } from './components/email/email.component';
 import { ConfirmTemplateComponent } from './components/confirm-template/confirm-template.component';
 import { GeocoderInputComponent } from './components/geocoder-input/geocoder-input.component';
 import { DateFieldFormatDirective } from './components/date/date-field-format.directive';
+import { AddressValidatorComponent } from './components/address-validator/address-validator.component';
 
 
 const componentList = [
@@ -92,6 +93,7 @@ const componentList = [
   EmailComponent,
   ConfirmTemplateComponent,
   GeocoderInputComponent,
+  AddressValidatorComponent,
 
 
   // Directives
