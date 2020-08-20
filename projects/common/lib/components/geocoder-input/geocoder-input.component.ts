@@ -11,6 +11,8 @@ import { NgControl, ControlValueAccessor } from '@angular/forms';
 
 
 /**
+ * @deprecated Please use `address-validator` component instead.
+ * 
  * For TemplateForms, pass in an Address and recieve an Address
  * @example
  *           <common-geocoder-input
