@@ -29,7 +29,7 @@ import { Address } from '../../models/address.model';
  *          </common-address-validator>
  */
 
-export interface GeoAddressResult {
+export interface AddressResult {
   /** String from the API that includes street, city, province, and country. */
   AddressComplete: string;
   Locality: string;
@@ -66,7 +66,7 @@ export class AddressValidatorComponent extends Base implements OnInit, ControlVa
   /** Similar to this.address, but we can null it when user is searching for new addresses */
   public selectedAddress: boolean = false;
   /** The list of results, from API, that is passed to the typeahead list */
-  public typeaheadList$: Observable<GeoAddressResult[]>; // Result from address lookup
+  public typeaheadList$: Observable<AddressResult[]>; // Result from address lookup
   /** The subject that triggers on user text input and gets typeaheadList$ to update.  */
   private searchText$ = new Subject<string>();
 
@@ -92,7 +92,7 @@ export class AddressValidatorComponent extends Base implements OnInit, ControlVa
     );
   }
 
-  onError(err): Observable<GeoAddressResult[]> {
+  onError(err): Observable<AddressResult[]> {
     this.hasError = true;
     // Empty array simulates no result response, nothing for typeahead to iterate over
     return of([]);
@@ -120,7 +120,7 @@ export class AddressValidatorComponent extends Base implements OnInit, ControlVa
   onSelect(event: TypeaheadMatch): void {
 
     // console.log( 'onSelect: ', event );
-    const data: GeoAddressResult = event.item;
+    const data: AddressResult = event.item;
 
     // Output string to FormControl. If street is more than the max length shorten
     const stripped = this.stripStringToMaxLength(data.DeliveryAddressLines);
@@ -178,7 +178,7 @@ export class AddressValidatorComponent extends Base implements OnInit, ControlVa
     return str.slice(0, maxlength);
   }
 
-  lookup(address: string): Observable<GeoAddressResult[]> {
+  lookup(address: string): Observable<AddressResult[]> {
     const params = new HttpParams()
                     .set('address', address);
 
@@ -195,7 +195,7 @@ export class AddressValidatorComponent extends Base implements OnInit, ControlVa
    *
    * @param obj The response from ADDRESS_URL
    */
-  protected processResponse(obj): GeoAddressResult[] {
+  protected processResponse(obj): AddressResult[] {
     return obj.Address.map(feature => {
       const props = feature;
       const Locality = props.Locality;
