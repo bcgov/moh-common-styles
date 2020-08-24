@@ -19,6 +19,7 @@ getTestBed().initTestEnvironment(
 // Then we find all the tests.
 // Note: Unit tests that have been started (not completed)
 [
+  require.context('./lib/components/address-validator', true, /\.spec\.ts$/),
   require.context('./lib/components/city', true, /\.spec\.ts$/),
   require.context('./lib/components/date', true, /\.spec\.ts$/),
   require.context('./lib/components/email', true, /\.spec\.ts$/),
