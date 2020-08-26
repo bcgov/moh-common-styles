@@ -1,4 +1,39 @@
-# Unreleased "moh-common-lib" (2020-05-25)
+# Unreleased "moh-common-lib" (2020-08-25)
+
+
+
+# [3.1.0](https://github.com/bcgov/moh-common-styles/compare/v3.0.14...v3.1.0) "moh-common-lib" (2020-08-25)
+
+
+### Bug Fixes
+
+* **radio:** fix tabbing when component used with reactive forms ([87013c3](https://github.com/bcgov/moh-common-styles/commit/87013c3))
+* DEMCL-21: Refactored GeoAddressResult to AddressResult. ([1467689](https://github.com/bcgov/moh-common-styles/commit/1467689))
+
+
+### Code Refactoring
+
+* remove unused variables ([8d6ed18](https://github.com/bcgov/moh-common-styles/commit/8d6ed18))
+* remove unused variables, update test helpers ([7d4953b](https://github.com/bcgov/moh-common-styles/commit/7d4953b))
+
+
+### Documentation
+
+* regenerate documents ([1486527](https://github.com/bcgov/moh-common-styles/commit/1486527))
+* update documentation at top of file ([6a4319d](https://github.com/bcgov/moh-common-styles/commit/6a4319d))
+
+
+### Features
+
+* DEMCL-21: Added `address-validator` component. ([6eb3ead](https://github.com/bcgov/moh-common-styles/commit/6eb3ead))
+* DEMCL-21: Added more unit tests ([9d93167](https://github.com/bcgov/moh-common-styles/commit/9d93167))
+* DEMCL-21: Added unit tests. ([258d1c3](https://github.com/bcgov/moh-common-styles/commit/258d1c3))
+* DEMCL-21: Deprecated GeocoverInputComponent. ([0ff54eb](https://github.com/bcgov/moh-common-styles/commit/0ff54eb))
+
+
+### Tests
+
+* update test helpers and tests ([127d980](https://github.com/bcgov/moh-common-styles/commit/127d980))
 
 
 
@@ -904,16 +939,12 @@
 
 
 
-# [2.3.0](https://github.com/bcgov/moh-common-styles/compare/2.0.0...v2.3.0) "moh-common-lib" (2019-07-25)
+# [2.3.0](https://github.com/bcgov/moh-common-styles/compare/v2.2.0...v2.3.0) "moh-common-lib" (2019-07-25)
 
 
 ### Features
 
 * **Address:** Now has default country/prov behaviour built in ([8361a0e](https://github.com/bcgov/moh-common-styles/commit/8361a0e))
-
-
-
-# [2.0.0](https://github.com/bcgov/moh-common-styles/compare/v2.2.0...2.0.0) "moh-common-lib" (2019-07-25)
 
 
 
