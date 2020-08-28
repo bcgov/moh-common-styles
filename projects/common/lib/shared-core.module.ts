@@ -6,7 +6,9 @@ import { PageFrameworkComponent } from './components/page-framework/page-framewo
 import { PasswordComponent } from './components/password/password.component';
 import { WizardProgressBarComponent } from './components/wizard-progress-bar/wizard-progress-bar.component';
 import { NgForm, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ProgressbarModule, ModalModule, TypeaheadModule } from 'ngx-bootstrap';
+import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 import { RouterModule } from '@angular/router';
 import { DateComponent } from './components/date/date.component';
 import { DatepickerComponent } from './components/datepicker/datepicker.component';

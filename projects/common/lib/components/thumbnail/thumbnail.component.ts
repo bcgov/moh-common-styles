@@ -1,5 +1,5 @@
 import { Component, ViewChild, OnInit, Input, Output, EventEmitter, ViewContainerRef, ViewEncapsulation } from '@angular/core';
-import { ModalDirective } from 'ngx-bootstrap';
+import { ModalDirective } from 'ngx-bootstrap/modal';
 
 import { CommonImage } from '../../models/images.model';
 

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, ChangeDetectorRef, Output, EventEmitter, SimpleChanges, OnChanges, Optional, Self } from '@angular/core';
 import { Subject, Observable, of, throwError } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap, map, catchError } from 'rxjs/operators';
-import { TypeaheadMatch } from 'ngx-bootstrap';
+import { TypeaheadMatch } from 'ngx-bootstrap/typeahead';
 import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { NgControl, ControlValueAccessor } from '@angular/forms';
 import { Base } from '../../models/base';

@@ -3,7 +3,6 @@ import { AfterContentInit, ChangeDetectorRef, Component,
     OnInit, Output, SimpleChanges, ViewChild, forwardRef, AfterViewInit, ViewEncapsulation } from '@angular/core';
 import { NgForm, ControlContainer } from '@angular/forms';
 import * as moment from 'moment';
-import { ModalDirective} from 'ngx-bootstrap';
 import { PDFJSStatic } from 'pdfjs-dist';
 import { Observable ,  Observer, fromEvent, merge } from 'rxjs';
 import {map, filter, flatMap, scan, delay, retryWhen} from 'rxjs/operators';
