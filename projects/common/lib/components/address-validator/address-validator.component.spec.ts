@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed, getTestBed, fakeAsync, tick } from '@
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { AddressValidatorComponent } from './address-validator.component';
 import { FormsModule } from '@angular/forms';
-import { TypeaheadModule, TypeaheadMatch } from 'ngx-bootstrap';
+import { TypeaheadModule, TypeaheadMatch } from 'ngx-bootstrap/typeahead';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { of, throwError } from 'rxjs';

@@ -3,7 +3,7 @@ import { NgControl } from '@angular/forms';
 import { Observable, Subject, of } from 'rxjs';
 import { GeoAddressResult, GeocoderService } from '../../services/geocoder.service';
 import { debounceTime, distinctUntilChanged, switchMap, catchError } from 'rxjs/operators';
-import { TypeaheadMatch } from 'ngx-bootstrap';
+import { TypeaheadMatch } from 'ngx-bootstrap/typeahead';
 import { AbstractFormControl } from '../../models/abstract-form-control';
 import { ErrorMessage, LabelReplacementTag } from '../../models/error-message.interface';
 import { CANADA } from '../country/country.component';

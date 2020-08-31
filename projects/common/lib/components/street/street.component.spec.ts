@@ -1,5 +1,5 @@
 import { StreetComponent } from './street.component';
-import { TypeaheadModule } from 'ngx-bootstrap';
+import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ErrorContainerComponent } from '../error-container/error-container.component';
 import { Component, ViewChildren, QueryList, OnInit } from '@angular/core';
