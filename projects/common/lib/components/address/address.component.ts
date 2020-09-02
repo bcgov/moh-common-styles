@@ -348,6 +348,9 @@ export class AddressComponent extends Base
     this.addr.addressLine1 = address.street;
     this.addr.city = address.city;
     this.addr.postal = address.postal;
+    if (!this.bcOnly) {
+      this.addr.province = address.province;
+    }
     this._onChange(this.addr);
     this.addressChange.emit(this.addr);
     this._onTouched(this.addr);
