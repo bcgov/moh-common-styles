@@ -73,6 +73,7 @@ export class AddressComponent extends Base
   @Input() labels: AddrLabelList;
   @Input() maxlengths: Maxlengths;
   @Input() bcOnly: boolean = false;
+  @Input() addressServiceUrl: string;
 
   @Input()
   set address(val: Address) {
@@ -343,6 +344,18 @@ export class AddressComponent extends Base
     this.addr.province = data.province;
     this.addr.country = data.country;
     this.addressChange.emit(this.addr);
+  }
+
+  selectSuggestedAddress(address: Address) {
+    if (!address.street && !address.city && !address.postal) {
+      return;
+    }
+    this.addr.addressLine1 = address.street;
+    this.addr.city = address.city;
+    this.addr.postal = address.postal;
+    this._onChange(this.addr);
+    this.addressChange.emit(this.addr);
+    this._onTouched(this.addr);
   }
 
   writeValue( value: Address) {
