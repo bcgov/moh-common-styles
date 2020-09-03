@@ -1,9 +1,9 @@
 <div class="form-group">
-  <div class="row">
+  <div class="row"
+       *ngIf="!useAddressValidator">
     <div [ngClass]="{'col-11': allowExtralines, 'col-12': !allowExtralines}">
       <common-street name="street_{{objectId}}"
                      label="{{addrLabels.address1}}"
-                     [useGeoCoder]="useGeoCoder()"
                      [ngModel]="addr?.addressLine1"
                      (ngModelChange)="setStreetAddress($event)"
                      (selectEvent)="setAddress($event)"
@@ -23,6 +23,24 @@
       </button>
     </div>
   </div>
+  <!-- Address Validator -->
+  <div class="form-group col-sm-11 p-sm-0"
+       *ngIf="useAddressValidator">
+    <common-address-validator
+      name="street_{{objectId}}"
+      label="{{addrLabels.address1}}"              
+      [(ngModel)]="addr.addressLine1"
+      (ngModelChange)="setStreetAddress($event)"
+      [required]="isRequired"
+      [disabled]="readOnlyFields.address"
+      [maxlength]="fieldMaxLenghts.address"
+      [serviceUrl]="addressServiceUrl"
+      (select)="selectSuggestedAddress($event)"
+      [populateAddressOnSelect]="true"
+      commonValidateStreet>
+    </common-address-validator>
+  </div>
+  
 </div>
 
 
@@ -33,7 +51,6 @@
     <div class="col-11">
       <common-street label="{{addrLabels.address2}}"
                      name="street_line_2_{{objectId}}"
-                     [useGeoCoder]='false'
                      [(ngModel)]='addr.addressLine2'
                      [maxlength]="fieldMaxLenghts.address"
                      [disabled]="readOnlyFields.address"
@@ -59,7 +76,6 @@
     <div class="col-11">
       <common-street label="{{addrLabels.address3}}"
                      name="street_line_3_{{objectId}}"
-                     [useGeoCoder]='false'
                      [(ngModel)]='addr.addressLine3'
                      [maxlength]="fieldMaxLenghts.address"
                      [disabled]="readOnlyFields.address"

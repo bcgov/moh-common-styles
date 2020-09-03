@@ -6,6 +6,8 @@ import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http'
 import { NgControl, ControlValueAccessor } from '@angular/forms';
 import { Base } from '../../models/base';
 import { Address } from '../../models/address.model';
+import { AbstractFormControl } from '../../models/abstract-form-control';
+import { ErrorMessage, LabelReplacementTag } from '../../models/error-message.interface';
 
 
 
@@ -45,16 +47,20 @@ export interface AddressResult {
   templateUrl: './address-validator.component.html',
   styleUrls: ['./address-validator.component.scss']
 })
-export class AddressValidatorComponent extends Base implements OnInit, ControlValueAccessor {
+export class AddressValidatorComponent extends AbstractFormControl implements OnInit, ControlValueAccessor {
 
   @Input() label: string = 'Address Lookup';
   @Input() address: string;
   @Input() serviceUrl: string;
+  @Input() populateAddressOnSelect: boolean = false;
   @Output() addressChange: EventEmitter<string> = new EventEmitter<string>();
   @Output() select: EventEmitter<Address> = new EventEmitter<Address>();
-
+  
   @Input() maxlength: string = '255';
 
+  _defaultErrMsg: ErrorMessage = {
+    required: LabelReplacementTag + ' is required.',
+  };
   /** The string in the box the user has typed */
   public search: string;
   /** Is the request still in progress? */
@@ -135,6 +141,10 @@ export class AddressValidatorComponent extends Base implements OnInit, ControlVa
     this.selectedAddress = true;
     this.select.emit(addr);
 
+    // For template forms, must explicitly set `search` value upon selecting an item.
+    if (this.populateAddressOnSelect) {
+      this.search = stripped;
+    }
     this._onChange(stripped);
   }
 
