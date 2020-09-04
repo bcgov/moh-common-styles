@@ -169,6 +169,23 @@ describe('AddressValidatorComponent', () => {
     component.onSelect(mockEvent);
     expect(component.select.emit).toHaveBeenCalledWith(jasmine.any(Address));
   }));
+
+  it('should set `hasError` to true when encountering an error', fakeAsync(() => {
+    fixture = TestBed.createComponent(AddressValidatorComponent);
+    component = fixture.componentInstance;
+    const mockError = {};
+    component.onError(mockError);
+    expect(component.hasError).toBe(true);
+  }));
+
+  it('should set `isTypeaheadLoading` to true when passed in `onLoading`.', fakeAsync(() => {
+    fixture = TestBed.createComponent(AddressValidatorComponent);
+    component = fixture.componentInstance;
+    component.hasError = true;
+    component.onLoading(true);
+    expect(component.isTypeaheadLoading).toBe(true);
+    expect(component.hasError).toBe(false);
+  }));
 });
 
 describe('AddressValidatorComponent', () => {
