@@ -54,14 +54,16 @@ describe('AddressValidatorComponent', () => {
       City: 'Victoria',
       DeliveryAddressLines: '784 Yates St',
       Country: 'Canada',
-      Province: 'British Columbia'
+      Province: 'British Columbia',
+      PostalCode: 'V1V1V1'
     },
     {
       AddressComplete: '784 Young Rd, Kelowna, BC',
       City: 'Kelowna',
       DeliveryAddressLines: '784 Young Rd',
       Country: 'Canada',
-      Province: 'British Columbia'
+      Province: 'British Columbia',
+      PostalCode: 'V2V2V2'
     }
   ];
 
@@ -185,6 +187,76 @@ describe('AddressValidatorComponent', () => {
     component.onLoading(true);
     expect(component.isTypeaheadLoading).toBe(true);
     expect(component.hasError).toBe(false);
+  }));
+
+  it('should set `hasNoResults` to true when passed in `onNoResults`.', fakeAsync(() => {
+    fixture = TestBed.createComponent(AddressValidatorComponent);
+    component = fixture.componentInstance;
+    component.hasError = true;
+    component.onNoResults(true);
+    expect(component.hasNoResults).toBe(true);
+    expect(component.hasError).toBe(true);
+    component.onNoResults(false);
+    expect(component.hasNoResults).toBe(false);
+    expect(component.hasError).toBe(false);
+  }));
+
+  it('should emit `address` with values.', fakeAsync(() => {
+    fixture = TestBed.createComponent(AddressValidatorComponent);
+    component = fixture.componentInstance;
+    const mockSelectedItem = {
+      item: yatesResponse[0]
+    } as TypeaheadMatch;
+    spyOn(component.select, 'emit').and.returnValue(null);
+    component.selectedAddress = false;
+    component.onSelect(mockSelectedItem);
+    expect(component.select.emit).toHaveBeenCalledWith(jasmine.any(Object));
+    expect(component.selectedAddress).toBe(true);
+  }));
+
+  it('should set `search to address selected when `populateAddressOnSelect` is true.', fakeAsync(() => {
+    fixture = TestBed.createComponent(AddressValidatorComponent);
+    component = fixture.componentInstance;
+    const mockSelectedItem = {
+      item: yatesResponse[0]
+    } as TypeaheadMatch;
+    spyOn(component.select, 'emit').and.returnValue(null);
+    component.populateAddressOnSelect = true;
+    component.onSelect(mockSelectedItem);
+    expect(component.search).toBe(yatesResponse[0].DeliveryAddressLines);
+  }));
+
+  it('should handle keyUp.', fakeAsync(() => {
+    fixture = TestBed.createComponent(AddressValidatorComponent);
+    component = fixture.componentInstance;
+    const mockKeyboardEvent = {
+      keyCode: 1
+    } as KeyboardEvent;
+    component.selectedAddress = true;
+    component.onKeyUp(mockKeyboardEvent);
+    expect(component.selectedAddress).toBe(false);
+  }));
+
+  it('should handle onBlur.', fakeAsync(() => {
+    fixture = TestBed.createComponent(AddressValidatorComponent);
+    component = fixture.componentInstance;
+    const mockEvent = {};
+    const mockSearch = 'Test';
+    spyOn(component, '_onTouched').and.returnValue(null);
+    spyOn(component, '_onChange').and.returnValue(null);
+    component.search = mockSearch;
+    component.onBlur(mockEvent);
+    expect(component._onTouched).toHaveBeenCalled();
+    expect(component._onChange).toHaveBeenCalledWith(component.search);
+  }));
+
+  it('should write value.', fakeAsync(() => {
+    fixture = TestBed.createComponent(AddressValidatorComponent);
+    component = fixture.componentInstance;
+    const mockSearch = 'Test';
+    component.search = null;
+    component.writeValue(mockSearch);
+    expect(component.search).toBe(mockSearch);
   }));
 });
 
