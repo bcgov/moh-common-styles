@@ -25,7 +25,7 @@
        (blur)="onBlur($event)"
        [attr.maxlength]='maxlength'
        typeaheadOptionField='AddressComplete'
-       typeaheadMinLength='3'
+       [typeaheadMinLength]="0"
        autocomplete="off"
        spellcheck="false"
         />
