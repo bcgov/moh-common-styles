@@ -1,4 +1,18 @@
-# Unreleased "moh-common-lib" (2020-09-03)
+# Unreleased "moh-common-lib" (2020-09-04)
+
+
+
+## [3.1.2](https://github.com/bcgov/moh-common-styles/compare/v3.1.1...v3.1.2) "moh-common-lib" (2020-09-04)
+
+
+### Bug Fixes
+
+* DEMCL-24: Reduced typeaheadMinLength to 0, to eliminate error. ([c5bee80](https://github.com/bcgov/moh-common-styles/commit/c5bee80))
+
+
+### Features
+
+* added unit tests. ([e7e3da0](https://github.com/bcgov/moh-common-styles/commit/e7e3da0))
 
 
 
