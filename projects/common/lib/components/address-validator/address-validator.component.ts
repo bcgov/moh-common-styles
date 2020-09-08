@@ -72,7 +72,7 @@ export class AddressValidatorComponent extends AbstractFormControl implements On
   /** Similar to this.address, but we can null it when user is searching for new addresses */
   public selectedAddress: boolean = false;
   /** The list of results, from API, that is passed to the typeahead list */
-  public typeaheadList$: Observable<AddressResult[]>; // Result from address lookup
+  public typeaheadList$: Observable<AddressResult[]> = of([]); // Result from address lookup
   /** The subject that triggers on user text input and gets typeaheadList$ to update.  */
   private searchText$ = new Subject<string>();
 
@@ -163,7 +163,9 @@ export class AddressValidatorComponent extends AbstractFormControl implements On
 
   onBlur(event): void {
     this._onTouched();
-    this._onChange(this.search);
+    if (this.search) {
+      this._onChange(this.search);
+    }
   }
 
 
