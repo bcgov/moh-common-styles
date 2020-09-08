@@ -1,4 +1,13 @@
-# Unreleased "moh-common-lib" (2020-09-04)
+# Unreleased "moh-common-lib" (2020-09-08)
+
+
+
+## [3.1.3](https://github.com/bcgov/moh-common-styles/compare/v3.1.2...v3.1.3) "moh-common-lib" (2020-09-08)
+
+
+### Bug Fixes
+
+* add default empty array to typeahead results. ([b7edcf1](https://github.com/bcgov/moh-common-styles/commit/b7edcf1))
 
 
 

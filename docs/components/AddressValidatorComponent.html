@@ -699,8 +699,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="229"
-                            class="link-to-prism">projects/common/lib/components/address-validator/address-validator.component.ts:229</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="231"
+                            class="link-to-prism">projects/common/lib/components/address-validator/address-validator.component.ts:231</a></div>
                 </td>
             </tr>
 
@@ -769,8 +769,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="191"
-                            class="link-to-prism">projects/common/lib/components/address-validator/address-validator.component.ts:191</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="193"
+                            class="link-to-prism">projects/common/lib/components/address-validator/address-validator.component.ts:193</a></div>
                 </td>
             </tr>
 
@@ -1292,8 +1292,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="208"
-                            class="link-to-prism">projects/common/lib/components/address-validator/address-validator.component.ts:208</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="210"
+                            class="link-to-prism">projects/common/lib/components/address-validator/address-validator.component.ts:210</a></div>
                 </td>
             </tr>
 
@@ -1367,8 +1367,8 @@ out on some items if matchPrecisionNot is not set.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="177"
-                            class="link-to-prism">projects/common/lib/components/address-validator/address-validator.component.ts:177</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="179"
+                            class="link-to-prism">projects/common/lib/components/address-validator/address-validator.component.ts:179</a></div>
                 </td>
             </tr>
 
@@ -1437,8 +1437,8 @@ out on some items if matchPrecisionNot is not set.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="182"
-                            class="link-to-prism">projects/common/lib/components/address-validator/address-validator.component.ts:182</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="184"
+                            class="link-to-prism">projects/common/lib/components/address-validator/address-validator.component.ts:184</a></div>
                 </td>
             </tr>
 
@@ -1509,8 +1509,8 @@ out on some items if matchPrecisionNot is not set.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="186"
-                            class="link-to-prism">projects/common/lib/components/address-validator/address-validator.component.ts:186</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="188"
+                            class="link-to-prism">projects/common/lib/components/address-validator/address-validator.component.ts:188</a></div>
                 </td>
             </tr>
 
@@ -1579,8 +1579,8 @@ out on some items if matchPrecisionNot is not set.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="170"
-                            class="link-to-prism">projects/common/lib/components/address-validator/address-validator.component.ts:170</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="172"
+                            class="link-to-prism">projects/common/lib/components/address-validator/address-validator.component.ts:172</a></div>
                 </td>
             </tr>
 
@@ -2536,6 +2536,11 @@ out on some items if matchPrecisionNot is not set.</p>
 
                         </td>
                     </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>of([])</code>
+                        </td>
+                    </tr>
                         <tr>
                             <td class="col-md-4">
                                     <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">projects/common/lib/components/address-validator/address-validator.component.ts:75</a></div>
@@ -2783,7 +2788,7 @@ export class AddressValidatorComponent extends AbstractFormControl implements On
   /** Similar to this.address, but we can null it when user is searching for new addresses */
   public selectedAddress: boolean &#x3D; false;
   /** The list of results, from API, that is passed to the typeahead list */
-  public typeaheadList$: Observable&lt;AddressResult[]&gt;; // Result from address lookup
+  public typeaheadList$: Observable&lt;AddressResult[]&gt; &#x3D; of([]); // Result from address lookup
   /** The subject that triggers on user text input and gets typeaheadList$ to update.  */
   private searchText$ &#x3D; new Subject&lt;string&gt;();
 
@@ -2874,7 +2879,9 @@ export class AddressValidatorComponent extends AbstractFormControl implements On
 
   onBlur(event): void {
     this._onTouched();
-    this._onChange(this.search);
+    if (this.search) {
+      this._onChange(this.search);
+    }
   }
 
 
@@ -2974,7 +2981,7 @@ export class AddressValidatorComponent extends AbstractFormControl implements On
        (blur)&#x3D;&quot;onBlur($event)&quot;
        [attr.maxlength]&#x3D;&#x27;maxlength&#x27;
        typeaheadOptionField&#x3D;&#x27;AddressComplete&#x27;
-       [typeaheadMinLength]&#x3D;&quot;0&quot;
+       [typeaheadMinLength]&#x3D;&quot;3&quot;
        autocomplete&#x3D;&quot;off&quot;
        spellcheck&#x3D;&quot;false&quot;
         /&gt;
@@ -3028,7 +3035,7 @@ export class AddressValidatorComponent extends AbstractFormControl implements On
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><label for="address-validator_{{label}}" class=\'text-nowrap\'>{{label}}  <span class="address-validator-status">    <ng-container *ngIf="isTypeaheadLoading; else statusContainer"> &mdash; Loading      <i class="fa fa-spinner fa-pulse fa-fw"></i>    </ng-container>  </span>  <ng-template #statusContainer>    <ng-template *ngIf="selectedAddress; then addressSelected; else error;"></ng-template>  </ng-template></label><input class="form-control"       type="text"       id="address-validator_{{label}}"       name="address-validator_{{label}}"       [(ngModel)]=\'search\'       (keyup)=\'onKeyUp($event)\'       [typeahead]=\'typeaheadList$\'       [typeaheadIsFirstItemActive]="false"       [typeaheadSelectFirstItem]="false"       (typeaheadLoading)="onLoading($event)"       (typeaheadOnSelect)="onSelect($event)"       (typeaheadNoResults)="onNoResults($event)"       (blur)="onBlur($event)"       [attr.maxlength]=\'maxlength\'       typeaheadOptionField=\'AddressComplete\'       [typeaheadMinLength]="0"       autocomplete="off"       spellcheck="false"        />        <!-- Intentionally using \'nope\' for autocomplete as it is invalid and forces false - https://developer.mozilla.org/en-US/docs/Web/Security/Securing_your_site/Turning_off_form_autocompletion --><ng-template #addressSelected>    <span> &mdash; Selected        <i class="fa fa-check fa-fw text-success"></i>    </span></ng-template><ng-template #noResults>    <span *ngIf="hasNoResults"> &mdash; No Results        <i class="fa fa-times fa-fw text-warning"></i>    </span></ng-template><ng-template #error>    <span *ngIf=\'hasError; else noResults\'> &mdash; Error        <i class="fa fa-exclamation-triangle fa-fw text-danger"></i>    </span></ng-template></div>'
+        var COMPONENT_TEMPLATE = '<div><label for="address-validator_{{label}}" class=\'text-nowrap\'>{{label}}  <span class="address-validator-status">    <ng-container *ngIf="isTypeaheadLoading; else statusContainer"> &mdash; Loading      <i class="fa fa-spinner fa-pulse fa-fw"></i>    </ng-container>  </span>  <ng-template #statusContainer>    <ng-template *ngIf="selectedAddress; then addressSelected; else error;"></ng-template>  </ng-template></label><input class="form-control"       type="text"       id="address-validator_{{label}}"       name="address-validator_{{label}}"       [(ngModel)]=\'search\'       (keyup)=\'onKeyUp($event)\'       [typeahead]=\'typeaheadList$\'       [typeaheadIsFirstItemActive]="false"       [typeaheadSelectFirstItem]="false"       (typeaheadLoading)="onLoading($event)"       (typeaheadOnSelect)="onSelect($event)"       (typeaheadNoResults)="onNoResults($event)"       (blur)="onBlur($event)"       [attr.maxlength]=\'maxlength\'       typeaheadOptionField=\'AddressComplete\'       [typeaheadMinLength]="3"       autocomplete="off"       spellcheck="false"        />        <!-- Intentionally using \'nope\' for autocomplete as it is invalid and forces false - https://developer.mozilla.org/en-US/docs/Web/Security/Securing_your_site/Turning_off_form_autocompletion --><ng-template #addressSelected>    <span> &mdash; Selected        <i class="fa fa-check fa-fw text-success"></i>    </span></ng-template><ng-template #noResults>    <span *ngIf="hasNoResults"> &mdash; No Results        <i class="fa fa-times fa-fw text-warning"></i>    </span></ng-template><ng-template #error>    <span *ngIf=\'hasError; else noResults\'> &mdash; Error        <i class="fa fa-exclamation-triangle fa-fw text-danger"></i>    </span></ng-template></div>'
     var COMPONENTS = [{'name': 'AccordionCommonComponent', 'selector': 'common-accordion'},{'name': 'AddressComponent', 'selector': 'common-address'},{'name': 'AddressValidatorComponent', 'selector': 'common-address-validator'},{'name': 'ButtonComponent', 'selector': 'common-button'},{'name': 'ButtonGroupComponent', 'selector': 'common-button-group'},{'name': 'CaptchaComponent', 'selector': 'common-captcha'},{'name': 'CheckboxComponent', 'selector': 'common-checkbox'},{'name': 'CityComponent', 'selector': 'common-city'},{'name': 'ConfirmTemplateComponent', 'selector': 'common-confirm-template'},{'name': 'ConsentModalComponent', 'selector': 'common-consent-modal'},{'name': 'CoreBreadcrumbComponent', 'selector': 'common-core-breadcrumb'},{'name': 'CountryComponent', 'selector': 'common-country'},{'name': 'DateComponent', 'selector': 'common-date'},{'name': 'DatepickerComponent', 'selector': 'common-datepicker'},{'name': 'DropdownComponent', 'selector': 'common-dropdown'},{'name': 'EmailComponent', 'selector': 'common-email'},{'name': 'ErrorContainerComponent', 'selector': 'common-error-container'},{'name': 'FileUploaderComponent', 'selector': 'common-file-uploader'},{'name': 'FormActionBarComponent', 'selector': 'common-form-action-bar'},{'name': 'FormSubmitBarComponent', 'selector': 'common-form-submit-bar'},{'name': 'FullNameComponent', 'selector': 'common-full-name'},{'name': 'GeocoderInputComponent', 'selector': 'common-geocoder-input'},{'name': 'HeaderComponent', 'selector': 'common-header'},{'name': 'NameComponent', 'selector': 'common-name'},{'name': 'PageFrameworkComponent', 'selector': 'common-page-framework'},{'name': 'PageSectionComponent', 'selector': 'common-page-section'},{'name': 'PasswordComponent', 'selector': 'common-password'},{'name': 'PhnComponent', 'selector': 'common-phn'},{'name': 'PhoneNumberComponent', 'selector': 'common-phone-number'},{'name': 'PostalCodeComponent', 'selector': 'common-postal-code'},{'name': 'ProvinceComponent', 'selector': 'common-province'},{'name': 'RadioComponent', 'selector': 'common-radio'},{'name': 'SampleModalComponent', 'selector': 'common-sample-modal'},{'name': 'SinComponent', 'selector': 'common-sin'},{'name': 'StreetComponent', 'selector': 'common-street'},{'name': 'ThumbnailComponent', 'selector': 'common-thumbnail'},{'name': 'ToggleComponent', 'selector': 'common-toggle'},{'name': 'WizardProgressBarComponent', 'selector': 'common-wizard-progress-bar'},{'name': 'XiconButtonComponent', 'selector': 'common-xicon-button'}];
     var DIRECTIVES = [{'name': 'DateFieldFormatDirective', 'selector': '[commonDateFieldFormat]'},{'name': 'DuplicateCheckDirective', 'selector': '[commonDuplicateCheck]'},{'name': 'ValidateBcPostalDirective', 'selector': '[commonValidateBcPostal]'},{'name': 'ValidateCityDirective', 'selector': '[commonValidateCity]'},{'name': 'ValidateNameDirective', 'selector': '[commonValidateName]'},{'name': 'ValidatePostalcodeDirective', 'selector': '[commonValidatePostalcode]'},{'name': 'ValidateRegionDirective', 'selector': '[commonValidateRegion]'},{'name': 'ValidateStreetDirective', 'selector': '[commonValidateStreet]'}];
     var ACTUAL_COMPONENT = {'name': 'AddressValidatorComponent'};
