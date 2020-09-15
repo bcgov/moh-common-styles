@@ -5,7 +5,7 @@ import { AddressComponent } from './address.component';
 import { FormsModule, NgForm } from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { TextMaskModule } from 'angular2-text-mask';
-import { TypeaheadModule } from 'ngx-bootstrap';
+import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 
 xdescribe('AddressComponent', () => {
   let component: AddressComponent;

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, ChangeDetectorRef, Output, EventEmitter, SimpleChanges, OnChanges, Optional, Self } from '@angular/core';
 import { Subject, Observable, of } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap, tap, catchError } from 'rxjs/operators';
-import { TypeaheadMatch } from 'ngx-bootstrap';
+import { TypeaheadMatch } from 'ngx-bootstrap/typeahead';
 import { Base } from '../../models/base';
 import { GeocoderService, GeoAddressResult } from '../../services/geocoder.service';
 import { CANADA } from '../country/country.component';

@@ -1,4 +1,43 @@
-# Unreleased "moh-common-lib" (2020-08-25)
+# Unreleased "moh-common-lib" (2020-09-08)
+
+
+
+## [3.1.3](https://github.com/bcgov/moh-common-styles/compare/v3.1.2...v3.1.3) "moh-common-lib" (2020-09-08)
+
+
+### Bug Fixes
+
+* add default empty array to typeahead results. ([b7edcf1](https://github.com/bcgov/moh-common-styles/commit/b7edcf1))
+
+
+
+## [3.1.2](https://github.com/bcgov/moh-common-styles/compare/v3.1.1...v3.1.2) "moh-common-lib" (2020-09-04)
+
+
+### Bug Fixes
+
+* DEMCL-24: Reduced typeaheadMinLength to 0, to eliminate error. ([c5bee80](https://github.com/bcgov/moh-common-styles/commit/c5bee80))
+
+
+### Features
+
+* added unit tests. ([e7e3da0](https://github.com/bcgov/moh-common-styles/commit/e7e3da0))
+
+
+
+## [3.1.1](https://github.com/bcgov/moh-common-styles/compare/v3.1.0...v3.1.1) "moh-common-lib" (2020-09-03)
+
+
+### Bug Fixes
+
+* DEMCL-24: Added province change for non bc-only addresses. ([3632750](https://github.com/bcgov/moh-common-styles/commit/3632750))
+* DEMCL-24: Removed references to GeoCoder. ([8428ede](https://github.com/bcgov/moh-common-styles/commit/8428ede))
+* Updated `ngx-bootstrap` dependencies to recommended imports. ([20619af](https://github.com/bcgov/moh-common-styles/commit/20619af))
+
+
+### Features
+
+* DEMCL-24: Added `address-validator` component to `address` compnt. ([05b2f54](https://github.com/bcgov/moh-common-styles/commit/05b2f54))
 
 
 

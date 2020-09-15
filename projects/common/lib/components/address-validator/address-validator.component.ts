@@ -1,11 +1,13 @@
 import { Component, OnInit, Input, ChangeDetectorRef, Output, EventEmitter, SimpleChanges, OnChanges, Optional, Self } from '@angular/core';
 import { Subject, Observable, of, throwError } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap, map, catchError } from 'rxjs/operators';
-import { TypeaheadMatch } from 'ngx-bootstrap';
+import { TypeaheadMatch } from 'ngx-bootstrap/typeahead';
 import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { NgControl, ControlValueAccessor } from '@angular/forms';
 import { Base } from '../../models/base';
 import { Address } from '../../models/address.model';
+import { AbstractFormControl } from '../../models/abstract-form-control';
+import { ErrorMessage, LabelReplacementTag } from '../../models/error-message.interface';
 
 
 
@@ -45,16 +47,20 @@ export interface AddressResult {
   templateUrl: './address-validator.component.html',
   styleUrls: ['./address-validator.component.scss']
 })
-export class AddressValidatorComponent extends Base implements OnInit, ControlValueAccessor {
+export class AddressValidatorComponent extends AbstractFormControl implements OnInit, ControlValueAccessor {
 
   @Input() label: string = 'Address Lookup';
   @Input() address: string;
   @Input() serviceUrl: string;
+  @Input() populateAddressOnSelect: boolean = false;
   @Output() addressChange: EventEmitter<string> = new EventEmitter<string>();
   @Output() select: EventEmitter<Address> = new EventEmitter<Address>();
-
+  
   @Input() maxlength: string = '255';
 
+  _defaultErrMsg: ErrorMessage = {
+    required: LabelReplacementTag + ' is required.',
+  };
   /** The string in the box the user has typed */
   public search: string;
   /** Is the request still in progress? */
@@ -66,7 +72,7 @@ export class AddressValidatorComponent extends Base implements OnInit, ControlVa
   /** Similar to this.address, but we can null it when user is searching for new addresses */
   public selectedAddress: boolean = false;
   /** The list of results, from API, that is passed to the typeahead list */
-  public typeaheadList$: Observable<AddressResult[]>; // Result from address lookup
+  public typeaheadList$: Observable<AddressResult[]> = of([]); // Result from address lookup
   /** The subject that triggers on user text input and gets typeaheadList$ to update.  */
   private searchText$ = new Subject<string>();
 
@@ -135,6 +141,10 @@ export class AddressValidatorComponent extends Base implements OnInit, ControlVa
     this.selectedAddress = true;
     this.select.emit(addr);
 
+    // For template forms, must explicitly set `search` value upon selecting an item.
+    if (this.populateAddressOnSelect) {
+      this.search = stripped;
+    }
     this._onChange(stripped);
   }
 
@@ -153,7 +163,9 @@ export class AddressValidatorComponent extends Base implements OnInit, ControlVa
 
   onBlur(event): void {
     this._onTouched();
-    this._onChange(this.search);
+    if (this.search) {
+      this._onChange(this.search);
+    }
   }
 
 

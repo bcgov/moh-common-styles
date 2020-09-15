@@ -1,5 +1,5 @@
 import { forwardRef, Component, EventEmitter, Input, Output, ViewChild, OnInit} from '@angular/core';
-import {ModalDirective} from 'ngx-bootstrap';
+import {ModalDirective} from 'ngx-bootstrap/modal';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Response } from '@angular/http';

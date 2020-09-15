@@ -303,11 +303,13 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, Input, ChangeDetectorRef, Output, EventEmitter, SimpleChanges, OnChanges, Optional, Self } from &#x27;@angular/core&#x27;;
 import { Subject, Observable, of, throwError } from &#x27;rxjs&#x27;;
 import { debounceTime, distinctUntilChanged, switchMap, map, catchError } from &#x27;rxjs/operators&#x27;;
-import { TypeaheadMatch } from &#x27;ngx-bootstrap&#x27;;
+import { TypeaheadMatch } from &#x27;ngx-bootstrap/typeahead&#x27;;
 import { HttpClient, HttpErrorResponse, HttpParams } from &#x27;@angular/common/http&#x27;;
 import { NgControl, ControlValueAccessor } from &#x27;@angular/forms&#x27;;
 import { Base } from &#x27;../../models/base&#x27;;
 import { Address } from &#x27;../../models/address.model&#x27;;
+import { AbstractFormControl } from &#x27;../../models/abstract-form-control&#x27;;
+import { ErrorMessage, LabelReplacementTag } from &#x27;../../models/error-message.interface&#x27;;
 
 
 
@@ -347,16 +349,20 @@ export interface AddressResult {
   templateUrl: &#x27;./address-validator.component.html&#x27;,
   styleUrls: [&#x27;./address-validator.component.scss&#x27;]
 })
-export class AddressValidatorComponent extends Base implements OnInit, ControlValueAccessor {
+export class AddressValidatorComponent extends AbstractFormControl implements OnInit, ControlValueAccessor {
 
   @Input() label: string &#x3D; &#x27;Address Lookup&#x27;;
   @Input() address: string;
   @Input() serviceUrl: string;
+  @Input() populateAddressOnSelect: boolean &#x3D; false;
   @Output() addressChange: EventEmitter&lt;string&gt; &#x3D; new EventEmitter&lt;string&gt;();
   @Output() select: EventEmitter&lt;Address&gt; &#x3D; new EventEmitter&lt;Address&gt;();
-
+  
   @Input() maxlength: string &#x3D; &#x27;255&#x27;;
 
+  _defaultErrMsg: ErrorMessage &#x3D; {
+    required: LabelReplacementTag + &#x27; is required.&#x27;,
+  };
   /** The string in the box the user has typed */
   public search: string;
   /** Is the request still in progress? */
@@ -368,7 +374,7 @@ export class AddressValidatorComponent extends Base implements OnInit, ControlVa
   /** Similar to this.address, but we can null it when user is searching for new addresses */
   public selectedAddress: boolean &#x3D; false;
   /** The list of results, from API, that is passed to the typeahead list */
-  public typeaheadList$: Observable&lt;AddressResult[]&gt;; // Result from address lookup
+  public typeaheadList$: Observable&lt;AddressResult[]&gt; &#x3D; of([]); // Result from address lookup
   /** The subject that triggers on user text input and gets typeaheadList$ to update.  */
   private searchText$ &#x3D; new Subject&lt;string&gt;();
 
@@ -437,6 +443,10 @@ export class AddressValidatorComponent extends Base implements OnInit, ControlVa
     this.selectedAddress &#x3D; true;
     this.select.emit(addr);
 
+    // For template forms, must explicitly set &#x60;search&#x60; value upon selecting an item.
+    if (this.populateAddressOnSelect) {
+      this.search &#x3D; stripped;
+    }
     this._onChange(stripped);
   }
 
@@ -455,7 +465,9 @@ export class AddressValidatorComponent extends Base implements OnInit, ControlVa
 
   onBlur(event): void {
     this._onTouched();
-    this._onChange(this.search);
+    if (this.search) {
+      this._onChange(this.search);
+    }
   }
 
 

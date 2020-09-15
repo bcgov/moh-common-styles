@@ -69,10 +69,11 @@ export class AddressComponent extends Base
   @Input() defaultCountry: string = CANADA;
   @Input() provinceList: ProvinceList[] = PROVINCE_LIST;
   @Input() defaultProvince: string = BRITISH_COLUMBIA;
-  @Input() disableGeocoder: boolean = false;
+  @Input() disableGeocoder: boolean = false; // This should eventually be refactored to `disableAddressValidator`. Leaving it for compatibility.
   @Input() labels: AddrLabelList;
   @Input() maxlengths: Maxlengths;
   @Input() bcOnly: boolean = false;
+  @Input() addressServiceUrl: string;
 
   @Input()
   set address(val: Address) {
@@ -324,12 +325,7 @@ export class AddressComponent extends Base
     return countryObj ? countryObj.countryCode : null;
   }
 
-  // GeoCoder
-
-  /**
-   * GeoCoder only is applicable when address is BC, Canada.
-   */
-  useGeoCoder(): boolean {
+  get useAddressValidator(): boolean {
     if (this.disableGeocoder) {
       return false;
     }
@@ -343,6 +339,21 @@ export class AddressComponent extends Base
     this.addr.province = data.province;
     this.addr.country = data.country;
     this.addressChange.emit(this.addr);
+  }
+
+  selectSuggestedAddress(address: Address) {
+    if (!address.street && !address.city && !address.postal) {
+      return;
+    }
+    this.addr.addressLine1 = address.street;
+    this.addr.city = address.city;
+    this.addr.postal = address.postal;
+    if (!this.bcOnly) {
+      this.addr.province = address.province;
+    }
+    this._onChange(this.addr);
+    this.addressChange.emit(this.addr);
+    this._onTouched(this.addr);
   }
 
   writeValue( value: Address) {

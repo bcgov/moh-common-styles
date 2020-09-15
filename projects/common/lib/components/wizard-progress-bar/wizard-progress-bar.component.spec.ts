@@ -1,7 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { WizardProgressBarComponent } from './wizard-progress-bar.component';
-import { AlertModule, ProgressbarModule } from 'ngx-bootstrap';
+import { AlertModule } from 'ngx-bootstrap/alert';
+import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 import { RouterTestingModule } from '@angular/router/testing';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
