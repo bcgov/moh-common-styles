@@ -1,4 +1,14 @@
-# Unreleased "moh-common-lib" (2020-09-08)
+# Unreleased "moh-common-lib" (2020-09-22)
+
+
+
+# [3.2.0](https://github.com/bcgov/moh-common-styles/compare/v3.1.3...v3.2.0) "moh-common-lib" (2020-09-22)
+
+
+### Features
+
+* DEMCL-22: Adjust width slightly for IE11 ([c2ffc66](https://github.com/bcgov/moh-common-styles/commit/c2ffc66))
+* DEMCL-22: Update captcha for accessibility ([09dc976](https://github.com/bcgov/moh-common-styles/commit/09dc976))
 
 
 
