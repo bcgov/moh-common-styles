@@ -88,29 +88,7 @@ the next.</p>
                 </p>
                 <div class="io-description">
                             <div>
-                                <pre class="line-numbers"><code class="language-html">//STEP 2 + STEP 3
-//registration.module.ts
-providers: [
-...
-{ provide: AbstractPageGuardService, useExisting: DefaultPageGuardService },
-LoadPageGuardService
-]
-
-
-//STEP 4
-//registration-routing.modle.ts
-const routes: Routes = [{
-path: '',
-canActivateChild: [LoadPageGuardService] //or canActivate
-}
-...
-]
-
-
-//STEP 5
-//example.component.ts
-ngOnInit() { this.pageService.setPageIncomplete(); }
-continue() { this.pageService.setPageComplete(); }</code></pre>
+                                <pre class="line-numbers"><code class="language-html">//STEP 2 + STEP 3//registration.module.tsproviders: [...{ provide: AbstractPageGuardService, useExisting: DefaultPageGuardService },LoadPageGuardService]//STEP 4//registration-routing.modle.tsconst routes: Routes = [{path: '',canActivateChild: [LoadPageGuardService] //or canActivate}...]//STEP 5//example.component.tsngOnInit() { this.pageService.setPageIncomplete(); }continue() { this.pageService.setPageComplete(); }</code></pre>
                             </div>
                 </div>
 

@@ -1,4 +1,13 @@
-# Unreleased "moh-common-lib" (2020-09-22)
+# Unreleased "moh-common-lib" (2020-09-24)
+
+
+
+## [3.2.1](https://github.com/bcgov/moh-common-styles/compare/v3.2.0...v3.2.1) "moh-common-lib" (2020-09-24)
+
+
+### Styles
+
+* DEMCL-22: Adjust buttons styles, text ([b7606d8](https://github.com/bcgov/moh-common-styles/commit/b7606d8))
 
 
 

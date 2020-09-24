@@ -95,21 +95,7 @@ element (via transclusion)</p>
     </p>
     <div class="io-description">
                 <div>
-                    <pre class="line-numbers"><code class="language-html">&lt;common-consent-modal #consentModal [isUnderMaintenance]=&quot;false&quot;
-        title=&quot;Information collection notice&quot;
-        agreeLabel=&quot;I have read and understand this information&quot;
-        processName=&quot;processName&quot;
-        (accept)=&quot;accountLetterApplication.infoCollectionAgreement = $event;  saveApplication($event)&quot;&gt;
-    &lt;p&gt;&lt;strong&gt;Keep your personal information secure – especially when using a shared device like a computer at a library, school or café.&lt;/strong&gt; To delete any information that was entered, either complete the application and submit it or, if you don’t finish, close the web browser.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Need to take a break and come back later?&lt;/strong&gt; The data you enter on this form is saved locally to the computer or device you are using until you close the web browser or submit your application.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Information in this application is collected by the Ministry of Health&lt;/strong&gt; under section 26(a), (c) and (e) of the Freedom of Information and Protection of Privacy Act and will be used to determine eligibility for provincial health care benefits in BC and administer Premium Assistance. Should you have any questions about the collection of this personal information please &lt;a href=&quot;http://www2.gov.bc.ca/gov/content/health/health-drug-coverage/msp/bc-residents-contact-us&quot; target=&quot;_blank&quot;&gt;contact Health Insurance BC &lt;i class=&quot;fa fa-external-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;/common-consent-modal&gt;
-
-
-// Component code - Remove backticks when copying (necessary to render docs)
-`@ViewChild('consentModal') consentModal: ConsentModalComponent`
-...
-openModal(){
-this.consentModal.showFullSizeView();
-}</code></pre>
+                    <pre class="line-numbers"><code class="language-html">&lt;common-consent-modal #consentModal [isUnderMaintenance]=&quot;false&quot;       title=&quot;Information collection notice&quot;       agreeLabel=&quot;I have read and understand this information&quot;       processName=&quot;processName&quot;       (accept)=&quot;accountLetterApplication.infoCollectionAgreement = $event;  saveApplication($event)&quot;&gt;   &lt;p&gt;&lt;strong&gt;Keep your personal information secure – especially when using a shared device like a computer at a library, school or café.&lt;/strong&gt; To delete any information that was entered, either complete the application and submit it or, if you don’t finish, close the web browser.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Need to take a break and come back later?&lt;/strong&gt; The data you enter on this form is saved locally to the computer or device you are using until you close the web browser or submit your application.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Information in this application is collected by the Ministry of Health&lt;/strong&gt; under section 26(a), (c) and (e) of the Freedom of Information and Protection of Privacy Act and will be used to determine eligibility for provincial health care benefits in BC and administer Premium Assistance. Should you have any questions about the collection of this personal information please &lt;a href=&quot;http://www2.gov.bc.ca/gov/content/health/health-drug-coverage/msp/bc-residents-contact-us&quot; target=&quot;_blank&quot;&gt;contact Health Insurance BC &lt;i class=&quot;fa fa-external-link&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/a&gt;.&lt;/p&gt;&lt;/common-consent-modal&gt;// Component code - Remove backticks when copying (necessary to render docs)`@ViewChild('consentModal') consentModal: ConsentModalComponent`...openModal(){this.consentModal.showFullSizeView();}</code></pre>
                 </div>
     </div>
 

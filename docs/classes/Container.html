@@ -79,43 +79,7 @@
             </p>
             <div class="io-description">
                         <div>
-                            <pre class="line-numbers"><code class="language-html">Example of how to use Container
-
-export class RegistrationContainerComponent extends Container
-      implements AfterViewInit, OnDestroy {
-
-constructor( private headerService: HeaderService,
-        private pageStateService: PageStateService,
-        protected  containerService: ContainerService) {
-super( containerService );
-this.setProgressSteps(pages);
-this.pageStateService.setPages( pages, PRACTITIONER_REGISTRATION_PAGES );
-this.headerService.setTitle('Practitioner Assignment to Medical Services Plan Facility for Business Cost Premium');
-}
-
-ngAfterViewInit() {
-this.subscribeFormBar();
-}
-
-ngOnDestroy() {
-this.unsubscribeFormBar();
-}
-...
-}
-
-html would be:
-
-&lt;common-core-breadcrumb&gt;
-&lt;common-wizard-progress-bar center [progressSteps]=&quot;progressSteps&quot;&gt;&lt;/common-wizard-progress-bar&gt;
-&lt;/common-core-breadcrumb&gt;
-&lt;common-page-framework layout=&quot;blank&quot;&gt;
-&lt;router-outlet&gt;&lt;/router-outlet&gt;
-&lt;/common-page-framework&gt;
-&lt;common-form-action-bar (btnClick)=&quot;continue()&quot;            &lt;= function within Container
-               [submitLabel]=&quot;submitLabel&quot;        &lt;= variable within Container
-               [isLoading]=&quot;isLoading&quot;            &lt;= variable within Container
-               [defaultColor]=&quot;useDefaultColor&quot;   &lt;= variable within Container
-               widthOption='extra-width-mobile-only'&gt;&lt;/common-form-action-bar&gt;</code></pre>
+                            <pre class="line-numbers"><code class="language-html">Example of how to use Containerexport class RegistrationContainerComponent extends Container     implements AfterViewInit, OnDestroy {constructor( private headerService: HeaderService,       private pageStateService: PageStateService,       protected  containerService: ContainerService) {super( containerService );this.setProgressSteps(pages);this.pageStateService.setPages( pages, PRACTITIONER_REGISTRATION_PAGES );this.headerService.setTitle('Practitioner Assignment to Medical Services Plan Facility for Business Cost Premium');}ngAfterViewInit() {this.subscribeFormBar();}ngOnDestroy() {this.unsubscribeFormBar();}...}html would be:&lt;common-core-breadcrumb&gt;&lt;common-wizard-progress-bar center [progressSteps]=&quot;progressSteps&quot;&gt;&lt;/common-wizard-progress-bar&gt;&lt;/common-core-breadcrumb&gt;&lt;common-page-framework layout=&quot;blank&quot;&gt;&lt;router-outlet&gt;&lt;/router-outlet&gt;&lt;/common-page-framework&gt;&lt;common-form-action-bar (btnClick)=&quot;continue()&quot;            &lt;= function within Container              [submitLabel]=&quot;submitLabel&quot;        &lt;= variable within Container              [isLoading]=&quot;isLoading&quot;            &lt;= variable within Container              [defaultColor]=&quot;useDefaultColor&quot;   &lt;= variable within Container              widthOption='extra-width-mobile-only'&gt;&lt;/common-form-action-bar&gt;</code></pre>
                         </div>
             </div>
 
