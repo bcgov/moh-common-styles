@@ -183,6 +183,11 @@
     justify-content: center;
     align-items: center;
     display: flex;
+
+    &.error-fetching-button,
+    &.error-verifying-button {
+      display: inline-block;
+    }
   }
 
   .captcha-button:hover {
