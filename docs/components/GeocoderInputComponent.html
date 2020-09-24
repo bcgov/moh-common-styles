@@ -83,10 +83,17 @@
     </p>
     <div class="io-description">
                 <div>
-                    <pre class="line-numbers"><code class="language-html">&lt;common-geocoder-inputlabel='Physical Address'[(ngModel)]=&quot;myAddress&quot;&gt;&lt;/common-geocoder-input&gt;</code></pre>
+                    <pre class="line-numbers"><code class="language-html">&lt;common-geocoder-input
+label='Physical Address'
+[(ngModel)]=&quot;myAddress&quot;&gt;
+&lt;/common-geocoder-input&gt;</code></pre>
                 </div>
                 <div>
-                    <pre class="line-numbers"><code class="language-html">&lt;common-geocoder-inputlabel='Physical Address'formControlName=&quot;address&quot;(select)=&quot;getAddressObject($event)&quot;&gt;&lt;/common-geocoder-input&gt;</code></pre>
+                    <pre class="line-numbers"><code class="language-html">&lt;common-geocoder-input
+label='Physical Address'
+formControlName=&quot;address&quot;
+(select)=&quot;getAddressObject($event)&quot;&gt;
+&lt;/common-geocoder-input&gt;</code></pre>
                 </div>
     </div>
 

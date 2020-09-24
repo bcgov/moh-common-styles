@@ -2,6 +2,10 @@
 
 
 
+## [3.2.2](https://github.com/bcgov/moh-common-styles/compare/v3.2.1...v3.2.2) "moh-common-lib" (2020-09-24)
+
+
+
 ## [3.2.1](https://github.com/bcgov/moh-common-styles/compare/v3.2.0...v3.2.1) "moh-common-lib" (2020-09-24)
 
 
