@@ -329,15 +329,15 @@ export class CaptchaComponent implements AfterViewInit, OnInit, OnChanges, Contr
       pa: 'ਤੁਹਾਡਾ ਜਵਾਬ ਤਸਦੀਕ ਕਰ ਰਿਹਾ ਹੈ ...',
     },
     errorRetrievingImg: {
-      en: 'Error happened while retrieving CAPTCHA image. please {{click here}} to try again',
+      en: 'Error happened while retrieving CAPTCHA image. Please {{Click Here}} to try again',
       zh: '验证码下载错误。请{{点击这里}}重试',
-      fr: 'Une erreur s\'est produite lors de la récupération de l\'image CAPTCHA. s\'il vous plaît {{cliquez ici}} pour réessayer',
+      fr: 'Une erreur s\'est produite lors de la récupération de l\'image CAPTCHA. S\'il vous plaît {{Cliquez Ici}} pour réessayer',
       pa: 'ਕੈਪਟਚਾ ਚਿੱਤਰ ਨੂੰ ਪ੍ਰਾਪਤ ਕਰਦੇ ਸਮੇਂ ਤਰੁੱਟੀ ਉਤਪੰਨ ਹੋਈ. ਕਿਰਪਾ ਕਰਕੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰਨ ਲਈ {{ਇੱਥੇ ਕਲਿਕ ਕਰੋ}}',
     },
     errorVerifyingAnswer: {
-      en: 'Error happened while verifying your answer. please {{click here}} to try again',
+      en: 'Error happened while verifying your answer. Please {{Click Here}} to try again',
       zh: '验证答案过程发生错误。请{{点击这里}}重试',
-      fr: 'Une erreur s\'est produite lors de la vérification de votre réponse. s\'il vous plaît {{cliquez ici}} pour réessayer',
+      fr: 'Une erreur s\'est produite lors de la vérification de votre réponse. S\'il vous plaît {{Cliquez Ici}} pour réessayer',
       pa: 'ਤੁਹਾਡਾ ਜਵਾਬ ਤਸਦੀਕ ਕਰਨ ਵੇਲੇ ਗਲਤੀ ਆਈ ਕਿਰਪਾ ਕਰਕੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰਨ ਲਈ {{ਇੱਥੇ ਕਲਿਕ ਕਰੋ}}',
     },
   };
