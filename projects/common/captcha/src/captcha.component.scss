@@ -173,7 +173,7 @@
     text-align: center;
     text-decoration: none;
     font-size: 10px; // changed from the default 18px
-    // default font-family removed
+    font-family: 'BCSans', 'Noto Sans', Verdana, Arial, sans-serif;
     font-weight: 700;
     letter-spacing: 1px;
     cursor: pointer;
@@ -237,7 +237,7 @@
     flex-direction: column;
     flex-flow: wrap;
     justify-content: space-between;
-    max-width: 303px;
+    max-width: 315px;
   }
 
   .defs {
