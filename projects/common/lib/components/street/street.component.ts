@@ -103,7 +103,7 @@ export class StreetComponent extends AbstractFormControl implements OnInit  {
 
   // @HostListener('keyup', ['$event'])
   onKeyUp(event: KeyboardEvent): void {
-    console.log( 'onKeyUp: ', event );
+    // console.log( 'onKeyUp: ', event );
     /**
      * Filter out 'enter' and other similar keyboard events that can trigger
      * when user is selecting a typeahead option instead of entering new text.

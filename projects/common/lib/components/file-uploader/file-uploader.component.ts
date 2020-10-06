@@ -253,7 +253,7 @@ export class FileUploaderComponent extends Base
             },
 
             (error) => {
-                console.log('Error in loading image: %o', error);
+                // console.log('Error in loading image: %o', error);
 
                 /**
                  * Handle the error if the image is gigantic that after
@@ -281,13 +281,13 @@ export class FileUploaderComponent extends Base
 
             },
             () => {
-                console.log('completed loading image');
+                // console.log('completed loading image');
             }
         );
     }
 
     test(var1) {
-        console.log(var1);
+        // console.log(var1);
     }
 
     ngAfterContentInit() {
@@ -313,7 +313,7 @@ export class FileUploaderComponent extends Base
 
     /** Opens the file upload dialog from the browser. */
     openFileDialog() {
-        console.log('opening file dialog');
+        // console.log('opening file dialog');
         this.browseFileRef.nativeElement.click();
     }
 
@@ -337,7 +337,7 @@ export class FileUploaderComponent extends Base
         /** Previously this was set in appConstants, but that's removed from the common lib. */
         const reductionScaleFactor = 0.8;
 
-        console.log('obserablveFromFiles');
+        // console.log('obserablveFromFiles');
 
         // Init
         const self = this;
@@ -350,7 +350,7 @@ export class FileUploaderComponent extends Base
             scaleFactors = scaleFactors.scaleDown(reductionScaleFactor);
             for (let fileIndex = 0; fileIndex < fileList.length; fileIndex++) {
                 const file = fileList[fileIndex];
-                console.log('Start processing file ' + fileIndex + ' of ' + fileList.length + ' %s of size %s bytes %s type', file.name, file.size, file.type);
+                // console.log('Start processing file ' + fileIndex + ' of ' + fileList.length + ' %s of size %s bytes %s type', file.name, file.size, file.type);
 
 
                 /* Previously set in appConstants */
@@ -385,7 +385,7 @@ export class FileUploaderComponent extends Base
                             pageNumber = pageNumber + 1  ;
                         });
                     }, (error: string) => {
-                        console.log('error' + JSON.stringify(error));
+                        // console.log('error' + JSON.stringify(error));
                         const imageReadError: CommonImageProcessingError =
                             new CommonImageProcessingError(CommonImageError.CannotOpenPDF, error);
                         observer.error(imageReadError);
@@ -399,7 +399,7 @@ export class FileUploaderComponent extends Base
 
                         // can be ignored for bug, the log line is never called
                         (error: CommonImageProcessingError) => {
-                            console.log('error' + JSON.stringify(error));
+                            // console.log('error' + JSON.stringify(error));
                             observer.error(error);
                         });
                     pageNumber = pageNumber + 1  ;
@@ -416,7 +416,7 @@ export class FileUploaderComponent extends Base
 // While it's still in an image, get it's height and width
         const mspImage: CommonImage = new CommonImage();
         const reader: FileReader = new FileReader();
-        console.log('image.name:' + image.id); // .name deprecated, changed image.name to image.id
+        // console.log('image.name:' + image.id); // .name deprecated, changed image.name to image.id
         // Copy file properties
         mspImage.name = image.id ;
         if (isPdf) {
@@ -430,15 +430,15 @@ export class FileUploaderComponent extends Base
         mspImage.naturalWidth = image.naturalWidth;
         mspImage.naturalHeight = image.naturalHeight;
 
-        console.log(`image file natural height and width:
-            ${mspImage.naturalHeight} x ${mspImage.naturalWidth}`);
+        // console.log(`image file natural height and width:
+        //     ${mspImage.naturalHeight} x ${mspImage.naturalWidth}`);
 
         // Canvas will force the change to a JPEG
         mspImage.contentType = 'image/jpeg'; // previously in appConstants
 
         // Scale the image by loading into a canvas
 
-        console.log('Start scaling down the image using blueimp-load-image lib: ');
+        // console.log('Start scaling down the image using blueimp-load-image lib: ');
         const scaledImage = loadImage(
             image.src, // NOTE: we pass the File ref here again even though its already read because we need the XIFF metadata
             function (canvas: HTMLCanvasElement, metadata: any) {
@@ -563,7 +563,7 @@ export class FileUploaderComponent extends Base
                          * 2. Exceeded maxRetry
                          *
                          */
-                        console.log('Re-throw this image process error: %o', error);
+                        // console.log('Re-throw this image process error: %o', error);
                         throw error;
                     }
                 }, 0
@@ -578,14 +578,14 @@ export class FileUploaderComponent extends Base
 
         reader.onload = function (progressEvt: ProgressEvent) {
 
-            console.log('loading image into an img tag: %o', progressEvt);
+            // console.log('loading image into an img tag: %o', progressEvt);
             // Load into an image element
             const imgEl: HTMLImageElement = document.createElement('img');
             imgEl.src = (reader.result as string);
 
             // Wait for onload so all properties are populated
             imgEl.onload = (args) => {
-                console.log('Completed image loading into an img tag: %o', args);
+                // console.log('Completed image loading into an img tag: %o', args);
                 return callback(imgEl, imageFile, nextPageNumber);
             };
 
@@ -692,7 +692,7 @@ export class FileUploaderComponent extends Base
 
 
     handleImageFile(mspImage: CommonImage) {
-        console.log('image size (bytes) after compression: ' + mspImage.size);
+        // console.log('image size (bytes) after compression: ' + mspImage.size);
         if (this.images.length >= 50) {
 
             // log it
@@ -747,7 +747,7 @@ export class FileUploaderComponent extends Base
 
         // If there are no images yet, we have to reset the input so it triggers 'required'.
         if ( this.required && this.images.length <= 0 ) {
-            console.log('No images, resetting input');
+            // console.log('No images, resetting input');
             // this.fileControl.value = '';
             this.fileControl.setErrors({'required': true});
         }
@@ -804,7 +804,7 @@ export class FileUploaderComponent extends Base
     }
 
     isValid(): boolean {
-        console.log('isValid', this.images);
+        // console.log('isValid', this.images);
         if (this.required) {
             return this.images && this.images.length > 0;
         }
