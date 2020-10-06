@@ -133,7 +133,7 @@ export class PasswordComponent extends Base implements OnInit, OnChanges {
   }
 
   onInputBlur($event) {
-    console.log( 'onBlur: ', event );
+    // console.log( 'onBlur: ', event );
     this.blurEvent.emit( event );
   }
 

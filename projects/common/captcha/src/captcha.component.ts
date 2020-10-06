@@ -143,7 +143,7 @@ export class CaptchaComponent implements AfterViewInit, OnInit, OnChanges, Contr
         (error) => {
           this.state = CAPTCHA_STATE.ERROR_VERIFY;
           this.errorVerifyAnswer = this.createErrorTextLine(error);
-          console.log('Error response from verifying user answer: %o', error);
+          // console.log('Error response from verifying user answer: %o', error);
         }
       );
     }
@@ -187,7 +187,7 @@ export class CaptchaComponent implements AfterViewInit, OnInit, OnChanges, Contr
   }
 
   public retryFetchCaptcha() {
-    console.log('Retry captcha');
+    // console.log('Retry captcha');
     this.state = undefined;
 
     /**
@@ -219,7 +219,7 @@ export class CaptchaComponent implements AfterViewInit, OnInit, OnChanges, Contr
       },
         (error) => {
           this.fetchingAudioInProgress = false;
-          console.log('Error response from fetching audio CAPTCHA: %o', error);
+          // console.log('Error response from fetching audio CAPTCHA: %o', error);
           this.cd.detectChanges();
         }
       );
@@ -257,7 +257,7 @@ export class CaptchaComponent implements AfterViewInit, OnInit, OnChanges, Contr
       (error) => {
         this.state = CAPTCHA_STATE.ERROR_FETCH_IMG;
         this.errorFetchingImg = this.createErrorTextLine(error);
-        console.log('Error esponse from fetching CAPTCHA text: %o', error);
+        // console.log('Error esponse from fetching CAPTCHA text: %o', error);
         this.cd.detectChanges();
       }
     );
