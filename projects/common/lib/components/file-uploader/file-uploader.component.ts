@@ -488,8 +488,8 @@ export class FileUploaderComponent extends Base
                             const maxSizeBytes = 1048576;
                             if (mspImage.size > maxSizeBytes) {
 
-                                console.log('File size after scaling down: %d, max file size allowed: %d',
-                                    mspImage.size, maxSizeBytes);
+                                // console.log('File size after scaling down: %d, max file size allowed: %d',
+                                //     mspImage.size, maxSizeBytes);
 
                                 const imageTooBigError: CommonImageProcessingError =
                                     new CommonImageProcessingError(CommonImageError.TooBig);
