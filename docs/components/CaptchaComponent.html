@@ -2242,7 +2242,7 @@ export class CaptchaComponent implements AfterViewInit, OnInit, OnChanges, Contr
         (error) &#x3D;&gt; {
           this.state &#x3D; CAPTCHA_STATE.ERROR_VERIFY;
           this.errorVerifyAnswer &#x3D; this.createErrorTextLine(error);
-          console.log(&#x27;Error response from verifying user answer: %o&#x27;, error);
+          // console.log(&#x27;Error response from verifying user answer: %o&#x27;, error);
         }
       );
     }
@@ -2286,7 +2286,7 @@ export class CaptchaComponent implements AfterViewInit, OnInit, OnChanges, Contr
   }
 
   public retryFetchCaptcha() {
-    console.log(&#x27;Retry captcha&#x27;);
+    // console.log(&#x27;Retry captcha&#x27;);
     this.state &#x3D; undefined;
 
     /**
@@ -2318,7 +2318,7 @@ export class CaptchaComponent implements AfterViewInit, OnInit, OnChanges, Contr
       },
         (error) &#x3D;&gt; {
           this.fetchingAudioInProgress &#x3D; false;
-          console.log(&#x27;Error response from fetching audio CAPTCHA: %o&#x27;, error);
+          // console.log(&#x27;Error response from fetching audio CAPTCHA: %o&#x27;, error);
           this.cd.detectChanges();
         }
       );
@@ -2356,7 +2356,7 @@ export class CaptchaComponent implements AfterViewInit, OnInit, OnChanges, Contr
       (error) &#x3D;&gt; {
         this.state &#x3D; CAPTCHA_STATE.ERROR_FETCH_IMG;
         this.errorFetchingImg &#x3D; this.createErrorTextLine(error);
-        console.log(&#x27;Error esponse from fetching CAPTCHA text: %o&#x27;, error);
+        // console.log(&#x27;Error esponse from fetching CAPTCHA text: %o&#x27;, error);
         this.cd.detectChanges();
       }
     );

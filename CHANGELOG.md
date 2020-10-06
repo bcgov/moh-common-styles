@@ -1,4 +1,13 @@
-# Unreleased "moh-common-lib" (2020-09-24)
+# Unreleased "moh-common-lib" (2020-10-06)
+
+
+
+## [3.2.3](https://github.com/bcgov/moh-common-styles/compare/v3.2.2...v3.2.3) "moh-common-lib" (2020-10-06)
+
+
+### Styles
+
+* DEMCL-22: prevent font inheritance ([9feea7c](https://github.com/bcgov/moh-common-styles/commit/9feea7c))
 
 
 
