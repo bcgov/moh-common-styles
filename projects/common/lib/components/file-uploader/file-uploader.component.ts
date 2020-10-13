@@ -252,34 +252,7 @@ export class FileUploaderComponent extends Base
                 this.resetInputFields();
             },
 
-            (error) => {
-                // console.log('Error in loading image: %o', error);
-
-                /**
-                 * Handle the error if the image is gigantic that after
-                 * 100 times of scaling down by 30% on each step, the image
-                 * is still over 1 MB.
-                 */
-                if (error.errorCode) {
-                    if (CommonImageError.TooBig === error.errorCode) {
-                        this.handleError(CommonImageError.TooBig, error.image);
-                    } else if (CommonImageError.CannotOpen === error.errorCode) {
-                        if (!error.image) {
-                            error.image = new CommonImage();
-                            if (error.rawImageFile) {
-                                error.image.name = error.rawImageFile.name;
-                            }
-                        }
-                        this.handleError(CommonImageError.CannotOpen, error.image);
-                    } else if (CommonImageError.CannotOpenPDF === error.errorCode) {
-                        this.handleError(CommonImageError.CannotOpenPDF, error.image, error.errorDescription);
-                    } else {
-                        throw error;
-                    }
-                }
-
-
-            },
+            (error) => {},
             () => {
                 // console.log('completed loading image');
             }
@@ -388,7 +361,7 @@ export class FileUploaderComponent extends Base
                         // console.log('error' + JSON.stringify(error));
                         const imageReadError: CommonImageProcessingError =
                             new CommonImageProcessingError(CommonImageError.CannotOpenPDF, error);
-                        observer.error(imageReadError);
+                        self.filterError(imageReadError);
                     });
                 } else {
                     // Load image into img element to read natural height and width
@@ -400,7 +373,7 @@ export class FileUploaderComponent extends Base
                         // can be ignored for bug, the log line is never called
                         (error: CommonImageProcessingError) => {
                             // console.log('error' + JSON.stringify(error));
-                            observer.error(error);
+                            self.filterError(error);
                         });
                     pageNumber = pageNumber + 1  ;
                 }
@@ -497,7 +470,7 @@ export class FileUploaderComponent extends Base
                                 imageTooBigError.maxSizeAllowed = maxSizeBytes;
                                 imageTooBigError.commonImage = mspImage;
 
-                                observer.error(imageTooBigError);
+                                self.filterError(imageTooBigError);
                             } else {
                                 // log image info
                                 //   self.logImageInfo("msp_file-uploader_after_resize_attributes", self.dataService.getMspUuid(), mspImage);
@@ -707,6 +680,33 @@ export class FileUploaderComponent extends Base
             this.imagesChange.emit(this.images);
             this.showError = false;
             this.noIdImage = false;
+        }
+    }
+
+    filterError(error): void {
+        // console.log('Error in loading image: %o', error);
+
+        /**
+         * Handle the error if the image is gigantic that after
+         * 100 times of scaling down by 30% on each step, the image
+         * is still over 1 MB.
+         */
+        if (error.errorCode) {
+            if (CommonImageError.TooBig === error.errorCode) {
+                this.handleError(CommonImageError.TooBig, error.image);
+            } else if (CommonImageError.CannotOpen === error.errorCode) {
+                if (!error.image) {
+                    error.image = new CommonImage();
+                    if (error.rawImageFile) {
+                        error.image.name = error.rawImageFile.name;
+                    }
+                }
+                this.handleError(CommonImageError.CannotOpen, error.image);
+            } else if (CommonImageError.CannotOpenPDF === error.errorCode) {
+                this.handleError(CommonImageError.CannotOpenPDF, error.image, error.errorDescription);
+            } else {
+                throw error;
+            }
         }
     }
 
