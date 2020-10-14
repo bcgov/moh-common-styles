@@ -3,28 +3,17 @@
     <div class='d-flex flex-wrap'>
       <a href="http://www2.gov.bc.ca/" tabindex="0">
         <img class="header-logo"
-             tabindex="-1" alt="B.C. Government Logo"
+             tabindex="-1"
+             alt="B.C. Government Logo"
              src="{{logoSrc}}">
         <img *ngIf="shouldShowPrintLogo"
              class="header-logo-print"
-             tabindex="-1" alt="B.C. Government Print Logo"
+             tabindex="-1"
+             alt="B.C. Government Print Logo"
              src="{{printLogoSrc}}">
       </a>
       <span class="title px-2 mt-1">{{serviceName}}</span>
-      <a [href]='skipLinkPath' class='skip-to-content'>Skip to main content</a>
+      <a [href]='skipLinkPath' class='skip-to-content' tabindex="1">Skip to main content</a>
     </div>
-<!--
-    <div class='d-flex'>
-      <a href="#" class='btn btn-outline-info mx-2' role="button">
-        <i class="fa fa-comment" aria-hidden="true"></i>
-      </a>
-      <a href="#" class='btn btn-outline-info mx-2' role="button">
-        <i class="fa fa-question-circle" aria-hidden="true"></i>
-      </a>
-      <a href="#" class='btn btn-outline-info mx-2' role="button">
-        <i class="fa fa-user" aria-hidden="true"></i>
-      </a>
-  </div>
--->
   </div>
 </header>
