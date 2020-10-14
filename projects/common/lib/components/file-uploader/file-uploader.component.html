@@ -1,7 +1,7 @@
 <div class="dropzone" #dropZone [ngClass]='{"has-error": fileControl?.touched && fileControl?.errors?.required}'>
 
   <div class="instruction-zone d-flex align-items-center flex-wrap flex-sm-nowrap flex-column flex-sm-row">
-    <i class="fa fa-cloud-upload fa-4x d-inline-block upload-icon" aria-hidden="true" #imagePlaceholderRef tabindex="0"></i>
+    <i class="fa fa-cloud-upload fa-4x d-inline-block upload-icon" aria-hidden="true" #imagePlaceholderRef></i>
 
     <input type="file" id="fileUploadBrowse-{{id}}"
             #browseFileRef ngModel accept="image/*,application/pdf" style="display:none;"
