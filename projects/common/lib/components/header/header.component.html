@@ -1,7 +1,8 @@
 <header>
   <div class="container-fluid header-container d-flex justify-content-between align-items-center flex-wrap">
     <div class='d-flex flex-wrap'>
-      <a href="http://www2.gov.bc.ca/" tabindex="0">
+      <a [href]='skipLinkPath' class='skip-to-content order-3'>Skip to main content</a>
+      <a href="http://www2.gov.bc.ca/">
         <img class="header-logo"
              tabindex="-1"
              alt="B.C. Government Logo"
@@ -13,7 +14,6 @@
              src="{{printLogoSrc}}">
       </a>
       <span class="title px-2 mt-1">{{serviceName}}</span>
-      <a [href]='skipLinkPath' class='skip-to-content' tabindex="1">Skip to main content</a>
     </div>
   </div>
 </header>
