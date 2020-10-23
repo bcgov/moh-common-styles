@@ -445,7 +445,7 @@ export class FileUploaderComponent extends Base
                             mspImage.sizeUnit = fileSizeUnit;
                         }
 
-                        console.log(`File ${fileName} is scaled down to: ${sOutput}`);
+                        // console.log(`File ${fileName} is scaled down to: ${sOutput}`);
                         mspImage.sizeTxt = sOutput;
 
                         // call reader with new transformed image

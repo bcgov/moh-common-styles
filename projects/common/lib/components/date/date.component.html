@@ -10,7 +10,7 @@
             (blur)="onBlurMonth($event.target.value)"
             [disabled]='disabled'>
       <!-- We show the blank option so the user can clear out their data.-->
-      <option value="null" label="-- month --" selected [disabled]='isRequired'></option>
+      <option value="null" label="Month" selected [disabled]='isRequired'></option>
       <option *ngFor="let month of monthList; let i = index;" [value]="i">{{month}}</option>
     </select>
 
