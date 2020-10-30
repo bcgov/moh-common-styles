@@ -1,4 +1,23 @@
-# Unreleased "moh-common-lib" (2020-10-06)
+# Unreleased "moh-common-lib" (2020-10-30)
+
+
+
+## [3.2.5](https://github.com/bcgov/moh-common-styles/compare/v3.2.4...v3.2.5) "moh-common-lib" (2020-10-30)
+
+
+### Bug Fixes
+
+* DEMCL-25: Fixed corrupted files breaking further uploads. ([0c89683](https://github.com/bcgov/moh-common-styles/commit/0c89683))
+
+
+### Features
+
+* Specific address data to `onSelect` in `AddressValidatorComponent` ([7ff6323](https://github.com/bcgov/moh-common-styles/commit/7ff6323))
+
+
+### Styles
+
+* DEMCL-26: Adjust date label for month ([4649751](https://github.com/bcgov/moh-common-styles/commit/4649751))
 
 
 
