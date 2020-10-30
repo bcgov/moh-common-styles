@@ -34,6 +34,9 @@ import { ErrorMessage, LabelReplacementTag } from '../../models/error-message.in
 export interface AddressResult {
   /** String from the API that includes street, city, province, and country. */
   AddressComplete: string;
+  HouseNumber: string;
+  SubBuilding: string;
+  Street: string;
   Locality: string;
   DeliveryAddressLines: string;
   // Set to defaults in response
@@ -132,6 +135,9 @@ export class AddressValidatorComponent extends AbstractFormControl implements On
     const stripped = this.stripStringToMaxLength(data.DeliveryAddressLines);
 
     const addr = new Address();
+    addr.unitNumber = data.SubBuilding;
+    addr.streetNumber = data.HouseNumber;
+    addr.streetName = data.Street;
     addr.city = data.Locality;
     addr.country = data.Country;
     addr.province = data.Province;
@@ -216,9 +222,15 @@ export class AddressValidatorComponent extends AbstractFormControl implements On
       const Province = props.Province;
       const Country = props.Country;
       const PostalCode = props.PostalCode;
+      const SubBuilding = props.SubBuilding;
+      const Street = props.Street;
+      const HouseNumber = props.HouseNumber;
 
       return {
         AddressComplete,
+        SubBuilding,
+        Street,
+        HouseNumber,
         Locality,
         DeliveryAddressLines,
         Province,
