@@ -118,6 +118,11 @@ export class SinComponent extends AbstractFormControl implements OnInit {
         return { 'invalid': true };
       }
 
+      // Test for SINs that begin with 0
+      if (this.sin[0] === '0') {
+        return { 'invalid': true };
+      }
+
       // Walk through each character
       for (let i = 0; i < this.sin.length; i++) {
 
