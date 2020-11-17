@@ -1,9 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges, ViewChild, OnChanges, forwardRef } from '@angular/core';
 import { INgxMyDpOptions, IMyDate, NgxMyDatePickerDirective } from 'ngx-mydatepicker';
-import * as moment_ from 'moment';
-import { NgForm, ControlContainer, FormControl, NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+import { NgForm, ControlContainer, NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { Base } from '../../models/base';
-const moment = moment_;
 
 /**
  * Component NPM package dependencies:

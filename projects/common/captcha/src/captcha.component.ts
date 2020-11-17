@@ -2,9 +2,8 @@ import {
   Component, ElementRef, ViewChild, SimpleChanges, NgZone,
   ChangeDetectorRef, Output, Input, AfterViewInit, OnInit, OnChanges, EventEmitter, Optional, Self
 } from '@angular/core';
-// import { Http, Response } from '@angular/http';
-import { HttpClient, HttpResponse } from '@angular/common/http';
-import { CaptchaDataService, ServerPayload } from './captcha-data.service';
+import { HttpResponse } from '@angular/common/http';
+import { CaptchaDataService } from './captcha-data.service';
 import { NgControl, ControlValueAccessor } from '@angular/forms';
 
 

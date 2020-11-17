@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { PageSectionComponent } from './page-section.component';
 
 describe('PageSectionComponent', () => {

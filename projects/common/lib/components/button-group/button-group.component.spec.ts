@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ButtonGroupComponent } from './button-group.component';
-import {FormsModule, NgForm} from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 
 describe('ButtonGroupComponent', () => {
   let component: ButtonGroupComponent;

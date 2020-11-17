@@ -1,24 +1,14 @@
 import { AfterContentInit, ChangeDetectorRef, Component,
-    ContentChild, ElementRef, EventEmitter, Input, NgZone, OnChanges,
-    OnInit, Output, SimpleChanges, ViewChild, forwardRef, AfterViewInit, ViewEncapsulation } from '@angular/core';
+    ElementRef, EventEmitter, Input, NgZone, OnChanges,
+    OnInit, Output, SimpleChanges, ViewChild, forwardRef, ViewEncapsulation } from '@angular/core';
 import { NgForm, ControlContainer } from '@angular/forms';
-import * as moment from 'moment';
 import { PDFJSStatic } from 'pdfjs-dist';
-import { Observable ,  Observer, fromEvent, merge } from 'rxjs';
-import {map, filter, flatMap, scan, delay, retryWhen} from 'rxjs/operators';
+import { Observable,  Observer, fromEvent, merge } from 'rxjs';
+import { map, filter, flatMap, scan, delay, retryWhen } from 'rxjs/operators';
 import { CommonImage, CommonImageError, CommonImageProcessingError,
 CommonImageScaleFactors, CommonImageScaleFactorsImpl } from '../../models/images.model';
-// import { MspLogService } from '../../service/log.service';
-// import { MspDataService } from '../../service/msp-data.service';
-// import { BaseComponent } from '../base.component';
-// import { LogEntry } from '../logging/log-entry.model';
-// import {Person} from '../../model/application.model';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
 import { Base } from '../../models/base';
-// import {ApplicationBase} from '../../model/application-base.model';
-
-// const loadImage = require('blueimp-load-image');
-// const sha1 = require('sha1');
 
 import * as loadImage_ from 'blueimp-load-image';
 const loadImage = loadImage_;

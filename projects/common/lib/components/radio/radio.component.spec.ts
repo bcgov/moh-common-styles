@@ -5,7 +5,7 @@ import { Component, OnInit, DebugElement } from '@angular/core';
 import { tickAndDetectChanges,
   createTestingModule,
   getDebugLegend,
-  getDebugElement} from '../../../helpers/test-helpers';
+  getDebugElement } from '../../../helpers/test-helpers';
 import { ErrorContainerComponent } from '../error-container/error-container.component';
 
 

@@ -5,10 +5,6 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Routes } from '@angular/router';
 
-class MockRouter {
-  navigateByUrl(url: string) { return url; }
-}
-
 @Component({
   template: `<h1>Hello World</h1>`,
 })
