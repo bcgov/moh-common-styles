@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { FormSubmitBarComponent } from './form-submit-bar.component';
 
 describe('FormActionBarComponent', () => {

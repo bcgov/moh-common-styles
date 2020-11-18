@@ -1,7 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { of } from 'rxjs';
-
 import { GeocoderService, GeoAddressResult } from './geocoder.service';
 
 const mockResponseAddress = {
@@ -30,7 +29,7 @@ const expectedResult: GeoAddressResult[] = [
 ];
 
 describe('GeocoderService', () => {
-  
+
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [ HttpClientTestingModule ],
@@ -47,7 +46,7 @@ describe('GeocoderService', () => {
     let httpClientSpy: { get: jasmine.Spy };
     httpClientSpy = jasmine.createSpyObj('HttpClient', ['get']);
     let service = new GeocoderService(<any> httpClientSpy);
-    
+
     httpClientSpy.get.and.returnValue(of(mockPayloadResponse));
 
     service.lookup('Query Text').subscribe((addresses) => {

@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output, Optional, Self, OnInit} from '@angular/core';
+import { Component, EventEmitter, Input, Output, Optional, Self, OnInit } from '@angular/core';
 import { AbstractFormControl } from '../../models/abstract-form-control';
 import { LabelReplacementTag, ErrorMessage } from '../../models/error-message.interface';
 import { NgControl } from '@angular/forms';

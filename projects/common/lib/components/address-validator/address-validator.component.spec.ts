@@ -1,12 +1,12 @@
 import { Component, ViewChildren, QueryList, OnInit } from '@angular/core';
-import { async, ComponentFixture, TestBed, getTestBed, fakeAsync, tick } from '@angular/core/testing';
+import { TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { AddressValidatorComponent } from './address-validator.component';
 import { FormsModule } from '@angular/forms';
 import { TypeaheadModule, TypeaheadMatch } from 'ngx-bootstrap/typeahead';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { of, throwError } from 'rxjs';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { HttpClient } from '@angular/common/http';
+import { of } from 'rxjs';
 import { Address } from '../../models/address.model';
 import { createTestingModule, tickAndDetectChanges, getDebugElement, getDebugLabel } from '../../../helpers/test-helpers';
 
@@ -99,7 +99,7 @@ describe('AddressValidatorComponent', () => {
     fixture = TestBed.createComponent(AddressValidatorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    
+
     let typeaheadMatch: any;
     spyOn(component, 'lookup').and.returnValue(of(yatesResponse));
     component.typeaheadList$.subscribe(x => {
@@ -129,7 +129,7 @@ describe('AddressValidatorComponent', () => {
     fixture = TestBed.createComponent(AddressValidatorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    
+
     // This is not testing the typeaheadNoResults directive since it's a 3rd
     // party dep, but rather that the method it calls properly updates when
     // passed a boolean

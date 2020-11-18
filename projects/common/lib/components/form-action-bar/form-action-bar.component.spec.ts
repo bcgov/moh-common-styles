@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { FormActionBarComponent } from './form-action-bar.component';
 
 describe('FormActionBarComponent', () => {

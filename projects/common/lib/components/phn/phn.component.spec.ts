@@ -1,7 +1,7 @@
 import { fakeAsync } from '@angular/core/testing';
-import {FormGroup, FormBuilder} from '@angular/forms';
-import {TextMaskModule} from 'angular2-text-mask';
-import {PhnComponent} from './phn.component';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { TextMaskModule } from 'angular2-text-mask';
+import { PhnComponent } from './phn.component';
 import { Component, ViewChildren, QueryList, OnInit } from '@angular/core';
 import { ErrorContainerComponent } from '../error-container/error-container.component';
 import { createTestingModule, tickAndDetectChanges, getDebugElement, getDebugLabel } from '../../../helpers/test-helpers';

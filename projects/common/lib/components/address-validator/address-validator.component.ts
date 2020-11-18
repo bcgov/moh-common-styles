@@ -1,10 +1,9 @@
-import { Component, OnInit, Input, ChangeDetectorRef, Output, EventEmitter, SimpleChanges, OnChanges, Optional, Self } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectorRef, Output, EventEmitter, Optional, Self } from '@angular/core';
 import { Subject, Observable, of, throwError } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap, map, catchError } from 'rxjs/operators';
 import { TypeaheadMatch } from 'ngx-bootstrap/typeahead';
 import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { NgControl, ControlValueAccessor } from '@angular/forms';
-import { Base } from '../../models/base';
 import { Address } from '../../models/address.model';
 import { AbstractFormControl } from '../../models/abstract-form-control';
 import { ErrorMessage, LabelReplacementTag } from '../../models/error-message.interface';
@@ -58,7 +57,7 @@ export class AddressValidatorComponent extends AbstractFormControl implements On
   @Input() populateAddressOnSelect: boolean = false;
   @Output() addressChange: EventEmitter<string> = new EventEmitter<string>();
   @Output() select: EventEmitter<Address> = new EventEmitter<Address>();
-  
+
   @Input() maxlength: string = '255';
 
   _defaultErrMsg: ErrorMessage = {
