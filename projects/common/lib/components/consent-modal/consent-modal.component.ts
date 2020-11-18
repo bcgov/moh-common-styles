@@ -116,6 +116,7 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
   public maintenanceMessage: string;
   protected focusableEls: HTMLElement[];
   protected focusedEl: HTMLElement;
+  protected closed: boolean = false;
 
   // TODO: This should eventually be pulled out of the common library as it pertains to MSP-specific code.
   // tslint:disable-next-line:max-line-length
@@ -154,19 +155,22 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
 
   @HostListener('window:keydown', ['$event'])
   handleKeyDown(event: KeyboardEvent) {
-    // Handle tabbing
-    if (event.key === 'Tab') {
-      // Prevent usual tabbing, manually set focus
-      event.preventDefault();
-      if (event.shiftKey) {
-        this.handleTabBackwards();
-      } else {
-        this.handleTab();
-      }
+    // Check that the modal is open
+    if (!this.closed) {
+      // Handle tabbing
+      if (event.key === 'Tab') {
+        // Prevent usual tabbing, manually set focus
+        event.preventDefault();
+        if (event.shiftKey) {
+          this.handleTabBackwards();
+        } else {
+          this.handleTab();
+        }
 
-    // Stop users from being able to escape the modal
-    } else if (event.key === 'Escape') {
-      event.preventDefault();
+      // Stop users from being able to escape the modal
+      } else if (event.key === 'Escape') {
+        event.preventDefault();
+      }
     }
   }
 
@@ -204,6 +208,7 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
       this.accept.emit(true);
       this.fullSizeViewModal.hide();
       this.close.emit();
+      this.closed = true;
       this._onChange(true);
       this._onTouched();
   }
