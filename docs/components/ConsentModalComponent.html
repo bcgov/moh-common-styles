@@ -2315,7 +2315,7 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
     }
 
     protected handleError(error: HttpErrorResponse) {
-      console.log(&#x27;handleError&#x27;, JSON.stringify(error));
+      // console.log(&#x27;handleError&#x27;, JSON.stringify(error));
       if (error.error instanceof ErrorEvent) {
           // Client-side / network error occured
           console.error(&#x27;MspMaintenanceService error: &#x27;, error.error.message);
@@ -2336,7 +2336,7 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
         this.sendSpaEnvServer(headerName)
                 .subscribe(response &#x3D;&gt; {
                     this.spaEnvRes &#x3D; &lt;ISpaEnvResponse&gt; response;
-                    console.log(this.spaEnvRes);
+                    // console.log(this.spaEnvRes);
                     // TODO: This should eventually be pulled out of the common library as it pertains to MSP-specific code.
                     if (this.spaEnvRes.SPA_ENV_ACL_MAINTENANCE_FLAG &#x3D;&#x3D;&#x3D; &#x27;true&#x27;) {
                         this.maintenanceFlag &#x3D; &#x27;true&#x27;;
@@ -2356,7 +2356,7 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
                     }
 
             }, (error: Response | any) &#x3D;&gt; {
-                console.log(&#x27;Error when calling the MSP Maintenance: &#x27; + error);
+                // console.log(&#x27;Error when calling the MSP Maintenance: &#x27; + error);
                 this.logService.log({
                   event: &#x27;ACL - SPA Env System Error&#x27;,
                   success: false,

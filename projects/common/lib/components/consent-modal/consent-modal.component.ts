@@ -1,5 +1,5 @@
 import { forwardRef, Component, EventEmitter, Input, Output, ViewChild, OnInit} from '@angular/core';
-import {ModalDirective} from 'ngx-bootstrap/modal';
+import { ModalDirective } from 'ngx-bootstrap/modal';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Response } from '@angular/http';
@@ -170,7 +170,7 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
     }
 
     protected handleError(error: HttpErrorResponse) {
-      console.log('handleError', JSON.stringify(error));
+      // console.log('handleError', JSON.stringify(error));
       if (error.error instanceof ErrorEvent) {
           // Client-side / network error occured
           console.error('MspMaintenanceService error: ', error.error.message);
@@ -191,7 +191,7 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
         this.sendSpaEnvServer(headerName)
                 .subscribe(response => {
                     this.spaEnvRes = <ISpaEnvResponse> response;
-                    console.log(this.spaEnvRes);
+                    // console.log(this.spaEnvRes);
                     // TODO: This should eventually be pulled out of the common library as it pertains to MSP-specific code.
                     if (this.spaEnvRes.SPA_ENV_ACL_MAINTENANCE_FLAG === 'true') {
                         this.maintenanceFlag = 'true';
@@ -211,7 +211,7 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
                     }
 
             }, (error: Response | any) => {
-                console.log('Error when calling the MSP Maintenance: ' + error);
+                // console.log('Error when calling the MSP Maintenance: ' + error);
                 this.logService.log({
                   event: 'ACL - SPA Env System Error',
                   success: false,

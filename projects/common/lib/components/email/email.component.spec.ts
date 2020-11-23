@@ -7,7 +7,7 @@ import { createTestingModule,
   getDebugElement,
   getDebugLabel,
   setInput,
-  getInputDebugElement} from '../../../helpers/test-helpers';
+  getInputDebugElement } from '../../../helpers/test-helpers';
 import { fakeAsync } from '@angular/core/testing';
 
 @Component({

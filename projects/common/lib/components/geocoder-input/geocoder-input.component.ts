@@ -1,6 +1,6 @@
-import { Component, OnInit, Input, ChangeDetectorRef, Output, EventEmitter, SimpleChanges, OnChanges, Optional, Self } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectorRef, Output, EventEmitter, Optional, Self } from '@angular/core';
 import { Subject, Observable, of } from 'rxjs';
-import { debounceTime, distinctUntilChanged, switchMap, tap, catchError } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, switchMap, catchError } from 'rxjs/operators';
 import { TypeaheadMatch } from 'ngx-bootstrap/typeahead';
 import { Base } from '../../models/base';
 import { GeocoderService, GeoAddressResult } from '../../services/geocoder.service';
@@ -12,7 +12,7 @@ import { NgControl, ControlValueAccessor } from '@angular/forms';
 
 /**
  * @deprecated Please use `address-validator` component instead.
- * 
+ *
  * For TemplateForms, pass in an Address and recieve an Address
  * @example
  *           <common-geocoder-input

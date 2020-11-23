@@ -1,10 +1,9 @@
-import { Component, OnInit, Input, ChangeDetectorRef, Output, EventEmitter, SimpleChanges, OnChanges, Optional, Self } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectorRef, Output, EventEmitter, Optional, Self } from '@angular/core';
 import { Subject, Observable, of, throwError } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap, map, catchError } from 'rxjs/operators';
 import { TypeaheadMatch } from 'ngx-bootstrap/typeahead';
 import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { NgControl, ControlValueAccessor } from '@angular/forms';
-import { Base } from '../../models/base';
 import { Address } from '../../models/address.model';
 import { AbstractFormControl } from '../../models/abstract-form-control';
 import { ErrorMessage, LabelReplacementTag } from '../../models/error-message.interface';
@@ -34,6 +33,9 @@ import { ErrorMessage, LabelReplacementTag } from '../../models/error-message.in
 export interface AddressResult {
   /** String from the API that includes street, city, province, and country. */
   AddressComplete: string;
+  HouseNumber: string;
+  SubBuilding: string;
+  Street: string;
   Locality: string;
   DeliveryAddressLines: string;
   // Set to defaults in response
@@ -55,7 +57,7 @@ export class AddressValidatorComponent extends AbstractFormControl implements On
   @Input() populateAddressOnSelect: boolean = false;
   @Output() addressChange: EventEmitter<string> = new EventEmitter<string>();
   @Output() select: EventEmitter<Address> = new EventEmitter<Address>();
-  
+
   @Input() maxlength: string = '255';
 
   _defaultErrMsg: ErrorMessage = {
@@ -132,6 +134,9 @@ export class AddressValidatorComponent extends AbstractFormControl implements On
     const stripped = this.stripStringToMaxLength(data.DeliveryAddressLines);
 
     const addr = new Address();
+    addr.unitNumber = data.SubBuilding;
+    addr.streetNumber = data.HouseNumber;
+    addr.streetName = data.Street;
     addr.city = data.Locality;
     addr.country = data.Country;
     addr.province = data.Province;
@@ -216,9 +221,15 @@ export class AddressValidatorComponent extends AbstractFormControl implements On
       const Province = props.Province;
       const Country = props.Country;
       const PostalCode = props.PostalCode;
+      const SubBuilding = props.SubBuilding;
+      const Street = props.Street;
+      const HouseNumber = props.HouseNumber;
 
       return {
         AddressComplete,
+        SubBuilding,
+        Street,
+        HouseNumber,
         Locality,
         DeliveryAddressLines,
         Province,

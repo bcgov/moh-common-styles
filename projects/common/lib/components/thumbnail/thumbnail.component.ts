@@ -1,6 +1,5 @@
 import { Component, ViewChild, OnInit, Input, Output, EventEmitter, ViewContainerRef, ViewEncapsulation } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap/modal';
-
 import { CommonImage } from '../../models/images.model';
 
 @Component({
@@ -40,8 +39,8 @@ export class ThumbnailComponent implements OnInit {
   }
 
   delete(evt: any) {
-    console.log('ThumbnailComponent:Delete from thumbnail: %o', evt);
-    console.log('ThumbnailComponent:imageObject:', JSON.stringify(this.imageObject, null, 2));
+    // console.log('ThumbnailComponent:Delete from thumbnail: %o', evt);
+    // console.log('ThumbnailComponent:imageObject:', JSON.stringify(this.imageObject, null, 2));
     this.deleteImage.emit(this.imageObject);
   }
 

@@ -687,8 +687,8 @@ export class ThumbnailComponent implements OnInit {
   }
 
   delete(evt: any) {
-    console.log(&#x27;ThumbnailComponent:Delete from thumbnail: %o&#x27;, evt);
-    console.log(&#x27;ThumbnailComponent:imageObject:&#x27;, JSON.stringify(this.imageObject, null, 2));
+    // console.log(&#x27;ThumbnailComponent:Delete from thumbnail: %o&#x27;, evt);
+    // console.log(&#x27;ThumbnailComponent:imageObject:&#x27;, JSON.stringify(this.imageObject, null, 2));
     this.deleteImage.emit(this.imageObject);
   }
 

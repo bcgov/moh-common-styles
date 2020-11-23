@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { XiconButtonComponent } from './xicon-button.component';
 
 describe('XiconButtonComponent', () => {

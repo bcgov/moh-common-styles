@@ -37,7 +37,7 @@ export class SinComponent extends AbstractFormControl implements OnInit {
 
   @Input()
   set value( val: string ) {
-    console.log( 'set value: ', val );
+    // console.log( 'set value: ', val );
     if ( val ) {
       this.sin = val;
     }
@@ -115,6 +115,11 @@ export class SinComponent extends AbstractFormControl implements OnInit {
 
       // Test for string of zeros
       if ( this.sin === '000000000') {
+        return { 'invalid': true };
+      }
+
+      // Test for SINs that begin with 0
+      if (this.sin[0] === '0') {
         return { 'invalid': true };
       }
 

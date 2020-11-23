@@ -5,7 +5,7 @@ import {
   Self,
   Output,
   EventEmitter,
-  OnInit} from '@angular/core';
+  OnInit } from '@angular/core';
 import { NgControl, ValidationErrors } from '@angular/forms';
 import { AbstractFormControl } from '../../models/abstract-form-control';
 import { ErrorMessage, LabelReplacementTag } from '../../models/error-message.interface';
