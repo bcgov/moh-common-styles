@@ -1,4 +1,59 @@
-# Unreleased "moh-common-lib" (2020-09-08)
+# Unreleased "moh-common-lib" (2020-10-30)
+
+
+
+## [3.2.5](https://github.com/bcgov/moh-common-styles/compare/v3.2.4...v3.2.5) "moh-common-lib" (2020-10-30)
+
+
+### Bug Fixes
+
+* DEMCL-25: Fixed corrupted files breaking further uploads. ([0c89683](https://github.com/bcgov/moh-common-styles/commit/0c89683))
+
+
+### Features
+
+* Specific address data to `onSelect` in `AddressValidatorComponent` ([7ff6323](https://github.com/bcgov/moh-common-styles/commit/7ff6323))
+
+
+### Styles
+
+* DEMCL-26: Adjust date label for month ([4649751](https://github.com/bcgov/moh-common-styles/commit/4649751))
+
+
+
+## [3.2.4](https://github.com/bcgov/moh-common-styles/compare/v3.2.3...v3.2.4) "moh-common-lib" (2020-10-06)
+
+
+
+## [3.2.3](https://github.com/bcgov/moh-common-styles/compare/v3.2.2...v3.2.3) "moh-common-lib" (2020-10-06)
+
+
+### Styles
+
+* DEMCL-22: prevent font inheritance ([9feea7c](https://github.com/bcgov/moh-common-styles/commit/9feea7c))
+
+
+
+## [3.2.2](https://github.com/bcgov/moh-common-styles/compare/v3.2.1...v3.2.2) "moh-common-lib" (2020-09-24)
+
+
+
+## [3.2.1](https://github.com/bcgov/moh-common-styles/compare/v3.2.0...v3.2.1) "moh-common-lib" (2020-09-24)
+
+
+### Styles
+
+* DEMCL-22: Adjust buttons styles, text ([b7606d8](https://github.com/bcgov/moh-common-styles/commit/b7606d8))
+
+
+
+# [3.2.0](https://github.com/bcgov/moh-common-styles/compare/v3.1.3...v3.2.0) "moh-common-lib" (2020-09-22)
+
+
+### Features
+
+* DEMCL-22: Adjust width slightly for IE11 ([c2ffc66](https://github.com/bcgov/moh-common-styles/commit/c2ffc66))
+* DEMCL-22: Update captcha for accessibility ([09dc976](https://github.com/bcgov/moh-common-styles/commit/09dc976))
 
 
 
