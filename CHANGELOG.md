@@ -1,4 +1,28 @@
-# Unreleased "moh-common-lib" (2020-10-30)
+# Unreleased "moh-common-lib" (2020-11-24)
+
+
+
+# [3.3.0](https://github.com/bcgov/moh-common-styles/compare/v3.2.5...v3.3.0) "moh-common-lib" (2020-11-24)
+
+
+### Bug Fixes
+
+* prevent submissions of SINs that start with 0 ([0cb7f9d](https://github.com/bcgov/moh-common-styles/commit/0cb7f9d))
+
+
+### Performance Improvements
+
+* cleanup imports, remove unused ([83d46c8](https://github.com/bcgov/moh-common-styles/commit/83d46c8))
+
+
+### Styles
+
+* align text and checkbox ([2c14de1](https://github.com/bcgov/moh-common-styles/commit/2c14de1))
+
+
+### Tests
+
+* add firefoxheadless for unit tests ([7d1f3ef](https://github.com/bcgov/moh-common-styles/commit/7d1f3ef))
 
 
 
