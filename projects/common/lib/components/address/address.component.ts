@@ -345,6 +345,10 @@ export class AddressComponent extends Base
     if (!address.street && !address.city && !address.postal) {
       return;
     }
+    if (this.bcOnly && address.province != BRITISH_COLUMBIA) {
+      alert('Please select a valid BC address.');
+      return;
+    }
     this.addr.addressLine1 = address.street;
     this.addr.city = address.city;
     this.addr.postal = address.postal;
