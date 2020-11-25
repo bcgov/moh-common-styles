@@ -28,7 +28,7 @@ $md-radio-ripple-size: 15px;
 
 
 .md-radio {
-  margin: 16px 0;
+  margin: 10px 0;
 
   display: block;
   position: relative;
@@ -70,6 +70,7 @@ $md-radio-ripple-size: 15px;
     position: relative;
     padding: 0 ($md-radio-size + 10px);
     margin-bottom: 0;
+    margin-left: 30px;
     cursor: pointer;
     vertical-align: bottom;
 

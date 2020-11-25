@@ -1,0 +1,17 @@
+@import 'variables.scss';
+
+input[type=checkbox] {
+  transform: scale(1.5);
+}
+
+label {
+  display: inline-block;
+  height: auto;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  padding-left: 10px;
+  padding-top: 2px;
+  cursor: pointer;
+  vertical-align: bottom;
+}
+

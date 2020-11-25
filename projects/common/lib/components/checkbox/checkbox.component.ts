@@ -21,6 +21,7 @@ import { ErrorMessage, LabelReplacementTag } from '../../models/error-message.in
 @Component({
   selector: 'common-checkbox',
   templateUrl: './checkbox.component.html',
+  styleUrls: ['./checkbox.component.scss']
 })
 export class CheckboxComponent extends AbstractFormControl implements OnInit, ControlValueAccessor {
   defaultErrorMessage: string = '';
