@@ -396,13 +396,12 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, Input, ChangeDetectorRef, Output, EventEmitter, SimpleChanges, OnChanges, Optional, Self } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, Input, ChangeDetectorRef, Output, EventEmitter, Optional, Self } from &#x27;@angular/core&#x27;;
 import { Subject, Observable, of, throwError } from &#x27;rxjs&#x27;;
 import { debounceTime, distinctUntilChanged, switchMap, map, catchError } from &#x27;rxjs/operators&#x27;;
 import { TypeaheadMatch } from &#x27;ngx-bootstrap/typeahead&#x27;;
 import { HttpClient, HttpErrorResponse, HttpParams } from &#x27;@angular/common/http&#x27;;
 import { NgControl, ControlValueAccessor } from &#x27;@angular/forms&#x27;;
-import { Base } from &#x27;../../models/base&#x27;;
 import { Address } from &#x27;../../models/address.model&#x27;;
 import { AbstractFormControl } from &#x27;../../models/abstract-form-control&#x27;;
 import { ErrorMessage, LabelReplacementTag } from &#x27;../../models/error-message.interface&#x27;;
@@ -456,7 +455,7 @@ export class AddressValidatorComponent extends AbstractFormControl implements On
   @Input() populateAddressOnSelect: boolean &#x3D; false;
   @Output() addressChange: EventEmitter&lt;string&gt; &#x3D; new EventEmitter&lt;string&gt;();
   @Output() select: EventEmitter&lt;Address&gt; &#x3D; new EventEmitter&lt;Address&gt;();
-  
+
   @Input() maxlength: string &#x3D; &#x27;255&#x27;;
 
   _defaultErrMsg: ErrorMessage &#x3D; {
