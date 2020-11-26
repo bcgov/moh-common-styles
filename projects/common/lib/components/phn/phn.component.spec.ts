@@ -1,11 +1,15 @@
 import { fakeAsync } from '@angular/core/testing';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { TextMaskModule } from 'angular2-text-mask';
 import { PhnComponent } from './phn.component';
 import { Component, ViewChildren, QueryList, OnInit } from '@angular/core';
 import { ErrorContainerComponent } from '../error-container/error-container.component';
-import { createTestingModule, tickAndDetectChanges, getDebugElement, getDebugLabel } from '../../../helpers/test-helpers';
-import { commonDuplicateCheck } from '../duplicate-check/duplicate-check.directive';
+import { createTestingModule,
+  tickAndDetectChanges,
+  getDebugElement,
+  getDebugLabel,
+  setInput,
+ } from '../../../helpers/test-helpers';
 
 @Component({
   template: ``,
@@ -35,9 +39,15 @@ class PhnReactTestComponent extends PhnTestComponent implements OnInit {
   ngOnInit() {
     this.form = this.fb.group({
       phn1: [ this.phn1 ],
-      phn2: [ this.phn2 ,  commonDuplicateCheck( ['9999999998'] ) ]
-
+      phn2: [ this.phn2 ]
     });
+  }
+
+  setPhnRequired( phnFldName: string ) {
+    const fld = this.form.controls[phnFldName];
+
+    fld.setValidators( Validators.required );
+    fld.updateValueAndValidity();
   }
 }
 
@@ -58,33 +68,32 @@ describe('PhnComponent', () => {
          importDirectives
       );
 
-      const component = fixture.componentInstance;
-      tickAndDetectChanges( fixture );
       const de = getDebugElement( fixture, 'common-phn', 'phn1' );
       const label = getDebugLabel( de, de.componentInstance.labelforId );
 
-      expect( component.phnComponent ).toBeTruthy();
-      expect( label ).toBe( component.defaultLabel );
-      expect( component.form.get('phn1').hasError( 'required' )  ).toBeFalsy();
+      expect( de ).toBeTruthy();
+      expect( label ).toBe( fixture.componentInstance.defaultLabel );
     }));
 
     it('should be required', fakeAsync(() => {
       const fixture = createTestingModule( PhnReactTestComponent,
         `<form [formGroup]="form">
-          <common-phn name='phn1' formControlName='phn1' required></common-phn>
+          <common-phn name='phn1' formControlName='phn1'></common-phn>
          </form>`,
          directives,
          true,
          importDirectives
       );
 
-      const component = fixture.componentInstance;
+      fixture.componentInstance.setPhnRequired( 'phn1') ;
       tickAndDetectChanges( fixture );
-      expect( component.phnComponent ).toBeTruthy();
-      expect( component.form.get('phn1').hasError( 'required' )  ).toBeTruthy();
+
+      const de = getDebugElement( fixture, 'common-phn', 'phn1' );
+      expect( de ).toBeTruthy();
+      expect( de.componentInstance.controlDir.hasError( 'required' ) ).toBeTruthy();
     }));
 
-    it('should be invalid', fakeAsync(() => {
+    it('should be invalid (self validation)', fakeAsync(() => {
       const fixture = createTestingModule( PhnReactTestComponent,
         `<form [formGroup]="form">
           <common-phn name='phn1' formControlName='phn1'></common-phn>
@@ -94,14 +103,14 @@ describe('PhnComponent', () => {
          importDirectives
       );
 
-      const component = fixture.componentInstance;
-      component.form.get( 'phn1' ).setValue( '9999999999' );
+      const de = getDebugElement( fixture, 'common-phn', 'phn1' );
+      setInput( de, '9999999999' );
+
       tickAndDetectChanges( fixture );
-      expect( component.phnComponent ).toBeTruthy();
-      expect( component.form.get('phn1').hasError( 'invalid' ) ).toBeTruthy();
+      expect( de.componentInstance.controlDir.hasError( 'invalid' ) ).toBeTruthy();
     }));
 
-    it('should be valid', fakeAsync(() => {
+    it('should be valid (self validation)', fakeAsync(() => {
       const fixture = createTestingModule( PhnReactTestComponent,
         `<form [formGroup]="form">
           <common-phn name='phn1' formControlName='phn1'></common-phn>
@@ -111,16 +120,17 @@ describe('PhnComponent', () => {
          importDirectives
       );
 
-      const component = fixture.componentInstance;
-      component.form.get( 'phn1' ).setValue( '9999999998' );
+      const de = getDebugElement( fixture, 'common-phn', 'phn1' );
+      setInput( de, '9999999998' );
+
       tickAndDetectChanges( fixture );
-      expect( component.phnComponent ).toBeTruthy();
-      expect( component.form.get('phn1').valid  ).toBeTruthy();
+      expect( de.componentInstance.controlDir.hasError( 'invalid' ) ).toBeFalsy();
     }));
 
-    it('should be duplicate', fakeAsync(() => {
+    it('should be able to have multiple components in form', fakeAsync(() => {
       const fixture = createTestingModule( PhnReactTestComponent,
         `<form [formGroup]="form">
+          <common-phn name='phn1' formControlName='phn1'></common-phn>
           <common-phn name='phn2' formControlName='phn2'></common-phn>
          </form>`,
          directives,
@@ -128,13 +138,16 @@ describe('PhnComponent', () => {
          importDirectives
       );
 
-      const component = fixture.componentInstance;
-      component.form.get( 'phn2' ).setValue( '9999999998' );
-      tickAndDetectChanges( fixture );
-      expect( component.phnComponent ).toBeTruthy();
-      expect( component.form.get('phn2').hasError( 'duplicate' ) ).toBeTruthy();
-    }));
+      const de1 = getDebugElement( fixture, 'common-phn', 'phn1' );
+      setInput( de1, '9999999999' );
 
+      const de2 = getDebugElement( fixture, 'common-phn', 'phn2' );
+      setInput( de2, '9999999998' );
+
+      tickAndDetectChanges( fixture );
+      expect( de1.componentInstance.controlDir.hasError( 'invalid' ) ).toBeTruthy();
+      expect( de2.componentInstance.controlDir.hasError( 'invalid' ) ).toBeFalsy();
+    }));
   });
 
   describe('Custom controls - Template', () => {
@@ -142,67 +155,102 @@ describe('PhnComponent', () => {
     it('should create', fakeAsync(() => {
       const fixture = createTestingModule( PhnTestComponent,
         `<form>
-          <common-phn name='phn1' [(ngModel)]='phn1'></common-phn>
+          <common-phn name='phn2' [(ngModel)]='phn2'></common-phn>
          </form>`,
          directives,
          false,
          importDirectives
       );
 
-      const component = fixture.componentInstance;
-      tickAndDetectChanges( fixture );
-      const de = getDebugElement( fixture, 'common-phn', 'phn1' );
+      const de = getDebugElement( fixture, 'common-phn', 'phn2' );
       const label = getDebugLabel( de, de.componentInstance.labelforId );
 
-      expect( component.phnComponent ).toBeTruthy();
-      expect( label ).toBe( component.defaultLabel );
-      expect( component.phnComponent.first.controlDir.hasError( 'required' ) ).toBeFalsy();
+      expect( de ).toBeTruthy();
+      expect( label ).toBe( fixture.componentInstance.defaultLabel );
     }));
 
     it('should be required', fakeAsync(() => {
       const fixture = createTestingModule( PhnTestComponent,
         `<form>
-          <common-phn name='phn1' [(ngModel)]='phn1' required></common-phn>
+          <common-phn name='phn2' [(ngModel)]='phn2' required></common-phn>
          </form>`,
          directives,
          false,
          importDirectives
       );
 
-      const component = fixture.componentInstance;
-
-      tickAndDetectChanges( fixture );
-     // const error = getErrorContainer( fixture );
-     // console.log( 'error: ', error );
-      expect( component.phnComponent.first.controlDir.hasError( 'required' ) ).toBeTruthy();
-      // expect( error.textContent ).toContain( 'is required' );
+      fixture.whenStable().then( () => {
+        const de = getDebugElement( fixture, 'common-phn', 'phn2' );
+        expect( de ).toBeTruthy();
+        expect( de.componentInstance.controlDir.hasError( 'required' ) ).toBeTruthy();
+      });
     }));
 
+    it('should be invalid (self validation)', fakeAsync(() => {
+      const fixture = createTestingModule( PhnTestComponent,
+        `<form>
+          <common-phn name='phn2' [(ngModel)]='phn2'></common-phn>
+         </form>`,
+         directives,
+         false,
+         importDirectives
+      );
 
-    /*
-    it('should be invalid', fakeAsync(() => {
+      fixture.whenStable().then( () => {
+        const de = getDebugElement( fixture, 'common-phn', 'phn2' );
+        setInput( de, '9999999999' );
+
+        tickAndDetectChanges( fixture );
+
+        expect( de.componentInstance.controlDir.hasError( 'invalid' ) ).toBeTruthy();
+      });
+    }));
+
+    it('should not be invalid (self validation)', fakeAsync(() => {
+      const fixture = createTestingModule( PhnTestComponent,
+        `<form>
+          <common-phn name='phn2' [(ngModel)]='phn2'></common-phn>
+         </form>`,
+         directives,
+         false,
+         importDirectives
+      );
+
+      fixture.whenStable().then( () => {
+        const de = getDebugElement( fixture, 'common-phn', 'phn2' );
+        setInput( de, '9999999998' );
+
+        tickAndDetectChanges( fixture );
+        expect( de.componentInstance.controlDir.hasError( 'invalid' ) ).toBeFalsy();
+      });
+    }));
+
+    it('should be able to have multiple components in form', fakeAsync(() => {
       const fixture = createTestingModule( PhnTestComponent,
         `<form>
           <common-phn name='phn1' [(ngModel)]='phn1'></common-phn>
+          <common-phn name='phn2' [(ngModel)]='phn2'></common-phn>
          </form>`,
-         false,
          directives,
+         false,
          importDirectives
       );
 
-      const component = fixture.componentInstance;
-
       fixture.whenStable().then( () => {
-        component.phn1 = '9999999999';
+        const de1 = getDebugElement( fixture, 'common-phn', 'phn1' );
+        setInput( de1, '9999999998' );
+
+        const de2 = getDebugElement( fixture, 'common-phn', 'phn2' );
+        setInput( de2, '9999999999' );
+
         tickAndDetectChanges( fixture );
-        // const error = getErrorContainer( fixture );
-        // console.log( 'error: ', error );
-         expect( component.phnComponent.first.controlDir.hasError( 'invalue' ) ).toBeTruthy();
-         // expect( error.textContent ).toContain( 'is required' );
+        expect( de1.componentInstance.controlDir.hasError( 'invalid' ) ).toBeFalsy();
+        expect( de2.componentInstance.controlDir.hasError( 'invalid' ) ).toBeTruthy();
       });
-    })); */
-
-
+    }));
   });
 
 });
+
+
+
