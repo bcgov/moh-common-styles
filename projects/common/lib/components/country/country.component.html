@@ -1,5 +1,5 @@
 <label for="{{labelforId}}" class="control-label">{{label}}</label>
-<div *ngIf="useDropDownList; else NotDropDownList">
+<div *ngIf="useDropDownList; else NotDropDownList" aria-label="countryCode">
   <ng-select [items]="countryList"
              [ngModel]="country"
              (ngModelChange)="onValueChange($event)"
