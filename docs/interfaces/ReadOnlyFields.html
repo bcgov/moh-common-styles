@@ -640,6 +640,10 @@ export class AddressComponent extends Base
     if (!address.street &amp;&amp; !address.city &amp;&amp; !address.postal) {
       return;
     }
+    if (this.bcOnly &amp;&amp; address.province !&#x3D; BRITISH_COLUMBIA) {
+      alert(&#x27;Please select a valid BC address.&#x27;);
+      return;
+    }
     this.addr.addressLine1 &#x3D; address.street;
     this.addr.city &#x3D; address.city;
     this.addr.postal &#x3D; address.postal;

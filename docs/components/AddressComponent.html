@@ -1127,8 +1127,8 @@ address line.  This value binds to <code>address.addressLine2</code></p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="365"
-                            class="link-to-prism">projects/common/lib/components/address/address.component.ts:365</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="369"
+                            class="link-to-prism">projects/common/lib/components/address/address.component.ts:369</a></div>
                 </td>
             </tr>
 
@@ -1197,8 +1197,8 @@ address line.  This value binds to <code>address.addressLine2</code></p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="369"
-                            class="link-to-prism">projects/common/lib/components/address/address.component.ts:369</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="373"
+                            class="link-to-prism">projects/common/lib/components/address/address.component.ts:373</a></div>
                 </td>
             </tr>
 
@@ -1737,8 +1737,8 @@ Search uses country code or country name to find item is list.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="373"
-                            class="link-to-prism">projects/common/lib/components/address/address.component.ts:373</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="377"
+                            class="link-to-prism">projects/common/lib/components/address/address.component.ts:377</a></div>
                 </td>
             </tr>
 
@@ -1809,8 +1809,8 @@ Search uses country code or country name to find item is list.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="378"
-                            class="link-to-prism">projects/common/lib/components/address/address.component.ts:378</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="382"
+                            class="link-to-prism">projects/common/lib/components/address/address.component.ts:382</a></div>
                 </td>
             </tr>
 
@@ -1850,8 +1850,8 @@ Search uses country code or country name to find item is list.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="384"
-                            class="link-to-prism">projects/common/lib/components/address/address.component.ts:384</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="388"
+                            class="link-to-prism">projects/common/lib/components/address/address.component.ts:388</a></div>
                 </td>
             </tr>
 
@@ -2033,8 +2033,8 @@ Search uses country code or country name to find item is list.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="390"
-                            class="link-to-prism">projects/common/lib/components/address/address.component.ts:390</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="394"
+                            class="link-to-prism">projects/common/lib/components/address/address.component.ts:394</a></div>
                 </td>
             </tr>
 
@@ -2186,8 +2186,8 @@ accessed via function invocation for performance.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="359"
-                            class="link-to-prism">projects/common/lib/components/address/address.component.ts:359</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="363"
+                            class="link-to-prism">projects/common/lib/components/address/address.component.ts:363</a></div>
                 </td>
             </tr>
 
@@ -3008,6 +3008,10 @@ export class AddressComponent extends Base
 
   selectSuggestedAddress(address: Address) {
     if (!address.street &amp;&amp; !address.city &amp;&amp; !address.postal) {
+      return;
+    }
+    if (this.bcOnly &amp;&amp; address.province !&#x3D; BRITISH_COLUMBIA) {
+      alert(&#x27;Please select a valid BC address.&#x27;);
       return;
     }
     this.addr.addressLine1 &#x3D; address.street;
