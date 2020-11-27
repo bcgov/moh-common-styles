@@ -26,7 +26,7 @@
                                 commonValidateStreet>
       </common-address-validator>
     </div>
-    
+
     <div class="col-1"
          *ngIf='allowExtralines'>
       <div class="h-50"></div>
@@ -38,6 +38,24 @@
       </button>
     </div>
   </div>
+  <!-- Address Validator -->
+  <div class="form-group col-sm-11 p-sm-0"
+       *ngIf="useAddressValidator">
+    <common-address-validator
+      name="street_{{objectId}}"
+      label="{{addrLabels.address1}}"
+      [(ngModel)]="addr.addressLine1"
+      (ngModelChange)="setStreetAddress($event)"
+      [required]="isRequired"
+      [disabled]="readOnlyFields.address"
+      [maxlength]="fieldMaxLenghts.address"
+      [serviceUrl]="addressServiceUrl"
+      (select)="selectSuggestedAddress($event)"
+      [populateAddressOnSelect]="true"
+      commonValidateStreet>
+    </common-address-validator>
+  </div>
+
 </div>
 
 
