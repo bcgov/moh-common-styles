@@ -14,6 +14,7 @@ export class CityComponent extends AbstractFormControl implements OnInit, Contro
   @Input() maxlength: string = '100';
   @Input() labelforId: string = 'city_' + this.objectId;
   @Input() placeholder: string = 'City name';
+  @Input() required: boolean = false;
 
   @Input()
   set value( val: string ) {

@@ -10,6 +10,7 @@
              [value]="val.value"
              (click)="setStatus(val.value);"
              [checked]="_value == val.value"
+             [required]="required"
              tabindex="0">
       <label for="{{val.value}}_{{objectId}}">
       {{val.label}}

@@ -7,6 +7,7 @@
        (ngModelChange)="onValueChange($event)"
        (blur)="onBlurEvent($event)"
        [textMask]="{mask: mask, pipe: upperCasePipe}"
+       [required]="required"
        [disabled]="disabled"
        autocomplete="off"/>
   </div>
