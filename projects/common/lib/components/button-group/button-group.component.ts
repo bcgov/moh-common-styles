@@ -47,10 +47,7 @@ export class ButtonGroupComponent implements ControlValueAccessor {
   public _onChange = (_: any) => {};
   public _onTouched = () => {};
 
-  constructor() {
-
-  }
-
+  constructor() {}
 
   setButtonGrpVal(val: any) {
     this.dataChange.emit(val);

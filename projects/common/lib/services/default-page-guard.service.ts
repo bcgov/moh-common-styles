@@ -34,7 +34,6 @@ export class DefaultPageGuardService implements AbstractPageGuardService {
   public canBypassGuards(): boolean {
 
     const bypass = this.injector.get( BYPASS_GUARDS );
-    // console.log( 'canBypassGuards: injected value = ', bypass );
 
     return bypass ? bypass : this.bypassGuards;
   }
@@ -44,8 +43,6 @@ export class DefaultPageGuardService implements AbstractPageGuardService {
     const startUrl = this.injector.get( START_PAGE_URL );
     const _startUrl = startUrl ? startUrl : this.startPageUrl;
     const containStartUrl: boolean = url.includes( _startUrl );
-
-    // console.log( 'canNavigateToUrl: injected value = ', startUrl, url );
 
     // Empty list allow navigation to first page
     if ( this.pageStateService.pageListIsClear() ) {

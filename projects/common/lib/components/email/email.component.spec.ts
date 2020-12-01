@@ -96,7 +96,6 @@ describe('EmailComponent', () => {
       tickAndDetectChanges( fixture );
       fixture.whenStable().then( () => {
         expect( de ).toBeTruthy();
-        // console.log( 'errors: ', de.componentInstance.controlDir.errors );
         expect( de.componentInstance.controlDir.hasError( 'invalidEmail' ) ).toBeTruthy();
       });
     }));

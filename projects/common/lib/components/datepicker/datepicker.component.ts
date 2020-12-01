@@ -123,6 +123,7 @@ export class DatepickerComponent extends Base implements OnInit, OnChanges, Cont
       day: date.getDate(),
     };
   }
+
   convertSimpleDateToDate(date: IMyDate): Date {
     // When ngx-mydatepicker is cleared, it returns {year: 0, month: 0, day: 0}
     if (date.year === 0) {
@@ -227,7 +228,6 @@ export class DatepickerComponent extends Base implements OnInit, OnChanges, Cont
       jsdate: obj
     };
   }
-
 }
 
 export enum DatepickerSizes {

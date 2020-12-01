@@ -114,8 +114,6 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
     public spaEnvRes: ISpaEnvResponse = {} as any;
     public maintenanceMessage: string;
 
-    // public maintenanceFlag: string ;
-
     // TODO: This should eventually be pulled out of the common library as it pertains to MSP-specific code.
     // tslint:disable-next-line:max-line-length
     private _applicationHeaderMap: Map<string, string> = new Map([
@@ -129,12 +127,9 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
     public _onChange = (_: any) => {};
     public _onTouched = () => {};
 
-
     constructor(protected http: HttpClient,  private logService: CommonLogger) {
         super(http);
     }
-
-
 
     ngOnInit(): void {
       // Called after ngOnInit when the component's or directive's content has been initialized.
@@ -170,7 +165,6 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
     }
 
     protected handleError(error: HttpErrorResponse) {
-      // console.log('handleError', JSON.stringify(error));
       if (error.error instanceof ErrorEvent) {
           // Client-side / network error occured
           console.error('MspMaintenanceService error: ', error.error.message);
@@ -178,7 +172,6 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
           // The backend returned an unsuccessful response code
           console.error(`MspMaintenanceService Backend returned error code: ${error.status}.  Error body: ${error.error}`);
       }
-      // this.logService.log({event: 'error', key: 'Cannot get maintenance flag from spa-env-server'});
 
       // A user facing erorr message /could/ go here; we shouldn't log dev info through the throwError observable
       return of(error);
@@ -191,7 +184,6 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
         this.sendSpaEnvServer(headerName)
                 .subscribe(response => {
                     this.spaEnvRes = <ISpaEnvResponse> response;
-                    // console.log(this.spaEnvRes);
                     // TODO: This should eventually be pulled out of the common library as it pertains to MSP-specific code.
                     if (this.spaEnvRes.SPA_ENV_ACL_MAINTENANCE_FLAG === 'true') {
                         this.maintenanceFlag = 'true';
@@ -211,7 +203,6 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
                     }
 
             }, (error: Response | any) => {
-                // console.log('Error when calling the MSP Maintenance: ' + error);
                 this.logService.log({
                   event: 'ACL - SPA Env System Error',
                   success: false,
@@ -231,10 +222,7 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
     this._onTouched = fn;
   }
 
-  writeValue(value: any): void {
-
-    //
-  }
+  writeValue(value: any): void {}
 
   isContinueDisabled(): boolean {
     return !this.agreeCheck || this.disableContinue;

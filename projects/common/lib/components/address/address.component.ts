@@ -109,7 +109,7 @@ export class AddressComponent extends Base
   };
 
   // Lengths defaulted to MSP
-  fieldMaxLenghts: Maxlengths = {
+  fieldMaxLengths: Maxlengths = {
     address: '25',
     city: '25',
     province: '25',
@@ -133,9 +133,6 @@ export class AddressComponent extends Base
   }
 
   ngOnInit() {
-
-    // console.log( 'address: ', this.bcOnly );
-
     this.setLabels();
     this.setMaxlengths();
     this.setReadOnlyFields();
@@ -387,7 +384,7 @@ export class AddressComponent extends Base
 
   private setMaxlengths() {
     if ( this.maxlengths ) {
-      Object.keys(this.fieldMaxLenghts).map( x => this.maxlengths[x] = this.fieldMaxLenghts[x]);
+      Object.keys(this.fieldMaxLengths).map( x => this.maxlengths[x] = this.fieldMaxLengths[x]);
     }
   }
 

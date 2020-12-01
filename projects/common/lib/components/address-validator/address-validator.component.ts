@@ -107,16 +107,12 @@ export class AddressValidatorComponent extends AbstractFormControl implements On
   }
 
   onLoading(val: boolean): void {
-    // console.log( 'onLoading - address-validator' , val );
     this.isTypeaheadLoading = val;
     this.hasError = false;
   }
 
   // Note - this will fire after an onError as well
   onNoResults(val: boolean): void {
-
-   //  console.log( 'No results - AddressValidator' , val );
-
     // If we have results, the error has resolved (e.g. network has re-connected)
     if (val === false) {
       this.hasError = false;
@@ -127,7 +123,6 @@ export class AddressValidatorComponent extends AbstractFormControl implements On
 
   onSelect(event: TypeaheadMatch): void {
 
-    // console.log( 'onSelect: ', event );
     const data: AddressResult = event.item;
 
     // Output string to FormControl. If street is more than the max length shorten
@@ -172,7 +167,6 @@ export class AddressValidatorComponent extends AbstractFormControl implements On
       this._onChange(this.search);
     }
   }
-
 
   writeValue( value: any ): void {
     if ( value  !== undefined ) {
@@ -243,5 +237,4 @@ export class AddressValidatorComponent extends AbstractFormControl implements On
     console.error('AddressValidator network error', { error });
     return throwError('AddressValidator error');
   }
-
 }
