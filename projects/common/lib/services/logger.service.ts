@@ -145,7 +145,6 @@ export class CommonLogger extends AbstractHttpService {
   }
 
   protected handleError(error: HttpErrorResponse) {
-    console.log('logService handleError()', error);
     if (error.error instanceof ErrorEvent) {
       // Client-side / network error occured
       console.error('An error occured: ', error.error.message);

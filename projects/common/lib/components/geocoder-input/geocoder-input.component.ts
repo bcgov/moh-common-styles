@@ -89,14 +89,11 @@ export class GeocoderInputComponent extends Base implements OnInit, ControlValue
   }
 
   onLoading(val: boolean): void {
-    // console.log( 'onLoading - geocoder' , val );
     this.isTypeaheadLoading = val;
   }
 
   // Note - this will fire after an onError as well
   onNoResults(val: boolean): void {
-
-   //  console.log( 'No results - geocoder' , val );
 
     // If we have results, the error has resolved (e.g. network has re-connected)
     if (val === false) {
@@ -108,7 +105,6 @@ export class GeocoderInputComponent extends Base implements OnInit, ControlValue
 
   onSelect(event: TypeaheadMatch): void {
 
-    // console.log( 'onSelect: ', event );
     const data: GeoAddressResult = event.item;
 
     // Output string to FormControl. If street is more than the max length shorten

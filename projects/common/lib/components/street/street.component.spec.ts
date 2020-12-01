@@ -42,7 +42,6 @@ class StreetReactTestComponent extends StreetTestComponent implements OnInit {
   }
 
   onSelect($event) {
-    console.log('updateOn: ', $event );
     this.geoResult = $event;
   }
 

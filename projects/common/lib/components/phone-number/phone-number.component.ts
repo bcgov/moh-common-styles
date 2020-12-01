@@ -88,8 +88,6 @@ export class PhoneNumberComponent extends AbstractFormControl implements OnInit 
       this.mask = [...prefixArrayOfChar, SPACE, ...this.mask];
     }
 
-
-
     // Register self validation
     Promise.resolve().then(() => {
 
@@ -107,7 +105,6 @@ export class PhoneNumberComponent extends AbstractFormControl implements OnInit 
   }
 
   setPhoneNumber(value) {
-    // console.log( 'setPhoneNumber: ', value );
     this.phoneNumber = value;
     this.valueChange.emit(this.phoneNumber);
     this._onChange(value);

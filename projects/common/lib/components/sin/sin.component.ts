@@ -37,7 +37,6 @@ export class SinComponent extends AbstractFormControl implements OnInit {
 
   @Input()
   set value( val: string ) {
-    // console.log( 'set value: ', val );
     if ( val ) {
       this.sin = val;
     }

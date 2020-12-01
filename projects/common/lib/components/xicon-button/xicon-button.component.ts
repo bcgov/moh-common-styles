@@ -23,8 +23,6 @@ export class XiconButtonComponent implements OnInit {
 
   ngOnInit() {
     if (!this.label) {
-      // todo - change to MohCommmonLibraryError -> test in IE10
-      // throw Error('common-xicon-button initialized without label. You MUST supply a label attribute for accessibility.');
       const msg = `common-xicon-button initialized without label. You MUST supply a label attribute for accessibility.
       e.g. <common-xicon-button label='Remove Spouse'>
 `; // Intentional to create a blank line between our error and stack trace.
