@@ -18,6 +18,7 @@ export class PostalCodeComponent extends Base implements OnInit, ControlValueAcc
   @Input() labelforId: string = 'postalCode_' + this.objectId;
   @Input() disabled: boolean = false;
   @Input() errorMessage: ErrorMessage;
+  @Input() required: boolean = false;
 
   @Input()
   set value( val: string ) {

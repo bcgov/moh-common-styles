@@ -28,7 +28,7 @@
        *ngIf="useAddressValidator">
     <common-address-validator
       name="street_{{objectId}}"
-      label="{{addrLabels.address1}}"              
+      label="{{addrLabels.address1}}"
       [(ngModel)]="addr.addressLine1"
       (ngModelChange)="setStreetAddress($event)"
       [required]="isRequired"
@@ -40,7 +40,7 @@
       commonValidateStreet>
     </common-address-validator>
   </div>
-  
+
 </div>
 
 

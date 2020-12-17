@@ -54,6 +54,7 @@ export class RadioComponent extends AbstractFormControl implements OnInit {
     {label: 'No', value: false},
     {label: 'Yes', value: true}
   ];
+  @Input() required: boolean = false;
 
   @Input() label: string;
   @Input()

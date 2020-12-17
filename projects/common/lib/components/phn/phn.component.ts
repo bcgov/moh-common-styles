@@ -14,6 +14,7 @@ export class PhnComponent extends AbstractFormControl implements OnInit, Control
   @Input() label: string = 'Personal Health Number (PHN)';
   @Input() placeholder: string = '1111 111 111';
   @Input() labelforId: string = 'phn_' + this.objectId;
+  @Input() required: boolean = false;
 
   // Self-Validation inputs
   @Input() isBCPhn: boolean = true;

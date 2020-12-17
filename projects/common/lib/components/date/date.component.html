@@ -8,6 +8,7 @@
             [value]="_month"
             (blur)="onBlurMonth($event.target.value)"
             [disabled]='disabled'
+            [required]="isRequired"
             aria-label="Month">
       <!-- We show the blank option so the user can clear out their data.-->
       <option value="null" label="Month" selected [disabled]='isRequired'></option>
@@ -23,6 +24,7 @@
            (blur)="onBlurDay($event.target.value)"
            commonDateFieldFormat
            [disabled]='disabled'
+           [required]="isRequired"
            maxlength="2"
            step="any"
            aria-label="Day"
@@ -37,6 +39,7 @@
            (blur)="onBlurYear($event.target.value)"
            commonDateFieldFormat
            [disabled]='disabled'
+           [required]="isRequired"
            maxlength="4"
            step="any"
            aria-label="Year"
