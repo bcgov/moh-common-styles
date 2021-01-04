@@ -83,9 +83,7 @@ export class ProvinceComponent extends AbstractFormControl implements OnInit {
 
   provinceChange( event: any ) {
     const province = this.provinceList[Number(event.target.value)];
-    console.log('province:', province);
     if (province) {
-      console.log('provinceCode:', province.provinceCode);
       this._onChange(province.provinceCode);
       this.valueChange.emit(province.provinceCode);
       this.province = province.provinceCode;

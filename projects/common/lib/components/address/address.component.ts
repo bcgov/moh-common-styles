@@ -173,7 +173,6 @@ export class AddressComponent extends Base
    * @param value
    */
   setCountry(value: string) {
-    console.log('setCountry was called with:', value);
     this.addr.province = this.setDefaultProvinceAsOption( value );
     this.addr.country = value;
     this.updateProvList();
@@ -231,7 +230,6 @@ export class AddressComponent extends Base
 
         // Set defaults
         this.addr.country = this.setDefaultCountryAsOption();
-        console.log('there was no country assigned so a default was');
 
         // Set defaults
         this.addr.province = this.setDefaultProvinceAsOption(this.addr.country);
@@ -242,8 +240,6 @@ export class AddressComponent extends Base
       if (this.addr && !this.addr.province) {
         // Set defaults
         this.addr.province = this.setDefaultProvinceAsOption(this.addr.country);
-
-        console.log('there was no province assigned so a default was');
       }
       this.updateProvList();
     }
@@ -339,7 +335,6 @@ export class AddressComponent extends Base
 
   // Only BC addresses therefore no need to copy province into structure.
   setAddress(data: GeoAddressResult) {
-    console.log('setAddress, data: ', data);
     this.addr.addressLine1 = data.street;
     this.addr.city = data.city;
     this.addr.province = data.province;

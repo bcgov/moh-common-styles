@@ -322,10 +322,8 @@ export class CountryComponent extends Base implements OnInit, ControlValueAccess
 
   countryChange( event: any ) {
     const country = this.countryList[Number(event.target.value)];
-    console.log('country:', country);
 
     if (country) {
-      console.log('countryCode:', country.countryCode);
       this._onChange(country.countryCode);
       this.valueChange.emit(country.countryCode);
       this.country = country.countryCode;
