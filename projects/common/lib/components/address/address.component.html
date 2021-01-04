@@ -48,7 +48,7 @@
       (ngModelChange)="setStreetAddress($event)"
       [required]="isRequired"
       [disabled]="readOnlyFields.address"
-      [maxlength]="fieldMaxLenghts.address"
+      [maxlength]="fieldMaxLengths.address"
       [serviceUrl]="addressServiceUrl"
       (select)="selectSuggestedAddress($event)"
       [populateAddressOnSelect]="true"
@@ -131,6 +131,7 @@
                    placeholder="{{ isCanada()? 'Select a Province': 'Select a State' }}"
                    [useDropDownList]="isCanada()"
                    [maxlength]="fieldMaxLengths.province"
+                   [bcOnly]="bcOnly"
                    commonValidateRegion></common-province>
 </div>
 
@@ -142,6 +143,7 @@
                   (ngModelChange)="setCountry($event)"
                   [required]="isRequired"
                   [disabled]="readOnlyFields.country"
+                  [bcOnly]="bcOnly"
                   [maxlen]="fieldMaxLengths.country"></common-country>
 </div>
 
