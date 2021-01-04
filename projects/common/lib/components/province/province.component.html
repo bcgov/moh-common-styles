@@ -1,18 +1,22 @@
 <label for="{{labelforId}}" class="control-label">{{label}}</label>
 
 <div *ngIf="useDropDownList; else NotDropDownList">
-  <ng-select [items]="provinceList"
-             [ngModel]="province"
-             (ngModelChange)="onValueChange($event)"
-             (blur)="onBlur($event)"
-             [required]="required"
-             [disabled]="disabled"
-             labelForId="{{labelforId}}"
-             bindValue="provinceCode"
-             bindLabel="description"
-             [clearable]="!required"
-             placeholder="{{ placeholder }}"
-             aria-label="Province Code"></ng-select>
+  <select
+      class="form-control"
+      id="{{labelforId}}"
+      name="{{labelforId}}"
+      (change)="provinceChange($event)"
+      [required]="required">
+    <div *ngIf="bcOnly; then OnlyBC else AllowOtherProvinces"></div>
+    <ng-template #OnlyBC>
+      <option value="1" selected="selected">{{ provinceList[1].description }}</option>
+    </ng-template>
+
+    <ng-template #AllowOtherProvinces>
+      <option value="-1" label="Province" selected="selected" [disabled]='required'></option>
+      <option *ngFor="let province of provinceList; let i = index;" [value]="i">{{ province.description }}</option>
+    </ng-template>
+  </select>
 </div>
 
 <!-- Error messages for input -->
@@ -32,8 +36,7 @@
           type="text"
           id="{{labelforId}}"
           [value]="province"
-          (change)="onValueChange($event.target.value)"
-          (blur)="onBlur($event)"
+          (change)="typedProvinceChange($event)"
           [disabled]="disabled"
           [attr.maxlength]="maxlength"
           [placeholder]="placeholder"

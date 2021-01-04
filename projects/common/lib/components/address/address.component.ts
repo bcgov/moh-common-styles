@@ -109,7 +109,7 @@ export class AddressComponent extends Base
   };
 
   // Lengths defaulted to MSP
-  fieldMaxLenghts: Maxlengths = {
+  fieldMaxLengths: Maxlengths = {
     address: '25',
     city: '25',
     province: '25',
@@ -173,6 +173,7 @@ export class AddressComponent extends Base
    * @param value
    */
   setCountry(value: string) {
+    console.log('setCountry was called with:', value);
     this.addr.province = this.setDefaultProvinceAsOption( value );
     this.addr.country = value;
     this.updateProvList();
@@ -227,8 +228,10 @@ export class AddressComponent extends Base
     if (changes['countryList'] && changes['countryList'].currentValue) {
 
       if (this.addr && !this.addr.country) {
+
         // Set defaults
         this.addr.country = this.setDefaultCountryAsOption();
+        console.log('there was no country assigned so a default was');
 
         // Set defaults
         this.addr.province = this.setDefaultProvinceAsOption(this.addr.country);
@@ -239,6 +242,8 @@ export class AddressComponent extends Base
       if (this.addr && !this.addr.province) {
         // Set defaults
         this.addr.province = this.setDefaultProvinceAsOption(this.addr.country);
+
+        console.log('there was no province assigned so a default was');
       }
       this.updateProvList();
     }
@@ -334,6 +339,7 @@ export class AddressComponent extends Base
 
   // Only BC addresses therefore no need to copy province into structure.
   setAddress(data: GeoAddressResult) {
+    console.log('setAddress, data: ', data);
     this.addr.addressLine1 = data.street;
     this.addr.city = data.city;
     this.addr.province = data.province;
@@ -383,7 +389,7 @@ export class AddressComponent extends Base
 
   private setMaxlengths() {
     if ( this.maxlengths ) {
-      Object.keys(this.fieldMaxLenghts).map( x => this.maxlengths[x] = this.fieldMaxLenghts[x]);
+      Object.keys(this.fieldMaxLengths).map( x => this.maxlengths[x] = this.fieldMaxLengths[x]);
     }
   }
 

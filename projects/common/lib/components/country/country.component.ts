@@ -285,7 +285,7 @@ export class CountryComponent extends Base implements OnInit, ControlValueAccess
   @Input() maxlen: string = '250';
   @Input() errorMessage: ErrorMessage;
   @Input() placeholder: string = 'Please select a country';
-
+  @Input() bcOnly: boolean = false;
   @Input()
   set value( val: string ) {
     if ( val ) {
@@ -320,17 +320,25 @@ export class CountryComponent extends Base implements OnInit, ControlValueAccess
     this.setErrorMsg();
   }
 
-  onValueChange( value: any ) {
-    if ( value !== this.country ) {
-      this._onChange( value );
-      this.valueChange.emit( value );
-      this.country = value;
+  countryChange( event: any ) {
+    const country = this.countryList[Number(event.target.value)];
+    console.log('country:', country);
+
+    if (country) {
+      console.log('countryCode:', country.countryCode);
+      this._onChange(country.countryCode);
+      this.valueChange.emit(country.countryCode);
+      this.country = country.countryCode;
     }
   }
 
-  onBlurEvent( event: any ) {
-    this._onTouched( event );
-    this.blurEvent.emit( event );
+  typedCountryChange(event: any) {
+    const country = event.target.value;
+    if ( country ) {
+      this._onChange(country);
+      this.valueChange.emit(country);
+      this.country = country;
+    }
   }
 
   writeValue( value: any ): void {
