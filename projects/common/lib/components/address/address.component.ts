@@ -177,6 +177,13 @@ export class AddressComponent extends Base
    if ( this.isCanada() ) {
       // If Canada, clear postal code to display mask
       this.addr.postal = '';
+
+      if (!this.disableGeocoder) {
+        this.showLine2 = false;
+        this.showLine3 = false;
+        this.addr.addressLine2 = '';
+        this.addr.addressLine3 = '';
+      }
     }
 
     this._onChange(this.addr);
@@ -326,7 +333,7 @@ export class AddressComponent extends Base
     if (this.disableGeocoder) {
       return false;
     }
-    return this.isCanada() && BRITISH_COLUMBIA === this.addr.province;
+    return this.isCanada();
   }
 
   // Only BC addresses therefore no need to copy province into structure.
