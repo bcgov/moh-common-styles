@@ -674,8 +674,8 @@ required&gt;
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="265"
-                            class="link-to-prism">projects/common/captcha/src/captcha.component.ts:265</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="260"
+                            class="link-to-prism">projects/common/captcha/src/captcha.component.ts:260</a></div>
                 </td>
             </tr>
 
@@ -742,8 +742,8 @@ required&gt;
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="208"
-                            class="link-to-prism">projects/common/captcha/src/captcha.component.ts:208</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="206"
+                            class="link-to-prism">projects/common/captcha/src/captcha.component.ts:206</a></div>
                 </td>
             </tr>
 
@@ -857,8 +857,8 @@ required&gt;
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="228"
-                            class="link-to-prism">projects/common/captcha/src/captcha.component.ts:228</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="225"
+                            class="link-to-prism">projects/common/captcha/src/captcha.component.ts:225</a></div>
                 </td>
             </tr>
 
@@ -929,8 +929,8 @@ required&gt;
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="152"
-                            class="link-to-prism">projects/common/captcha/src/captcha.component.ts:152</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="151"
+                            class="link-to-prism">projects/common/captcha/src/captcha.component.ts:151</a></div>
                 </td>
             </tr>
 
@@ -1001,8 +1001,8 @@ required&gt;
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="172"
-                            class="link-to-prism">projects/common/captcha/src/captcha.component.ts:172</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="171"
+                            class="link-to-prism">projects/common/captcha/src/captcha.component.ts:171</a></div>
                 </td>
             </tr>
 
@@ -1259,8 +1259,8 @@ The occurance of this type of case should be rare.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="200"
-                            class="link-to-prism">projects/common/captcha/src/captcha.component.ts:200</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="198"
+                            class="link-to-prism">projects/common/captcha/src/captcha.component.ts:198</a></div>
                 </td>
             </tr>
 
@@ -1479,8 +1479,8 @@ The occurance of this type of case should be rare.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="188"
-                            class="link-to-prism">projects/common/captcha/src/captcha.component.ts:188</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="187"
+                            class="link-to-prism">projects/common/captcha/src/captcha.component.ts:187</a></div>
                 </td>
             </tr>
 
@@ -2051,7 +2051,7 @@ The occurance of this type of case should be rare.</p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="275" class="link-to-prism">projects/common/captcha/src/captcha.component.ts:275</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="270" class="link-to-prism">projects/common/captcha/src/captcha.component.ts:270</a></div>
                             </td>
                         </tr>
 
@@ -2241,7 +2241,6 @@ export class CaptchaComponent implements AfterViewInit, OnInit, OnChanges, Contr
         (error) &#x3D;&gt; {
           this.state &#x3D; CAPTCHA_STATE.ERROR_VERIFY;
           this.errorVerifyAnswer &#x3D; this.createErrorTextLine(error);
-          // console.log(&#x27;Error response from verifying user answer: %o&#x27;, error);
         }
       );
     }
@@ -2285,7 +2284,6 @@ export class CaptchaComponent implements AfterViewInit, OnInit, OnChanges, Contr
   }
 
   public retryFetchCaptcha() {
-    // console.log(&#x27;Retry captcha&#x27;);
     this.state &#x3D; undefined;
 
     /**
@@ -2317,7 +2315,6 @@ export class CaptchaComponent implements AfterViewInit, OnInit, OnChanges, Contr
       },
         (error) &#x3D;&gt; {
           this.fetchingAudioInProgress &#x3D; false;
-          // console.log(&#x27;Error response from fetching audio CAPTCHA: %o&#x27;, error);
           this.cd.detectChanges();
         }
       );
@@ -2345,7 +2342,6 @@ export class CaptchaComponent implements AfterViewInit, OnInit, OnChanges, Contr
       this.cd.detectChanges();
 
       if (this.eagerFetchAudio &#x3D;&#x3D;&#x3D; &#x27;true&#x27;) {
-        // console.log(&#x27;Fetch audio eagerly&#x27;);
         this.fetchAudio();
       } else {
         // console.log(&#x27;Not to fetch audio eagerly&#x27;);
@@ -2355,7 +2351,6 @@ export class CaptchaComponent implements AfterViewInit, OnInit, OnChanges, Contr
       (error) &#x3D;&gt; {
         this.state &#x3D; CAPTCHA_STATE.ERROR_FETCH_IMG;
         this.errorFetchingImg &#x3D; this.createErrorTextLine(error);
-        // console.log(&#x27;Error esponse from fetching CAPTCHA text: %o&#x27;, error);
         this.cd.detectChanges();
       }
     );

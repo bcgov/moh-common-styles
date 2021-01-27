@@ -1922,12 +1922,9 @@ export class EmailComponent extends AbstractFormControl implements OnInit {
 
     if ( this.email ) {
 
-      // console.log( &#x27;email: &#x27;, this.email );
       let result &#x3D; this._formatCriteria.test( this.email );
-      // console.log( &#x27;formatCriteria: &#x27;, result );
       if ( result ) {
         result &#x3D; this._asciiPrintable.test( this.email );
-        // console.log( &#x27;asciiPrintable: &#x27;, result );
         return result ? null : { invalidChars: true };
       }
       return { invalidEmail: true };

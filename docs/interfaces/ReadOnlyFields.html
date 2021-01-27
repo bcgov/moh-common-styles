@@ -404,7 +404,7 @@ export class AddressComponent extends Base
   };
 
   // Lengths defaulted to MSP
-  fieldMaxLenghts: Maxlengths &#x3D; {
+  fieldMaxLengths: Maxlengths &#x3D; {
     address: &#x27;25&#x27;,
     city: &#x27;25&#x27;,
     province: &#x27;25&#x27;,
@@ -428,9 +428,6 @@ export class AddressComponent extends Base
   }
 
   ngOnInit() {
-
-    // console.log( &#x27;address: &#x27;, this.bcOnly );
-
     this.setLabels();
     this.setMaxlengths();
     this.setReadOnlyFields();
@@ -475,6 +472,13 @@ export class AddressComponent extends Base
    if ( this.isCanada() ) {
       // If Canada, clear postal code to display mask
       this.addr.postal &#x3D; &#x27;&#x27;;
+
+      if (!this.disableGeocoder) {
+        this.showLine2 &#x3D; false;
+        this.showLine3 &#x3D; false;
+        this.addr.addressLine2 &#x3D; &#x27;&#x27;;
+        this.addr.addressLine3 &#x3D; &#x27;&#x27;;
+      }
     }
 
     this._onChange(this.addr);
@@ -624,7 +628,7 @@ export class AddressComponent extends Base
     if (this.disableGeocoder) {
       return false;
     }
-    return this.isCanada() &amp;&amp; BRITISH_COLUMBIA &#x3D;&#x3D;&#x3D; this.addr.province;
+    return this.isCanada();
   }
 
   // Only BC addresses therefore no need to copy province into structure.
@@ -682,7 +686,7 @@ export class AddressComponent extends Base
 
   private setMaxlengths() {
     if ( this.maxlengths ) {
-      Object.keys(this.fieldMaxLenghts).map( x &#x3D;&gt; this.maxlengths[x] &#x3D; this.fieldMaxLenghts[x]);
+      Object.keys(this.fieldMaxLengths).map( x &#x3D;&gt; this.maxlengths[x] &#x3D; this.fieldMaxLengths[x]);
     }
   }
 

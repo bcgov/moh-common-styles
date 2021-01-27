@@ -750,8 +750,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="93"
-                            class="link-to-prism">projects/common/lib/components/street/street.component.ts:93</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="90"
+                            class="link-to-prism">projects/common/lib/components/street/street.component.ts:90</a></div>
                 </td>
             </tr>
 
@@ -820,8 +820,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="121"
-                            class="link-to-prism">projects/common/lib/components/street/street.component.ts:121</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="117"
+                            class="link-to-prism">projects/common/lib/components/street/street.component.ts:117</a></div>
                 </td>
             </tr>
 
@@ -859,8 +859,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="105"
-                            class="link-to-prism">projects/common/lib/components/street/street.component.ts:105</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="102"
+                            class="link-to-prism">projects/common/lib/components/street/street.component.ts:102</a></div>
                 </td>
             </tr>
 
@@ -929,8 +929,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="126"
-                            class="link-to-prism">projects/common/lib/components/street/street.component.ts:126</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="122"
+                            class="link-to-prism">projects/common/lib/components/street/street.component.ts:122</a></div>
                 </td>
             </tr>
 
@@ -999,8 +999,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="84"
-                            class="link-to-prism">projects/common/lib/components/street/street.component.ts:84</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="81"
+                            class="link-to-prism">projects/common/lib/components/street/street.component.ts:81</a></div>
                 </td>
             </tr>
 
@@ -1069,8 +1069,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="98"
-                            class="link-to-prism">projects/common/lib/components/street/street.component.ts:98</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="95"
+                            class="link-to-prism">projects/common/lib/components/street/street.component.ts:95</a></div>
                 </td>
             </tr>
 
@@ -2178,8 +2178,6 @@ export class StreetComponent extends AbstractFormControl implements OnInit  {
   }
 
   ngOnInit() {
-    // console.log( &#x27;GeoCoder: &#x27;, this.useGeoCoder );
-
     super.ngOnInit();
 
     // Set up for using GeoCoder
@@ -2190,7 +2188,6 @@ export class StreetComponent extends AbstractFormControl implements OnInit  {
       switchMap(searchPhrase &#x3D;&gt; {
         return this.geocoderService.lookup(searchPhrase);
       }),
-      // tap(log &#x3D;&gt; console.log(&#x27;taplog&#x27;, log)),
       catchError(() &#x3D;&gt; this.onError())
     );
   }
@@ -2217,7 +2214,6 @@ export class StreetComponent extends AbstractFormControl implements OnInit  {
 
   // @HostListener(&#x27;keyup&#x27;, [&#x27;$event&#x27;])
   onKeyUp(event: KeyboardEvent): void {
-    // console.log( &#x27;onKeyUp: &#x27;, event );
     /**
      * Filter out &#x27;enter&#x27; and other similar keyboard events that can trigger
      * when user is selecting a typeahead option instead of entering new text.
@@ -2238,7 +2234,6 @@ export class StreetComponent extends AbstractFormControl implements OnInit  {
   }
 
   onSelect(event: TypeaheadMatch): void {
-    // console.log( &#x27;onSelect: &#x27;, event.item );
     const data: GeoAddressResult &#x3D; event.item;
     this.street &#x3D; data.street;
 
