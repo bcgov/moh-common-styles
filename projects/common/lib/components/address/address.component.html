@@ -11,7 +11,7 @@
                      [disabled]="readOnlyFields.address"
                      [maxlength]="fieldMaxLengths.address"
                      commonValidateStreet></common-street>
-                     <!-- Address Validator -->
+      <!-- Address Validator -->
       <common-address-validator *ngIf="useAddressValidator"
                                 name="street_{{objectId}}"
                                 label="{{addrLabels.address1}}"

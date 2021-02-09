@@ -55,7 +55,8 @@ describe('AddressValidatorComponent', () => {
       DeliveryAddressLines: '784 Yates St',
       Country: 'Canada',
       Province: 'British Columbia',
-      PostalCode: 'V1V1V1'
+      PostalCode: 'V1V1V1',
+      AddressLines: ['784 Yates St']
     },
     {
       AddressComplete: '784 Young Rd, Kelowna, BC',
@@ -63,7 +64,8 @@ describe('AddressValidatorComponent', () => {
       DeliveryAddressLines: '784 Young Rd',
       Country: 'Canada',
       Province: 'British Columbia',
-      PostalCode: 'V2V2V2'
+      PostalCode: 'V2V2V2',
+      AddressLines: ['784 Young Rd']
     }
   ];
 
@@ -223,7 +225,7 @@ describe('AddressValidatorComponent', () => {
     spyOn(component.select, 'emit').and.returnValue(null);
     component.populateAddressOnSelect = true;
     component.onSelect(mockSelectedItem);
-    expect(component.search).toBe(yatesResponse[0].DeliveryAddressLines);
+    expect(component.search).toBe(yatesResponse[0].AddressLines[0]);
   }));
 
   it('should handle keyUp.', fakeAsync(() => {
