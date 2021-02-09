@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 import { of } from 'rxjs';
 import { Address } from '../../models/address.model';
 import { createTestingModule, tickAndDetectChanges, getDebugElement, getDebugLabel } from '../../../helpers/test-helpers';
-
+import { deburr } from '../../../helpers/deburr'
 
 @Component({
   template: ``,
@@ -362,5 +362,15 @@ describe('AddressValidatorComponent', () => {
       tickAndDetectChanges( fixture );
       expect( component.addressValidatorComponent.first.controlDir.hasError( 'required' ) ).toBeTruthy();
     }));
+  });
+});
+
+describe('deburr', () => {
+  it('should return deburred city name and keep case', () => {
+    expect(deburr('Québec')).toBe('Quebec');
+  });
+
+  it('should return deburred string for common french accents', () => {
+    expect(deburr('Çéâêîôûàèùëïü')).toBe('Ceaeiouaeueiu');
   });
 });
