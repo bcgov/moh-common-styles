@@ -38,6 +38,7 @@ export interface AddressResult {
   Street: string;
   Locality: string;
   DeliveryAddressLines: string;
+  AddressLines: Array<string>;
   // Set to defaults in response
   Country: string;
   Province: string;
@@ -126,7 +127,7 @@ export class AddressValidatorComponent extends AbstractFormControl implements On
     const data: AddressResult = event.item;
 
     // Output string to FormControl. If street is more than the max length shorten
-    const stripped = this.stripStringToMaxLength(data.DeliveryAddressLines);
+    const stripped = data.AddressLines ? this.stripStringToMaxLength(data.AddressLines[0]) : null;
 
     const addr = new Address();
     addr.unitNumber = data.SubBuilding;
@@ -137,6 +138,9 @@ export class AddressValidatorComponent extends AbstractFormControl implements On
     addr.province = data.Province;
     addr.street = stripped;
     addr.postal = data.PostalCode;
+    addr.addressLine1 = data.AddressLines && data.AddressLines[0] ? data.AddressLines[0] : null;
+    addr.addressLine2 = data.AddressLines && data.AddressLines[1] ? data.AddressLines[1] : null;
+    addr.addressLine3 = data.AddressLines && data.AddressLines[2] ? data.AddressLines[2] : null;
     // Save and emit Address for (select)
     this.selectedAddress = true;
     this.select.emit(addr);
@@ -211,6 +215,7 @@ export class AddressValidatorComponent extends AbstractFormControl implements On
       const props = feature;
       const Locality = props.Locality;
       const AddressComplete = props.AddressComplete;
+      const AddressLines = props.AddressLines;
       const DeliveryAddressLines = props.DeliveryAddressLines;
       const Province = props.Province;
       const Country = props.Country;
@@ -221,6 +226,7 @@ export class AddressValidatorComponent extends AbstractFormControl implements On
 
       return {
         AddressComplete,
+        AddressLines,
         SubBuilding,
         Street,
         HouseNumber,

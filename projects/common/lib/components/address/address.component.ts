@@ -353,7 +353,15 @@ export class AddressComponent extends Base
       alert('Please select a valid BC address.');
       return;
     }
-    this.addr.addressLine1 = address.street;
+    this.addr.addressLine1 = address.addressLine1;
+    if (address.addressLine2 && this.allowExtralines) {
+      this.addr.addressLine2 = address.addressLine2;
+      this.showLine2 = true;
+    }
+    if (address.addressLine3 && this.allowExtralines) {
+      this.addr.addressLine3 = address.addressLine3;
+      this.showLine3 = true;
+    }
     this.addr.city = address.city;
     this.addr.postal = address.postal;
     if (!this.bcOnly) {
