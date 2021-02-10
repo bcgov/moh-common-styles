@@ -1,4 +1,25 @@
-# Unreleased "moh-common-lib" (2021-01-27)
+# Unreleased "moh-common-lib" (2021-02-10)
+
+
+
+## [3.3.3](https://github.com/bcgov/moh-common-styles/compare/v3.3.2...v3.3.3) "moh-common-lib" (2021-02-10)
+
+
+### Bug Fixes
+
+* Address validator fixes. ([2c66603](https://github.com/bcgov/moh-common-styles/commit/2c66603))
+* Address validator unit tests. ([52d4663](https://github.com/bcgov/moh-common-styles/commit/52d4663))
+* fix under 25 character in address validator (multiline). ([23fb3a5](https://github.com/bcgov/moh-common-styles/commit/23fb3a5))
+* Fix unit tests for address-validator. ([b30b77a](https://github.com/bcgov/moh-common-styles/commit/b30b77a))
+* replace normalize function with IE11 friendly function ([7e58edc](https://github.com/bcgov/moh-common-styles/commit/7e58edc))
+* Updated address validator to accept "AddressLines" prop in response ([b9ec851](https://github.com/bcgov/moh-common-styles/commit/b9ec851))
+* Use empty string instead of null for address component. ([b62ece8](https://github.com/bcgov/moh-common-styles/commit/b62ece8))
+
+
+### Features
+
+* Add deburring function ([ef63041](https://github.com/bcgov/moh-common-styles/commit/ef63041))
+* Address validator with line breaking. ([44fd655](https://github.com/bcgov/moh-common-styles/commit/44fd655))
 
 
 

@@ -494,6 +494,22 @@ export class AddressComponent extends Base
   }
 
   setStreetAddress(value: string) {
+    // When emptying a search result from address validator, clear the rest of the fields as well.
+    if (value &#x3D;&#x3D;&#x3D; &#x27;&#x27; &amp;&amp; !this.disableGeocoder) {
+      this.addr.addressLine1 &#x3D; &#x27;&#x27;;
+      this.addr.addressLine2 &#x3D; &#x27;&#x27;;
+      this.addr.addressLine3 &#x3D; &#x27;&#x27;;
+      this.addr.city &#x3D; &#x27;&#x27;;
+      this.addr.postal &#x3D; &#x27;&#x27;;
+      if (!this.bcOnly) {
+        this.addr.province &#x3D; BRITISH_COLUMBIA;
+        this.addr.country &#x3D; CANADA;
+      }
+      if (this.allowExtralines) {
+        this.showLine2 &#x3D; false;
+        this.showLine3 &#x3D; false;
+      }
+    }
     this.addr.addressLine1 &#x3D; value;
     this._onChange(this.addr);
     this.addressChange.emit(this.addr);
@@ -644,11 +660,33 @@ export class AddressComponent extends Base
     if (!address.street &amp;&amp; !address.city &amp;&amp; !address.postal) {
       return;
     }
+    // Truncate long addresses and drop them down a line to addressLine2 etc.
+    address &#x3D; this.truncateAddressLines(address);
+
     if (this.bcOnly &amp;&amp; address.province !&#x3D; BRITISH_COLUMBIA) {
       alert(&#x27;Please select a valid BC address.&#x27;);
+      setTimeout(() &#x3D;&gt; {
+        this.addr.addressLine1 &#x3D; &#x27;&#x27;;
+        this.addr.addressLine2 &#x3D; &#x27;&#x27;;
+        this.addr.addressLine3 &#x3D; &#x27;&#x27;;
+      }, 0);
       return;
     }
-    this.addr.addressLine1 &#x3D; address.street;
+    // Placed in timeout to override ngx-bootstrap population.
+    setTimeout(() &#x3D;&gt; {
+      this.addr.addressLine1 &#x3D; address.addressLine1 || &#x27;&#x27;;
+    }, 0);
+    if (this.allowExtralines) {
+      this.addr.addressLine2 &#x3D; address.addressLine2 || &#x27;&#x27;;
+      this.addr.addressLine3 &#x3D; address.addressLine3 || &#x27;&#x27;;
+      
+      if (address.addressLine2) {
+        this.showLine2 &#x3D; true;
+      }
+      if (address.addressLine3) {
+        this.showLine3 &#x3D; true;
+      }
+    }
     this.addr.city &#x3D; address.city;
     this.addr.postal &#x3D; address.postal;
     if (!this.bcOnly) {
@@ -696,6 +734,57 @@ export class AddressComponent extends Base
     } else {
       Object.keys(this.disabled).map( x &#x3D;&gt; this.readOnlyFields[x] &#x3D; this.disabled[x] );
     }
+  }
+
+  private truncateAddressLines(address: Address): Address {
+    const maxlength: number &#x3D; parseInt(this.fieldMaxLengths.address, 10);
+    const lines: Array&lt;string&gt; &#x3D; [];
+    const newLines: Array&lt;string&gt; &#x3D; [];
+    let lineIndex: number &#x3D; 0;
+
+    // console.log(&#x27;Before truncation: &#x27;, address);
+
+    // Create &#x60;lines&#x60; array of address lines.
+    for (let i&#x3D;1; i&lt;&#x3D;3; i++) {
+      if (address[&#x27;addressLine&#x27; + i]) {
+        lines.push(address[&#x27;addressLine&#x27; + i]);
+      }
+    }
+    for (let i&#x3D;0; i&lt;lines.length; i++) {
+      if (!lines[i]) {
+        break;
+      }
+      newLines.push(&#x27;&#x27;);
+      const words: Array&lt;string&gt; &#x3D; lines[i].split(&#x27; &#x27;);
+
+      if (lines[i].length &gt; maxlength &amp;&amp; words.length &gt; 1) {
+        // Iterate over words.
+        while (words.length &gt; 0) {
+          newLines[lineIndex] +&#x3D; words[0] + &#x27; &#x27;;
+          words.splice(0, 1);
+
+          if (words.length &gt; 0) {
+            const tempNextLine &#x3D; newLines[lineIndex] + words[0];
+            // Add next line in case words remain.
+            if (tempNextLine.length &gt; maxlength) {
+              newLines[lineIndex] &#x3D; newLines[lineIndex].trim();
+              newLines.push(&#x27;&#x27;);
+              lineIndex++;
+            }
+          }
+        }
+        newLines[lineIndex] &#x3D; newLines[lineIndex].trim();
+      } else {
+        newLines[lineIndex] &#x3D; lines[i];
+      }
+      lineIndex++;
+    };
+
+    for (let i&#x3D;0; i&lt;newLines.length; i++) {
+      address[&#x27;addressLine&#x27; + (i + 1)] &#x3D; newLines[i];
+    }
+    // console.log(&#x27;After truncatation: &#x27;, address);
+    return address;
   }
 }
 </code></pre>

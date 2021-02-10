@@ -90,6 +90,9 @@
                                         <a href="#AddressComplete">AddressComplete</a>
                                 </li>
                                 <li>
+                                        <a href="#AddressLines">AddressLines</a>
+                                </li>
+                                <li>
                                         <a href="#Country">Country</a>
                                 </li>
                                 <li>
@@ -157,6 +160,35 @@
 </div>
                                 </td>
                             </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="AddressLines"></a>
+                                        <span class="name"><b>AddressLines</b><a href="#AddressLines"><span class="icon ion-ios-link"></span></a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>AddressLines:     <code>Array&lt;string&gt;</code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>Array&lt;string&gt;</code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -405,6 +437,7 @@ import { NgControl, ControlValueAccessor } from &#x27;@angular/forms&#x27;;
 import { Address } from &#x27;../../models/address.model&#x27;;
 import { AbstractFormControl } from &#x27;../../models/abstract-form-control&#x27;;
 import { ErrorMessage, LabelReplacementTag } from &#x27;../../models/error-message.interface&#x27;;
+import { deburr } from &#x27;../../../helpers/deburr&#x27;;
 
 
 
@@ -436,6 +469,7 @@ export interface AddressResult {
   Street: string;
   Locality: string;
   DeliveryAddressLines: string;
+  AddressLines: Array&lt;string&gt;;
   // Set to defaults in response
   Country: string;
   Province: string;
@@ -459,7 +493,8 @@ export class AddressValidatorComponent extends AbstractFormControl implements On
   @Input() maxlength: string &#x3D; &#x27;255&#x27;;
 
   _defaultErrMsg: ErrorMessage &#x3D; {
-    required: LabelReplacementTag + &#x27; is required.&#x27;,
+    required:  LabelReplacementTag + &#x27; is required.&#x27;,
+    invalidChar: LabelReplacementTag + &#x27; must contain letters, and numbers and may not include special characters such as period, apostrophe, number sign, ampersand and blank characters.&#x27;
   };
   /** The string in the box the user has typed */
   public search: string;
@@ -489,6 +524,8 @@ export class AddressValidatorComponent extends AbstractFormControl implements On
   }
 
   ngOnInit() {
+    super.ngOnInit();
+    
     this.typeaheadList$ &#x3D; this.searchText$.pipe(
       debounceTime(500),
       distinctUntilChanged(),
@@ -524,17 +561,20 @@ export class AddressValidatorComponent extends AbstractFormControl implements On
     const data: AddressResult &#x3D; event.item;
 
     // Output string to FormControl. If street is more than the max length shorten
-    const stripped &#x3D; this.stripStringToMaxLength(data.DeliveryAddressLines);
+    const stripped &#x3D; data.AddressLines ? this.stripStringToMaxLength(deburr(data.AddressLines[0])) : null;
 
     const addr &#x3D; new Address();
-    addr.unitNumber &#x3D; data.SubBuilding;
-    addr.streetNumber &#x3D; data.HouseNumber;
-    addr.streetName &#x3D; data.Street;
-    addr.city &#x3D; data.Locality;
+    addr.unitNumber &#x3D; deburr(data.SubBuilding);
+    addr.streetNumber &#x3D; deburr(data.HouseNumber);
+    addr.streetName &#x3D; deburr(data.Street);
+    addr.city &#x3D; deburr(data.Locality);
     addr.country &#x3D; data.Country;
     addr.province &#x3D; data.Province;
     addr.street &#x3D; stripped;
-    addr.postal &#x3D; data.PostalCode;
+    addr.postal &#x3D; deburr(data.PostalCode);
+    addr.addressLine1 &#x3D; data.AddressLines &amp;&amp; data.AddressLines[0] ? deburr(data.AddressLines[0]) : null;
+    addr.addressLine2 &#x3D; data.AddressLines &amp;&amp; data.AddressLines[1] ? deburr(data.AddressLines[1]) : null;
+    addr.addressLine3 &#x3D; data.AddressLines &amp;&amp; data.AddressLines[2] ? deburr(data.AddressLines[2]) : null;
     // Save and emit Address for (select)
     this.selectedAddress &#x3D; true;
     this.select.emit(addr);
@@ -570,6 +610,11 @@ export class AddressValidatorComponent extends AbstractFormControl implements On
     if ( value  !&#x3D;&#x3D; undefined ) {
       this.search &#x3D; value;
     }
+  }
+
+  setSearchValue(value: any) {
+    this._onChange(value);
+    this._onTouched(value);
   }
 
   // Register change function
@@ -609,6 +654,7 @@ export class AddressValidatorComponent extends AbstractFormControl implements On
       const props &#x3D; feature;
       const Locality &#x3D; props.Locality;
       const AddressComplete &#x3D; props.AddressComplete;
+      const AddressLines &#x3D; props.AddressLines;
       const DeliveryAddressLines &#x3D; props.DeliveryAddressLines;
       const Province &#x3D; props.Province;
       const Country &#x3D; props.Country;
@@ -619,6 +665,7 @@ export class AddressValidatorComponent extends AbstractFormControl implements On
 
       return {
         AddressComplete,
+        AddressLines,
         SubBuilding,
         Street,
         HouseNumber,
