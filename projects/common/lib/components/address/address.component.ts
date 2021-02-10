@@ -480,7 +480,7 @@ export class AddressComponent extends Base
         }
         newLines[lineIndex] = newLines[lineIndex].trim();
       } else {
-        newLines[lineIndex] = words[0];
+        newLines[lineIndex] = lines[i];
       }
       lineIndex++;
     };
