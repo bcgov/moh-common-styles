@@ -10,6 +10,7 @@ import { of } from 'rxjs';
 import { Address } from '../../models/address.model';
 import { createTestingModule, tickAndDetectChanges, getDebugElement, getDebugLabel } from '../../../helpers/test-helpers';
 import { deburr } from '../../../helpers/deburr'
+import { ErrorContainerComponent } from '../error-container/error-container.component';
 
 @Component({
   template: ``,
@@ -55,7 +56,8 @@ describe('AddressValidatorComponent', () => {
       DeliveryAddressLines: '784 Yates St',
       Country: 'Canada',
       Province: 'British Columbia',
-      PostalCode: 'V1V1V1'
+      PostalCode: 'V1V1V1',
+      AddressLines: ['784 Yates St']
     },
     {
       AddressComplete: '784 Young Rd, Kelowna, BC',
@@ -63,7 +65,17 @@ describe('AddressValidatorComponent', () => {
       DeliveryAddressLines: '784 Young Rd',
       Country: 'Canada',
       Province: 'British Columbia',
-      PostalCode: 'V2V2V2'
+      PostalCode: 'V2V2V2',
+      AddressLines: ['784 Young Rd']
+    },
+    {
+      AddressComplete: '1350-1440 BOUL GAÉTAN-BOUCHER',
+      City: 'SAINT-HUBERT',
+      DeliveryAddressLines: '1350-1440 BOUL GAÉTAN-BOUCHER',
+      Country: 'Canada',
+      Province: 'QC',
+      PostalCode: 'J3Z 1C3',
+      AddressLines: ['1350-1440 BOUL GAÉTAN-BOUCHER']
     }
   ];
 
@@ -74,7 +86,10 @@ describe('AddressValidatorComponent', () => {
   beforeEach(() => {
 
     TestBed.configureTestingModule({
-      declarations: [ AddressValidatorComponent ],
+      declarations: [
+        AddressValidatorComponent,
+        ErrorContainerComponent
+      ],
       imports: [
         FormsModule,
         TypeaheadModule.forRoot(),
@@ -223,7 +238,19 @@ describe('AddressValidatorComponent', () => {
     spyOn(component.select, 'emit').and.returnValue(null);
     component.populateAddressOnSelect = true;
     component.onSelect(mockSelectedItem);
-    expect(component.search).toBe(yatesResponse[0].DeliveryAddressLines);
+    expect(component.search).toBe(yatesResponse[0].AddressLines[0]);
+  }));
+
+  it('should set replace accent characters', fakeAsync(() => {
+    fixture = TestBed.createComponent(AddressValidatorComponent);
+    component = fixture.componentInstance;
+    const mockSelectedItem = {
+      item: yatesResponse[2]
+    } as TypeaheadMatch;
+    spyOn(component.select, 'emit').and.returnValue(null);
+    component.populateAddressOnSelect = true;
+    component.onSelect(mockSelectedItem);
+    expect(component.search).toBe('1350-1440 BOUL GAETAN-BOUCHER');
   }));
 
   it('should handle keyUp.', fakeAsync(() => {
@@ -261,7 +288,7 @@ describe('AddressValidatorComponent', () => {
 });
 
 describe('AddressValidatorComponent', () => {
-  const directives: any[] = [ AddressValidatorComponent ];
+  const directives: any[] = [ AddressValidatorComponent, ErrorContainerComponent ];
   const importDirectives: any[] = [
     TypeaheadModule.forRoot(),
     HttpClientTestingModule
@@ -366,8 +393,9 @@ describe('AddressValidatorComponent', () => {
 });
 
 describe('deburr', () => {
-  it('should return deburred city name and keep case', () => {
+  it('should return deburred word and keep case', () => {
     expect(deburr('Québec')).toBe('Quebec');
+    expect(deburr('Évery')).toBe('Every');
   });
 
   it('should return deburred string for common french accents', () => {
