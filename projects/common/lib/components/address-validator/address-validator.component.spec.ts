@@ -378,8 +378,8 @@ describe('deburr', () => {
     expect(deburr('Sâo Paulo, 22')).toBe('Sao Paulo, 22');
   });
 
-  it('should return a string and keep fractions', () => {
+  it('should return a string and swap fraction symbols for full fractions', () => {
     expect(deburr('54½ Saint Patrick Street Toronto, Ontario M5T 1V1'))
-      .toBe('54½ Saint Patrick Street Toronto, Ontario M5T 1V1');
+      .toBe('54 1/2 Saint Patrick Street Toronto, Ontario M5T 1V1');
   });
 });
