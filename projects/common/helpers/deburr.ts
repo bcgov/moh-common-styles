@@ -824,7 +824,8 @@ const map = {
   "ᵣ":"r",
   "ᵤ":"u",
   "ᵥ":"v",
-  "ₓ": "x"
+  "ₓ": "x",
+  "½": " 1/2",
 };
 
 export const deburr = function (str) {

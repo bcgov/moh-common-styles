@@ -373,4 +373,13 @@ describe('deburr', () => {
   it('should return deburred string for common french accents', () => {
     expect(deburr('Çéâêîôûàèùëïü')).toBe('Ceaeiouaeueiu');
   });
+
+  it('should return a deburred string and keep numbers', () => {
+    expect(deburr('Sâo Paulo, 22')).toBe('Sao Paulo, 22');
+  });
+
+  it('should return a string and swap fraction symbols for full fractions', () => {
+    expect(deburr('54½ Saint Patrick Street Toronto, Ontario M5T 1V1'))
+      .toBe('54 1/2 Saint Patrick Street Toronto, Ontario M5T 1V1');
+  });
 });
