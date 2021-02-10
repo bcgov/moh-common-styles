@@ -371,19 +371,19 @@ export class AddressComponent extends Base
     if (this.bcOnly && address.province != BRITISH_COLUMBIA) {
       alert('Please select a valid BC address.');
       setTimeout(() => {
-        this.addr.addressLine1 = null;
-        this.addr.addressLine2 = null;
-        this.addr.addressLine3 = null;
+        this.addr.addressLine1 = '';
+        this.addr.addressLine2 = '';
+        this.addr.addressLine3 = '';
       }, 0);
       return;
     }
     // Placed in timeout to override ngx-bootstrap population.
     setTimeout(() => {
-      this.addr.addressLine1 = address.addressLine1;
+      this.addr.addressLine1 = address.addressLine1 || '';
     }, 0);
     if (this.allowExtralines) {
-      this.addr.addressLine2 = address.addressLine2;
-      this.addr.addressLine3 = address.addressLine3;
+      this.addr.addressLine2 = address.addressLine2 || '';
+      this.addr.addressLine3 = address.addressLine3 || '';
       
       if (address.addressLine2) {
         this.showLine2 = true;
