@@ -827,6 +827,9 @@ const map = {
   "ₓ": "x"
 };
 
-export const deburr = function (str) {
-  return str.replace(/[^A-Za-z0-9\[\] ]/g, function (a) { return map[a] || a })
+export const deburr = function (str: string): string {
+  if (str) {
+    return str.replace(/[^A-Za-z0-9\[\] ]/g, function (a) { return map[a] || a });
+  }
+  return null;
 };

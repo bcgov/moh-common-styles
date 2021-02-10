@@ -67,6 +67,15 @@ describe('AddressValidatorComponent', () => {
       Province: 'British Columbia',
       PostalCode: 'V2V2V2',
       AddressLines: ['784 Young Rd']
+    },
+    {
+      AddressComplete: '1350-1440 BOUL GAÉTAN-BOUCHER',
+      City: 'SAINT-HUBERT',
+      DeliveryAddressLines: '1350-1440 BOUL GAÉTAN-BOUCHER',
+      Country: 'Canada',
+      Province: 'QC',
+      PostalCode: 'J3Z 1C3',
+      AddressLines: ['1350-1440 BOUL GAÉTAN-BOUCHER']
     }
   ];
 
@@ -232,6 +241,18 @@ describe('AddressValidatorComponent', () => {
     expect(component.search).toBe(yatesResponse[0].AddressLines[0]);
   }));
 
+  it('should set replace accent characters', fakeAsync(() => {
+    fixture = TestBed.createComponent(AddressValidatorComponent);
+    component = fixture.componentInstance;
+    const mockSelectedItem = {
+      item: yatesResponse[2]
+    } as TypeaheadMatch;
+    spyOn(component.select, 'emit').and.returnValue(null);
+    component.populateAddressOnSelect = true;
+    component.onSelect(mockSelectedItem);
+    expect(component.search).toBe('1350-1440 BOUL GAETAN-BOUCHER');
+  }));
+
   it('should handle keyUp.', fakeAsync(() => {
     fixture = TestBed.createComponent(AddressValidatorComponent);
     component = fixture.componentInstance;
@@ -372,8 +393,9 @@ describe('AddressValidatorComponent', () => {
 });
 
 describe('deburr', () => {
-  it('should return deburred city name and keep case', () => {
+  it('should return deburred word and keep case', () => {
     expect(deburr('Québec')).toBe('Quebec');
+    expect(deburr('Évery')).toBe('Every');
   });
 
   it('should return deburred string for common french accents', () => {

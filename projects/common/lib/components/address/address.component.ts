@@ -362,27 +362,35 @@ export class AddressComponent extends Base
   }
 
   selectSuggestedAddress(address: Address) {
-    address = this.truncateAddressLines(address);
     if (!address.street && !address.city && !address.postal) {
       return;
     }
+    // Truncate long addresses and drop them down a line to addressLine2 etc.
+    address = this.truncateAddressLines(address);
+
     if (this.bcOnly && address.province != BRITISH_COLUMBIA) {
       alert('Please select a valid BC address.');
       setTimeout(() => {
-        this.addr.addressLine1 = '';
-        this.addr.addressLine2 = '';
-        this.addr.addressLine3 = '';
+        this.addr.addressLine1 = null;
+        this.addr.addressLine2 = null;
+        this.addr.addressLine3 = null;
       }, 0);
       return;
     }
-    this.addr.addressLine1 = address.addressLine1;
-    if (address.addressLine2 && this.allowExtralines) {
+    // Placed in timeout to override ngx-bootstrap population.
+    setTimeout(() => {
+      this.addr.addressLine1 = address.addressLine1;
+    }, 0);
+    if (this.allowExtralines) {
       this.addr.addressLine2 = address.addressLine2;
-      this.showLine2 = true;
-    }
-    if (address.addressLine3 && this.allowExtralines) {
       this.addr.addressLine3 = address.addressLine3;
-      this.showLine3 = true;
+      
+      if (address.addressLine2) {
+        this.showLine2 = true;
+      }
+      if (address.addressLine3) {
+        this.showLine3 = true;
+      }
     }
     this.addr.city = address.city;
     this.addr.postal = address.postal;
@@ -460,25 +468,25 @@ export class AddressComponent extends Base
           newLines[lineIndex] += words[0] + ' ';
           words.splice(0, 1);
 
-          // Add next line in case words remain.
           if (words.length > 0) {
-            const tempNextLine = newLines[lineIndex] + ' ' + words[0];
+            const tempNextLine = newLines[lineIndex] + words[0];
+            // Add next line in case words remain.
             if (tempNextLine.length > maxlength) {
+              newLines[lineIndex] = newLines[lineIndex].trim();
               newLines.push('');
               lineIndex++;
             }
           }
         }
+        newLines[lineIndex] = newLines[lineIndex].trim();
       } else {
         newLines[lineIndex] = words[0];
       }
       lineIndex++;
     };
 
-    for (let i=1; i<=3; i++) {
-      if (lines[i]) {
-        address['addressLine' + i] = lines[i];
-      }
+    for (let i=0; i<newLines.length; i++) {
+      address['addressLine' + (i + 1)] = newLines[i];
     }
     // console.log('After truncatation: ', address);
     return address;

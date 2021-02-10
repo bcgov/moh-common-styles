@@ -7,6 +7,7 @@ import { NgControl, ControlValueAccessor } from '@angular/forms';
 import { Address } from '../../models/address.model';
 import { AbstractFormControl } from '../../models/abstract-form-control';
 import { ErrorMessage, LabelReplacementTag } from '../../models/error-message.interface';
+import { deburr } from '../../../helpers/deburr';
 
 
 
@@ -63,8 +64,7 @@ export class AddressValidatorComponent extends AbstractFormControl implements On
 
   _defaultErrMsg: ErrorMessage = {
     required:  LabelReplacementTag + ' is required.',
-    invalidChar: LabelReplacementTag + ' must contain letters, and numbers and may include special characters such as hyphen, ' +
-                 'period, apostrophe, number sign, ampersand and blank characters.'
+    invalidChar: LabelReplacementTag + ' must contain letters, and numbers and may not include special characters such as period, apostrophe, number sign, ampersand and blank characters.'
   };
   /** The string in the box the user has typed */
   public search: string;
@@ -131,20 +131,20 @@ export class AddressValidatorComponent extends AbstractFormControl implements On
     const data: AddressResult = event.item;
 
     // Output string to FormControl. If street is more than the max length shorten
-    const stripped = data.AddressLines ? this.stripStringToMaxLength(data.AddressLines[0]) : null;
+    const stripped = data.AddressLines ? this.stripStringToMaxLength(deburr(data.AddressLines[0])) : null;
 
     const addr = new Address();
-    addr.unitNumber = data.SubBuilding;
-    addr.streetNumber = data.HouseNumber;
-    addr.streetName = data.Street;
-    addr.city = data.Locality;
+    addr.unitNumber = deburr(data.SubBuilding);
+    addr.streetNumber = deburr(data.HouseNumber);
+    addr.streetName = deburr(data.Street);
+    addr.city = deburr(data.Locality);
     addr.country = data.Country;
     addr.province = data.Province;
     addr.street = stripped;
-    addr.postal = data.PostalCode;
-    addr.addressLine1 = data.AddressLines && data.AddressLines[0] ? data.AddressLines[0] : null;
-    addr.addressLine2 = data.AddressLines && data.AddressLines[1] ? data.AddressLines[1] : null;
-    addr.addressLine3 = data.AddressLines && data.AddressLines[2] ? data.AddressLines[2] : null;
+    addr.postal = deburr(data.PostalCode);
+    addr.addressLine1 = data.AddressLines && data.AddressLines[0] ? deburr(data.AddressLines[0]) : null;
+    addr.addressLine2 = data.AddressLines && data.AddressLines[1] ? deburr(data.AddressLines[1]) : null;
+    addr.addressLine3 = data.AddressLines && data.AddressLines[2] ? deburr(data.AddressLines[2]) : null;
     // Save and emit Address for (select)
     this.selectedAddress = true;
     this.select.emit(addr);
