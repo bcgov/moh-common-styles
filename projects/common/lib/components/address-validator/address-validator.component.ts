@@ -62,7 +62,9 @@ export class AddressValidatorComponent extends AbstractFormControl implements On
   @Input() maxlength: string = '255';
 
   _defaultErrMsg: ErrorMessage = {
-    required: LabelReplacementTag + ' is required.',
+    required:  LabelReplacementTag + ' is required.',
+    invalidChar: LabelReplacementTag + ' must contain letters, and numbers and may include special characters such as hyphen, ' +
+                 'period, apostrophe, number sign, ampersand and blank characters.'
   };
   /** The string in the box the user has typed */
   public search: string;
@@ -92,6 +94,8 @@ export class AddressValidatorComponent extends AbstractFormControl implements On
   }
 
   ngOnInit() {
+    super.ngOnInit();
+    
     this.typeaheadList$ = this.searchText$.pipe(
       debounceTime(500),
       distinctUntilChanged(),
@@ -176,6 +180,11 @@ export class AddressValidatorComponent extends AbstractFormControl implements On
     if ( value  !== undefined ) {
       this.search = value;
     }
+  }
+
+  setSearchValue(value: any) {
+    this._onChange(value);
+    this._onTouched(value);
   }
 
   // Register change function

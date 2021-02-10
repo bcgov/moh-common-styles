@@ -199,6 +199,22 @@ export class AddressComponent extends Base
   }
 
   setStreetAddress(value: string) {
+    // When emptying a search result from address validator, clear the rest of the fields as well.
+    if (value === '' && !this.disableGeocoder) {
+      this.addr.addressLine1 = '';
+      this.addr.addressLine2 = '';
+      this.addr.addressLine3 = '';
+      this.addr.city = '';
+      this.addr.postal = '';
+      if (!this.bcOnly) {
+        this.addr.province = BRITISH_COLUMBIA;
+        this.addr.country = CANADA;
+      }
+      if (this.allowExtralines) {
+        this.showLine2 = false;
+        this.showLine3 = false;
+      }
+    }
     this.addr.addressLine1 = value;
     this._onChange(this.addr);
     this.addressChange.emit(this.addr);
@@ -346,11 +362,17 @@ export class AddressComponent extends Base
   }
 
   selectSuggestedAddress(address: Address) {
+    address = this.truncateAddressLines(address);
     if (!address.street && !address.city && !address.postal) {
       return;
     }
     if (this.bcOnly && address.province != BRITISH_COLUMBIA) {
       alert('Please select a valid BC address.');
+      setTimeout(() => {
+        this.addr.addressLine1 = '';
+        this.addr.addressLine2 = '';
+        this.addr.addressLine3 = '';
+      }, 0);
       return;
     }
     this.addr.addressLine1 = address.addressLine1;
@@ -409,5 +431,56 @@ export class AddressComponent extends Base
     } else {
       Object.keys(this.disabled).map( x => this.readOnlyFields[x] = this.disabled[x] );
     }
+  }
+
+  private truncateAddressLines(address: Address): Address {
+    const maxlength: number = parseInt(this.fieldMaxLengths.address, 10);
+    const lines: Array<string> = [];
+    const newLines: Array<string> = [];
+    let lineIndex: number = 0;
+
+    // console.log('Before truncation: ', address);
+
+    // Create `lines` array of address lines.
+    for (let i=1; i<=3; i++) {
+      if (address['addressLine' + i]) {
+        lines.push(address['addressLine' + i]);
+      }
+    }
+    for (let i=0; i<lines.length; i++) {
+      if (!lines[i]) {
+        break;
+      }
+      newLines.push('');
+      const words: Array<string> = lines[i].split(' ');
+
+      if (lines[i].length > maxlength && words.length > 1) {
+        // Iterate over words.
+        while (words.length > 0) {
+          newLines[lineIndex] += words[0] + ' ';
+          words.splice(0, 1);
+
+          // Add next line in case words remain.
+          if (words.length > 0) {
+            const tempNextLine = newLines[lineIndex] + ' ' + words[0];
+            if (tempNextLine.length > maxlength) {
+              newLines.push('');
+              lineIndex++;
+            }
+          }
+        }
+      } else {
+        newLines[lineIndex] = words[0];
+      }
+      lineIndex++;
+    };
+
+    for (let i=1; i<=3; i++) {
+      if (lines[i]) {
+        address['addressLine' + i] = lines[i];
+      }
+    }
+    // console.log('After truncatation: ', address);
+    return address;
   }
 }

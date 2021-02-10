@@ -15,6 +15,7 @@
        id="address-validator_{{label}}"
        name="address-validator_{{label}}"
        [(ngModel)]='search'
+       (ngModelChange)='setSearchValue($event)'
        (keyup)='onKeyUp($event)'
        [typeahead]='typeaheadList$'
        [typeaheadIsFirstItemActive]="false"
@@ -30,7 +31,15 @@
        spellcheck="false"
         />
         <!-- Intentionally using 'nope' for autocomplete as it is invalid and forces false - https://developer.mozilla.org/en-US/docs/Web/Security/Securing_your_site/Turning_off_form_autocompletion -->
-
+<common-error-container
+    [displayError]="controlDir && (controlDir.touched || controlDir.dirty) && controlDir.errors">
+    <div *ngIf="controlDir.errors?.required">
+        {{_defaultErrMsg.required}}
+    </div>
+    <div *ngIf="controlDir.errors?.invalidChar">
+        {{_defaultErrMsg.invalidChar}}
+    </div>
+</common-error-container>
 
 <ng-template #addressSelected>
     <span> &mdash; Selected
@@ -39,7 +48,7 @@
 </ng-template>
 
 <ng-template #noResults>
-    <span *ngIf="hasNoResults"> &mdash; No Results</span>
+    <span *ngIf="search !== '' && hasNoResults"> &mdash; No Results</span>
 </ng-template>
 
 
