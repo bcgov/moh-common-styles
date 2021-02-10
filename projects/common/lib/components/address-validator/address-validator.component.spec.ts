@@ -373,4 +373,8 @@ describe('deburr', () => {
   it('should return deburred string for common french accents', () => {
     expect(deburr('Çéâêîôûàèùëïü')).toBe('Ceaeiouaeueiu');
   });
+
+  it('should return a deburred string and keep numbers', () => {
+    expect(deburr('Sâo Paulo, 22')).toBe('Sao Paulo, 22');
+  });
 });
