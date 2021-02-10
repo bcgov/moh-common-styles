@@ -10,6 +10,7 @@ import { of } from 'rxjs';
 import { Address } from '../../models/address.model';
 import { createTestingModule, tickAndDetectChanges, getDebugElement, getDebugLabel } from '../../../helpers/test-helpers';
 import { deburr } from '../../../helpers/deburr'
+import { ErrorContainerComponent } from '../error-container/error-container.component';
 
 @Component({
   template: ``,
@@ -76,7 +77,10 @@ describe('AddressValidatorComponent', () => {
   beforeEach(() => {
 
     TestBed.configureTestingModule({
-      declarations: [ AddressValidatorComponent ],
+      declarations: [
+        AddressValidatorComponent,
+        ErrorContainerComponent
+      ],
       imports: [
         FormsModule,
         TypeaheadModule.forRoot(),
@@ -263,7 +267,7 @@ describe('AddressValidatorComponent', () => {
 });
 
 describe('AddressValidatorComponent', () => {
-  const directives: any[] = [ AddressValidatorComponent ];
+  const directives: any[] = [ AddressValidatorComponent, ErrorContainerComponent ];
   const importDirectives: any[] = [
     TypeaheadModule.forRoot(),
     HttpClientTestingModule

@@ -32,11 +32,11 @@
         />
         <!-- Intentionally using 'nope' for autocomplete as it is invalid and forces false - https://developer.mozilla.org/en-US/docs/Web/Security/Securing_your_site/Turning_off_form_autocompletion -->
 <common-error-container
-    [displayError]="controlDir && (controlDir.touched || controlDir.dirty) && controlDir.errors">
-    <div *ngIf="controlDir.errors?.required">
+    [displayError]="controlDir && (controlDir?.touched || controlDir?.dirty) && controlDir?.errors">
+    <div *ngIf="controlDir?.errors?.required">
         {{_defaultErrMsg.required}}
     </div>
-    <div *ngIf="controlDir.errors?.invalidChar">
+    <div *ngIf="controlDir?.errors?.invalidChar">
         {{_defaultErrMsg.invalidChar}}
     </div>
 </common-error-container>
