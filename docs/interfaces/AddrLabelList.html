@@ -376,7 +376,8 @@
   EventEmitter,
   OnChanges,
   forwardRef,
-  OnInit
+  OnInit,
+  ViewChild
 } from &#x27;@angular/core&#x27;;
 import { ControlContainer, ControlValueAccessor, NgForm, NG_VALUE_ACCESSOR } from &#x27;@angular/forms&#x27;;
 import { Base } from &#x27;../../models/base&#x27;;
@@ -384,6 +385,7 @@ import { GeoAddressResult } from &#x27;../../services/geocoder.service&#x27;;
 import { Address } from &#x27;../../models/address.model&#x27;;
 import { CountryList, CANADA, COUNTRY_LIST } from &#x27;../country/country.component&#x27;;
 import { ProvinceList, BRITISH_COLUMBIA, PROVINCE_LIST } from &#x27;../province/province.component&#x27;;
+import { CityComponent } from &#x27;../city/city.component&#x27;;
 
 export interface AddrLabelList {
   address1?: string;
@@ -445,6 +447,7 @@ export class AddressComponent extends Base
   @Input() maxlengths: Maxlengths;
   @Input() bcOnly: boolean &#x3D; false;
   @Input() addressServiceUrl: string;
+  @ViewChild(&#x27;city&#x27;) private _cityComponent: CityComponent;
 
   @Input()
   set address(val: Address) {
@@ -764,6 +767,9 @@ export class AddressComponent extends Base
       }
     }
     this.addr.city &#x3D; address.city;
+    if (this._cityComponent) {
+      this._cityComponent.onValueChange(this.addr.city);
+    }
     this.addr.postal &#x3D; address.postal;
     if (!this.bcOnly) {
       this.addr.province &#x3D; address.province;

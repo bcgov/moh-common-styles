@@ -1,4 +1,13 @@
-# Unreleased "moh-common-lib" (2021-02-10)
+# Unreleased "moh-common-lib" (2021-02-16)
+
+
+
+## [3.3.4](https://github.com/bcgov/moh-common-styles/compare/v3.3.3...v3.3.4) "moh-common-lib" (2021-02-16)
+
+
+### Bug Fixes
+
+* Add maxlength error checking for city component. ([28d0baa](https://github.com/bcgov/moh-common-styles/commit/28d0baa))
 
 
 
