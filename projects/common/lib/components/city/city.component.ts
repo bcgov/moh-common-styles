@@ -32,7 +32,8 @@ export class CityComponent extends AbstractFormControl implements OnInit, Contro
   _defaultErrMsg: ErrorMessage = {
     required: LabelReplacementTag + ' is required.',
     invalidChar: LabelReplacementTag + ' must contain letters and may include numbers and special characters ' +
-                 'such as hyphens, periods, apostrophes and blank characters.'
+                 'such as hyphens, periods, apostrophes and blank characters.',
+    maxlength: LabelReplacementTag + ' exceeds the maximum number of allowable characters.'
   };
 
   constructor( @Optional() @Self() public controlDir: NgControl ) {

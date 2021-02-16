@@ -20,4 +20,7 @@
   <div *ngIf="controlDir.errors?.invalidChar">
     {{_defaultErrMsg.invalidChar}}
   </div>
+  <div *ngIf="controlDir.errors?.maxlength">
+    {{_defaultErrMsg.maxlength}}
+  </div>
 </common-error-container>
