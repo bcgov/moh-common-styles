@@ -91,7 +91,8 @@
 
 
 <div class="form-group col-sm-11 p-sm-0">
-  <common-city name="city_{{objectId}}"
+  <common-city #city
+               name="city_{{objectId}}"
                label="{{addrLabels.city}}"
                [ngModel]="addr?.city"
                (ngModelChange)="setCity($event)"
