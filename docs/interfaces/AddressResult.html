@@ -494,7 +494,7 @@ export class AddressValidatorComponent extends AbstractFormControl implements On
 
   _defaultErrMsg: ErrorMessage &#x3D; {
     required:  LabelReplacementTag + &#x27; is required.&#x27;,
-    invalidChar: LabelReplacementTag + &#x27; must contain letters, and numbers and may not include special characters such as period, apostrophe, number sign, ampersand and blank characters.&#x27;
+    invalidChar: LabelReplacementTag + &#x27; must contain letters and numbers, and may include special characters such as a hyphen, period, apostrophe, number sign, ampersand, forward slash, and blank characters.&#x27;
   };
   /** The string in the box the user has typed */
   public search: string;

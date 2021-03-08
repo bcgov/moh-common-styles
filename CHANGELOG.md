@@ -1,4 +1,13 @@
-# Unreleased "moh-common-lib" (2021-02-16)
+# Unreleased "moh-common-lib" (2021-03-08)
+
+
+
+## [3.3.5](https://github.com/bcgov/moh-common-styles/compare/v3.3.4...v3.3.5) "moh-common-lib" (2021-03-08)
+
+
+### Bug Fixes
+
+* Update to address validator error message. ([36e9943](https://github.com/bcgov/moh-common-styles/commit/36e9943))
 
 
 
