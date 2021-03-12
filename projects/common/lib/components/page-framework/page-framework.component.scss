@@ -9,7 +9,7 @@ common-page-framework {
   // sure app.component.scss sets .container-fluid x-padding to 0 for md-up bps.
   padding-left: 30px;
   padding-right: 30px;
-  
+
   // We need the page to have a min-height in order to push down the form action
   // bar and footer. Applications are free to overwrite this value if e.g. they
   // have a differently sized header.
@@ -18,7 +18,7 @@ common-page-framework {
   $footer: 51px;
   $actionBar: 70px;
   $offset: $header + $breadcrumb + $footer + $actionBar; // 280px
-  
+
 
   // min-height: calc(100vh - 280px);
   min-height: calc(100vh - #{$offset});
@@ -42,7 +42,7 @@ h5, .h5 {
   }
 }
 
-.aside-col aside {
+aside, div[aside] {
   background: $gray;
   padding: 1em;
   border-radius: 5px;

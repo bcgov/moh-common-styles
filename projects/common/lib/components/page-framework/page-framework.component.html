@@ -6,7 +6,7 @@
         <ng-container *ngTemplateOutlet="content"></ng-container>
       </div>
     </div>
-    <div class="col-md-4 aside-col">
+    <div class="col-md-4">
       <div class='pr-lg-5 pr-md-4 py-2'>
         <ng-container *ngTemplateOutlet="aside"></ng-container>
       </div>
@@ -52,7 +52,9 @@
 </ng-template>
 
 <ng-template #aside>
-    <ng-content select='aside'></ng-content>
+  <ng-content select='div[aside]'></ng-content>
+  <!--To be removed as this element is inside the 'main' and aside is a landmark resulting in accessibility issue -->
+  <ng-content select='aside'></ng-content>
 </ng-template>
 
 <ng-template #submit>

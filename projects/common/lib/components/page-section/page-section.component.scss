@@ -15,7 +15,7 @@ h5, .h5 {
   }
 }
 
-.aside-col aside {
+aside, div[aside] {
   background: $gray;
   padding: 1em;
   border-radius: 5px;
