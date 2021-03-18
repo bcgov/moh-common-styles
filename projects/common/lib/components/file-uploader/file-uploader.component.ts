@@ -157,7 +157,7 @@ export class FileUploaderComponent extends Base
          * Must cancel the dragover event in order for the drop event to work.
          */
         dragOverStream.pipe(map(evt => {
-            return event;
+            return evt;
         })).subscribe(evt => {
             evt.preventDefault();
         });
@@ -289,7 +289,7 @@ export class FileUploaderComponent extends Base
         let pageNumber = Math.max(...self.images.map(function(o) {return o.attachmentOrder; }), 0) + 1 ;
 
         // Create our observer
-        const fileObservable = Observable.create((observer: Observer<CommonImage>) => {
+        const fileObservable = new Observable((observer: Observer<CommonImage>) => {
             const mspImages = [];
             scaleFactors = scaleFactors.scaleDown(reductionScaleFactor);
             for (let fileIndex = 0; fileIndex < fileList.length; fileIndex++) {
@@ -311,7 +311,7 @@ export class FileUploaderComponent extends Base
 
                     this.readPDF(file, pdfScaleFactor, (images: HTMLImageElement[] , pdfFile: File) => {
                         images.map((image, index) => {
-                            image.name = pdfFile.name;
+                            image.id = pdfFile.name;
                             this.resizeImage( image, self, scaleFactors, observer, pageNumber , true); // index starts from zero
                             pageNumber = pageNumber + 1  ;
                         });
@@ -348,7 +348,7 @@ export class FileUploaderComponent extends Base
         // Copy file properties
         mspImage.name = image.id ;
         if (isPdf) {
-            mspImage.name = image.name + '-page' + pageNumber;  // Just give name to pdf
+            mspImage.name = image.id + '-page' + pageNumber;  // Just give name to pdf
       }
 
         mspImage.attachmentOrder = pageNumber ;
@@ -415,6 +415,7 @@ export class FileUploaderComponent extends Base
                             } else {
                                 // log image info
                                 observer.next(mspImage);
+                                self.forceRender();
                             }
                         };
                         reader.readAsDataURL(blob);
