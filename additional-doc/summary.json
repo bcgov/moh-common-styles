@@ -8,10 +8,6 @@
         "file" : "local-development/intro.md",
         "children": [
             {
-                "title": "Schematics",
-                "file": "local-development/schematics.md"
-            },
-            {
                 "title": "Components",
                 "file": "local-development/components.md"
             }
