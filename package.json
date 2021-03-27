@@ -63,7 +63,6 @@
     "@types/jasmine": "2.8.9",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
-    "@types/zxcvbn": "^4.4.0",
     "angular-precommit": "^1.0.3",
     "angular2-uuid": "^1.1.1",
     "codelyzer": "~4.5.0",
@@ -79,7 +78,6 @@
     "karma-jasmine-html-reporter": "^0.2.2",
     "karma-spec-reporter": "0.0.32",
     "ng-packagr": "^4.7.1",
-    "ngx-mydatepicker": "2.4.5",
     "protractor": "^5.4.2",
     "rimraf": "^2.6.3",
     "standard-changelog": "^2.0.7",
@@ -87,7 +85,6 @@
     "tsickle": ">=0.25.5",
     "tslib": "^1.7.1",
     "tslint": "~5.9.1",
-    "typescript": "~3.2.0",
-    "zxcvbn": "^4.4.2"
+    "typescript": "~3.2.0"
   }
 }

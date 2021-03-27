@@ -13,7 +13,6 @@ export { ConsentModalComponent } from './lib/components/consent-modal/consent-mo
 // Interfaces
 export { CountryList, CANADA, UNITED_STATES, COUNTRY_LIST, getCountryDescription } from './lib/components/country/country.component';
 export { ProvinceList, BRITISH_COLUMBIA, PROVINCE_LIST, getProvinceDescription } from './lib/components/province/province.component';
-export { SimpleDate } from './lib/models/simple-date.interface';
 export { AddrLabelList , Maxlengths } from './lib/components/address/address.component';
 export { ApiStatusCodes } from './lib/components/confirm-template/confirm-template.component';
 

@@ -10,8 +10,6 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 import { RouterModule } from '@angular/router';
 import { DateComponent } from './components/date/date.component';
-import { DatepickerComponent } from './components/datepicker/datepicker.component';
-import { NgxMyDatePickerModule } from 'ngx-mydatepicker';
 import { FileUploaderComponent } from './components/file-uploader/file-uploader.component';
 import { ThumbnailComponent } from './components/thumbnail/thumbnail.component';
 import { FormSubmitBarComponent } from './components/form-submit-bar/form-submit-bar.component';
@@ -61,7 +59,6 @@ const componentList = [
   PageFrameworkComponent,
   WizardProgressBarComponent,
   DateComponent,
-  DatepickerComponent,
   FileUploaderComponent,
   ThumbnailComponent,
   FormSubmitBarComponent,
@@ -111,7 +108,6 @@ const componentList = [
     ReactiveFormsModule,
     ProgressbarModule.forRoot(),
     RouterModule,
-    NgxMyDatePickerModule.forRoot(),
     ModalModule.forRoot(),
     TextMaskModule,
     NgSelectModule,
