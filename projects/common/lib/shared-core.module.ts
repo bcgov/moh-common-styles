@@ -26,7 +26,6 @@ import { CountryComponent } from './components/country/country.component';
 import { ProvinceComponent } from './components/province/province.component';
 import { CityComponent } from './components/city/city.component';
 import { StreetComponent } from './components/street/street.component';
-import { ButtonGroupComponent } from './components/button-group/button-group.component';
 import { ButtonComponent } from './components/button/button.component';
 import { CheckboxComponent } from './components/checkbox/checkbox.component';
 import { ConsentModalComponent } from './components/consent-modal/consent-modal.component';
@@ -75,7 +74,6 @@ const componentList = [
   ProvinceComponent,
   CityComponent,
   StreetComponent,
-  ButtonGroupComponent,
   ButtonComponent,
   CheckboxComponent,
   ConsentModalComponent,
