@@ -24,8 +24,5 @@
       "pdfjs-dist": "^2.0.550",
       "sha1": "^1.1.1",
       "angular2-text-mask": "^9.0.0"
-   },
-   "dependencies": {
-      "zxcvbn": "^4.4.2"
    }
 }
