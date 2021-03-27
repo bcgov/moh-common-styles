@@ -32,12 +32,6 @@ export * from './lib/models/images.model';
 export * from './lib/services/abstract-api-service';
 export * from './lib/services/geocoder.service';
 export * from './lib/services/logger.service';
-export * from './lib/services/check-complete-base.service'; // TODO: depreciate - doesn't work correctly
-export * from './lib/services/route-guard.service'; // TODO: depreciate
-export * from './lib/services/abstract-pg-check.service'; // TODO: depreciate
-
-// New to replace depreciated services above - applications current use services so will
-// update apps later and remove depreciated services
 export * from './lib/services/page-state.service';
 export * from './lib/services/abstract-page-guard.service';
 export * from './lib/services/load-page-guard.service';
