@@ -296,7 +296,7 @@ export class FileUploaderComponent extends Base
          * Must cancel the dragover event in order for the drop event to work.
          */
         dragOverStream.pipe(map(evt &#x3D;&gt; {
-            return event;
+            return evt;
         })).subscribe(evt &#x3D;&gt; {
             evt.preventDefault();
         });
@@ -428,7 +428,7 @@ export class FileUploaderComponent extends Base
         let pageNumber &#x3D; Math.max(...self.images.map(function(o) {return o.attachmentOrder; }), 0) + 1 ;
 
         // Create our observer
-        const fileObservable &#x3D; Observable.create((observer: Observer&lt;CommonImage&gt;) &#x3D;&gt; {
+        const fileObservable &#x3D; new Observable((observer: Observer&lt;CommonImage&gt;) &#x3D;&gt; {
             const mspImages &#x3D; [];
             scaleFactors &#x3D; scaleFactors.scaleDown(reductionScaleFactor);
             for (let fileIndex &#x3D; 0; fileIndex &lt; fileList.length; fileIndex++) {
@@ -450,7 +450,7 @@ export class FileUploaderComponent extends Base
 
                     this.readPDF(file, pdfScaleFactor, (images: HTMLImageElement[] , pdfFile: File) &#x3D;&gt; {
                         images.map((image, index) &#x3D;&gt; {
-                            image.name &#x3D; pdfFile.name;
+                            image.id &#x3D; pdfFile.name;
                             this.resizeImage( image, self, scaleFactors, observer, pageNumber , true); // index starts from zero
                             pageNumber &#x3D; pageNumber + 1  ;
                         });
@@ -487,7 +487,7 @@ export class FileUploaderComponent extends Base
         // Copy file properties
         mspImage.name &#x3D; image.id ;
         if (isPdf) {
-            mspImage.name &#x3D; image.name + &#x27;-page&#x27; + pageNumber;  // Just give name to pdf
+            mspImage.name &#x3D; image.id + &#x27;-page&#x27; + pageNumber;  // Just give name to pdf
       }
 
         mspImage.attachmentOrder &#x3D; pageNumber ;
@@ -554,6 +554,7 @@ export class FileUploaderComponent extends Base
                             } else {
                                 // log image info
                                 observer.next(mspImage);
+                                self.forceRender();
                             }
                         };
                         reader.readAsDataURL(blob);
