@@ -60,8 +60,6 @@ export class SinComponent extends AbstractFormControl implements OnInit {
 
   ngOnInit() {
     super.ngOnInit();
-
-    this.registerValidation( this.controlDir, this.validateSelf );
   }
 
   onValueChange( value: any ) {
@@ -74,6 +72,7 @@ export class SinComponent extends AbstractFormControl implements OnInit {
   }
 
   onBlur( event: any ) {
+    this.registerValidation( this.controlDir, this.validateSelf );
     this._onTouched( event );
     this.blur.emit( event );
   }
