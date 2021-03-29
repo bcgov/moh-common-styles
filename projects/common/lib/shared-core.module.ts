@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { CoreBreadcrumbComponent } from './components/core-breadcrumb/core-breadcrumb.component';
 import { FormActionBarComponent } from './components/form-action-bar/form-action-bar.component';
 import { PageFrameworkComponent } from './components/page-framework/page-framework.component';
-import { PasswordComponent } from './components/password/password.component';
 import { WizardProgressBarComponent } from './components/wizard-progress-bar/wizard-progress-bar.component';
 import { NgForm, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
@@ -11,8 +10,6 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 import { RouterModule } from '@angular/router';
 import { DateComponent } from './components/date/date.component';
-import { DatepickerComponent } from './components/datepicker/datepicker.component';
-import { NgxMyDatePickerModule } from 'ngx-mydatepicker';
 import { FileUploaderComponent } from './components/file-uploader/file-uploader.component';
 import { ThumbnailComponent } from './components/thumbnail/thumbnail.component';
 import { FormSubmitBarComponent } from './components/form-submit-bar/form-submit-bar.component';
@@ -27,7 +24,6 @@ import { CountryComponent } from './components/country/country.component';
 import { ProvinceComponent } from './components/province/province.component';
 import { CityComponent } from './components/city/city.component';
 import { StreetComponent } from './components/street/street.component';
-import { ButtonGroupComponent } from './components/button-group/button-group.component';
 import { ButtonComponent } from './components/button/button.component';
 import { CheckboxComponent } from './components/checkbox/checkbox.component';
 import { ConsentModalComponent } from './components/consent-modal/consent-modal.component';
@@ -61,10 +57,8 @@ const componentList = [
   CoreBreadcrumbComponent,
   FormActionBarComponent,
   PageFrameworkComponent,
-  PasswordComponent,
   WizardProgressBarComponent,
   DateComponent,
-  DatepickerComponent,
   FileUploaderComponent,
   ThumbnailComponent,
   FormSubmitBarComponent,
@@ -77,7 +71,6 @@ const componentList = [
   ProvinceComponent,
   CityComponent,
   StreetComponent,
-  ButtonGroupComponent,
   ButtonComponent,
   CheckboxComponent,
   ConsentModalComponent,
@@ -115,7 +108,6 @@ const componentList = [
     ReactiveFormsModule,
     ProgressbarModule.forRoot(),
     RouterModule,
-    NgxMyDatePickerModule.forRoot(),
     ModalModule.forRoot(),
     TextMaskModule,
     NgSelectModule,

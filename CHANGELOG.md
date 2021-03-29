@@ -1,4 +1,18 @@
-# Unreleased "moh-common-lib" (2021-03-08)
+# [4.0.0-alpha.0](https://github.com/bcgov/moh-common-styles/compare/v3.3.5...v4.0.0-alpha.0) "moh-common-lib" (2021-03-27)
+
+
+### Bug Fixes
+
+* **access:** landmark issue with aside ([4a60bd8](https://github.com/bcgov/moh-common-styles/commit/4a60bd8))
+* force render to fix chrome issue ([8792f4d](https://github.com/bcgov/moh-common-styles/commit/8792f4d))
+
+
+### Code Refactoring
+
+* remove depreciate services ([a4c5801](https://github.com/bcgov/moh-common-styles/commit/a4c5801))
+* remove unused component (button-group) ([49c159e](https://github.com/bcgov/moh-common-styles/commit/49c159e))
+* remove unused component (datepicker) ([857f483](https://github.com/bcgov/moh-common-styles/commit/857f483))
+* remove unused component (password) ([122ff41](https://github.com/bcgov/moh-common-styles/commit/122ff41))
 
 
 
