@@ -18,7 +18,7 @@ export class SampleModalComponent extends Base {
   @Input() title: string;
   @Input() images: SampleImageInterface[] = [];
 
-  @ViewChild('samplesModal') public sampleModal: ModalDirective;
+  @ViewChild('samplesModal', { static: true }) public sampleModal: ModalDirective;
 
   constructor() {
     super();

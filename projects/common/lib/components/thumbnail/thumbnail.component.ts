@@ -12,7 +12,7 @@ export class ThumbnailComponent implements OnInit {
   @Input() imageObject: CommonImage;
   @Input() reviewMode: boolean = false;
   @Output() deleteImage: EventEmitter<CommonImage> = new EventEmitter<CommonImage>();
-  @ViewChild('fullSizeViewModal') public fullSizeViewModal: ModalDirective;
+  @ViewChild('fullSizeViewModal', { static: true }) public fullSizeViewModal: ModalDirective;
 
   private viewContainerRef: ViewContainerRef;
   constructor(viewContainerRef: ViewContainerRef) {

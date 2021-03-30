@@ -36,7 +36,7 @@ export class ButtonComponent implements OnInit {
   @Input() disabled: boolean = false;
   @Input() label: string = 'Button';
   @Output() btnClick: EventEmitter<any> = new EventEmitter<any>();
-  @ViewChild('button') button: ElementRef;
+  @ViewChild('button', { static: true }) button: ElementRef;
 
   constructor() { }
 
