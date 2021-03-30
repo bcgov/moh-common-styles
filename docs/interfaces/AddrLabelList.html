@@ -447,7 +447,7 @@ export class AddressComponent extends Base
   @Input() maxlengths: Maxlengths;
   @Input() bcOnly: boolean &#x3D; false;
   @Input() addressServiceUrl: string;
-  @ViewChild(&#x27;city&#x27;) private _cityComponent: CityComponent;
+  @ViewChild(&#x27;city&#x27;, { static: true }) private _cityComponent: CityComponent;
 
   @Input()
   set address(val: Address) {

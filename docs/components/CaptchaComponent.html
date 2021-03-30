@@ -1715,7 +1715,7 @@ The occurance of this type of case should be rare.</p>
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(&#x27;audioElement&#x27;)<br />
+                                @ViewChild(&#x27;audioElement&#x27;, {static: false})<br />
                             </code>
                         </td>
                     </tr>
@@ -1891,7 +1891,7 @@ The occurance of this type of case should be rare.</p>
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(&#x27;image&#x27;)<br />
+                                @ViewChild(&#x27;image&#x27;, {static: true})<br />
                             </code>
                         </td>
                     </tr>
@@ -2129,8 +2129,8 @@ import { NgControl, ControlValueAccessor } from &#x27;@angular/forms&#x27;;
 })
 export class CaptchaComponent implements AfterViewInit, OnInit, OnChanges, ControlValueAccessor {
 
-  @ViewChild(&#x27;image&#x27;) imageContainer: ElementRef;
-  @ViewChild(&#x27;audioElement&#x27;) audioElement: ElementRef;
+  @ViewChild(&#x27;image&#x27;, { static: true }) imageContainer: ElementRef;
+  @ViewChild(&#x27;audioElement&#x27;, { static: false }) audioElement: ElementRef;
   // tslint:disable:no-input-rename
   @Input(&#x27;apiBaseUrl&#x27;) apiBaseUrl: string;
   @Input(&#x27;nonce&#x27;) nonce: string;

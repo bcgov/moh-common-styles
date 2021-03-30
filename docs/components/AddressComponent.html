@@ -2344,7 +2344,7 @@ accessed via function invocation for performance.</p>
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(&#x27;city&#x27;)<br />
+                                @ViewChild(&#x27;city&#x27;, {static: true})<br />
                             </code>
                         </td>
                     </tr>
@@ -2858,7 +2858,7 @@ export class AddressComponent extends Base
   @Input() maxlengths: Maxlengths;
   @Input() bcOnly: boolean &#x3D; false;
   @Input() addressServiceUrl: string;
-  @ViewChild(&#x27;city&#x27;) private _cityComponent: CityComponent;
+  @ViewChild(&#x27;city&#x27;, { static: true }) private _cityComponent: CityComponent;
 
   @Input()
   set address(val: Address) {

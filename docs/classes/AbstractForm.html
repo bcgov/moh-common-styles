@@ -217,7 +217,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(&#x27;formRef&#x27;)<br />
+                                @ViewChild(&#x27;formRef&#x27;, {static: true})<br />
                             </code>
                         </td>
                     </tr>
@@ -619,7 +619,7 @@ import { AbstractBaseForm } from &#x27;./abstract-base-form&#x27;;
 
 export abstract class AbstractForm extends AbstractBaseForm {
   /** Access to the form elements for validation */
-  @ViewChild(&#x27;formRef&#x27;) form: NgForm;
+  @ViewChild(&#x27;formRef&#x27;, { static: true }) form: NgForm;
 
   /**
    * Constructor

@@ -1,4 +1,4 @@
-# [4.0.0-alpha.0](https://github.com/bcgov/moh-common-styles/compare/v3.3.5...v4.0.0-alpha.0) "moh-common-lib" (2021-03-27)
+# [4.0.0-alpha.1](https://github.com/bcgov/moh-common-styles/compare/v3.3.5...v4.0.0-alpha.1) "moh-common-lib" (2021-03-30)
 
 
 ### Bug Fixes
@@ -9,6 +9,7 @@
 
 ### Code Refactoring
 
+* code clean up ([bd12fab](https://github.com/bcgov/moh-common-styles/commit/bd12fab))
 * remove depreciate services ([a4c5801](https://github.com/bcgov/moh-common-styles/commit/a4c5801))
 * remove unused component (button-group) ([49c159e](https://github.com/bcgov/moh-common-styles/commit/49c159e))
 * remove unused component (datepicker) ([857f483](https://github.com/bcgov/moh-common-styles/commit/857f483))

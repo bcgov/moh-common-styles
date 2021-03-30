@@ -373,7 +373,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(&#x27;samplesModal&#x27;)<br />
+                                @ViewChild(&#x27;samplesModal&#x27;, {static: true})<br />
                             </code>
                         </td>
                     </tr>
@@ -458,7 +458,7 @@ export class SampleModalComponent extends Base {
   @Input() title: string;
   @Input() images: SampleImageInterface[] &#x3D; [];
 
-  @ViewChild(&#x27;samplesModal&#x27;) public sampleModal: ModalDirective;
+  @ViewChild(&#x27;samplesModal&#x27;, { static: true }) public sampleModal: ModalDirective;
 
   constructor() {
     super();

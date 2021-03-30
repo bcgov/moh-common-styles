@@ -623,7 +623,7 @@ outside of Angular to call native browser functions.</p>
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(&#x27;stepContainer&#x27;)<br />
+                                @ViewChild(&#x27;stepContainer&#x27;, {static: true})<br />
                             </code>
                         </td>
                     </tr>
@@ -707,7 +707,7 @@ import { WizardProgressItem } from &#x27;../../models/container&#x27;;
 })
 export class WizardProgressBarComponent implements OnInit, OnDestroy {
   @Input() progressSteps: WizardProgressItem[] &#x3D; [];
-  @ViewChild(&#x27;stepContainer&#x27;) stepContainer: ElementRef;
+  @ViewChild(&#x27;stepContainer&#x27;, { static: true }) stepContainer: ElementRef;
   @ViewChildren(&#x27;steps&#x27;) steps: QueryList&lt;ElementRef&lt;HTMLAnchorElement&gt;&gt;;
 
   public activeIndex: number;

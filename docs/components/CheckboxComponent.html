@@ -1370,7 +1370,7 @@ errorMessageRequired = 'Opt in should be selected'
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(&#x27;checkbox&#x27;)<br />
+                                @ViewChild(&#x27;checkbox&#x27;, {static: true})<br />
                             </code>
                         </td>
                     </tr>
@@ -1645,7 +1645,7 @@ export class CheckboxComponent extends AbstractFormControl implements OnInit, Co
   @Input() label: string &#x3D; &#x27;Default Checkbox&#x27;;
   @Input() required: boolean &#x3D; false;  // TOBE removed duing MSP stablization - then update MSP to use form control version
   @Output() dataChange: EventEmitter&lt;boolean&gt; &#x3D; new EventEmitter&lt;boolean&gt;();
-  @ViewChild(&#x27;checkbox&#x27;) checkbox: ElementRef;
+  @ViewChild(&#x27;checkbox&#x27;, { static: true }) checkbox: ElementRef;
 
   _defaultErrMsg: ErrorMessage &#x3D; {
     required: &#x60;${LabelReplacementTag} is required.&#x60;,

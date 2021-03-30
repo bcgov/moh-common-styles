@@ -490,7 +490,7 @@ to button colour stylings.</li>
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(&#x27;button&#x27;)<br />
+                                @ViewChild(&#x27;button&#x27;, {static: true})<br />
                             </code>
                         </td>
                     </tr>
@@ -547,7 +547,7 @@ export class ButtonComponent implements OnInit {
   @Input() disabled: boolean &#x3D; false;
   @Input() label: string &#x3D; &#x27;Button&#x27;;
   @Output() btnClick: EventEmitter&lt;any&gt; &#x3D; new EventEmitter&lt;any&gt;();
-  @ViewChild(&#x27;button&#x27;) button: ElementRef;
+  @ViewChild(&#x27;button&#x27;, { static: true }) button: ElementRef;
 
   constructor() { }
 

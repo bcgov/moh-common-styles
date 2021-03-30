@@ -178,10 +178,10 @@ export class FileUploaderComponent extends Base
     implements OnInit, OnChanges, AfterContentInit {
     noIdImage: Boolean &#x3D; false;
     private appConstants;
-    @ViewChild(&#x27;dropZone&#x27;) dropZone: ElementRef;
-    @ViewChild(&#x27;browseFileRef&#x27;) browseFileRef: ElementRef;
-    @ViewChild(&#x27;imagePlaceholderRef&#x27;) imagePlaceholderRef: ElementRef;
-    @ViewChild(&#x27;selectFileLabel&#x27;) selectFileLabelRef: ElementRef;
+    @ViewChild(&#x27;dropZone&#x27;, { static: true }) dropZone: ElementRef;
+    @ViewChild(&#x27;browseFileRef&#x27;, { static: true }) browseFileRef: ElementRef;
+    @ViewChild(&#x27;imagePlaceholderRef&#x27;, { static: true }) imagePlaceholderRef: ElementRef;
+    @ViewChild(&#x27;selectFileLabel&#x27;, { static: true }) selectFileLabelRef: ElementRef;
 
     @Input() images: Array&lt;CommonImage&gt; &#x3D; new Array&lt;CommonImage&gt;(0);
     @Output() imagesChange: EventEmitter&lt;Array&lt;CommonImage&gt;&gt; &#x3D; new EventEmitter&lt;Array&lt;CommonImage&gt;&gt;();
@@ -191,7 +191,7 @@ export class FileUploaderComponent extends Base
     @Input() instructionText: string &#x3D; &#x27;Please upload required ID documents.&#x27;;
     @Input() errorMessages: FileUploaderMsg &#x3D; {required: &#x27;File is required.&#x27;};
 
-    @ViewChild(&#x27;canvas&#x27;) canvas: ElementRef;
+    @ViewChild(&#x27;canvas&#x27;, { static: true }) canvas: ElementRef;
 
 
     @Output() errorDocument: EventEmitter&lt;CommonImage&gt; &#x3D; new EventEmitter&lt;CommonImage&gt;();
