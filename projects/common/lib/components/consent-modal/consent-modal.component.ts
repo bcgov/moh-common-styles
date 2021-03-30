@@ -1,8 +1,7 @@
-import { forwardRef, Component, EventEmitter, Input, Output, ViewChild, OnInit} from '@angular/core';
+import { forwardRef, Component, EventEmitter, Input, Output, ViewChild, OnInit } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-import { Response } from '@angular/http';
 import { CommonLogger } from '../../services/logger.service';
 import { AbstractHttpService } from '../../services/abstract-api-service';
 import { ControlContainer, ControlValueAccessor, NgForm, NG_VALUE_ACCESSOR } from '@angular/forms';
@@ -100,7 +99,7 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
     @Input() continueButton: string = 'Continue';
     @Input() maintenanceFlag: string = 'false';
     @Input() url: string = '/msp/api/env';
-    @ViewChild('fullSizeViewModal') public fullSizeViewModal: ModalDirective;
+    @ViewChild('fullSizeViewModal', { static: true }) public fullSizeViewModal: ModalDirective;
     @Output() close = new EventEmitter<void>();
     @Output() cutOffDate: EventEmitter<ISpaEnvResponse> = new EventEmitter<ISpaEnvResponse>();
     @Output() accept = new EventEmitter<boolean>();
@@ -202,7 +201,7 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
                         this.cutOffDate.emit(this.spaEnvRes);
                     }
 
-            }, (error: Response | any) => {
+            }, (error: any) => {
                 this.logService.log({
                   event: 'ACL - SPA Env System Error',
                   success: false,

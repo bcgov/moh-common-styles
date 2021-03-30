@@ -20,7 +20,7 @@ import { WizardProgressItem } from '../../models/container';
 })
 export class WizardProgressBarComponent implements OnInit, OnDestroy {
   @Input() progressSteps: WizardProgressItem[] = [];
-  @ViewChild('stepContainer') stepContainer: ElementRef;
+  @ViewChild('stepContainer', { static: true }) stepContainer: ElementRef;
   @ViewChildren('steps') steps: QueryList<ElementRef<HTMLAnchorElement>>;
 
   public activeIndex: number;

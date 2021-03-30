@@ -11,7 +11,7 @@ import { TextMaskModule } from 'angular2-text-mask';
 })
 class PhoneTestComponent {
 
-  @ViewChild(PhoneNumberComponent) phoneComponent: PhoneNumberComponent;
+  @ViewChild(PhoneNumberComponent, {static: true}) phoneComponent: PhoneNumberComponent;
   phone: string;
 
   constructor() {}

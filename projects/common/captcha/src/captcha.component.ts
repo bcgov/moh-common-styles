@@ -30,8 +30,8 @@ import { NgControl, ControlValueAccessor } from '@angular/forms';
 })
 export class CaptchaComponent implements AfterViewInit, OnInit, OnChanges, ControlValueAccessor {
 
-  @ViewChild('image') imageContainer: ElementRef;
-  @ViewChild('audioElement') audioElement: ElementRef;
+  @ViewChild('image', { static: true }) imageContainer: ElementRef;
+  @ViewChild('audioElement', { static: false }) audioElement: ElementRef;
   // tslint:disable:no-input-rename
   @Input('apiBaseUrl') apiBaseUrl: string;
   @Input('nonce') nonce: string;

@@ -5,7 +5,7 @@ import { AbstractBaseForm } from './abstract-base-form';
 
 export abstract class AbstractForm extends AbstractBaseForm {
   /** Access to the form elements for validation */
-  @ViewChild('formRef') form: NgForm;
+  @ViewChild('formRef', { static: true }) form: NgForm;
 
   /**
    * Constructor

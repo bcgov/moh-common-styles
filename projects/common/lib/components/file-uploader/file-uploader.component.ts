@@ -39,10 +39,10 @@ export class FileUploaderComponent extends Base
     implements OnInit, OnChanges, AfterContentInit {
     noIdImage: Boolean = false;
     private appConstants;
-    @ViewChild('dropZone') dropZone: ElementRef;
-    @ViewChild('browseFileRef') browseFileRef: ElementRef;
-    @ViewChild('imagePlaceholderRef') imagePlaceholderRef: ElementRef;
-    @ViewChild('selectFileLabel') selectFileLabelRef: ElementRef;
+    @ViewChild('dropZone', { static: true }) dropZone: ElementRef;
+    @ViewChild('browseFileRef', { static: true }) browseFileRef: ElementRef;
+    @ViewChild('imagePlaceholderRef', { static: true }) imagePlaceholderRef: ElementRef;
+    @ViewChild('selectFileLabel', { static: true }) selectFileLabelRef: ElementRef;
 
     @Input() images: Array<CommonImage> = new Array<CommonImage>(0);
     @Output() imagesChange: EventEmitter<Array<CommonImage>> = new EventEmitter<Array<CommonImage>>();
@@ -52,7 +52,7 @@ export class FileUploaderComponent extends Base
     @Input() instructionText: string = 'Please upload required ID documents.';
     @Input() errorMessages: FileUploaderMsg = {required: 'File is required.'};
 
-    @ViewChild('canvas') canvas: ElementRef;
+    @ViewChild('canvas', { static: true }) canvas: ElementRef;
 
 
     @Output() errorDocument: EventEmitter<CommonImage> = new EventEmitter<CommonImage>();

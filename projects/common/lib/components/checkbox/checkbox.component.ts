@@ -33,7 +33,7 @@ export class CheckboxComponent extends AbstractFormControl implements OnInit, Co
   @Input() label: string = 'Default Checkbox';
   @Input() required: boolean = false;  // TOBE removed duing MSP stablization - then update MSP to use form control version
   @Output() dataChange: EventEmitter<boolean> = new EventEmitter<boolean>();
-  @ViewChild('checkbox') checkbox: ElementRef;
+  @ViewChild('checkbox', { static: true }) checkbox: ElementRef;
 
   _defaultErrMsg: ErrorMessage = {
     required: `${LabelReplacementTag} is required.`,
