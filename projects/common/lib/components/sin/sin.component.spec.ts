@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { TextMaskModule } from 'angular2-text-mask';
 import { Component, QueryList, ViewChildren, OnInit } from '@angular/core';
 import { SinComponent } from './sin.component';
-import { tickAndDetectChanges, createTestingModule, getDebugElement, getDebugLabel } from '../../../helpers/test-helpers';
+import { tickAndDetectChanges, createTestingModule, getDebugElement, getDebugLabel, setInput } from '../../../helpers/test-helpers';
 import { ErrorContainerComponent } from '../error-container/error-container.component';
 import { commonDuplicateCheck } from '../duplicate-check/duplicate-check.directive';
 
@@ -94,11 +94,11 @@ describe('SinComponent', () => {
          importDirectives
       );
 
-      const component = fixture.componentInstance;
-      component.form.get( 'sin1' ).setValue( '123456789' );
+      const de = getDebugElement( fixture, 'common-sin', 'sin1');
+      setInput( de, '123456789' );
+
       tickAndDetectChanges( fixture );
-      expect( component.sinComponent ).toBeTruthy();
-      expect( component.form.get('sin1').hasError( 'invalid' ) ).toBeTruthy();
+      expect( de.componentInstance.controlDir.hasError( 'invalid' ) ).toBeTruthy();
     }));
 
     it('should be valid', fakeAsync(() => {
