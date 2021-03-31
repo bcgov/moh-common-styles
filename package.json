@@ -25,7 +25,7 @@
     "version:bump": "node build_utils/update-lib-version.js && git add \"*/package.json\"",
     "setup:git-hooks": "cp build_utils/commit-msg .git/hooks/commit-msg",
     "postinstall": "npm run setup:git-hooks",
-    "version:alpha": "nnpm --no-git-tag-version version prerelease --preid=alpha"
+    "version:alpha": "npm --no-git-tag-version version prerelease --preid=alpha"
   },
   "private": true,
   "dependencies": {
