@@ -678,8 +678,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="68"
-                            class="link-to-prism">projects/common/lib/components/phn/phn.component.ts:68</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="66"
+                            class="link-to-prism">projects/common/lib/components/phn/phn.component.ts:66</a></div>
                 </td>
             </tr>
 
@@ -748,8 +748,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="59"
-                            class="link-to-prism">projects/common/lib/components/phn/phn.component.ts:59</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="57"
+                            class="link-to-prism">projects/common/lib/components/phn/phn.component.ts:57</a></div>
                 </td>
             </tr>
 
@@ -820,8 +820,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="88"
-                            class="link-to-prism">projects/common/lib/components/phn/phn.component.ts:88</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="87"
+                            class="link-to-prism">projects/common/lib/components/phn/phn.component.ts:87</a></div>
                 </td>
             </tr>
 
@@ -861,8 +861,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="79"
-                            class="link-to-prism">projects/common/lib/components/phn/phn.component.ts:79</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="78"
+                            class="link-to-prism">projects/common/lib/components/phn/phn.component.ts:78</a></div>
                 </td>
             </tr>
 
@@ -900,8 +900,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="73"
-                            class="link-to-prism">projects/common/lib/components/phn/phn.component.ts:73</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="72"
+                            class="link-to-prism">projects/common/lib/components/phn/phn.component.ts:72</a></div>
                 </td>
             </tr>
 
@@ -1916,8 +1916,6 @@ export class PhnComponent extends AbstractFormControl implements OnInit, Control
 
   ngOnInit() {
     super.ngOnInit();
-
-    this.registerValidation( this.controlDir, this.validateSelf );
   }
 
   onValueChange( value: any ) {
@@ -1930,6 +1928,7 @@ export class PhnComponent extends AbstractFormControl implements OnInit, Control
   }
 
   onBlur( event: any ) {
+    this.registerValidation( this.controlDir, this.validateSelf );
     this._onTouched( event );
     this.blur.emit( event );
   }
