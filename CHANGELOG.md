@@ -1,10 +1,12 @@
-# [4.0.0-alpha.1](https://github.com/bcgov/moh-common-styles/compare/v3.3.5...v4.0.0-alpha.1) "moh-common-lib" (2021-03-30)
+# [4.0.0-alpha.2](https://github.com/bcgov/moh-common-styles/compare/v3.3.5...v4.0.0-alpha.2) "moh-common-lib" (2021-03-31)
 
 
 ### Bug Fixes
 
 * **access:** landmark issue with aside ([4a60bd8](https://github.com/bcgov/moh-common-styles/commit/4a60bd8))
 * force render to fix chrome issue ([8792f4d](https://github.com/bcgov/moh-common-styles/commit/8792f4d))
+* moved validation to blur ([6484cc5](https://github.com/bcgov/moh-common-styles/commit/6484cc5))
+* moved validation to blur ([205b5cb](https://github.com/bcgov/moh-common-styles/commit/205b5cb))
 
 
 ### Code Refactoring

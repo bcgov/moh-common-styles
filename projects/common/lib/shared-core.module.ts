@@ -35,7 +35,6 @@ import { AccordionCommonComponent } from './components/accordion/accordion.compo
 import { ValidateNameDirective } from './components/name/validate-name.directive';
 import { SinComponent } from './components/sin/sin.component';
 import { PhnComponent } from './components/phn/phn.component';
-import { FullNameComponent } from './components/full-name/full-name.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ValidateBcPostalDirective } from './components/postal-code/validate-bc-postal.directive';
 import { XiconButtonComponent } from './components/xicon-button/xicon-button.component';
@@ -75,7 +74,6 @@ const componentList = [
   CheckboxComponent,
   ConsentModalComponent,
   NameComponent,
-  FullNameComponent,
   PhoneNumberComponent,
   RadioComponent,
   AccordionCommonComponent,
