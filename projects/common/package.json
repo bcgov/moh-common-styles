@@ -18,7 +18,6 @@
       "@ng-select/ng-select": "^2.16.2",
       "bootstrap": "^4.0.0",
       "date-fns": "^2.5.1",
-      "moment": "^2.24.0",
       "blueimp-load-image": "^2.31.0",
       "pdfjs-dist": "^2.0.550",
       "sha1": "^1.1.1",

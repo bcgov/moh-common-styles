@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { AbstractHttpService } from './abstract-api-service';
 import { throwError } from 'rxjs';
-import * as moment_ from 'moment';
-const moment = moment_;
 
 enum SeverityLevels {
   INFO = 'info',
@@ -168,9 +166,8 @@ export class CommonLogger extends AbstractHttpService {
     };
   }
 
-  // TODO: Remove moment dependency
   private setTimestamp() {
-    this._headers = this._headers.set('timestamp', moment().toISOString());
+    this._headers = this._headers.set('timestamp', (new Date()).toISOString());
   }
 
   private setSeverity(severity: SeverityLevels) {
