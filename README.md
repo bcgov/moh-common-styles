@@ -7,8 +7,8 @@
 
 ## Requirements
 
-* node (using 8.9.4, but older versions may be compatible)
-* npm (6.4.1, but older versions may be compatible)
+* node@>=10.24.0
+* npm@>=8.0.0, @<10.0.0
 
 ## Installation
 

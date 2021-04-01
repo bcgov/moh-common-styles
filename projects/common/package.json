@@ -13,8 +13,8 @@
       "url": "https://github.com/bcgov/moh-common-styles"
    },
    "peerDependencies": {
-      "@angular/common": "^8.0.0",
-      "@angular/core": "^8.0.0",
+      "@angular/common": ">=8.0.0 <10.0.0",
+      "@angular/core": ">=8.0.0 <10.0.0",
       "@ng-select/ng-select": "^2.16.2",
       "bootstrap": "^4.0.0",
       "date-fns": "^2.5.1",
