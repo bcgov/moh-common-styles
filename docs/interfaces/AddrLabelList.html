@@ -621,6 +621,7 @@ export class AddressComponent extends Base
     if (changes[&#x27;countryList&#x27;] &amp;&amp; changes[&#x27;countryList&#x27;].currentValue) {
 
       if (this.addr &amp;&amp; !this.addr.country) {
+
         // Set defaults
         this.addr.country &#x3D; this.setDefaultCountryAsOption();
 

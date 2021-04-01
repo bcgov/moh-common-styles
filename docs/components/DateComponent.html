@@ -2600,7 +2600,7 @@ Do NOT combine with restrictDates, as they set the same underlying values.</p>
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in         <code><a href="../classes/Base.html#source" target="_self" >Base:11</a></code>
+                                    <div class="io-line">Defined in         <code><a href="../classes/Base.html#source" target="_self" >Base:9</a></code>
 </div>
                             </td>
                         </tr>
@@ -3210,19 +3210,19 @@ You must use either [restrictDate] or the [dateRange*] inputs.
   &lt;legend class&#x3D;&quot;date--legend&quot;&gt;{{label}}&lt;/legend&gt;
   &lt;ng-container *ngTemplateOutlet&#x3D;&quot;instructionText&quot;&gt;&lt;/ng-container&gt;
   &lt;div class&#x3D;&quot;date-row&quot;&gt;
-    &lt;label class&#x3D;&quot;visuallyhidden&quot; for&#x3D;&quot;{{monthLabelforId}}&quot;&gt;Month&lt;/label&gt;
     &lt;select class&#x3D;&quot;form-control monthSelect&quot;
             id&#x3D;&quot;{{monthLabelforId}}&quot;
             name&#x3D;&quot;{{monthLabelforId}}&quot;
             [value]&#x3D;&quot;_month&quot;
             (blur)&#x3D;&quot;onBlurMonth($event.target.value)&quot;
-            [disabled]&#x3D;&#x27;disabled&#x27;&gt;
+            [disabled]&#x3D;&#x27;disabled&#x27;
+            [required]&#x3D;&quot;isRequired&quot;
+            aria-label&#x3D;&quot;Month&quot;&gt;
       &lt;!-- We show the blank option so the user can clear out their data.--&gt;
       &lt;option value&#x3D;&quot;null&quot; label&#x3D;&quot;Month&quot; selected [disabled]&#x3D;&#x27;isRequired&#x27;&gt;&lt;/option&gt;
       &lt;option *ngFor&#x3D;&quot;let month of monthList; let i &#x3D; index;&quot; [value]&#x3D;&quot;i&quot;&gt;{{month}}&lt;/option&gt;
     &lt;/select&gt;
 
-    &lt;label class&#x3D;&quot;visuallyhidden&quot; for&#x3D;&quot;{{dayLabelforId}}&quot;&gt;Day&lt;/label&gt;
     &lt;input type&#x3D;&quot;number&quot;
            class&#x3D;&quot;form-control dayInput&quot;
            id&#x3D;&quot;{{dayLabelforId}}&quot;
@@ -3232,10 +3232,12 @@ You must use either [restrictDate] or the [dateRange*] inputs.
            (blur)&#x3D;&quot;onBlurDay($event.target.value)&quot;
            commonDateFieldFormat
            [disabled]&#x3D;&#x27;disabled&#x27;
+           [required]&#x3D;&quot;isRequired&quot;
            maxlength&#x3D;&quot;2&quot;
+           step&#x3D;&quot;any&quot;
+           aria-label&#x3D;&quot;Day&quot;
            autocomplete&#x3D;&quot;off&quot;/&gt;
 
-    &lt;label class&#x3D;&quot;visuallyhidden&quot; for&#x3D;&quot;{{yearLabelforId}}&quot;&gt;Year&lt;/label&gt;
     &lt;input type&#x3D;&quot;number&quot;
            class&#x3D;&quot;form-control yearInput&quot;
            id&#x3D;&quot;{{yearLabelforId}}&quot;
@@ -3245,7 +3247,10 @@ You must use either [restrictDate] or the [dateRange*] inputs.
            (blur)&#x3D;&quot;onBlurYear($event.target.value)&quot;
            commonDateFieldFormat
            [disabled]&#x3D;&#x27;disabled&#x27;
+           [required]&#x3D;&quot;isRequired&quot;
            maxlength&#x3D;&quot;4&quot;
+           step&#x3D;&quot;any&quot;
+           aria-label&#x3D;&quot;Year&quot;
            autocomplete&#x3D;&quot;off&quot;/&gt;
 
   &lt;/div&gt;
@@ -3317,7 +3322,7 @@ You must use either [restrictDate] or the [dateRange*] inputs.
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><fieldset>  <legend class="date--legend">{{label}}</legend>  <ng-container *ngTemplateOutlet="instructionText"></ng-container>  <div class="date-row">    <label class="visuallyhidden" for="{{monthLabelforId}}">Month</label>    <select class="form-control monthSelect"            id="{{monthLabelforId}}"            name="{{monthLabelforId}}"            [value]="_month"            (blur)="onBlurMonth($event.target.value)"            [disabled]=\'disabled\'>      <!-- We show the blank option so the user can clear out their data.-->      <option value="null" label="Month" selected [disabled]=\'isRequired\'></option>      <option *ngFor="let month of monthList; let i = index;" [value]="i">{{month}}</option>    </select>    <label class="visuallyhidden" for="{{dayLabelforId}}">Day</label>    <input type="number"           class="form-control dayInput"           id="{{dayLabelforId}}"           name="{{dayLabelforId}}"           placeholder="Day"           [value]="_day"           (blur)="onBlurDay($event.target.value)"           commonDateFieldFormat           [disabled]=\'disabled\'           maxlength="2"           autocomplete="off"/>    <label class="visuallyhidden" for="{{yearLabelforId}}">Year</label>    <input type="number"           class="form-control yearInput"           id="{{yearLabelforId}}"           name="{{yearLabelforId}}"           placeholder="Year"           [value]="_year"           (blur)="onBlurYear($event.target.value)"           commonDateFieldFormat           [disabled]=\'disabled\'           maxlength="4"           autocomplete="off"/>  </div></fieldset><common-error-container    [displayError]="!disabled && (controlDir?.touched || controlDir?.dirty) && controlDir.errors">  <div *ngIf="controlDir?.errors?.required; else ComponentErrors">    {{_defaultErrMsg.required}}  </div></common-error-container><ng-template #instructionText>  <ng-content></ng-content></ng-template><!--Errors triggered by self-validation within component--><ng-template #ComponentErrors>  <div *ngIf="controlDir?.errors?.dayOutOfRange">    {{_defaultErrMsg.dayOutOfRange}}  </div>  <div *ngIf="controlDir?.errors?.yearDistantPast">    {{_defaultErrMsg.yearDistantPast}}  </div>  <div *ngIf="controlDir?.errors?.yearDistantFuture">    {{_defaultErrMsg.yearDistantFuture}}  </div>  <div *ngIf="controlDir?.errors?.noPastDatesAllowed">    {{_defaultErrMsg.noPastDatesAllowed}}  </div>  <div *ngIf="controlDir?.errors?.noFutureDatesAllowed">     {{_defaultErrMsg.noFutureDatesAllowed}}  </div>  <div *ngIf="controlDir?.errors?.invalidRange">    {{_defaultErrMsg.invalidRange}}  </div>  <!-- Case should not happen until something is not formatted correctly-->  <div *ngIf="controlDir?.errors?.invalidValue">     {{_defaultErrMsg.invalidValue}}  </div></ng-template></div>'
+        var COMPONENT_TEMPLATE = '<div><fieldset>  <legend class="date--legend">{{label}}</legend>  <ng-container *ngTemplateOutlet="instructionText"></ng-container>  <div class="date-row">    <select class="form-control monthSelect"            id="{{monthLabelforId}}"            name="{{monthLabelforId}}"            [value]="_month"            (blur)="onBlurMonth($event.target.value)"            [disabled]=\'disabled\'            [required]="isRequired"            aria-label="Month">      <!-- We show the blank option so the user can clear out their data.-->      <option value="null" label="Month" selected [disabled]=\'isRequired\'></option>      <option *ngFor="let month of monthList; let i = index;" [value]="i">{{month}}</option>    </select>    <input type="number"           class="form-control dayInput"           id="{{dayLabelforId}}"           name="{{dayLabelforId}}"           placeholder="Day"           [value]="_day"           (blur)="onBlurDay($event.target.value)"           commonDateFieldFormat           [disabled]=\'disabled\'           [required]="isRequired"           maxlength="2"           step="any"           aria-label="Day"           autocomplete="off"/>    <input type="number"           class="form-control yearInput"           id="{{yearLabelforId}}"           name="{{yearLabelforId}}"           placeholder="Year"           [value]="_year"           (blur)="onBlurYear($event.target.value)"           commonDateFieldFormat           [disabled]=\'disabled\'           [required]="isRequired"           maxlength="4"           step="any"           aria-label="Year"           autocomplete="off"/>  </div></fieldset><common-error-container    [displayError]="!disabled && (controlDir?.touched || controlDir?.dirty) && controlDir.errors">  <div *ngIf="controlDir?.errors?.required; else ComponentErrors">    {{_defaultErrMsg.required}}  </div></common-error-container><ng-template #instructionText>  <ng-content></ng-content></ng-template><!--Errors triggered by self-validation within component--><ng-template #ComponentErrors>  <div *ngIf="controlDir?.errors?.dayOutOfRange">    {{_defaultErrMsg.dayOutOfRange}}  </div>  <div *ngIf="controlDir?.errors?.yearDistantPast">    {{_defaultErrMsg.yearDistantPast}}  </div>  <div *ngIf="controlDir?.errors?.yearDistantFuture">    {{_defaultErrMsg.yearDistantFuture}}  </div>  <div *ngIf="controlDir?.errors?.noPastDatesAllowed">    {{_defaultErrMsg.noPastDatesAllowed}}  </div>  <div *ngIf="controlDir?.errors?.noFutureDatesAllowed">     {{_defaultErrMsg.noFutureDatesAllowed}}  </div>  <div *ngIf="controlDir?.errors?.invalidRange">    {{_defaultErrMsg.invalidRange}}  </div>  <!-- Case should not happen until something is not formatted correctly-->  <div *ngIf="controlDir?.errors?.invalidValue">     {{_defaultErrMsg.invalidValue}}  </div></ng-template></div>'
     var COMPONENTS = [{'name': 'AccordionCommonComponent', 'selector': 'common-accordion'},{'name': 'AddressComponent', 'selector': 'common-address'},{'name': 'AddressValidatorComponent', 'selector': 'common-address-validator'},{'name': 'ButtonComponent', 'selector': 'common-button'},{'name': 'CaptchaComponent', 'selector': 'common-captcha'},{'name': 'CheckboxComponent', 'selector': 'common-checkbox'},{'name': 'CityComponent', 'selector': 'common-city'},{'name': 'ConfirmTemplateComponent', 'selector': 'common-confirm-template'},{'name': 'ConsentModalComponent', 'selector': 'common-consent-modal'},{'name': 'CoreBreadcrumbComponent', 'selector': 'common-core-breadcrumb'},{'name': 'CountryComponent', 'selector': 'common-country'},{'name': 'DateComponent', 'selector': 'common-date'},{'name': 'DropdownComponent', 'selector': 'common-dropdown'},{'name': 'EmailComponent', 'selector': 'common-email'},{'name': 'ErrorContainerComponent', 'selector': 'common-error-container'},{'name': 'FileUploaderComponent', 'selector': 'common-file-uploader'},{'name': 'FormActionBarComponent', 'selector': 'common-form-action-bar'},{'name': 'FormSubmitBarComponent', 'selector': 'common-form-submit-bar'},{'name': 'GeocoderInputComponent', 'selector': 'common-geocoder-input'},{'name': 'HeaderComponent', 'selector': 'common-header'},{'name': 'NameComponent', 'selector': 'common-name'},{'name': 'PageFrameworkComponent', 'selector': 'common-page-framework'},{'name': 'PageSectionComponent', 'selector': 'common-page-section'},{'name': 'PhnComponent', 'selector': 'common-phn'},{'name': 'PhoneNumberComponent', 'selector': 'common-phone-number'},{'name': 'PostalCodeComponent', 'selector': 'common-postal-code'},{'name': 'ProvinceComponent', 'selector': 'common-province'},{'name': 'RadioComponent', 'selector': 'common-radio'},{'name': 'SampleModalComponent', 'selector': 'common-sample-modal'},{'name': 'SinComponent', 'selector': 'common-sin'},{'name': 'StreetComponent', 'selector': 'common-street'},{'name': 'ThumbnailComponent', 'selector': 'common-thumbnail'},{'name': 'ToggleComponent', 'selector': 'common-toggle'},{'name': 'WizardProgressBarComponent', 'selector': 'common-wizard-progress-bar'},{'name': 'XiconButtonComponent', 'selector': 'common-xicon-button'}];
     var DIRECTIVES = [{'name': 'DateFieldFormatDirective', 'selector': '[commonDateFieldFormat]'},{'name': 'DuplicateCheckDirective', 'selector': '[commonDuplicateCheck]'},{'name': 'ValidateBcPostalDirective', 'selector': '[commonValidateBcPostal]'},{'name': 'ValidateCityDirective', 'selector': '[commonValidateCity]'},{'name': 'ValidateNameDirective', 'selector': '[commonValidateName]'},{'name': 'ValidatePostalcodeDirective', 'selector': '[commonValidatePostalcode]'},{'name': 'ValidateRegionDirective', 'selector': '[commonValidateRegion]'},{'name': 'ValidateStreetDirective', 'selector': '[commonValidateStreet]'}];
     var ACTUAL_COMPONENT = {'name': 'DateComponent'};

@@ -520,7 +520,7 @@ maintenance.</p>
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { forwardRef, Component, EventEmitter, Input, Output, ViewChild, OnInit } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { forwardRef, Component, EventEmitter, Input, Output, ViewChild, OnInit, HostListener, AfterViewInit, ElementRef} from &#x27;@angular/core&#x27;;
 import { ModalDirective } from &#x27;ngx-bootstrap/modal&#x27;;
 import { Observable, of } from &#x27;rxjs&#x27;;
 import { HttpClient, HttpHeaders, HttpErrorResponse } from &#x27;@angular/common/http&#x27;;
@@ -603,99 +603,159 @@ export interface ISpaEnvResponse {
   ]
 })
 
-export class ConsentModalComponent extends AbstractHttpService implements ControlValueAccessor, OnInit  {
+export class ConsentModalComponent extends AbstractHttpService implements ControlValueAccessor, OnInit, AfterViewInit  {
 
-    protected _headers: HttpHeaders &#x3D; new HttpHeaders();
-    @Input() processName: string;
+  protected _headers: HttpHeaders &#x3D; new HttpHeaders();
+  @Input() processName: string;
 
-    /**
-     * If &#x60;isUnderMaintenance&#x60; is true, then this will automatically try and
-     * make a request to the SPA ENV server to determine if it&#x27;s in a
-     * maintenance window.  If your application determines this manually, leave
-     * this alone.
-     */
-    @Input() isUnderMaintenance: boolean &#x3D; false;
-    @Input() title: string;
-    @Input() body: string; // &#x3D; &#x27;&lt;p&gt;&lt;strong&gt;Keep your personal information secure – especially when using a shared device like a computer at a library, school or café.&lt;/strong&gt; To delete any information that was entered, either complete the application and submit it or, if you don’t finish, close the web browser.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Need to take a break and come back later?&lt;/strong&gt; The data you enter on this form is saved locally to the computer or device you are using until you close the web browser or submit your application.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Information in this application is collected by the Ministry of Health&lt;/strong&gt; under section 26(a), (c) and (e) of the Freedom of Information and Protection of Privacy Act and will be used to determine eligibility for provincial health care benefits in BC and administer Premium Assistance. Should you have any questions about the collection of this personal information please &lt;a href&#x3D;&quot;http://www2.gov.bc.ca/gov/content/health/health-drug-coverage/msp/bc-residents-contact-us&quot; target&#x3D;&quot;_blank&quot;&gt;contact Health Insurance BC &lt;i class&#x3D;&quot;fa fa-external-link&quot; aria-hidden&#x3D;&quot;true&quot;&gt;&lt;/i&gt;&lt;/a&gt;.&lt;/p&gt;&#x27;;
-    @Input() agreeLabel: string &#x3D; &#x27;I have read and understand this info&#x27;;
-    @Input() continueButton: string &#x3D; &#x27;Continue&#x27;;
-    @Input() maintenanceFlag: string &#x3D; &#x27;false&#x27;;
-    @Input() url: string &#x3D; &#x27;/msp/api/env&#x27;;
-    @ViewChild(&#x27;fullSizeViewModal&#x27;, { static: true }) public fullSizeViewModal: ModalDirective;
-    @Output() close &#x3D; new EventEmitter&lt;void&gt;();
-    @Output() cutOffDate: EventEmitter&lt;ISpaEnvResponse&gt; &#x3D; new EventEmitter&lt;ISpaEnvResponse&gt;();
-    @Output() accept &#x3D; new EventEmitter&lt;boolean&gt;();
+  /**
+   * If &#x60;isUnderMaintenance&#x60; is true, then this will automatically try and
+   * make a request to the SPA ENV server to determine if it&#x27;s in a
+   * maintenance window.  If your application determines this manually, leave
+   * this alone.
+   */
+  @Input() isUnderMaintenance: boolean &#x3D; false;
+  @Input() title: string;
+  @Input() body: string; // &#x3D; &#x27;&lt;p&gt;&lt;strong&gt;Keep your personal information secure – especially when using a shared device like a computer at a library, school or café.&lt;/strong&gt; To delete any information that was entered, either complete the application and submit it or, if you don’t finish, close the web browser.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Need to take a break and come back later?&lt;/strong&gt; The data you enter on this form is saved locally to the computer or device you are using until you close the web browser or submit your application.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Information in this application is collected by the Ministry of Health&lt;/strong&gt; under section 26(a), (c) and (e) of the Freedom of Information and Protection of Privacy Act and will be used to determine eligibility for provincial health care benefits in BC and administer Premium Assistance. Should you have any questions about the collection of this personal information please &lt;a href&#x3D;&quot;http://www2.gov.bc.ca/gov/content/health/health-drug-coverage/msp/bc-residents-contact-us&quot; target&#x3D;&quot;_blank&quot;&gt;contact Health Insurance BC &lt;i class&#x3D;&quot;fa fa-external-link&quot; aria-hidden&#x3D;&quot;true&quot;&gt;&lt;/i&gt;&lt;/a&gt;.&lt;/p&gt;&#x27;;
+  @Input() agreeLabel: string &#x3D; &#x27;I have read and understand this info&#x27;;
+  @Input() continueButton: string &#x3D; &#x27;Continue&#x27;;
+  @Input() maintenanceFlag: string &#x3D; &#x27;false&#x27;;
+  @Input() url: string &#x3D; &#x27;/msp/api/env&#x27;;
+  @ViewChild(&#x27;fullSizeViewModal&#x27;, { static: true }) public fullSizeViewModal: ModalDirective;
+  @ViewChild(&#x27;modalContents&#x27;, { static: true }) public modalContents: ElementRef;
+  @ViewChild(&#x27;continueButtonRef&#x27;, { static: true }) public continueButtonRef: ElementRef;
+  @Output() close &#x3D; new EventEmitter&lt;void&gt;();
+  @Output() cutOffDate: EventEmitter&lt;ISpaEnvResponse&gt; &#x3D; new EventEmitter&lt;ISpaEnvResponse&gt;();
+  @Output() accept &#x3D; new EventEmitter&lt;boolean&gt;();
 
-    /**
-     * Used in cases where we have custom form controls inside NgContent that we
-     * wish to be satisifed before user can continue through modal.
-     */
-    @Input() disableContinue: boolean &#x3D; false;
+  /**
+   * Used in cases where we have custom form controls inside NgContent that we
+   * wish to be satisifed before user can continue through modal.
+   */
+  @Input() disableContinue: boolean &#x3D; false;
 
-    public spaEnvRes: ISpaEnvResponse &#x3D; {} as any;
-    public maintenanceMessage: string;
+  public spaEnvRes: ISpaEnvResponse &#x3D; {} as any;
+  public maintenanceMessage: string;
+  protected focusableEls: HTMLElement[];
+  protected focusedEl: HTMLElement;
+  protected closed: boolean &#x3D; false;
 
-    // TODO: This should eventually be pulled out of the common library as it pertains to MSP-specific code.
-    // tslint:disable-next-line:max-line-length
-    private _applicationHeaderMap: Map&lt;string, string&gt; &#x3D; new Map([
-      [&#x27;ACL&#x27;, &#x27;{&quot;SPA_ENV_ACL_MAINTENANCE_FLAG&quot;:&quot;&quot;,&quot;SPA_ENV_ACL_MAINTENANCE_MESSAGE&quot;:&quot;&quot;}&#x27;],
-      [&#x27;MSP&#x27;, &#x27;{&quot;SPA_ENV_MSP_MAINTENANCE_FLAG&quot;:&quot;&quot;,&quot;SPA_ENV_MSP_MAINTENANCE_MESSAGE&quot;:&quot;&quot;}&#x27;],
-      [&#x27;PA&#x27;, &#x27;{&quot;SPA_ENV_PACUTOFF_MAINTENANCE_START&quot;:&quot;&quot;,&quot;SPA_ENV_PACUTOFF_MAINTENANCE_END&quot;:&quot;&quot;,&quot;SPA_ENV_NOW&quot;:&quot;&quot;,&quot;SPA_ENV_PACUTOFF_MAINTENANCE_FLAG&quot;:&quot;&quot;,&quot;SPA_ENV_PACUTOFF_MAINTENANCE_MESSAGE&quot;:&quot;&quot;}&#x27;],
-      [&#x27;SUPPBEN&#x27;, &#x27;{&quot;SPA_ENV_SUPPBEN_MAINTENANCE_START&quot;:&quot;&quot;,&quot;SPA_ENV_SUPPBEN_MAINTENANCE_END&quot;:&quot;&quot;,&quot;SPA_ENV_NOW&quot;:&quot;&quot;,&quot;SPA_ENV_SUPPBEN_MAINTENANCE_FLAG&quot;:&quot;&quot;,&quot;SPA_ENV_SUPPBEN_MAINTENANCE_MESSAGE&quot;:&quot;&quot;,&quot;SPA_ENV_PACUTOFF_MAINTENANCE_START&quot;:&quot;&quot;,&quot;SPA_ENV_PACUTOFF_MAINTENANCE_END&quot;:&quot;&quot;}&#x27;],
-    ]);
-    agreeCheck: boolean &#x3D; false;
+  // TODO: This should eventually be pulled out of the common library as it pertains to MSP-specific code.
+  // tslint:disable-next-line:max-line-length
+  private _applicationHeaderMap: Map&lt;string, string&gt; &#x3D; new Map([
+    [&#x27;ACL&#x27;, &#x27;{&quot;SPA_ENV_ACL_MAINTENANCE_FLAG&quot;:&quot;&quot;,&quot;SPA_ENV_ACL_MAINTENANCE_MESSAGE&quot;:&quot;&quot;}&#x27;],
+    [&#x27;MSP&#x27;, &#x27;{&quot;SPA_ENV_MSP_MAINTENANCE_FLAG&quot;:&quot;&quot;,&quot;SPA_ENV_MSP_MAINTENANCE_MESSAGE&quot;:&quot;&quot;}&#x27;],
+    [&#x27;PA&#x27;, &#x27;{&quot;SPA_ENV_PACUTOFF_MAINTENANCE_START&quot;:&quot;&quot;,&quot;SPA_ENV_PACUTOFF_MAINTENANCE_END&quot;:&quot;&quot;,&quot;SPA_ENV_NOW&quot;:&quot;&quot;,&quot;SPA_ENV_PACUTOFF_MAINTENANCE_FLAG&quot;:&quot;&quot;,&quot;SPA_ENV_PACUTOFF_MAINTENANCE_MESSAGE&quot;:&quot;&quot;}&#x27;],
+    [&#x27;SUPPBEN&#x27;, &#x27;{&quot;SPA_ENV_SUPPBEN_MAINTENANCE_START&quot;:&quot;&quot;,&quot;SPA_ENV_SUPPBEN_MAINTENANCE_END&quot;:&quot;&quot;,&quot;SPA_ENV_NOW&quot;:&quot;&quot;,&quot;SPA_ENV_SUPPBEN_MAINTENANCE_FLAG&quot;:&quot;&quot;,&quot;SPA_ENV_SUPPBEN_MAINTENANCE_MESSAGE&quot;:&quot;&quot;,&quot;SPA_ENV_PACUTOFF_MAINTENANCE_START&quot;:&quot;&quot;,&quot;SPA_ENV_PACUTOFF_MAINTENANCE_END&quot;:&quot;&quot;}&#x27;],
+  ]);
+  agreeCheck: boolean &#x3D; false;
 
-    public _onChange &#x3D; (_: any) &#x3D;&gt; {};
-    public _onTouched &#x3D; () &#x3D;&gt; {};
+  public _onChange &#x3D; (_: any) &#x3D;&gt; {};
+  public _onTouched &#x3D; () &#x3D;&gt; {};
 
-    constructor(protected http: HttpClient,  private logService: CommonLogger) {
-        super(http);
+  constructor(protected http: HttpClient,  private logService: CommonLogger) {
+      super(http);
+  }
+
+  ngOnInit(): void {
+    // Called after ngOnInit when the component&#x27;s or directive&#x27;s content has been initialized.
+    // Add &#x27;implements AfterContentInit&#x27; to the class.
+    if (this.isUnderMaintenance) {
+      this.inMaintenance();
     }
+  }
 
-    ngOnInit(): void {
-      // Called after ngOnInit when the component&#x27;s or directive&#x27;s content has been initialized.
-      // Add &#x27;implements AfterContentInit&#x27; to the class.
-      if (this.isUnderMaintenance) {
-        this.inMaintenance();
+  ngAfterViewInit(): void {
+    // Create an array of focusable elements from the contents of the modal
+    this.focusableEls &#x3D; Array.from(this.modalContents.nativeElement.querySelectorAll(&#x27;a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), [tabindex&#x3D;&quot;0&quot;]&#x27;));
+    // Initialize to the first focusable element
+    this.focusedEl &#x3D; this.focusableEls[0];
+    this.focusedEl.focus();
+    this.fullSizeViewModal.config.backdrop &#x3D; true;
+
+  }
+
+  @HostListener(&#x27;window:keydown&#x27;, [&#x27;$event&#x27;])
+  handleKeyDown(event: KeyboardEvent) {
+    // Check that the modal is open
+    if (!this.closed) {
+      // Handle tabbing
+      if (event.key &#x3D;&#x3D;&#x3D; &#x27;Tab&#x27;) {
+        // Prevent usual tabbing, manually set focus
+        event.preventDefault();
+        if (event.shiftKey) {
+          this.handleTabBackwards();
+        } else {
+          this.handleTab();
+        }
+
+      // Stop users from being able to escape the modal
+      } else if (event.key &#x3D;&#x3D;&#x3D; &#x27;Escape&#x27;) {
+        event.preventDefault();
       }
-
     }
+  }
 
-    /**
-     * Call this method to display the modal.
-     */
-    showFullSizeView() {
-        this.fullSizeViewModal.config.keyboard &#x3D; false;
-        this.fullSizeViewModal.show();
+  // Move to next focusable element, if at last element, move to first
+  handleTab() {
+    const position &#x3D; this.focusableEls.indexOf(this.focusedEl);
+    if (position &#x3D;&#x3D;&#x3D; this.focusableEls.length - 1) {
+      this.focusedEl &#x3D; this.focusableEls[0];
+    } else {
+      this.focusedEl &#x3D; this.focusableEls[position + 1];
     }
+    this.focusedEl.focus();
+  };
 
-    continue() {
-        this.accept.emit(true);
-        this.fullSizeViewModal.hide();
-        this.close.emit();
-        this._onChange(true);
-        this._onTouched();
+  // Move to next focusable element, if at last element, move to first
+  handleTabBackwards() {
+    const position &#x3D; this.focusableEls.indexOf(this.focusedEl);
+    if (position &#x3D;&#x3D;&#x3D; 0) {
+      this.focusedEl &#x3D; this.focusableEls[this.focusableEls.length - 1];
+    } else {
+      this.focusedEl &#x3D; this.focusableEls[position - 1];
     }
+    this.focusedEl.focus();
+  };
 
-    // Api callout to get the message from the Rapid code
-    sendSpaEnvServer(rapidResponseCode: string): Observable&lt;any&gt; {
-        this._headers &#x3D; new HttpHeaders({
-            &#x27;SPA_ENV_NAME&#x27;: rapidResponseCode
-        });
-        return this.post&lt;any&gt;(this.url, null);
+  /**
+   * Call this method to display the modal.
+   */
+  showFullSizeView() {
+      this.fullSizeViewModal.config.keyboard &#x3D; false;
+      this.fullSizeViewModal.show();
+  }
+
+  continue() {
+      this.accept.emit(true);
+      this.fullSizeViewModal.hide();
+      this.close.emit();
+      this.closed &#x3D; true;
+      this._onChange(true);
+      this._onTouched();
+  }
+
+  // Api callout to get the message from the Rapid code
+  sendSpaEnvServer(rapidResponseCode: string): Observable&lt;any&gt; {
+      this._headers &#x3D; new HttpHeaders({
+          &#x27;SPA_ENV_NAME&#x27;: rapidResponseCode
+      });
+      return this.post&lt;any&gt;(this.url, null);
+  }
+
+  protected handleError(error: HttpErrorResponse) {
+    // console.log(&#x27;handleError&#x27;, JSON.stringify(error));
+    if (error.error instanceof ErrorEvent) {
+        // Client-side / network error occured
+        console.error(&#x27;MspMaintenanceService error: &#x27;, error.error.message);
+    } else {
+        // The backend returned an unsuccessful response code
+        console.error(&#x60;MspMaintenanceService Backend returned error code: ${error.status}.  Error body: ${error.error}&#x60;);
     }
+    // this.logService.log({event: &#x27;error&#x27;, key: &#x27;Cannot get maintenance flag from spa-env-server&#x27;});
 
-    protected handleError(error: HttpErrorResponse) {
-      if (error.error instanceof ErrorEvent) {
-          // Client-side / network error occured
-          console.error(&#x27;MspMaintenanceService error: &#x27;, error.error.message);
-      } else {
-          // The backend returned an unsuccessful response code
-          console.error(&#x60;MspMaintenanceService Backend returned error code: ${error.status}.  Error body: ${error.error}&#x60;);
-      }
-
-      // A user facing erorr message /could/ go here; we shouldn&#x27;t log dev info through the throwError observable
-      return of(error);
+    // A user facing erorr message /could/ go here; we shouldn&#x27;t log dev info through the throwError observable
+    return of(error);
   }
 
 
@@ -743,10 +803,20 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
     this._onTouched &#x3D; fn;
   }
 
+  // TODO: Remove this unused but mandatory method
   writeValue(value: any): void {}
 
   isContinueDisabled(): boolean {
-    return !this.agreeCheck || this.disableContinue;
+    const disabled &#x3D; !this.agreeCheck || this.disableContinue;
+
+    const hasTabbableContinue &#x3D; this.focusableEls ? this.focusableEls.indexOf(this.continueButtonRef.nativeElement) !&#x3D;&#x3D; -1 : false;
+
+    // If it is tabbable but no longer should be, remove it
+    if (hasTabbableContinue &amp;&amp; disabled) this.focusableEls.pop();
+    //  If it&#x27;s not tabbable but it now should be, add it
+    if (!hasTabbableContinue &amp;&amp; !disabled) this.focusableEls.push(this.continueButtonRef.nativeElement);
+
+    return disabled;
   }
 }
 </code></pre>

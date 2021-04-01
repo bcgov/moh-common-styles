@@ -1,10 +1,22 @@
-# [4.0.0-alpha.2](https://github.com/bcgov/moh-common-styles/compare/v3.3.5...v4.0.0-alpha.2) "moh-common-lib" (2021-03-31)
+# [4.0.0-alpha.3](https://github.com/bcgov/moh-common-styles/compare/v3.3.5...v4.0.0-alpha.3) "moh-common-lib" (2021-04-01)
 
 
 ### Bug Fixes
 
+* DEA11Y-15: Made the Continue word darker ([6b01c2a](https://github.com/bcgov/moh-common-styles/commit/6b01c2a))
 * **access:** landmark issue with aside ([4a60bd8](https://github.com/bcgov/moh-common-styles/commit/4a60bd8))
+* a11y changes for date fields ([82a814f](https://github.com/bcgov/moh-common-styles/commit/82a814f))
+* add missing or fix existing required flags ([02c46a8](https://github.com/bcgov/moh-common-styles/commit/02c46a8))
+* DEA11LY-19: Remove tabindex from fileuploader icon ([0cdde7d](https://github.com/bcgov/moh-common-styles/commit/0cdde7d))
+* DEA11Y-1: remove unneeded conflicting role ([ee26dfc](https://github.com/bcgov/moh-common-styles/commit/ee26dfc))
+* DEA11Y-15-update: Updated style for continue ([0deaebc](https://github.com/bcgov/moh-common-styles/commit/0deaebc))
+* DEA11Y-23: Fix aria-labelledby use ([57556d5](https://github.com/bcgov/moh-common-styles/commit/57556d5))
+* DEA11Y-29: Added aria-label for country and province code ([a6c14d8](https://github.com/bcgov/moh-common-styles/commit/a6c14d8))
+* DEA11Y-8: return tabbing to normal after modal close ([34ebdd0](https://github.com/bcgov/moh-common-styles/commit/34ebdd0))
+* disable tabbing out of modals ([e7816aa](https://github.com/bcgov/moh-common-styles/commit/e7816aa))
+* fix a11y issues with province and country dropdowns ([e43d472](https://github.com/bcgov/moh-common-styles/commit/e43d472))
 * force render to fix chrome issue ([8792f4d](https://github.com/bcgov/moh-common-styles/commit/8792f4d))
+* move skip to content to top of tab queue ([49447c3](https://github.com/bcgov/moh-common-styles/commit/49447c3))
 * moved validation to blur ([6484cc5](https://github.com/bcgov/moh-common-styles/commit/6484cc5))
 * moved validation to blur ([205b5cb](https://github.com/bcgov/moh-common-styles/commit/205b5cb))
 
@@ -16,6 +28,17 @@
 * remove unused component (button-group) ([49c159e](https://github.com/bcgov/moh-common-styles/commit/49c159e))
 * remove unused component (datepicker) ([857f483](https://github.com/bcgov/moh-common-styles/commit/857f483))
 * remove unused component (password) ([122ff41](https://github.com/bcgov/moh-common-styles/commit/122ff41))
+* removed moment ([161698a](https://github.com/bcgov/moh-common-styles/commit/161698a))
+
+
+### Features
+
+* DEA11Y-44: 'Add' tab stop in fileuploader ([6ed347a](https://github.com/bcgov/moh-common-styles/commit/6ed347a))
+
+
+### Styles
+
+* change label to button, adjust style for a11y ([2a6bc7d](https://github.com/bcgov/moh-common-styles/commit/2a6bc7d))
 
 
 

@@ -720,34 +720,23 @@ export class HeaderComponent implements OnInit {
     </div>
 
     <div class="tab-pane fade " id="c-templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;header aria-label&#x3D;&quot;Header&quot;&gt;
+        <pre class="line-numbers"><code class="language-html">&lt;header&gt;
   &lt;div class&#x3D;&quot;container-fluid header-container d-flex justify-content-between align-items-center flex-wrap&quot;&gt;
     &lt;div class&#x3D;&#x27;d-flex flex-wrap&#x27;&gt;
-      &lt;a href&#x3D;&quot;http://www2.gov.bc.ca/&quot; tabindex&#x3D;&quot;0&quot;&gt;
+      &lt;a [href]&#x3D;&#x27;skipLinkPath&#x27; class&#x3D;&#x27;skip-to-content order-3&#x27;&gt;Skip to main content&lt;/a&gt;
+      &lt;a href&#x3D;&quot;http://www2.gov.bc.ca/&quot;&gt;
         &lt;img class&#x3D;&quot;header-logo&quot;
-             tabindex&#x3D;&quot;-1&quot; alt&#x3D;&quot;B.C. Government Logo&quot;
+             tabindex&#x3D;&quot;-1&quot;
+             alt&#x3D;&quot;B.C. Government Logo&quot;
              src&#x3D;&quot;{{logoSrc}}&quot;&gt;
         &lt;img *ngIf&#x3D;&quot;shouldShowPrintLogo&quot;
              class&#x3D;&quot;header-logo-print&quot;
-             tabindex&#x3D;&quot;-1&quot; alt&#x3D;&quot;B.C. Government Print Logo&quot;
+             tabindex&#x3D;&quot;-1&quot;
+             alt&#x3D;&quot;B.C. Government Print Logo&quot;
              src&#x3D;&quot;{{printLogoSrc}}&quot;&gt;
       &lt;/a&gt;
       &lt;span class&#x3D;&quot;title px-2 mt-1&quot;&gt;{{serviceName}}&lt;/span&gt;
-      &lt;a [href]&#x3D;&#x27;skipLinkPath&#x27; class&#x3D;&#x27;skip-to-content&#x27;&gt;Skip to main content&lt;/a&gt;
     &lt;/div&gt;
-&lt;!--
-    &lt;div class&#x3D;&#x27;d-flex&#x27;&gt;
-      &lt;a href&#x3D;&quot;#&quot; class&#x3D;&#x27;btn btn-outline-info mx-2&#x27; role&#x3D;&quot;button&quot;&gt;
-        &lt;i class&#x3D;&quot;fa fa-comment&quot; aria-hidden&#x3D;&quot;true&quot;&gt;&lt;/i&gt;
-      &lt;/a&gt;
-      &lt;a href&#x3D;&quot;#&quot; class&#x3D;&#x27;btn btn-outline-info mx-2&#x27; role&#x3D;&quot;button&quot;&gt;
-        &lt;i class&#x3D;&quot;fa fa-question-circle&quot; aria-hidden&#x3D;&quot;true&quot;&gt;&lt;/i&gt;
-      &lt;/a&gt;
-      &lt;a href&#x3D;&quot;#&quot; class&#x3D;&#x27;btn btn-outline-info mx-2&#x27; role&#x3D;&quot;button&quot;&gt;
-        &lt;i class&#x3D;&quot;fa fa-user&quot; aria-hidden&#x3D;&quot;true&quot;&gt;&lt;/i&gt;
-      &lt;/a&gt;
-  &lt;/div&gt;
---&gt;
   &lt;/div&gt;
 &lt;/header&gt;
 </code></pre>
@@ -779,7 +768,7 @@ export class HeaderComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><header aria-label="Header">  <div class="container-fluid header-container d-flex justify-content-between align-items-center flex-wrap">    <div class=\'d-flex flex-wrap\'>      <a href="http://www2.gov.bc.ca/" tabindex="0">        <img class="header-logo"             tabindex="-1" alt="B.C. Government Logo"             src="{{logoSrc}}">        <img *ngIf="shouldShowPrintLogo"             class="header-logo-print"             tabindex="-1" alt="B.C. Government Print Logo"             src="{{printLogoSrc}}">      </a>      <span class="title px-2 mt-1">{{serviceName}}</span>      <a [href]=\'skipLinkPath\' class=\'skip-to-content\'>Skip to main content</a>    </div><!--    <div class=\'d-flex\'>      <a href="#" class=\'btn btn-outline-info mx-2\' role="button">        <i class="fa fa-comment" aria-hidden="true"></i>      </a>      <a href="#" class=\'btn btn-outline-info mx-2\' role="button">        <i class="fa fa-question-circle" aria-hidden="true"></i>      </a>      <a href="#" class=\'btn btn-outline-info mx-2\' role="button">        <i class="fa fa-user" aria-hidden="true"></i>      </a>  </div>-->  </div></header></div>'
+        var COMPONENT_TEMPLATE = '<div><header>  <div class="container-fluid header-container d-flex justify-content-between align-items-center flex-wrap">    <div class=\'d-flex flex-wrap\'>      <a [href]=\'skipLinkPath\' class=\'skip-to-content order-3\'>Skip to main content</a>      <a href="http://www2.gov.bc.ca/">        <img class="header-logo"             tabindex="-1"             alt="B.C. Government Logo"             src="{{logoSrc}}">        <img *ngIf="shouldShowPrintLogo"             class="header-logo-print"             tabindex="-1"             alt="B.C. Government Print Logo"             src="{{printLogoSrc}}">      </a>      <span class="title px-2 mt-1">{{serviceName}}</span>    </div>  </div></header></div>'
     var COMPONENTS = [{'name': 'AccordionCommonComponent', 'selector': 'common-accordion'},{'name': 'AddressComponent', 'selector': 'common-address'},{'name': 'AddressValidatorComponent', 'selector': 'common-address-validator'},{'name': 'ButtonComponent', 'selector': 'common-button'},{'name': 'CaptchaComponent', 'selector': 'common-captcha'},{'name': 'CheckboxComponent', 'selector': 'common-checkbox'},{'name': 'CityComponent', 'selector': 'common-city'},{'name': 'ConfirmTemplateComponent', 'selector': 'common-confirm-template'},{'name': 'ConsentModalComponent', 'selector': 'common-consent-modal'},{'name': 'CoreBreadcrumbComponent', 'selector': 'common-core-breadcrumb'},{'name': 'CountryComponent', 'selector': 'common-country'},{'name': 'DateComponent', 'selector': 'common-date'},{'name': 'DropdownComponent', 'selector': 'common-dropdown'},{'name': 'EmailComponent', 'selector': 'common-email'},{'name': 'ErrorContainerComponent', 'selector': 'common-error-container'},{'name': 'FileUploaderComponent', 'selector': 'common-file-uploader'},{'name': 'FormActionBarComponent', 'selector': 'common-form-action-bar'},{'name': 'FormSubmitBarComponent', 'selector': 'common-form-submit-bar'},{'name': 'GeocoderInputComponent', 'selector': 'common-geocoder-input'},{'name': 'HeaderComponent', 'selector': 'common-header'},{'name': 'NameComponent', 'selector': 'common-name'},{'name': 'PageFrameworkComponent', 'selector': 'common-page-framework'},{'name': 'PageSectionComponent', 'selector': 'common-page-section'},{'name': 'PhnComponent', 'selector': 'common-phn'},{'name': 'PhoneNumberComponent', 'selector': 'common-phone-number'},{'name': 'PostalCodeComponent', 'selector': 'common-postal-code'},{'name': 'ProvinceComponent', 'selector': 'common-province'},{'name': 'RadioComponent', 'selector': 'common-radio'},{'name': 'SampleModalComponent', 'selector': 'common-sample-modal'},{'name': 'SinComponent', 'selector': 'common-sin'},{'name': 'StreetComponent', 'selector': 'common-street'},{'name': 'ThumbnailComponent', 'selector': 'common-thumbnail'},{'name': 'ToggleComponent', 'selector': 'common-toggle'},{'name': 'WizardProgressBarComponent', 'selector': 'common-wizard-progress-bar'},{'name': 'XiconButtonComponent', 'selector': 'common-xicon-button'}];
     var DIRECTIVES = [{'name': 'DateFieldFormatDirective', 'selector': '[commonDateFieldFormat]'},{'name': 'DuplicateCheckDirective', 'selector': '[commonDuplicateCheck]'},{'name': 'ValidateBcPostalDirective', 'selector': '[commonValidateBcPostal]'},{'name': 'ValidateCityDirective', 'selector': '[commonValidateCity]'},{'name': 'ValidateNameDirective', 'selector': '[commonValidateName]'},{'name': 'ValidatePostalcodeDirective', 'selector': '[commonValidatePostalcode]'},{'name': 'ValidateRegionDirective', 'selector': '[commonValidateRegion]'},{'name': 'ValidateStreetDirective', 'selector': '[commonValidateStreet]'}];
     var ACTUAL_COMPONENT = {'name': 'HeaderComponent'};
