@@ -4,8 +4,6 @@ import { format, startOfToday, differenceInYears } from 'date-fns';
 
 /**
  * Person, each project can extend this person class
- * NPM package dependencies:
- *  a) moment
  */
 export class Person extends Base {
 

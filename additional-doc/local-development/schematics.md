@@ -60,6 +60,5 @@ To create a new schematic, make sure to run the command from the right folder.  
 - [ ] Configurable project name, e.g. change page title.
 - [ ] Split moh-start schematic into multiple schematics, de-compose them. Will make path to future 'update' calls simpler (update-scss, update-assets, update-dependencies). Moh-start should just call each of them.
 - [ ] Convert moh-start to use templates instead of base64 encoding (like version-js does)
-- [ ] Add momentjs as dependency to package.json
 - [ ] Add NgForm and other modules to appropriate angular modules
 - [ ] angular.json - add preserveSymlinks to new projects

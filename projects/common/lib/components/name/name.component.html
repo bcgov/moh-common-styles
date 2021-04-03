@@ -8,6 +8,7 @@
        (blur)="onBlur( $event )"
        [disabled]="disabled"
        [attr.maxlength]="maxlength"
+       [required]="required"
        autocomplete="off" />
 <!-- Error messages for component -->
 <common-error-container [displayError]="controlDir && !disabled && (controlDir.dirty || controlDir.touched) && controlDir?.errors">

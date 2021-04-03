@@ -23,6 +23,7 @@ export class EmailComponent extends AbstractFormControl implements OnInit {
   @Input() label: string = 'Email';
   @Input() maxlength: string = '255';
   @Input() labelforId: string = 'email_' + this.objectId;
+  @Input() required: boolean = false;
 
   @Input()
   set value( val: string ) {

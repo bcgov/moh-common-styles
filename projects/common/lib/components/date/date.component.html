@@ -2,19 +2,19 @@
   <legend class="date--legend">{{label}}</legend>
   <ng-container *ngTemplateOutlet="instructionText"></ng-container>
   <div class="date-row">
-    <label class="visuallyhidden" for="{{monthLabelforId}}">Month</label>
     <select class="form-control monthSelect"
             id="{{monthLabelforId}}"
             name="{{monthLabelforId}}"
             [value]="_month"
             (blur)="onBlurMonth($event.target.value)"
-            [disabled]='disabled'>
+            [disabled]='disabled'
+            [required]="isRequired"
+            aria-label="Month">
       <!-- We show the blank option so the user can clear out their data.-->
       <option value="null" label="Month" selected [disabled]='isRequired'></option>
       <option *ngFor="let month of monthList; let i = index;" [value]="i">{{month}}</option>
     </select>
 
-    <label class="visuallyhidden" for="{{dayLabelforId}}">Day</label>
     <input type="number"
            class="form-control dayInput"
            id="{{dayLabelforId}}"
@@ -24,10 +24,12 @@
            (blur)="onBlurDay($event.target.value)"
            commonDateFieldFormat
            [disabled]='disabled'
+           [required]="isRequired"
            maxlength="2"
+           step="any"
+           aria-label="Day"
            autocomplete="off"/>
 
-    <label class="visuallyhidden" for="{{yearLabelforId}}">Year</label>
     <input type="number"
            class="form-control yearInput"
            id="{{yearLabelforId}}"
@@ -37,7 +39,10 @@
            (blur)="onBlurYear($event.target.value)"
            commonDateFieldFormat
            [disabled]='disabled'
+           [required]="isRequired"
            maxlength="4"
+           step="any"
+           aria-label="Year"
            autocomplete="off"/>
 
   </div>

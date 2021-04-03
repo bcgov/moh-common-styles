@@ -5,22 +5,22 @@ common-file-uploader {
   .color-body {
     color: $body-color;
   }
-  
+
   .description {
     font-weight: 400;
   }
-  
+
   .dropzone {
     border: 2px dashed lightgrey;
     margin-bottom: 10px;
     border-radius: 8px;
     // height: 15%;
     padding: 2em 4em;
-  
+
     &.has-error {
       border-color: $color-danger;
     }
-  
+
     .instruction-zone {
       margin: 10px 5px 5px;
       text-align: left;
@@ -29,28 +29,31 @@ common-file-uploader {
       }
       .file-upload-label {
         color: $body-color;
-      }  
+        background: transparent;
+        border: none;
+        text-align: left;
+      }
       .file-upload-label:hover {
         text-decoration: none;
         cursor: pointer;
-  
+
       }
     }
-  
+
     .preview-zone {
       display:flex;
       flex-wrap: wrap;
       justify-content: left;
       align-items: left;
-      
+
       .preview-item {
         position:relative;
-        height: 120px; 
+        height: 120px;
         text-align: left;
         margin-left: 6rem;
         margin-bottom: 1.5rem;
-  
-  
+
+
         /* Upload Icon CSS*/
         .icon-upload{
           opacity: 0.3;
@@ -60,7 +63,7 @@ common-file-uploader {
             opacity: 0.6;
           }
         }
-  
+
         .text-upload{
           // text-decoration: underline;
           &:hover{
@@ -68,12 +71,12 @@ common-file-uploader {
           }
         }
       }
-  
+
       .error-style {
         color:red;
         font-weight: bold;
       }
-      
+
     }
     /* Hide take photo CSS*/
     .mobileShow{display:none;}
@@ -85,7 +88,7 @@ common-file-uploader {
 
 // COMMON-THUMBNAIL
 
-common-thumbnail .thumbnail-container, 
+common-thumbnail .thumbnail-container,
 .common-thumbnail .thumbnail-container {
   transition: 0.3s;
   transform: translateY(0);
@@ -96,7 +99,7 @@ common-thumbnail .thumbnail-container,
 
     &:hover {
       cursor: -webkit-zoom-in;
-      cursor: zoom-in;  
+      cursor: zoom-in;
     }
   }
 
@@ -138,8 +141,8 @@ common-thumbnail .thumbnail-container,
     margin: 0 2px 0 2px;
     color: $color-danger;
     padding: 0.3em;
-    transition: 0.3s;  
-  
+    transition: 0.3s;
+
     a {
       text-decoration: none;
     }

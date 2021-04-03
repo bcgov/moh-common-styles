@@ -1,17 +1,17 @@
 <div class="dropzone" #dropZone [ngClass]='{"has-error": fileControl?.touched && fileControl?.errors?.required}'>
 
   <div class="instruction-zone d-flex align-items-center flex-wrap flex-sm-nowrap flex-column flex-sm-row">
-    <i class="fa fa-cloud-upload fa-4x d-inline-block upload-icon" aria-hidden="true" #imagePlaceholderRef tabindex="0"></i>
+    <i class="fa fa-cloud-upload fa-4x d-inline-block upload-icon" aria-hidden="true" #imagePlaceholderRef></i>
 
     <input type="file" id="fileUploadBrowse-{{id}}"
             #browseFileRef ngModel accept="image/*,application/pdf" style="display:none;"
             tabindex="0" multiple name='fileUploadBrowse-{{id}}'
             [required]='required && images && images.length === 0'
             autocomplete="off"/>
-    <label for="fileUploadBrowse-{{id}}" class="file-upload-label d-inline-block ml-3" #selectFileLabel tabindex="0">
+    <button class="file-upload-label d-inline-block ml-3" #selectFileLabel>
       <span class='h2 color-body'>Select a file</span>
       <span class='d-block description'>{{ instructionText }}</span>
-    </label>
+    </button>
 
     <!-- TODO - STYLE/ENABLE/TEST THE BELOW FOR MOBILE ONLY! Also need to test on a phone after deploying to OpenShift-->
     <!-- <span class="d-block d-sm-none">or</span>
@@ -41,7 +41,7 @@
           <div class="image-thumbnail demo-thumbnail">
             <i class="fa fa-plus fa-3x"></i>
           </div>
-          <div class="action-strip text-primary">
+          <div class="action-strip text-primary" tabindex="0">
             Add
           </div>
         </div>

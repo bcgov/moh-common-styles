@@ -681,7 +681,7 @@ export class FileUploaderComponent extends Base
         // // create log entry
         // const log: LogEntry = new LogEntry();
         // log.applicationId = applicationId;
-        // const now = moment();
+        // const now = new Date();
         // log.mspTimestamp = now.toISOString();
         // log.applicationPhase = title + ':  mspImageId: ' + mspImage.id
         //     + '  mspImageUuid: ' + mspImage.uuid

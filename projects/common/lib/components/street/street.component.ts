@@ -20,6 +20,7 @@ export class StreetComponent extends AbstractFormControl implements OnInit  {
   @Input() labelforId: string = 'street_' + this.objectId;
   @Input() useGeoCoder: boolean = false;
   @Input() placeholder: string = 'Street name';
+  @Input() required: boolean = false;
 
   @Input()
   set value( val: string ) {
