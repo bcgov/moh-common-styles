@@ -1,4 +1,8 @@
-# [4.0.0-alpha.3](https://github.com/bcgov/moh-common-styles/compare/v3.3.5...v4.0.0-alpha.3) "moh-common-lib" (2021-04-01)
+# Unreleased "moh-common-lib" (2021-04-04)
+
+
+
+# [4.0.0](https://github.com/bcgov/moh-common-styles/compare/v3.3.5...v4.0.0) "moh-common-lib" (2021-04-04)
 
 
 ### Bug Fixes
@@ -29,6 +33,11 @@
 * remove unused component (datepicker) ([857f483](https://github.com/bcgov/moh-common-styles/commit/857f483))
 * remove unused component (password) ([122ff41](https://github.com/bcgov/moh-common-styles/commit/122ff41))
 * removed moment ([161698a](https://github.com/bcgov/moh-common-styles/commit/161698a))
+
+
+### Documentation
+
+* updates ([3e09eac](https://github.com/bcgov/moh-common-styles/commit/3e09eac))
 
 
 ### Features
