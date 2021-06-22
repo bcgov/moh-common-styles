@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter, Optional, Self } from '@angular/core';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
-
 import { AbstractFormControl } from '../../models/abstract-form-control';
 import { ErrorMessage, LabelReplacementTag } from '../../models/error-message.interface';
 
@@ -34,7 +33,8 @@ export class CityComponent extends AbstractFormControl implements OnInit, Contro
   _defaultErrMsg: ErrorMessage = {
     required: LabelReplacementTag + ' is required.',
     invalidChar: LabelReplacementTag + ' must contain letters and may include numbers and special characters ' +
-                 'such as hyphens, periods, apostrophes and blank characters.'
+                 'such as hyphens, periods, apostrophes and blank characters.',
+    maxlength: LabelReplacementTag + ' exceeds the maximum number of allowable characters.'
   };
 
   constructor( @Optional() @Self() public controlDir: NgControl ) {

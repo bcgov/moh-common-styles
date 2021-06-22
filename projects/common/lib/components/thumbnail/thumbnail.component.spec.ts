@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { ThumbnailComponent } from './thumbnail.component';
-import {ModalModule} from 'ngx-bootstrap/modal';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 describe('ThumbnailComponent', () => {
 

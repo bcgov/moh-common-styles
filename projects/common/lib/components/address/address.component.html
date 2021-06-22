@@ -1,8 +1,8 @@
 <div class="form-group">
-  <div class="row"
-       *ngIf="!useAddressValidator">
+  <div class="row">
     <div [ngClass]="{'col-11': allowExtralines, 'col-12': !allowExtralines}">
-      <common-street name="street_{{objectId}}"
+      <common-street *ngIf="!useAddressValidator"
+                     name="street_{{objectId}}"
                      label="{{addrLabels.address1}}"
                      [ngModel]="addr?.addressLine1"
                      (ngModelChange)="setStreetAddress($event)"
@@ -11,7 +11,22 @@
                      [disabled]="readOnlyFields.address"
                      [maxlength]="fieldMaxLengths.address"
                      commonValidateStreet></common-street>
+      <!-- Address Validator -->
+      <common-address-validator *ngIf="useAddressValidator"
+                                name="street_{{objectId}}"
+                                label="{{addrLabels.address1}}"
+                                [(ngModel)]="addr.addressLine1"
+                                (ngModelChange)="setStreetAddress($event)"
+                                [required]="isRequired"
+                                [disabled]="readOnlyFields.address"
+                                [maxlength]="fieldMaxLengths.address"
+                                [serviceUrl]="addressServiceUrl"
+                                (select)="selectSuggestedAddress($event)"
+                                [populateAddressOnSelect]="true"
+                                commonValidateStreet>
+      </common-address-validator>
     </div>
+    
     <div class="col-1"
          *ngIf='allowExtralines'>
       <div class="h-50"></div>
@@ -40,7 +55,6 @@
       commonValidateStreet>
     </common-address-validator>
   </div>
-
 </div>
 
 
@@ -94,7 +108,8 @@
 
 
 <div class="form-group col-sm-11 p-sm-0">
-  <common-city name="city_{{objectId}}"
+  <common-city #city
+               name="city_{{objectId}}"
                label="{{addrLabels.city}}"
                [ngModel]="addr?.city"
                (ngModelChange)="setCity($event)"

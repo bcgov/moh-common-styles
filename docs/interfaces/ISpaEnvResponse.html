@@ -521,7 +521,7 @@ maintenance.</p>
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { forwardRef, Component, EventEmitter, Input, Output, ViewChild, OnInit} from &#x27;@angular/core&#x27;;
-import {ModalDirective} from &#x27;ngx-bootstrap/modal&#x27;;
+import { ModalDirective } from &#x27;ngx-bootstrap/modal&#x27;;
 import { Observable, of } from &#x27;rxjs&#x27;;
 import { HttpClient, HttpHeaders, HttpErrorResponse } from &#x27;@angular/common/http&#x27;;
 import { Response } from &#x27;@angular/http&#x27;;
@@ -636,8 +636,6 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
     public spaEnvRes: ISpaEnvResponse &#x3D; {} as any;
     public maintenanceMessage: string;
 
-    // public maintenanceFlag: string ;
-
     // TODO: This should eventually be pulled out of the common library as it pertains to MSP-specific code.
     // tslint:disable-next-line:max-line-length
     private _applicationHeaderMap: Map&lt;string, string&gt; &#x3D; new Map([
@@ -651,12 +649,9 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
     public _onChange &#x3D; (_: any) &#x3D;&gt; {};
     public _onTouched &#x3D; () &#x3D;&gt; {};
 
-
     constructor(protected http: HttpClient,  private logService: CommonLogger) {
         super(http);
     }
-
-
 
     ngOnInit(): void {
       // Called after ngOnInit when the component&#x27;s or directive&#x27;s content has been initialized.
@@ -692,7 +687,6 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
     }
 
     protected handleError(error: HttpErrorResponse) {
-      // console.log(&#x27;handleError&#x27;, JSON.stringify(error));
       if (error.error instanceof ErrorEvent) {
           // Client-side / network error occured
           console.error(&#x27;MspMaintenanceService error: &#x27;, error.error.message);
@@ -700,7 +694,6 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
           // The backend returned an unsuccessful response code
           console.error(&#x60;MspMaintenanceService Backend returned error code: ${error.status}.  Error body: ${error.error}&#x60;);
       }
-      // this.logService.log({event: &#x27;error&#x27;, key: &#x27;Cannot get maintenance flag from spa-env-server&#x27;});
 
       // A user facing erorr message /could/ go here; we shouldn&#x27;t log dev info through the throwError observable
       return of(error);
@@ -713,7 +706,6 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
         this.sendSpaEnvServer(headerName)
                 .subscribe(response &#x3D;&gt; {
                     this.spaEnvRes &#x3D; &lt;ISpaEnvResponse&gt; response;
-                    // console.log(this.spaEnvRes);
                     // TODO: This should eventually be pulled out of the common library as it pertains to MSP-specific code.
                     if (this.spaEnvRes.SPA_ENV_ACL_MAINTENANCE_FLAG &#x3D;&#x3D;&#x3D; &#x27;true&#x27;) {
                         this.maintenanceFlag &#x3D; &#x27;true&#x27;;
@@ -733,7 +725,6 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
                     }
 
             }, (error: Response | any) &#x3D;&gt; {
-                // console.log(&#x27;Error when calling the MSP Maintenance: &#x27; + error);
                 this.logService.log({
                   event: &#x27;ACL - SPA Env System Error&#x27;,
                   success: false,
@@ -753,10 +744,7 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
     this._onTouched &#x3D; fn;
   }
 
-  writeValue(value: any): void {
-
-    //
-  }
+  writeValue(value: any): void {}
 
   isContinueDisabled(): boolean {
     return !this.agreeCheck || this.disableContinue;

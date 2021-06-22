@@ -1,4 +1,106 @@
-# Unreleased "moh-common-lib" (2020-10-06)
+# Unreleased "moh-common-lib" (2021-03-08)
+
+
+
+## [3.3.5](https://github.com/bcgov/moh-common-styles/compare/v3.3.4...v3.3.5) "moh-common-lib" (2021-03-08)
+
+
+### Bug Fixes
+
+* Update to address validator error message. ([36e9943](https://github.com/bcgov/moh-common-styles/commit/36e9943))
+
+
+
+## [3.3.4](https://github.com/bcgov/moh-common-styles/compare/v3.3.3...v3.3.4) "moh-common-lib" (2021-02-16)
+
+
+### Bug Fixes
+
+* Add maxlength error checking for city component. ([28d0baa](https://github.com/bcgov/moh-common-styles/commit/28d0baa))
+
+
+
+## [3.3.3](https://github.com/bcgov/moh-common-styles/compare/v3.3.2...v3.3.3) "moh-common-lib" (2021-02-10)
+
+
+### Bug Fixes
+
+* Address validator fixes. ([2c66603](https://github.com/bcgov/moh-common-styles/commit/2c66603))
+* Address validator unit tests. ([52d4663](https://github.com/bcgov/moh-common-styles/commit/52d4663))
+* fix under 25 character in address validator (multiline). ([23fb3a5](https://github.com/bcgov/moh-common-styles/commit/23fb3a5))
+* Fix unit tests for address-validator. ([b30b77a](https://github.com/bcgov/moh-common-styles/commit/b30b77a))
+* replace normalize function with IE11 friendly function ([7e58edc](https://github.com/bcgov/moh-common-styles/commit/7e58edc))
+* Updated address validator to accept "AddressLines" prop in response ([b9ec851](https://github.com/bcgov/moh-common-styles/commit/b9ec851))
+* Use empty string instead of null for address component. ([b62ece8](https://github.com/bcgov/moh-common-styles/commit/b62ece8))
+
+
+### Features
+
+* Add deburring function ([ef63041](https://github.com/bcgov/moh-common-styles/commit/ef63041))
+* Address validator with line breaking. ([44fd655](https://github.com/bcgov/moh-common-styles/commit/44fd655))
+
+
+
+## [3.3.2](https://github.com/bcgov/moh-common-styles/compare/v3.3.1...v3.3.2) "moh-common-lib" (2021-01-27)
+
+
+### Bug Fixes
+
+* add margin and padding ([4af00f9](https://github.com/bcgov/moh-common-styles/commit/4af00f9))
+* Fix address-service for non Canadian countries. ([be50982](https://github.com/bcgov/moh-common-styles/commit/be50982))
+
+
+
+## [3.3.1](https://github.com/bcgov/moh-common-styles/compare/v3.3.0...v3.3.1) "moh-common-lib" (2020-11-27)
+
+
+### Bug Fixes
+
+* enlarge checkbox, indent radio buttons ([1aa2f85](https://github.com/bcgov/moh-common-styles/commit/1aa2f85))
+* Force BC addresses on BC only cases. ([f127de3](https://github.com/bcgov/moh-common-styles/commit/f127de3))
+
+
+
+# [3.3.0](https://github.com/bcgov/moh-common-styles/compare/v3.2.5...v3.3.0) "moh-common-lib" (2020-11-24)
+
+
+### Bug Fixes
+
+* prevent submissions of SINs that start with 0 ([0cb7f9d](https://github.com/bcgov/moh-common-styles/commit/0cb7f9d))
+
+
+### Performance Improvements
+
+* cleanup imports, remove unused ([83d46c8](https://github.com/bcgov/moh-common-styles/commit/83d46c8))
+
+
+### Styles
+
+* align text and checkbox ([2c14de1](https://github.com/bcgov/moh-common-styles/commit/2c14de1))
+
+
+### Tests
+
+* add firefoxheadless for unit tests ([7d1f3ef](https://github.com/bcgov/moh-common-styles/commit/7d1f3ef))
+
+
+
+## [3.2.5](https://github.com/bcgov/moh-common-styles/compare/v3.2.4...v3.2.5) "moh-common-lib" (2020-10-30)
+
+
+### Bug Fixes
+
+* DEMCL-25: Fixed corrupted files breaking further uploads. ([0c89683](https://github.com/bcgov/moh-common-styles/commit/0c89683))
+
+
+### Features
+
+* Specific address data to `onSelect` in `AddressValidatorComponent` ([7ff6323](https://github.com/bcgov/moh-common-styles/commit/7ff6323))
+
+
+### Styles
+
+* DEMCL-26: Adjust date label for month ([4649751](https://github.com/bcgov/moh-common-styles/commit/4649751))
 
 
 
@@ -108,6 +210,9 @@
 
 ### Tests
 
+* clean up code ([a1f59e2](https://github.com/bcgov/moh-common-styles/commit/a1f59e2))
+* fix phn unit tests ([6347426](https://github.com/bcgov/moh-common-styles/commit/6347426))
+* fix test to use helpers ([1cec5eb](https://github.com/bcgov/moh-common-styles/commit/1cec5eb))
 * update test helpers and tests ([127d980](https://github.com/bcgov/moh-common-styles/commit/127d980))
 
 

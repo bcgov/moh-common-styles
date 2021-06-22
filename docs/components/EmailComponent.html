@@ -1845,7 +1845,7 @@
   Self,
   Output,
   EventEmitter,
-  OnInit} from &#x27;@angular/core&#x27;;
+  OnInit } from &#x27;@angular/core&#x27;;
 import { NgControl, ValidationErrors } from &#x27;@angular/forms&#x27;;
 import { AbstractFormControl } from &#x27;../../models/abstract-form-control&#x27;;
 import { ErrorMessage, LabelReplacementTag } from &#x27;../../models/error-message.interface&#x27;;
@@ -1922,12 +1922,9 @@ export class EmailComponent extends AbstractFormControl implements OnInit {
 
     if ( this.email ) {
 
-      // console.log( &#x27;email: &#x27;, this.email );
       let result &#x3D; this._formatCriteria.test( this.email );
-      // console.log( &#x27;formatCriteria: &#x27;, result );
       if ( result ) {
         result &#x3D; this._asciiPrintable.test( this.email );
-        // console.log( &#x27;asciiPrintable: &#x27;, result );
         return result ? null : { invalidChars: true };
       }
       return { invalidEmail: true };

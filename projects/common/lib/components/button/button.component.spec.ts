@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ButtonComponent } from './button.component';
-import {FormsModule, NgForm} from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 
 describe('ButtonComponent', () => {
   let component: ButtonComponent;

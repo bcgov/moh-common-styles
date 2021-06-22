@@ -44,12 +44,12 @@ export function createTestingModule<T>( cmp: Type<T>,
 }
 
 
-export function getDebugElement( fixture: ComponentFixture<any>, componentHtml: string, name: string = null ) {
+export function getDebugElement( fixture: ComponentFixture<any>, componentHtml: string, name: string = null ): DebugElement {
   const _selector =  name ? componentHtml + '[name=\"' + name + '\"]' : componentHtml;
   return fixture.debugElement.query( By.css( _selector ) );
 }
 
-export function getInputDebugElement( de: DebugElement, name: string ) {
+export function getInputDebugElement( de: DebugElement, name: string ): DebugElement {
   let _de = de.query( By.css( 'input[name=\"' + name + '\"]' ) );
   if ( !_de ) {
 
@@ -59,27 +59,28 @@ export function getInputDebugElement( de: DebugElement, name: string ) {
   return _de;
 }
 
-export function getSelectDebugElement( de: DebugElement, name: string ) {
+export function getSelectDebugElement( de: DebugElement, name: string ): DebugElement {
   return de.query( By.css( 'select[name=\"' + name + '\"]' ) );
 }
 
-export function getDebugLegend( de: DebugElement ) {
+export function getDebugLegend( de: DebugElement ): string {
   const _de = de.query( By.css( 'legend' ) );
   return _de ? _de.nativeElement.textContent : null;
 }
 
-export function getDebugInlineError( de: DebugElement ) {
+export function getDebugInlineError( de: DebugElement ): string {
   const _de = de.query( By.css(  'common-error-container' ) );
   return _de ? _de.nativeElement.textContent : null;
 }
 
-export function getDebugLabel( de: DebugElement, name: string ) {
+export function getDebugLabel( de: DebugElement, name: string ): string {
   const _de = de.query( By.css( 'label[for=\"' + name + '\"]' ) );
   return _de ? _de.nativeElement.textContent : null;
 }
 
-export function setInput( de: DebugElement, value: any ) {
-  const el = de.nativeElement;
+export function setInput( de: DebugElement, value: any, labelName: string = null ) {
+  const input = getInputDebugElement( de, (labelName ? labelName : de.componentInstance.labelforId ) );
+  const el = input.nativeElement;
   el.focus();
   el.value = value;
   el.dispatchEvent(new Event('input'));
@@ -87,16 +88,13 @@ export function setInput( de: DebugElement, value: any ) {
   el.dispatchEvent(new Event('blur'));
 }
 
-
 // Value of the option
-export function setSelect( de: DebugElement, value: any ) {
-  const el = de.nativeElement;
+export function setSelect( de: DebugElement, value: any, labelName: string = null ) {
+  const select = getSelectDebugElement( de, (labelName ? labelName : de.componentInstance.labelforId ) );
+  const el = select.nativeElement;
   el.focus();
   el.value = value;
+  el.dispatchEvent(new Event('change'));
   el.dispatchEvent(new Event('blur'));
 }
-
-
-
-
 

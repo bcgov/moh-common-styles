@@ -214,24 +214,14 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
       this._onTouched();
   }
 
-  // Api callout to get the message from the Rapid code
-  sendSpaEnvServer(rapidResponseCode: string): Observable<any> {
-      this._headers = new HttpHeaders({
-          'SPA_ENV_NAME': rapidResponseCode
-      });
-      return this.post<any>(this.url, null);
-  }
-
-  protected handleError(error: HttpErrorResponse) {
-    // console.log('handleError', JSON.stringify(error));
-    if (error.error instanceof ErrorEvent) {
-        // Client-side / network error occured
-        console.error('MspMaintenanceService error: ', error.error.message);
-    } else {
-        // The backend returned an unsuccessful response code
-        console.error(`MspMaintenanceService Backend returned error code: ${error.status}.  Error body: ${error.error}`);
-    }
-    // this.logService.log({event: 'error', key: 'Cannot get maintenance flag from spa-env-server'});
+    protected handleError(error: HttpErrorResponse) {
+      if (error.error instanceof ErrorEvent) {
+          // Client-side / network error occured
+          console.error('MspMaintenanceService error: ', error.error.message);
+      } else {
+          // The backend returned an unsuccessful response code
+          console.error(`MspMaintenanceService Backend returned error code: ${error.status}.  Error body: ${error.error}`);
+      }
 
     // A user facing erorr message /could/ go here; we shouldn't log dev info through the throwError observable
     return of(error);
@@ -244,7 +234,6 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
         this.sendSpaEnvServer(headerName)
                 .subscribe(response => {
                     this.spaEnvRes = <ISpaEnvResponse> response;
-                    // console.log(this.spaEnvRes);
                     // TODO: This should eventually be pulled out of the common library as it pertains to MSP-specific code.
                     if (this.spaEnvRes.SPA_ENV_ACL_MAINTENANCE_FLAG === 'true') {
                         this.maintenanceFlag = 'true';
@@ -264,7 +253,6 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
                     }
 
             }, (error: Response | any) => {
-                // console.log('Error when calling the MSP Maintenance: ' + error);
                 this.logService.log({
                   event: 'ACL - SPA Env System Error',
                   success: false,
@@ -284,7 +272,6 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
     this._onTouched = fn;
   }
 
-  // TODO: Remove this unused but mandatory method
   writeValue(value: any): void {}
 
   isContinueDisabled(): boolean {

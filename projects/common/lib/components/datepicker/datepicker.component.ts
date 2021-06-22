@@ -1,9 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges, ViewChild, OnChanges, forwardRef } from '@angular/core';
 import { INgxMyDpOptions, IMyDate, NgxMyDatePickerDirective } from 'ngx-mydatepicker';
-import * as moment_ from 'moment';
-import { NgForm, ControlContainer, FormControl, NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+import { NgForm, ControlContainer, NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { Base } from '../../models/base';
-const moment = moment_;
 
 /**
  * Component NPM package dependencies:
@@ -125,6 +123,7 @@ export class DatepickerComponent extends Base implements OnInit, OnChanges, Cont
       day: date.getDate(),
     };
   }
+
   convertSimpleDateToDate(date: IMyDate): Date {
     // When ngx-mydatepicker is cleared, it returns {year: 0, month: 0, day: 0}
     if (date.year === 0) {
@@ -229,7 +228,6 @@ export class DatepickerComponent extends Base implements OnInit, OnChanges, Cont
       jsdate: obj
     };
   }
-
 }
 
 export enum DatepickerSizes {

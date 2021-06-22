@@ -7,7 +7,7 @@ import { createTestingModule,
   getDebugElement,
   getDebugLabel,
   setInput,
-  getInputDebugElement} from '../../../helpers/test-helpers';
+  getInputDebugElement } from '../../../helpers/test-helpers';
 import { fakeAsync } from '@angular/core/testing';
 
 @Component({
@@ -91,13 +91,11 @@ describe('EmailComponent', () => {
       );
 
       const de = getDebugElement( fixture, 'common-email', 'email1');
-      const input = getInputDebugElement( de, de.componentInstance.labelforId );
 
-      setInput( input, '234is@jest' );
+      setInput( de, '234is@jest' );
       tickAndDetectChanges( fixture );
       fixture.whenStable().then( () => {
         expect( de ).toBeTruthy();
-        // console.log( 'errors: ', de.componentInstance.controlDir.errors );
         expect( de.componentInstance.controlDir.hasError( 'invalidEmail' ) ).toBeTruthy();
       });
     }));
@@ -112,8 +110,7 @@ describe('EmailComponent', () => {
       );
 
       const de = getDebugElement( fixture, 'common-email', 'email1');
-      const input = getInputDebugElement( de, de.componentInstance.labelforId );
-      setInput( input, 'test@test.com' );
+      setInput( de, 'test@test.com' );
 
       tickAndDetectChanges( fixture );
       expect( de ).toBeTruthy();
@@ -166,8 +163,7 @@ describe('EmailComponent', () => {
       );
 
       const de = getDebugElement( fixture, 'common-email', 'email1');
-      const input = getInputDebugElement( de, de.componentInstance.labelforId );
-      setInput( input, 'testlklsd@ksdlkd' );
+      setInput( de, 'testlklsd@ksdlkd' );
 
       tickAndDetectChanges( fixture );
       fixture.whenStable().then( () => {
@@ -184,8 +180,7 @@ describe('EmailComponent', () => {
       );
 
       const de = getDebugElement( fixture, 'common-email', 'email1');
-      const input = getInputDebugElement( de, de.componentInstance.labelforId );
-      setInput( input, 'ttestlklsd@test.com' );
+      setInput( de, 'ttestlklsd@test.com' );
 
       tickAndDetectChanges( fixture );
       fixture.whenStable().then( () => {
@@ -202,9 +197,8 @@ describe('EmailComponent', () => {
       );
 
       const de = getDebugElement( fixture, 'common-email', 'email1');
-      const input = getInputDebugElement( de, de.componentInstance.labelforId );
       const nonPrintable = String.fromCharCode(0x00E4, 0x00F4);
-      setInput( input, 'testlklsd' + nonPrintable  + '@ksdlkd.com' );
+      setInput( de, 'testlklsd' + nonPrintable  + '@ksdlkd.com' );
 
       tickAndDetectChanges( fixture );
       fixture.whenStable().then( () => {

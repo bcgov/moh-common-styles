@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 /**
  *
@@ -26,11 +26,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './core-breadcrumb.component.html',
   styleUrls: ['./core-breadcrumb.component.scss']
 })
-export class CoreBreadcrumbComponent implements OnInit {
+export class CoreBreadcrumbComponent {
 
   constructor() { }
-
-  ngOnInit() {
-  }
-
 }

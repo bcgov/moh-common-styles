@@ -65,8 +65,6 @@ export class StreetComponent extends AbstractFormControl implements OnInit  {
   }
 
   ngOnInit() {
-    // console.log( 'GeoCoder: ', this.useGeoCoder );
-
     super.ngOnInit();
 
     // Set up for using GeoCoder
@@ -77,7 +75,6 @@ export class StreetComponent extends AbstractFormControl implements OnInit  {
       switchMap(searchPhrase => {
         return this.geocoderService.lookup(searchPhrase);
       }),
-      // tap(log => console.log('taplog', log)),
       catchError(() => this.onError())
     );
   }
@@ -104,7 +101,6 @@ export class StreetComponent extends AbstractFormControl implements OnInit  {
 
   // @HostListener('keyup', ['$event'])
   onKeyUp(event: KeyboardEvent): void {
-    // console.log( 'onKeyUp: ', event );
     /**
      * Filter out 'enter' and other similar keyboard events that can trigger
      * when user is selecting a typeahead option instead of entering new text.
@@ -125,7 +121,6 @@ export class StreetComponent extends AbstractFormControl implements OnInit  {
   }
 
   onSelect(event: TypeaheadMatch): void {
-    // console.log( 'onSelect: ', event.item );
     const data: GeoAddressResult = event.item;
     this.street = data.street;
 

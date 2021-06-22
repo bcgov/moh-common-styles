@@ -667,8 +667,8 @@ Use when form bar is part of the container</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="133"
-                            class="link-to-prism">projects/common/lib/models/container.ts:133</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="130"
+                            class="link-to-prism">projects/common/lib/models/container.ts:130</a></div>
                 </td>
             </tr>
 
@@ -807,19 +807,16 @@ export class Container {
         .subscribe(
           (async (defaultColor) &#x3D;&gt; {
             this.useDefaultColor &#x3D; await defaultColor;
-            // console.log( &#x27;defaultColor: &#x27;, this.useDefaultColor );
         })),
         this.containerService.$submitLabel
         .subscribe(
           (async (label) &#x3D;&gt; {
             this.submitLabel &#x3D; await label;
-            // console.log( &#x27;button label: &#x27;, this.submitLabel );
         })),
         this.containerService.$isLoading
         .subscribe(
           (async (isLoading) &#x3D;&gt; {
             this.isLoading &#x3D; await isLoading;
-            // console.log( &#x27;isLoading: &#x27;, this.isLoading );
         }))
       ];
     }

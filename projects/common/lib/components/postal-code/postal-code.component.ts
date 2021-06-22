@@ -22,13 +22,11 @@ export class PostalCodeComponent extends Base implements OnInit, ControlValueAcc
 
   @Input()
   set value( val: string ) {
-    // console.log( 'set value: ', val );
     if (val) {
       this.postalCode = val;
     }
   }
   get value() {
-    // console.log( 'get value: ', this.postalCode );
     return this.postalCode;
   }
 
@@ -62,7 +60,6 @@ export class PostalCodeComponent extends Base implements OnInit, ControlValueAcc
   }
 
   onValueChange( value: any ) {
-     //console.log( 'onValueChange: ', value, this.postalCode );
 
     if ( value !== this.postalCode ) { // IE fix when focus does not display required error
       this._onChange( value );

@@ -5,8 +5,9 @@ import { Component, OnInit, DebugElement } from '@angular/core';
 import { tickAndDetectChanges,
   createTestingModule,
   getDebugLegend,
-  getDebugElement} from '../../../helpers/test-helpers';
+  getDebugElement } from '../../../helpers/test-helpers';
 import { ErrorContainerComponent } from '../error-container/error-container.component';
+import { By } from '@angular/platform-browser';
 
 
 @Component({
@@ -85,8 +86,6 @@ describe('RadioComponent', () => {
         directives,
         true
       );
-
-      tickAndDetectChanges( fixture );
 
       const de = getDebugElement( fixture, 'common-radio', 'radioBtn1' );
       expect( de ).toBeTruthy();
@@ -331,24 +330,22 @@ describe('RadioComponent', () => {
 
 // Helper functions for tests
 function clickValue( de: DebugElement, value: any ) {
-  const el = de.nativeElement.querySelector( 'input[value=\"' + value + '\"]' );
-  if ( el ) {
-    el.focus();
-    el.click();
+  const _de = de.query( By.css( 'input[value=\"' + value + '\"]' ) );
+  if ( _de ) {
+    _de.nativeElement.click();
   }
 }
 
 function getCheckedValue( de: DebugElement ) {
-  const el =  de.nativeElement.querySelector( 'input[type=radio]:checked' );
-  return el ? el.value : null;
+  const _de =  de.query( By.css( 'input[type=radio]:checked' ) );
+  return _de ? _de.nativeElement.value : null;
 }
 
 function getRadioBtnLabel( de: DebugElement, value: any ) {
-  const el = de.nativeElement.querySelector( 'input[value=\"' + value + '\"]' );
-  if ( el ) {
-    const _label = de.nativeElement.querySelector( ' label[for=\"' + el.id + '\"] ' );
-    return _label ? String(_label.textContent).trim() : null;
+  const _input = de.query( By.css( 'input[value=\"' + value + '\"]' ) );
+  if ( _input ) {
+    const _label = de.query( By.css ( 'label[for=\"' + _input.nativeElement.id + '\"] ' ) );
+    return _label ? String(_label.nativeElement.textContent).trim() : null;
   }
   return null;
 }
-

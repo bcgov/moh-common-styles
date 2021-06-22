@@ -1,12 +1,10 @@
-import { Rule, SchematicContext, Tree, move, apply, url } from '@angular-devkit/schematics';
+import { Rule, SchematicContext, Tree } from '@angular-devkit/schematics';
 import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
-
-import {addPackageToPackageJson, sortObjectByKeys} from './package-config';
+import { addPackageToPackageJson } from './package-config';
 import { stylesSCSS } from './files/styles';
 import { appComponentHtml, appComponentCSS } from './files/app_component_html';
 import { variableScss } from './files/variables_scss';
 import { overridesScss } from './files/overrides_scss';
-
 import { MyriadWebProTTF_base64 } from './files/MyriadWebPro_ttf_base64';
 import { BCLogoBase64 } from './files/gov3_bc_logo_png_base64';
 import { favicon_base64 } from './files/favicon_ico';

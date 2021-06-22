@@ -1,18 +1,17 @@
 import {
   Component,
   Input,
-  forwardRef,
   Output,
   EventEmitter,
   Optional,
   Self,
   OnInit
 } from '@angular/core';
-import { ControlContainer, NgForm, NgControl } from '@angular/forms';
+import { NgControl } from '@angular/forms';
 import { NUMBER, SPACE } from '../../models/mask.constants';
-
 import { ErrorMessage, LabelReplacementTag } from '../../models/error-message.interface';
 import { AbstractFormControl } from '../../models/abstract-form-control';
+
 /**
  * PhoneNumberComponent is a used to show the Phone number.
  *
@@ -89,8 +88,6 @@ export class PhoneNumberComponent extends AbstractFormControl implements OnInit 
       this.mask = [...prefixArrayOfChar, SPACE, ...this.mask];
     }
 
-
-
     // Register self validation
     Promise.resolve().then(() => {
 
@@ -108,7 +105,6 @@ export class PhoneNumberComponent extends AbstractFormControl implements OnInit 
   }
 
   setPhoneNumber(value) {
-    // console.log( 'setPhoneNumber: ', value );
     this.phoneNumber = value;
     this.valueChange.emit(this.phoneNumber);
     this._onChange(value);

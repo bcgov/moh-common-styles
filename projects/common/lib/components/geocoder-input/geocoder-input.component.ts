@@ -1,6 +1,6 @@
-import { Component, OnInit, Input, ChangeDetectorRef, Output, EventEmitter, SimpleChanges, OnChanges, Optional, Self } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectorRef, Output, EventEmitter, Optional, Self } from '@angular/core';
 import { Subject, Observable, of } from 'rxjs';
-import { debounceTime, distinctUntilChanged, switchMap, tap, catchError } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, switchMap, catchError } from 'rxjs/operators';
 import { TypeaheadMatch } from 'ngx-bootstrap/typeahead';
 import { Base } from '../../models/base';
 import { GeocoderService, GeoAddressResult } from '../../services/geocoder.service';
@@ -12,7 +12,7 @@ import { NgControl, ControlValueAccessor } from '@angular/forms';
 
 /**
  * @deprecated Please use `address-validator` component instead.
- * 
+ *
  * For TemplateForms, pass in an Address and recieve an Address
  * @example
  *           <common-geocoder-input
@@ -89,14 +89,11 @@ export class GeocoderInputComponent extends Base implements OnInit, ControlValue
   }
 
   onLoading(val: boolean): void {
-    // console.log( 'onLoading - geocoder' , val );
     this.isTypeaheadLoading = val;
   }
 
   // Note - this will fire after an onError as well
   onNoResults(val: boolean): void {
-
-   //  console.log( 'No results - geocoder' , val );
 
     // If we have results, the error has resolved (e.g. network has re-connected)
     if (val === false) {
@@ -108,7 +105,6 @@ export class GeocoderInputComponent extends Base implements OnInit, ControlValue
 
   onSelect(event: TypeaheadMatch): void {
 
-    // console.log( 'onSelect: ', event );
     const data: GeoAddressResult = event.item;
 
     // Output string to FormControl. If street is more than the max length shorten

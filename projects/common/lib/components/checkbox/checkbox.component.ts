@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef, Optional, Self} from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef, Optional, Self } from '@angular/core';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { AbstractFormControl } from '../../models/abstract-form-control';
 import { ErrorMessage, LabelReplacementTag } from '../../models/error-message.interface';
@@ -21,6 +21,7 @@ import { ErrorMessage, LabelReplacementTag } from '../../models/error-message.in
 @Component({
   selector: 'common-checkbox',
   templateUrl: './checkbox.component.html',
+  styleUrls: ['./checkbox.component.scss']
 })
 export class CheckboxComponent extends AbstractFormControl implements OnInit, ControlValueAccessor {
   defaultErrorMessage: string = '';

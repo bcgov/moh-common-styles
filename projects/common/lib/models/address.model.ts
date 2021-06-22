@@ -11,6 +11,9 @@ export class Address {
   public addressLine2: string;
   /** Used to store optional extra address fields. Can be used with addressLine1 OR street. */
   public addressLine3: string;
+  public unitNumber: string;
+  public streetNumber: string;
+  public streetName: string;
   public postal: string;
   public country: string;
   public province: string;

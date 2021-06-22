@@ -138,40 +138,27 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { AfterContentInit, ChangeDetectorRef, Component,
-    ContentChild, ElementRef, EventEmitter, Input, NgZone, OnChanges,
-    OnInit, Output, SimpleChanges, ViewChild, forwardRef, AfterViewInit, ViewEncapsulation } from &#x27;@angular/core&#x27;;
+    ElementRef, EventEmitter, Input, NgZone, OnChanges,
+    OnInit, Output, SimpleChanges, ViewChild, forwardRef, ViewEncapsulation } from &#x27;@angular/core&#x27;;
 import { NgForm, ControlContainer } from &#x27;@angular/forms&#x27;;
-import * as moment from &#x27;moment&#x27;;
 import { PDFJSStatic } from &#x27;pdfjs-dist&#x27;;
-import { Observable ,  Observer, fromEvent, merge } from &#x27;rxjs&#x27;;
-import {map, filter, flatMap, scan, delay, retryWhen} from &#x27;rxjs/operators&#x27;;
+import { Observable,  Observer, fromEvent, merge } from &#x27;rxjs&#x27;;
+import { map, filter, flatMap, scan, delay, retryWhen } from &#x27;rxjs/operators&#x27;;
 import { CommonImage, CommonImageError, CommonImageProcessingError,
 CommonImageScaleFactors, CommonImageScaleFactorsImpl } from &#x27;../../models/images.model&#x27;;
-// import { MspLogService } from &#x27;../../service/log.service&#x27;;
-// import { MspDataService } from &#x27;../../service/msp-data.service&#x27;;
-// import { BaseComponent } from &#x27;../base.component&#x27;;
-// import { LogEntry } from &#x27;../logging/log-entry.model&#x27;;
-// import {Person} from &#x27;../../model/application.model&#x27;;
-import {Router} from &#x27;@angular/router&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
 import { Base } from &#x27;../../models/base&#x27;;
-// import {ApplicationBase} from &#x27;../../model/application-base.model&#x27;;
-
-// const loadImage &#x3D; require(&#x27;blueimp-load-image&#x27;);
-// const sha1 &#x3D; require(&#x27;sha1&#x27;);
 
 import * as loadImage_ from &#x27;blueimp-load-image&#x27;;
 const loadImage &#x3D; loadImage_;
 import * as sha1_ from &#x27;sha1&#x27;;
 const sha1 &#x3D; sha1_;
 
-// const PDFJS: PDFJSStatic &#x3D; require(&#x27;pdfjs-dist&#x27;);
 import * as PDFJS_ from &#x27;pdfjs-dist&#x27;;
 const PDFJS: PDFJSStatic &#x3D; (PDFJS_ as any);
 
-// const pdfjs &#x3D; import(&#x27;pdfjs-dist/build/pdf&#x27;);
-// const pdfjsWorker &#x3D; import(&#x27;pdfjs-dist/build/pdf.worker.entry&#x27;);
 import { pdfJsWorker } from &#x27;pdfjs-dist/build/pdf.worker.entry&#x27;;
-PDFJS.workerSrc&#x3D;pdfJsWorker;
+PDFJS.workerSrc &#x3D; pdfJsWorker;
 
 export interface FileUploaderMsg {
     required: string;
@@ -193,11 +180,9 @@ export class FileUploaderComponent extends Base
     private appConstants;
     @ViewChild(&#x27;dropZone&#x27;) dropZone: ElementRef;
     @ViewChild(&#x27;browseFileRef&#x27;) browseFileRef: ElementRef;
-    // @ViewChild(&#x27;captureFileRef&#x27;) captureFileRef: ElementRef;
     @ViewChild(&#x27;imagePlaceholderRef&#x27;) imagePlaceholderRef: ElementRef;
     @ViewChild(&#x27;selectFileLabel&#x27;) selectFileLabelRef: ElementRef;
 
-    // @ContentChild(&#x27;uploadInstruction&#x27;) uploadInstructionRef: ElementRef;
     @Input() images: Array&lt;CommonImage&gt; &#x3D; new Array&lt;CommonImage&gt;(0);
     @Output() imagesChange: EventEmitter&lt;Array&lt;CommonImage&gt;&gt; &#x3D; new EventEmitter&lt;Array&lt;CommonImage&gt;&gt;();
     @Input() id: string;
@@ -212,13 +197,10 @@ export class FileUploaderComponent extends Base
     @Output() errorDocument: EventEmitter&lt;CommonImage&gt; &#x3D; new EventEmitter&lt;CommonImage&gt;();
 
     constructor(
-                // private dataService: MspDataService,
-                // private logService: MspLogService,
                 private zone: NgZone,
                 private cd: ChangeDetectorRef , private router: Router,
                 private controlContainer: ControlContainer) {
         super();
-        // this.application &#x3D; this.getApplicationType();
     }
 
     /**
@@ -244,7 +226,6 @@ export class FileUploaderComponent extends Base
 
             const sha1Sum &#x3D; sha1(file.fileContent);
             for (let i &#x3D; imageList.length - 1; i &gt;&#x3D; 0; i--) {
-                // console.log(&#x60;compare  ${imageList[i].id} with ${sha1Sum}, result ${imageList[i].id &#x3D;&#x3D;&#x3D; sha1Sum}&#x60;);
                 if (imageList[i].id &#x3D;&#x3D;&#x3D; sha1Sum) {
                     console.log(&#x60;This file ${file.name} has already been uploaded.&#x60;);
                     return true;
@@ -317,7 +298,6 @@ export class FileUploaderComponent extends Base
         dragOverStream.pipe(map(evt &#x3D;&gt; {
             return event;
         })).subscribe(evt &#x3D;&gt; {
-            // console.log(&#x27;Cancel dragover event.&#x27;);
             evt.preventDefault();
         });
 
@@ -343,7 +323,6 @@ export class FileUploaderComponent extends Base
             )),
             filesArrayFromDrop).pipe(
                 filter(files &#x3D;&gt; {
-                    // console.log(&#x27;files&#x27;);
                     return !!files &amp;&amp; files.length &amp;&amp; files.length &gt; 0;
                 }),
                 flatMap(
@@ -391,42 +370,11 @@ export class FileUploaderComponent extends Base
                 this.resetInputFields();
             },
 
-            (error) &#x3D;&gt; {
-                // console.log(&#x27;Error in loading image: %o&#x27;, error);
-
-                /**
-                 * Handle the error if the image is gigantic that after
-                 * 100 times of scaling down by 30% on each step, the image
-                 * is still over 1 MB.
-                 */
-                if (error.errorCode) {
-                    if (CommonImageError.TooBig &#x3D;&#x3D;&#x3D; error.errorCode) {
-                        this.handleError(CommonImageError.TooBig, error.image);
-                    } else if (CommonImageError.CannotOpen &#x3D;&#x3D;&#x3D; error.errorCode) {
-                        if (!error.image) {
-                            error.image &#x3D; new CommonImage();
-                            if (error.rawImageFile) {
-                                error.image.name &#x3D; error.rawImageFile.name;
-                            }
-                        }
-                        this.handleError(CommonImageError.CannotOpen, error.image);
-                    } else if (CommonImageError.CannotOpenPDF &#x3D;&#x3D;&#x3D; error.errorCode) {
-                        this.handleError(CommonImageError.CannotOpenPDF, error.image, error.errorDescription);
-                    } else {
-                        throw error;
-                    }
-                }
-
-
-            },
+            (error) &#x3D;&gt; {},
             () &#x3D;&gt; {
                 // console.log(&#x27;completed loading image&#x27;);
             }
         );
-    }
-
-    test(var1) {
-        // console.log(var1);
     }
 
     ngAfterContentInit() {
@@ -452,7 +400,6 @@ export class FileUploaderComponent extends Base
 
     /** Opens the file upload dialog from the browser. */
     openFileDialog() {
-        // console.log(&#x27;opening file dialog&#x27;);
         this.browseFileRef.nativeElement.click();
     }
 
@@ -476,12 +423,9 @@ export class FileUploaderComponent extends Base
         /** Previously this was set in appConstants, but that&#x27;s removed from the common lib. */
         const reductionScaleFactor &#x3D; 0.8;
 
-        // console.log(&#x27;obserablveFromFiles&#x27;);
-
         // Init
         const self &#x3D; this;
-    //    let  pageNumber &#x3D; Math.max(...self.images.concat( self.application.getAllImages()).map(function(o) {return o.attachmentOrder; }), 0) + 1 ;
-       let pageNumber &#x3D; Math.max(...self.images.map(function(o) {return o.attachmentOrder; }), 0) + 1 ;
+        let pageNumber &#x3D; Math.max(...self.images.map(function(o) {return o.attachmentOrder; }), 0) + 1 ;
 
         // Create our observer
         const fileObservable &#x3D; Observable.create((observer: Observer&lt;CommonImage&gt;) &#x3D;&gt; {
@@ -489,20 +433,12 @@ export class FileUploaderComponent extends Base
             scaleFactors &#x3D; scaleFactors.scaleDown(reductionScaleFactor);
             for (let fileIndex &#x3D; 0; fileIndex &lt; fileList.length; fileIndex++) {
                 const file &#x3D; fileList[fileIndex];
-                // console.log(&#x27;Start processing file &#x27; + fileIndex + &#x27; of &#x27; + fileList.length + &#x27; %s of size %s bytes %s type&#x27;, file.name, file.size, file.type);
-
 
                 /* Previously set in appConstants */
                 const pdfScaleFactor &#x3D; 2.0;
 
-                // let mspImage: MspImage &#x3D; new MspImage();
-                // let reader: FileReader &#x3D; new FileReader();
-
                 // // Copy file properties
-                // mspImage.name &#x3D; file.name;
                 if (file.type &#x3D;&#x3D;&#x3D; &#x27;application/pdf&#x27;) {
-                    // this.logService.log({name: file.name + &#x27; Received in Upload&#x27;,
-                    //     UUID: self.dataService.getMspUuid()}, &#x27;File_Upload&#x27;);
 
                     /**
                      *  Page number logic :
@@ -513,21 +449,15 @@ export class FileUploaderComponent extends Base
                      *  */
 
                     this.readPDF(file, pdfScaleFactor, (images: HTMLImageElement[] , pdfFile: File) &#x3D;&gt; {
-
-
-                        // this.logService.log({name: file.name + &#x27;is successfully split into &#x27; + images.length + &#x27; images&#x27;,
-                            // UUID: self.dataService.getMspUuid()}, &#x27;File_Upload&#x27;);
-
                         images.map((image, index) &#x3D;&gt; {
                             image.name &#x3D; pdfFile.name;
                             this.resizeImage( image, self, scaleFactors, observer, pageNumber , true); // index starts from zero
                             pageNumber &#x3D; pageNumber + 1  ;
                         });
                     }, (error: string) &#x3D;&gt; {
-                        // console.log(&#x27;error&#x27; + JSON.stringify(error));
                         const imageReadError: CommonImageProcessingError &#x3D;
                             new CommonImageProcessingError(CommonImageError.CannotOpenPDF, error);
-                        observer.error(imageReadError);
+                        self.filterError(imageReadError);
                     });
                 } else {
                     // Load image into img element to read natural height and width
@@ -538,8 +468,7 @@ export class FileUploaderComponent extends Base
 
                         // can be ignored for bug, the log line is never called
                         (error: CommonImageProcessingError) &#x3D;&gt; {
-                            // console.log(&#x27;error&#x27; + JSON.stringify(error));
-                            observer.error(error);
+                            self.filterError(error);
                         });
                     pageNumber &#x3D; pageNumber + 1  ;
                 }
@@ -552,32 +481,25 @@ export class FileUploaderComponent extends Base
 
 
     private resizeImage( image: HTMLImageElement, self: this, scaleFactors: CommonImageScaleFactors, observer: Observer&lt;CommonImage&gt;, pageNumber: number &#x3D; 0 , isPdf: boolean &#x3D; false) {
-// While it&#x27;s still in an image, get it&#x27;s height and width
+        // While it&#x27;s still in an image, get it&#x27;s height and width
         const mspImage: CommonImage &#x3D; new CommonImage();
         const reader: FileReader &#x3D; new FileReader();
-        // console.log(&#x27;image.name:&#x27; + image.id); // .name deprecated, changed image.name to image.id
         // Copy file properties
         mspImage.name &#x3D; image.id ;
         if (isPdf) {
             mspImage.name &#x3D; image.name + &#x27;-page&#x27; + pageNumber;  // Just give name to pdf
-        }
-        // Temporary so we don&#x27;t have duplicate file names. TODO: Improve.
-        //   mspImage.name +&#x3D; Math.ceil(Math.random()*100);
+      }
+
         mspImage.attachmentOrder &#x3D; pageNumber ;
 
 
         mspImage.naturalWidth &#x3D; image.naturalWidth;
         mspImage.naturalHeight &#x3D; image.naturalHeight;
 
-        // console.log(&#x60;image file natural height and width:
-        //     ${mspImage.naturalHeight} x ${mspImage.naturalWidth}&#x60;);
-
         // Canvas will force the change to a JPEG
         mspImage.contentType &#x3D; &#x27;image/jpeg&#x27;; // previously in appConstants
 
         // Scale the image by loading into a canvas
-
-        // console.log(&#x27;Start scaling down the image using blueimp-load-image lib: &#x27;);
         const scaledImage &#x3D; loadImage(
             image.src, // NOTE: we pass the File ref here again even though its already read because we need the XIFF metadata
             function (canvas: HTMLCanvasElement, metadata: any) {
@@ -592,9 +514,6 @@ export class FileUploaderComponent extends Base
                 canvas.toBlob((blob: Blob) &#x3D;&gt; {
                         // Copy the blob properties
                         mspImage.size &#x3D; blob.size;
-
-                        // log image info (but only for the first time before any scaling)
-                        // if (s
 
                         const fileName &#x3D; mspImage.name;
                         const nBytes &#x3D; mspImage.size;
@@ -611,7 +530,6 @@ export class FileUploaderComponent extends Base
                             mspImage.sizeUnit &#x3D; fileSizeUnit;
                         }
 
-                        console.log(&#x60;File ${fileName} is scaled down to: ${sOutput}&#x60;);
                         mspImage.sizeTxt &#x3D; sOutput;
 
                         // call reader with new transformed image
@@ -626,20 +544,15 @@ export class FileUploaderComponent extends Base
                             /** previously in appConstants */
                             const maxSizeBytes &#x3D; 1048576;
                             if (mspImage.size &gt; maxSizeBytes) {
-
-                                // console.log(&#x27;File size after scaling down: %d, max file size allowed: %d&#x27;,
-                                //     mspImage.size, maxSizeBytes);
-
                                 const imageTooBigError: CommonImageProcessingError &#x3D;
                                     new CommonImageProcessingError(CommonImageError.TooBig);
 
                                 imageTooBigError.maxSizeAllowed &#x3D; maxSizeBytes;
                                 imageTooBigError.commonImage &#x3D; mspImage;
 
-                                observer.error(imageTooBigError);
+                                self.filterError(imageTooBigError);
                             } else {
                                 // log image info
-                                //   self.logImageInfo(&quot;msp_file-uploader_after_resize_attributes&quot;, self.dataService.getMspUuid(), mspImage);
                                 observer.next(mspImage);
                             }
                         };
@@ -683,14 +596,12 @@ export class FileUploaderComponent extends Base
             return errors.pipe(scan(
                 // return errors.pipe(
                 (acc, error: any, index) &#x3D;&gt; {
-                    // console.log(&#x27;Error encountered: %o&#x27;, error);;
 
                     /**
                      * If the error is about file too big and we have not reach max retry
                      * yet, theyt keep going to scaling down.
                      */
                     if (acc &lt; maxRetry &amp;&amp; error.errorCode &#x3D;&#x3D;&#x3D; CommonImageError.TooBig) {
-                        // console.log(&#x27;Progressively scaling down the image, step %d.&#x27;, index);
                         return acc + 1;
                     } else {
                         /**
@@ -702,7 +613,6 @@ export class FileUploaderComponent extends Base
                          * 2. Exceeded maxRetry
                          *
                          */
-                        // console.log(&#x27;Re-throw this image process error: %o&#x27;, error);
                         throw error;
                     }
                 }, 0
@@ -717,14 +627,12 @@ export class FileUploaderComponent extends Base
 
         reader.onload &#x3D; function (progressEvt: ProgressEvent) {
 
-            // console.log(&#x27;loading image into an img tag: %o&#x27;, progressEvt);
             // Load into an image element
             const imgEl: HTMLImageElement &#x3D; document.createElement(&#x27;img&#x27;);
             imgEl.src &#x3D; (reader.result as string);
 
             // Wait for onload so all properties are populated
             imgEl.onload &#x3D; (args) &#x3D;&gt; {
-                // console.log(&#x27;Completed image loading into an img tag: %o&#x27;, args);
                 return callback(imgEl, imageFile, nextPageNumber);
             };
 
@@ -831,14 +739,7 @@ export class FileUploaderComponent extends Base
 
 
     handleImageFile(mspImage: CommonImage) {
-        // console.log(&#x27;image size (bytes) after compression: &#x27; + mspImage.size);
         if (this.images.length &gt;&#x3D; 50) {
-
-            // log it
-            // this.logImageInfo(&#x27;msp_file-uploader_error&#x27;, this.dataService.getMspUuid(),
-            //     mspImage, &#x60;Number of image files exceeds max of ${50}&#x60;);
-
-            // log to console
             console.log(&#x60;Max number of image file you can upload is ${50}.
       This file ${mspImage.name} was not uploaded.&#x60;);
         } else {
@@ -846,6 +747,32 @@ export class FileUploaderComponent extends Base
             this.imagesChange.emit(this.images);
             this.showError &#x3D; false;
             this.noIdImage &#x3D; false;
+        }
+    }
+
+    filterError(error): void {
+
+        /**
+         * Handle the error if the image is gigantic that after
+         * 100 times of scaling down by 30% on each step, the image
+         * is still over 1 MB.
+         */
+        if (error.errorCode) {
+            if (CommonImageError.TooBig &#x3D;&#x3D;&#x3D; error.errorCode) {
+                this.handleError(CommonImageError.TooBig, error.image);
+            } else if (CommonImageError.CannotOpen &#x3D;&#x3D;&#x3D; error.errorCode) {
+                if (!error.image) {
+                    error.image &#x3D; new CommonImage();
+                    if (error.rawImageFile) {
+                        error.image.name &#x3D; error.rawImageFile.name;
+                    }
+                }
+                this.handleError(CommonImageError.CannotOpen, error.image);
+            } else if (CommonImageError.CannotOpenPDF &#x3D;&#x3D;&#x3D; error.errorCode) {
+                this.handleError(CommonImageError.CannotOpenPDF, error.image, error.errorDescription);
+            } else {
+                throw error;
+            }
         }
     }
 
@@ -857,14 +784,6 @@ export class FileUploaderComponent extends Base
         // just add the error to mspImage
         mspImage.error &#x3D; error;
 
-        // log the error
-        if (error !&#x3D;&#x3D; CommonImageError.PDFnotSupported) {
-            // this.logImageInfo(&#x27;msp_file-uploader_error&#x27;, this.dataService.getMspUuid(), mspImage,
-            //     &#x27;  mspImageFile: &#x27; + mspImage.name + &#x27;  mspErrorNum: &#x27; + error + &#x27;  mspError: &#x27; +
-            //     error + &#x27;-&#x27; + errorDescription);
-        }
-
-        // console.log(&quot;error with image: &quot;, mspImage);
         this.errorDocument.emit(mspImage);
     }
 
@@ -886,8 +805,6 @@ export class FileUploaderComponent extends Base
 
         // If there are no images yet, we have to reset the input so it triggers &#x27;required&#x27;.
         if ( this.required &amp;&amp; this.images.length &lt;&#x3D; 0 ) {
-            // console.log(&#x27;No images, resetting input&#x27;);
-            // this.fileControl.value &#x3D; &#x27;&#x27;;
             this.fileControl.setErrors({&#x27;required&#x27;: true});
         }
     }
@@ -943,7 +860,6 @@ export class FileUploaderComponent extends Base
     }
 
     isValid(): boolean {
-        // console.log(&#x27;isValid&#x27;, this.images);
         if (this.required) {
             return this.images &amp;&amp; this.images.length &gt; 0;
         }

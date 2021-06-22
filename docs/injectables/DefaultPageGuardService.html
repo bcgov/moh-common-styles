@@ -266,8 +266,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="42"
-                            class="link-to-prism">projects/common/lib/services/default-page-guard.service.ts:42</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="41"
+                            class="link-to-prism">projects/common/lib/services/default-page-guard.service.ts:41</a></div>
                 </td>
             </tr>
 
@@ -426,7 +426,6 @@ export class DefaultPageGuardService implements AbstractPageGuardService {
   public canBypassGuards(): boolean {
 
     const bypass &#x3D; this.injector.get( BYPASS_GUARDS );
-    // console.log( &#x27;canBypassGuards: injected value &#x3D; &#x27;, bypass );
 
     return bypass ? bypass : this.bypassGuards;
   }
@@ -436,8 +435,6 @@ export class DefaultPageGuardService implements AbstractPageGuardService {
     const startUrl &#x3D; this.injector.get( START_PAGE_URL );
     const _startUrl &#x3D; startUrl ? startUrl : this.startPageUrl;
     const containStartUrl: boolean &#x3D; url.includes( _startUrl );
-
-    // console.log( &#x27;canNavigateToUrl: injected value &#x3D; &#x27;, startUrl, url );
 
     // Empty list allow navigation to first page
     if ( this.pageStateService.pageListIsClear() ) {
