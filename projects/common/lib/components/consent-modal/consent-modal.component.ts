@@ -175,6 +175,14 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
     }
   }
 
+  // Api callout to get the message from the Rapid code
+  sendSpaEnvServer(rapidResponseCode: string): Observable<any> {
+    this._headers = new HttpHeaders({
+      'SPA_ENV_NAME': rapidResponseCode
+    });
+    return this.post<any>(this.url, null);
+  }
+
   // Move to next focusable element, if at last element, move to first
   handleTab() {
     const position = this.focusableEls.indexOf(this.focusedEl);
