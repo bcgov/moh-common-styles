@@ -1,12 +1,12 @@
 <div bsModal #samplesModal="bs-modal"
      class="modal"
      role="dialog"
-     aria-labelledby="samplesModalTitle"
+     [attr.aria-labelledby]="'samplesModalTitle_' + objectId"
      aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header modal-header-primary">
-        <h2 class="modal-title pull-left" id="samplesModalTitle">{{title}}</h2>
+        <h2 class="modal-title pull-left" [id]="'samplesModalTitle_' + objectId">{{title}}</h2>
         <a class="pull-right" (click)="closeModal()" aria-label="Close">
           <i class="text-danger fa fa-2x fa-times"></i>
         </a>

@@ -9,6 +9,7 @@
            (blur)="onBlur($event)"
            [disabled]="disabled"
            [attr.maxlength]="maxlength"
+           [required]="required"
            (keyup)='onKeyUp($event)'
            [typeahead]='typeaheadList$'
            typeaheadOptionField='fullAddress'
@@ -20,7 +21,7 @@
 
 <!-- Error messages for input -->
 <common-error-container
-    [displayError]="controlDir && !disabled && (controlDir.touched || controlDir.dirty) && controlDir.errors">
+[displayError]="controlDir && !disabled && (controlDir.touched || controlDir.dirty) && controlDir.errors">
   <div *ngIf="controlDir.errors?.required">
     {{_defaultErrMsg.required}}
   </div>
@@ -40,6 +41,7 @@
          (change)="onValueChange($event.target.value)"
          (blur)="onBlur($event)"
          [disabled]="disabled"
+         [required]="required"
          [attr.maxlength]="maxlength"
          [placeholder]="placeholder"
          autocomplete="off"/>

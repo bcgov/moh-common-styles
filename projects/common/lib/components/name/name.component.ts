@@ -24,6 +24,7 @@ export class NameComponent extends AbstractFormControl implements OnInit, Contro
   @Input() label: string = 'Name';
   @Input() maxlength: string = '255';
   @Input() labelforId: string = 'name_' + this.objectId;
+  @Input() required: boolean = false;
 
   @Input()
   set value( val: string ) {

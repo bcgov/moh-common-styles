@@ -1,16 +1,21 @@
 <label for="{{labelforId}}" class="control-label">{{label}}</label>
 <div *ngIf="useDropDownList; else NotDropDownList">
-  <ng-select [items]="countryList"
-             [ngModel]="country"
-             (ngModelChange)="onValueChange($event)"
-             (blur)="onBlurEvent($event)"
-             [required]="required"
-             [disabled]="disabled"
-             labelForId="{{labelforId}}"
-             bindValue="countryCode"
-             [clearable]="false"
-             bindLabel="description"
-             placeholder="{{ placeholder }}"></ng-select>
+  <select
+      class="form-control"
+      id="{{labelforId}}"
+      name="{{labelforId}}"
+      (change)="countryChange($event)"
+      [required]="required">
+    <div *ngIf="bcOnly; then OnlyBC else AllowOtherCountries"></div>
+    <ng-template #OnlyBC>
+      <option value="39" selected="selected">{{ countryList[39].description }}</option>
+    </ng-template>
+
+    <ng-template #AllowOtherCountries>
+      <option value="-1" label="Country" selected="selected" [disabled]='required'></option>
+      <option *ngFor="let country of countryList; let i = index;" [value]="i">{{ country.description }}</option>
+    </ng-template>
+  </select>
 </div>
 
 <!-- Error messages for input -->
@@ -30,8 +35,7 @@
           type="text"
           id="{{labelforId}}"
           [value]="country"
-          (change)="onValueChange($event.target.value)"
-          (blur)="onBlurEvent($event)"
+          (change)="typedCountryChange($event)"
           [disabled]="disabled"
           [attr.maxlength]="maxlen"
           autocomplete="off"/>

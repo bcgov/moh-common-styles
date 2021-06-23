@@ -4,7 +4,7 @@
      [config]="{backdrop: 'static', ignoreBackdropClick: true}">
 
   <div class="modal-dialog" style="margin-top: 90px;">
-    <div class="modal-content">
+    <div #modalContents class="modal-content">
       <!--  Header -->
       <div class="modal-header modal-header-primary">
         <h2 id="myLargeModalLabel">{{maintenanceFlag == 'true' ? 'Maintenance notice' : title}}</h2>
@@ -30,7 +30,7 @@
 
       <!-- Footer -->
       <div *ngIf="maintenanceFlag != 'true'" class="modal-footer">
-        <button [disabled]="isContinueDisabled()" class="btn btn-block btn-primary pull-left"
+        <button #continueButtonRef [disabled]="isContinueDisabled()" class="btn btn-block btn-primary pull-left"
                 type="submit" (click)="continue()">{{continueButton}}</button>
 
       </div>
