@@ -88,6 +88,7 @@ element (via transclusion)</p>
     <p class="comment">
                     <code><a href="https://angular.io/api/forms/ControlValueAccessor" target="_blank" >ControlValueAccessor</a></code>
                     <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+                    <code><a href="https://angular.io/api/core/AfterViewInit" target="_blank" >AfterViewInit</a></code>
     </p>
 
     <p class="comment">
@@ -202,12 +203,32 @@ this.consentModal.showFullSizeView();
                                 <a href="#agreeCheck">agreeCheck</a>
                             </li>
                             <li>
+                                    <span class="modifier">Protected</span>
+                                <a href="#closed">closed</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#continueButtonRef">continueButtonRef</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Protected</span>
+                                <a href="#focusableEls">focusableEls</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Protected</span>
+                                <a href="#focusedEl">focusedEl</a>
+                            </li>
+                            <li>
                                     <span class="modifier">Public</span>
                                 <a href="#fullSizeViewModal">fullSizeViewModal</a>
                             </li>
                             <li>
                                     <span class="modifier">Public</span>
                                 <a href="#maintenanceMessage">maintenanceMessage</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#modalContents">modalContents</a>
                             </li>
                             <li>
                                     <span class="modifier">Public</span>
@@ -242,10 +263,19 @@ this.consentModal.showFullSizeView();
                                 <a href="#handleError">handleError</a>
                             </li>
                             <li>
+                                <a href="#handleTab">handleTab</a>
+                            </li>
+                            <li>
+                                <a href="#handleTabBackwards">handleTabBackwards</a>
+                            </li>
+                            <li>
                                 <a href="#inMaintenance">inMaintenance</a>
                             </li>
                             <li>
                                 <a href="#isContinueDisabled">isContinueDisabled</a>
+                            </li>
+                            <li>
+                                <a href="#ngAfterViewInit">ngAfterViewInit</a>
                             </li>
                             <li>
                                 <a href="#ngOnInit">ngOnInit</a>
@@ -355,6 +385,20 @@ this.consentModal.showFullSizeView();
                 </tr>
 
 
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>HostListeners</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#window:keydown">window:keydown</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
 
         </tbody>
     </table>
@@ -371,7 +415,7 @@ this.consentModal.showFullSizeView();
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="128" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:128</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="133" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:133</a></div>
                             </td>
                         </tr>
 
@@ -517,7 +561,7 @@ this.consentModal.showFullSizeView();
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="112" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:112</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="114" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:114</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -677,7 +721,7 @@ this alone.</p>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:106</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="108" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:108</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -698,7 +742,7 @@ this alone.</p>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="104" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:104</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:106</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -719,14 +763,50 @@ this alone.</p>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="105" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:105</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="107" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:107</a></div>
                             </td>
                         </tr>
             </tbody>
         </table>
 </section>
 
+    <section>
+    <h3>HostListeners</h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="window:keydown"></a>
+                    <span class="name">
+                        <b>
+                            window:keydown
+                        </b>
+                        <a href="#window:keydown"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <i>Arguments : </i><code>'$event' </code>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>window:keydown(event: KeyboardEvent)</code>
+                </td>
+            </tr>
 
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="158"
+                            class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:158</a></div>
+                </td>
+            </tr>
+
+
+        </tbody>
+    </table>
+</section>
     <section>
     
     <h3 id="methods">
@@ -754,8 +834,8 @@ this alone.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="151"
-                            class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:151</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="216"
+                            class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:216</a></div>
                 </td>
             </tr>
 
@@ -795,8 +875,8 @@ this alone.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="167"
-                            class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:167</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="225"
+                            class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:225</a></div>
                 </td>
             </tr>
 
@@ -847,6 +927,84 @@ this alone.</p>
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="handleTab"></a>
+                    <span class="name">
+                        <b>
+                            handleTab
+                        </b>
+                        <a href="#handleTab"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>handleTab()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="187"
+                            class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:187</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleTabBackwards"></a>
+                    <span class="name">
+                        <b>
+                            handleTabBackwards
+                        </b>
+                        <a href="#handleTabBackwards"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>handleTabBackwards()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="198"
+                            class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:198</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="inMaintenance"></a>
                     <span class="name">
                         <b>
@@ -865,8 +1023,8 @@ this alone.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="181"
-                            class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:181</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="239"
+                            class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:239</a></div>
                 </td>
             </tr>
 
@@ -904,8 +1062,8 @@ this alone.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="227"
-                            class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:227</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="285"
+                            class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:285</a></div>
                 </td>
             </tr>
 
@@ -915,6 +1073,45 @@ this alone.</p>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngAfterViewInit"></a>
+                    <span class="name">
+                        <b>
+                            ngAfterViewInit
+                        </b>
+                        <a href="#ngAfterViewInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngAfterViewInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="147"
+                            class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:147</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
                     </div>
                 </td>
@@ -943,8 +1140,8 @@ this alone.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="134"
-                            class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:134</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="139"
+                            class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:139</a></div>
                 </td>
             </tr>
 
@@ -982,8 +1179,8 @@ this alone.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="216"
-                            class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:216</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="274"
+                            class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:274</a></div>
                 </td>
             </tr>
 
@@ -1052,8 +1249,8 @@ this alone.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="221"
-                            class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:221</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="279"
+                            class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:279</a></div>
                 </td>
             </tr>
 
@@ -1122,8 +1319,8 @@ this alone.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="160"
-                            class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:160</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="179"
+                            class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:179</a></div>
                 </td>
             </tr>
 
@@ -1192,8 +1389,8 @@ this alone.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="146"
-                            class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:146</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="211"
+                            class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:211</a></div>
                 </td>
             </tr>
 
@@ -1233,8 +1430,8 @@ this alone.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="225"
-                            class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:225</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="283"
+                            class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:283</a></div>
                 </td>
             </tr>
 
@@ -1822,16 +2019,16 @@ Note: urls often include UUIDs, so this must be an application decision.</p>
                     <tr>
                         <td class="col-md-4">
                             <i>Default value : </i><code>new Map([
-      [&#x27;ACL&#x27;, &#x27;{&quot;SPA_ENV_ACL_MAINTENANCE_FLAG&quot;:&quot;&quot;,&quot;SPA_ENV_ACL_MAINTENANCE_MESSAGE&quot;:&quot;&quot;}&#x27;],
-      [&#x27;MSP&#x27;, &#x27;{&quot;SPA_ENV_MSP_MAINTENANCE_FLAG&quot;:&quot;&quot;,&quot;SPA_ENV_MSP_MAINTENANCE_MESSAGE&quot;:&quot;&quot;}&#x27;],
-      [&#x27;PA&#x27;, &#x27;{&quot;SPA_ENV_PACUTOFF_MAINTENANCE_START&quot;:&quot;&quot;,&quot;SPA_ENV_PACUTOFF_MAINTENANCE_END&quot;:&quot;&quot;,&quot;SPA_ENV_NOW&quot;:&quot;&quot;,&quot;SPA_ENV_PACUTOFF_MAINTENANCE_FLAG&quot;:&quot;&quot;,&quot;SPA_ENV_PACUTOFF_MAINTENANCE_MESSAGE&quot;:&quot;&quot;}&#x27;],
-      [&#x27;SUPPBEN&#x27;, &#x27;{&quot;SPA_ENV_SUPPBEN_MAINTENANCE_START&quot;:&quot;&quot;,&quot;SPA_ENV_SUPPBEN_MAINTENANCE_END&quot;:&quot;&quot;,&quot;SPA_ENV_NOW&quot;:&quot;&quot;,&quot;SPA_ENV_SUPPBEN_MAINTENANCE_FLAG&quot;:&quot;&quot;,&quot;SPA_ENV_SUPPBEN_MAINTENANCE_MESSAGE&quot;:&quot;&quot;,&quot;SPA_ENV_PACUTOFF_MAINTENANCE_START&quot;:&quot;&quot;,&quot;SPA_ENV_PACUTOFF_MAINTENANCE_END&quot;:&quot;&quot;}&#x27;],
-    ])</code>
+    [&#x27;ACL&#x27;, &#x27;{&quot;SPA_ENV_ACL_MAINTENANCE_FLAG&quot;:&quot;&quot;,&quot;SPA_ENV_ACL_MAINTENANCE_MESSAGE&quot;:&quot;&quot;}&#x27;],
+    [&#x27;MSP&#x27;, &#x27;{&quot;SPA_ENV_MSP_MAINTENANCE_FLAG&quot;:&quot;&quot;,&quot;SPA_ENV_MSP_MAINTENANCE_MESSAGE&quot;:&quot;&quot;}&#x27;],
+    [&#x27;PA&#x27;, &#x27;{&quot;SPA_ENV_PACUTOFF_MAINTENANCE_START&quot;:&quot;&quot;,&quot;SPA_ENV_PACUTOFF_MAINTENANCE_END&quot;:&quot;&quot;,&quot;SPA_ENV_NOW&quot;:&quot;&quot;,&quot;SPA_ENV_PACUTOFF_MAINTENANCE_FLAG&quot;:&quot;&quot;,&quot;SPA_ENV_PACUTOFF_MAINTENANCE_MESSAGE&quot;:&quot;&quot;}&#x27;],
+    [&#x27;SUPPBEN&#x27;, &#x27;{&quot;SPA_ENV_SUPPBEN_MAINTENANCE_START&quot;:&quot;&quot;,&quot;SPA_ENV_SUPPBEN_MAINTENANCE_END&quot;:&quot;&quot;,&quot;SPA_ENV_NOW&quot;:&quot;&quot;,&quot;SPA_ENV_SUPPBEN_MAINTENANCE_FLAG&quot;:&quot;&quot;,&quot;SPA_ENV_SUPPBEN_MAINTENANCE_MESSAGE&quot;:&quot;&quot;,&quot;SPA_ENV_PACUTOFF_MAINTENANCE_START&quot;:&quot;&quot;,&quot;SPA_ENV_PACUTOFF_MAINTENANCE_END&quot;:&quot;&quot;}&#x27;],
+  ])</code>
                         </td>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="119" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:119</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="124" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:124</a></div>
                             </td>
                         </tr>
 
@@ -1891,7 +2088,7 @@ Note: urls often include UUIDs, so this must be an application decision.</p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="127" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:127</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="132" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:132</a></div>
                             </td>
                         </tr>
 
@@ -1918,7 +2115,7 @@ Note: urls often include UUIDs, so this must be an application decision.</p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="128" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:128</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="133" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:133</a></div>
                             </td>
                         </tr>
 
@@ -1950,7 +2147,133 @@ Note: urls often include UUIDs, so this must be an application decision.</p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="125" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:125</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="130" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:130</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="closed"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Protected</span>
+                            closed</b>
+                            <a href="#closed"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>false</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="120" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:120</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="continueButtonRef"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            continueButtonRef</b>
+                            <a href="#continueButtonRef"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://angular.io/api/core/ElementRef" target="_blank" >ElementRef</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ViewChild(&#x27;continueButtonRef&#x27;)<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="105" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:105</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="focusableEls"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Protected</span>
+                            focusableEls</b>
+                            <a href="#focusableEls"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>HTMLElement[]</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="118" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:118</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="focusedEl"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Protected</span>
+                            focusedEl</b>
+                            <a href="#focusedEl"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>HTMLElement</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="119" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:119</a></div>
                             </td>
                         </tr>
 
@@ -2015,7 +2338,44 @@ Note: urls often include UUIDs, so this must be an application decision.</p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="115" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:115</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="117" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:117</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="modalContents"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            modalContents</b>
+                            <a href="#modalContents"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://angular.io/api/core/ElementRef" target="_blank" >ElementRef</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ViewChild(&#x27;modalContents&#x27;)<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="104" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:104</a></div>
                             </td>
                         </tr>
 
@@ -2048,7 +2408,7 @@ Note: urls often include UUIDs, so this must be an application decision.</p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="114" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:114</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="116" class="link-to-prism">projects/common/lib/components/consent-modal/consent-modal.component.ts:116</a></div>
                             </td>
                         </tr>
 
@@ -2143,7 +2503,7 @@ Note: urls often include UUIDs, so this must be an application decision.</p>
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { forwardRef, Component, EventEmitter, Input, Output, ViewChild, OnInit} from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { forwardRef, Component, EventEmitter, Input, Output, ViewChild, OnInit, HostListener, AfterViewInit, ElementRef} from &#x27;@angular/core&#x27;;
 import { ModalDirective } from &#x27;ngx-bootstrap/modal&#x27;;
 import { Observable, of } from &#x27;rxjs&#x27;;
 import { HttpClient, HttpHeaders, HttpErrorResponse } from &#x27;@angular/common/http&#x27;;
@@ -2227,87 +2587,145 @@ export interface ISpaEnvResponse {
   ]
 })
 
-export class ConsentModalComponent extends AbstractHttpService implements ControlValueAccessor, OnInit  {
+export class ConsentModalComponent extends AbstractHttpService implements ControlValueAccessor, OnInit, AfterViewInit  {
 
-    protected _headers: HttpHeaders &#x3D; new HttpHeaders();
-    @Input() processName: string;
+  protected _headers: HttpHeaders &#x3D; new HttpHeaders();
+  @Input() processName: string;
 
-    /**
-     * If &#x60;isUnderMaintenance&#x60; is true, then this will automatically try and
-     * make a request to the SPA ENV server to determine if it&#x27;s in a
-     * maintenance window.  If your application determines this manually, leave
-     * this alone.
-     */
-    @Input() isUnderMaintenance: boolean &#x3D; false;
-    @Input() title: string;
-    @Input() body: string; // &#x3D; &#x27;&lt;p&gt;&lt;strong&gt;Keep your personal information secure – especially when using a shared device like a computer at a library, school or café.&lt;/strong&gt; To delete any information that was entered, either complete the application and submit it or, if you don’t finish, close the web browser.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Need to take a break and come back later?&lt;/strong&gt; The data you enter on this form is saved locally to the computer or device you are using until you close the web browser or submit your application.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Information in this application is collected by the Ministry of Health&lt;/strong&gt; under section 26(a), (c) and (e) of the Freedom of Information and Protection of Privacy Act and will be used to determine eligibility for provincial health care benefits in BC and administer Premium Assistance. Should you have any questions about the collection of this personal information please &lt;a href&#x3D;&quot;http://www2.gov.bc.ca/gov/content/health/health-drug-coverage/msp/bc-residents-contact-us&quot; target&#x3D;&quot;_blank&quot;&gt;contact Health Insurance BC &lt;i class&#x3D;&quot;fa fa-external-link&quot; aria-hidden&#x3D;&quot;true&quot;&gt;&lt;/i&gt;&lt;/a&gt;.&lt;/p&gt;&#x27;;
-    @Input() agreeLabel: string &#x3D; &#x27;I have read and understand this info&#x27;;
-    @Input() continueButton: string &#x3D; &#x27;Continue&#x27;;
-    @Input() maintenanceFlag: string &#x3D; &#x27;false&#x27;;
-    @Input() url: string &#x3D; &#x27;/msp/api/env&#x27;;
-    @ViewChild(&#x27;fullSizeViewModal&#x27;) public fullSizeViewModal: ModalDirective;
-    @Output() close &#x3D; new EventEmitter&lt;void&gt;();
-    @Output() cutOffDate: EventEmitter&lt;ISpaEnvResponse&gt; &#x3D; new EventEmitter&lt;ISpaEnvResponse&gt;();
-    @Output() accept &#x3D; new EventEmitter&lt;boolean&gt;();
+  /**
+   * If &#x60;isUnderMaintenance&#x60; is true, then this will automatically try and
+   * make a request to the SPA ENV server to determine if it&#x27;s in a
+   * maintenance window.  If your application determines this manually, leave
+   * this alone.
+   */
+  @Input() isUnderMaintenance: boolean &#x3D; false;
+  @Input() title: string;
+  @Input() body: string; // &#x3D; &#x27;&lt;p&gt;&lt;strong&gt;Keep your personal information secure – especially when using a shared device like a computer at a library, school or café.&lt;/strong&gt; To delete any information that was entered, either complete the application and submit it or, if you don’t finish, close the web browser.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Need to take a break and come back later?&lt;/strong&gt; The data you enter on this form is saved locally to the computer or device you are using until you close the web browser or submit your application.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Information in this application is collected by the Ministry of Health&lt;/strong&gt; under section 26(a), (c) and (e) of the Freedom of Information and Protection of Privacy Act and will be used to determine eligibility for provincial health care benefits in BC and administer Premium Assistance. Should you have any questions about the collection of this personal information please &lt;a href&#x3D;&quot;http://www2.gov.bc.ca/gov/content/health/health-drug-coverage/msp/bc-residents-contact-us&quot; target&#x3D;&quot;_blank&quot;&gt;contact Health Insurance BC &lt;i class&#x3D;&quot;fa fa-external-link&quot; aria-hidden&#x3D;&quot;true&quot;&gt;&lt;/i&gt;&lt;/a&gt;.&lt;/p&gt;&#x27;;
+  @Input() agreeLabel: string &#x3D; &#x27;I have read and understand this info&#x27;;
+  @Input() continueButton: string &#x3D; &#x27;Continue&#x27;;
+  @Input() maintenanceFlag: string &#x3D; &#x27;false&#x27;;
+  @Input() url: string &#x3D; &#x27;/msp/api/env&#x27;;
+  @ViewChild(&#x27;fullSizeViewModal&#x27;) public fullSizeViewModal: ModalDirective;
+  @ViewChild(&#x27;modalContents&#x27;) public modalContents: ElementRef;
+  @ViewChild(&#x27;continueButtonRef&#x27;) public continueButtonRef: ElementRef;
+  @Output() close &#x3D; new EventEmitter&lt;void&gt;();
+  @Output() cutOffDate: EventEmitter&lt;ISpaEnvResponse&gt; &#x3D; new EventEmitter&lt;ISpaEnvResponse&gt;();
+  @Output() accept &#x3D; new EventEmitter&lt;boolean&gt;();
 
-    /**
-     * Used in cases where we have custom form controls inside NgContent that we
-     * wish to be satisifed before user can continue through modal.
-     */
-    @Input() disableContinue: boolean &#x3D; false;
+  /**
+   * Used in cases where we have custom form controls inside NgContent that we
+   * wish to be satisifed before user can continue through modal.
+   */
+  @Input() disableContinue: boolean &#x3D; false;
 
-    public spaEnvRes: ISpaEnvResponse &#x3D; {} as any;
-    public maintenanceMessage: string;
+  public spaEnvRes: ISpaEnvResponse &#x3D; {} as any;
+  public maintenanceMessage: string;
+  protected focusableEls: HTMLElement[];
+  protected focusedEl: HTMLElement;
+  protected closed: boolean &#x3D; false;
 
-    // TODO: This should eventually be pulled out of the common library as it pertains to MSP-specific code.
-    // tslint:disable-next-line:max-line-length
-    private _applicationHeaderMap: Map&lt;string, string&gt; &#x3D; new Map([
-      [&#x27;ACL&#x27;, &#x27;{&quot;SPA_ENV_ACL_MAINTENANCE_FLAG&quot;:&quot;&quot;,&quot;SPA_ENV_ACL_MAINTENANCE_MESSAGE&quot;:&quot;&quot;}&#x27;],
-      [&#x27;MSP&#x27;, &#x27;{&quot;SPA_ENV_MSP_MAINTENANCE_FLAG&quot;:&quot;&quot;,&quot;SPA_ENV_MSP_MAINTENANCE_MESSAGE&quot;:&quot;&quot;}&#x27;],
-      [&#x27;PA&#x27;, &#x27;{&quot;SPA_ENV_PACUTOFF_MAINTENANCE_START&quot;:&quot;&quot;,&quot;SPA_ENV_PACUTOFF_MAINTENANCE_END&quot;:&quot;&quot;,&quot;SPA_ENV_NOW&quot;:&quot;&quot;,&quot;SPA_ENV_PACUTOFF_MAINTENANCE_FLAG&quot;:&quot;&quot;,&quot;SPA_ENV_PACUTOFF_MAINTENANCE_MESSAGE&quot;:&quot;&quot;}&#x27;],
-      [&#x27;SUPPBEN&#x27;, &#x27;{&quot;SPA_ENV_SUPPBEN_MAINTENANCE_START&quot;:&quot;&quot;,&quot;SPA_ENV_SUPPBEN_MAINTENANCE_END&quot;:&quot;&quot;,&quot;SPA_ENV_NOW&quot;:&quot;&quot;,&quot;SPA_ENV_SUPPBEN_MAINTENANCE_FLAG&quot;:&quot;&quot;,&quot;SPA_ENV_SUPPBEN_MAINTENANCE_MESSAGE&quot;:&quot;&quot;,&quot;SPA_ENV_PACUTOFF_MAINTENANCE_START&quot;:&quot;&quot;,&quot;SPA_ENV_PACUTOFF_MAINTENANCE_END&quot;:&quot;&quot;}&#x27;],
-    ]);
-    agreeCheck: boolean &#x3D; false;
+  // TODO: This should eventually be pulled out of the common library as it pertains to MSP-specific code.
+  // tslint:disable-next-line:max-line-length
+  private _applicationHeaderMap: Map&lt;string, string&gt; &#x3D; new Map([
+    [&#x27;ACL&#x27;, &#x27;{&quot;SPA_ENV_ACL_MAINTENANCE_FLAG&quot;:&quot;&quot;,&quot;SPA_ENV_ACL_MAINTENANCE_MESSAGE&quot;:&quot;&quot;}&#x27;],
+    [&#x27;MSP&#x27;, &#x27;{&quot;SPA_ENV_MSP_MAINTENANCE_FLAG&quot;:&quot;&quot;,&quot;SPA_ENV_MSP_MAINTENANCE_MESSAGE&quot;:&quot;&quot;}&#x27;],
+    [&#x27;PA&#x27;, &#x27;{&quot;SPA_ENV_PACUTOFF_MAINTENANCE_START&quot;:&quot;&quot;,&quot;SPA_ENV_PACUTOFF_MAINTENANCE_END&quot;:&quot;&quot;,&quot;SPA_ENV_NOW&quot;:&quot;&quot;,&quot;SPA_ENV_PACUTOFF_MAINTENANCE_FLAG&quot;:&quot;&quot;,&quot;SPA_ENV_PACUTOFF_MAINTENANCE_MESSAGE&quot;:&quot;&quot;}&#x27;],
+    [&#x27;SUPPBEN&#x27;, &#x27;{&quot;SPA_ENV_SUPPBEN_MAINTENANCE_START&quot;:&quot;&quot;,&quot;SPA_ENV_SUPPBEN_MAINTENANCE_END&quot;:&quot;&quot;,&quot;SPA_ENV_NOW&quot;:&quot;&quot;,&quot;SPA_ENV_SUPPBEN_MAINTENANCE_FLAG&quot;:&quot;&quot;,&quot;SPA_ENV_SUPPBEN_MAINTENANCE_MESSAGE&quot;:&quot;&quot;,&quot;SPA_ENV_PACUTOFF_MAINTENANCE_START&quot;:&quot;&quot;,&quot;SPA_ENV_PACUTOFF_MAINTENANCE_END&quot;:&quot;&quot;}&#x27;],
+  ]);
+  agreeCheck: boolean &#x3D; false;
 
-    public _onChange &#x3D; (_: any) &#x3D;&gt; {};
-    public _onTouched &#x3D; () &#x3D;&gt; {};
+  public _onChange &#x3D; (_: any) &#x3D;&gt; {};
+  public _onTouched &#x3D; () &#x3D;&gt; {};
 
-    constructor(protected http: HttpClient,  private logService: CommonLogger) {
-        super(http);
+  constructor(protected http: HttpClient,  private logService: CommonLogger) {
+      super(http);
+  }
+
+  ngOnInit(): void {
+    // Called after ngOnInit when the component&#x27;s or directive&#x27;s content has been initialized.
+    // Add &#x27;implements AfterContentInit&#x27; to the class.
+    if (this.isUnderMaintenance) {
+      this.inMaintenance();
     }
+  }
 
-    ngOnInit(): void {
-      // Called after ngOnInit when the component&#x27;s or directive&#x27;s content has been initialized.
-      // Add &#x27;implements AfterContentInit&#x27; to the class.
-      if (this.isUnderMaintenance) {
-        this.inMaintenance();
+  ngAfterViewInit(): void {
+    // Create an array of focusable elements from the contents of the modal
+    this.focusableEls &#x3D; Array.from(this.modalContents.nativeElement.querySelectorAll(&#x27;a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), [tabindex&#x3D;&quot;0&quot;]&#x27;));
+    // Initialize to the first focusable element
+    this.focusedEl &#x3D; this.focusableEls[0];
+    this.focusedEl.focus();
+    this.fullSizeViewModal.config.backdrop &#x3D; true;
+
+  }
+
+  @HostListener(&#x27;window:keydown&#x27;, [&#x27;$event&#x27;])
+  handleKeyDown(event: KeyboardEvent) {
+    // Check that the modal is open
+    if (!this.closed) {
+      // Handle tabbing
+      if (event.key &#x3D;&#x3D;&#x3D; &#x27;Tab&#x27;) {
+        // Prevent usual tabbing, manually set focus
+        event.preventDefault();
+        if (event.shiftKey) {
+          this.handleTabBackwards();
+        } else {
+          this.handleTab();
+        }
+
+      // Stop users from being able to escape the modal
+      } else if (event.key &#x3D;&#x3D;&#x3D; &#x27;Escape&#x27;) {
+        event.preventDefault();
       }
-
     }
+  }
 
-    /**
-     * Call this method to display the modal.
-     */
-    showFullSizeView() {
-        this.fullSizeViewModal.config.keyboard &#x3D; false;
-        this.fullSizeViewModal.show();
-    }
+  // Api callout to get the message from the Rapid code
+  sendSpaEnvServer(rapidResponseCode: string): Observable&lt;any&gt; {
+    this._headers &#x3D; new HttpHeaders({
+      &#x27;SPA_ENV_NAME&#x27;: rapidResponseCode
+    });
+    return this.post&lt;any&gt;(this.url, null);
+  }
 
-    continue() {
-        this.accept.emit(true);
-        this.fullSizeViewModal.hide();
-        this.close.emit();
-        this._onChange(true);
-        this._onTouched();
+  // Move to next focusable element, if at last element, move to first
+  handleTab() {
+    const position &#x3D; this.focusableEls.indexOf(this.focusedEl);
+    if (position &#x3D;&#x3D;&#x3D; this.focusableEls.length - 1) {
+      this.focusedEl &#x3D; this.focusableEls[0];
+    } else {
+      this.focusedEl &#x3D; this.focusableEls[position + 1];
     }
+    this.focusedEl.focus();
+  };
 
-    // Api callout to get the message from the Rapid code
-    sendSpaEnvServer(rapidResponseCode: string): Observable&lt;any&gt; {
-        this._headers &#x3D; new HttpHeaders({
-            &#x27;SPA_ENV_NAME&#x27;: rapidResponseCode
-        });
-        return this.post&lt;any&gt;(this.url, null);
+  // Move to next focusable element, if at last element, move to first
+  handleTabBackwards() {
+    const position &#x3D; this.focusableEls.indexOf(this.focusedEl);
+    if (position &#x3D;&#x3D;&#x3D; 0) {
+      this.focusedEl &#x3D; this.focusableEls[this.focusableEls.length - 1];
+    } else {
+      this.focusedEl &#x3D; this.focusableEls[position - 1];
     }
+    this.focusedEl.focus();
+  };
+
+  /**
+   * Call this method to display the modal.
+   */
+  showFullSizeView() {
+      this.fullSizeViewModal.config.keyboard &#x3D; false;
+      this.fullSizeViewModal.show();
+  }
+
+  continue() {
+      this.accept.emit(true);
+      this.fullSizeViewModal.hide();
+      this.close.emit();
+      this.closed &#x3D; true;
+      this._onChange(true);
+      this._onTouched();
+  }
 
     protected handleError(error: HttpErrorResponse) {
       if (error.error instanceof ErrorEvent) {
@@ -2318,8 +2736,8 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
           console.error(&#x60;MspMaintenanceService Backend returned error code: ${error.status}.  Error body: ${error.error}&#x60;);
       }
 
-      // A user facing erorr message /could/ go here; we shouldn&#x27;t log dev info through the throwError observable
-      return of(error);
+    // A user facing erorr message /could/ go here; we shouldn&#x27;t log dev info through the throwError observable
+    return of(error);
   }
 
 
@@ -2370,7 +2788,16 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
   writeValue(value: any): void {}
 
   isContinueDisabled(): boolean {
-    return !this.agreeCheck || this.disableContinue;
+    const disabled &#x3D; !this.agreeCheck || this.disableContinue;
+
+    const hasTabbableContinue &#x3D; this.focusableEls ? this.focusableEls.indexOf(this.continueButtonRef.nativeElement) !&#x3D;&#x3D; -1 : false;
+
+    // If it is tabbable but no longer should be, remove it
+    if (hasTabbableContinue &amp;&amp; disabled) this.focusableEls.pop();
+    //  If it&#x27;s not tabbable but it now should be, add it
+    if (!hasTabbableContinue &amp;&amp; !disabled) this.focusableEls.push(this.continueButtonRef.nativeElement);
+
+    return disabled;
   }
 }
 </code></pre>
@@ -2383,7 +2810,7 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
      [config]&#x3D;&quot;{backdrop: &#x27;static&#x27;, ignoreBackdropClick: true}&quot;&gt;
 
   &lt;div class&#x3D;&quot;modal-dialog&quot; style&#x3D;&quot;margin-top: 90px;&quot;&gt;
-    &lt;div class&#x3D;&quot;modal-content&quot;&gt;
+    &lt;div #modalContents class&#x3D;&quot;modal-content&quot;&gt;
       &lt;!--  Header --&gt;
       &lt;div class&#x3D;&quot;modal-header modal-header-primary&quot;&gt;
         &lt;h2 id&#x3D;&quot;myLargeModalLabel&quot;&gt;{{maintenanceFlag &#x3D;&#x3D; &#x27;true&#x27; ? &#x27;Maintenance notice&#x27; : title}}&lt;/h2&gt;
@@ -2409,7 +2836,7 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
 
       &lt;!-- Footer --&gt;
       &lt;div *ngIf&#x3D;&quot;maintenanceFlag !&#x3D; &#x27;true&#x27;&quot; class&#x3D;&quot;modal-footer&quot;&gt;
-        &lt;button [disabled]&#x3D;&quot;isContinueDisabled()&quot; class&#x3D;&quot;btn btn-block btn-primary pull-left&quot;
+        &lt;button #continueButtonRef [disabled]&#x3D;&quot;isContinueDisabled()&quot; class&#x3D;&quot;btn btn-block btn-primary pull-left&quot;
                 type&#x3D;&quot;submit&quot; (click)&#x3D;&quot;continue()&quot;&gt;{{continueButton}}&lt;/button&gt;
 
       &lt;/div&gt;
@@ -2445,7 +2872,7 @@ export class ConsentModalComponent extends AbstractHttpService implements Contro
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div bsModal #fullSizeViewModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"      data-keyboard="false"     aria-labelledby="myLargeModalLabel" aria-hidden="true"     [config]="{backdrop: \'static\', ignoreBackdropClick: true}">  <div class="modal-dialog" style="margin-top: 90px;">    <div class="modal-content">      <!--  Header -->      <div class="modal-header modal-header-primary">        <h2 id="myLargeModalLabel">{{maintenanceFlag == \'true\' ? \'Maintenance notice\' : title}}</h2>      </div>      <!--   Modal Body   -->      <div class="modal-body">        <div *ngIf="maintenanceFlag == \'true\'">          <h4>{{maintenanceMessage}}</h4>        </div>        <div *ngIf="maintenanceFlag != \'true\'">            <ng-content></ng-content>        <br>        <div *ngIf="maintenanceFlag != \'true\'">          <div class="form-check form-check-inline">            <input [ngModelOptions]="{standalone: true}" class="input-lg form-check-input" id="agree" type="checkbox"              [(ngModel)]="agreeCheck" (ngModelChange)=\'accept.emit($event);\'  >            <label class="form-check-label" for="agree"><strong>{{agreeLabel}}</strong></label>          </div>        </div>      </div>      <!-- Footer -->      <div *ngIf="maintenanceFlag != \'true\'" class="modal-footer">        <button [disabled]="isContinueDisabled()" class="btn btn-block btn-primary pull-left"                type="submit" (click)="continue()">{{continueButton}}</button>      </div>    </div>  </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div bsModal #fullSizeViewModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"      data-keyboard="false"     aria-labelledby="myLargeModalLabel" aria-hidden="true"     [config]="{backdrop: \'static\', ignoreBackdropClick: true}">  <div class="modal-dialog" style="margin-top: 90px;">    <div #modalContents class="modal-content">      <!--  Header -->      <div class="modal-header modal-header-primary">        <h2 id="myLargeModalLabel">{{maintenanceFlag == \'true\' ? \'Maintenance notice\' : title}}</h2>      </div>      <!--   Modal Body   -->      <div class="modal-body">        <div *ngIf="maintenanceFlag == \'true\'">          <h4>{{maintenanceMessage}}</h4>        </div>        <div *ngIf="maintenanceFlag != \'true\'">            <ng-content></ng-content>        <br>        <div *ngIf="maintenanceFlag != \'true\'">          <div class="form-check form-check-inline">            <input [ngModelOptions]="{standalone: true}" class="input-lg form-check-input" id="agree" type="checkbox"              [(ngModel)]="agreeCheck" (ngModelChange)=\'accept.emit($event);\'  >            <label class="form-check-label" for="agree"><strong>{{agreeLabel}}</strong></label>          </div>        </div>      </div>      <!-- Footer -->      <div *ngIf="maintenanceFlag != \'true\'" class="modal-footer">        <button #continueButtonRef [disabled]="isContinueDisabled()" class="btn btn-block btn-primary pull-left"                type="submit" (click)="continue()">{{continueButton}}</button>      </div>    </div>  </div></div></div>'
     var COMPONENTS = [{'name': 'AccordionCommonComponent', 'selector': 'common-accordion'},{'name': 'AddressComponent', 'selector': 'common-address'},{'name': 'AddressValidatorComponent', 'selector': 'common-address-validator'},{'name': 'ButtonComponent', 'selector': 'common-button'},{'name': 'ButtonGroupComponent', 'selector': 'common-button-group'},{'name': 'CaptchaComponent', 'selector': 'common-captcha'},{'name': 'CheckboxComponent', 'selector': 'common-checkbox'},{'name': 'CityComponent', 'selector': 'common-city'},{'name': 'ConfirmTemplateComponent', 'selector': 'common-confirm-template'},{'name': 'ConsentModalComponent', 'selector': 'common-consent-modal'},{'name': 'CoreBreadcrumbComponent', 'selector': 'common-core-breadcrumb'},{'name': 'CountryComponent', 'selector': 'common-country'},{'name': 'DateComponent', 'selector': 'common-date'},{'name': 'DatepickerComponent', 'selector': 'common-datepicker'},{'name': 'DropdownComponent', 'selector': 'common-dropdown'},{'name': 'EmailComponent', 'selector': 'common-email'},{'name': 'ErrorContainerComponent', 'selector': 'common-error-container'},{'name': 'FileUploaderComponent', 'selector': 'common-file-uploader'},{'name': 'FormActionBarComponent', 'selector': 'common-form-action-bar'},{'name': 'FormSubmitBarComponent', 'selector': 'common-form-submit-bar'},{'name': 'FullNameComponent', 'selector': 'common-full-name'},{'name': 'GeocoderInputComponent', 'selector': 'common-geocoder-input'},{'name': 'HeaderComponent', 'selector': 'common-header'},{'name': 'NameComponent', 'selector': 'common-name'},{'name': 'PageFrameworkComponent', 'selector': 'common-page-framework'},{'name': 'PageSectionComponent', 'selector': 'common-page-section'},{'name': 'PasswordComponent', 'selector': 'common-password'},{'name': 'PhnComponent', 'selector': 'common-phn'},{'name': 'PhoneNumberComponent', 'selector': 'common-phone-number'},{'name': 'PostalCodeComponent', 'selector': 'common-postal-code'},{'name': 'ProvinceComponent', 'selector': 'common-province'},{'name': 'RadioComponent', 'selector': 'common-radio'},{'name': 'SampleModalComponent', 'selector': 'common-sample-modal'},{'name': 'SinComponent', 'selector': 'common-sin'},{'name': 'StreetComponent', 'selector': 'common-street'},{'name': 'ThumbnailComponent', 'selector': 'common-thumbnail'},{'name': 'ToggleComponent', 'selector': 'common-toggle'},{'name': 'WizardProgressBarComponent', 'selector': 'common-wizard-progress-bar'},{'name': 'XiconButtonComponent', 'selector': 'common-xicon-button'}];
     var DIRECTIVES = [{'name': 'DateFieldFormatDirective', 'selector': '[commonDateFieldFormat]'},{'name': 'DuplicateCheckDirective', 'selector': '[commonDuplicateCheck]'},{'name': 'ValidateBcPostalDirective', 'selector': '[commonValidateBcPostal]'},{'name': 'ValidateCityDirective', 'selector': '[commonValidateCity]'},{'name': 'ValidateNameDirective', 'selector': '[commonValidateName]'},{'name': 'ValidatePostalcodeDirective', 'selector': '[commonValidatePostalcode]'},{'name': 'ValidateRegionDirective', 'selector': '[commonValidateRegion]'},{'name': 'ValidateStreetDirective', 'selector': '[commonValidateStreet]'}];
     var ACTUAL_COMPONENT = {'name': 'ConsentModalComponent'};

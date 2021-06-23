@@ -1,4 +1,8 @@
-# Unreleased "moh-common-lib" (2021-03-08)
+# Unreleased "moh-common-lib" (2021-06-23)
+
+
+
+## [3.4.1](https://github.com/bcgov/moh-common-styles/compare/v3.3.5...v3.4.1) "moh-common-lib" (2021-06-23)
 
 
 
@@ -47,6 +51,8 @@
 ### Bug Fixes
 
 * add margin and padding ([4af00f9](https://github.com/bcgov/moh-common-styles/commit/4af00f9))
+* add missing or fix existing required flags ([b32ec3f](https://github.com/bcgov/moh-common-styles/commit/b32ec3f))
+* fix a11y issues with province and country dropdowns ([91b3467](https://github.com/bcgov/moh-common-styles/commit/91b3467))
 * Fix address-service for non Canadian countries. ([be50982](https://github.com/bcgov/moh-common-styles/commit/be50982))
 
 
@@ -66,7 +72,16 @@
 
 ### Bug Fixes
 
+* a11y changes for date fields ([8b53e14](https://github.com/bcgov/moh-common-styles/commit/8b53e14))
+* DEA11Y-29: Added aria-label for country and province code ([3f53e0f](https://github.com/bcgov/moh-common-styles/commit/3f53e0f))
+* DEA11Y-8: return tabbing to normal after modal close ([cf0a883](https://github.com/bcgov/moh-common-styles/commit/cf0a883))
+* disable tabbing out of modals ([a704cc0](https://github.com/bcgov/moh-common-styles/commit/a704cc0))
 * prevent submissions of SINs that start with 0 ([0cb7f9d](https://github.com/bcgov/moh-common-styles/commit/0cb7f9d))
+
+
+### Features
+
+* DEA11Y-44: 'Add' tab stop in fileuploader ([499afb6](https://github.com/bcgov/moh-common-styles/commit/499afb6))
 
 
 ### Performance Improvements
@@ -77,6 +92,7 @@
 ### Styles
 
 * align text and checkbox ([2c14de1](https://github.com/bcgov/moh-common-styles/commit/2c14de1))
+* change label to button, adjust style for a11y ([5172804](https://github.com/bcgov/moh-common-styles/commit/5172804))
 
 
 ### Tests
@@ -90,7 +106,13 @@
 
 ### Bug Fixes
 
+* DEA11LY-19: Remove tabindex from fileuploader icon ([2837d51](https://github.com/bcgov/moh-common-styles/commit/2837d51))
+* DEA11Y-1: remove unneeded conflicting role ([6ba6c29](https://github.com/bcgov/moh-common-styles/commit/6ba6c29))
+* DEA11Y-15-update: Updated style for continue ([bc23574](https://github.com/bcgov/moh-common-styles/commit/bc23574))
+* DEA11Y-15: Made the Continue word darker ([708fa13](https://github.com/bcgov/moh-common-styles/commit/708fa13))
+* DEA11Y-23: Fix aria-labelledby use ([62e577e](https://github.com/bcgov/moh-common-styles/commit/62e577e))
 * DEMCL-25: Fixed corrupted files breaking further uploads. ([0c89683](https://github.com/bcgov/moh-common-styles/commit/0c89683))
+* move skip to content to top of tab queue ([49d4cab](https://github.com/bcgov/moh-common-styles/commit/49d4cab))
 
 
 ### Features

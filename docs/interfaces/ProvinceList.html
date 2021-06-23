@@ -249,7 +249,7 @@ export class ProvinceComponent extends AbstractFormControl implements OnInit {
   @Input() placeholder: string &#x3D; &#x27;Please select a province&#x27;;
   @Input() maxlength: string &#x3D; &#x27;250&#x27;;
   @Input() useDropDownList: boolean &#x3D; true;
-
+  @Input() bcOnly: boolean &#x3D; false;
   @Input()
   set value( val: string ) {
     if ( val ) {
@@ -283,17 +283,22 @@ export class ProvinceComponent extends AbstractFormControl implements OnInit {
     super.ngOnInit();
   }
 
-  onValueChange( value: any ) {
-    if ( value !&#x3D;&#x3D; this.province ) {
-      this._onChange( value );
-      this.valueChange.emit( value );
-      this.province &#x3D; value;
+  provinceChange( event: any ) {
+    const province &#x3D; this.provinceList[Number(event.target.value)];
+    if (province) {
+      this._onChange(province.provinceCode);
+      this.valueChange.emit(province.provinceCode);
+      this.province &#x3D; province.provinceCode;
     }
   }
 
-  onBlur( event: any ) {
-    this._onTouched( event );
-    this.blur.emit( event );
+  typedProvinceChange(event: any) {
+    const province &#x3D; event.target.value;
+    if ( province ) {
+      this._onChange(province);
+      this.valueChange.emit(province);
+      this.province &#x3D; province;
+    }
   }
 
   writeValue( value: any ): void {
