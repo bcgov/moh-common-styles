@@ -88,5 +88,4 @@ export class WizardProgressBarComponent implements OnInit, OnDestroy {
       } catch (error) {}
     }
   }
-
 }
