@@ -11,6 +11,7 @@ export class RecaptchaComponent implements OnInit {
 
   @Input('apiBaseUrl') apiBaseUrl: string;
   @Input('nonce') nonce: string;
+  @Input('publicKey') publicKey: string;
 
   @Output() onValidToken = new EventEmitter<string>();
 
@@ -26,12 +27,7 @@ export class RecaptchaComponent implements OnInit {
 
   resolved(token:string){
     console.log(token);
-    const nonce = "nonce";
-    // this._http.post('localhost:8080', { token, nonce }).subscribe(
-    //   res => {
-    //     console.log("success?", res);
-    //   }
-    // )
+
     this.dataService.verifyRecaptcha(this.apiBaseUrl, this.nonce, token).subscribe(response => {
       const payload = response.body;
 
