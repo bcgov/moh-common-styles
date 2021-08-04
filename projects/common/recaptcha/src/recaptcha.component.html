@@ -1,2 +1,13 @@
-<re-captcha (resolved)="resolved($event)" siteKey={{publicKey}}>
-</re-captcha>
+<div class="bcgov-recaptcha">
+  <re-captcha (resolved)="resolved($event)" siteKey={{publicKey}}>
+  </re-captcha>
+
+  <div class="error-captcha" *ngIf="state === 6"  role="alert" aria-live="assertive">
+    <svg class="icon-exclamation-triangle"><use xlink:href="#icon-exclamation-triangle-def"></use></svg>
+    <span>{{translatedMessages.errorVerifyingAnswer[language].substring(0,translatedMessages.errorVerifyingAnswer[language].indexOf('{'))}}
+        {{translatedMessages.errorVerifyingAnswer[language].substring(translatedMessages.errorVerifyingAnswer[language].lastIndexOf('}')+1)}}
+    </span>
+    <p>
+    </p>
+  </div>
+</div>
