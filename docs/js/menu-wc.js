@@ -130,6 +130,39 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 </li>
                             </li>
                             <li class="link">
+                                <a href="modules/ReCaptchaModule.html" data-type="entity-link">ReCaptchaModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                            'data-target="#components-links-module-ReCaptchaModule-015a8ea0e8953f63f0160e51a9f2803e"' : 'data-target="#xs-components-links-module-ReCaptchaModule-015a8ea0e8953f63f0160e51a9f2803e"' }>
+                                            <span class="icon ion-md-cog"></span>
+                                            <span>Components</span>
+                                            <span class="icon ion-ios-arrow-up"></span>
+                                        </div>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-ReCaptchaModule-015a8ea0e8953f63f0160e51a9f2803e"' :
+                                            'id="xs-components-links-module-ReCaptchaModule-015a8ea0e8953f63f0160e51a9f2803e"' }>
+                                            <li class="link">
+                                                <a href="components/RecaptchaComponent.html"
+                                                    data-type="entity-link" data-context="sub-entity" data-context-id="modules">RecaptchaComponent</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                <li class="chapter inner">
+                                    <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                        'data-target="#injectables-links-module-ReCaptchaModule-015a8ea0e8953f63f0160e51a9f2803e"' : 'data-target="#xs-injectables-links-module-ReCaptchaModule-015a8ea0e8953f63f0160e51a9f2803e"' }>
+                                        <span class="icon ion-md-arrow-round-down"></span>
+                                        <span>Injectables</span>
+                                        <span class="icon ion-ios-arrow-down"></span>
+                                    </div>
+                                    <ul class="links collapse" ${ isNormalMode ? 'id="injectables-links-module-ReCaptchaModule-015a8ea0e8953f63f0160e51a9f2803e"' :
+                                        'id="xs-injectables-links-module-ReCaptchaModule-015a8ea0e8953f63f0160e51a9f2803e"' }>
+                                        <li class="link">
+                                            <a href="injectables/RecaptchaDataService.html"
+                                                data-type="entity-link" data-context="sub-entity" data-context-id="modules" }>RecaptchaDataService</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </li>
+                            <li class="link">
                                 <a href="modules/SharedCoreModule.html" data-type="entity-link">SharedCoreModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?

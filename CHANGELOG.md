@@ -1,4 +1,25 @@
-# Unreleased "moh-common-lib" (2021-06-23)
+# Unreleased "moh-common-lib" (2021-08-16)
+
+
+
+## [3.4.3](https://github.com/bcgov/moh-common-styles/compare/v3.4.1...v3.4.3) "moh-common-lib" (2021-08-16)
+
+
+### Bug Fixes
+
+* remove bugs from fileuploader and address ([4d2633f](https://github.com/bcgov/moh-common-styles/commit/4d2633f))
+* remove commented unused import ([a8e36f7](https://github.com/bcgov/moh-common-styles/commit/a8e36f7))
+
+
+### Code Refactoring
+
+* make recaptcha siteKey a passed prop ([f890ba7](https://github.com/bcgov/moh-common-styles/commit/f890ba7))
+
+
+### Features
+
+*  error handling for recaptcha ([7af560b](https://github.com/bcgov/moh-common-styles/commit/7af560b))
+* Add Component - recaptcha ([36955da](https://github.com/bcgov/moh-common-styles/commit/36955da))
 
 
 
