@@ -432,8 +432,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="67"
-                            class="link-to-prism">projects/common/recaptcha/src/recaptcha.component.ts:67</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="73"
+                            class="link-to-prism">projects/common/recaptcha/src/recaptcha.component.ts:73</a></div>
                 </td>
             </tr>
 
@@ -814,7 +814,7 @@ The occurance of this type of case should be rare.</p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">projects/common/recaptcha/src/recaptcha.component.ts:78</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">projects/common/recaptcha/src/recaptcha.component.ts:84</a></div>
                             </td>
                         </tr>
 
@@ -894,8 +894,14 @@ export class RecaptchaComponent implements OnInit {
       console.error(&#x27;payload cannot be null or undefined or 0&#x27;);
       return false;
     } else {
-      const hasValueProp &#x3D; payload.hasOwnProperty(&#x27;valid&#x27;);
-      if (!hasValueProp || payload.valid &#x3D;&#x3D;&#x3D; false) {
+      const hasValidProp &#x3D; payload.hasOwnProperty(&#x27;valid&#x27;);
+      console.log(&quot;hasValidProp:&quot;, hasValidProp)
+      if (hasValidProp) {
+        console.log(&quot;payload.valid:&quot;, payload.valid)
+        console.log(&quot;typeof payload.valid:&quot;, typeof payload.valid)
+      }
+
+      if (!hasValidProp || payload.valid &#x3D;&#x3D;&#x3D; false) {
         console.error(&#x27;Error verifying captcha&#x27;);
         return false;
       } else {
