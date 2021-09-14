@@ -54,8 +54,14 @@ export class RecaptchaComponent implements OnInit {
       console.error('payload cannot be null or undefined or 0');
       return false;
     } else {
-      const hasValueProp = payload.hasOwnProperty('valid');
-      if (!hasValueProp || payload.valid === false) {
+      const hasValidProp = payload.hasOwnProperty('valid');
+      console.log("hasValidProp:", hasValidProp)
+      if (hasValidProp) {
+        console.log("payload.valid:", payload.valid)
+        console.log("typeof payload.valid:", typeof payload.valid)
+      }
+
+      if (!hasValidProp || payload.valid === false) {
         console.error('Error verifying captcha');
         return false;
       } else {
