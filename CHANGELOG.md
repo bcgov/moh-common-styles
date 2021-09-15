@@ -1,4 +1,14 @@
-# Unreleased "moh-common-lib" (2021-09-14)
+# Unreleased "moh-common-lib" (2021-09-15)
+
+
+
+## [3.4.4](https://github.com/bcgov/moh-common-styles/compare/v3.4.5...v3.4.4) "moh-common-lib" (2021-09-15)
+
+
+### Bug Fixes
+
+* fix bug caused by version numbering ([c6974e8](https://github.com/bcgov/moh-common-styles/commit/c6974e8))
+* reverse version change ([e4f7d9e](https://github.com/bcgov/moh-common-styles/commit/e4f7d9e))
 
 
 
