@@ -29,36 +29,46 @@ export class RecaptchaComponent implements OnInit {
     this._renderer.appendChild(document.body, script);
   }
 
+  /**
+   * resolved - called by google reCAPTCHA
+   *  when evaluation completes
+   * @param token - a token from google that
+   *  can be validated by recaptcha service
+   */
   resolved(token:string){
-    this.dataService.verifyRecaptcha(this.apiBaseUrl, this.nonce, token).subscribe(response => {
-      const payload:any = response.body;
-      if (this.isValidPayload(payload)) {
-        this.onValidToken.emit(payload.jwt);
-      } else {
+    this.dataService.verifyRecaptcha(this.apiBaseUrl, this.nonce, token)
+      .subscribe(response => {
+        const payload:any = response.body;
+        if (this.isValidPayload(payload)) {
+          this.onValidToken.emit(payload.jwt);
+        } else {
+          this.errorVerifyAnswer = this.GENERIC_ERROR_MESSAGE;
+        }
+      }, error => {
+        console.error("recaptcha service connection error:", error);
         this.errorVerifyAnswer = this.GENERIC_ERROR_MESSAGE;
-      }
-    }, error => {
-      console.error("recaptcha service connection error:", error);
-      this.errorVerifyAnswer = this.GENERIC_ERROR_MESSAGE;
-    });
+      });
   }
 
   /**
-   * Case where HTTP 200 response code is received by the payload is incorrect or corrupt.
-   * The occurance of this type of case should be rare.
+   * isValidPayload - checks the payload returned by recaptcha-service
    * @param payload
+   * @returns:boolean - true if recaptcha-service has
+   * validated successfully
    */
   private isValidPayload(payload) {
     if (!payload) {
+      //improper responce from recaptcha-service
       console.error('payload cannot be null or undefined or 0');
       return false;
     } else {
       const hasValidProp = payload.hasOwnProperty('valid');
-
       if (!hasValidProp || payload.valid === false) {
+        //the submitted reCAPTCHA token failed validation
         console.error('Error verifying captcha');
         return false;
       } else {
+        //the submitted reCAPTCHA token was confirmed valid
         return true;
       }
     }
