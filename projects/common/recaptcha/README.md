@@ -39,7 +39,7 @@ In the html file of the host component add the following lines between the openi
 This version only displays if the isRecaptchaEnabled variable is true.  This is intended for use as a feature flag to select between using captcha or recaptcha components.
 
 ### Main Component File(ts file)
-The following code example shows the integration of Recaptcha into an example host component.  In the class definition for the host component(in the component.ts file) add the recaptcha variables and functions as shown below.  This example assumes the use of a feature flag SPA_ENV_ENABLE_RECAPTCHA used to enable/disable the use of recaptcha.  To use this an environment variable by the same name must be set to "true" or "false" on the spa-env-service pod, and the SpaEnvService must be imported above and included in the constructor as an parameter.
+The following code example shows the integration of Recaptcha into an example host component.  In the class definition for the host component(in the component.ts file) add the recaptcha variables and functions as shown below.  This example assumes the use of a feature flag SPA_ENV_ENABLE_RECAPTCHA used to enable/disable the use of recaptcha.  To use this an environment variable by the same name must be set to "true" or "false" on the spa-env-service pod, and the SpaEnvService must be imported above and included in the constructor as a parameter.
 ```ts
 export class HostComponent implements AfterViewInit {
   //recaptcha variables
