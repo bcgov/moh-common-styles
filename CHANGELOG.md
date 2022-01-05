@@ -1,4 +1,13 @@
-# Unreleased "moh-common-lib" (2021-11-05)
+# Unreleased "moh-common-lib" (2022-01-05)
+
+
+
+## [3.4.7](https://github.com/bcgov/moh-common-styles/compare/v3.4.6...v3.4.7) "moh-common-lib" (2022-01-05)
+
+
+### Bug Fixes
+
+* Revert "Taiwan" label change. ([a18ebf3](https://github.com/bcgov/moh-common-styles/commit/a18ebf3))
 
 
 
