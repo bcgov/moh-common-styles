@@ -231,7 +231,7 @@ export const COUNTRY_LIST: CountryList[] = [
   { countryCode: 'SWE', description: 'Sweden' },
   { countryCode: 'CHE', description: 'Switzerland' },
   { countryCode: 'SYR', description: 'Syrian Arab Republic' },
-  { countryCode: 'TWN', description: 'Taiwan' },
+  { countryCode: 'TWN', description: 'Taiwan, Province of China' },
   { countryCode: 'TJK', description: 'Tajikistan' },
   { countryCode: 'TZA', description: 'Tanzania, United Republic of' },
   { countryCode: 'THA', description: 'Thailand' },
