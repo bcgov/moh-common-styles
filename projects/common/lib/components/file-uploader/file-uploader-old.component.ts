@@ -28,12 +28,6 @@ export interface FileUploaderMsg {
 // TODO - Remove this and fix tslint issues
 /* tslint:disable:max-line-length*/
 
-const MAX_IMAGE_SIZE_BYTES: number = 1048576;
-const MAX_IMAGE_COUNT: number = 50;
-const JPEG_COMPRESSION: number = 0.5;
-const IMAGE_CONTENT_TYPE = 'image/jpeg';
-const IMAGE_REDUCTION_SCALE_FACTOR: number = 0.8;
-
 @Component({
     selector: 'common-file-uploader',
     templateUrl: './file-uploader.component.html',
@@ -44,21 +38,23 @@ const IMAGE_REDUCTION_SCALE_FACTOR: number = 0.8;
 export class FileUploaderComponent extends Base
     implements OnInit, OnChanges, AfterContentInit {
     noIdImage: Boolean = false;
-    private isProcessingFile: Boolean = false;
+    private appConstants;
     @ViewChild('dropZone') dropZone: ElementRef;
     @ViewChild('browseFileRef') browseFileRef: ElementRef;
     @ViewChild('imagePlaceholderRef') imagePlaceholderRef: ElementRef;
     @ViewChild('selectFileLabel') selectFileLabelRef: ElementRef;
-    @ViewChild('canvas') canvas: ElementRef;
 
     @Input() images: Array<CommonImage> = new Array<CommonImage>(0);
+    @Output() imagesChange: EventEmitter<Array<CommonImage>> = new EventEmitter<Array<CommonImage>>();
     @Input() id: string;
     @Input() showError: boolean;
     @Input() required: boolean = false;
     @Input() instructionText: string = 'Please upload required ID documents.';
-    @Input() errorMessages: FileUploaderMsg = { required: 'File is required.' };
+    @Input() errorMessages: FileUploaderMsg = {required: 'File is required.'};
 
-    @Output() imagesChange: EventEmitter<Array<CommonImage>> = new EventEmitter<Array<CommonImage>>();
+    @ViewChild('canvas') canvas: ElementRef;
+
+
     @Output() errorDocument: EventEmitter<CommonImage> = new EventEmitter<CommonImage>();
 
     constructor(
@@ -66,336 +62,6 @@ export class FileUploaderComponent extends Base
                 private cd: ChangeDetectorRef , private router: Router,
                 private controlContainer: ControlContainer) {
         super();
-    }
-
-    /** Opens the file upload dialog from the browser. */
-    public openFileDialog() {
-        this.browseFileRef.nativeElement.click();
-    }
-
-    public handleDragOver(event): void {
-        event.preventDefault();
-    }
-
-    public handleDrop(event): void {
-        event.preventDefault();
-  
-        const files = event.dataTransfer.files;
-  
-        // Don't proceed if no file(s) were selected.
-        if (!files || files.length === 0) {
-            return;
-        }
-        
-        // Clear previous error message.
-        //this.errorMessage = null;
-  
-        // Process each file dropped.
-        for (let i=0; i<files.length; i++) {
-            this.processFile(files[i]);
-        }
-    }
-
-    public handleChangeFile(event): void {
-        const files = event.target.files;
-  
-        // Don't proceed if no file(s) were selected.
-        if (!files || files.length === 0) {
-            return;
-        }
-        
-        // Clear previous error message.
-        //this.errorMessage = null;
-  
-        // Process each file selected.
-        for (let i=0; i<files.length; i++) {
-            this.processFile(files[i]);
-        }
-  
-        // Clear selected files.
-        event.target.value = '';
-    }
-
-    private async processFile(file: File) {
-        console.log('Process file.');
-        this.isProcessingFile = true;
-
-        switch (file.type) {
-            case 'application/pdf':
-                try {
-                    const images = await this.processPDFFile(file);
-                    await this.addFileImages(file.name, images);
-                } catch (error) {
-                    this.handleError(error);
-                }
-                break;
-
-            default:
-                try {
-                    const image = await this.processImageFile(file);
-                    await this.addFileImages(file.name, [image]);
-                } catch (error) {
-                    this.handleError(error);
-                }
-                break;
-        }
-        this.isProcessingFile = false;
-    }
-
-    processPDFFile(file): Promise<Array<CommonImage>> {
-        const reader = new FileReader();
-        const images = [];
-  
-        return new Promise((resolve, reject) => {
-            reader.onload = () => {
-                const docInitParams = {
-                    data: reader.result
-                };
-                PDFJS.getDocument(docInitParams).promise.then(async (pdfDoc) => {
-                    if (pdfDoc.numPages > MAX_IMAGE_COUNT) {
-                        reject(CommonImageError.PDFnotSupported);
-                        return;
-                    }
-                    for (let pageNumber=1; pageNumber<=pdfDoc.numPages; pageNumber++) {
-                        try {
-                            let image = await this.getPageImage(pdfDoc, pageNumber);
-
-                            // Check image size.
-                            if (image.size <= MAX_IMAGE_SIZE_BYTES) {
-                                console.log('Unscaled image:', image);
-                                images.push(image);
-                            } else {
-                                const scaledImage = await this.scaleImage(image);
-                                console.log('Scaled image:', scaledImage);
-                                images.push(scaledImage);
-                            }
-                            
-                        } catch (error) {
-                            const message = `Error reading page ${pageNumber} of the PDF.`;
-                            console.log(message, error);
-                            reject(CommonImageError.CannotOpenPDF);
-                            return;
-                        }
-                    }
-                    resolve(images);
-                }, () => {
-                    reject(CommonImageError.CannotOpenPDF);
-                });
-            };
-            reader.readAsArrayBuffer(file);
-        });
-    }
-
-    getPageImage(pdfDoc, pageNumber): Promise<CommonImage> {
-        const canvas = document.createElement('canvas');
-        const ctx = canvas.getContext('2d');
-        
-        return new Promise((resolve, reject) => {
-            pdfDoc.getPage(pageNumber).then((page) => {
-                const viewport = page.getViewport({ scale: 2.0 });
-    
-                // Sometimes width and height can be NaN, so use viewBox instead.
-                if (viewport.width && viewport.height) {
-                    canvas.width = viewport.width;
-                    canvas.height = viewport.height;
-                } else {
-                    canvas.width = viewport.viewBox[2];
-                    canvas.height = viewport.viewBox[3];
-                }
-    
-                const renderContext = {
-                    canvasContext: ctx,
-                    viewport: viewport
-                };
-    
-                page.render(renderContext).promise.then(async () => {
-                    const dataURL = canvas.toDataURL('image/jpeg', JPEG_COMPRESSION);
-                    const image: CommonImage = await this.createImage(dataURL);
-                    resolve(image);
-                },
-                (error) => {
-                    console.log('PDFJS render error:', error);
-                    reject(CommonImageError.CannotOpenPDF);
-                });
-            }).catch((error) => {
-                console.log('PDFJS getPage() error:', error);
-                reject(CommonImageError.CannotOpenPDF);
-            });
-        });
-    }
-
-    private processImageFile(file: File): Promise<CommonImage> {
-        const reader = new FileReader();
-  
-        return new Promise<CommonImage>((resolve, reject) => {
-            reader.onload = async () => {
-                try {
-                    let image: CommonImage = await this.createImage(reader.result);
-                    if (image.size > MAX_IMAGE_SIZE_BYTES) {
-                        image = await this.scaleImage(image);
-                    }
-                    resolve(image);
-                } catch(_) {
-                    reject(CommonImageError.CannotOpen);
-                }
-            };
-            reader.onerror = () => {
-                reject(CommonImageError.CannotOpen);
-            }
-            reader.readAsDataURL(file);
-        });
-    }
-
-    private async scaleImage(image: CommonImage): Promise<CommonImage> {
-        return new Promise<CommonImage>((resolve, reject) => {
-            // We create an image to receive the Data URI
-            const img: HTMLImageElement = document.createElement('img');
-    
-            // When the event "onload" is triggered we can resize the image.
-            img.onload = () => {
-                // We create a canvas and get its context.
-                const canvas = document.createElement('canvas');
-                const ctx = canvas.getContext('2d');
-    
-                const targetWidth: number = Math.floor(img.width * IMAGE_REDUCTION_SCALE_FACTOR);
-                const targetHeight: number = Math.floor(img.height * IMAGE_REDUCTION_SCALE_FACTOR);
-    
-                // We set the dimensions at the wanted size.
-                canvas.width = targetWidth;
-                canvas.height = targetHeight;
-    
-                // We resize the image with the canvas method drawImage();
-                ctx.drawImage(img, 0, 0, targetWidth, targetHeight);
-
-                canvas.toBlob((blob: Blob) => {
-                    const reader = new FileReader();
-                    reader.onload = async (event: any) => {
-                        const scaledImage: CommonImage = image.clone();
-                        scaledImage.fileContent = event.target.result;
-                        scaledImage.size = blob.size;
-                        scaledImage.naturalWidth = targetWidth;
-                        scaledImage.naturalHeight = targetHeight;
-                        scaledImage.calculateSize();
-
-                        if (scaledImage.size > MAX_IMAGE_SIZE_BYTES) {
-                            resolve(await this.scaleImage(scaledImage))
-                        } else {
-                            resolve(scaledImage);
-                        }
-                    };
-                    reader.onerror = () => {
-                      reject(CommonImageError.CannotOpen);
-                    }
-                    reader.readAsDataURL(blob);
-                }, IMAGE_CONTENT_TYPE, JPEG_COMPRESSION);
-            };
-    
-            img.onerror = () => {
-                reject(CommonImageError.CannotOpen);
-            }
-    
-            // We put the Data URI in the image's src attribute
-            img.src = image.fileContent;
-        });
-    }
-
-    private createImage(imageDataURL): Promise<CommonImage> {
-        const image = new CommonImage(imageDataURL);
-
-        return new Promise<CommonImage>((resolve, reject) => {
-            // We create an image to receive the Data URI
-            const img: HTMLImageElement = document.createElement('img');
-    
-            // When the event "onload" is triggered we can resize the image.
-            img.onload = () => {
-                // We create a canvas and get its context.
-                const canvas = document.createElement('canvas');
-                const ctx = canvas.getContext('2d');
-    
-                const width: number = img.width;
-                const height: number = img.height;
-    
-                // We set the dimensions at the wanted size.
-                canvas.width = width;
-                canvas.height = height;
-    
-                // We resize the image with the canvas method drawImage();
-                ctx.drawImage(img, 0, 0, width, height);
-    
-                canvas.toBlob(async (blob) => {
-                    const reader = new FileReader();
-                    reader.onload = (event: any) => {
-                        image.fileContent = event.target.result;
-                        image.size = blob.size;
-                        image.naturalWidth = width;
-                        image.naturalHeight = height;
-                        image.calculateSize();
-                        resolve(image);
-                    };
-                    reader.onerror = () => {
-                      reject(CommonImageError.CannotOpen);
-                    }
-                    reader.readAsDataURL(blob);
-                }, IMAGE_CONTENT_TYPE, JPEG_COMPRESSION);
-            };
-    
-            img.onerror = (error) => {
-                console.log('img on error', error);
-                reject(CommonImageError.CannotOpen);
-            }
-    
-            // We put the Data URI in the image's src attribute
-            img.src = image.fileContent;
-        });
-    }
-
-    private async addFileImages(fileName: string, images: Array<CommonImage>) {
-        // Create image objects.
-        for (let i=0; i<images.length; i++) {
-            const fullFileName: string = `${fileName}${images.length > 1 ? '.page-' + (i+1) : ''}`;
-            const image = images[i];
-
-            image.name = fullFileName; // image.name has been deprecated.
-            image.id = fullFileName;
-            image.contentType = IMAGE_CONTENT_TYPE;
-        }
-  
-        return new Promise((resolve, reject) => {
-        // Merge new images with existing images.
-            const imagesToAdd = new Array<CommonImage>();
-            images.forEach((image) => {
-                const existingIndex = this.images.findIndex((existingImage) => existingImage.fileContent === image.fileContent);
-                // If image doesn't already exist, 
-                if (existingIndex === -1) {
-                    imagesToAdd.push(image);
-                }
-            });
-            if (imagesToAdd.length === 0) {
-                reject(CommonImageError.AlreadyExists);
-                return;
-            }
-            this.images = [
-                ...this.images,
-                ...imagesToAdd,
-            ];
-            this.imagesChange.emit(this.images);
-            resolve();
-        });
-    }
-
-    public removeImage(image: CommonImage) {
-        this.resetFileInput();
-        this.images = this.images.filter(x => x.uuid !== image.uuid);
-        this.imagesChange.emit(this.images);
-
-        // If there are no images yet, we have to reset the input so it triggers 'required'.
-        if (this.required && this.images.length <= 0) {
-            this.fileControl.setErrors({ required: true });
-        }
-    }
-
-    private resetFileInput() {
-        this.browseFileRef.nativeElement.value = '';
     }
 
     /**
@@ -410,52 +76,6 @@ export class FileUploaderComponent extends Base
         // but fails on compiliation due to secondary entries
         return (this.controlContainer as any).controls[INPUT_NAME];
     }
-
-    private doesImageExist(image: CommonImage): Boolean {
-        if (!this.images || this.images.length < 1) {
-            return false;
-        }
-        for (let i=0; i<this.images.length; i++) {
-            if (this.images[i].fileContent === image.fileContent) {
-                console.log(`This file ${image.name} has already been uploaded.`);
-                return true;
-            }
-        }
-        return false;
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     /**
      * Return true if file already exists in the list; false otherwise.
@@ -530,92 +150,92 @@ export class FileUploaderComponent extends Base
     ngOnInit(): void {
 
 
-        // const dragOverStream =
-        //     fromEvent<DragEvent>(this.dropZone.nativeElement, 'dragover');
+        const dragOverStream =
+            fromEvent<DragEvent>(this.dropZone.nativeElement, 'dragover');
 
-        // /**
-        //  * Must cancel the dragover event in order for the drop event to work.
-        //  */
-        // dragOverStream.pipe(map(evt => {
-        //     return event;
-        // })).subscribe(evt => {
-        //     evt.preventDefault();
-        // });
+        /**
+         * Must cancel the dragover event in order for the drop event to work.
+         */
+        dragOverStream.pipe(map(evt => {
+            return event;
+        })).subscribe(evt => {
+            evt.preventDefault();
+        });
 
-        // const dropStream = fromEvent<DragEvent>(this.dropZone.nativeElement, 'drop');
-        // const filesArrayFromDrop = dropStream.pipe(
-        //     map(
-        //         function (event) {
-        //             event.preventDefault();
-        //             return event.dataTransfer.files;
-        //         }
-        //     ));
+        const dropStream = fromEvent<DragEvent>(this.dropZone.nativeElement, 'drop');
+        const filesArrayFromDrop = dropStream.pipe(
+            map(
+                function (event) {
+                    event.preventDefault();
+                    return event.dataTransfer.files;
+                }
+            ));
 
-        // const browseFileStream = fromEvent<Event>(this.browseFileRef.nativeElement, 'change');
-        // // const captureFileStream = fromEvent<Event>(this.captureFileRef.nativeElement, 'change');
+        const browseFileStream = fromEvent<Event>(this.browseFileRef.nativeElement, 'change');
+        // const captureFileStream = fromEvent<Event>(this.captureFileRef.nativeElement, 'change');
 
-        // merge(merge(browseFileStream).pipe(
-        //     map(
-        //         (event) => {
-        //             event.preventDefault();
-        //             return event.target['files'];
+        merge(merge(browseFileStream).pipe(
+            map(
+                (event) => {
+                    event.preventDefault();
+                    return event.target['files'];
 
-        //         }
-        //     )),
-        //     filesArrayFromDrop).pipe(
-        //         filter(files => {
-        //             return !!files && files.length && files.length > 0;
-        //         }),
-        //         flatMap(
-        //             (fileList: FileList) => {
+                }
+            )),
+            filesArrayFromDrop).pipe(
+                filter(files => {
+                    return !!files && files.length && files.length > 0;
+                }),
+                flatMap(
+                    (fileList: FileList) => {
 
-        //                 return this.observableFromFiles(fileList, new CommonImageScaleFactorsImpl(1, 1));
-        //             }
-        //         ),
-        //         filter(
-        //             (mspImage: CommonImage) => {
+                        return this.observableFromFiles(fileList, new CommonImageScaleFactorsImpl(1, 1));
+                    }
+                ),
+                filter(
+                    (mspImage: CommonImage) => {
 
-        //                 const imageExists = FileUploaderComponent.checkImageExists(mspImage, this.images);
-        //                 if (imageExists) {
-        //                     this.handleError(CommonImageError.AlreadyExists, mspImage);
-        //                     this.resetInputFields();
-        //                 }
-        //                 return !imageExists;
-        //             }
-        //         ),
-        //         // TODO - Is this necessary? Can likely be removed as it's exactly identical to the preceding.
-        //         filter((mspImage: CommonImage) => {
+                        const imageExists = FileUploaderComponent.checkImageExists(mspImage, this.images);
+                        if (imageExists) {
+                            this.handleError(CommonImageError.AlreadyExists, mspImage);
+                            this.resetInputFields();
+                        }
+                        return !imageExists;
+                    }
+                ),
+                // TODO - Is this necessary? Can likely be removed as it's exactly identical to the preceding.
+                filter((mspImage: CommonImage) => {
 
-        //             const imageExists = FileUploaderComponent.checkImageExists(mspImage, this.images);
-        //                 if (imageExists) {
-        //                     this.handleError(CommonImageError.AlreadyExists, mspImage);
-        //                     this.resetInputFields();
-        //                 }
-        //                 return !imageExists;
-        //             }
-        //         ),
-        //         filter((mspImage: CommonImage) => {
+                    const imageExists = FileUploaderComponent.checkImageExists(mspImage, this.images);
+                        if (imageExists) {
+                            this.handleError(CommonImageError.AlreadyExists, mspImage);
+                            this.resetInputFields();
+                        }
+                        return !imageExists;
+                    }
+                ),
+                filter((mspImage: CommonImage) => {
 
-        //             const imageSizeOk = this.checkImageDimensions(mspImage);
-        //                 if (!imageSizeOk) {
-        //                     this.handleError(CommonImageError.TooSmall, mspImage);
-        //                     this.resetInputFields();
-        //                 }
-        //                 return imageSizeOk;
-        //             }
-        //         )
-        //     ).subscribe(
-        //     (file: CommonImage) => {
+                    const imageSizeOk = this.checkImageDimensions(mspImage);
+                        if (!imageSizeOk) {
+                            this.handleError(CommonImageError.TooSmall, mspImage);
+                            this.resetInputFields();
+                        }
+                        return imageSizeOk;
+                    }
+                )
+            ).subscribe(
+            (file: CommonImage) => {
 
-        //         this.handleImageFile(file);
-        //         this.resetInputFields();
-        //     },
+                this.handleImageFile(file);
+                this.resetInputFields();
+            },
 
-        //     (error) => {},
-        //     () => {
-        //         // console.log('completed loading image');
-        //     }
-        // );
+            (error) => {},
+            () => {
+                // console.log('completed loading image');
+            }
+        );
     }
 
     ngAfterContentInit() {
@@ -636,6 +256,12 @@ export class FileUploaderComponent extends Base
                 return event;
             })
         ).subscribe( (event) => { this.browseFileRef.nativeElement.click(); });
+    }
+
+
+    /** Opens the file upload dialog from the browser. */
+    openFileDialog() {
+        this.browseFileRef.nativeElement.click();
     }
 
     /**
@@ -1004,21 +630,22 @@ export class FileUploaderComponent extends Base
                 }
                 this.handleError(CommonImageError.CannotOpen, error.image);
             } else if (CommonImageError.CannotOpenPDF === error.errorCode) {
-                this.handleError(CommonImageError.CannotOpenPDF, error.image);
+                this.handleError(CommonImageError.CannotOpenPDF, error.image, error.errorDescription);
             } else {
                 throw error;
             }
         }
     }
 
-    handleError(error: CommonImageError, image?: CommonImage) {
-        if (!image) {
-            image = new CommonImage();
+    handleError(error: CommonImageError, mspImage: CommonImage, errorDescription?: string) {
+
+        if (!mspImage) {
+            mspImage = new CommonImage();
         }
         // just add the error to mspImage
-        image.error = error;
+        mspImage.error = error;
 
-        this.errorDocument.emit(image);
+        this.errorDocument.emit(mspImage);
     }
 
     /**
@@ -1032,16 +659,54 @@ export class FileUploaderComponent extends Base
         // this.captureFileRef.nativeElement.value = '';
     }
 
-    deleteImage(image: CommonImage) {
+    deleteImage(mspImage: CommonImage) {
         this.resetInputFields();
-        this.images = this.images.filter(x => x.uuid !== image.uuid);
+        this.images = this.images.filter(x => x.uuid !== mspImage.uuid);
         this.imagesChange.emit(this.images);
 
         // If there are no images yet, we have to reset the input so it triggers 'required'.
         if ( this.required && this.images.length <= 0 ) {
-            this.fileControl.setErrors({ required: true });
+            this.fileControl.setErrors({'required': true});
         }
     }
+
+    /**
+     * Log image attributes
+     * @param mspImage
+     */
+    private logImageInfo(title: string, applicationId: string, mspImage: CommonImage, additionalInfo?: string) {
+
+        // TODO!
+        // // create log entry
+        // const log: LogEntry = new LogEntry();
+        // log.applicationId = applicationId;
+        // const now = moment();
+        // log.mspTimestamp = now.toISOString();
+        // log.applicationPhase = title + ':  mspImageId: ' + mspImage.id
+        //     + '  mspImageUuid: ' + mspImage.uuid
+        //     + '  mspImageSize: ' + mspImage.size
+        //     + '  mspImageWidth: ' + mspImage.naturalWidth
+        //     + '  mspImageHeight: ' + mspImage.naturalHeight
+        //     + '  mspImageContentType: ' + mspImage.contentType
+        //     + (additionalInfo ? '  ' + additionalInfo : '');
+
+        // // send it while subscribing to response
+        // this.logService.logIt(log, title).subscribe(
+        //     (response) => {
+        //         // console.log('log rest service response: ');
+        //         // console.log(response);
+        //     },
+        //     (error) => {
+        //         console.log('HTTP error response from logging service: ');
+        //         console.log(error);
+        //     },
+        //     () => {
+        //         // console.log('log rest service completed!');
+        //     }
+        // );
+    }
+
+
 
     /**
      * Return true if the image size is within range
