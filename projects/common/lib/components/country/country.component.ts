@@ -276,7 +276,7 @@ export function getCountryDescription( countryCode: string ) {
 })
 export class CountryComponent extends Base implements OnInit, ControlValueAccessor {
 
-  @Input() label: string = 'Country';
+  @Input() label: string = 'Jurisdiction';
   @Input() countryList: CountryList[] = COUNTRY_LIST;
   @Input() labelforId: string = 'country_' + this.objectId;
   @Input() disabled: boolean = false;
@@ -284,7 +284,7 @@ export class CountryComponent extends Base implements OnInit, ControlValueAccess
   @Input() useDropDownList: boolean = true;
   @Input() maxlen: string = '250';
   @Input() errorMessage: ErrorMessage;
-  @Input() placeholder: string = 'Please select a country';
+  @Input() placeholder: string = 'Please select a jurisdiction';
   @Input()
   set value( val: string ) {
     if ( val ) {
