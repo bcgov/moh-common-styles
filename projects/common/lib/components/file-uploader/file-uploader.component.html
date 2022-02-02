@@ -1,15 +1,14 @@
 <div class="dropzone"
-  #dropZone
   (dragover)="handleDragOver($event)"
   (drop)="handleDrop($event)"
   [ngClass]='{"has-error": fileControl?.touched && fileControl?.errors?.required}'>
 
   <div class="instruction-zone d-flex align-items-center flex-wrap flex-sm-nowrap flex-column flex-sm-row">
     <i class="fa fa-cloud-upload fa-4x d-inline-block upload-icon"
-      aria-hidden="true"
-      #imagePlaceholderRef></i>
+      aria-hidden="true"></i>
 
-    <input type="file" id="fileUploadBrowse-{{id}}"
+    <input type="file"
+      id="fileUploadBrowse-{{id}}"
       #browseFileRef
       ngModel
       accept="image/*,application/pdf"
@@ -22,8 +21,8 @@
       autocomplete="off"/>
     <label for="fileUploadBrowse-{{id}}"
       class="file-upload-label d-inline-block ml-3"
-      #selectFileLabel
-      tabindex="0">
+      tabindex="0"
+      (keydown)="handleKeyDownFileBrowse($event)">
       <span class='h2 color-body'>Select a file</span>
       <span class='d-block description'>{{ instructionText }}</span>
     </label>
@@ -46,15 +45,16 @@
       </common-thumbnail>
     </div>
 
-    <div class="common-thumbnail"
-      (click)='openFileDialog()'>
+    <div class="common-thumbnail">
       <div class="thumbnail-container">
-        <div class="image-thumbnail demo-thumbnail">
+        <div class="image-thumbnail demo-thumbnail"
+          (click)='openFileDialog()'>
           <i class="fa fa-plus fa-3x"></i>
         </div>
-        <div class="action-strip text-primary"
-          tabindex="0">
-          Add
+        <div class="action-strip text-primary">
+          <a href="javascript:void(0)"
+            title="Add"
+            (click)="openFileDialog()">Add</a>
         </div>
       </div>
     </div>
@@ -62,7 +62,3 @@
   </div>
 
 </div>
-
-<!-- This hidden canvas is used to transform / resize images -->
-<canvas #canvas
-  style="display:none;"></canvas>
