@@ -107,7 +107,7 @@ export class AddressComponent extends Base
     address3: 'Address Line 3',
     city: 'City',
     province: 'Province or state',
-    country: 'Country',
+    country: 'Jurisdiction',
     postalCode: 'Postal Code or Zip Code'
   };
 
