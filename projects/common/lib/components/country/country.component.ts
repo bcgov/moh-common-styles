@@ -231,7 +231,7 @@ export const COUNTRY_LIST: CountryList[] = [
   { countryCode: 'SWE', description: 'Sweden' },
   { countryCode: 'CHE', description: 'Switzerland' },
   { countryCode: 'SYR', description: 'Syrian Arab Republic' },
-  { countryCode: 'TWN', description: 'Taiwan, Province of China' },
+  { countryCode: 'TWN', description: 'Taiwan' },
   { countryCode: 'TJK', description: 'Tajikistan' },
   { countryCode: 'TZA', description: 'Tanzania, United Republic of' },
   { countryCode: 'THA', description: 'Thailand' },
@@ -276,7 +276,7 @@ export function getCountryDescription( countryCode: string ) {
 })
 export class CountryComponent extends Base implements OnInit, ControlValueAccessor {
 
-  @Input() label: string = 'Country';
+  @Input() label: string = 'Jurisdiction';
   @Input() countryList: CountryList[] = COUNTRY_LIST;
   @Input() labelforId: string = 'country_' + this.objectId;
   @Input() disabled: boolean = false;
@@ -284,7 +284,7 @@ export class CountryComponent extends Base implements OnInit, ControlValueAccess
   @Input() useDropDownList: boolean = true;
   @Input() maxlen: string = '250';
   @Input() errorMessage: ErrorMessage;
-  @Input() placeholder: string = 'Please select a country';
+  @Input() placeholder: string = 'Please select a jurisdiction';
   @Input()
   set value( val: string ) {
     if ( val ) {
