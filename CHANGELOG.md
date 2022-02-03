@@ -1,4 +1,15 @@
-# Unreleased "moh-common-lib" (2022-01-05)
+# Unreleased "moh-common-lib" (2022-02-03)
+
+
+
+## [3.4.8](https://github.com/bcgov/moh-common-styles/compare/v3.4.7...v3.4.8) "moh-common-lib" (2022-02-03)
+
+
+### Bug Fixes
+
+* Update "Taiwan" option again. ([eb9b7cd](https://github.com/bcgov/moh-common-styles/commit/eb9b7cd))
+* Update country component. ([b1cb69f](https://github.com/bcgov/moh-common-styles/commit/b1cb69f))
+* Update default value of country label. ([1e1fb27](https://github.com/bcgov/moh-common-styles/commit/1e1fb27))
 
 
 
