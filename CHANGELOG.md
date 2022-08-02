@@ -2,6 +2,10 @@
 
 
 
+# [3.6.0](https://github.com/bcgov/moh-common-styles/compare/v3.5.0...v3.6.0) "moh-common-lib" (2022-08-02)
+
+
+
 # [3.5.0](https://github.com/bcgov/moh-common-styles/compare/v3.4.8...v3.5.0) "moh-common-lib" (2022-08-02)
 
 
