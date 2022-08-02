@@ -74,14 +74,7 @@
             </p>
             <div class="io-description">
                         <div>
-                            <pre class="line-numbers"><code class="language-html">providers: [
-          ...
-         { provide: ByPassGuards, useValue: environment.bypassGuards },
-         { provide: StartPageUrl, useValue: CREATE_FACILITY_PAGES.HOME.fullpath },
-         DefaultPageGuardService
-         { provide: AbstractPageGuardService, useExisting: DefaultPageGuardService },
-         LoadPageGuardService
-]</code></pre>
+                            <pre class="line-numbers"><code class="language-html">providers: [          ...         { provide: ByPassGuards, useValue: environment.bypassGuards },         { provide: StartPageUrl, useValue: CREATE_FACILITY_PAGES.HOME.fullpath },         DefaultPageGuardService         { provide: AbstractPageGuardService, useExisting: DefaultPageGuardService },         LoadPageGuardService]</code></pre>
                         </div>
             </div>
 

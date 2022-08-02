@@ -119,6 +119,15 @@
                             <a href="#gitCommit" title="projects/common/schematics/src/version-js/files/version.GENERATED.ts"><b>gitCommit</b>&nbsp;&nbsp;&nbsp;(projects/.../version.GENERATED.ts)</a>
                         </li>
                         <li>
+                            <a href="#IMAGE_CONTENT_TYPE" title="projects/common/lib/components/file-uploader/file-uploader.component.ts"><b>IMAGE_CONTENT_TYPE</b>&nbsp;&nbsp;&nbsp;(projects/.../file-uploader.component.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#IMAGE_REDUCTION_SCALE_FACTOR" title="projects/common/lib/components/file-uploader/file-uploader.component.ts"><b>IMAGE_REDUCTION_SCALE_FACTOR</b>&nbsp;&nbsp;&nbsp;(projects/.../file-uploader.component.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#JPEG_COMPRESSION" title="projects/common/lib/components/file-uploader/file-uploader.component.ts"><b>JPEG_COMPRESSION</b>&nbsp;&nbsp;&nbsp;(projects/.../file-uploader.component.ts)</a>
+                        </li>
+                        <li>
                             <a href="#LabelReplacementTag" title="projects/common/lib/models/error-message.interface.ts"><b>LabelReplacementTag</b>&nbsp;&nbsp;&nbsp;(projects/.../error-message.interface.ts)</a>
                         </li>
                         <li>
@@ -128,16 +137,34 @@
                             <a href="#LICENSE" title="projects/common/schematics/src/copy-license/index.ts"><b>LICENSE</b>&nbsp;&nbsp;&nbsp;(projects/.../index.ts)</a>
                         </li>
                         <li>
-                            <a href="#loadImage" title="projects/common/lib/components/file-uploader/file-uploader.component.ts"><b>loadImage</b>&nbsp;&nbsp;&nbsp;(projects/.../file-uploader.component.ts)</a>
+                            <a href="#map" title="projects/common/helpers/deburr.ts"><b>map</b>&nbsp;&nbsp;&nbsp;(projects/.../deburr.ts)</a>
                         </li>
                         <li>
-                            <a href="#map" title="projects/common/helpers/deburr.ts"><b>map</b>&nbsp;&nbsp;&nbsp;(projects/.../deburr.ts)</a>
+                            <a href="#MAX_IMAGE_COUNT" title="projects/common/lib/components/file-uploader/file-uploader.component.ts"><b>MAX_IMAGE_COUNT</b>&nbsp;&nbsp;&nbsp;(projects/.../file-uploader.component.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#MAX_IMAGE_HEIGHT" title="projects/common/lib/components/file-uploader/file-uploader.component.ts"><b>MAX_IMAGE_HEIGHT</b>&nbsp;&nbsp;&nbsp;(projects/.../file-uploader.component.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#MAX_IMAGE_SIZE_BYTES" title="projects/common/lib/components/file-uploader/file-uploader.component.ts"><b>MAX_IMAGE_SIZE_BYTES</b>&nbsp;&nbsp;&nbsp;(projects/.../file-uploader.component.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#MAX_IMAGE_WIDTH" title="projects/common/lib/components/file-uploader/file-uploader.component.ts"><b>MAX_IMAGE_WIDTH</b>&nbsp;&nbsp;&nbsp;(projects/.../file-uploader.component.ts)</a>
                         </li>
                         <li>
                             <a href="#MAX_YEAR_RANGE" title="projects/common/lib/components/date/date.component.ts"><b>MAX_YEAR_RANGE</b>&nbsp;&nbsp;&nbsp;(projects/.../date.component.ts)</a>
                         </li>
                         <li>
                             <a href="#message" title="projects/common/schematics/src/version-js/files/version.GENERATED.ts"><b>message</b>&nbsp;&nbsp;&nbsp;(projects/.../version.GENERATED.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#MIN_IMAGE_HEIGHT" title="projects/common/lib/components/file-uploader/file-uploader.component.ts"><b>MIN_IMAGE_HEIGHT</b>&nbsp;&nbsp;&nbsp;(projects/.../file-uploader.component.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#MIN_IMAGE_SIZE_BYTES" title="projects/common/lib/components/file-uploader/file-uploader.component.ts"><b>MIN_IMAGE_SIZE_BYTES</b>&nbsp;&nbsp;&nbsp;(projects/.../file-uploader.component.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#MIN_IMAGE_WIDTH" title="projects/common/lib/components/file-uploader/file-uploader.component.ts"><b>MIN_IMAGE_WIDTH</b>&nbsp;&nbsp;&nbsp;(projects/.../file-uploader.component.ts)</a>
                         </li>
                         <li>
                             <a href="#moment" title="projects/common/lib/services/logger.service.ts"><b>moment</b>&nbsp;&nbsp;&nbsp;(projects/.../logger.service.ts)</a>
@@ -165,9 +192,6 @@
                         </li>
                         <li>
                             <a href="#require" title="projects/common/test.ts"><b>require</b>&nbsp;&nbsp;&nbsp;(projects/.../test.ts)</a>
-                        </li>
-                        <li>
-                            <a href="#sha1" title="projects/common/lib/components/file-uploader/file-uploader.component.ts"><b>sha1</b>&nbsp;&nbsp;&nbsp;(projects/.../file-uploader.component.ts)</a>
                         </li>
                         <li>
                             <a href="#SPACE" title="projects/common/lib/models/mask.constants.ts"><b>SPACE</b>&nbsp;&nbsp;&nbsp;(projects/.../mask.constants.ts)</a>
@@ -2311,6 +2335,300 @@ You must use either [restrictDate] or the [dateRange*] inputs.</p>
             </tbody>
         </table>
 </section>
+    <h3>projects/common/lib/components/file-uploader/file-uploader.component.ts</h3>
+    <section>
+    <h3></h3>        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="IMAGE_CONTENT_TYPE"></a>
+                        <span class="name">
+                            <b>
+                            IMAGE_CONTENT_TYPE</b>
+                            <a href="#IMAGE_CONTENT_TYPE"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>&#x27;image/jpeg&#x27;</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="IMAGE_REDUCTION_SCALE_FACTOR"></a>
+                        <span class="name">
+                            <b>
+                            IMAGE_REDUCTION_SCALE_FACTOR</b>
+                            <a href="#IMAGE_REDUCTION_SCALE_FACTOR"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>0.8</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="JPEG_COMPRESSION"></a>
+                        <span class="name">
+                            <b>
+                            JPEG_COMPRESSION</b>
+                            <a href="#JPEG_COMPRESSION"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>0.5</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="MAX_IMAGE_COUNT"></a>
+                        <span class="name">
+                            <b>
+                            MAX_IMAGE_COUNT</b>
+                            <a href="#MAX_IMAGE_COUNT"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>50</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="MAX_IMAGE_HEIGHT"></a>
+                        <span class="name">
+                            <b>
+                            MAX_IMAGE_HEIGHT</b>
+                            <a href="#MAX_IMAGE_HEIGHT"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>3300</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="MAX_IMAGE_SIZE_BYTES"></a>
+                        <span class="name">
+                            <b>
+                            MAX_IMAGE_SIZE_BYTES</b>
+                            <a href="#MAX_IMAGE_SIZE_BYTES"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>1048576</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="MAX_IMAGE_WIDTH"></a>
+                        <span class="name">
+                            <b>
+                            MAX_IMAGE_WIDTH</b>
+                            <a href="#MAX_IMAGE_WIDTH"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>3300</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="MIN_IMAGE_HEIGHT"></a>
+                        <span class="name">
+                            <b>
+                            MIN_IMAGE_HEIGHT</b>
+                            <a href="#MIN_IMAGE_HEIGHT"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>200</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="MIN_IMAGE_SIZE_BYTES"></a>
+                        <span class="name">
+                            <b>
+                            MIN_IMAGE_SIZE_BYTES</b>
+                            <a href="#MIN_IMAGE_SIZE_BYTES"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>20000</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="MIN_IMAGE_WIDTH"></a>
+                        <span class="name">
+                            <b>
+                            MIN_IMAGE_WIDTH</b>
+                            <a href="#MIN_IMAGE_WIDTH"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>200</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="PDFJS"></a>
+                        <span class="name">
+                            <b>
+                            PDFJS</b>
+                            <a href="#PDFJS"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>(PDFJS_ as any)</code>
+                        </td>
+                    </tr>
+
+
+            </tbody>
+        </table>
+</section>
     <h3>projects/common/lib/models/error-message.interface.ts</h3>
     <section>
     <h3></h3>        <table class="table table-sm table-bordered">
@@ -2494,78 +2812,6 @@ limitations under the License.&#x60;</code>
                     <tr>
                         <td class="col-md-4">
                             <i>Default value : </i><code>(new Date()).getFullYear()</code>
-                        </td>
-                    </tr>
-
-
-            </tbody>
-        </table>
-</section>
-    <h3>projects/common/lib/components/file-uploader/file-uploader.component.ts</h3>
-    <section>
-    <h3></h3>        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="loadImage"></a>
-                        <span class="name">
-                            <b>
-                            loadImage</b>
-                            <a href="#loadImage"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Default value : </i><code>loadImage_</code>
-                        </td>
-                    </tr>
-
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="PDFJS"></a>
-                        <span class="name">
-                            <b>
-                            PDFJS</b>
-                            <a href="#PDFJS"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="../miscellaneous/variables.html#PDFJS" target="_self" >PDFJSStatic</a></code>
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Default value : </i><code>(PDFJS_ as any)</code>
-                        </td>
-                    </tr>
-
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="sha1"></a>
-                        <span class="name">
-                            <b>
-                            sha1</b>
-                            <a href="#sha1"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Default value : </i><code>sha1_</code>
                         </td>
                     </tr>
 

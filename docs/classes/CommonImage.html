@@ -140,6 +140,12 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                <a href="#calculateSize">calculateSize</a>
+                            </li>
+                            <li>
+                                <a href="#clone">clone</a>
+                            </li>
+                            <li>
                                 <a href="#toJSON">toJSON</a>
                             </li>
                         </ul>
@@ -595,6 +601,84 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="calculateSize"></a>
+                    <span class="name">
+                        <b>
+                            calculateSize
+                        </b>
+                        <a href="#calculateSize"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>calculateSize()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="101"
+                            class="link-to-prism">projects/common/lib/models/images.model.ts:101</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="clone"></a>
+                    <span class="name">
+                        <b>
+                            clone
+                        </b>
+                        <a href="#clone"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>clone()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="81"
+                            class="link-to-prism">projects/common/lib/models/images.model.ts:81</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../classes/CommonImage.html" target="_self" >CommonImage</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="toJSON"></a>
                     <span class="name">
                         <b>
@@ -723,6 +807,38 @@ export class CommonImage&lt;T &#x3D; any&gt; {
     };
   }
 
+  clone(): CommonImage {
+    const newImage &#x3D; new CommonImage();
+
+    newImage.uuid &#x3D; this.uuid;
+    newImage.fileContent &#x3D; this.fileContent;
+    newImage.documentType &#x3D; this.documentType;
+    newImage.contentType &#x3D; this.contentType;
+    newImage.size &#x3D; this.size; // number of bytes.
+    newImage.sizeUnit &#x3D; this.sizeUnit;
+    newImage.sizeTxt &#x3D; this.sizeTxt;
+    newImage.naturalHeight &#x3D; this.naturalHeight;
+    newImage.naturalWidth &#x3D; this.naturalWidth;
+    newImage.name &#x3D; this.name;
+    newImage.id &#x3D; this.id;
+    newImage.error &#x3D; this.error;
+    newImage.attachmentOrder &#x3D; this.attachmentOrder;
+
+    return newImage;
+  }
+
+  calculateSize() {
+    const aMultiples &#x3D; [&#x27;KiB&#x27;, &#x27;MiB&#x27;, &#x27;GiB&#x27;, &#x27;TiB&#x27;, &#x27;PiB&#x27;, &#x27;EiB&#x27;, &#x27;ZiB&#x27;, &#x27;YiB&#x27;];
+    const nBytes: number &#x3D; this.size;
+    let sOutput: string &#x3D; nBytes + &#x27; bytes&#x27;;
+    
+    for (let nMultiple &#x3D; 0, nApprox &#x3D; nBytes / 1024; nApprox &gt; 1; nApprox /&#x3D; 1024, nMultiple++) {
+      sOutput &#x3D; &#x60;${nApprox.toFixed(3)} ${aMultiples[nMultiple]} (${nBytes} bytes)&#x60;;
+      this.sizeUnit &#x3D; aMultiples[nMultiple];
+    }
+
+    this.sizeTxt &#x3D; sOutput;
+  }
 }
 
 export interface CommonAttachmentJson&lt;T&gt; {

@@ -1,4 +1,8 @@
-# Unreleased "moh-common-lib" (2022-02-03)
+# Unreleased "moh-common-lib" (2022-08-02)
+
+
+
+# [3.5.0](https://github.com/bcgov/moh-common-styles/compare/v3.4.8...v3.5.0) "moh-common-lib" (2022-08-02)
 
 
 
@@ -7,9 +11,16 @@
 
 ### Bug Fixes
 
+* Fixed package.json version update. ([d252fb7](https://github.com/bcgov/moh-common-styles/commit/d252fb7))
 * Update "Taiwan" option again. ([eb9b7cd](https://github.com/bcgov/moh-common-styles/commit/eb9b7cd))
 * Update country component. ([b1cb69f](https://github.com/bcgov/moh-common-styles/commit/b1cb69f))
 * Update default value of country label. ([1e1fb27](https://github.com/bcgov/moh-common-styles/commit/1e1fb27))
+
+
+### Features
+
+* File Uploader rewrite. ([19f5a15](https://github.com/bcgov/moh-common-styles/commit/19f5a15))
+* Updated new file uploader. ([47e13fa](https://github.com/bcgov/moh-common-styles/commit/47e13fa))
 
 
 
@@ -270,8 +281,8 @@
 
 ### Bug Fixes
 
-* **radio:** fix tabbing when component used with reactive forms ([87013c3](https://github.com/bcgov/moh-common-styles/commit/87013c3))
 * DEMCL-21: Refactored GeoAddressResult to AddressResult. ([1467689](https://github.com/bcgov/moh-common-styles/commit/1467689))
+* **radio:** fix tabbing when component used with reactive forms ([87013c3](https://github.com/bcgov/moh-common-styles/commit/87013c3))
 
 
 ### Code Refactoring
@@ -467,8 +478,8 @@
 
 ### Bug Fixes
 
-* logic for accepting past/future dates, set errors, unit tests ([2f4836b](https://github.com/bcgov/moh-common-styles/commit/2f4836b))
 * **ConsentModalComponent:** Added SUPPBEN environment variables case. ([f01339b](https://github.com/bcgov/moh-common-styles/commit/f01339b))
+* logic for accepting past/future dates, set errors, unit tests ([2f4836b](https://github.com/bcgov/moh-common-styles/commit/2f4836b))
 
 
 ### Features
@@ -516,9 +527,9 @@
 
 ### Features
 
+* **FormActionBar:** Now can include arbitrary buttons in ng-content. ([85d3767](https://github.com/bcgov/moh-common-styles/commit/85d3767))
 * added container service, modified container to use service ([716da42](https://github.com/bcgov/moh-common-styles/commit/716da42))
 * exported abstract-form-control so it can be used in projects ([20fa6ea](https://github.com/bcgov/moh-common-styles/commit/20fa6ea))
-* **FormActionBar:** Now can include arbitrary buttons in ng-content. ([85d3767](https://github.com/bcgov/moh-common-styles/commit/85d3767))
 
 
 
@@ -625,9 +636,9 @@
 
 ### Features
 
-* Added page state service & unit tests ([cf47d9b](https://github.com/bcgov/moh-common-styles/commit/cf47d9b))
 * **FormActionBar:** Automatically call scrollToError on click. ([3ff09e0](https://github.com/bcgov/moh-common-styles/commit/3ff09e0))
 * **Helper:** Create scrollToError() function. ([7bf5025](https://github.com/bcgov/moh-common-styles/commit/7bf5025))
+* Added page state service & unit tests ([cf47d9b](https://github.com/bcgov/moh-common-styles/commit/cf47d9b))
 
 
 ### Styles
@@ -715,8 +726,8 @@
 
 ### Bug Fixes
 
-* **FileUploader:** Fix a11y for danging aria label ([3f6a466](https://github.com/bcgov/moh-common-styles/commit/3f6a466))
 * CR18890 - added check for year ([679ac15](https://github.com/bcgov/moh-common-styles/commit/679ac15))
+* **FileUploader:** Fix a11y for danging aria label ([3f6a466](https://github.com/bcgov/moh-common-styles/commit/3f6a466))
 
 
 ### Tests
@@ -778,8 +789,8 @@
 
 ### Bug Fixes
 
-* **Date:** Remove ngOnChanges ([015602c](https://github.com/bcgov/moh-common-styles/commit/015602c))
 * added ngChanges to date to detect label changes, no longer can add question by default ([38c822b](https://github.com/bcgov/moh-common-styles/commit/38c822b))
+* **Date:** Remove ngOnChanges ([015602c](https://github.com/bcgov/moh-common-styles/commit/015602c))
 * added placeholder country & regexp for label ([61c0cdc](https://github.com/bcgov/moh-common-styles/commit/61c0cdc))
 
 
@@ -789,8 +800,8 @@
 
 ### Features
 
-* added fullname to person.model ([28d9585](https://github.com/bcgov/moh-common-styles/commit/28d9585))
 * **AbstractAPI:** Has a generateUUID method. ([5362c67](https://github.com/bcgov/moh-common-styles/commit/5362c67))
+* added fullname to person.model ([28d9585](https://github.com/bcgov/moh-common-styles/commit/28d9585))
 
 
 
@@ -893,9 +904,9 @@
 
 ### Features
 
-* **CAPTCHA:** Shows required error on touched ([16be24b](https://github.com/bcgov/moh-common-styles/commit/16be24b))
-* added bc only postal code check for address component ([e6db87e](https://github.com/bcgov/moh-common-styles/commit/e6db87e))
 * **ConsentModal:** Add `disableContinue` [@Input](https://github.com/Input)(), used with custom controls ([8aa41ec](https://github.com/bcgov/moh-common-styles/commit/8aa41ec))
+* added bc only postal code check for address component ([e6db87e](https://github.com/bcgov/moh-common-styles/commit/e6db87e))
+* **CAPTCHA:** Shows required error on touched ([16be24b](https://github.com/bcgov/moh-common-styles/commit/16be24b))
 
 
 
@@ -904,8 +915,8 @@
 
 ### Features
 
-* **FileUploader:** Add a blank "Add" thumbnail user can click ([1251212](https://github.com/bcgov/moh-common-styles/commit/1251212))
 * Added confirmation template for response pages ([1f1a0f9](https://github.com/bcgov/moh-common-styles/commit/1f1a0f9))
+* **FileUploader:** Add a blank "Add" thumbnail user can click ([1251212](https://github.com/bcgov/moh-common-styles/commit/1251212))
 * Added confirmation template for response pages ([aa2b7f9](https://github.com/bcgov/moh-common-styles/commit/aa2b7f9))
 
 
@@ -1160,8 +1171,8 @@
 
 ### Bug Fixes
 
-*  Fixed displaying of the error message in name component ([1650a23](https://github.com/bcgov/moh-common-styles/commit/1650a23))
 * **Address:**  Clear out address line data when removing the line ([3f1149e](https://github.com/bcgov/moh-common-styles/commit/3f1149e))
+*  Fixed displaying of the error message in name component ([1650a23](https://github.com/bcgov/moh-common-styles/commit/1650a23))
 
 
 
@@ -1496,8 +1507,8 @@
 
 ### Bug Fixes
 
-* SIN string all zeros - invalid ([96a58b1](https://github.com/bcgov/moh-common-styles/commit/96a58b1))
 * **SIN, PHN:** SIN string all zeros is invalid, added isBCPHn to PHN. ([51bfe3b](https://github.com/bcgov/moh-common-styles/commit/51bfe3b))
+* SIN string all zeros - invalid ([96a58b1](https://github.com/bcgov/moh-common-styles/commit/96a58b1))
 
 
 ### Build
@@ -1592,8 +1603,8 @@
 
 ### Bug Fixes
 
-* autocomplete turned off, fixed bug in postal to work with fpcare ([1c8242e](https://github.com/bcgov/moh-common-styles/commit/1c8242e))
 * **Datepicker:** Remove the IE provided 'X' to clear input ([2ddfc23](https://github.com/bcgov/moh-common-styles/commit/2ddfc23))
+* autocomplete turned off, fixed bug in postal to work with fpcare ([1c8242e](https://github.com/bcgov/moh-common-styles/commit/1c8242e))
 
 
 ### Documentation
@@ -1713,9 +1724,9 @@
 
 ### Build
 
-* Update build scripts and commit hooks. ([ca8bd7c](https://github.com/bcgov/moh-common-styles/commit/ca8bd7c))
 * **changelog:** Improve changelog generation, adding new categories ([d5bf00b](https://github.com/bcgov/moh-common-styles/commit/d5bf00b))
 * **package.json:** npm scripts for version should now build and package docs. ([3ac6d4d](https://github.com/bcgov/moh-common-styles/commit/3ac6d4d))
+* Update build scripts and commit hooks. ([ca8bd7c](https://github.com/bcgov/moh-common-styles/commit/ca8bd7c))
 
 
 ### Documentation
@@ -1734,9 +1745,9 @@
 
 ### Bug Fixes
 
-* Move WizardProgressItem to moh-common-lib/models and export ([7fd6537](https://github.com/bcgov/moh-common-styles/commit/7fd6537))
 * **build:** Refactor SimpleDate location but keep same public export API ([7eaf326](https://github.com/bcgov/moh-common-styles/commit/7eaf326))
 * **build:** Refactor SimpleDate location but keep same public export API ([d5f44c4](https://github.com/bcgov/moh-common-styles/commit/d5f44c4))
+* Move WizardProgressItem to moh-common-lib/models and export ([7fd6537](https://github.com/bcgov/moh-common-styles/commit/7fd6537))
 
 
 ### Features
@@ -1785,19 +1796,19 @@
 
 ### Build
 
+* Change changelog generation and commit ([48966c0](https://github.com/bcgov/moh-common-styles/commit/48966c0))
 * **packaging:** Release tagging, auto-version increment, and changelog. ([8a22405](https://github.com/bcgov/moh-common-styles/commit/8a22405))
 * **packaging:** Update build scripts for changelog and commit hooks ([aee4761](https://github.com/bcgov/moh-common-styles/commit/aee4761))
-* Change changelog generation and commit ([48966c0](https://github.com/bcgov/moh-common-styles/commit/48966c0))
 
 
 ### Documentation
 
-* **lib:** Generate first docs, update pageframework jsdocs ([bf3cf23](https://github.com/bcgov/moh-common-styles/commit/bf3cf23))
 * Add Getting Started and update main readme ([2c5c994](https://github.com/bcgov/moh-common-styles/commit/2c5c994))
 * Create local-development subfolder of markdown files ([2625608](https://github.com/bcgov/moh-common-styles/commit/2625608))
 * Re-generate docs after updating PasswordComponent ([017bd5f](https://github.com/bcgov/moh-common-styles/commit/017bd5f))
 * Update link to issues instead of PR ([4b884a6](https://github.com/bcgov/moh-common-styles/commit/4b884a6))
 * Update readme to absolute paths to GitHub pages ([8004583](https://github.com/bcgov/moh-common-styles/commit/8004583))
+* **lib:** Generate first docs, update pageframework jsdocs ([bf3cf23](https://github.com/bcgov/moh-common-styles/commit/bf3cf23))
 
 
 ### Features
