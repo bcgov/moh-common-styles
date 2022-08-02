@@ -78,6 +78,38 @@ export class CommonImage<T = any> {
     };
   }
 
+  clone(): CommonImage {
+    const newImage = new CommonImage();
+
+    newImage.uuid = this.uuid;
+    newImage.fileContent = this.fileContent;
+    newImage.documentType = this.documentType;
+    newImage.contentType = this.contentType;
+    newImage.size = this.size; // number of bytes.
+    newImage.sizeUnit = this.sizeUnit;
+    newImage.sizeTxt = this.sizeTxt;
+    newImage.naturalHeight = this.naturalHeight;
+    newImage.naturalWidth = this.naturalWidth;
+    newImage.name = this.name;
+    newImage.id = this.id;
+    newImage.error = this.error;
+    newImage.attachmentOrder = this.attachmentOrder;
+
+    return newImage;
+  }
+
+  calculateSize() {
+    const aMultiples = ['KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB', 'YiB'];
+    const nBytes: number = this.size;
+    let sOutput: string = nBytes + ' bytes';
+    
+    for (let nMultiple = 0, nApprox = nBytes / 1024; nApprox > 1; nApprox /= 1024, nMultiple++) {
+      sOutput = `${nApprox.toFixed(3)} ${aMultiples[nMultiple]} (${nBytes} bytes)`;
+      this.sizeUnit = aMultiples[nMultiple];
+    }
+
+    this.sizeTxt = sOutput;
+  }
 }
 
 export interface CommonAttachmentJson<T> {
