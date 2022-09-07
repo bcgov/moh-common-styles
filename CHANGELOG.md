@@ -1,4 +1,13 @@
-# Unreleased "moh-common-lib" (2022-08-02)
+# Unreleased "moh-common-lib" (2022-09-07)
+
+
+
+## [3.6.2](https://github.com/bcgov/moh-common-styles/compare/v3.6.0...v3.6.2) "moh-common-lib" (2022-09-07)
+
+
+### Bug Fixes
+
+* make fileuploader cloud icon clickable ([9215c63](https://github.com/bcgov/moh-common-styles/commit/9215c63))
 
 
 
